@@ -379,6 +379,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 {
 	unsigned int j, n_ptr = 0, n_thumb = 0;
 	ExifIfd i;
+	ExifEntry *le = NULL;
 
 	if (!data || !data->priv || !ifd || !d || !ds) return;
 
@@ -434,13 +435,31 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			(ExifShort) (ifd->count + n_ptr + n_thumb));
 	offset += 2;
 
-	/* Save each entry */
+	/*
+	 * Save each entry. TIFF specification requires entries to be sorted
+	 * by tags. Yes, the sorting routine can be improved. Please submit a
+	 * patch.
+	 */
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 		  "Saving %i entries (IFD '%s', offset: %i)...",
 		  ifd->count, exif_ifd_get_name (i), offset);
-	for (j = 0; j < ifd->count; j++)
-		exif_data_save_data_entry (data, ifd->entries[j],
-				d, ds, offset + 12 * j);
+	for (j = 0; j < ifd->count; j++) {
+		ExifEntry *me = NULL;
+		unsigned int k;
+
+		for (k = 0; k < ifd->count; k++) {
+			if (le && ((ifd->entries[k]->tag < le->tag) ||
+						((ifd->entries[k]->tag == le->tag) && (le <= ifd->entries[k]))))
+				continue;
+			if (!me || (me && ((me->tag > ifd->entries[k]->tag) ||
+							((me->tag == ifd->entries[k]->tag) && (me <= ifd->entries[k])))))
+				me = ifd->entries[k];
+		}
+		if (!me) break;
+		exif_data_save_data_entry (data, me, d, ds, offset + 12 * j);
+		le = me;
+	}
+
 	offset += 12 * ifd->count;
 
 	/* Now save special entries. */

@@ -1,5 +1,10 @@
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-data.c (exif_data_save_data_content): Save entries in
+		the correct order.
+
+2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* test/test-mem.c: Write size to loader to make the test work again.
 
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
