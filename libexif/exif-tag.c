@@ -24,6 +24,7 @@
 #include <libexif/i18n.h>
 
 #include <stdlib.h>
+#include <string.h>
 
 typedef enum {
 	ESL_MANDATORY    = 1, /* Mandatory               */
