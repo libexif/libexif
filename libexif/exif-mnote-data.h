@@ -39,8 +39,8 @@ const char  *exif_mnote_data_get_name        (ExifMnoteData *, unsigned int);
 const char  *exif_mnote_data_get_title       (ExifMnoteData *, unsigned int);
 const char  *exif_mnote_data_get_description (ExifMnoteData *, unsigned int);
 
-/* Free the result! */
-char  *exif_mnote_data_get_value (ExifMnoteData *, unsigned int);
+/* Returns NULL or val */
+char  *exif_mnote_data_get_value (ExifMnoteData *, unsigned int, char *val, unsigned int maxlen);
 
 #ifdef __cplusplus
 }

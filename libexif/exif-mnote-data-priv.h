@@ -45,7 +45,7 @@ struct _ExifMnoteDataMethods {
 	const char * (* get_name)        (ExifMnoteData *, unsigned int);
 	const char * (* get_title)       (ExifMnoteData *, unsigned int);
 	const char * (* get_description) (ExifMnoteData *, unsigned int);
-	      char * (* get_value)       (ExifMnoteData *, unsigned int);
+	char * (* get_value)             (ExifMnoteData *, unsigned int, char *val, unsigned int maxlen);
 };
 
 typedef struct _ExifMnoteDataPriv ExifMnoteDataPriv;

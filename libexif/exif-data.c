@@ -665,9 +665,10 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	    else {
 		em = exif_data_get_entry (data, EXIF_TAG_MAKE);
 		if (em) {
+            char value[7];
 
 		    /* Canon */
-		    if (!strcmp (exif_entry_get_value (em), "Canon"))
+		    if (!strcmp (exif_entry_get_value (em, value, sizeof(value)), "Canon"))
 			data->priv->md = exif_mnote_data_canon_new ();
 		}
 	    }
@@ -749,7 +750,7 @@ exif_data_new_from_file (const char *path)
 
 	loader = exif_loader_new ();
 	while (1) {
-		size = fread (data, 1, 1024, f);
+		size = fread (data, 1, sizeof (data), f);
 		if (size <= 0) break;
 		if (!exif_loader_write (loader, data, size)) break;
 	}
