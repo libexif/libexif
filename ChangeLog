@@ -1,3 +1,11 @@
+2002-03-01  Lutz Müller <lutz@users.sourceforge.net>
+
+	Patch by Mark Pulford <mark@kyne.com.au>:
+
+	* libexif.spec.in: New
+	* configure.in:
+	* Makefile.am: Create libexif.spec
+
 2002-02-28  Lutz Müller <lutz@users.sourceforge.net>
 
 	Patch by Javier Achirica <achirica@ttd.net>:

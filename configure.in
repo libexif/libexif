@@ -38,6 +38,7 @@ AC_SUBST(LDFLAGS)
 
 AC_OUTPUT([
 Makefile
+libexif.spec
 libexif/Makefile
 libexif/canon/Makefile
 libexif/fuji/Makefile
