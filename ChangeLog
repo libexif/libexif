@@ -1,3 +1,8 @@
+2002-12-31  Lutz Müller <lutz@users.sourceforge.net>
+
+	* README: Some information by Sander van Geloven
+	  <svgeloven@zonnet.nl>.
+
 2002-12-11  Lutz Müller <lutz@users.sourceforge.net>
 
 	* libexif/exif-entry.c (exif_entry_initialize): Fix last commit.

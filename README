@@ -56,3 +56,16 @@ libexif has originally been written by Curtis Galloway
 <curtisg@users.sourceforge.net>. Because of the original design not
 supporting editing and saving, Lutz Müller <lutz@users.sourceforge.net>
 rewrote libexif from scratch.
+
+LINKS
+-----
+
+Some links you might want to check out if you are interested in further
+information about EXIF.
+
+ - http://drewnoakes.com/code/exif: metadata extraction framework in Java
+ - http://www.pima.net: This is where I got the exif standard from. Site is
+   down as of 2002/12/31.
+ - http://www.jeida.or.jp: Can't remember any more. Site is down as of
+   2002/12/31.
+ - http://www.exif.org: information about the EXIF standard.
