@@ -136,6 +136,7 @@ exif_entry_get_value (ExifEntry *entry)
 	ExifRational v_rat;
 	ExifSRational v_srat;
 	static char v[1024], b[1024];
+	const char *c;
 
 	memset (v, 0, sizeof (v));
 	switch (entry->tag) {
@@ -247,6 +248,41 @@ exif_entry_get_value (ExifEntry *entry)
 		default:
 			snprintf (v, sizeof (v), "%i", v_short);
 			break;
+		}
+		break;
+	case EXIF_TAG_COMPONENTS_CONFIGURATION:
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, v);
+		CC (entry->components, 4, v);
+		for (i = 0; i < 4; i++) {
+			switch (entry->data[i]) {
+			case 0:
+				c = _("-");
+				break;
+			case 1:
+				c = _("Y");
+				break;
+			case 2:
+				c = _("Cb");
+				break;
+			case 3:
+				c = _("Cr");
+				break;
+			case 4:
+				c = _("R");
+				break;
+			case 5:
+				c = _("G");
+				break;
+			case 6:
+				c = _("B");
+				break;
+			default:
+				c = _("reserved");
+				break;
+			}
+			strncat (v, c, sizeof (v));
+			if (i < 3)
+				strncat (v, " ", sizeof (v));
 		}
 		break;
 	case EXIF_TAG_SENSING_METHOD:
@@ -416,6 +452,65 @@ exif_entry_get_value (ExifEntry *entry)
 			snprintf (v, sizeof (v), "%i", v_short);
 			break;
 		}
+		break;
+	case EXIF_TAG_YCBCR_POSITIONING:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 1, v);
+		v_short = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 1:
+			strncpy (v, _("centered"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("co-sited"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_COLOR_SPACE:
+		CF (entry->format, EXIF_FORMAT_SHORT, v); 
+		CC (entry->components, 1, v); 
+		v_short = exif_get_short (entry->data, entry->order); 
+		switch (v_short) { 
+		case 1:
+			strncpy (v, _("sRGB"), sizeof (v));
+			break;
+		case 0xffff:
+			strncpy (v, _("Uncalibrated"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_FLASH:
+		CF (entry->format, EXIF_FORMAT_SHORT, v); 
+		CC (entry->components, 1, v);
+		v_short = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 0x000:
+			strncpy (v, _("Flash did not fire."), sizeof (v));
+			break;
+		case 0x0001:
+			strncpy (v, _("Flash fired."), sizeof (v));
+			break;
+		case 0x0005:
+			strncpy (v, _("Strobe return light not detected."), sizeof (v));
+			break;
+		case 0x0007:
+			strncpy (v, _("Strobe return light detected."), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_MAKER_NOTE:
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, v);
+		snprintf (v, sizeof (v), _("%i bytes unknown data"),
+			  (int) entry->components);
 		break;
 	default:
 		switch (entry->format) {
