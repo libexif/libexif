@@ -1,3 +1,8 @@
+2003-09-05  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libjpeg/jpeg-data.c: Fix memory leak (discovered by 
+	  Ralph Heidelberg <RHeidelberg@Pinnaclesys.com)
+
 2003-08-25  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c: Fill unneeded bytes with 0. Suggestion by
