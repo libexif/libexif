@@ -10,7 +10,10 @@ dnl    GP_GETTEXT_HACK([${PACKAGE_TARNAME}-${LIBFOO_CURRENT}],
 dnl                    [Copyright Holder],
 dnl                    [foo-translation@example.org])
 dnl    ALL_LINGUAS="de es fr"
+dnl    AM_GNU_GETTEXT_VERSION([0.14.1])
 dnl    AM_GNU_GETTEXT([external])
+dnl    AM_PO_SUBDIRS()
+dnl    AM_ICONV()
 dnl    GP_GETTEXT_FLAGS
 dnl
 dnl You can leave out the GP_GETTEXT_HACK parameters if you want to,
@@ -19,21 +22,13 @@ dnl
 
 AC_DEFUN([GP_GETTEXT_HACK],
 [
-if test -n "$1"; then
-   GETTEXT_PACKAGE="$1"
-else
-   GETTEXT_PACKAGE=${PACKAGE_TARNAME}
-fi
+m4_if([$1],[],[GETTEXT_PACKAGE="${PACKAGE_TARNAME}"],[GETTEXT_PACKAGE="$1"])
 AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"],
                    [The gettext domain we're using])
 AC_SUBST([GETTEXT_PACKAGE])
 sed_cmds="s|^DOMAIN.*|DOMAIN = ${GETTEXT_PACKAGE}|"
-if test -n "$2"; then
-   sed_cmds="${sed_cmds};s|^COPYRIGHT_HOLDER.*|COPYRIGHT_HOLDER = $2|"
-fi
-if test -n "$3"; then
-   sed_mb="$3"
-elif test -n "$PACKAGE_BUGREPORT"; then
+m4_if([$2],[],[],[sed_cmds="${sed_cmds};s|^COPYRIGHT_HOLDER.*|COPYRIGHT_HOLDER = $2|"])
+m4_if([$3],[],[if test -n "$PACKAGE_BUGREPORT"; then
    sed_mb="${PACKAGE_BUGREPORT}"
 else
    AC_MSG_ERROR([
@@ -42,12 +37,12 @@ else
 *** or give [GP_GETTEXT_HACK] the second parameter.
 ***
 ])
-fi
+fi],[sed_mb="$3"])
 sed_cmds="${sed_cmds};s|^MSGID_BUGS_ADDRESS.*|MSGID_BUGS_ADDRESS = ${sed_mb}|"
 # Not so sure whether this hack is all *that* evil...
 AC_MSG_CHECKING([for po/Makevars requiring hack])
-if test -f po/Makevars.template; then
-   sed "$sed_cmds" < po/Makevars.template > po/Makevars
+if test -f "${srcdir}/po/Makevars.template"; then
+   sed "$sed_cmds" < "${srcdir}/po/Makevars.template" > "${srcdir}/po/Makevars"
    AC_MSG_RESULT([yes, done.])
 else
    AC_MSG_RESULT([no])

@@ -3,7 +3,6 @@ AC_INIT([EXIF library],[0.6.13],[libexif-devel@lists.sourceforge.net],[libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2])
-GP_CONFIG_INIT
 GP_CONFIG_MSG([Source code location],[${srcdir}])
 
 dnl ---------------------------------------------------------------------------
@@ -49,9 +48,9 @@ AC_CHECK_LIB([m],[sqrt],[MATHLIBS="-lm"],AC_MSG_ERROR([
 AC_SUBST(MATHLIBS)
 
 
-dnl ---------------------------------------------------------------------------
-dnl i18n support
-dnl ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# i18n support
+# ---------------------------------------------------------------------------
 GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT}],
                 [Lutz Müller and others])
 ALL_LINGUAS="de es fr"
