@@ -1,8 +1,3 @@
-INCLUDES=						\
-	-DLIBMNOTE_LOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(top_srcdir)					\
-	-I$(top_srcdir)/intl
-
 noinst_LTLIBRARIES = libmnote-canon.la
 libmnote_canon_la_SOURCES =				\
 	exif-mnote-data-canon.c exif-mnote-data-canon.h \

@@ -1,10 +1,4 @@
 SUBDIRS = canon olympus pentax
-INCLUDES =              				\
-	-DLIBEXIF_LOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(top_srcdir)/libexif				\
-	-I$(top_srcdir)/libjpeg				\
-	-I$(top_srcdir)/intl				\
-	-I$(top_srcdir)
 
 lib_LTLIBRARIES = libexif.la
 

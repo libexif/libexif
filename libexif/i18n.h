@@ -21,6 +21,8 @@
 #ifndef __I18N_H__
 #define __I18N_H__
 
+#include "config.h"
+
 #ifdef ENABLE_NLS
 #  include <libintl.h>
 #  undef _
