@@ -1,5 +1,9 @@
 2004-05-27  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* configure.in: 0.6.10 as 0.6.9 has just been released.
+
+2004-05-27  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-entry.c: Jan Patera pointed me to the fact that
 	  last change is pointless.
 

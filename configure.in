@@ -1,7 +1,7 @@
 AC_PREREQ(2.50)
 AC_INIT(libexif/exif-data.h)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(libexif, 0.6.9)
+AM_INIT_AUTOMAKE(libexif, 0.6.10)
 AM_MAINTAINER_MODE
 
 dnl ---------------------------------------------------------------------------
@@ -46,7 +46,7 @@ then
 else
 	AC_MSG_RESULT([no])
 fi
-AM_GNU_GETTEXT
+AM_GNU_GETTEXT([external])
 
 
 dnl ---------------------------------------------------------------------------
@@ -59,7 +59,7 @@ if test "x$GCC" = "xyes"; then
     AC_SUBST(LDFLAGS)
 fi
 
-AC_OUTPUT([
+AC_OUTPUT([ po/Makefile.in 
   Makefile
   libexif.spec
   libexif/Makefile
