@@ -78,17 +78,28 @@ init_vars() {
     fi
 
     echo -n "Initializing variables for \`${dir}'..."
-    AG_CONFIG_H="$(sed -n 's/^AM_CONFIG_HEADER(\[\{0,1\}\([^])]*\).*/\1/p' < "$CONFIGURE_AC")"
+    AG_AUX="$(sed -n 's/^AC_CONFIG_AUX_DIR(\[\{0,1\}\([^])]*\).*/\1/p' < "$CONFIGURE_AC")"
+    AG_CONFIG_H="$(sed -n 's/^\(A[CM]_CONFIG_HEADERS\?\)(\[\{0,1\}\([^]),]*\).*/\2/p' < "$CONFIGURE_AC")"
+    AG_CONFIG_K="$(sed -n 's/^\(A[CM]_CONFIG_HEADERS\?\)(\[\{0,1\}\([^]),]*\).*/\1/p' < "$CONFIGURE_AC")"
+    if echo "x$AG_CONFIG_H" | grep -q ':'; then
+	echo "$AG_CONFIG_K contains unsupported \`:' character: \`$AG_CONFIG_H'"
+	exit 13
+    fi
     if test "x$AG_CONFIG_H" != "x"; then
 	AG_CONFIG_DIR="$(dirname "${AG_CONFIG_H}")"
-	AG_GEN_CONFIG_H="${AG_CONFIG_H} ${AG_CONFIG_H}.in"
+	AG_GEN_CONFIG_H="${AG_CONFIG_H} ${AG_CONFIG_H}.in ${AG_CONFIG_DIR}/stamp-h1 ${AG_CONFIG_DIR}/stamp-h2"
     else
 	AG_CONFIG_DIR=""
 	AG_GEN_CONFIG_H=""
     fi
-    AG_GEN_ACAM="aclocal.m4 configure config.guess config.sub compile"
-    AG_GEN_RECONF="INSTALL install-sh missing depcomp"
-    AG_GEN_GETTEXT="mkinstalldirs config.rpath ABOUT-NLS"
+    for d in "$AG_AUX" "$AG_CONFIG_DIR"; do
+	if test -n "$d" && test ! -d "$d"; then
+	    mkdir "$d"
+	fi
+    done
+    AG_GEN_ACAM="aclocal.m4 configure $AG_AUX/config.guess $AG_AUX/config.sub $AG_AUX/compile"
+    AG_GEN_RECONF="INSTALL $AG_AUX/install-sh $AG_AUX/missing $AG_AUX/depcomp"
+    AG_GEN_GETTEXT="$AG_AUX/mkinstalldirs $AG_AUX/config.rpath ABOUT-NLS"
     while read file; do
 	AG_GEN_GETTEXT="${AG_GEN_GETTEXT} ${file}"
     done <<EOF
@@ -131,10 +142,10 @@ po/quot.sed
 po/remove-potcdate.sin
 po/stamp-po
 EOF
-    AG_GEN_CONF="config.status config.log include/stamp-h1 include/stamp-h2"
-    AG_GEN_LIBTOOL="ltmain.sh libtool"
-    AG_GEN_FILES=""
-    AG_GEN_FILES="$AG_GEN_ACAM $AG_GEN_RECONF $AG_GEN_GETTEXT $AG_GEN_CONFIG_H $AG_GEN_CONF $AG_GEN_LIBTOOL"
+    AG_GEN_CONF="config.status config.log"
+    AG_GEN_LIBTOOL="$AG_AUX/ltmain.sh libtool"
+    AG_GEN_FILES="$AG_GEN_ACAM $AG_GEN_RECONF $AG_GEN_GETTEXT"
+    AG_GEN_FILES="$AG_GEN_FILES $AG_GEN_CONFIG_H $AG_GEN_CONF $AG_GEN_LIBTOOL"
     AG_GEN_DIRS="autom4te.cache"
     echo " done."
 
