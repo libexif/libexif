@@ -132,7 +132,7 @@ init_vars() {
 	fi
     done
     AG_GEN_ACAM="aclocal.m4 configure $AG_AUX/config.guess $AG_AUX/config.sub $AG_AUX/compile"
-    AG_GEN_RECONF="INSTALL $AG_AUX/install-sh $AG_AUX/missing $AG_AUX/depcomp"
+    AG_GEN_RECONF="$AG_AUX/install-sh $AG_AUX/missing $AG_AUX/depcomp"
     AG_GEN_GETTEXT="$AG_AUX/mkinstalldirs $AG_AUX/config.rpath ABOUT-NLS"
     while read file; do
 	AG_GEN_GETTEXT="${AG_GEN_GETTEXT} ${file}"
@@ -201,6 +201,7 @@ clean() {
 		rm -rf ${AG_GEN_DIRS}
 		rm -f ${AG_GEN_FILES}
 		echo " done."
+		if test -h INSTALL; then rm -f INSTAL; fi
 		echo -n "Cleaning generated Makefile, Makefile.in files..."
 		if "$debug"; then echo; fi
 		find . -type f -name 'Makefile.am' -print | \
