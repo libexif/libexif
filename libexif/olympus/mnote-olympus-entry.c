@@ -51,7 +51,8 @@
         }                                                               \
 }
 
-#define EXIF_FORMAT_SSHORT 8
+#undef  MIN
+#define MIN(a, b)  (((a) < (b)) ? (a) : (b))
 
 char *
 mnote_olympus_entry_get_value (MnoteOlympusEntry *entry)

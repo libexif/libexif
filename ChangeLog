@@ -1,5 +1,10 @@
 2003-12-01  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/olympus/mnote-olympus-entry.c: Now that EXIF_FORMAT_SSHORT
+	  is in exif-format.h, we do not need to define it any longer.
+
+2003-12-01  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif: Various improvements by Jan Patera <patera@pictview.com>.
 
 2003-10-30  Lutz Mueller <lutz@users.sourceforge.net>
