@@ -1,3 +1,8 @@
+2003-03-13  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libjpeg/jpeg-data.c: Aravind <aravinds1@users.sourceforge.net>
+	  found a bug there.
+
 2003-03-18  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c (exif_data_new_from_file): Use the new
