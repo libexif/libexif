@@ -1,5 +1,10 @@
 2004-06-22  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/olympus/mnote-olympus-entry.c: Correct the usage of 
+	  strncat. Fix pointed out by Serge Droz <serge.droz@psi.ch>.
+
+2004-06-22  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/olympus/mnote-olympus-tag.[c,h]: New tags discovered by
 	  Serge Droz <serge.droz@psi.ch>.
 

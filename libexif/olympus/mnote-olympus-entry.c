@@ -164,7 +164,7 @@ static struct {
 char *
 mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int maxlen)
 {
-	char         buf[32];
+	char         buf[300];
 	ExifLong     vl;
 	ExifShort    vs = 0;
 	ExifRational vr;
@@ -528,7 +528,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 				  entry->size);
 			for (i = 0; i < entry->size; i++) {
 				sprintf (buf, " %02x", entry->data[i]);
-				strncat (v, buf, maxlen - strlen (v));
+				strncat (v, buf, maxlen);
 			}
 			break;
 		}
