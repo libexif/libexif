@@ -79,7 +79,13 @@ init_vars() {
 
     echo -n "Initializing variables for \`${dir}'..."
     AG_CONFIG_H="$(sed -n 's/^AM_CONFIG_HEADER(\[\{0,1\}\([^])]*\).*/\1/p' < "$CONFIGURE_AC")"
-    AG_CONFIG_DIR="$(dirname "${AG_CONFIG_H}")"
+    if test "x$AG_CONFIG_H" != "x"; then
+	AG_CONFIG_DIR="$(dirname "${AG_CONFIG_H}")"
+	AG_GEN_CONFIG_H="${AG_CONFIG_H} ${AG_CONFIG_H}.in"
+    else
+	AG_CONFIG_DIR=""
+	AG_GEN_CONFIG_H=""
+    fi
     AG_GEN_ACAM="aclocal.m4 configure config.guess config.sub compile"
     AG_GEN_RECONF="INSTALL install-sh missing depcomp"
     AG_GEN_GETTEXT="mkinstalldirs config.rpath ABOUT-NLS"
@@ -125,7 +131,6 @@ po/quot.sed
 po/remove-potcdate.sin
 po/stamp-po
 EOF
-    AG_GEN_CONFIG_H="${AG_CONFIG_H} ${AG_CONFIG_H}.in"
     AG_GEN_CONF="config.status config.log include/stamp-h1 include/stamp-h2"
     AG_GEN_LIBTOOL="ltmain.sh libtool"
     AG_GEN_FILES=""
@@ -263,3 +268,8 @@ for dir in ${dirs}; do
 done
 
 exit 0
+
+# Please do not remove this:
+# filetype: 89b1e88e-4cf2-44f1-980d-730067367775
+# I use this to find all the different instances of this file which 
+# are supposed to be synchronized.
