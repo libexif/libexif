@@ -39,6 +39,7 @@ AC_SUBST(LDFLAGS)
 AC_OUTPUT([
 Makefile
 libexif/Makefile
+libexif/canon/Makefile
 libjpeg/Makefile
 test/Makefile
 libexif/libexif.pc

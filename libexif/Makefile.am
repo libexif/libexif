@@ -1,3 +1,5 @@
+SUBDIRS = canon
+
 INCLUDES =              \
         -I$(top_srcdir)
 
@@ -11,6 +13,7 @@ libexif_la_SOURCES =		\
 	exif-entry.c		\
 	exif-format.c		\
 	exif-i18n.h		\
+	exif-note.c		\
 	exif-tag.c		\
 	exif-utils.c
 libexif_la_LIBADD = -lm
@@ -22,6 +25,7 @@ libexifinclude_HEADERS = 	\
 	exif-data.h		\
 	exif-entry.h		\
 	exif-format.h		\
+	exif-note.h		\
 	exif-result.h		\
 	exif-tag.h		\
 	exif-utils.h
