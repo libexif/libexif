@@ -173,9 +173,9 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 	for (i = 0; i < sizeof (eld->b); i++)
 		switch (eld->state) {
 		case EL_EXIF_FOUND:
-			if (!exif_loader_write (eld, eld->b + i,
+			if (!exif_loader_copy (eld, eld->b + i,
 					sizeof (eld->b) - i)) return 0;
-			return exif_loader_write (eld, buf, len);
+			return exif_loader_copy (eld, buf, len);
 		case EL_SKIP_BYTES:
 			eld->size--;
 			if (!eld->size) eld->state = EL_READ;
