@@ -1,3 +1,7 @@
+2002-01-29  Lutz Müller <lutz@users.sourceforge.net>
+
+	* configure.in: Version 0.2
+
 2002-01-06  Lutz Müller <urc8@rz.uni-karlsruhe.de>
 
 	Merge new stuff from gtkam/libexif.
