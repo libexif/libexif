@@ -659,26 +659,31 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	e = exif_data_get_entry (data, EXIF_TAG_MAKER_NOTE);
 	if (e) {
 
-	    /* Olympus */
+	    /* Olympus & Nikon */
 	    if ((e->size >= 5) && (!memcmp (e->data, "OLYMP", 5) ||
-				   !memcmp (e->data, "Nikon", 5)))
-		data->priv->md = exif_mnote_data_olympus_new ();
+				   !memcmp (e->data, "Nikon", 5))) {
+			data->priv->md = exif_mnote_data_olympus_new ();
+	    } else {
+			char value[7];
+			em = exif_data_get_entry (data, EXIF_TAG_MAKE);
+	    /* Pentax & some variant of Nikon */
+			if ((e->size >= 2) && (e->data[0] == 0x00)
+				    && (e->data[1] == 0x1b)) {
+				if (em && !strnicmp (exif_entry_get_value (em, value, sizeof(value)), "Nikon", 5)) {
+					data->priv->md = exif_mnote_data_olympus_new ();
+				} else {
+					data->priv->md = exif_mnote_data_pentax_new ();
+				}
 
-	    /* Pentax */
-	    else if ((e->size >= 2) && (e->data[0] == 0x00)
-				    && (e->data[1] == 0x1b))
-		data->priv->md = exif_mnote_data_pentax_new ();
-
-	    else {
-		em = exif_data_get_entry (data, EXIF_TAG_MAKE);
-		if (em) {
-            char value[7];
-
-		    /* Canon */
-		    if (!strcmp (exif_entry_get_value (em, value, sizeof(value)), "Canon"))
-			data->priv->md = exif_mnote_data_canon_new ();
+			} else {
+				/* Canon */
+				if (em) {
+		
+					if (!strcmp (exif_entry_get_value (em, value, sizeof(value)), "Canon"))
+						data->priv->md = exif_mnote_data_canon_new ();
+				}
+			}
 		}
-	    }
 
 	    /* 
 	     * If we are able to interpret the maker note, do so.
