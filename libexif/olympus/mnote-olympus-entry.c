@@ -27,6 +27,7 @@
 
 #include <libexif/exif-format.h>
 #include <libexif/exif-utils.h>
+#include <libexif/exif-entry.h>
 #include <libexif/i18n.h>
 
 #define CF(format,target,v,maxlen)                              \
@@ -54,13 +55,105 @@
 #undef  MIN
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
 
+static struct {
+	ExifTag tag;
+    ExifFormat fmt;
+	struct {
+		int index;
+		const char *string;
+	} elem[8];
+} items[] = {
+  { MNOTE_NIKON_TAG_LENSTYPE, EXIF_FORMAT_BYTE,
+    { {0, N_("AF non D Lens")},
+      {1, N_("Manual")},
+      {2, N_("AF-D or AF-S Lens")},
+      {6, N_("AF-D G Lens")},
+      {10, N_("AF-D VR Lens")},
+      {0, NULL}}},
+  { MNOTE_NIKON_TAG_FLASHUSED, EXIF_FORMAT_BYTE,
+    { {0, N_("Flash did not fire")},
+      {4, N_("Flash unit unknown")},
+      {7, N_("Flash is external")},
+      {9, N_("Flash is on Camera")},
+      {0, NULL}}},
+  { MNOTE_NIKON1_TAG_QUALITY, EXIF_FORMAT_SHORT,
+    { {1, N_("VGA Basic")},
+      {2, N_("VGA Normal")},
+      {3, N_("VGA Fine")},
+      {4, N_("SXGA Basic")},
+      {5, N_("SXGA Normal")},
+      {6, N_("SXGA Fine")},
+      {0, NULL}}},
+  { MNOTE_NIKON1_TAG_COLORMODE, EXIF_FORMAT_SHORT,
+    { {1, N_("Color")},
+      {2, N_("Monochrome")},
+      {0, NULL}}},
+  { MNOTE_NIKON1_TAG_IMAGEADJUSTMENT, EXIF_FORMAT_SHORT,
+    { {0, N_("Normal")},
+      {1, N_("Bright+")},
+      {2, N_("Bright-")},
+      {3, N_("Contrast+")},
+      {4, N_("Contrast-")},
+      {0, NULL}}},
+  { MNOTE_NIKON1_TAG_CCDSENSITIVITY, EXIF_FORMAT_SHORT,
+    { {0, N_("ISO80")},
+      {2, N_("ISO160")},
+      {4, N_("ISO320")},
+      {5, N_("ISO100")},
+      {0, NULL}}},
+  { MNOTE_NIKON1_TAG_WHITEBALANCE, EXIF_FORMAT_SHORT,
+    { {0, N_("Auto")},
+      {1, N_("Preset")},
+      {2, N_("Daylight")},
+      {3, N_("Incandescense")},
+      {4, N_("Fluorescence")},
+      {5, N_("Cloudy")},
+      {6, N_("SpeedLight")},
+      {0, NULL}}},
+  { MNOTE_OLYMPUS_TAG_QUALITY, EXIF_FORMAT_SHORT,
+    { {1, N_("SQ")},
+      {2, N_("HQ")},
+      {3, N_("SHQ")},
+      {0, NULL}}},
+  { MNOTE_OLYMPUS_TAG_MACRO, EXIF_FORMAT_SHORT,
+    { {0, N_("No")},
+      {1, N_("Yes")},
+      {0, NULL}}},
+  { MNOTE_OLYMPUS_TAG_DIGIZOOM, EXIF_FORMAT_SHORT,
+    { {0, N_("1x")},
+      {2, N_("2x")},
+      {0, NULL}}},
+  { MNOTE_OLYMPUS_TAG_FLASHMODE, EXIF_FORMAT_SHORT,
+    { {0, N_("Auto")},
+      {1, N_("Red-eye reduction")},
+      {2, N_("Fill")},
+      {3, N_("Off")},
+      {0, NULL}}},
+  { MNOTE_OLYMPUS_TAG_SHARPNESS, EXIF_FORMAT_SHORT,
+    { {0, N_("Normal")},
+      {1, N_("Hard")},
+      {2, N_("Soft")},
+      {0, NULL}}},
+  { MNOTE_OLYMPUS_TAG_CONTRAST, EXIF_FORMAT_SHORT,
+    { {0, N_("Hard")},
+      {1, N_("Normal")},
+      {2, N_("Soft")},
+      {0, NULL}}},
+  { MNOTE_OLYMPUS_TAG_MANFOCUS, EXIF_FORMAT_SHORT,
+    { {0, N_("No")},
+      {1, N_("Yes")},
+      {0, NULL}}},
+  { 0, }
+};
+
 char *
 mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int maxlen)
 {
-	char buf[32];
-	ExifLong vl;
-	ExifShort vs;
+	char         buf[32];
+	ExifLong     vl;
+	ExifShort    vs;
 	ExifRational vr;
+	int          i, j;
 
 	if (!entry)
 		return (NULL);
@@ -77,21 +170,21 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
                 CF (entry->format,  EXIF_FORMAT_UNDEFINED, v, maxlen);
                 CC (entry->components, 4, v, maxlen);
                 vl =  exif_get_long (entry->data, entry->order);
-                snprintf (v, sizeof (v), "0x%04lx", vl);
+                snprintf (v, maxlen, "0x%04lx", vl);
                 break;
         case MNOTE_NIKON_TAG_ISO:
                 CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
                 CC (entry->components, 2, v, maxlen);
                 //vs = exif_get_short (entry->data, entry->order);
                 vs = exif_get_short (entry->data + 2, entry->order);
-                snprintf (v, sizeof (v), "ISO %hd", vs);
+                snprintf (v, maxlen, "ISO %hd", vs);
                 break;
         case MNOTE_NIKON_TAG_ISO2:
                 CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
                 CC (entry->components, 2, v, maxlen);
                 //vs = exif_get_short (entry->data, entry->order);
                 vs = exif_get_short (entry->data + 2, entry->order);
-                snprintf (v, sizeof (v), "ISO2 %hd", vs);
+                snprintf (v, maxlen, "ISO2 %hd", vs);
                 break;
         case MNOTE_NIKON_TAG_QUALITY:
                 CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
@@ -100,58 +193,39 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
                 //printf("-> 0x%04x\n",entry->data);
                 //printf("-> 0x%s<\n",entry->data - 0);
                 memcpy(v, entry->data ,entry->components);
-                //snprintf (v, sizeof (v), "%s<",  ( entry->data - 9  );
+                //snprintf (v, maxlen, "%s<",  ( entry->data - 9  );
                 break;
         case MNOTE_NIKON_TAG_COLORMODE:
-                CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                memcpy(v, entry->data ,entry->components);
-                break;
         case MNOTE_NIKON_TAG_COLORMODE1:
+        case MNOTE_NIKON_TAG_WHITEBALANCE:
+        case MNOTE_NIKON_TAG_SHARPENING:
+        case MNOTE_NIKON_TAG_FOCUSMODE:
+        case MNOTE_NIKON_TAG_FLASHSETTING:
+        case MNOTE_NIKON_TAG_ISOSELECTION:
+        case MNOTE_NIKON_TAG_FLASHMODE:
+        case MNOTE_NIKON_TAG_IMAGEADJUSTMENT:
+        case MNOTE_NIKON_TAG_ADAPTER:
                 CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                memcpy(v, entry->data ,entry->components);
+                memcpy(v, entry->data, MIN (maxlen, entry->components));
                 break;
         case MNOTE_NIKON_TAG_TOTALPICTURES:
                 CF (entry->format, EXIF_FORMAT_LONG, v, maxlen);
                 CC (entry->components, 1, v, maxlen);
-                vl =  exif_get_long (entry->data  , entry->order);
-                snprintf (v, sizeof (v), "%lu",  vl  );
-                break;
-        case MNOTE_NIKON_TAG_WHITEBALANCE:
-                CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                memcpy(v, entry->data ,entry->components);
-                break;
-        case MNOTE_NIKON_TAG_SHARPENING:
-                CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                memcpy(v, entry->data ,entry->components);
-                break;
-        case MNOTE_NIKON_TAG_FOCUSMODE:
-                CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                memcpy(v, entry->data ,entry->components);
-                break;
-        case MNOTE_NIKON_TAG_FLASHSETTING:
-                CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                memcpy(v, entry->data ,entry->components);
-                break;
-        case MNOTE_NIKON_TAG_ISOSELECTION:
-                CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                memcpy(v, entry->data ,entry->components);
-                break;
-        case MNOTE_NIKON_TAG_FLASHMODE:
-                CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                memcpy(v, entry->data ,entry->components);
+                vl =  exif_get_long (entry->data, entry->order);
+                snprintf (v, maxlen, "%lu",  vl );
                 break;
         case MNOTE_NIKON_TAG_WHITEBALANCEFINE:
                 CF (entry->format, EXIF_FORMAT_SSHORT, v, maxlen);
                 CC (entry->components, 1, v, maxlen);
-                vs =  exif_get_short (entry->data, entry->order);
-                snprintf (v, sizeof (v), "%hd", vs);
+                vs = exif_get_short (entry->data, entry->order);
+                snprintf (v, maxlen, "%hd", vs);
                 break;
         case MNOTE_NIKON_TAG_WHITEBALANCERB:
                 CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
                 CC (entry->components, 4, v, maxlen);
                 //vr = exif_get_rational (entry->data, entry->order);
                 //if (vr.numerator == 0) {
-                //      strncpy (v, _("Unknown"), sizeof (v));
+                //      strncpy (v, _("Unknown"), maxlen);
                 //}
                 //else {
                 {
@@ -161,25 +235,66 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
                         vr = exif_get_rational (entry->data+8, entry->order);
                         b = (1.0*vr.numerator) / vr.denominator;
                         //printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);
-                        snprintf (v, sizeof (v), "Red Correction %f, Blue Correction %f", r,b);
+                        snprintf (v, maxlen, "Red Correction %f, Blue Correction %f", r,b);
                 }
                 break;
-        case MNOTE_NIKON_TAG_LENSTYPE:
-                CF (entry->format, EXIF_FORMAT_BYTE, v, maxlen);
-                CC (entry->components, 1, v, maxlen);
-                switch (  *( entry->data)  ) {
-                   case  0: snprintf (v, sizeof (v), "AF non D Lens"); break;
-                   case  1: snprintf (v, sizeof (v), "manual"); break;
-                   case  2: snprintf (v, sizeof (v), "AF-D or AF-S Lens"); break;
-                   case  6: snprintf (v, sizeof (v), "AF-D G Lens"); break;
-                   case 10: snprintf (v, sizeof (v), "AF-D VR Lens"); break;
-                   default: snprintf (v, sizeof (v), "unknown Lens");
-                }
+	case MNOTE_NIKON_TAG_AFFOCUSPOSITION:
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, v, maxlen);
+		CC (entry->components, 4, v, maxlen);
+		switch (  *( entry->data+1)  ) {
+		  	case  0: strncpy (v, "AF Position: Center", maxlen); break;
+		  	case  1: strncpy (v, "AF Position: Top", maxlen); break;
+		  	case  2: strncpy (v, "AF Position: Bottom", maxlen); break;
+		  	case  3: strncpy (v, "AF Position: Left", maxlen); break;
+		  	case  4: strncpy (v, "AF Position: Right", maxlen); break;
+		  	default: strncpy (v, "Unknown AF Position", maxlen);
+		}     
 		break;
-        case MNOTE_NIKON_TAG_LENS:
-                CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
-                CC (entry->components, 4, v, maxlen);
-                {
+	case MNOTE_NIKON_TAG_LENSTYPE:
+	case MNOTE_NIKON_TAG_FLASHUSED:
+	case MNOTE_NIKON1_TAG_QUALITY:
+	case MNOTE_NIKON1_TAG_COLORMODE:
+	case MNOTE_NIKON1_TAG_IMAGEADJUSTMENT:
+	case MNOTE_NIKON1_TAG_CCDSENSITIVITY:
+	case MNOTE_NIKON1_TAG_WHITEBALANCE:
+	case MNOTE_OLYMPUS_TAG_QUALITY:
+	case MNOTE_OLYMPUS_TAG_MACRO:
+	case MNOTE_OLYMPUS_TAG_DIGIZOOM:
+	case MNOTE_OLYMPUS_TAG_FLASHMODE:
+	case MNOTE_OLYMPUS_TAG_SHARPNESS:
+	case MNOTE_OLYMPUS_TAG_CONTRAST:
+	case MNOTE_OLYMPUS_TAG_MANFOCUS:
+		/* search the tag */
+		for (i = 0; (items[i].tag && items[i].tag != entry->tag); i++);
+		if (!items[i].tag) {
+		  	strncpy (v, "Internal error", maxlen);
+		  	break;
+		}
+		CF (entry->format, items[i].fmt, v, maxlen);
+		CC (entry->components, 1, v, maxlen);
+		switch (entry->format) {
+			case EXIF_FORMAT_BYTE:
+			case EXIF_FORMAT_UNDEFINED:
+				vs = entry->data[0];
+				break;
+			case EXIF_FORMAT_SHORT:
+				vs = exif_get_short(entry->data, entry->order);
+				break;
+		}
+		/* find the value */
+		for (j = 0; items[i].elem[j].string &&
+			    (items[i].elem[j].index < vs); j++);
+		if (items[i].elem[j].index != vs) {
+			snprintf (v, maxlen, "Unknown value %hi", vs);
+			break;
+		}
+		strncpy (v, items[i].elem[j].string, maxlen);
+		break;
+
+	case MNOTE_NIKON_TAG_LENS:
+		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
+		CC (entry->components, 4, v, maxlen);
+		{
                         float c,d;
                         unsigned long a,b;
                         vr = exif_get_rational (entry->data, entry->order);
@@ -190,31 +305,9 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
                         c = (1.0*vr.numerator) / vr.denominator;
                         vr = exif_get_rational (entry->data+24, entry->order);
                         d = (1.0*vr.numerator) / vr.denominator;
-                                                                                                         //printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);                         snprintf (v, sizeof (v), "%ld-%ldmm 1:%3.1f - %3.1f",a,b,c,d);
-                }
-                break;
-        case MNOTE_NIKON_TAG_FLASHUSED:
-                CF (entry->format, EXIF_FORMAT_BYTE, v, maxlen);
-                CC (entry->components, 1, v, maxlen);
-                switch (  *( entry->data)  ) {
-                   case  0: snprintf (v, sizeof (v), "Flash did not fire"); break;
-                   case  4: snprintf (v, sizeof (v), "Flash unit unknown"); break;
-                   case  7: snprintf (v, sizeof (v), "Flash is external"); break;
-                   case  9: snprintf (v, sizeof (v), "Flash is on Camera"); break;
-                   default: snprintf (v, sizeof (v), "unknown Flash status");
-                }
-                break;
-        case MNOTE_NIKON_TAG_AFFOCUSPOSITION:
-                CF (entry->format, EXIF_FORMAT_UNDEFINED, v, maxlen);
-                CC (entry->components, 4, v, maxlen);
-                switch (  *( entry->data+1)  ) {
-                   case  0: snprintf (v, sizeof (v), "AF Position: Center"); break;
-                   case  1: snprintf (v, sizeof (v), "AF Position: Top"); break;                   case  2: snprintf (v, sizeof (v), "AF Position: Bottom"); break;
-                   case  3: snprintf (v, sizeof (v), "AF Position: Left"); break;
-                   case  4: snprintf (v, sizeof (v), "AF Position: Right"); break;
-                   default: snprintf (v, sizeof (v), "unknown AF Position");
-                }
-                break;
+                        //printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);                         snprintf (v, sizeof (v), "%ld-%ldmm 1:%3.1f - %3.1f",a,b,c,d);
+		}
+		break;
 
 	/* Olympus */
 	case MNOTE_OLYMPUS_TAG_MODE:
@@ -259,58 +352,10 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			strncat (v, buf, maxlen - strlen (v));
 		}
 		break;
-	case MNOTE_OLYMPUS_TAG_QUALITY:
-		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
-		CC (entry->components, 1, v, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 1:
-			strncpy (v, _("SQ"), maxlen);
-			break;
-		case 2:
-			strncpy (v, _("HQ"), maxlen);
-			break;
-		case 3:
-			strncpy (v, _("SHQ"), maxlen);
-			break;
-		default:
-			snprintf (v, maxlen, _("%i"), vs);
-		}
-		break;
-	case MNOTE_OLYMPUS_TAG_MACRO:
-		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
-		CC (entry->components, 1, v, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (v, _("no"), maxlen);
-			break;
-		case 1:
-			strncpy (v, _("yes"), maxlen);
-			break;
-		default:
-			snprintf (v, maxlen, _("%i"), vs);
-		}
-		break;
 	case MNOTE_OLYMPUS_TAG_UNKNOWN_1:
 		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
 		CC (entry->components, 1, v, maxlen);
 		strncpy (v, _("Unknown tag."), maxlen);
-		break;
-	case MNOTE_OLYMPUS_TAG_DIGIZOOM:
-		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
-		CC (entry->components, 1, v, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (v, _("1x"), maxlen);
-			break;
-		case 2:
-			strncpy (v, _("2x"), maxlen);
-			break;
-		default:
-			snprintf (v, maxlen, _("%i"), vs);
-		}
 		break;
 	case MNOTE_OLYMPUS_TAG_UNKNOWN_2:
 		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
@@ -338,27 +383,6 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		CF (entry->format, EXIF_FORMAT_LONG, v, maxlen);
 		CC (entry->components, 30, v, maxlen);
 		break;
-	case MNOTE_OLYMPUS_TAG_FLASHMODE:
-		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
-		CC (entry->components, 1, v, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (v, _("Auto"), maxlen);
-			break;
-		case 1:
-			strncpy (v, _("Red-eye reduction"), maxlen);
-			break;
-		case 2:
-			strncpy (v, _("Fill"), maxlen);
-			break;
-		case 3:
-			strncpy (v, _("Off"), maxlen);
-			break;
-		default:
-			snprintf (v, maxlen, _("%i"), vs);
-		}
-		break;
 	case MNOTE_OLYMPUS_TAG_FOCUSDIST:
 		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
 		CC (entry->components, 1, v, maxlen);
@@ -370,24 +394,6 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			unsigned long tmp = vr.numerator / vr.denominator;
 			/* printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator); */
 			snprintf (v, maxlen, "%li mm", tmp);
-		}
-		break;
-	case MNOTE_OLYMPUS_TAG_SHARPNESS:
-		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
-		CC (entry->components, 1, v, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (v, _("Normal"), maxlen);
-			break;
-		case 1:
-			strncpy (v, _("Hard"), maxlen);
-			break;
-		case 2:
-			strncpy (v, _("Soft"), maxlen);
-			break;
-		default:
-			snprintf (v, maxlen, _("%i"), vs);
 		}
 		break;
 	case MNOTE_OLYMPUS_TAG_WBALANCE:
@@ -442,40 +448,25 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			break;
 		}
 		break;
-	case MNOTE_OLYMPUS_TAG_CONTRAST:
-		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
-		CC (entry->components, 1, v, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (v, _("Hard"), maxlen);
-			break;
-		case 1:
-			strncpy (v, _("Normal"), maxlen);
-			break;
-		case 2:
-			strncpy (v, _("Soft"), maxlen);
-			break;
-		default:
-			snprintf (v, maxlen, "%i", vs);
-		}
-		break;
-	case MNOTE_OLYMPUS_TAG_MANFOCUS:
-		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
-		CC (entry->components, 1, v, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (v, _("No"), maxlen);
-			break;
-		case 1:
-			strncpy (v, _("Yes"), maxlen);
-			break;
-		default:
-			snprintf (v, maxlen, _("%i"), vs);
-		}
-		break;
 	default:
+		switch (entry->format) {
+		case EXIF_FORMAT_ASCII:
+		  strncpy (v, entry->data, MIN (maxlen, entry->components));
+		  break;
+		case EXIF_FORMAT_SHORT:
+		  vs = exif_get_short (entry->data, entry->order);
+		  snprintf (v, maxlen, "%hi", vs);
+		  break;
+		case EXIF_FORMAT_LONG:
+		  vl = exif_get_long (entry->data, entry->order);
+		  snprintf (v, maxlen, "%li", vl);
+		  break;
+		case EXIF_FORMAT_UNDEFINED:
+		default:
+		  snprintf (v, maxlen, "%li bytes unknown data",
+			    entry->size);
+		  break;
+		}
 		break;
 	}
 

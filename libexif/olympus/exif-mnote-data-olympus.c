@@ -120,7 +120,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 {
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) en;
 	ExifShort c;
-	unsigned int i, s, o;
+	unsigned int i, s, o, o2, datao = 6, base = 0;
 
 	if (!n || !buf) return;
 
@@ -129,15 +129,42 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	 * a size of 22 bytes (6 for 'OLYMP', 2 other bytes, 2 for the
 	 * number of entries, and 12 for one entry.
 	 *
-	 * Nikon headers start with "Nikon".
+	 * Nikon v1 headers start with "Nikon", 0, 1, 0, number_of_tags,
+	 * or just with number_of_tags (models D1H, D1X...).
+	 * Nikon v2 headers start with "Nikon", 0, 2, 0, 0, 0, "MM", 0, 0x2A
+	 * or "Nikon", 0, 2, 0, 0, 0, "II", 0x2A, 0.
 	 */
-	if (buf_size - n->offset - 6 < 5) return;
-	if (memcmp (buf + 6 + n->offset, "Nikon", 5) &&
-	    memcmp (buf + 6 + n->offset, "OLYMP", 5)) return;
 	if (buf_size - n->offset < 22) return;
+	if (!memcmp (buf + 6 + n->offset, "OLYMP", 5)) {
+		o2 = 6 + n->offset + 8 + 2;
+		c = exif_get_short (buf + 6 + n->offset + 8, n->order);
+	} else if (!memcmp (buf + 6 + n->offset, "Nikon", 5)) {
+		o2 = 6 + n->offset + 8 + 2;
+		datao = o2;
+		if (!memcmp(buf + o2 - 4, "\2\0\0\0II\x2A\0", 8)) {
+			n->order = EXIF_BYTE_ORDER_INTEL;
+			o2 += exif_get_long(buf + o2 + 4, n->order);
+		} else if (!memcmp(buf + o2 - 4, "\2\0\0\0MM\0\x2A", 8)) {
+			n->order = EXIF_BYTE_ORDER_MOTOROLA;
+			o2 += exif_get_long(buf + o2 + 4, n->order);
+		} else if (!memcmp(buf + o2 - 4, "\1\0", 2)) {
+			o2 -= 2;
+			base = MNOTE_NIKON1_TAG_BASE;
+		} else {
+			return;
+		}
+		if (o2 + 2 > buf_size) return;
+		c = exif_get_short (buf + o2, n->order);
+		o2 += 2;
+	} else if (!memcmp (buf + 6 + n->offset, "\0\x1b", 2)) {
+		o2 = 6 + n->offset;
+		c = exif_get_short (buf + o2, n->order);
+		o2 += 2;
+	} else {
+		return;
+	}
 
 	/* Read the number of entries and remove old ones. */
-	c = exif_get_short (buf + 6 + n->offset + 8, n->order);
 	exif_mnote_data_olympus_clear (n);
 
 	n->entries = malloc (sizeof (MnoteOlympusEntry) * c);
@@ -145,11 +172,11 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 
 	/* Parse the entries */
 	for (i = 0; i < c; i++) {
-	    o = 6 + n->offset + 8 + 2 + 12 * i;
+	    o = o2 + 12 * i;
 	    if (o + 12 > buf_size) return;
 
 	    n->count = i + 1;
-	    n->entries[i].tag        = exif_get_short (buf + o, n->order);
+	    n->entries[i].tag        = exif_get_short (buf + o, n->order) + base;
 	    n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
 	    n->entries[i].components = exif_get_long (buf + o + 4, n->order);
 	    n->entries[i].order      = n->order;
@@ -162,7 +189,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		   			 n->entries[i].components;
 	    if (!s) return;
 	    o += 8;
-	    if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
+	    if (s > 4) o = exif_get_long (buf + o, n->order) + datao;
 	    if (o + s > buf_size) return;
 
 	    /* Sanity check */
