@@ -18,11 +18,14 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "config.h"
-#include "exif-data.h"
-#include "exif-ifd.h"
+#include <config.h>
+
+#include <libexif/exif-data.h>
+#include <libexif/exif-ifd.h>
+#include <libexif/exif-loader.h>
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int
 main (int argc, char **argv)
@@ -31,6 +34,8 @@ main (int argc, char **argv)
 	ExifEntry *e;
 	unsigned char *eb;
 	unsigned int ebs;
+	ExifLoader *loader;
+	unsigned int i;
 
 	printf ("Creating EXIF data...\n");
 	ed = exif_data_new ();
@@ -56,8 +61,13 @@ main (int argc, char **argv)
 	exif_data_save_data (ed, &eb, &ebs);
 	exif_data_unref (ed);
 
-	printf ("Loading EXIF data from memory...\n");
-	ed = exif_data_new_from_data (eb, ebs);
+	printf ("Writing %i byte(s) EXIF data to loader...\n", ebs);
+	loader = exif_loader_new ();
+	for (i = 0; i < ebs && exif_loader_write (loader, eb + i, 1); i++);
+	printf ("Wrote %i byte(s).\n", i);
+	free (eb);
+	ed = exif_loader_get_data (loader);
+	exif_loader_unref (loader);
 	exif_data_dump (ed);
 	exif_data_unref (ed);
 

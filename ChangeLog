@@ -1,3 +1,8 @@
+2003-03-17  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-loader.[c,h]: New. Mostly written by Jens Finke
+	  <jens@triq.net>. Not tested at all.
+
 2003-02-11  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-tag.c: Fix typo.

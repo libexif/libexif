@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libexif\n"
-"POT-Creation-Date: 2002-12-03 08:44+0100\n"
+"POT-Creation-Date: 2002-12-07 01:20+0100\n"
 "PO-Revision-Date: 2002-11-21 10:02+0100\n"
 "Last-Translator: Arnaud Launay <asl@launay.org>\n"
 "Language-Team: Français <traduc@traduc.org>\n"
