@@ -1,5 +1,9 @@
 2003-10-30  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-loader.c: Handle APP13.
+
+2003-10-30  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-loader.c: Fix APP0-bug. Patch by Jan Patera
 	  <patera@pictview.com>.
 

@@ -63,6 +63,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 
 			switch (eld->last_marker) {
 			case JPEG_MARKER_APP0:
+			case JPEG_MARKER_APP13:
 				eld->state = EL_SKIP_BYTES;
 				eld->size -= 2;
 				break;
@@ -88,8 +89,9 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 
 		default:
 			if (buf[i] != 0xff) {
-				if (buf [i] == JPEG_MARKER_APP0 ||
-				    buf [i] == JPEG_MARKER_APP1) {
+				if (buf[i] == JPEG_MARKER_APP0 ||
+				    buf[i] == JPEG_MARKER_APP1 ||
+				    buf[i] == JPEG_MARKER_APP13) {
 					eld->state = EL_READ_SIZE_HIGH_BYTE;
 					eld->last_marker = buf [i];
 
