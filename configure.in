@@ -60,10 +60,8 @@ AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT
 GP_GETTEXT_FLAGS
 
-AC_DEFINE_UNQUOTED([LIBEXIF_LOCALEDIR],["${datadir}/locale"],
-                   [The locale directory used with libexif translations])
-AC_DEFINE_UNQUOTED([LIBMNOTE_LOCALEDIR],["${datadir}/locale"],
-                   [The locale directory used with libexif translations])
+AM_CFLAGS="$AM_CFLAGS -DLIBEXIF_LOCALEDIR=\\\"\$(datadir)/locale\\\""
+AM_CFLAGS="$AM_CFLAGS -DLIBMNOTE_LOCALEDIR=\\\"\$(datadir)/locale\\\""
 
 
 dnl ---------------------------------------------------------------------------
@@ -94,6 +92,7 @@ AC_CONFIG_FILES([
   libexif/pentax/Makefile
   libjpeg/Makefile
   test/Makefile
+  test/nls/Makefile
   m4/Makefile
   libexif/libexif.pc
 ])
