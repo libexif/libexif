@@ -12,15 +12,12 @@ New in 0.6.11 (2004-10-16) since 0.6.10 (2004-08-27):
 
   * Bug fixes for memory leaks, format strings, month one off, ...
 
-  * Support for Watcom compiler.
+  * Support for Watcom compiler (requires manual copying of files)
 
 
 New in 0.6.10 (2004-08-27) since 0.5.9 (2002-12-11):
 
   * New tags suppored, and added a few more checks.
-
-
-????
 
   * API changes
 
@@ -35,6 +32,8 @@ General remarks:
     enhancements (new tag types, ...) are not mentionened
     explicitly.
 
+  * Apart from that, I would like to ask committers to update this
+    file when they commit "big" user visible changes.
+
   * If someone wants to reconstruct past changes and log them here,
-    you're welcome. Apart from that, I would like to ask committers
-    to update this file when they commit user visible changes.
+    you're welcome to.
