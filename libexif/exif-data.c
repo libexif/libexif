@@ -355,9 +355,9 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 				return;
 			}
 			entry = exif_entry_new_mem (data->priv->mem);
-			exif_content_add_entry (ifd, entry);
 			exif_data_load_data_entry (data, entry, d, ds,
 						   offset + 12 * i);
+			exif_content_add_entry (ifd, entry);
 			exif_entry_unref (entry);
 			break;
 		}

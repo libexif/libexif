@@ -1,3 +1,7 @@
+2004-11-17  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-data.c: Make the last commit actually work.
+
 2004-11-15  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-content.c: Complain if the same tag is added twice
