@@ -31,6 +31,25 @@
 #define DEBUG
 
 static void
+exif_mnote_data_olympus_clear (ExifMnoteDataOlympus *n)
+{
+	unsigned int i;
+
+	if (!n) return;
+
+	if (n->entries) {
+		for (i = 0; i < n->count; i++)
+			if (n->entries[i].data) {
+				free (n->entries[i].data);
+				n->entries[i].data = NULL;
+			}
+		free (n->entries);
+		n->entries = NULL;
+		n->count = 0;
+	}
+}
+
+static void
 exif_mnote_data_olympus_free (ExifMnoteData *n)
 {
 	ExifMnoteDataOlympus *note = (ExifMnoteDataOlympus *) n;
@@ -57,133 +76,105 @@ exif_mnote_data_olympus_get_value (ExifMnoteData *d, unsigned int i)
 	return mnote_olympus_entry_get_value (&n->entries[i]);
 }
 
-#ifdef DEBUG
-/* Look at memory around p */
-static void dump_memory_around(const unsigned char *p)
-{
-	static char *format = "%xl %xl %xl %xl\n";
-	static unsigned buf[4];
-	unsigned int i;
-
-	for (i = 0; i < 5; i++) {
-		memcpy(buf, p - 32 + (16 * i), sizeof(buf));
-		printf(format, buf[0], buf[1], buf[2], buf[3]);
-	}
-
-}
-#endif
-
-
 static void
-exif_mnote_data_olympus_load_entry (ExifMnoteDataOlympus *note,
-	MnoteOlympusEntry *entry, const unsigned char *d,
-	unsigned int size, unsigned int offset)
+exif_mnote_data_olympus_save (ExifMnoteData *ne,
+		unsigned char **buf, unsigned int *buf_size)
 {
-	unsigned int s, doff;
-	const unsigned char *d_orig = d;
+	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) ne;
+	unsigned int i, o, s, doff;
 
-	entry->tag        = exif_get_short (d + offset + 0, note->order);
-	entry->format     = exif_get_short (d + offset + 2, note->order);
-	entry->components = exif_get_long  (d + offset + 4, note->order);
-	entry->order      = note->order;
+	if (!n || !buf || !buf_size) return;
 
-        /*
-         * Size? If bigger than 4 bytes, the actual data is not
-         * in the entry but somewhere else (offset).
-         */
-        s = exif_format_get_size (entry->format) * entry->components;
-#ifdef DEBUG
-        printf ("exif get size is %i ", exif_format_get_size (entry->format));
-        printf ("entry format is %i, #components is %li, ",
-		entry->format, entry->components);
-        printf ("entry size is %i\n", s);
-#endif
-        if (!s)
-                return;
-        if (s > 4) {
+	/*
+	 * Allocate enough memory for all entries and the number of entries.
+	 */
+	*buf_size = 6 + 2 + 2 + n->count * 12;
+	*buf = malloc (sizeof (char) * *buf_size);
+	if (!*buf) return;
+	memset (*buf, 0, sizeof (char) * *buf_size);
 
-        		/*
-        			THIS DOES NOT WORK!
-        			The problem is that d points to the first MakerNote Tag.
-        			According to the EXIF 2.1 spec, it should point to the
-        			TIFF header preceding the EXIF information.
-        			I have tried rolling it back by 10 bytes (pointing to the
-        			OLYMP) and by 18 bytes (assuming the TIFF header immediately
-        			precedes the OLYMP). Neither of these hacks produced any
-        			meaningful data within 32 bytes of the pointer, for a
-        			case in which I know the desired values of the numerator
-        			and denominator of a rational.
-        		*/
-                doff = exif_get_long (d + offset + 8, note->order);
-                d_orig = d + doff;
-#ifdef DEBUG
-                printf ("**** data offset is %i\n", doff);
-                dump_memory_around (d_orig);
-#endif
-        }
-        else {
-                doff = offset + 8;
-               	d_orig = d + doff;
-        }
+	/* Write the header and the number of entries. */
+	strcpy (*buf, "OLYMP");
+	exif_set_short (*buf + 8, n->order, n->count);
 
+	/* Save each entry */
+	for (i = 0; i < n->count; i++) {
+		o = 6 + 2 + 2 + i * 12;
+		exif_set_short (*buf + o + 0, n->order, n->entries[i].tag);
+		exif_set_short (*buf + o + 2, n->order, n->entries[i].format);
+		exif_set_long  (*buf + o + 4, n->order,
+				n->entries[i].components);
+		o += 8;
+		s = exif_format_get_size (n->entries[i].format) *
+						n->entries[i].components;
+		if (s > 4) {
+			*buf_size += s;
+			*buf = realloc (*buf, sizeof (char) * *buf_size);
+			if (!*buf) return;
+			doff = *buf_size - s;
+			exif_set_long (*buf + o, n->order, n->offset + doff);
+		} else
+			doff = o;
 
-        /* Sanity check */
-        /* This doesn't work if the data is outside the tag!! */
-        if ((s <= 4) && (size < doff + s))
-                return;
-
-        entry->data = malloc (sizeof (char) * s);
-        if (!entry->data)
-                return;
-        entry->size = s;
-        memcpy (entry->data, d_orig, s);
+		/* Write the data. Fill unneeded bytes with 0. */
+		memcpy (*buf + doff, n->entries[i].data, s);
+		if (s < 4) memset (*buf + doff + s, 0, (4 - s));
+	}
 }
 
 static void
 exif_mnote_data_olympus_load (ExifMnoteData *en,
-			      const unsigned char *data, unsigned int size)
+			      const unsigned char *buf, unsigned int buf_size)
 {
-	ExifMnoteDataOlympus *note = (ExifMnoteDataOlympus *) en;
-	MnoteOlympusTag tag;
-	const unsigned char *p = data;
-	ExifData *ed = NULL;
-	ExifEntry *e = NULL;
-	short nEntries;
-	const unsigned char *tagEntries;
-	unsigned int i;
+	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) en;
+	ExifShort c;
+	unsigned int i, s, o;
 
-	/* If we got EXIF data, go to the MakerNote tag. */
-	ed = exif_data_new_from_data (data, size);
-	if (ed) {
-		e = exif_content_get_entry (ed->ifd[EXIF_IFD_EXIF],
-					    EXIF_TAG_MAKER_NOTE);
-		if (e) p = e->data;
-	}
+	if (!n || !buf) return;
 
 	/*
 	 * Olympus headers start with "OLYMP" and need to have at least
-	 * a size of 22 bytes.
+	 * a size of 22 bytes (6 for 'OLYMP', 2 other bytes, 2 for the
+	 * number of entries, and 12 for one entry.
 	 */
-	if ((size < 22) || memcmp (p, "OLYMP", 5)) {
-		exif_data_unref (ed);
-		return;
-	}
+	if (buf_size - n->offset < 22) return;
+	if (memcmp (buf + 6 + n->offset, "OLYMP", 5)) return;
 
-	nEntries = exif_get_short (p + 8, note->order);
-	tagEntries = p + 10;
+	/* Read the number of entries and remove old ones. */
+	c = exif_get_short (buf + 6 + n->offset + 8, n->order);
+	exif_mnote_data_olympus_clear (n);
 
-	for (i = 0; i < nEntries; i++) {
-		tag = exif_get_short (tagEntries + 12 * i, note->order);
-#ifdef DEBUG
-		printf ("Loading entry '%s' (%x) (%i)...\n",
-			mnote_olympus_tag_get_name (tag), tag, i + 1);
-#endif
-		note->count++;
-		note->entries = realloc (note->entries,
-			sizeof (MnoteOlympusEntry) * note->count);
-		exif_mnote_data_olympus_load_entry (note,
-			&note->entries[note->count - 1],
-			tagEntries, size, 12 * i);
+	/* Parse the entries */
+	for (i = 0; i < c; i++) {
+	    o = 6 + n->offset + 8 + 2 + 12 * i;
+	    if (o + 12 > buf_size) return;
+
+	    n->count = i + 1;
+	    n->entries = realloc (n->entries, sizeof (MnoteOlympusEntry) *
+								(i + 1));
+	    memset (&n->entries[i], 0, sizeof (MnoteOlympusEntry));
+	    n->entries[i].tag        = exif_get_short (buf + o, n->order);
+	    n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
+	    n->entries[i].components = exif_get_long (buf + o + 4, n->order);
+	    n->entries[i].order      = n->order;
+
+	    /*
+	     * Size? If bigger than 4 bytes, the actual data is not
+	     * in the entry but somewhere else (offset).
+	     */
+	    s = exif_format_get_size (n->entries[i].format) *
+		   			 n->entries[i].components;
+	    if (!s) return;
+	    o += 8;
+	    if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
+	    if (o + s > buf_size) return;
+
+	    /* Sanity check */
+	    n->entries[i].data = malloc (sizeof (char) * s);
+	    if (!n->entries[i].data) return;
+	    memset (n->entries[i].data, 0, sizeof (char) * s);
+	    n->entries[i].size = s;
+	    memcpy (n->entries[i].data, buf + o, s);
 	}
 }
 
@@ -224,9 +215,73 @@ exif_mnote_data_olympus_get_description (ExifMnoteData *d, unsigned int i)
 }
 
 static void
-exif_mnote_data_olympus_set_byte_order (ExifMnoteData *n, ExifByteOrder o)
+exif_mnote_data_olympus_set_byte_order (ExifMnoteData *d, ExifByteOrder o)
 {
-	if (n) ((ExifMnoteDataOlympus *) n)->order = o;
+	ExifByteOrder o_orig;
+	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) d;
+	unsigned int i, fs;
+	ExifShort s;
+	ExifLong l;
+	ExifSLong sl;
+	ExifRational r;
+	ExifSRational sr;
+
+	if (!n) return;
+
+	o_orig = n->order;
+	n->order = o;
+	for (i = 0; i < n->count; i++) {
+		n->entries[i].order = o;
+		fs = exif_format_get_size (n->entries[i].format);
+		switch (n->entries[i].format) {
+		case EXIF_FORMAT_SHORT:
+			for (i = 0; i < n->entries[i].components; i++) {
+				s = exif_get_short (n->entries[i].data + (i*fs),
+						o_orig);
+				exif_set_short (n->entries[i].data + (i * fs),
+						o, s);
+			}
+			break;
+		case EXIF_FORMAT_LONG:
+			for (i = 0; i < n->entries[i].components; i++) {
+				l = exif_get_long (n->entries[i].data + (i*fs),
+						o_orig);
+				exif_set_long (n->entries[i].data + (i * fs),
+						o, l);
+			}
+			break;
+		case EXIF_FORMAT_RATIONAL:
+			for (i = 0; i < n->entries[i].components; i++) {
+				r = exif_get_rational (n->entries[i].data +
+						(i * fs), o_orig);
+				exif_set_rational (n->entries[i].data +
+						(i * fs), o, r);
+			}
+			break;
+		case EXIF_FORMAT_SLONG:
+			for (i = 0; i < n->entries[i].components; i++) {
+				sl = exif_get_slong (n->entries[i].data +
+						(i * fs), o_orig);
+				exif_set_slong (n->entries[i].data +
+						(i * fs), o, sl);
+			}
+			break;
+		case EXIF_FORMAT_SRATIONAL:
+			for (i = 0; i < n->entries[i].components; i++) {
+				sr = exif_get_srational (n->entries[i].data +
+						(i * fs), o_orig);
+				exif_set_srational (n->entries[i].data +
+						(i * fs), o, sr);
+			}
+			break;
+		case EXIF_FORMAT_UNDEFINED:
+		case EXIF_FORMAT_BYTE:
+		case EXIF_FORMAT_ASCII:
+		default:
+			/* Nothing here. */
+			break;
+		}
+	}
 }
 
 static void
@@ -251,6 +306,7 @@ exif_mnote_data_olympus_new (void)
 	n->methods.set_byte_order  = exif_mnote_data_olympus_set_byte_order;
 	n->methods.set_offset      = exif_mnote_data_olympus_set_offset;
 	n->methods.load            = exif_mnote_data_olympus_load;
+	n->methods.save            = exif_mnote_data_olympus_save;
 	n->methods.count           = exif_mnote_data_olympus_count;
 	n->methods.get_name        = exif_mnote_data_olympus_get_name;
 	n->methods.get_title       = exif_mnote_data_olympus_get_title;

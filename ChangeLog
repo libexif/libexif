@@ -1,5 +1,10 @@
 2003-10-28  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/olympus: Fix. I've got one Olympus file and this gets
+	  parsed now.
+
+2003-10-28  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libjpeg/jpeg-data.c: Do not depend on unistd.h. Reported by
 	  Jan Patera <patera@pictview.com>.
 

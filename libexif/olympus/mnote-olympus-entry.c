@@ -29,36 +29,6 @@
 #include <libexif/exif-utils.h>
 #include <libexif/i18n.h>
 
-#if 0
-void
-mnote_olympus_entry_dump (MnoteEntry *e, unsigned int indent)
-{
-	MnoteOlympusEntry *entry = (MnoteOlympusEntry *)e;
-
-	char buf[1024];
-	unsigned int i;
-
-	for (i = 0; i < 2 * indent; i++)
-		buf[i] = ' ';
-	buf[i] = '\0';
-
-	if (!e) {
-		printf("No entry in mnote_olympus_entry_dump!\n");
-		return;
-	}
-
-	printf ("%sTag: 0x%x ('%s')\n", buf, entry->tag,
-		mnote_olympus_tag_get_name (entry->tag));
-	printf ("%s  Format: %i ('%s')\n", buf, entry->format,
-		exif_format_get_name (entry->format));
-	printf ("%s  Components: %i\n", buf, (int) entry->components);
-	printf ("%s  Size: %i\n", buf, entry->size);
-	if (entry->size > 0) {
-		printf ("%s  Value: %s\n", buf, mnote_olympus_entry_get_value (entry));
-	}
-}
-#endif
-
 #define CF(format,target,v)                                     \
 {                                                               \
         if (format != target) {                                 \
