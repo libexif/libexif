@@ -549,6 +549,49 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_set_long (*d + 6 + offset, data->priv->order, 0);
 }
 
+typedef enum {
+	EXIF_DATA_TYPE_MAKER_NOTE_NONE		= 0,
+	EXIF_DATA_TYPE_MAKER_NOTE_CANON		= 1,
+	EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS	= 2,
+	EXIF_DATA_TYPE_MAKER_NOTE_PENTAX	= 3
+} ExifDataTypeMakerNote;
+
+static ExifDataTypeMakerNote
+exif_data_get_type_maker_note (ExifData *d)
+{
+	ExifEntry *e, *em;
+	char value[1024];
+
+	if (!d) return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
+	
+	e = exif_data_get_entry (d, EXIF_TAG_MAKER_NOTE);
+        if (!e) return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
+
+	/* Olympus & Nikon */
+	if ((e->size >= 5) && (!memcmp (e->data, "OLYMP", 5) ||
+			       !memcmp (e->data, "Nikon", 5)))
+		return EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS;
+
+	em = exif_data_get_entry (d, EXIF_TAG_MAKE);
+	if (!em) return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
+
+	/* Canon */
+	if (!strcmp (exif_entry_get_value (em, value, sizeof(value)), "Canon"))
+		return EXIF_DATA_TYPE_MAKER_NOTE_CANON;
+
+	/* Pentax & some variant of Nikon */
+	if ((e->size >= 2) && (e->data[0] == 0x00) && (e->data[1] == 0x1b)) {
+		if (!strncasecmp (
+			exif_entry_get_value (em, value, sizeof(value)),
+					      "Nikon", 5))
+			return EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS;
+		else
+			return EXIF_DATA_TYPE_MAKER_NOTE_PENTAX;
+	}
+
+	return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
+}
+
 void
 exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		     unsigned int ds_orig)
@@ -556,7 +599,6 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	unsigned int l;
 	ExifLong offset;
 	ExifShort n;
-	ExifEntry *e, *em;
 	const unsigned char *d = d_orig;
 	unsigned int ds = ds_orig, len;
 
@@ -692,46 +734,30 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	 * space between IFDs. Here is the only place where we have access
 	 * to that data.
 	 */
-	e = exif_data_get_entry (data, EXIF_TAG_MAKER_NOTE);
-	if (e) {
+	switch (exif_data_get_type_maker_note (data)) {
+	case EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS:
+		data->priv->md = exif_mnote_data_olympus_new (data->priv->mem);
+		break;
+	case EXIF_DATA_TYPE_MAKER_NOTE_PENTAX:
+		data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
+		break;
+	case EXIF_DATA_TYPE_MAKER_NOTE_CANON:
+		data->priv->md = exif_mnote_data_canon_new (data->priv->mem);
+		break;
+	default:
+		break;
+	}
 
-	    /* Olympus & Nikon */
-	    if ((e->size >= 5) && (!memcmp (e->data, "OLYMP", 5) ||
-				   !memcmp (e->data, "Nikon", 5))) {
-			data->priv->md = exif_mnote_data_olympus_new (data->priv->mem);
-	    } else {
-			char value[7];
-			em = exif_data_get_entry (data, EXIF_TAG_MAKE);
-			/* Pentax & some variant of Nikon */
-			if ((e->size >= 2) && (e->data[0] == 0x00)
-				    && (e->data[1] == 0x1b)) {
-				if (em && !strncasecmp (exif_entry_get_value (em, value, sizeof(value)), "Nikon", 5)) {
-					data->priv->md = exif_mnote_data_olympus_new (data->priv->mem);
-				} else {
-					data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
-				}
-
-			} else {
-				/* Canon */
-				if (em) {
-		
-					if (!strcmp (exif_entry_get_value (em, value, sizeof(value)), "Canon"))
-						data->priv->md = exif_mnote_data_canon_new (data->priv->mem);
-				}
-			}
-		}
-
-	    /* 
-	     * If we are able to interpret the maker note, do so.
-	     */
-	    if (data->priv->md) {
-		    exif_mnote_data_log (data->priv->md, data->priv->log);
-		    exif_mnote_data_set_byte_order (data->priv->md,
-				    		    data->priv->order);
-		    exif_mnote_data_set_offset (data->priv->md,
-				    		data->priv->offset_mnote);
-		    exif_mnote_data_load (data->priv->md, d, ds);
-	    }
+	/* 
+	 * If we are able to interpret the maker note, do so.
+	 */
+	if (data->priv->md) {
+		exif_mnote_data_log (data->priv->md, data->priv->log);
+		exif_mnote_data_set_byte_order (data->priv->md,
+						data->priv->order);
+		exif_mnote_data_set_offset (data->priv->md,
+					    data->priv->offset_mnote);
+		exif_mnote_data_load (data->priv->md, d, ds);
 	}
 }
 

@@ -1,3 +1,7 @@
+2004-11-12  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-data.c: Clean up handling of MakerNote tags.
+
 2004-11-11  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-mnote-data.c: Plug yet another memory leak.
