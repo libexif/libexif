@@ -53,13 +53,14 @@ case "$CC" in
 *xlc | *xlc\ * | *lcc | *lcc\ *) am_opt=--include-deps;;
 esac
 
+libtoolize
 gettextize
-echo "Running aclocal $ACLOCAL_FLAGS"
-aclocal $ACLOCAL_FLAGS
+echo "Running aclocal${AUTOMAKE_SUFFIX} $ACLOCAL_FLAGS"
+aclocal${AUTOMAKE_SUFFIX} $ACLOCAL_FLAGS
 echo "Running autoheader"
 autoheader
-echo "Running automake --add-missing --gnu $am_opt"
-automake --add-missing --gnu $am_opt
+echo "Running automake${AUTOMAKE_SUFFIX} --add-missing --gnu $am_opt"
+automake${AUTOMAKE_SUFFIX} --add-missing --gnu $am_opt
 echo "Running autoconf"
 autoconf
 echo "Running ./configure"
