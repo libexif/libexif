@@ -24,7 +24,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 static void
 exif_canon_note_free (ExifNote *n)
 {

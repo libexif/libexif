@@ -1,4 +1,3 @@
-
 NSHOME   =  /home/aol31
 
 EXIFDIR  = ..
