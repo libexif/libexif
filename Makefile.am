@@ -1,3 +1,3 @@
-SUBDIRS = libexif libjpeg test $(PO_DIR)
+SUBDIRS = libexif libjpeg test po intl
 
 EXTRA_DIST = @PACKAGE@.spec

@@ -1,5 +1,11 @@
 2003-10-26  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* configure.in
+	* Makefile.am: Remove PO_DIRS. Otherwise, automake complains about
+	  po and intl not being in SUBDIRS
+
+2003-10-26  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/olympus
 	* libexif/canon
 	* libexif/pentax: Merge libmnote with libexif. The code compiles but
