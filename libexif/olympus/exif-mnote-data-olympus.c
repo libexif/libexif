@@ -132,7 +132,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	 * Nikon headers start with "Nikon".
 	 */
 	if (buf_size - n->offset - 6 < 5) return;
-	if (memcmp (buf + 6 + n->offset, "Nikon", 5) ||
+	if (memcmp (buf + 6 + n->offset, "Nikon", 5) &&
 	    memcmp (buf + 6 + n->offset, "OLYMP", 5)) return;
 	if (buf_size - n->offset < 22) return;
 
