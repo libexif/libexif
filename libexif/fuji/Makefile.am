@@ -1,4 +1,5 @@
-INCLUDES =		\
+INCLUDES =					\
+        -I$(top_srcdir)/intl			\
 	-I$(top_srcdir)
 
 noinst_LTLIBRARIES = libexif-fuji.la
