@@ -22,6 +22,7 @@
 #include "exif-data.h"
 #include "exif-ifd.h"
 #include "exif-utils.h"
+#include "exif-loader.h"
 #include "jpeg-marker.h"
 
 #include <stdlib.h>
@@ -647,56 +648,25 @@ ExifData *
 exif_data_new_from_file (const char *path)
 {
 	FILE *f;
-	unsigned int size;
-	unsigned char *data;
+	int size;
 	ExifData *edata;
-	int marker, ll, lh;
+	ExifLoader *loader;
+	unsigned char data[1024];
 
 	f = fopen (path, "rb");
 	if (!f)
 		return (NULL);
 
+	loader = exif_loader_new ();
 	while (1) {
-		while ((marker = fgetc (f)) == 0xff);
-
-		/* JPEG_MARKER_SOI */
-		if (marker == JPEG_MARKER_SOI)
-			continue;
-
-		/* JPEG_MARKER_APP0 */
-		if (marker == JPEG_MARKER_APP0) {
-			lh = fgetc (f);
-			ll = fgetc (f);
-			size = (lh << 8) | ll;
-			if (fseek (f, size - 2, SEEK_CUR) < 0)
-				return (NULL);
-			continue;
-		}
-
-		/* JPEG_MARKER_APP1 */
-		if (marker == JPEG_MARKER_APP1)
-			break;
-
-		/* Unknown marker or data. Give up. */
-		return (NULL);
+		size = fread (data, 1, 1024, f);
+		if (size < 0) break;
+		if (!exif_loader_write (loader, data, size)) break;
 	}
-
-	/* EXIF data found. Allocate the necessary memory and read the data. */
-	lh = fgetc (f);
-	ll = fgetc (f);
-	size = (lh << 8) | ll;
-	data = malloc (sizeof (char) * size);
-	if (!data)
-		return (NULL);
-	if (fread (data, 1, size, f) != size) {
-		free (data);
-		return (NULL);
-	}
-
-	edata = exif_data_new_from_data (data, size);
-	free (data);
-
 	fclose (f);
+
+	edata = exif_loader_get_data (loader);
+	exif_loader_unref (loader);
 
 	return (edata);
 }

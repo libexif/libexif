@@ -1,3 +1,8 @@
+2003-03-18  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-data.c (exif_data_new_from_file): Use the new
+	  ExifLoader. It seems to work.
+
 2003-03-17  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-loader.[c,h]: New. Mostly written by Jens Finke

@@ -166,6 +166,10 @@ exif_loader_reset (ExifLoader *loader)
 {
 	if (!loader) return;
 	free (loader->buf); loader->buf = NULL;
+	loader->size = 0;
+	loader->bytes_read = 0;
+	loader->last_marker = 0;
+	loader->state = 0;
 }
 
 ExifData *
