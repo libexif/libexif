@@ -1,3 +1,11 @@
+2004-05-24  Jan Patera <patera@users.sourceforge.net>
+
+	* libjpeg/jpeg-data.[c,h]: jpeg_data_append_section changed
+	  from static to public
+	* libexif/olumpus/mnote-olympus-entry.c: support of several
+	  known but previously not supported Nikon (& 1 Olympus) tags
+	* libexif/exif-entry.c: rational values printed as %2.2f and not %i/%i
+
 2004-05-15  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-log.[c,h]: New. Proposal for handling of debugging
