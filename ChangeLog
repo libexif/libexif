@@ -1,3 +1,9 @@
+2004-07-13  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-mnote-*.*: added exif_mnote_data_get_id()
+	  returning actual mnote entry tag ID (suggested by Serge
+	  Droz <serge.droz@psi.ch>)
+
 2004-06-23  Serge Droz <serge.droz@psi.ch>
 
 	(committed by Lutz Mueller <lutz@users.sourceforge.net>)

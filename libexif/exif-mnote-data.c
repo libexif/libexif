@@ -104,6 +104,13 @@ exif_mnote_data_count (ExifMnoteData *d)
 	return d->methods.count (d);
 }
 
+unsigned int
+exif_mnote_data_get_id (ExifMnoteData *d, unsigned int n)
+{
+	if (!d || !d->methods.get_id) return 0;
+	return d->methods.get_id (d, n);
+}
+
 const char *
 exif_mnote_data_get_name (ExifMnoteData *d, unsigned int n)
 {

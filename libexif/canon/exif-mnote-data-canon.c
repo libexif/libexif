@@ -244,6 +244,16 @@ exif_mnote_data_canon_count (ExifMnoteData *n)
 	return n ? ((ExifMnoteDataCanon *) n)->count : 0;
 }
 
+static unsigned int
+exif_mnote_data_canon_get_id (ExifMnoteData *d, unsigned int n)
+{
+	ExifMnoteDataCanon *note = (ExifMnoteDataCanon *) d;
+
+	if (!note) return 0;
+	if (note->count <= n) return 0;
+	return note->entries[n].tag;
+}
+
 static const char *
 exif_mnote_data_canon_get_name (ExifMnoteData *note, unsigned int i)
 {
@@ -278,9 +288,8 @@ exif_mnote_data_canon_new (void)
 {
 	ExifMnoteData *d;
 
-	d = malloc (sizeof (ExifMnoteDataCanon));
+	d = calloc (1, sizeof (ExifMnoteDataCanon));
 	if (!d) return NULL;
-	memset (d, 0, sizeof (ExifMnoteDataCanon));
 
 	exif_mnote_data_construct (d);
 
@@ -291,6 +300,7 @@ exif_mnote_data_canon_new (void)
 	d->methods.load            = exif_mnote_data_canon_load;
 	d->methods.save            = exif_mnote_data_canon_save;
 	d->methods.count           = exif_mnote_data_canon_count;
+	d->methods.get_id          = exif_mnote_data_canon_get_id;
 	d->methods.get_name        = exif_mnote_data_canon_get_name;
 	d->methods.get_title       = exif_mnote_data_canon_get_title;
 	d->methods.get_description = exif_mnote_data_canon_get_description;

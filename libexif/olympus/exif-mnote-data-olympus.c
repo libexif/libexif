@@ -307,6 +307,16 @@ exif_mnote_data_olympus_count (ExifMnoteData *n)
 	return n ? ((ExifMnoteDataOlympus *) n)->count : 0;
 }
 
+static unsigned int
+exif_mnote_data_olympus_get_id (ExifMnoteData *d, unsigned int n)
+{
+	ExifMnoteDataOlympus *note = (ExifMnoteDataOlympus *) d;
+
+	if (!note) return 0;
+	if (note->count <= n) return 0;
+	return note->entries[n].tag;
+}
+
 static const char *
 exif_mnote_data_olympus_get_name (ExifMnoteData *d, unsigned int i)
 {
@@ -416,25 +426,25 @@ exif_mnote_data_olympus_set_offset (ExifMnoteData *n, unsigned int o)
 ExifMnoteData *
 exif_mnote_data_olympus_new (void)
 {
-	ExifMnoteData *n;
+	ExifMnoteData *d;
 
-	n = malloc (sizeof (ExifMnoteDataOlympus));
-	if (!n) return NULL;
-	memset (n, 0, sizeof (ExifMnoteDataOlympus));
+	d = calloc (1, sizeof (ExifMnoteDataOlympus));
+	if (!d) return NULL;
 
-	exif_mnote_data_construct (n);
+	exif_mnote_data_construct (d);
 
-	/* Set up the function pointers */
-	n->methods.free            = exif_mnote_data_olympus_free;
-	n->methods.set_byte_order  = exif_mnote_data_olympus_set_byte_order;
-	n->methods.set_offset      = exif_mnote_data_olympus_set_offset;
-	n->methods.load            = exif_mnote_data_olympus_load;
-	n->methods.save            = exif_mnote_data_olympus_save;
-	n->methods.count           = exif_mnote_data_olympus_count;
-	n->methods.get_name        = exif_mnote_data_olympus_get_name;
-	n->methods.get_title       = exif_mnote_data_olympus_get_title;
-	n->methods.get_description = exif_mnote_data_olympus_get_description;
-	n->methods.get_value       = exif_mnote_data_olympus_get_value;
+	/* Set up function pointers */
+	d->methods.free            = exif_mnote_data_olympus_free;
+	d->methods.set_byte_order  = exif_mnote_data_olympus_set_byte_order;
+	d->methods.set_offset      = exif_mnote_data_olympus_set_offset;
+	d->methods.load            = exif_mnote_data_olympus_load;
+	d->methods.save            = exif_mnote_data_olympus_save;
+	d->methods.count           = exif_mnote_data_olympus_count;
+	d->methods.get_id          = exif_mnote_data_olympus_get_id;
+	d->methods.get_name        = exif_mnote_data_olympus_get_name;
+	d->methods.get_title       = exif_mnote_data_olympus_get_title;
+	d->methods.get_description = exif_mnote_data_olympus_get_description;
+	d->methods.get_value       = exif_mnote_data_olympus_get_value;
 
-	return n;
+	return d;
 }

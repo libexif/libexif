@@ -117,6 +117,16 @@ exif_mnote_data_pentax_count (ExifMnoteData *n)
 	return n ? ((ExifMnoteDataPentax *) n)->count : 0;
 }
 
+static unsigned int
+exif_mnote_data_pentax_get_id (ExifMnoteData *d, unsigned int n)
+{
+	ExifMnoteDataPentax *note = (ExifMnoteDataPentax *) d;
+
+	if (!note) return 0;
+	if (note->count <= n) return 0;
+	return note->entries[n].tag;
+}
+
 static const char *
 exif_mnote_data_pentax_get_name (ExifMnoteData *d, unsigned int n)
 {
@@ -225,24 +235,24 @@ exif_mnote_data_pentax_set_byte_order (ExifMnoteData *d, ExifByteOrder o)
 ExifMnoteData *
 exif_mnote_data_pentax_new (void)
 {
-	ExifMnoteData *n;
+	ExifMnoteData *d;
 
-	n = malloc (sizeof (ExifMnoteDataPentax));
-	if (!n) return NULL;
-	memset (n, 0, sizeof (ExifMnoteDataPentax));
+	d = calloc (1, sizeof (ExifMnoteDataPentax));
+	if (!d) return NULL;
 
-	exif_mnote_data_construct (n);
+	exif_mnote_data_construct (d);
 
 	/* Set up function pointers */
-	n->methods.free            = exif_mnote_data_pentax_free;
-	n->methods.set_byte_order  = exif_mnote_data_pentax_set_byte_order;
-	n->methods.set_offset      = exif_mnote_data_pentax_set_offset;
-	n->methods.load            = exif_mnote_data_pentax_load;
-	n->methods.count           = exif_mnote_data_pentax_count;
-	n->methods.get_name        = exif_mnote_data_pentax_get_name;
-	n->methods.get_title       = exif_mnote_data_pentax_get_title;
-	n->methods.get_description = exif_mnote_data_pentax_get_description;
-	n->methods.get_value       = exif_mnote_data_pentax_get_value;
+	d->methods.free            = exif_mnote_data_pentax_free;
+	d->methods.set_byte_order  = exif_mnote_data_pentax_set_byte_order;
+	d->methods.set_offset      = exif_mnote_data_pentax_set_offset;
+	d->methods.load            = exif_mnote_data_pentax_load;
+	d->methods.count           = exif_mnote_data_pentax_count;
+	d->methods.get_id          = exif_mnote_data_pentax_get_id;
+	d->methods.get_name        = exif_mnote_data_pentax_get_name;
+	d->methods.get_title       = exif_mnote_data_pentax_get_title;
+	d->methods.get_description = exif_mnote_data_pentax_get_description;
+	d->methods.get_value       = exif_mnote_data_pentax_get_value;
 
-	return n;
+	return d;
 }

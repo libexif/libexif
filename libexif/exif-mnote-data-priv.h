@@ -43,6 +43,7 @@ struct _ExifMnoteDataMethods {
 
 	/* Query */
 	unsigned int (* count)           (ExifMnoteData *);
+        unsigned int (* get_id)          (ExifMnoteData *, unsigned int);
 	const char * (* get_name)        (ExifMnoteData *, unsigned int);
 	const char * (* get_title)       (ExifMnoteData *, unsigned int);
 	const char * (* get_description) (ExifMnoteData *, unsigned int);

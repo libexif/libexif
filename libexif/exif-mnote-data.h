@@ -37,6 +37,7 @@ void exif_mnote_data_load (ExifMnoteData *, const unsigned char *,
 void exif_mnote_data_save (ExifMnoteData *, unsigned char **, unsigned int *);
 
 unsigned int exif_mnote_data_count           (ExifMnoteData *);
+unsigned int exif_mnote_data_get_id          (ExifMnoteData *, unsigned int);
 const char  *exif_mnote_data_get_name        (ExifMnoteData *, unsigned int);
 const char  *exif_mnote_data_get_title       (ExifMnoteData *, unsigned int);
 const char  *exif_mnote_data_get_description (ExifMnoteData *, unsigned int);
