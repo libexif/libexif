@@ -38,6 +38,18 @@ AC_NEED_STDINT_H([libexif/_stdint.h])
 
 
 dnl ---------------------------------------------------------------------------
+dnl Whether -lm is required for our math functions
+dnl ---------------------------------------------------------------------------
+
+# we need sqrt and pow, but checking for sqrt should be sufficient
+AC_CHECK_FUNC([sqrt],,[
+AC_CHECK_LIB([m],[sqrt],[MATHLIBS="-lm"],AC_MSG_ERROR([
+*** Couldn't find sqrt
+]))])
+AC_SUBST(MATHLIBS)
+
+
+dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
 GETTEXT_PACKAGE=${PACKAGE}-${LIBEXIF_CURRENT}

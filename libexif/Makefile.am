@@ -22,7 +22,8 @@ libexif_la_SOURCES =		\
 	exif-tag.c		\
 	exif-utils.c		\
 	i18n.h
-libexif_la_LIBADD = -lm 		\
+libexif_la_LIBADD =			\
+	$(MATHLIBS)			\
 	$(LTLIBINTL)			\
 	canon/libmnote-canon.la		\
 	olympus/libmnote-olympus.la	\
