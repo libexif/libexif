@@ -338,10 +338,18 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 
 	switch (e->tag) {
 	case EXIF_TAG_USER_COMMENT:
+
+		/*
+		 * According to Ralf Holzer <rholzer@cmu.edu>,
+		 * the user comment field does not have to be 
+		 * NULL terminated.
+		 */
 		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		if (e->size < 8) break;
 		strncpy (val, e->data + 8, MIN (e->size - 8, maxlen));
+		if (maxlen > e->size - 8) val[e->size - 8] = '\0';
 		break;
+
 	case EXIF_TAG_EXIF_VERSION:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (e->components, 4, val, maxlen);

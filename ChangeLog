@@ -1,3 +1,8 @@
+2004-05-27  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c: According to Ralf Holzer <rholzer@cmu.edu>,
+	  the user comment field does not have to be NULL terminated.
+
 2004-05-25  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/olympus/mnote-olympus-entry.c: Print bytes if tag is not
