@@ -141,6 +141,7 @@ exif_loader_new (void)
 	ExifLoader *loader = malloc (sizeof (ExifLoader));
 
 	memset (loader, 0, sizeof (ExifLoader));
+	loader->ref_count = 1;
 	
 	return loader;
 }

@@ -1,5 +1,9 @@
 2003-04-29  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-loader.c: Set ref_count to 1 on exif_loader_new.
+
+2003-04-29  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-entry.c: Another attempt to fix EXIF_TAG_COPYRIGHT.
 
 2003-04-28  Lutz Mueller <lutz@users.sourceforge.net>
