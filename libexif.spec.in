@@ -1,7 +1,7 @@
 Name: @PACKAGE@
 Summary: EXIF tag library
 Version: @VERSION@
-Release: 1
+Release: 2
 Source: http://prdownloads.sourceforge.net/libexif/%{name}-%{version}.tar.gz
 Url: http://sourceforge.net/projects/libexif/
 Group: System Environment/Libraries
@@ -43,12 +43,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc ChangeLog README
 %{_libdir}/libexif.so.*
-%{_libdir}/libexif.la
-%{_libdir}/libexif.a
+%{_libdir}/libexif.so
 %{_datadir}/locale/*/LC_MESSAGES/*.mo
 
 %files devel
 %defattr(-,root,root)
 %{_libdir}/pkgconfig/libexif.pc
-%{_includedir}/libexif/*.h
-%{_libdir}/libexif.so
+%{_includedir}/libexif
+%{_libdir}/libexif.la
+%{_libdir}/libexif.a
+
