@@ -52,8 +52,16 @@
         }                                                               \
 }
 
-#undef  MIN
-#define MIN(a, b)  (((a) < (b)) ? (a) : (b))
+#define CC2(number,t1,t2,v,maxlen)                                      \
+{                                                                       \
+	if ((number != t1) && (number != t2)) {                         \
+		snprintf (v, maxlen,                                    \
+			_("Invalid number of components (%i, "          \
+			"expected %i or %i)."), (int) number,		\
+			(int) t1, (int) t2);  				\
+		break;                                                  \
+	}                                                               \
+}
 
 static struct {
 	ExifTag tag;
@@ -423,7 +431,8 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		break;
 	case MNOTE_OLYMPUS_TAG_INFO:
 		CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-		CC (entry->components, 52, v, maxlen);
+		CC2 (entry->components, 52, 53, v, maxlen);
+		strncpy (v, entry->data, MIN (maxlen, entry->size));
 		break;
 	case MNOTE_OLYMPUS_TAG_ID:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, v, maxlen);
