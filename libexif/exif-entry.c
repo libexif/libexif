@@ -258,6 +258,11 @@ exif_entry_fix (ExifEntry *e)
 				exif_format_get_name (e->format));
 			e->format = EXIF_FORMAT_UNDEFINED;
 		}
+		/* Some packages like Canon ZoomBrowser EX 4.5 store
+		   only one zero byte followed by 7 bytes of rubbish */
+		if ((e->size >= 8) && (e->data[0] == 0)) {
+			memcpy(e->data, "\0\0\0\0\0\0\0\0", 8);
+		}
 
 		/* Some cameras fill the tag with '\0' or ' '. */
 		for (i = 0; i < e->size &&
@@ -304,9 +309,10 @@ exif_entry_fix (ExifEntry *e)
 		}
 
 		/* First 8 bytes need to follow the specification. */
-		if (memcmp (e->data, "ASCII\0\0\0"  , 8) &&
-		    memcmp (e->data, "UNICODE\0"    , 8) &&
-		    memcmp (e->data, "JIS\0\0\0\0\0", 8)) {
+		if (memcmp (e->data, "ASCII\0\0\0"     , 8) &&
+		    memcmp (e->data, "UNICODE\0"       , 8) &&
+		    memcmp (e->data, "JIS\0\0\0\0\0"   , 8) &&
+		    memcmp (e->data, "\0\0\0\0\0\0\0\0", 8)) {
 			e->data = exif_entry_realloc (e, e->data, 8 + e->size);
 			if (!e->data) {
 				e->size = 0;
