@@ -29,17 +29,17 @@ static struct {
 	const char *name;
         unsigned char size;
 } ExifFormatTable[] = {
-        {EXIF_FORMAT_BYTE,      "Byte",      1},
-        {EXIF_FORMAT_ASCII,     "Ascii",     1},
-        {EXIF_FORMAT_SHORT,     "Short",     2},
-        {EXIF_FORMAT_LONG,      "Long",      4},
-        {EXIF_FORMAT_RATIONAL,  "Rational",  8},
-	{EXIF_FORMAT_SBYTE,     "SByte",     1},
-	{EXIF_FORMAT_SSHORT,    "SShort",    2},
-        {EXIF_FORMAT_SLONG,     "SLong",     4},
-        {EXIF_FORMAT_SRATIONAL, "SRational", 8},
-	{EXIF_FORMAT_FLOAT,     "Float",     4},
-	{EXIF_FORMAT_DOUBLE,    "Double",    8},
+        {EXIF_FORMAT_BYTE,      N_("Byte"),      1},
+        {EXIF_FORMAT_ASCII,     N_("Ascii"),     1},
+        {EXIF_FORMAT_SHORT,     N_("Short"),     2},
+        {EXIF_FORMAT_LONG,      N_("Long"),      4},
+        {EXIF_FORMAT_RATIONAL,  N_("Rational"),  8},
+	{EXIF_FORMAT_SBYTE,     N_("SByte"),     1},
+	{EXIF_FORMAT_SSHORT,    N_("SShort"),    2},
+        {EXIF_FORMAT_SLONG,     N_("SLong"),     4},
+        {EXIF_FORMAT_SRATIONAL, N_("SRational"), 8},
+	{EXIF_FORMAT_FLOAT,     N_("Float"),     4},
+	{EXIF_FORMAT_DOUBLE,    N_("Double"),    8},
         {EXIF_FORMAT_UNDEFINED, N_("Undefined"), 1},
         {0, NULL, 0}
 };
@@ -54,8 +54,8 @@ exif_format_get_name (ExifFormat format)
 
 	for (i = 0; ExifFormatTable[i].name; i++)
 		if (ExifFormatTable[i].format == format)
-			return (_(ExifFormatTable[i].name));
-	return (NULL);
+			return _(ExifFormatTable[i].name);
+	return NULL;
 }
 
 unsigned char
@@ -65,6 +65,6 @@ exif_format_get_size (ExifFormat format)
 
 	for (i = 0; ExifFormatTable[i].size; i++)
 		if (ExifFormatTable[i].format == format)
-			return (ExifFormatTable[i].size);
-	return (0);
+			return ExifFormatTable[i].size;
+	return 0;
 }
