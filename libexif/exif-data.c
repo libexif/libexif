@@ -701,19 +701,15 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 void
 exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 {
-	if (!data)
-		return;
-	if (!d || !ds)
+	if (!data || !d || !ds)
 		return;
 
 	/* Header */
-	*ds = 6;
-	*d = malloc (sizeof (char) * *ds);
+	*ds = 14;
+	*d = malloc (*ds);
 	memcpy (*d, ExifHeader, 6);
 
 	/* Order (offset 6) */
-	*ds += 2;
-	*d = realloc (*d, sizeof (char) * *ds);
 	if (data->priv->order == EXIF_BYTE_ORDER_INTEL) {
 		memcpy (*d + 6, "II", 2);
 	} else {
@@ -721,8 +717,6 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 	}
 
 	/* Fixed value (2 bytes, offset 8) */
-	*ds += 2;
-	*d = realloc (*d, sizeof (char) * *ds);
 	exif_set_short (*d + 8, data->priv->order, 0x002a);
 
 	/*
@@ -731,8 +725,6 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 	 * EXIF header (2 bytes for order, another 2 for the test, and
 	 * 4 bytes for the IFD 0 offset make 8 bytes together).
 	 */
-	*ds += 4;
-	*d = realloc (*d, sizeof (char) * *ds);
 	exif_set_long (*d + 10, data->priv->order, 8);
 
 	/* Now save IFD 0. IFD 1 will be saved automatically. */
