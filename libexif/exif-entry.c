@@ -165,6 +165,14 @@ exif_entry_get_value (ExifEntry *e)
 	memset (v, 0, sizeof (v));
 	memset (b, 0, sizeof (b));
 
+	/* Sanity check */
+	if (e->size != e->components * exif_format_get_size (e->format)) {
+		snprintf (v, sizeof (v), _("Invalid size of entry (%i, "
+			"expected %li x %i)."), e->size, e->components,
+				exif_format_get_size (e->format));
+		return v;
+	}
+
 	switch (e->tag) {
 	case EXIF_TAG_USER_COMMENT:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
@@ -884,6 +892,7 @@ exif_entry_get_value (ExifEntry *e)
 				e->components);
 		}
 	default:
+		if (!e->components) break;
 		switch (e->format) {
 		case EXIF_FORMAT_UNDEFINED:
 			break;
