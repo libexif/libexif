@@ -1,3 +1,8 @@
+2004-08-27  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* configure.in: 0.6.10 -> 0.6.11, as libexif-0.6.10 has just been
+	  released.
+
 2004-08-26  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Achim Bohnet found a spelling mistake:
