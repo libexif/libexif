@@ -20,7 +20,7 @@ libexif_la_SOURCES =		\
 libexif_la_LIBADD = -lm			\
 	canon/libexif-canon.la		\
 	fuji/libexif-fuji.la		\
-	konica/libexif-konica.la	\
+	hp/libexif-hp.la	\
 	olympus/libexif-olympus.la
 
 libexifincludedir = $(includedir)/libexif

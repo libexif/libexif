@@ -1,3 +1,11 @@
+2002-06-11  Lutz Müller <lutz@users.sourceforge.net>
+
+	* configure.in: Version 0.5.3
+
+2002-06-11  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libexif/Makefile.am: Oops, missed those konica entries.
+
 2002-06-10  Lutz Müller <lutz@users.sourceforge.net>
 
 	* configure.in: Version 0.5.2
