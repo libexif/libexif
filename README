@@ -40,6 +40,7 @@ Right now, I know of the following frontends to libexif:
  - gtkam:    A GTK+ frontend to libgphoto2 (http://www.topfrose.de).
  - thirdeye: Digital photos organizer and driver for eComStation
              (http://ecomstation.ru/thirdeye).
+ - digicam:  
 If you would like to migrate your program to use libexif or add EXIF support
 to it, don't hesitate to contact the authors.
 
@@ -55,6 +56,12 @@ BUGS
 libexif includes a 'libjpeg' that is 'educational code to illustrate the
 syntax of JPEG files'. Please ignore it. It is a bug that it is 
 distributed, but I think it may be useful for other people.
+
+TODO
+----
+
+We should probably support the generation of an empty EXIF structure with all
+mandatory tags. First ideas are in exif-tag.c. This has not yet been finished.
 
 AUTHORS
 -------

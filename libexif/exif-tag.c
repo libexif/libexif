@@ -24,11 +24,19 @@
 
 #include <stdlib.h>
 
+typedef enum {
+	ESL_MANDATORY    = 1, /* Mandatory               */
+	ESL_CMANDATORY   = 2, /* Conditionally mandatory */
+	ESL_OPTIONAL     = 3, /* Optional                */
+	ESL_NOT_RECORDED = 4  /* Not recorded            */
+} ExifSL;                     /* Exif Support Level      */
+
 static struct {
 	ExifTag tag;
 	const char *name;
 	const char *title;
 	const char *description;
+	ExifSL esl_0[4], esl_1[4], esl_exif[4], esl_gps[4];
 } ExifTagTable[] = {
 	{EXIF_TAG_INTEROPERABILITY_INDEX, "InteroperabilityIndex",
 	 "InteroperabilityIndex",
@@ -42,24 +50,29 @@ static struct {
 	{EXIF_TAG_IMAGE_WIDTH, "ImageWidth", N_("Image Width"),
 	 N_("The number of columns of image data, equal to the number of "
 	    "pixels per row. In JPEG compressed data a JPEG marker is "
-	    "used instead of this tag.")},
+	    "used instead of this tag."),
+	 {ESL_MANDATORY, ESL_MANDATORY, ESL_MANDATORY, ESL_NOT_RECORDED}},
 	{EXIF_TAG_IMAGE_LENGTH, "ImageLength", N_("Image Length"),
 	 N_("The number of rows of image data. In JPEG compressed data a "
-	    "JPEG marker is used instead of this tag.")},
+	    "JPEG marker is used instead of this tag."), 
+	 {ESL_MANDATORY, ESL_MANDATORY, ESL_MANDATORY, ESL_NOT_RECORDED}},
 	{EXIF_TAG_BITS_PER_SAMPLE, "BitsPerSample", N_("Bits per Sample"),
 	 N_("The number of bits per image component. In this standard each "
 	    "component of the image is 8 bits, so the value for this "
 	    "tag is 9. See also <SamplesPerPixel>. In JPEG compressed data "
-	    "a JPEG marker is used instead of this tag.")},
+	    "a JPEG marker is used instead of this tag."),
+	 {ESL_MANDATORY, ESL_MANDATORY, ESL_MANDATORY, ESL_NOT_RECORDED}},
 	{EXIF_TAG_COMPRESSION, "Compression", N_("Compression"),
 	 N_("The compression scheme used for the image data. When a "
 	    "primary image is JPEG compressed, this designation is "
 	    "not necessary and is omitted. When thumbnails use JPEG "
-	    "compression, this tag value is set to 6.")},
+	    "compression, this tag value is set to 6."),
+	 {ESL_MANDATORY, ESL_MANDATORY, ESL_MANDATORY, ESL_NOT_RECORDED}},
 	{EXIF_TAG_PHOTOMETRIC_INTERPRETATION, "PhotometricInterpretation",
 	 N_("Photometric Interpretation"),
 	 N_("The pixel composition. In JPEG compressed data a JPEG "
-	    "marker is used instead of this tag.")},
+	    "marker is used instead of this tag."),
+	 {ESL_MANDATORY, ESL_MANDATORY, ESL_MANDATORY, ESL_NOT_RECORDED}},
 	{EXIF_TAG_FILL_ORDER, "FillOrder", N_("Fill Order"), ""},
 	{EXIF_TAG_DOCUMENT_NAME, "DocumentName", N_("Document Name"), ""},
 	{EXIF_TAG_IMAGE_DESCRIPTION, "ImageDescription",
@@ -68,26 +81,31 @@ static struct {
 	    "a comment such as \"1988 company picnic\" or "
 	    "the like. Two-bytes character codes cannot be used. "
 	    "When a 2-bytes code is necessary, the Exif Private tag "
-	    "<UserComment> is to be used.")},
+	    "<UserComment> is to be used."),
+	 {ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY}},
 	{EXIF_TAG_MAKE, "Make", N_("Manufacturer"),
 	 N_("The manufacturer of the recording "
 	    "equipment. This is the manufacturer of the DSC, scanner, "
 	    "video digitizer or other equipment that generated the "
 	    "image. When the field is left blank, it is treated as "
-	    "unknown.")},
+	    "unknown."),
+	 {ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY}},
 	{EXIF_TAG_MODEL, "Model", N_("Model"),
 	 N_("The model name or model number of the equipment. This is the "
 	    "model name or number of the DSC, scanner, video digitizer "
 	    "or other equipment that generated the image. When the field "
-	    "is left blank, it is treated as unknown.")},
+	    "is left blank, it is treated as unknown."),
+	 {ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY}},
 	{EXIF_TAG_STRIP_OFFSETS, "StripOffsets", N_("Strip Offsets"),
 	 N_("For each strip, the byte offset of that strip. It is "
 	    "recommended that this be selected so the number of strip "
 	    "bytes does not exceed 64 Kbytes. With JPEG compressed "
 	    "data this designation is not needed and is omitted. See also "
-	    "<RowsPerStrip> and <StripByteCounts>.")},
+	    "<RowsPerStrip> and <StripByteCounts>."),
+	 {ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY}},
 	{EXIF_TAG_ORIENTATION, "Orientation", N_("Orientation"),
-	 N_("The image orientation viewed in terms of rows and columns.")},
+	 N_("The image orientation viewed in terms of rows and columns."),
+	 {ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY}},
 	{EXIF_TAG_SAMPLES_PER_PIXEL, "SamplesPerPixel",
 	 N_("Samples per Pixel"),
 	 N_("The number of components per pixel. Since this standard applies "

@@ -1,5 +1,10 @@
 2004-09-01  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-tag.c: First ideas on how to support generation of
+	  mandatory exif tags for a new image.
+
+2004-09-01  Lutz Mueller <lutz@users.sourceforge.net>
+
 	Suggestion by Angela Wrobel (http://www.wrobelnet.de/contact.html):
 
 	* libexif/pentax:
