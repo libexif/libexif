@@ -78,6 +78,7 @@ void      jpeg_data_save_data     (JPEGData *data, unsigned char **d,
 void      jpeg_data_load_file     (JPEGData *data, const char *path);
 void      jpeg_data_save_file     (JPEGData *data, const char *path);
 
+void      jpeg_data_set_exif_data (JPEGData *data, ExifData *exif_data);
 ExifData *jpeg_data_get_exif_data (JPEGData *data);
 
 void      jpeg_data_dump (JPEGData *data);

@@ -376,19 +376,50 @@ jpeg_data_dump (JPEGData *data)
         }
 }
 
-ExifData *
-jpeg_data_get_exif_data (JPEGData *data)
+static JPEGSection *
+jpeg_data_get_section (JPEGData *data, JPEGMarker marker)
 {
 	unsigned int i;
 
 	if (!data)
-		return NULL;
+		return (NULL);
 
 	for (i = 0; i < data->count; i++)
-		if (data->sections[i].marker == JPEG_MARKER_APP1) {
-			exif_data_ref (data->sections[i].content.app1);
-			return (data->sections[i].content.app1);
-		}
+		if (data->sections[i].marker == marker)
+			return (&data->sections[i]);
+	return (NULL);
+}
+
+ExifData *
+jpeg_data_get_exif_data (JPEGData *data)
+{
+	JPEGSection *section;
+
+	if (!data)
+		return NULL;
+
+	section = jpeg_data_get_section (data, JPEG_MARKER_APP1);
+	if (section) {
+		exif_data_ref (section->content.app1);
+		return (section->content.app1);
+	}
 
 	return (NULL);
+}
+
+void
+jpeg_data_set_exif_data (JPEGData *data, ExifData *exif_data)
+{
+	JPEGSection *section;
+
+	section = jpeg_data_get_section (data, JPEG_MARKER_APP1);
+	if (!section) {
+		jpeg_data_append_section (data);
+		memmove (&data->sections[2], &data->sections[1],
+			 data->count - 2);
+		section = &data->sections[1];
+	}
+	section->marker = JPEG_MARKER_APP1;
+	section->content.app1 = exif_data;
+	exif_data_ref (exif_data);
 }
