@@ -28,7 +28,7 @@ AC_REQUIRE([GP_CONFIG_INIT])
 # the empty string must contain at least as many spaces as the substr length
 ndim_config_empty="                        "
 if test -n "$1"; then
-   ndim_config_msg="${ndim_config_msg}	$(expr substr "$1:${ndim_config_empty}" 1 22) $2
+   ndim_config_msg="${ndim_config_msg}	$(expr "$1:${ndim_config_empty}" : "\(.\{0,22\}\)") $2
 "
 else
    ndim_config_msg="${ndim_config_msg}
