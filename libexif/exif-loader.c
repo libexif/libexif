@@ -11,16 +11,24 @@
 
 typedef enum {
 	EL_READ = 0,
-	EL_READ_SIZE_HIGH_BYTE,
-	EL_READ_SIZE_LOW_BYTE,
-	EL_READ_SIZE_HIGH_BYTE_FINAL,
-	EL_READ_SIZE_LOW_BYTE_FINAL,
+	EL_READ_SIZE_BYTE_24,
+	EL_READ_SIZE_BYTE_16,
+	EL_READ_SIZE_BYTE_08,
+	EL_READ_SIZE_BYTE_00,
 	EL_SKIP_BYTES,
 	EL_EXIF_FOUND,
 } ExifLoaderState;
 
+typedef enum {
+	EL_DATA_FORMAT_UNKNOWN,
+	EL_DATA_FORMAT_EXIF,
+	EL_DATA_FORMAT_JPEG,
+	EL_DATA_FORMAT_FUJI_RAW
+} ExifLoaderDataFormat;
+
 struct _ExifLoader {
 	ExifLoaderState state;
+	ExifLoaderDataFormat data_format;
 
 	/* Small buffer used for detection of format */
 	unsigned char b[12];
@@ -107,10 +115,18 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 		return exif_loader_copy (eld, buf, len);
 	case EL_SKIP_BYTES:
 		if (eld->size > len) { eld->size -= len; return 1; }
-		eld->state = EL_READ;
 		len -= eld->size;
 		buf += eld->size;
+		eld->size = 0;
 		eld->b_len = 0;
+		switch (eld->data_format) {
+		case EL_DATA_FORMAT_FUJI_RAW:
+			eld->state = EL_READ_SIZE_BYTE_24;
+			break;
+		default:
+			eld->state = EL_READ;
+			break;
+		}
 		break;
 	default:
 		break;
@@ -132,12 +148,26 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 		len -= i;
 	}
 
-	/* Check the small buffer against known formats. */
-	if (!memcmp (eld->b, "FUJIFILM", 8)) {
-		eld->state = EL_SKIP_BYTES;
-		eld->size = 112;
-	} else if (!memcmp (eld->b + 2, ExifHeader, sizeof (ExifHeader))) {
-		eld->state = EL_READ_SIZE_HIGH_BYTE_FINAL;
+	switch (eld->data_format) {
+	case EL_DATA_FORMAT_UNKNOWN:
+
+		/* Check the small buffer against known formats. */
+		if (!memcmp (eld->b, "FUJIFILM", 8)) {
+
+			/* Skip to byte 84. There is another offset there. */
+			eld->data_format = EL_DATA_FORMAT_FUJI_RAW;
+			eld->size = 84;
+			eld->state = EL_SKIP_BYTES;
+			eld->size = 84;
+
+		} else if (!memcmp (eld->b + 2, ExifHeader, sizeof (ExifHeader))) {
+
+			/* Read the size (2 bytes). */
+			eld->data_format = EL_DATA_FORMAT_EXIF;
+			eld->state = EL_READ_SIZE_BYTE_08;
+		}
+	default:
+		break;
 	}
 
 	for (i = 0; i < sizeof (eld->b); i++)
@@ -150,32 +180,53 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 			eld->size--;
 			if (!eld->size) eld->state = EL_READ;
 			break;
-		case EL_READ_SIZE_HIGH_BYTE:
-			eld->size = eld->b[i] << 8;
-			eld->state = EL_READ_SIZE_LOW_BYTE;
+
+		case EL_READ_SIZE_BYTE_24:
+			eld->size |= eld->b[i] << 24;
+			eld->state = EL_READ_SIZE_BYTE_16;
 			break;
-		case EL_READ_SIZE_HIGH_BYTE_FINAL:
-			eld->size = eld->b[i] << 8;
-			eld->state = EL_READ_SIZE_LOW_BYTE_FINAL;
+		case EL_READ_SIZE_BYTE_16:
+			eld->size |= eld->b[i] << 16;
+			eld->state = EL_READ_SIZE_BYTE_08;
 			break;
-		case EL_READ_SIZE_LOW_BYTE:
-			eld->size |= eld->b[i];
-			eld->state = EL_SKIP_BYTES;
+		case EL_READ_SIZE_BYTE_08:
+			eld->size |= eld->b[i] << 8;
+			eld->state = EL_READ_SIZE_BYTE_00;
+			break;
+		case EL_READ_SIZE_BYTE_00:
+			eld->size |= eld->b[i] << 0;
 			eld->size -= 2;
+			switch (eld->data_format) {
+			case EL_DATA_FORMAT_JPEG:
+				eld->state = EL_SKIP_BYTES;
+				eld->size -= 2;
+				break;
+			case EL_DATA_FORMAT_FUJI_RAW:
+				eld->data_format = EL_DATA_FORMAT_EXIF;
+				eld->state = EL_SKIP_BYTES;
+				eld->size -= 86;
+				break;
+			case EL_DATA_FORMAT_EXIF:
+				eld->state = EL_EXIF_FOUND;
+				break;
+			default:
+				break;
+			}
 			break;
-		case EL_READ_SIZE_LOW_BYTE_FINAL:
-			eld->size |= eld->b[i];
-			eld->state = EL_EXIF_FOUND;
-			break;
+
 		default:
 			switch (eld->b[i]) {
 			case JPEG_MARKER_APP1:
-				eld->state = EL_READ_SIZE_HIGH_BYTE_FINAL;
+				eld->data_format = EL_DATA_FORMAT_EXIF;
+				eld->size = 0;
+				eld->state = EL_READ_SIZE_BYTE_08;
 				break;
 			case JPEG_MARKER_APP0:
 			case JPEG_MARKER_APP13:
 			case JPEG_MARKER_COM:
-				eld->state = EL_READ_SIZE_HIGH_BYTE;
+				eld->data_format = EL_DATA_FORMAT_JPEG;
+				eld->size = 0;
+				eld->state = EL_READ_SIZE_BYTE_08;
 				break;
 			case 0xff:
 			case JPEG_MARKER_SOI:
@@ -263,6 +314,7 @@ exif_loader_reset (ExifLoader *loader)
 	loader->bytes_read = 0;
 	loader->state = 0;
 	loader->b_len = 0;
+	loader->data_format = EL_DATA_FORMAT_UNKNOWN;
 }
 
 ExifData *
