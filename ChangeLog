@@ -1,5 +1,9 @@
 2005-03-16  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-entry.c (exif_entry_get_value): Fix tag COPYRIGHT.
+
+2005-03-16  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-data.c (exif_data_save_data_content): Use qsort.
 
 2005-03-16  Lutz Mueller <lutz@users.sourceforge.net>

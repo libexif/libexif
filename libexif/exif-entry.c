@@ -539,7 +539,8 @@ static struct {
 const char *
 exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 {
-	unsigned int i, j, k, l;
+	unsigned int i, j, k, l, ts;
+	const unsigned char *t;
 	ExifByte v_byte;
 	ExifShort v_short, v_short2, v_short3, v_short4;
 	ExifLong v_long;
@@ -680,13 +681,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		strncat (val, _("(Photographer)"), maxlen - strlen (val));
 
 		/* Second part: Editor. */
+		t = e->data + strlen ((char *) e->data) + 1;
+		ts = e->data + e->size - t;
 		strncat (val, " - ", maxlen - strlen (val));
-		if (e->size && e->data &&
-		    (strlen ((char *) e->data) + 1 < e->size) &&
-		    (strspn (e->data, " ") != strlen ((char *) e->data)))
-			strncat (val, e->data + strlen (e->data) + 1,
-				 MIN (maxlen - strlen (val),
-				      e->size - (strlen ((char *) e->data) + 1)));
+		if (e->size && e->data && (ts > 0) &&
+		    (strspn (t, " ") != ts))
+			strncat (val, t, MIN (maxlen - strlen (val), ts));
 		else
 			strncat (val, _("[None]"), maxlen - strlen (val));
 		strncat (val, " ", maxlen - strlen (val));
