@@ -30,7 +30,7 @@ dnl i18n support
 dnl ---------------------------------------------------------------------------
 ALL_LINGUAS="de es"
 # EVIL HACKS
-GETTEXT_PACKAGE="${PACKAGE}${LIBEXIF_VERSION_INFO}foo"
+GETTEXT_PACKAGE="${PACKAGE}${LIBEXIF_CURRENT}"
 AC_SUBST(GETTEXT_PACKAGE)
 sed -e "s/^DOMAIN.*/DOMAIN = ${GETTEXT_PACKAGE}/" < po/Makevars.template > po/Makevars
 AM_GNU_GETTEXT
