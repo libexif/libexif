@@ -40,7 +40,7 @@
 #undef MAX
 #define MAX(a, b)  (((a) > (b)) ? (a) : (b))
 
-#ifdef __WATCOMC__
+#if defined(__WATCOMC__) || defined(_MSC_VER)
 #      define strncasecmp strnicmp
 #endif
 
@@ -327,7 +327,11 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 			 * If we don't know the tag, changes are high
 			 * that the EXIF data does not follow the standard.
 			 */
-			if (!exif_tag_get_name (tag)) return;
+			if (!exif_tag_get_name (tag)) {
+				exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+				  "Unknown tag %x (entry %i)", tag, i);
+				return;
+			}
 			entry = exif_entry_new_mem (data->priv->mem);
 			exif_content_add_entry (ifd, entry);
 			exif_data_load_data_entry (data, entry, d, ds,
