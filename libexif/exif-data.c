@@ -117,6 +117,42 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 }
 
 static void
+exif_data_save_data_entry (ExifData *data, ExifEntry *entry,
+			   unsigned char **d, unsigned int *ds,
+			   unsigned int offset)
+{
+	unsigned int doff, s;
+
+	/*
+	 * Each entry is 12 bytes long. The memory for the entry has
+	 * already been allocated.
+	 */
+	exif_set_short (*d + 6 + offset + 0,
+			data->priv->order, entry->tag);
+	exif_set_short (*d + 6 + offset + 2,
+			data->priv->order, entry->format);
+	exif_set_long  (*d + 6 + offset + 4,
+			data->priv->order, entry->components);
+
+	/*
+	 * Size? If bigger than 4 bytes, the actual data is not in
+	 * the entry but somewhere else.
+	 */
+	s = exif_format_get_size (entry->format) * entry->components;
+	if (!s)
+		return;
+	if (s > 4) {
+		*ds += entry->size;
+		*d = realloc (*d, sizeof (char) * *ds);
+		doff = *ds - 6 - entry->size;
+		exif_set_long (*d + 6 + offset + 8,
+			       data->priv->order, doff);
+	} else
+		doff = offset + 8;
+	memcpy (*d + 6 + doff, entry->data, entry->size);
+}
+
+static void
 exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 			       unsigned int ds, ExifLong offset, ExifLong size)
 {
@@ -146,13 +182,20 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 	ExifTag tag;
 
 	ifd->order = data->priv->order;
-	
+
 	/* Read the number of entries */
 	n = exif_get_short (d + offset, data->priv->order);
+#ifdef DEBUG
+	printf ("Loading %i entries...\n", n);
+#endif
 	offset += 2;
 	for (i = 0; i < n; i++) {
 
 		tag = exif_get_short (d + offset + 12 * i, data->priv->order);
+#ifdef DEBUG
+		printf ("Loading entry '%s' (%i of %i)...\n",
+			exif_tag_get_name (tag), i + 1, n);
+#endif
 		switch (tag) {
 		case EXIF_TAG_EXIF_IFD_POINTER:
 		case EXIF_TAG_GPS_INFO_IFD_POINTER:
@@ -173,6 +216,7 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 			case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
 				exif_data_load_data_content (data,
 					data->ifd_interoperability, d, ds, o);
+				break;
 			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
 #ifdef DEBUG
 				printf ("Thumbnail at %i.\n", (int) o);
@@ -203,79 +247,262 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 			exif_data_load_data_entry (data, entry, d, ds,
 						   offset + 12 * i);
 			exif_entry_unref (entry);
+			break;
 		}
+	}
+}
+
+static void
+exif_data_save_data_content (ExifData *data, ExifContent *ifd,
+			     unsigned char **d, unsigned int *ds,
+			     unsigned int offset)
+{
+	unsigned int i, n_ptr = 0, n_thumb = 0;
+
+	/* If we are to save IFD 0, we need some extra entries. */
+	if (ifd == data->ifd0)
+		n_ptr = 3;
+
+	/*
+	 * If we are to save IFD 1, we can point to the thumbnail if it
+	 * exists.
+	 */
+	if ((ifd == data->ifd1) && data->data)
+		n_thumb = 2;
+
+	/*
+	 * Allocate enough memory for all entries
+	 * and the number of entries.
+	 */
+	*ds += (2 + (ifd->count + n_ptr + n_thumb) * 12 + (n_ptr ? 4 : 0));
+	*d = realloc (*d, sizeof (char) * *ds);
+
+	/* Save the number of entries */
+	exif_set_short (*d + 6 + offset, data->priv->order,
+			ifd->count + n_ptr + n_thumb);
+	offset += 2;
+#ifdef DEBUG
+	printf ("Saving %i entries (offset: %i)...\n", ifd->count, offset);
+#endif
+
+	/* Save each entry */
+	for (i = 0; i < ifd->count; i++)
+		exif_data_save_data_entry (data, ifd->entries[i],
+				d, ds, offset + 12 * i);
+	offset += 12 * ifd->count;
+
+	/* Save special entries */
+	if (n_ptr) {
+
+		/* EXIF_TAG_EXIF_IFD_POINTER */
+		exif_set_short (*d + 6 + offset + 0, data->priv->order,
+				EXIF_TAG_EXIF_IFD_POINTER);
+		exif_set_short (*d + 6 + offset + 2, data->priv->order,
+				EXIF_FORMAT_LONG);
+		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
+		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+				*ds - 6);
+		exif_data_save_data_content (data, data->ifd_exif, d, ds,
+					     *ds - 6);
+		offset += 12;
+
+		/* EXIF_TAG_GPS_INFO_IFD_POINTER */
+		exif_set_short (*d + 6 + offset + 0, data->priv->order,
+				EXIF_TAG_GPS_INFO_IFD_POINTER);
+		exif_set_short (*d + 6 + offset + 2, data->priv->order,
+				EXIF_FORMAT_LONG);
+		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
+		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+				*ds - 6);
+		exif_data_save_data_content (data, data->ifd_gps, d, ds,
+					     *ds - 6);
+		offset += 12;
+
+		/* EXIF_TAG_INTEROPERABILITY_IFD_POINTER */
+		exif_set_short (*d + 6 + offset + 0, data->priv->order,
+				EXIF_TAG_INTEROPERABILITY_IFD_POINTER);
+		exif_set_short (*d + 6 + offset + 2, data->priv->order,
+				EXIF_FORMAT_LONG);
+		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
+		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+				*ds - 6);
+		exif_data_save_data_content (data, data->ifd_interoperability,
+					     d, ds, *ds - 6);
+		offset += 12;
+
+		/*
+		 * We are saving IFD 0. Tell where IFD 1 starts and save
+		 * IFD 1.
+		 */
+		exif_set_long (*d + 6 + offset, data->priv->order, *ds - 6);
+		exif_data_save_data_content (data, data->ifd1, d, ds,
+					     *ds - 6);
+	}
+
+	if (n_thumb) {
+
+		/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH */
+		exif_set_short (*d + 6 + offset + 0, data->priv->order,
+				EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH);
+		exif_set_short (*d + 6 + offset + 2, data->priv->order,
+				EXIF_FORMAT_LONG);
+		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
+		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+				data->size);
+		offset += 12;
+		
+		/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT */
+		exif_set_short (*d + 6 + offset + 0, data->priv->order,
+				EXIF_TAG_JPEG_INTERCHANGE_FORMAT);
+		exif_set_short (*d + 6 + offset + 2, data->priv->order,
+				EXIF_FORMAT_LONG);
+		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
+		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+				*ds - 6);
+		*ds += data->size;
+		*d = realloc (*d, sizeof (char) * *ds);
+		memcpy (*d + *ds - data->size, data->data, data->size);
 	}
 }
 
 void
 exif_data_load_data (ExifData *data, const unsigned char *d, unsigned int size)
 {
-	unsigned int o, len;
+	unsigned int l, len = size;
 	ExifLong offset;
 	ExifShort n;
 
 	if (!data)
 		return;
-	if (!d)
+	if (!d || !size)
 		return;
 
-	/* Search the exif marker */
-	for (o = 0; o < size; o++)
-		if (d[o] == JPEG_MARKER_APP1)
-			break;
-	if (o == size)
-		return;
-	o++;
-	d += o;
-	size -= o;
+#ifdef DEBUG
+	printf ("Parsing %i byte(s) EXIF data...\n", size);
+#endif
 
-	/* Size of exif data? */
-	if (size < 2)
+	/*
+	 * It can be that the data starts with the EXIF header. If it does
+	 * not, search the EXIF marker.
+	 */
+	if (size < 6) {
+#ifdef DEBUG
+		printf ("Size too small.\n");
 		return;
-	len = (d[0] << 8) | d[1];
+#endif
+	}
+	if (!memcmp (d, ExifHeader, 6)) {
+#ifdef DEBUG
+		printf ("Found EXIF header.\n");
+#endif
+	} else {
+#ifdef DEBUG
+		printf ("Data begins with 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x "
+			"0x%x...\n", d[0], d[1], d[2], d[3], d[4], d[5], d[6]);
+#endif
+		while (1) {
+			while ((d[0] == 0xff) && size) {
+				d++;
+				size--;
+			}
+
+			/* JPEG_MARKER_SOI */
+			if (d[0] == JPEG_MARKER_SOI) {
+				d++;
+				size--;
+				continue;
+			}
+
+			/* JPEG_MARKER_APP0 */
+			if (d[0] == JPEG_MARKER_APP0) {
+				d++;
+				size--;
+				l = (d[0] << 8) | d[1];
+				if (l > size)
+					return;
+				d += l;
+				size -= l;
+				continue;
+			}
+
+			/* JPEG_MARKER_APP1 */
+			if (d[0] == JPEG_MARKER_APP1)
+				break;
+
+			/* Unknown marker or data. Give up. */
+			printf ("EXIF marker not found.\n");
+			return;
+		}
+		d++;
+		size--;
+		if (size < 2) {
+#ifdef DEBUG
+			printf ("Size too small.\n");
+#endif
+			return;
+		}
+		len = (d[0] << 8) | d[1];
+#ifdef DEBUG
+		printf ("We have to deal with %i byte(s) of EXIF data.\n", len);
+#endif
+		d += 2;
+		size -= 2;
+	}
 
 	/*
 	 * Verify the exif header
 	 * (offset 2, length 6).
 	 */
-	if (size < 2 + 6)
+	if (size < 6) {
+#ifdef DEBUG
+		printf ("Size too small.\n");
 		return;
-	if (memcmp (d + 2, ExifHeader, 6))
+#endif
+	}
+	if (memcmp (d, ExifHeader, 6)) {
+#ifdef DEBUG
+		printf ("EXIF header not found.\n");
 		return;
+#endif
+	}
 
-	/* Byte order (offset 8, length 2) */
-	if (size < 16)
+#ifdef DEBUG
+	printf ("Found EXIF header.\n");
+#endif
+
+	/* Byte order (offset 6, length 2) */
+	if (size < 12)
 		return;
-	if (!memcmp (d + 8, "II", 2))
+	if (!memcmp (d + 6, "II", 2))
 		data->priv->order = EXIF_BYTE_ORDER_INTEL;
-	else if (!memcmp (d + 8, "MM", 2))
+	else if (!memcmp (d + 6, "MM", 2))
 		data->priv->order = EXIF_BYTE_ORDER_MOTOROLA;
 	else
 		return;
 
 	/* Fixed value */
-	if (exif_get_short (d + 10, data->priv->order) != 0x002a)
+	if (exif_get_short (d + 8, data->priv->order) != 0x002a)
 		return;
 
 	/* IFD 0 offset */
-	offset = exif_get_long (d + 12, data->priv->order);
+	offset = exif_get_long (d + 10, data->priv->order);
 #ifdef DEBUG
 	printf ("IFD 0 at %i.\n", (int) offset);
 #endif
 
-	/* Parse the actual exif data (offset 16) */
-	exif_data_load_data_content (data, data->ifd0, d + 8,
-				     size - 8, offset);
+	/* Parse the actual exif data (offset 14) */
+	exif_data_load_data_content (data, data->ifd0, d + 6,
+				     size - 6, offset);
 
 	/* IFD 1 offset */
-	n = exif_get_short (d + 8 + offset, data->priv->order);
-	offset = exif_get_long (d + 8 + offset + 2 + 12 * n, data->priv->order);
+	n = exif_get_short (d + 6 + offset, data->priv->order);
+	offset = exif_get_long (d + 6 + offset + 2 + 12 * n, data->priv->order);
 	if (offset) {
 #ifdef DEBUG
 		printf ("IFD 1 at %i.\n", (int) offset);
 #endif
-		exif_data_load_data_content (data, data->ifd1, d + 8,
-					     size - 8, offset);
+		exif_data_load_data_content (data, data->ifd1, d + 6,
+					     size - 6, offset);
 	}
 }
 
@@ -284,34 +511,47 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 {
 	if (!data)
 		return;
-	if (!d)
-		return;
-	if (!ds)
+	if (!d || !ds)
 		return;
 
-	/* Size */
-	*ds = 2;
+	/* Header */
+	*ds = 6;
 	*d = malloc (sizeof (char) * *ds);
-	(*d)[0] = *ds >> 8;
-	(*d)[1] = *ds >> 0;
+	memcpy (*d, ExifHeader, 6);
 
-	/* Header (offset 2) */
-	*ds += 6;
-	*d = realloc (*d, sizeof (char) * *ds);
-	(*d)[0] = *ds >> 8;
-	(*d)[1] = *ds >> 0;
-	memcpy (*d + 2, ExifHeader, 6);
-
-	/* Order (offset 8) */
+	/* Order (offset 6) */
 	*ds += 2;
 	*d = realloc (*d, sizeof (char) * *ds);
-	(*d)[0] = *ds >> 8;
-	(*d)[1] = *ds >> 0;
 	if (data->priv->order == EXIF_BYTE_ORDER_INTEL) {
-		memcpy (*d + 8, "II", 2);
+		memcpy (*d + 6, "II", 2);
 	} else {
-		memcpy (*d + 8, "MM", 2);
+		memcpy (*d + 6, "MM", 2);
 	}
+
+	/* Fixed value (2 bytes, offset 8) */
+	*ds += 2;
+	*d = realloc (*d, sizeof (char) * *ds);
+	exif_set_short (*d + 8, data->priv->order, 0x002a);
+
+	/*
+	 * IFD 0 offset (4 bytes, offset 10).
+	 * We will start 8 bytes after the
+	 * EXIF header (2 bytes for order, another 2 for the test, and 
+	 * 4 bytes for the IFD 0 offset make 8 bytes together).
+	 */
+	*ds += 4;
+	*d = realloc (*d, sizeof (char) * *ds);
+	exif_set_long (*d + 10, data->priv->order, 8);
+
+	/* Now save IFD 0. IFD 1 will be saved automatically. */
+#ifdef DEBUG
+	printf ("Saving IFDs...\n");
+#endif
+	exif_data_save_data_content (data, data->ifd0, d, ds, *ds - 6);
+
+#ifdef DEBUG
+	printf ("Saved %i byte(s) EXIF data.\n", *ds);
+#endif
 }
 
 ExifData *
