@@ -1,3 +1,8 @@
+2003-09-28  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* Makefile.am
+	* configure.in: Patch #813420 by Chris Meyer <cmeyer@mac.com>.
+
 2003-09-05  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libjpeg/jpeg-data.c: Fix memory leak (discovered by 

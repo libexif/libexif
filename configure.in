@@ -38,10 +38,13 @@ if test -f po/Makevars.template
 then
 	sed -e "s/^DOMAIN.*/DOMAIN = ${GETTEXT_PACKAGE}/" < po/Makevars.template > po/Makevars
 	AC_MSG_RESULT([yes. done.])
+	PO_DIR=po
 else
 	AC_MSG_RESULT([no])
+	PO_DIR=
 fi
 AM_GNU_GETTEXT
+AC_SUBST([PO_DIR])
 
 dnl ---------------------------------------------------------------------------
 dnl Warnings
