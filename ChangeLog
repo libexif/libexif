@@ -2,6 +2,7 @@
 
 	* exif_data.c: Final fix of Ubuntu Security Notice USN-91-1
 	  https://bugzilla.ubuntulinux.org/show_bug.cgi?id=7152
+	  (CAN-2005-0664)
 
 2005-02-08  Hans Ulrich Niedermann <gp@n-dimensional.de>
 
