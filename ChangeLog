@@ -1,3 +1,7 @@
+2003-01-22  Lutz Mller  <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c (exif_entry_get_value): Support USER_COMMENT.
+
 2002-12-31  Lutz Müller <lutz@users.sourceforge.net>
 
 	* README: Some information by Sander van Geloven

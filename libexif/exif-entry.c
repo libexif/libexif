@@ -165,17 +165,21 @@ exif_entry_get_value (ExifEntry *e)
 	memset (b, 0, sizeof (b));
 
 	switch (e->tag) {
+	case EXIF_TAG_USER_COMMENT:
+		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
+		if (e->size < 8) break;
+		strncpy (v, e->data + 8, sizeof (v) - 1);
+		break;
 	case EXIF_TAG_EXIF_VERSION:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
 		CC (e->components, 4, v);
 		if (!memcmp (e->data, "0200", 4))
-			strncpy (v, "Exif Version 2.0", sizeof (v));
+			strncpy (v, "Exif Version 2.0", sizeof (v) - 1);
 		else if (!memcmp (e->data, "0210", 4))
-			strncpy (v, "Exif Version 2.1", sizeof (v));
+			strncpy (v, "Exif Version 2.1", sizeof (v) - 1);
 		else if (!memcmp (e->data, "0220", 4))
-			strncpy (v, "Exif Version 2.2", sizeof (v));
-		else
-			strncpy (v, "Unknown Exif Version", sizeof (v));
+			strncpy (v, "Exif Version 2.2", sizeof (v) - 1);
+		else strncpy (v, "Unknown Exif Version", sizeof (v) - 1);
 		break;
 	case EXIF_TAG_FLASH_PIX_VERSION:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
@@ -203,8 +207,7 @@ exif_entry_get_value (ExifEntry *e)
 		CF (e->format, EXIF_FORMAT_RATIONAL, v);
 		CC (e->components, 1, v);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator)
-			return (NULL);
+		if (!v_rat.denominator) return (NULL);
 		snprintf (v, sizeof (v), "f/%.01f", (float) v_rat.numerator /
 						    (float) v_rat.denominator);
 		break;
@@ -212,8 +215,7 @@ exif_entry_get_value (ExifEntry *e)
 		CF (e->format, EXIF_FORMAT_RATIONAL, v);
 		CC (e->components, 1, v);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator)
-			return (NULL);
+		if (!v_rat.denominator) return (NULL);
 		snprintf (v, sizeof (v), "f/%.01f",
 			  pow (2 , ((float) v_rat.numerator /
 				    (float) v_rat.denominator) / 2.));
@@ -222,8 +224,7 @@ exif_entry_get_value (ExifEntry *e)
 		CF (e->format, EXIF_FORMAT_RATIONAL, v);
 		CC (e->components, 1, v);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator)
-			return (NULL);
+		if (!v_rat.denominator) return (NULL);
 
 		/*
 		 * For calculation of the 35mm equivalent,
@@ -258,8 +259,7 @@ exif_entry_get_value (ExifEntry *e)
 		CF (e->format, EXIF_FORMAT_RATIONAL, v);
 		CC (e->components, 1, v);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator)
-			return (NULL);
+		if (!v_rat.denominator) return (NULL);
 		snprintf (v, sizeof (v), "%.1f m", (float) v_rat.numerator /
 						   (float) v_rat.denominator);
 		break;
@@ -267,8 +267,7 @@ exif_entry_get_value (ExifEntry *e)
 		CF (e->format, EXIF_FORMAT_RATIONAL, v);
 		CC (e->components, 1, v);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator)
-			return (NULL);
+		if (!v_rat.denominator) return (NULL);
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
 		if (d < 1)
 			snprintf (v, sizeof (v), _("1/%d sec."),
@@ -280,8 +279,7 @@ exif_entry_get_value (ExifEntry *e)
 		CF (e->format, EXIF_FORMAT_SRATIONAL, v);
 		CC (e->components, 1, v);
 		v_srat = exif_get_srational (e->data, o);
-		if (!v_srat.denominator)
-			return (NULL);
+		if (!v_srat.denominator) return (NULL);
 		snprintf (b, sizeof (b), "%.0f/%.0f sec.",
 			  (float) v_srat.numerator, (float) v_srat.denominator);
 		snprintf (v, sizeof (v), "%s (APEX: %i)", b,
@@ -301,33 +299,16 @@ exif_entry_get_value (ExifEntry *e)
 		CC (e->components, 1, v);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0:
-			strncpy (v, _("Unknown"), sizeof (v));
+		case 0: strncpy (v, _("Unknown"), sizeof (v)); break;
+		case 1: strncpy (v, _("Average"), sizeof (v)); break;
+		case 2: strncpy (v, _("Center-Weighted Average"), sizeof (v));
 			break;
-		case 1:
-			strncpy (v, _("Average"), sizeof (v));
-			break;
-		case 2:
-			strncpy (v, _("Center-Weighted Average"), sizeof (v));
-			break;
-		case 3:
-			strncpy (v, _("Spot"), sizeof (v));
-			break;
-		case 4:
-			strncpy (v, _("Multi Spot"), sizeof (v));
-			break;
-		case 5:
-			strncpy (v, _("Pattern"), sizeof (v));
-			break;
-		case 6:
-			strncpy (v, _("Partial"), sizeof (v));
-			break;
-		case 255:
-			strncpy (v, _("Other"), sizeof (v));
-			break;
-		default:
-			snprintf (v, sizeof (v), "%i", v_short);
-			break;
+		case 3: strncpy (v, _("Spot"), sizeof (v)); break;
+		case 4: strncpy (v, _("Multi Spot"), sizeof (v)); break;
+		case 5: strncpy (v, _("Pattern"), sizeof (v)); break;
+		case 6: strncpy (v, _("Partial"), sizeof (v)); break;
+		case 255: strncpy (v, _("Other"), sizeof (v)); break;
+		default: snprintf (v, sizeof (v), "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_COMPRESSION:
@@ -335,27 +316,17 @@ exif_entry_get_value (ExifEntry *e)
 		CC (e->components, 1, v);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 1:
-			strncpy (v, _("Uncompressed"), sizeof (v));
-			break;
-		case 6:
-			strncpy (v, _("JPEG compression"), sizeof (v));
-			break;
-		default:
-			snprintf (v, sizeof (v), "%i", v_short);
-			break;
+		case 1: strncpy (v, _("Uncompressed"), sizeof (v)); break;
+		case 6: strncpy (v, _("JPEG compression"), sizeof (v)); break;
+		default: snprintf (v, sizeof (v), "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_FILE_SOURCE:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
 		CC (e->components, 1, v);
 		switch (e->data[0]) {
-		case 0x03:
-			strncpy (v, _("DSC"), sizeof (v));
-			break;
-		default:
-			snprintf (v, sizeof (v), "0x%02x", e->data[0]);
-			break;
+		case 0x03: strncpy (v, _("DSC"), sizeof (v)); break;
+		default: snprintf (v, sizeof (v), "0x%02x", e->data[0]); break;
 		}
 		break;
 	case EXIF_TAG_PLANAR_CONFIGURATION:
@@ -363,15 +334,9 @@ exif_entry_get_value (ExifEntry *e)
 		CC (e->components, 1, v);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 1:
-			strncpy (v, _("chunky format"), sizeof (v));
-			break;
-		case 2:
-			strncpy (v, _("planar format"), sizeof (v));
-			break;
-		default:
-			snprintf (v, sizeof (v), "%i", v_short);
-			break;
+		case 1: strncpy (v, _("chunky format"), sizeof (v)); break;
+		case 2: strncpy (v, _("planar format"), sizeof (v)); break;
+		default: snprintf (v, sizeof (v), "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_COMPONENTS_CONFIGURATION:
@@ -379,34 +344,17 @@ exif_entry_get_value (ExifEntry *e)
 		CC (e->components, 4, v);
 		for (i = 0; i < 4; i++) {
 			switch (e->data[i]) {
-			case 0:
-				c = _("-");
-				break;
-			case 1:
-				c = _("Y");
-				break;
-			case 2:
-				c = _("Cb");
-				break;
-			case 3:
-				c = _("Cr");
-				break;
-			case 4:
-				c = _("R");
-				break;
-			case 5:
-				c = _("G");
-				break;
-			case 6:
-				c = _("B");
-				break;
-			default:
-				c = _("reserved");
-				break;
+			case 0: c = _("-"); break;
+			case 1: c = _("Y"); break;
+			case 2: c = _("Cb"); break;
+			case 3: c = _("Cr"); break;
+			case 4: c = _("R"); break;
+			case 5: c = _("G"); break;
+			case 6: c = _("B"); break;
+			default: c = _("reserved"); break;
 			}
 			strncat (v, c, sizeof (v));
-			if (i < 3)
-				strncat (v, " ", sizeof (v));
+			if (i < 3) strncat (v, " ", sizeof (v));
 		}
 		break;
 	case EXIF_TAG_SENSING_METHOD:
@@ -414,30 +362,29 @@ exif_entry_get_value (ExifEntry *e)
 		CC (e->components, 1, v);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 1:
-			strncpy (v, _("Not defined"), sizeof (v));
-			break;
+		case 1: strncpy (v, _("Not defined"), sizeof (v)); break;
 		case 2:
-			strncpy (v, _("One-chip color area sensor"), sizeof (v));
+			strncpy (v, _("One-chip color area sensor"),
+				 sizeof (v));
 			break;
 		case 3:
-			strncpy (v, _("Two-chip color area sensor"), sizeof (v));
+			strncpy (v, _("Two-chip color area sensor"),
+				 sizeof (v));
 			break;
 		case 4:
-			strncpy (v, _("Three-chip color area sensor"), sizeof (v));
+			strncpy (v, _("Three-chip color area sensor"),
+				 sizeof (v));
 			break;
 		case 5:
-			strncpy (v, _("Color sequential area sensor"), sizeof (v));
+			strncpy (v, _("Color sequential area sensor"),
+				 sizeof (v));
 			break;
-		case 7:
-			strncpy (v, _("Trilinear sensor"), sizeof (v));
-			break;
+		case 7: strncpy (v, _("Trilinear sensor"), sizeof (v)); break;
 		case 8:
-			strncpy (v, _("Color sequential linear sensor"), sizeof (v));
+			strncpy (v, _("Color sequential linear sensor"),
+				 sizeof (v));
 			break;
-		default:
-			snprintf (v, sizeof (v), "%i", v_short);
-			break;
+		default: snprintf (v, sizeof (v), "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_LIGHT_SOURCE:
@@ -445,34 +392,20 @@ exif_entry_get_value (ExifEntry *e)
 		CC (e->components, 1, v);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0:
-			strncpy (v, _("Unknown"), sizeof (v));
-			break;
-		case 1:
-			strncpy (v, _("Daylight"), sizeof (v));
-			break;
-		case 2:
-			strncpy (v, _("Fluorescent"), sizeof (v));
-			break;
+		case 0: strncpy (v, _("Unknown"), sizeof (v)); break;
+		case 1: strncpy (v, _("Daylight"), sizeof (v)); break;
+		case 2: strncpy (v, _("Fluorescent"), sizeof (v)); break;
 		case 3:
 			strncpy (v, _("Tungsten (incandescent light)"),
 				 sizeof (v));
 			break;
-		case 4:
-			strncpy (v, _("Flash"), sizeof (v));
-			break;
-		case 9:
-			strncpy (v, _("Fine weather"), sizeof (v));
-			break;
-		case 10:
-			strncpy (v, _("Cloudy weather"), sizeof (v));
-			break;
-		case 11:
-			strncpy (v, _("Shade"), sizeof (v));
-			break;
+		case 4: strncpy (v, _("Flash"), sizeof (v)); break;
+		case 9: strncpy (v, _("Fine weather"), sizeof (v)); break;
+		case 10: strncpy (v, _("Cloudy weather"), sizeof (v)); break;
+		case 11: strncpy (v, _("Shade"), sizeof (v)); break;
 		case 12:
-			strncpy (v, _("Daylight fluorescent"), sizeof (v));
-			break;
+			 strncpy (v, _("Daylight fluorescent"), sizeof (v));
+			 break;
 		case 13:
 			strncpy (v, _("Day white fluorescent"), sizeof (v));
 			break;
@@ -483,32 +416,17 @@ exif_entry_get_value (ExifEntry *e)
 			strncpy (v, _("White fluorescent"), sizeof (v));
 			break;
 		case 17:
-			strncpy (v, _("Standard light A"), sizeof (v));
-			break;
-		case 18:
-			strncpy (v, _("Standard light B"), sizeof (v));
-			break;
-		case 19:
-			strncpy (v, _("Standard light C"), sizeof (v));
-			break;
-		case 20:
-			strncpy (v, _("D55"), sizeof (v));
-			break;
-		case 21:
-			strncpy (v, _("D65"), sizeof (v));
-			break;
-		case 22:
-			strncpy (v, _("D75"), sizeof (v));
-			break;
+			strncpy (v, _("Standard light A"), sizeof (v)); break;
+		case 18: strncpy (v, _("Standard light B"), sizeof (v)); break;
+		case 19: strncpy (v, _("Standard light C"), sizeof (v)); break;
+		case 20: strncpy (v, _("D55"), sizeof (v)); break;
+		case 21: strncpy (v, _("D65"), sizeof (v)); break;
+		case 22: strncpy (v, _("D75"), sizeof (v)); break;
 		case 24:
 			strncpy (v, _("ISO studio tungsten"), sizeof (v));
 			break;
-		case 255:
-			strncpy (v, _("Other"), sizeof (v));
-			break;
-		default:
-			snprintf (v, sizeof (v), "%i", v_short);
-			break;
+		case 255: strncpy (v, _("Other"), sizeof (v)); break;
+		default: snprintf (v, sizeof (v), "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_FOCAL_PLANE_RESOLUTION_UNIT:
@@ -517,15 +435,9 @@ exif_entry_get_value (ExifEntry *e)
 		CC (e->components, 1, v);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 2:
-			strncpy (v, _("Inch"), sizeof (v));
-			break;
-		case 3:
-			strncpy (v, _("Centimeter"), sizeof (v));
-			break;
-		default:
-			snprintf (v, sizeof (v), "%i", v_short);
-			break;
+		case 2: strncpy (v, _("Inch"), sizeof (v)); break;
+		case 3: strncpy (v, _("Centimeter"), sizeof (v)); break;
+		default: snprintf (v, sizeof (v), "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_EXPOSURE_PROGRAM:
@@ -533,21 +445,11 @@ exif_entry_get_value (ExifEntry *e)
 		CC (e->components, 1, v);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0:
-			strncpy (v, _("Not defined"), sizeof (v));
-			break;
-		case 1:
-			strncpy (v, _("Manual"), sizeof (v));
-			break;
-		case 2:
-			strncpy (v, _("Normal program"), sizeof (v));
-			break;
-		case 3:
-			strncpy (v, _("Aperture priority"), sizeof (v));
-			break;
-		case 4:
-			strncpy (v, _("Shutter priority"), sizeof (v));
-			break;
+		case 0: strncpy (v, _("Not defined"), sizeof (v)); break;
+		case 1: strncpy (v, _("Manual"), sizeof (v)); break;
+		case 2: strncpy (v, _("Normal program"), sizeof (v)); break;
+		case 3: strncpy (v, _("Aperture priority"), sizeof (v)); break;
+		case 4: strncpy (v, _("Shutter priority"), sizeof (v)); break;
 		case 5:
 			strncpy (v, _("Creative program (biased toward "
 				      "depth of field)"), sizeof (v));
@@ -566,9 +468,7 @@ exif_entry_get_value (ExifEntry *e)
 				      "photos with the background in focus"),
 				 sizeof (v));
 			break;
-		default:
-			snprintf (v, sizeof (v), "%i", v_short);
-			break;
+		default: snprintf (v, sizeof (v), "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_EXPOSURE_BIAS_VALUE:
