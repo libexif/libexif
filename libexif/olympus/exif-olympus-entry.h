@@ -45,8 +45,10 @@ struct _ExifOlympusEntry {
 
 /* Lifecycle */
 ExifOlympusEntry *exif_olympus_entry_new   (void);
-void            exif_olympus_entry_ref   (ExifOlympusEntry *entry);
-void            exif_olympus_entry_unref (ExifOlympusEntry *entry);
-void            exif_olympus_entry_free  (ExifOlympusEntry *entry);
+void              exif_olympus_entry_ref   (ExifOlympusEntry *entry);
+void              exif_olympus_entry_unref (ExifOlympusEntry *entry);
+void              exif_olympus_entry_free  (ExifOlympusEntry *entry);
+
+char *exif_olympus_entry_get_value (ExifOlympusEntry *entry);
 
 #endif /* __EXIF_OLYMPUS_ENTRY_H__ */

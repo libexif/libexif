@@ -59,6 +59,29 @@ exif_olympus_note_add_entry (ExifOlympusNote *note, ExifOlympusEntry *entry)
 	note->count++;
 }
 
+static char **
+exif_olympus_note_get_value (ExifNote *n)
+{
+	char **value = NULL, *v;
+	unsigned int i, count;
+
+	ExifOlympusNote *note = (ExifOlympusNote *) n;
+
+	for (count = i = 0; i < note->count; i++) {
+		v = exif_olympus_entry_get_value (note->entries[i]);
+		if (v) {
+			value = realloc (value, sizeof (char *) *
+				(count ? count + 2 : 2));
+			if (!value)
+				return (NULL);
+			value[count++] = v;
+			value[count] = NULL;
+		}
+	}
+
+	return (value);
+}
+
 static void
 exif_olympus_note_load_data_entry (ExifOlympusNote *note,
 				   ExifOlympusEntry *entry,
@@ -159,6 +182,7 @@ exif_olympus_note_new (void)
 	exif_note_construct ((ExifNote *) note);
 	((ExifNote *) note)->methods.free = exif_olympus_note_free;
 	((ExifNote *) note)->methods.load_data = exif_olympus_note_load_data;
+	((ExifNote *) note)->methods.get_value = exif_olympus_note_get_value;
 
 	return ((ExifNote *) note);
 }

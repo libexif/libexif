@@ -146,7 +146,7 @@ ExifByteOrder
 exif_note_get_byte_order (ExifNote *note)
 {
 	if (!note || !note->priv)
-		return;
+		return (0);
 
 	return (note->priv->order);
 }
