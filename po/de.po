@@ -1,5 +1,5 @@
 # German Translation
-# Copyright (C) YEAR Free Software Foundation, Inc.
+# Copyright © YEAR Free Software Foundation, Inc.
 # Lutz Müller <lutz@users.sourceforge.net>, 2002.
 #
 msgid ""

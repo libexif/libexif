@@ -1,6 +1,6 @@
 /*
 
-Copyright (c) 2000 Matthias Wandel, The PHP Group, Curtis Galloway
+Copyright © 2000 Matthias Wandel, The PHP Group, Curtis Galloway
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

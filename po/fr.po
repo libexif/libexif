@@ -1,5 +1,5 @@
 # LIBEXIF PO FILE
-# Copyright (C) 2002 Free Software Foundation, Inc.
+# Copyright © 2002 Free Software Foundation, Inc.
 # This file is distributed under the same license as the PACKAGE package.
 # Arnaud Launay <asl@launay.org>, 2002.
 #
