@@ -26,6 +26,8 @@
 
 #include <libjpeg/jpeg-marker.h>
 
+#include <libexif/exif-utils.h>
+
 #undef MAX
 #define MAX(a, b)  (((a) > (b)) ? (a) : (b))
 
@@ -67,6 +69,11 @@ exif_data_new (void)
 		exif_data_free (data);
 		return (NULL);
 	}
+	data->ifd0->parent                 = data;
+	data->ifd1->parent                 = data;
+	data->ifd_exif->parent             = data;
+	data->ifd_gps->parent              = data;
+	data->ifd_interoperability->parent = data;
 
 	return (data);
 }
@@ -88,7 +95,6 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 {
 	unsigned int s, doff;
 
-	entry->order = data->priv->order;
 	entry->tag        = exif_get_short (d + offset + 0, data->priv->order);
 	entry->format     = exif_get_short (d + offset + 2, data->priv->order);
 	entry->components = exif_get_long  (d + offset + 4, data->priv->order);
@@ -180,8 +186,6 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 	ExifEntry *entry;
 	unsigned int i;
 	ExifTag tag;
-
-	ifd->order = data->priv->order;
 
 	/* Read the number of entries */
 	n = exif_get_short (d + offset, data->priv->order);
@@ -659,4 +663,123 @@ exif_data_dump (ExifData *data)
 				data->data[data->size - 1]);
 		}
 	}
+}
+
+ExifByteOrder
+exif_data_get_byte_order (ExifData *data)
+{
+	if (!data)
+		return (0);
+
+	return (data->priv->order);
+}
+
+void
+exif_data_foreach_content (ExifData *data, ExifDataForeachContentFunc func,
+			   void *user_data)
+{
+	func (data->ifd0,                 user_data);
+	func (data->ifd1,                 user_data);
+	func (data->ifd_exif,             user_data);
+	func (data->ifd_gps,              user_data);
+	func (data->ifd_interoperability, user_data);
+}
+
+typedef struct _ByteOrderChangeData ByteOrderChangeData;
+struct _ByteOrderChangeData {
+	ExifByteOrder old, new;
+};
+
+static void
+entry_set_byte_order (ExifEntry *e, void *data)
+{
+	ByteOrderChangeData *d = data;
+	unsigned int i;
+	ExifShort s;
+	ExifLong l;
+	ExifSLong sl;
+	ExifRational r;
+	ExifSRational sr;
+
+	if (!e)
+		return;
+
+	switch (e->format) {
+	case EXIF_FORMAT_SHORT:
+		for (i = 0; i < e->components; i++) {
+			s = exif_get_short (e->data +
+				(i * exif_format_get_size (e->format)),
+				d->old);
+			exif_set_short (e->data + 
+				(i * exif_format_get_size (e->format)),
+				d->new, s);
+		}
+		break;
+	case EXIF_FORMAT_LONG:
+		for (i = 0; i < e->components; i++) {
+			l = exif_get_long (e->data +
+				(i * exif_format_get_size (e->format)),
+				d->old);
+			exif_set_long (e->data +
+				(i * exif_format_get_size (e->format)),
+				d->new, l);
+		}
+		break;
+	case EXIF_FORMAT_RATIONAL:
+		for (i = 0; i < e->components; i++) {
+			r = exif_get_rational (e->data +
+				(i * exif_format_get_size (e->format)),
+				d->old);
+			exif_set_rational (e->data +
+				(i * exif_format_get_size (e->format)),
+				d->new, r);
+		}
+		break;
+	case EXIF_FORMAT_SLONG:
+		for (i = 0; i < e->components; i++) {
+			sl = exif_get_slong (e->data +
+				(i * exif_format_get_size (e->format)),
+				d->old);
+			exif_set_slong (e->data +
+				(i * exif_format_get_size (e->format)),
+				d->new, sl);
+		}
+		break;
+	case EXIF_FORMAT_SRATIONAL:
+		for (i = 0; i < e->components; i++) {
+			sr = exif_get_srational (e->data +
+				(i * exif_format_get_size (e->format)),
+				d->old);
+			exif_set_srational (e->data +
+				(i * exif_format_get_size (e->format)),
+				d->new, sr);
+		}
+		break;
+	case EXIF_FORMAT_UNDEFINED:
+	case EXIF_FORMAT_BYTE:
+	case EXIF_FORMAT_ASCII:
+	default:
+		/* Nothing here. */
+		break;
+	}
+}
+
+static void
+content_set_byte_order (ExifContent *content, void *data)
+{
+	exif_content_foreach_entry (content, entry_set_byte_order, data);
+}
+
+void
+exif_data_set_byte_order (ExifData *data, ExifByteOrder order)
+{
+	ByteOrderChangeData d;
+
+	if (!data || (order == data->priv->order))
+		return;
+
+	d.old = data->priv->order;
+	d.new = order;
+	exif_data_foreach_content (data, content_set_byte_order, &d);
+	data->priv->order = order;
 }

@@ -1,0 +1,43 @@
+				    libexif
+				    -------
+
+DESCRIPTION
+-----------
+
+libexif is a library for parsing, editing, and saving EXIF data. It is
+intended to replace lots of redundant implementations in command-line
+utilities and programs with GUIs.
+
+FEATURES
+--------
+
+libexif supports parsing, editing and saving of EXIF data. In addition, it
+has gettext support. All EXIF tags described in EXIF standard 2.1
+are supported.
+
+REQUIREMENTS
+------------
+
+libexif is written in plain C and does not require any additional library.
+
+FRONTENDS
+---------
+
+Right now, I know of the following frontends to libexif:
+ - exif:    A small command-line utility to show EXIF information in JPEG files
+            (http://www.sourceforge.net/projects/libexif).
+ - gexif:   A GTK+ frontend for editing EXIF data
+            (http://www.sourceforge.net/projects/libexif).
+ - gphoto2: A command-line frontend to libgphoto2, a library to access a 
+            wide range of digital cameras (http://www.gphoto.org).
+ - gtkam:   A GTK+ frontend to libgphoto2 (http://www.topfrose.de).
+If you would like to migrate your program to use libexif or add EXIF support
+to it, don't hesitate to contact the authors.
+
+AUTHORS
+-------
+
+libexif has originally been written by Curtis Galloway
+<curtisg@users.sourceforge.net>. Because of the original design not
+supporting editing and saving, Lutz Müller <lutz@users.sourceforge.net>
+rewrote libexif from scratch.

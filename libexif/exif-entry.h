@@ -21,8 +21,6 @@
 #ifndef __EXIF_ENTRY_H__
 #define __EXIF_ENTRY_H__
 
-#include <libexif/exif-utils.h>
-
 typedef struct _ExifEntry        ExifEntry;
 typedef struct _ExifEntryPrivate ExifEntryPrivate;
 
@@ -30,7 +28,6 @@ typedef struct _ExifEntryPrivate ExifEntryPrivate;
 #include <libexif/exif-format.h>
 
 struct _ExifEntry {
-	ExifByteOrder order;
         ExifTag tag;
         ExifFormat format;
         unsigned long components;

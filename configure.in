@@ -1,10 +1,24 @@
 AC_INIT(libexif/exif-data.h)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(libexif, 0.5)
+AM_INIT_AUTOMAKE(libexif, 0.5.0)
 AM_MAINTAINER_MODE
 
-LIBEXIF_VERSION_INFO=0:5:0
-AC_SUBST(LIBEXIF_VERSION_INFO)
+dnl ---------------------------------------------------------------------------
+dnl Versioning (libexif-AGE.CURRENT.REVISION):
+dnl  - AGE (Micro):      Increment if any interfaces have been added; set to 0
+dnl		         if any interfaces have been removed. Removal has 
+dnl                      precedence over adding, so set to 0 if both happened.
+dnl  - REVISION (Minor): Increment any time the source changes; set to 
+dnl			 0 if you incremented CURRENT.
+dnl  - CURRENT (Major):  Increment if the interface has additions, changes,
+dnl                      removals.
+dnl ---------------------------------------------------------------------------
+LIBEXIF_AGE=0
+LIBEXIF_REVISION=0
+LIBEXIF_CURRENT=5
+AC_SUBST(LIBEXIF_AGE)
+AC_SUBST(LIBEXIF_REVISION)
+AC_SUBST(LIBEXIF_CURRENT)
 
 AM_PROG_LIBTOOL
 

@@ -26,13 +26,15 @@ typedef struct _ExifContentPrivate ExifContentPrivate;
 
 #include <libexif/exif-tag.h>
 #include <libexif/exif-entry.h>
-#include <libexif/exif-utils.h>
+#include <libexif/exif-data.h>
 
-struct _ExifContent {
-	ExifByteOrder order;
-
+struct _ExifContent
+{
         ExifEntry **entries;
         unsigned int count;
+
+	/* Data containing this content */
+	ExifData *parent;
 
 	ExifContentPrivate *priv;
 };
@@ -43,9 +45,14 @@ void         exif_content_ref   (ExifContent *content);
 void         exif_content_unref (ExifContent *content);
 void         exif_content_free  (ExifContent *content);
 
-void         exif_content_add_entry    (ExifContent *content, ExifEntry *e);
-void         exif_content_remove_entry (ExifContent *content, ExifEntry *e);
-ExifEntry   *exif_content_get_entry    (ExifContent *content, ExifTag tag);
+void         exif_content_add_entry     (ExifContent *content, ExifEntry *e);
+void         exif_content_remove_entry  (ExifContent *content, ExifEntry *e);
+ExifEntry   *exif_content_get_entry     (ExifContent *content, ExifTag tag);
+
+typedef void (* ExifContentForeachEntryFunc) (ExifEntry *, void *user_data);
+void         exif_content_foreach_entry (ExifContent *content,
+					 ExifContentForeachEntryFunc func,
+					 void *user_data);
 
 void         exif_content_dump  (ExifContent *content, unsigned int indent);
 

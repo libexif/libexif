@@ -22,10 +22,12 @@
 #define __EXIF_DATA_H__
 
 #include <libexif/exif-tag.h>
-#include <libexif/exif-content.h>
+#include <libexif/exif-byte-order.h>
 
 typedef struct _ExifData        ExifData;
 typedef struct _ExifDataPrivate ExifDataPrivate;
+
+#include <libexif/exif-content.h>
 
 struct _ExifData
 {
@@ -54,6 +56,14 @@ void      exif_data_save_data (ExifData *data, unsigned char **d,
 void      exif_data_ref   (ExifData *data);
 void      exif_data_unref (ExifData *data);
 void      exif_data_free  (ExifData *data);
+
+ExifByteOrder exif_data_get_byte_order  (ExifData *data);
+void          exif_data_set_byte_order  (ExifData *data, ExifByteOrder order);
+
+typedef void (* ExifDataForeachContentFunc) (ExifContent *, void *user_data);
+void          exif_data_foreach_content (ExifData *data,
+					 ExifDataForeachContentFunc func,
+					 void *user_data);
 
 void      exif_data_dump  (ExifData *data);
 

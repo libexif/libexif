@@ -148,3 +148,16 @@ exif_content_get_entry (ExifContent *content, ExifTag tag)
 			return (content->entries[i]);
 	return (NULL);
 }
+
+void
+exif_content_foreach_entry (ExifContent *content,
+			    ExifContentForeachEntryFunc func, void *data)
+{
+	unsigned int i;
+
+	if (!content || !func)
+		return;
+
+	for (i = 0; i < content->count; i++)
+		func (content->entries[i], data);
+}

@@ -1,3 +1,11 @@
+2002-02-13  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libexif/configure.in: Introduce proper versionning.
+
+2002-02-13  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libexif: There's only one ByteOrder per ExifData.
+
 2002-02-12  Lutz Müller <lutz@users.sourceforge.net>
 
 	* libexif/exif-entry.c: More initialization.

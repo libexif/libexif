@@ -21,11 +21,7 @@
 #ifndef __EXIF_UTILS_H__
 #define __EXIF_UTILS_H__
 
-typedef enum _ExifByteOrder ExifByteOrder;
-enum _ExifByteOrder {
-        EXIF_BYTE_ORDER_MOTOROLA,
-        EXIF_BYTE_ORDER_INTEL
-};
+#include <libexif/exif-byte-order.h>
 
 typedef char		ExifByte;          /* 1 byte  */
 typedef char *		ExifAscii;
