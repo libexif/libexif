@@ -8,8 +8,8 @@ noinst_PROGRAMS =	\
 test_tree_LDADD =		\
 	../libjpeg/libjpeg.la	\
 	../libexif/libexif.la	\
-	../intl/libintl.a
+	$(INTLLIBS)
 
 test_mem_LDADD =		\
 	../libexif/libexif.la	\
-	../intl/libintl.a
+	$(INTLLIBS)
