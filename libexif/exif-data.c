@@ -143,13 +143,15 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 		return;
 
 	entry->data = exif_data_alloc (data, s);
-	if (!entry->data) return;
-	entry->size = s;
-	memcpy (entry->data, d + doff, s);
+	if (entry->data) {
+		entry->size = s;
+		memcpy (entry->data, d + doff, s);
+	}
 
 	/* If this is the MakerNote, remember the offset */
 	if (entry->tag == EXIF_TAG_MAKER_NOTE) {
-		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+		if (entry->size > 6) exif_log (data->priv->log,
+			  EXIF_LOG_CODE_DEBUG, "ExifData",
 		          "MakerNote found (%02x %02x %02x %02x "
 			  "%02x %02x %02x...).",
 			  entry->data[0], entry->data[1], entry->data[2],
@@ -157,6 +159,8 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 			  entry->data[6]);
 		data->priv->offset_mnote = doff;
 	}
+
+	exif_entry_fix (entry);
 }
 
 static void

@@ -189,7 +189,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		if ((vl & 0xF0F0F0F0) == 0x30303030) {
 			memcpy (v, entry->data, MIN (maxlen, 4));
 		} else {
-			snprintf (v, maxlen, "%04lx", vl);
+			snprintf (v, maxlen, "%04lx", (long unsigned int) vl);
 		}
 		break;
 	case MNOTE_NIKON_TAG_ISO:
@@ -232,7 +232,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
                 CF (entry->format, EXIF_FORMAT_LONG, v, maxlen);
                 CC (entry->components, 1, v, maxlen);
                 vl =  exif_get_long (entry->data, entry->order);
-                snprintf (v, maxlen, "%lu",  vl );
+                snprintf (v, maxlen, "%lu",  (long unsigned int) vl );
                 break;
 	case MNOTE_NIKON_TAG_WHITEBALANCEFINE:
                 CF (entry->format, EXIF_FORMAT_SSHORT, v, maxlen);
@@ -387,10 +387,10 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			strncpy (v, _("panorama"), maxlen);
 			break;
 		default:
-			snprintf (v, maxlen, _("%li"), vl);
+			snprintf (v, maxlen, _("%li"), (long int) vl);
 		}
 		vl = exif_get_long (entry->data + 4, entry->order);
-		snprintf (buf, sizeof (buf), "/%li/", vl);
+		snprintf (buf, sizeof (buf), "/%li/", (long int) vl);
 		strncat (v, buf, maxlen - strlen (v));
 		vl = exif_get_long (entry->data + 4, entry->order);
 		switch (vl) {
@@ -407,7 +407,8 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			strncat (v, _("top to bottom"), maxlen - strlen (v));
 			break;
 		default:
-			snprintf (buf, sizeof (buf), _("%li"), vl);
+			snprintf (buf, sizeof (buf), _("%li"),
+				  (long int) vl);
 			strncat (v, buf, maxlen - strlen (v));
 		}
 		break;
@@ -520,12 +521,12 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			break;
 		case EXIF_FORMAT_LONG:
 			vl = exif_get_long (entry->data, entry->order);
-			snprintf (v, maxlen, "%li", vl);
+			snprintf (v, maxlen, "%li", (long int) vl);
 			break;
 		case EXIF_FORMAT_UNDEFINED:
 		default:
 			snprintf (v, maxlen, _("%li bytes unknown data: "),
-				  entry->size);
+				  (long int) entry->size);
 			for (i = 0; i < (int)entry->size; i++) {
 				sprintf (buf, "%02x", entry->data[i]);
 				strncat (v, buf, maxlen - strlen (v));

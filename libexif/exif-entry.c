@@ -76,6 +76,25 @@ exif_entry_alloc (ExifEntry *e, unsigned int i)
 	return NULL;
 }
 
+static void *
+exif_entry_realloc (ExifEntry *e, void *d_orig, unsigned int i)
+{
+	void *d;
+	ExifLog *l = NULL;
+
+	if (!i) { free (d_orig); return NULL; }
+
+	/* This is the only call to realloc in this file. */
+	d = realloc (d_orig, i);
+	if (d) return d;
+
+	if (e && e->parent && e->parent->parent)
+		l = exif_data_get_log (e->parent->parent);
+	EXIF_LOG_NO_MEMORY (l, "ExifEntry", i);
+
+	return NULL;
+}
+
 ExifEntry *
 exif_entry_new (void)
 {
@@ -120,6 +139,95 @@ exif_entry_free (ExifEntry *e)
 		free (e->data);
 	free (e->priv);
 	free (e);
+}
+
+void
+exif_entry_fix (ExifEntry *e)
+{
+	unsigned int i;
+
+	if (!e) return;
+
+	switch (e->tag) {
+	case EXIF_TAG_USER_COMMENT:
+
+		/* Format needs to be UNDEFINED. */
+		if (e->format != EXIF_FORMAT_UNDEFINED) {
+			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
+				"Tag 'UserComment' had invalid format '%s'. "
+				"Format has been set to 'undefined'.",
+				exif_format_get_name (e->format));
+			e->format = EXIF_FORMAT_UNDEFINED;
+		}
+
+		/* Some cameras fill the tag with '\0' or ' '. */
+		for (i = 0; i < e->size &&
+			    (!e->data[i] || (e->data[i] == ' ')); i++);
+		if (i && (i == e->size)) {
+			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
+				"Tag 'UserComment' contained unnecessary "
+				"data which has been removed.");
+			free (e->data);
+			e->data = NULL;
+			e->size = 0;
+			e->components = 0;
+		}
+
+		/* There need to be at least 8 bytes. */
+		if (e->size < 8) {
+			e->data = exif_entry_realloc (e, e->data, 8 + e->size);
+			if (!e->data) {
+				e->size = 0;
+				e->components = 0;
+				return;
+			}
+
+			/* Assume ASCII */
+			memmove (e->data + 8, e->data, e->size);
+			memcpy (e->data, "ASCII\0\0\0", 8);
+			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
+				"Tag 'UserComment' has been expanded to at "
+				"least 8 bytes in order to follow the "
+				"specification.");
+			break;
+		}
+
+		/*
+		 * If the first 8 bytes are empty and real data starts
+		 * afterwards, let's assume ASCII and claim the 8 first
+		 * bytes for the format specifyer.
+		 */
+		if (i >= 8) {
+			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
+				"Tag 'UserComment' did not start with "
+				"format identifyer. This has been fixed.");
+			memcpy (e->data, "ASCII\0\0\0", 8);
+		}
+
+		/* First 8 bytes need to follow the specification. */
+		if (memcmp (e->data, "ASCII\0\0\0"  , 8) &&
+		    memcmp (e->data, "UNICODE\0"    , 8) &&
+		    memcmp (e->data, "JIS\0\0\0\0\0", 8)) {
+			e->data = exif_entry_realloc (e, e->data, 8 + e->size);
+			if (!e->data) {
+				e->size = 0;
+				e->components = 0;
+				break;
+			}
+
+			/* Assume ASCII */
+			memmove (e->data + 8, e->data, e->size);
+			memcpy (e->data, "ASCII\0\0\0", 8);
+			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
+				"Tag 'UserComment' did not start with "
+				"format identifyer. This has been fixed.");
+			break;
+		}
+
+		break;
+	default:
+		break;
+	}
 }
 
 void

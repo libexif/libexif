@@ -52,6 +52,7 @@ void        exif_entry_unref (ExifEntry *entry);
 void        exif_entry_free  (ExifEntry *entry);
 
 void        exif_entry_initialize (ExifEntry *entry, ExifTag tag);
+void        exif_entry_fix        (ExifEntry *entry);
 
 /* For your convenience */
 const char *exif_entry_get_value (ExifEntry *entry, char *val,

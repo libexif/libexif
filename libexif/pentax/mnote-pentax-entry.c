@@ -166,7 +166,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		CF (entry->format, EXIF_FORMAT_LONG, val, maxlen);
 		CC (entry->components, 1, val, maxlen);
 		vl = exif_get_long (entry->data, entry->order);
-		snprintf (val, maxlen, "%li", vl);
+		snprintf (val, maxlen, "%li", (long int) vl);
 		break;
 	case MNOTE_PENTAX_TAG_PRINTIM:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
@@ -195,7 +195,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		  break;
 		case EXIF_FORMAT_LONG:
 		  vl = exif_get_long (entry->data, entry->order);
-		  snprintf (val, maxlen, "%li", vl);
+		  snprintf (val, maxlen, "%li", (long int) vl);
 		  break;
 		case EXIF_FORMAT_UNDEFINED:
 		default:
