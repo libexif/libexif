@@ -63,7 +63,7 @@ void
 exif_log_free (ExifLog *log)
 {
 	if (!log) return;
-	memset (log, 0, sizeof (log));
+	memset (log, 0, sizeof (ExifLog));
 	free (log);
 }
 
