@@ -1,3 +1,9 @@
+2003-05-01  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Suggestion by Gernot Jander <gernot@bigpond.com>:
+
+	* libexif/exif-entry.c: Ignore "   " in EXIF_TAG_COPYRIGHT.
+
 2003-04-29  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-loader.c: Set ref_count to 1 on exif_loader_new.

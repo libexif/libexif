@@ -180,7 +180,7 @@ exif_entry_get_value (ExifEntry *e)
 			strncpy (v, "Exif Version 2.1", sizeof (v) - 1);
 		else if (!memcmp (e->data, "0220", 4))
 			strncpy (v, "Exif Version 2.2", sizeof (v) - 1);
-		else strncpy (v, "Unknown Exif Version", sizeof (v) - 1);
+		else strncpy (v, _("Unknown Exif Version"), sizeof (v) - 1);
 		break;
 	case EXIF_TAG_FLASH_PIX_VERSION:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
@@ -188,22 +188,35 @@ exif_entry_get_value (ExifEntry *e)
 		if (!memcmp (e->data, "0100", 4))
 			strncpy (v, "FlashPix Version 1.0", sizeof (v));
 		else
-			strncpy (v, "Unknown FlashPix Version", sizeof (v));
+			strncpy (v, _("Unknown FlashPix Version"), sizeof (v));
 		break;
 	case EXIF_TAG_COPYRIGHT:
 		CF (e->format, EXIF_FORMAT_ASCII, v);
-		if (e->size && e->data)
+
+		/* 
+		 * First part: Photographer.
+		 * Some cameras store a string like "   " here. Ignore it. 
+		 */
+		if (e->size && e->data &&
+		    (strspn (e->data, " ") != strlen ((char *) e->data)))
 			strncpy (v, e->data, MIN (sizeof (v) - 1, e->size));
 		else
-			strncpy (v, "[None]", sizeof (v) - 1);
-		strncat (v, " (Photographer) - ", sizeof (v) - 1);
+			strncpy (v, _("[None]"), sizeof (v) - 1);
+		strncat (v, " ", sizeof (v) - 1);
+		strncat (v, _("(Photographer)"), sizeof (v) - 1);
+
+		/* Second part: Editor. */
+		strncat (v, " - ", sizeof (v) - 1);
 		if (e->size && e->data &&
-		    (strlen ((char *) e->data) + 1 < e->size))
+		    (strlen ((char *) e->data) + 1 < e->size) &&
+		    (strspn (e->data, " ") != strlen ((char *) e->data)))
 			strncat (v, e->data + strlen (e->data) + 1,
 				 sizeof (v) - 1);
 		else
-			strncat (v, "[None]", sizeof (v));
-		strncat (v, " (Editor)", sizeof (v));
+			strncat (v, _("[None]"), sizeof (v) - 1);
+		strncat (v, " ", sizeof (v) - 1);
+		strncat (v, _("(Editor)"), sizeof (v) - 1);
+
 		break;
 	case EXIF_TAG_FNUMBER:
 		CF (e->format, EXIF_FORMAT_RATIONAL, v);
