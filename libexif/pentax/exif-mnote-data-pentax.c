@@ -33,6 +33,7 @@
 static void
 exif_mnote_data_pentax_clear (ExifMnoteDataPentax *n)
 {
+	ExifMnoteData *d = (ExifMnoteData *) n;
 	unsigned int i;
 
 	if (!n) return;
@@ -40,10 +41,10 @@ exif_mnote_data_pentax_clear (ExifMnoteDataPentax *n)
 	if (n->entries) {
 		for (i = 0; i < n->count; i++)
 			if (n->entries[i].data) {
-				free (n->entries[i].data);
+				exif_mem_free (d->mem, n->entries[i].data);
 				n->entries[i].data = NULL;
 			}
-		free (n->entries);
+		exif_mem_free (d->mem, n->entries);
 		n->entries = NULL;
 		n->count = 0;
 	}
@@ -78,9 +79,8 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 	/* Number of entries */
 	if (buf_size < 2) return;
 	c = exif_get_short (buf + 6 + n->offset, n->order);
-	n->entries = malloc (sizeof (MnotePentaxEntry) * c);
+	n->entries = exif_mem_alloc (en->mem, sizeof (MnotePentaxEntry) * c);
 	if (!n->entries) return;
-	memset (n->entries, 0, sizeof (MnotePentaxEntry) * c);
 
 	for (i = 0; i < c; i++) {
 	    o = 6 + 2 + n->offset + 12 * i;
@@ -104,9 +104,8 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
             if (o + s > buf_size) return;
                                                                                 
             /* Sanity check */
-            n->entries[i].data = malloc (sizeof (char) * s);
+            n->entries[i].data = exif_mem_alloc (en->mem, sizeof (char) * s);
             if (!n->entries[i].data) return;
-            memset (n->entries[i].data, 0, sizeof (char) * s);
             n->entries[i].size = s;
             memcpy (n->entries[i].data, buf + o, s);
         }
@@ -234,14 +233,16 @@ exif_mnote_data_pentax_set_byte_order (ExifMnoteData *d, ExifByteOrder o)
 }
 
 ExifMnoteData *
-exif_mnote_data_pentax_new (void)
+exif_mnote_data_pentax_new (ExifMem *mem)
 {
 	ExifMnoteData *d;
 
-	d = calloc (1, sizeof (ExifMnoteDataPentax));
+	if (!mem) return NULL;
+
+	d = exif_mem_alloc (mem, sizeof (ExifMnoteDataPentax));
 	if (!d) return NULL;
 
-	exif_mnote_data_construct (d);
+	exif_mnote_data_construct (d, mem);
 
 	/* Set up function pointers */
 	d->methods.free            = exif_mnote_data_pentax_free;

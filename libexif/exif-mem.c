@@ -9,19 +9,19 @@ struct _ExifMem {
 	ExifMemFreeFunc free_func;
 };
 
-void *
+static void *
 exif_mem_alloc_func (ExifLong ds)
 {
 	return calloc ((size_t) ds, 1);
 }
 
-void *
+static void *
 exif_mem_realloc_func (void *d, ExifLong ds)
 {
 	return realloc (d, (size_t) ds);
 }
 
-void
+static void
 exif_mem_free_func (void *d)
 {
 	free (d);
@@ -85,4 +85,11 @@ void *
 exif_mem_realloc (ExifMem *mem, void *d, ExifLong ds)
 {
 	return (mem && mem->realloc_func) ? mem->realloc_func (d, ds) : NULL;
+}
+
+ExifMem *
+exif_mem_new_default (void)
+{
+	return exif_mem_new (exif_mem_alloc_func, exif_mem_realloc_func,
+			     exif_mem_free_func);
 }

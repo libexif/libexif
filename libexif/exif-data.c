@@ -82,11 +82,9 @@ exif_data_get_mnote_data (ExifData *d)
 ExifData *
 exif_data_new (void)
 {
-	ExifData *d;
-	ExifMem *mem = exif_mem_new (exif_mem_alloc_func,
-			exif_mem_realloc_func, exif_mem_free_func);
+	ExifMem *mem = exif_mem_new_default ();
+	ExifData *d = exif_data_new_mem (mem);
 
-	d = exif_data_new_mem (mem);
 	exif_mem_unref (mem);
 
 	return d;
@@ -705,7 +703,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	    /* Olympus & Nikon */
 	    if ((e->size >= 5) && (!memcmp (e->data, "OLYMP", 5) ||
 				   !memcmp (e->data, "Nikon", 5))) {
-			data->priv->md = exif_mnote_data_olympus_new ();
+			data->priv->md = exif_mnote_data_olympus_new (data->priv->mem);
 	    } else {
 			char value[7];
 			em = exif_data_get_entry (data, EXIF_TAG_MAKE);
@@ -713,9 +711,9 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			if ((e->size >= 2) && (e->data[0] == 0x00)
 				    && (e->data[1] == 0x1b)) {
 				if (em && !strncasecmp (exif_entry_get_value (em, value, sizeof(value)), "Nikon", 5)) {
-					data->priv->md = exif_mnote_data_olympus_new ();
+					data->priv->md = exif_mnote_data_olympus_new (data->priv->mem);
 				} else {
-					data->priv->md = exif_mnote_data_pentax_new ();
+					data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
 				}
 
 			} else {
@@ -723,7 +721,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 				if (em) {
 		
 					if (!strcmp (exif_entry_get_value (em, value, sizeof(value)), "Canon"))
-						data->priv->md = exif_mnote_data_canon_new ();
+						data->priv->md = exif_mnote_data_canon_new (data->priv->mem);
 				}
 			}
 		}

@@ -25,6 +25,7 @@
 #include <libexif/exif-mnote-data.h>
 #include <libexif/exif-mnote-data-priv.h>
 #include <libexif/pentax/mnote-pentax-entry.h>
+#include <libexif/exif-mem.h>
 
 typedef struct _ExifMnoteDataPentax ExifMnoteDataPentax;
 
@@ -38,6 +39,6 @@ struct _ExifMnoteDataPentax {
 	unsigned int offset;
 };
 
-ExifMnoteData *exif_mnote_data_pentax_new (void);
+ExifMnoteData *exif_mnote_data_pentax_new (ExifMem *);
 
 #endif /* __EXIF_MNOTE_DATA_PENTAX_H__ */

@@ -43,9 +43,7 @@ void *exif_mem_realloc (ExifMem *, void *, ExifLong);
 void  exif_mem_free    (ExifMem *, void *);
 
 /* For your convenience */
-void *exif_mem_alloc_func   (ExifLong);
-void *exif_mem_realloc_func (void *, ExifLong);
-void  exif_mem_free_func    (void *);
+ExifMem *exif_mem_new_default (void);
 
 #ifdef __cplusplus
 }

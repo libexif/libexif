@@ -24,6 +24,7 @@
 #include <libexif/exif-mnote-data-priv.h>
 #include <libexif/olympus/mnote-olympus-entry.h>
 #include <libexif/exif-byte-order.h>
+#include <libexif/exif-mem.h>
 
 typedef struct _ExifMnoteDataOlympus ExifMnoteDataOlympus;
 
@@ -39,6 +40,6 @@ struct _ExifMnoteDataOlympus {
 	int version;
 };
 
-ExifMnoteData *exif_mnote_data_olympus_new (void);
+ExifMnoteData *exif_mnote_data_olympus_new (ExifMem *);
 
 #endif /* __MNOTE_OLYMPUS_CONTENT_H__ */

@@ -1,3 +1,7 @@
+2004-10-04  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/*: Finish replaceable memory-management.
+
 2004-10-02  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-mem.[c,h]: New. First attempt to offer out-sourcing

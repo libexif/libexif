@@ -25,14 +25,16 @@
 extern "C" {
 #endif /* __cplusplus */
 
+#include <libexif/exif-mem.h>
 #include <stdarg.h>
 
 typedef struct _ExifLog        ExifLog;
 
-ExifLog *exif_log_new   (void);
-void     exif_log_ref   (ExifLog *log);
-void     exif_log_unref (ExifLog *log);
-void     exif_log_free  (ExifLog *log);
+ExifLog *exif_log_new     (void);
+ExifLog *exif_log_new_mem (ExifMem *);
+void     exif_log_ref     (ExifLog *log);
+void     exif_log_unref   (ExifLog *log);
+void     exif_log_free    (ExifLog *log);
 
 typedef enum {
 	EXIF_LOG_CODE_NONE,

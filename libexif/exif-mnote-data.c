@@ -31,14 +31,17 @@ struct _ExifMnoteDataPriv
 };
 
 void
-exif_mnote_data_construct (ExifMnoteData *d)
+exif_mnote_data_construct (ExifMnoteData *d, ExifMem *mem)
 {
-	if (!d) return;
+	if (!d || !mem) return;
 	if (d->priv) return;
-	d->priv = malloc (sizeof (ExifMnoteDataPriv));
+	d->priv = exif_mem_alloc (mem, sizeof (ExifMnoteDataPriv));
 	if (!d->priv) return;
-	memset (d->priv, 0, sizeof (ExifMnoteDataPriv));
+
 	d->priv->ref_count = 1;
+
+	d->mem = mem;
+	exif_mem_ref (mem);
 }
 
 void
@@ -53,9 +56,11 @@ exif_mnote_data_free (ExifMnoteData *d)
 	if (!d) return;
 	if (d->priv) {
 		if (d->methods.free) d->methods.free (d);
-		free (d->priv);
+		exif_mem_free (d->mem, d->priv);
 		d->priv = NULL;
 	}
+	exif_mem_unref (d->mem);
+	d->mem = NULL;
 }
 
 void

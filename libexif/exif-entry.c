@@ -98,11 +98,9 @@ exif_entry_realloc (ExifEntry *e, void *d_orig, unsigned int i)
 ExifEntry *
 exif_entry_new (void)
 {
-	ExifEntry *e;
-	ExifMem *mem = exif_mem_new (exif_mem_alloc_func,
-			exif_mem_realloc_func, exif_mem_free_func);
+	ExifMem *mem = exif_mem_new_default ();
+	ExifEntry *e = exif_entry_new_mem (mem);
 
-	e = exif_entry_new_mem (mem);
 	exif_mem_unref (mem);
 
 	return e;

@@ -33,6 +33,7 @@
 static void
 exif_mnote_data_olympus_clear (ExifMnoteDataOlympus *n)
 {
+	ExifMnoteData *d = (ExifMnoteData *) n;
 	unsigned int i;
 
 	if (!n) return;
@@ -40,10 +41,10 @@ exif_mnote_data_olympus_clear (ExifMnoteDataOlympus *n)
 	if (n->entries) {
 		for (i = 0; i < n->count; i++)
 			if (n->entries[i].data) {
-				free (n->entries[i].data);
+				exif_mem_free (d->mem, n->entries[i].data);
 				n->entries[i].data = NULL;
 			}
-		free (n->entries);
+		exif_mem_free (d->mem, n->entries);
 		n->entries = NULL;
 		n->count = 0;
 	}
@@ -86,9 +87,8 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	*buf_size = 6 + 2 + 2 + n->count * 12;
 	switch (n->version) {
 	case 0: /* Olympus */
-		*buf = malloc (*buf_size);
+		*buf = exif_mem_alloc (ne->mem, *buf_size);
 		if (!*buf) return;
-		memset (*buf, 0, *buf_size);
 
 		/* Write the header and the number of entries. */
 		strcpy (*buf, "OLYMP");
@@ -101,9 +101,8 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		/* Fall through */
 	case 2: /* Nikon v2 */
 		*buf_size += 8;
-		*buf = malloc (*buf_size);
+		*buf = exif_mem_alloc (ne->mem, *buf_size);
 		if (!*buf) return;
-		memset (*buf, 0, *buf_size);
 
 		/* Write the header and the number of entries. */
 		strcpy (*buf, "Nikon");
@@ -267,9 +266,8 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	/* Read the number of entries and remove old ones. */
 	exif_mnote_data_olympus_clear (n);
 
-	n->entries = malloc (sizeof (MnoteOlympusEntry) * c);
+	n->entries = exif_mem_alloc (en->mem, sizeof (MnoteOlympusEntry) * c);
 	if (!n->entries) return;
-	memset (n->entries, 0, sizeof (MnoteOlympusEntry) * c);
 
 	/* Parse the entries */
 	for (i = 0; i < c; i++) {
@@ -298,7 +296,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	    if (o + s > buf_size) continue;
 
 	    /* Sanity check */
-	    n->entries[i].data = malloc (s);
+	    n->entries[i].data = exif_mem_alloc (en->mem, s);
 	    if (!n->entries[i].data) continue;
 	    n->entries[i].size = s;
 	    memcpy (n->entries[i].data, buf + o, s);
@@ -428,14 +426,16 @@ exif_mnote_data_olympus_set_offset (ExifMnoteData *n, unsigned int o)
 }
 
 ExifMnoteData *
-exif_mnote_data_olympus_new (void)
+exif_mnote_data_olympus_new (ExifMem *mem)
 {
 	ExifMnoteData *d;
 
-	d = calloc (1, sizeof (ExifMnoteDataOlympus));
+	if (!mem) return NULL;
+	
+	d = exif_mem_alloc (mem, sizeof (ExifMnoteDataOlympus));
 	if (!d) return NULL;
 
-	exif_mnote_data_construct (d);
+	exif_mnote_data_construct (d, mem);
 
 	/* Set up function pointers */
 	d->methods.free            = exif_mnote_data_olympus_free;

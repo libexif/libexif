@@ -60,9 +60,12 @@ struct _ExifMnoteData
 
 	/* Logging */
 	ExifLog *log;
+
+	/* Memory management */
+	ExifMem *mem;
 };
 
-void exif_mnote_data_construct      (ExifMnoteData *);
+void exif_mnote_data_construct      (ExifMnoteData *, ExifMem *mem);
 void exif_mnote_data_set_byte_order (ExifMnoteData *, ExifByteOrder);
 void exif_mnote_data_set_offset     (ExifMnoteData *, unsigned int);
 

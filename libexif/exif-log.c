@@ -30,6 +30,8 @@ struct _ExifLog {
 
 	ExifLogFunc func;
 	void *data;
+
+	ExifMem *mem;
 };
 
 static struct {
@@ -65,14 +67,27 @@ exif_log_code_get_message (ExifLogCode code)
 }
 
 ExifLog *
-exif_log_new (void)
+exif_log_new_mem (ExifMem *mem)
 {
 	ExifLog *log;
 
-	log = malloc (sizeof (ExifLog));
+	log = exif_mem_alloc (mem, sizeof (ExifLog));
 	if (!log) return NULL;
-	memset (log, 0, sizeof (ExifLog));
 	log->ref_count = 1;
+
+	log->mem = mem;
+	exif_mem_ref (mem);
+
+	return log;
+}
+
+ExifLog *
+exif_log_new (void)
+{
+	ExifMem *mem = exif_mem_new_default ();
+	ExifLog *log = exif_log_new_mem (mem);
+
+	exif_mem_unref (mem);
 
 	return log;
 }
@@ -96,8 +111,8 @@ void
 exif_log_free (ExifLog *log)
 {
 	if (!log) return;
-	memset (log, 0, sizeof (ExifLog));
-	free (log);
+
+	exif_mem_free (log->mem, log);
 }
 
 void

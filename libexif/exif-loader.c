@@ -183,11 +183,9 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 ExifLoader *
 exif_loader_new (void)
 {
-	ExifLoader *l;
-	ExifMem *mem = exif_mem_new (exif_mem_alloc_func, 
-			exif_mem_realloc_func, exif_mem_free_func);
+	ExifMem *mem = exif_mem_new_default ();
+	ExifLoader *l = exif_loader_new_mem (mem);
 
-	l = exif_loader_new_mem (mem);
 	exif_mem_unref (mem);
 
 	return l;

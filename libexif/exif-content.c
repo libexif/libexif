@@ -39,11 +39,9 @@ struct _ExifContentPrivate
 ExifContent *
 exif_content_new (void)
 {
-	ExifContent *content;
-	ExifMem *mem = exif_mem_new (exif_mem_alloc_func,
-			exif_mem_realloc_func, exif_mem_free_func);
+	ExifMem *mem = exif_mem_new_default ();
+	ExifContent *content = exif_content_new_mem (mem);
 
-	content = exif_content_new_mem (mem);
 	exif_mem_unref (mem);
 
 	return content;

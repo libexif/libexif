@@ -24,6 +24,7 @@
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-mnote-data.h>
 #include <libexif/exif-mnote-data-priv.h>
+#include <libexif/exif-mem.h>
 
 typedef struct _ExifMnoteDataCanon ExifMnoteDataCanon;
 
@@ -39,6 +40,6 @@ struct _ExifMnoteDataCanon {
 	unsigned int offset;
 };
 
-ExifMnoteData *exif_mnote_data_canon_new (void);
+ExifMnoteData *exif_mnote_data_canon_new (ExifMem *mem);
 
 #endif /* __EXIF_MNOTE_DATA_CANON_H__ */
