@@ -176,11 +176,11 @@ exif_entry_fix (ExifEntry *e)
 				exif_set_short (
 					e->data + i *
 					exif_format_get_size (
-					EXIF_FORMAT_SHORT),
+					EXIF_FORMAT_SHORT), o,
 					(ExifShort) exif_get_long (
 					e->data + i *
 					exif_format_get_size (
-					EXIF_FORMAT_LONG), o), o);
+					EXIF_FORMAT_LONG), o));
 			e->format = EXIF_FORMAT_SHORT;
 			e->size = e->components *
 				exif_format_get_size (e->format);

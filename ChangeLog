@@ -1,3 +1,8 @@
+2004-10-01  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-entry.c: exif_entry_fix:
+	  exif_set_short: 2nd & 3rd args swapped
+
 2004-09-18  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-entry.c (exif_entry_fix): Enhance.
