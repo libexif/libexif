@@ -158,9 +158,9 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	 * already been allocated.
 	 */
 	exif_set_short (*d + 6 + offset + 0,
-			data->priv->order, e->tag);
+			data->priv->order, (ExifShort) e->tag);
 	exif_set_short (*d + 6 + offset + 2,
-			data->priv->order, e->format);
+			data->priv->order, (ExifShort) e->format);
 	exif_set_long  (*d + 6 + offset + 4,
 			data->priv->order, e->components);
 
@@ -353,7 +353,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 
 	/* Save the number of entries */
 	exif_set_short (*d + 6 + offset, data->priv->order,
-			ifd->count + n_ptr + n_thumb);
+			(ExifShort) (ifd->count + n_ptr + n_thumb));
 	offset += 2;
 
 #ifdef DEBUG
