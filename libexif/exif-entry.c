@@ -24,6 +24,7 @@
 #include "exif-utils.h"
 #include "i18n.h"
 
+#include <ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -386,24 +387,42 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
 
 		/*
-		 * According to the specification (V2.1, p 40),
+		 * Note that, according to the specification (V2.1, p 40),
 		 * the user comment field does not have to be 
 		 * NULL terminated.
 		 */
-		if (e->size < 8) break;
-		if (!memcmp (e->data, "ASCII\0\0\0", 8)) {
+		if ((e->size >= 8) && !memcmp (e->data, "ASCII\0\0\0", 8)) {
 			strncpy (val, e->data + 8, MIN (e->size - 8, maxlen));
 			break;
 		}
-		if (!memcmp (e->data, "UNICODE\0", 8)) {
+		if ((e->size >= 8) && !memcmp (e->data, "UNICODE\0", 8)) {
 			strncpy (val, _("Unsupported UNICODE string"), maxlen);
 			break;
 		}
-		if (!memcmp (e->data, "JIS\0\0\0\0\0", 8)) {
+		if ((e->size >= 8) && !memcmp (e->data, "JIS\0\0\0\0\0", 8)) {
 			strncpy (val, _("Unsupported JIS string"), maxlen);
 			break;
 		}
-		strncpy (val, e->data + 8, MIN (e->size - 8, maxlen));
+
+		/* Check if there is really some information in the tag. */
+		for (i = 0; (i < e->size) &&
+			    (!e->data[i] || (e->data[i] == ' ')); i++);
+		if (i == e->size) break;
+
+		/*
+		 * If we reach this point, the tag does not
+		 * comply with the standard and seems to contain data.
+		 * Print as much as possible.
+		 */
+		exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
+			"Tag UserComment does not comply "
+			"with standard but contains data.");
+		for (; (i < e->size)  && (strlen (val) < maxlen - 1); i++) {
+			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
+				"Byte at position %i: 0x%02x", i, e->data[i]);
+			val[strlen (val)] =
+				isprint (e->data[i]) ? e->data[i] : '.';
+		}
 		break;
 
 	case EXIF_TAG_EXIF_VERSION:
@@ -757,7 +776,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 				v_long = exif_get_long (e->data +
 					exif_format_get_size (e->format) *
 					i, o);
-				snprintf (b, sizeof (b), ", %li", v_long);
+				snprintf (b, sizeof (b), ", %li",
+					(long int) v_long);
 				strncat (val, b, maxlen);
 				maxlen -= strlen (b);
 				if ((signed)maxlen <= 0) break;
@@ -765,13 +785,14 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			break;
 		case EXIF_FORMAT_SLONG:
 			v_slong = exif_get_slong (e->data, o);
-			snprintf (val, maxlen, "%li", v_slong);
+			snprintf (val, maxlen, "%li", (long int) v_slong);
 			maxlen -= strlen (val);
 			for (i = 1; i < e->components; i++) {
 				v_long = exif_get_slong (e->data +
 					exif_format_get_size (e->format) *
 					i, o);
-				snprintf (b, sizeof (b), ", %li", v_long);
+				snprintf (b, sizeof (b), ", %li",
+						(long int) v_long);
 				strncat (val, b, maxlen);
 				maxlen -= strlen (b);
 				if ((signed)maxlen <= 0) break;
@@ -824,7 +845,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 	}
 
-	return strlen (val) ? val : NULL;
+	return val;
 }
 
 void

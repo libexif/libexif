@@ -1,3 +1,8 @@
+2004-09-17  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c: Kill some warnings. Read as much from the
+	  UserComment tag as possible (as suggested by Angela Wrobel).
+
 2004-09-15  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-loader.c: int -> unsigned int.
