@@ -1,3 +1,7 @@
+2003-10-15  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif.spec.in: Patches by Peter Bieringer <pb@bieringer.de>.
+
 2003-10-08  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c: Patch by Jan Patera <patera@pictview.com>.
