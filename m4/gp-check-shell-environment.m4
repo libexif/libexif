@@ -1,6 +1,9 @@
-dnl @synopsis GP_CHECK_SHELL_ENVIRONMENT()
+dnl @synopsis GP_CHECK_SHELL_ENVIRONMENT([SHOW-LOCALE-VARS])
 dnl 
 dnl Check that the shell environment is sane.
+dnl
+dnl If SHOW-LOCALE-VARS is set to [true], print all LC_* and LANG*
+dnl variables at configure time. (WARNING: This is not portable!)
 dnl
 dnl
 AC_DEFUN([GP_CHECK_SHELL_ENVIRONMENT],
@@ -35,8 +38,11 @@ else
 * Run this configure script using a better (i.e. POSIX compliant) shell.
 ])
 fi
-
+dnl
+m4_if([$1],[true],[dnl
 printenv | grep -E '^(LC_|LANG)'
+])dnl
 
+dnl
 ])dnl
 dnl
