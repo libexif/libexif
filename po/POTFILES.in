@@ -1,2 +1,3 @@
 libexif/exif-tag.c
 libexif/exif-entry.c
+libexif/exif-format.c

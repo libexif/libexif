@@ -42,6 +42,7 @@ AC_OUTPUT([
   libexif/Makefile
   libexif/canon/Makefile
   libexif/fuji/Makefile
+  libexif/hp/Makefile
   libexif/olympus/Makefile
   libjpeg/Makefile
   test/Makefile

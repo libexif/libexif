@@ -1,4 +1,4 @@
-SUBDIRS = canon fuji olympus
+SUBDIRS = canon fuji hp olympus
 
 INCLUDES =              				\
 	-DLIBEXIF_LOCALEDIR=\""$(datadir)/locale"\"	\
@@ -20,6 +20,7 @@ libexif_la_SOURCES =		\
 libexif_la_LIBADD = -lm			\
 	canon/libexif-canon.la		\
 	fuji/libexif-fuji.la		\
+	konica/libexif-konica.la	\
 	olympus/libexif-olympus.la
 
 libexifincludedir = $(includedir)/libexif

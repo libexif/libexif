@@ -78,7 +78,7 @@ static struct {
 	 N_("Photometric Interpretation"),
 	 N_("The pixel composition. In JPEG compressed data a JPEG "
 	    "marker is used instead of this tag.")},
-	{EXIF_TAG_FILL_ORDER, "FillOrder", "FillOrder", ""},
+	{EXIF_TAG_FILL_ORDER, "FillOrder", N_("Fill Order"), ""},
 	{EXIF_TAG_DOCUMENT_NAME, "DocumentName", N_("Document Name"), ""},
 	{EXIF_TAG_IMAGE_DESCRIPTION, "ImageDescription",
 	 N_("Image Description"),
@@ -374,7 +374,7 @@ static struct {
 	{EXIF_TAG_FOCAL_LENGTH, "FocalLength", N_("Focal Length"),
 	 N_("The actual focal length of the lens, in mm. Conversion is not "
 	    "made to the focal length of a 35 mm film camera.")},
-	{EXIF_TAG_MAKER_NOTE, "MakerNote", "MakerNote",
+	{EXIF_TAG_MAKER_NOTE, "MakerNote", N_("Maker Note"),
 	 N_("A tag for manufacturers of Exif writers to record any desired "
 	    "information. The contents are up to the manufacturer.")},
 	{EXIF_TAG_USER_COMMENT, "UserComment", N_("User Comment"),
@@ -510,7 +510,7 @@ static struct {
 	    "processing as per the <Rotation> tag. The first value "
 	    "indicates the X column number and second indicates "
 	    "the Y row number.")},
-	{EXIF_TAG_EXPOSURE_INDEX, "ExposureIndex", "",
+	{EXIF_TAG_EXPOSURE_INDEX, "ExposureIndex", N_("Exposure index"),
 	 N_("Indicates the exposure index selected on the camera or "
 	    "input device at the time the image is captured.")},
 	{EXIF_TAG_SENSING_METHOD, "SensingMethod", N_("Sensing Method"),
@@ -594,8 +594,6 @@ exif_tag_get_name (ExifTag tag)
 {
 	unsigned int i;
 
-	bindtextdomain (PACKAGE, LIBEXIF_LOCALEDIR);
-
 	for (i = 0; ExifTagTable[i].name; i++)
 		if (ExifTagTable[i].tag == tag)
 			break;
@@ -614,7 +612,7 @@ exif_tag_get_title (ExifTag tag)
 		if (ExifTagTable[i].tag == tag)
 			break;
 
-	return (ExifTagTable[i].title);
+	return (_(ExifTagTable[i].title));
 }
 
 const char *
@@ -628,5 +626,5 @@ exif_tag_get_description (ExifTag tag)
 		if (ExifTagTable[i].tag == tag)
 			break;
 
-	return (ExifTagTable[i].description);
+	return (_(ExifTagTable[i].description));
 }

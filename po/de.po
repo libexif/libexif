@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2002-06-09 12:30+0200\n"
+"POT-Creation-Date: 2002-06-10 13:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <de@li.org>\n"
@@ -67,12 +67,16 @@ msgstr ""
 
 #: libexif/exif-tag.c:78
 msgid "Photometric Interpretation"
-msgstr ""
+msgstr "Fotometrische Interpretation"
 
 #: libexif/exif-tag.c:79
 msgid ""
 "The pixel composition. In JPEG compressed data a JPEG marker is used instead "
 "of this tag."
+msgstr ""
+
+#: libexif/exif-tag.c:81
+msgid "Fill Order"
 msgstr ""
 
 #: libexif/exif-tag.c:82
@@ -327,7 +331,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:202
 msgid "YCbCr Positioning"
-msgstr ""
+msgstr "YCbCr Positionierung"
 
 #: libexif/exif-tag.c:203
 msgid ""
@@ -370,7 +374,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:237
 msgid "Battery Level"
-msgstr "Batterie"
+msgstr "Batteriestatus"
 
 #: libexif/exif-tag.c:238
 msgid "Copyright"
@@ -397,11 +401,11 @@ msgstr ""
 
 #: libexif/exif-tag.c:259
 msgid "Exposure Time"
-msgstr ""
+msgstr "Belichtungszeit"
 
 #: libexif/exif-tag.c:260
 msgid "Exposure time, given in seconds (sec)."
-msgstr ""
+msgstr "Belichtungszeit in Sekunden."
 
 #: libexif/exif-tag.c:262
 msgid "The F number."
@@ -494,7 +498,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:322
 msgid "Exif Version"
-msgstr ""
+msgstr "Exif Version"
 
 #: libexif/exif-tag.c:323
 msgid ""
@@ -518,7 +522,7 @@ msgstr "Datum und Uhrzeit (digitalisiert)"
 
 #: libexif/exif-tag.c:332
 msgid "The date and time when the image was stored as digital data. "
-msgstr ""
+msgstr "Das Datum und die Uhrzeit der Speicherung als digitale Daten."
 
 #: libexif/exif-tag.c:335
 msgid ""
@@ -606,7 +610,7 @@ msgstr "Lichtquelle"
 
 #: libexif/exif-tag.c:370
 msgid "The kind of light source."
-msgstr ""
+msgstr "Die Art der Lichtquelle."
 
 #: libexif/exif-entry.c:478 libexif/exif-tag.c:371
 msgid "Flash"
@@ -616,6 +620,8 @@ msgstr "Blitz"
 msgid ""
 "This tag is recorded when an image is taken using a strobe light (flash)."
 msgstr ""
+"Dieser Eintrag wird aufgezeichnet, wenn das Bild mit einem Blitz gemacht "
+"wurde."
 
 #: libexif/exif-tag.c:374
 msgid "Focal Length"
@@ -627,6 +633,10 @@ msgid ""
 "focal length of a 35 mm film camera."
 msgstr ""
 
+#: libexif/exif-tag.c:377
+msgid "Maker Note"
+msgstr "Anmerkungen des Herstellers"
+
 #: libexif/exif-tag.c:378
 msgid ""
 "A tag for manufacturers of Exif writers to record any desired information. "
@@ -635,7 +645,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:380
 msgid "User Comment"
-msgstr ""
+msgstr "Anmerkung des Nutzers"
 
 #: libexif/exif-tag.c:381
 msgid ""
@@ -749,7 +759,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:483
 msgid "Flash Energy"
-msgstr ""
+msgstr "Energie des Blitzes"
 
 #: libexif/exif-tag.c:484
 msgid ""
@@ -826,7 +836,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:519
 msgid "File Source"
-msgstr ""
+msgstr "Dateiquelle"
 
 #: libexif/exif-tag.c:520
 msgid ""
@@ -867,7 +877,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:540
 msgid "Exposure Mode"
-msgstr ""
+msgstr "Belichtungsart"
 
 #: libexif/exif-tag.c:541
 msgid ""
@@ -937,7 +947,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:570
 msgid "Saturation"
-msgstr ""
+msgstr "Sättigung"
 
 #: libexif/exif-tag.c:571
 msgid ""
@@ -976,7 +986,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:585
 msgid "Image Unique ID"
-msgstr ""
+msgstr "Eindeutige Bildnummer"
 
 #: libexif/exif-tag.c:586
 msgid ""
@@ -988,12 +998,12 @@ msgstr ""
 #: libexif/exif-entry.c:140
 #, c-format
 msgid "Invalid format '%s', expected '%s'."
-msgstr ""
+msgstr "Ungültiges Format '%s', '%s' wurde erwartet."
 
 #: libexif/exif-entry.c:152
 #, c-format
 msgid "Invalid number of components (%i, expected %i)."
-msgstr ""
+msgstr "Ungültige Anzahl von Komponenten (%i, %i wurden erwartet)."
 
 #: libexif/exif-entry.c:265
 #, c-format
@@ -1012,7 +1022,7 @@ msgstr ""
 
 #: libexif/exif-entry.c:321 libexif/exif-entry.c:465 libexif/exif-entry.c:939
 msgid "Unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #: libexif/exif-entry.c:324
 msgid "Average"
@@ -1096,7 +1106,7 @@ msgstr ""
 
 #: libexif/exif-entry.c:434 libexif/exif-entry.c:553
 msgid "Not defined"
-msgstr ""
+msgstr "Undefiniert"
 
 #: libexif/exif-entry.c:437
 msgid "One-chip color area sensor"
@@ -1124,7 +1134,7 @@ msgstr ""
 
 #: libexif/exif-entry.c:468
 msgid "Daylight"
-msgstr ""
+msgstr "Tageslicht"
 
 #: libexif/exif-entry.c:471
 msgid "Fluorescent"
@@ -1136,11 +1146,11 @@ msgstr ""
 
 #: libexif/exif-entry.c:481
 msgid "Fine weather"
-msgstr ""
+msgstr "Gutes Wetter"
 
 #: libexif/exif-entry.c:484
 msgid "Cloudy weather"
-msgstr ""
+msgstr "Wolkiges Wetter"
 
 #: libexif/exif-entry.c:487
 msgid "Shade"
@@ -1196,15 +1206,15 @@ msgstr ""
 
 #: libexif/exif-entry.c:540
 msgid "Centimeter"
-msgstr ""
+msgstr "Zentimeter"
 
 #: libexif/exif-entry.c:556
 msgid "Manual"
-msgstr ""
+msgstr "Manuell"
 
 #: libexif/exif-entry.c:559
 msgid "Normal program"
-msgstr ""
+msgstr "Normalprogramm"
 
 #: libexif/exif-entry.c:562
 msgid "Aperture priority"
@@ -1393,17 +1403,16 @@ msgid "Normal process"
 msgstr ""
 
 #: libexif/exif-entry.c:805
-#, fuzzy
 msgid "Custom process"
-msgstr "Kompression"
+msgstr ""
 
 #: libexif/exif-entry.c:818
 msgid "Auto exposure"
-msgstr ""
+msgstr "Automatische Belichtungzeit"
 
 #: libexif/exif-entry.c:821
 msgid "Manual exposure"
-msgstr ""
+msgstr "Manuelle Belichtungszeit"
 
 #: libexif/exif-entry.c:824
 msgid "Auto bracket"
@@ -1456,14 +1465,13 @@ msgstr ""
 
 #: libexif/exif-entry.c:903
 msgid "Low saturation"
-msgstr ""
+msgstr "Geringe Sättigung"
 
 #: libexif/exif-entry.c:906
 msgid "High saturation"
-msgstr ""
+msgstr "Hohe Sättigung"
 
 #: libexif/exif-entry.c:923
-#, fuzzy
 msgid "Soft"
 msgstr "Weich"
 
@@ -1477,31 +1485,26 @@ msgstr "Macro"
 
 #: libexif/exif-entry.c:945
 msgid "Close view"
-msgstr ""
+msgstr "Geringe Entfernung"
 
 #: libexif/exif-entry.c:948
 msgid "Distant view"
-msgstr ""
-
-#: libexif/exif-entry.c:961
-#, c-format
-msgid "(x,y) = (%i,%i)"
-msgstr ""
+msgstr "Hohe Entfernung"
 
 #: libexif/exif-entry.c:968
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
-msgstr ""
+msgstr "Innerhalb einer Entfernung %i von (x,y) = (%i,%i)"
 
 #: libexif/exif-entry.c:977
 #, c-format
-msgid "Withing rectangle (width %i, height %i) around (x,y) = (%i,%i)"
-msgstr ""
+msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
+msgstr "Innerhalb eines Rechtecks (Breite %i, Höhe %i) um (x,y) = (%i,%i)"
 
 #: libexif/exif-entry.c:983
 #, c-format
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
-msgstr ""
+msgstr "Unerwartete Nummer von Komponenten (%li, erwartete 2, 3 oder 4)."
 
 #: libexif/exif-entry.c:1156
 msgid "unknown"
@@ -1584,17 +1587,16 @@ msgid "action"
 msgstr ""
 
 #: libexif/exif-entry.c:1244
-#, fuzzy
 msgid "portrait"
-msgstr "Kontrast"
+msgstr "Portrait"
 
 #: libexif/exif-entry.c:1247
 msgid "landscape"
-msgstr ""
+msgstr "Landschaft"
 
 #: libexif/exif-entry.c:1259
 msgid "yes"
-msgstr ""
+msgstr "Ja"
 
 #: libexif/exif-entry.c:1262
 msgid "w/o strobe"
@@ -1603,3 +1605,7 @@ msgstr ""
 #: libexif/exif-entry.c:1265
 msgid "w. strobe"
 msgstr ""
+
+#: libexif/exif-format.c:56
+msgid "Undefined"
+msgstr "Undefiniert"

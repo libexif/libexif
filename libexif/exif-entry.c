@@ -958,7 +958,7 @@ exif_entry_get_value (ExifEntry *e)
 		case 2:
 			v_short  = exif_get_short (e->data, o);
 			v_short2 = exif_get_short (e->data + 2, o);
-			snprintf (v, sizeof (v), _("(x,y) = (%i,%i)"),
+			snprintf (v, sizeof (v), "(x,y) = (%i,%i)",
 				  v_short, v_short2);
 			break;
 		case 3:
@@ -974,7 +974,7 @@ exif_entry_get_value (ExifEntry *e)
 			v_short2 = exif_get_short (e->data + 2, o);
 			v_short3 = exif_get_short (e->data + 4, o);
 			v_short4 = exif_get_short (e->data + 6, o);
-			snprintf (v, sizeof (v), _("Withing rectangle "
+			snprintf (v, sizeof (v), _("Within rectangle "
 				"(width %i, height %i) around "
 				"(x,y) = (%i,%i)"), v_short3, v_short4,
 				v_short, v_short2);

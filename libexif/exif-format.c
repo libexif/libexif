@@ -17,11 +17,29 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-
 #include <config.h>
 #include "exif-format.h"
 
 #include <stdlib.h>
+
+#ifdef ENABLE_NLS
+#  include <libintl.h>
+#  undef _
+#  define _(String) dgettext (PACKAGE, String)
+#  ifdef gettext_noop
+#    define N_(String) gettext_noop (String)
+#  else
+#    define N_(String) (String)
+#  endif
+#else
+#  define textdomain(String) (String)
+#  define gettext(String) (String)
+#  define dgettext(Domain,Message) (Message)
+#  define dcgettext(Domain,Message,Type) (Message)
+#  define bindtextdomain(Domain,Directory) (Domain)
+#  define _(String) (String)
+#  define N_(String) (String)
+#endif
 
 static struct {
         ExifFormat format;
@@ -35,7 +53,7 @@ static struct {
         {EXIF_FORMAT_RATIONAL,  "Rational",  8},
         {EXIF_FORMAT_SLONG,     "SShort",    4},
         {EXIF_FORMAT_SRATIONAL, "SRational", 8},
-        {EXIF_FORMAT_UNDEFINED, "Undefined", 1},
+        {EXIF_FORMAT_UNDEFINED, N_("Undefined"), 1},
         {0, NULL, 0}
 };
 
@@ -44,9 +62,11 @@ exif_format_get_name (ExifFormat format)
 {
 	unsigned int i;
 
+	bindtextdomain (PACKAGE, LIBEXIF_LOCALEDIR);
+
 	for (i = 0; ExifFormatTable[i].name; i++)
 		if (ExifFormatTable[i].format == format)
-			return (ExifFormatTable[i].name);
+			return (_(ExifFormatTable[i].name));
 	return (NULL);
 }
 
