@@ -1,5 +1,11 @@
 2003-10-26  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* test/test-mnote.c: New.
+	* libexif: The code now both compiles and doesn't crash,
+	  but at least the canon maker note still doesn't get parsed.
+
+2003-10-26  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* configure.in
 	* Makefile.am: Remove PO_DIRS. Otherwise, automake complains about
 	  po and intl not being in SUBDIRS

@@ -34,8 +34,9 @@ struct _ExifMnoteDataOlympus {
 	unsigned int count;
 
 	ExifByteOrder order;
+	unsigned int offset;
 };
 
-ExifMnoteData *exif_mnote_data_olympus_new (ExifByteOrder);
+ExifMnoteData *exif_mnote_data_olympus_new (void);
 
 #endif /* __MNOTE_OLYMPUS_CONTENT_H__ */

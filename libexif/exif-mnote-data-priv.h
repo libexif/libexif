@@ -26,6 +26,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 #include <libexif/exif-mnote-data.h>
+#include <libexif/exif-byte-order.h>
 
 typedef struct _ExifMnoteDataMethods ExifMnoteDataMethods;
 struct _ExifMnoteDataMethods {
@@ -36,6 +37,8 @@ struct _ExifMnoteDataMethods {
 	/* Modification */
 	void (* save) (ExifMnoteData *, unsigned char **, unsigned int *);
 	void (* load) (ExifMnoteData *, const unsigned char *, unsigned int);
+	void (* set_offset)     (ExifMnoteData *, unsigned int);
+	void (* set_byte_order) (ExifMnoteData *, ExifByteOrder);
 
 	/* Query */
 	unsigned int (* count)           (ExifMnoteData *);
@@ -54,7 +57,9 @@ struct _ExifMnoteData
 	ExifMnoteDataPriv *priv;
 };
 
-void exif_mnote_data_construct (ExifMnoteData *);
+void exif_mnote_data_construct      (ExifMnoteData *);
+void exif_mnote_data_set_byte_order (ExifMnoteData *, ExifByteOrder);
+void exif_mnote_data_set_offset     (ExifMnoteData *, unsigned int);
 
 #ifdef __cplusplus
 }

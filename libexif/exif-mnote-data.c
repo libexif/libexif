@@ -86,6 +86,20 @@ exif_mnote_data_save (ExifMnoteData *d, unsigned char **buf,
 	d->methods.save (d, buf, buf_size);
 }
 
+void
+exif_mnote_data_set_byte_order (ExifMnoteData *d, ExifByteOrder o)
+{
+	if (!d || !d->methods.set_byte_order) return;
+	d->methods.set_byte_order (d, o);
+}
+
+void
+exif_mnote_data_set_offset (ExifMnoteData *d, unsigned int o)
+{
+	if (!d || !d->methods.set_offset) return;
+	d->methods.set_offset (d, o);
+}
+
 unsigned int
 exif_mnote_data_count (ExifMnoteData *d)
 {

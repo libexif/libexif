@@ -161,20 +161,33 @@ exif_mnote_data_pentax_get_description (ExifMnoteData *d, unsigned int n)
 	return mnote_pentax_tag_get_description (note->entries[n].tag);
 }
 
+static void
+exif_mnote_data_pentax_set_offset (ExifMnoteData *d, unsigned int o)
+{
+	if (d) ((ExifMnoteDataPentax *) d)->offset = o;
+}
+
+static void
+exif_mnote_data_pentax_set_byte_order (ExifMnoteData *d, ExifByteOrder o)
+{
+	if (d) ((ExifMnoteDataPentax *) d)->order = o;
+}
+
 ExifMnoteData *
-exif_mnote_data_pentax_new (ExifByteOrder order)
+exif_mnote_data_pentax_new (void)
 {
 	ExifMnoteData *n;
 
 	n = malloc (sizeof (ExifMnoteDataPentax));
 	if (!n) return NULL;
 	memset (n, 0, sizeof (ExifMnoteDataPentax));
-	exif_mnote_data_construct (n);
 
-	((ExifMnoteDataPentax *) n)->order = order;
+	exif_mnote_data_construct (n);
 
 	/* Set up function pointers */
 	n->methods.free            = exif_mnote_data_pentax_free;
+	n->methods.set_byte_order  = exif_mnote_data_pentax_set_byte_order;
+	n->methods.set_offset      = exif_mnote_data_pentax_set_offset;
 	n->methods.load            = exif_mnote_data_pentax_load;
 	n->methods.count           = exif_mnote_data_pentax_count;
 	n->methods.get_name        = exif_mnote_data_pentax_get_name;

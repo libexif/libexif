@@ -50,7 +50,16 @@ struct _ExifDataPrivate
 	ExifMnoteData *md;
 
 	unsigned int ref_count;
+
+	/* Temporarily used while loading data */
+	unsigned int offset_mnote;
 };
+
+ExifMnoteData *
+exif_data_get_mnote_data (ExifData *d)
+{
+	return (d && d->priv) ? d->priv->md : NULL;
+}
 
 ExifData *
 exif_data_new (void)
@@ -124,6 +133,10 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 		return;
 	entry->size = s;
 	memcpy (entry->data, d + doff, s);
+
+	/* If this is the MakerNote, remember the offset */
+	if (entry->tag == EXIF_TAG_MAKER_NOTE)
+		data->priv->offset_mnote = doff;
 }
 
 static void
@@ -484,22 +497,22 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	ExifShort n;
 	ExifEntry *e, *em;
 	const unsigned char *d = d_orig;
-	unsigned int size = ds_orig, len;
+	unsigned int ds = ds_orig, len;
 
 	if (!data)
 		return;
-	if (!d || !size)
+	if (!d || !ds)
 		return;
 
 #ifdef DEBUG
-	printf ("Parsing %i byte(s) EXIF data...\n", size);
+	printf ("Parsing %i byte(s) EXIF data...\n", ds);
 #endif
 
 	/*
 	 * It can be that the data starts with the EXIF header. If it does
 	 * not, search the EXIF marker.
 	 */
-	if (size < 6) {
+	if (ds < 6) {
 #ifdef DEBUG
 		printf ("Size too small.\n");
 #endif
@@ -515,27 +528,27 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			"0x%x...\n", d[0], d[1], d[2], d[3], d[4], d[5], d[6]);
 #endif
 		while (1) {
-			while ((d[0] == 0xff) && size) {
+			while ((d[0] == 0xff) && ds) {
 				d++;
-				size--;
+				ds--;
 			}
 
 			/* JPEG_MARKER_SOI */
 			if (d[0] == JPEG_MARKER_SOI) {
 				d++;
-				size--;
+				ds--;
 				continue;
 			}
 
 			/* JPEG_MARKER_APP0 */
 			if (d[0] == JPEG_MARKER_APP0) {
 				d++;
-				size--;
+				ds--;
 				l = (d[0] << 8) | d[1];
-				if (l > size)
+				if (l > ds)
 					return;
 				d += l;
-				size -= l;
+				ds -= l;
 				continue;
 			}
 
@@ -550,8 +563,8 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			return;
 		}
 		d++;
-		size--;
-		if (size < 2) {
+		ds--;
+		if (ds < 2) {
 #ifdef DEBUG
 			printf ("Size too small.\n");
 #endif
@@ -562,14 +575,14 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		printf ("We have to deal with %i byte(s) of EXIF data.\n", len);
 #endif
 		d += 2;
-		size -= 2;
+		ds -= 2;
 	}
 
 	/*
 	 * Verify the exif header
 	 * (offset 2, length 6).
 	 */
-	if (size < 6) {
+	if (ds < 6) {
 #ifdef DEBUG
 		printf ("Size too small.\n");
 #endif
@@ -587,7 +600,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 #endif
 
 	/* Byte order (offset 6, length 2) */
-	if (size < 12)
+	if (ds < 12)
 		return;
 	if (!memcmp (d + 6, "II", 2))
 		data->priv->order = EXIF_BYTE_ORDER_INTEL;
@@ -608,7 +621,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 
 	/* Parse the actual exif data (offset 14) */
 	exif_data_load_data_content (data, data->ifd[EXIF_IFD_0], d + 6,
-				     size - 6, offset);
+				     ds - 6, offset);
 
 	/* IFD 1 offset */
 	n = exif_get_short (d + 6 + offset, data->priv->order);
@@ -619,7 +632,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 #endif
 
 		/* Sanity check. */
-		if (offset > size - 6) {
+		if (offset > ds - 6) {
 #ifdef DEBUG
 			printf ("Bogus offset!\n");
 #endif
@@ -627,7 +640,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		}
 
 		exif_data_load_data_content (data, data->ifd[EXIF_IFD_1], d + 6,
-					     size - 6, offset);
+					     ds - 6, offset);
 	}
 
 	/*
@@ -641,14 +654,12 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 
 	    /* Olympus */
 	    if ((e->size >= 5) && (!memcmp (e->data, "OLYMP", 5)))
-		data->priv->md = exif_mnote_data_olympus_new (
-						data->priv->order);
+		data->priv->md = exif_mnote_data_olympus_new ();
 
 	    /* Pentax */
 	    else if ((e->size >= 2) && (e->data[0] == 0x00)
 				    && (e->data[1] == 0x1b))
-		data->priv->md = exif_mnote_data_pentax_new (
-						data->priv->order);
+		data->priv->md = exif_mnote_data_pentax_new ();
 
 	    else {
 		em = exif_data_get_entry (data, EXIF_TAG_MAKE);
@@ -656,8 +667,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 
 		    /* Canon */
 		    if (!strcmp (exif_entry_get_value (em), "Canon"))
-			data->priv->md = exif_mnote_data_canon_new (
-							data->priv->order);
+			data->priv->md = exif_mnote_data_canon_new ();
 		}
 	    }
 
@@ -667,7 +677,11 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	     * pointers after this function here returns.
 	     */
 	    if (data->priv->md) {
-		exif_mnote_data_load (data->priv->md, d_orig, ds_orig);
+		exif_mnote_data_set_byte_order (data->priv->md,
+						data->priv->order);
+		exif_mnote_data_set_offset (data->priv->md,
+					    data->priv->offset_mnote);
+		exif_mnote_data_load (data->priv->md, d, ds);
 		exif_data_remove_entry (data, EXIF_TAG_MAKER_NOTE);
 	    }
 	}

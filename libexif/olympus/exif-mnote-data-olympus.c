@@ -223,20 +223,33 @@ exif_mnote_data_olympus_get_description (ExifMnoteData *d, unsigned int i)
         return mnote_olympus_tag_get_title (n->entries[i].tag);
 }
 
+static void
+exif_mnote_data_olympus_set_byte_order (ExifMnoteData *n, ExifByteOrder o)
+{
+	if (n) ((ExifMnoteDataOlympus *) n)->order = o;
+}
+
+static void
+exif_mnote_data_olympus_set_offset (ExifMnoteData *n, unsigned int o)
+{
+	if (n) ((ExifMnoteDataOlympus *) n)->offset = o;
+}
+
 ExifMnoteData *
-exif_mnote_data_olympus_new (ExifByteOrder order)
+exif_mnote_data_olympus_new (void)
 {
 	ExifMnoteData *n;
 
 	n = malloc (sizeof (ExifMnoteDataOlympus));
 	if (!n) return NULL;
 	memset (n, 0, sizeof (ExifMnoteDataOlympus));
-	exif_mnote_data_construct (n);
 
-	((ExifMnoteDataOlympus *) n)->order = order;
+	exif_mnote_data_construct (n);
 
 	/* Set up the function pointers */
 	n->methods.free            = exif_mnote_data_olympus_free;
+	n->methods.set_byte_order  = exif_mnote_data_olympus_set_byte_order;
+	n->methods.set_offset      = exif_mnote_data_olympus_set_offset;
 	n->methods.load            = exif_mnote_data_olympus_load;
 	n->methods.count           = exif_mnote_data_olympus_count;
 	n->methods.get_name        = exif_mnote_data_olympus_get_name;

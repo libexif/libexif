@@ -35,8 +35,9 @@ struct _ExifMnoteDataPentax {
 	unsigned int count;
 
 	ExifByteOrder order;
+	unsigned int offset;
 };
 
-ExifMnoteData *exif_mnote_data_pentax_new (ExifByteOrder);
+ExifMnoteData *exif_mnote_data_pentax_new (void);
 
 #endif /* __EXIF_MNOTE_DATA_PENTAX_H__ */

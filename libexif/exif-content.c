@@ -115,25 +115,23 @@ exif_content_add_entry (ExifContent *content, ExifEntry *entry)
 }
 
 void
-exif_content_remove_entry (ExifContent *content, ExifEntry *entry)
+exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 {
 	unsigned int i;
 
-	if (entry->parent != content)
-		return;
+	if (!c || !e) return;
+	if (e->parent != c) return;
 
-	for (i = 0; i < content->count; i++)
-		if (content->entries[i] == entry)
-			break;
-	if (i == content->count)
-		return;
+	/* Search the entry */
+	for (i = 0; i < c->count; i++) if (c->entries[i] == e) break;
+	if (i == c->count) return;
 
-	memmove (&content->entries[i], &content->entries[i + 1],
-		 sizeof (ExifEntry) * (content->count - i - 1));
-	content->count--;
-
-	entry->parent = NULL;
-	exif_entry_unref (entry);
+	/* Remove the entry */
+	memmove (&c->entries[i], &c->entries[i + 1],
+		 sizeof (ExifEntry) * (c->count - i - 1));
+	c->count--;
+	e->parent = NULL;
+	exif_entry_unref (e);
 }
 
 ExifEntry *

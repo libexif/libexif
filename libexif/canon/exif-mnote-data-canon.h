@@ -36,8 +36,9 @@ struct _ExifMnoteDataCanon {
 	unsigned int count;
 
 	ExifByteOrder order;
+	unsigned int offset;
 };
 
-ExifMnoteData *exif_mnote_data_canon_new (ExifByteOrder);
+ExifMnoteData *exif_mnote_data_canon_new (void);
 
 #endif /* __EXIF_MNOTE_DATA_CANON_H__ */

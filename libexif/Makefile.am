@@ -23,9 +23,9 @@ libexif_la_SOURCES =		\
 	exif-utils.c		\
 	i18n.h
 libexif_la_LIBADD = -lm 		\
-	canon/libmnote-canon.a		\
-	olympus/libmnote-olympus.a	\
-	pentax/libmnote-pentax.a
+	canon/libmnote-canon.la		\
+	olympus/libmnote-olympus.la	\
+	pentax/libmnote-pentax.la
 
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = 	\
