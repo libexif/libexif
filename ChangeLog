@@ -10,6 +10,9 @@
 	  - allow user to add CFLAGS at ./configure time by setting CFLAGS
 	  - add intl/ to include path only if building the included
 	    libintl
+	  - check whether -lm is actually required. This enables
+	    crosscompilation for windows targets:
+	    ./configure --host=i586-mingw32msvc --disable-nls
 	* m4/gp-config-msg.m4, m4/gp-gettext-hack.m4: New macros
 
 2004-12-17  Lutz Mueller <lutz@users.sourceforge.net>
