@@ -1,8 +1,9 @@
 AC_PREREQ(2.59)
-AC_INIT([EXIF library], [0.6.12], [libexif-devel@lists.sourceforge.net], [libexif])
+AC_INIT([EXIF library],[0.6.12],[libexif-devel@lists.sourceforge.net],[libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AM_CONFIG_HEADER([config.h])
 AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2])
+GP_CONFIG_INIT
 GP_CONFIG_MSG([Source code location],[${srcdir}])
 
 dnl ---------------------------------------------------------------------------
@@ -52,29 +53,22 @@ AC_SUBST(MATHLIBS)
 dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
-GETTEXT_PACKAGE=${PACKAGE}-${LIBEXIF_CURRENT}
-GP_GETTEXT_HACK([Lutz Müller and others])
-AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"],
-                   [The gettext domain we're using])
-AC_SUBST([GETTEXT_PACKAGE])
+GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT}],
+                [Lutz Müller and others])
 ALL_LINGUAS="de es fr"
 AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT
-GP_CONFIG_MSG([Use translations],[${USE_NLS}])
-GP_CONFIG_MSG([Use included libintl],[${BUILD_INCLUDED_LIBINTL}])
+GP_GETTEXT_FLAGS
 
-if test "x${BUILD_INCLUDED_LIBINTL}" = "xyes"; then
-   AM_CFLAGS="${AM_CFLAGS} -I\$(top_srcdir)/intl"
-fi
+AC_DEFINE_UNQUOTED([LIBEXIF_LOCALEDIR],["${datadir}/locale"],
+                   [The locale directory used with libexif translations])
+AC_DEFINE_UNQUOTED([LIBMNOTE_LOCALEDIR],["${datadir}/locale"],
+                   [The locale directory used with libexif translations])
 
 
 dnl ---------------------------------------------------------------------------
 dnl Compiler/Linker Options and Warnings
 dnl ---------------------------------------------------------------------------
-AC_DEFINE_UNQUOTED([LIBEXIF_LOCALEDIR],["${datadir}/locale"],
-                   [The locale directory used with libexif translations])
-AC_DEFINE_UNQUOTED([LIBMNOTE_LOCALEDIR],["${datadir}/locale"],
-                   [The locale directory used with libexif translations])
 AM_CFLAGS="$AM_CFLAGS -I\$(top_srcdir)"
 AM_CFLAGS="$AM_CFLAGS -I\$(top_srcdir)/libexif"
 AM_CFLAGS="$AM_CFLAGS -I\$(top_srcdir)/libjpeg"

@@ -6,33 +6,33 @@ dnl This creates a po/Makevars file with adequate values if the
 dnl po/Makevars.template is present.
 dnl
 dnl Example usage:
-dnl    GETTEXT_PACKAGE=${PACKAGE}-${LIBEXIF_CURRENT}
-dnl    GP_GETTEXT_HACK([Copyright Holder],[foo-translation@example.org])
-dnl    AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["$GETTEXT_PACKAGE"],
-dnl                       [The gettext domain we're using])
-dnl    AC_SUBST([GETTEXT_PACKAGE])
+dnl    GP_GETTEXT_HACK([${PACKAGE_TARNAME}-${LIBFOO_CURRENT}],
+dnl                    [Copyright Holder],
+dnl                    [foo-translation@example.org])
 dnl    ALL_LINGUAS="de es fr"
 dnl    AM_GNU_GETTEXT
+dnl    GP_GETTEXT_FLAGS
 dnl
-dnl You can leave out GP_GETTEXT_HACK parameters if you want to,
-dnl GP_GETTEXT_HACK will try fall back to sensible values in that case.
+dnl You can leave out the GP_GETTEXT_HACK parameters if you want to,
+dnl GP_GETTEXT_HACK will try fall back to sensible values in that case:
 dnl
 
 AC_DEFUN([GP_GETTEXT_HACK],
 [
-if test "x$GETTEXT_PACKAGE" = "x"; then
-   AC_MSG_ERROR([
-*** Your configure.{ac,in} is wrong.
-*** GETTEXT_PACKAGE must be defined before calling [GP_GETTEXT_HACK].
-***
-])
-fi
-sed_cmds="s|^DOMAIN.*|DOMAIN = ${GETTEXT_PACKAGE}|"
 if test -n "$1"; then
-   sed_cmds="${sed_cmds};s|^COPYRIGHT_HOLDER.*|COPYRIGHT_HOLDER = $1|"
+   GETTEXT_PACKAGE=${PACKAGE_TARNAME}-${LIBEXIF_CURRENT}
+else
+   GETTEXT_PACKAGE=${PACKAGE_TARNAME}
 fi
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"],
+                   [The gettext domain we're using])
+AC_SUBST([GETTEXT_PACKAGE])
+sed_cmds="s|^DOMAIN.*|DOMAIN = ${GETTEXT_PACKAGE}|"
 if test -n "$2"; then
-   sed_mb="$2"
+   sed_cmds="${sed_cmds};s|^COPYRIGHT_HOLDER.*|COPYRIGHT_HOLDER = $2|"
+fi
+if test -n "$3"; then
+   sed_mb="$3"
 elif test -n "$PACKAGE_BUGREPORT"; then
    sed_mb="${PACKAGE_BUGREPORT}"
 else
@@ -53,6 +53,23 @@ else
    AC_MSG_RESULT([no])
 fi
 ])
+
+AC_DEFUN([GP_GETTEXT_FLAGS],
+[
+AC_REQUIRE([AM_GNU_GETTEXT])
+AC_REQUIRE([GP_CONFIG_MSG])
+if test "x${BUILD_INCLUDED_LIBINTL}" = "xyes"; then
+   AM_CFLAGS="${AM_CFLAGS} -I\$(top_srcdir)/intl"
+fi
+GP_CONFIG_MSG
+GP_CONFIG_MSG([Use translations],[${USE_NLS}])
+GP_CONFIG_MSG([Use included libintl],[${BUILD_INCLUDED_LIBINTL}])
+])
+
+dnl Please do not remove this:
+dnl filetype: 71ff3941-a5ae-4677-a369-d7cb01f92c81
+dnl I use this to find all the different instances of this file which 
+dnl are supposed to be synchronized.
 
 dnl Local Variables:
 dnl mode: autoconf
