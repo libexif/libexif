@@ -22,6 +22,8 @@
 #define __EXIF_LOADER_H__
 
 #include <libexif/exif-data.h>
+#include <libexif/exif-loader.h>
+#include <libexif/exif-log.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,6 +35,8 @@ ExifLoader *exif_loader_new   (void);
 void        exif_loader_ref   (ExifLoader *);
 void        exif_loader_unref (ExifLoader *);
 
+void        exif_loader_write_file (ExifLoader *, const char *fname);
+
 /*
  * Returns 1 while EXIF data is read (or while there is still 
  * hope that there will be EXIF data later on), 0 otherwise.
@@ -41,6 +45,8 @@ unsigned char exif_loader_write (ExifLoader *, unsigned char *, unsigned int);
 
 void          exif_loader_reset (ExifLoader *);
 ExifData     *exif_loader_get_data (ExifLoader *);
+
+void exif_loader_log (ExifLoader *, ExifLog *);
 
 #ifdef __cplusplus
 }

@@ -27,6 +27,7 @@ extern "C" {
 
 #include <libexif/exif-mnote-data.h>
 #include <libexif/exif-byte-order.h>
+#include <libexif/exif-log.h>
 
 typedef struct _ExifMnoteDataMethods ExifMnoteDataMethods;
 struct _ExifMnoteDataMethods {
@@ -55,6 +56,9 @@ struct _ExifMnoteData
 	ExifMnoteDataPriv *priv;
 
 	ExifMnoteDataMethods methods;
+
+	/* Logging */
+	ExifLog *log;
 };
 
 void exif_mnote_data_construct      (ExifMnoteData *);

@@ -25,9 +25,10 @@
 extern "C" {
 #endif /* __cplusplus */
 
-#include <libexif/exif-tag.h>
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-ifd.h>
+#include <libexif/exif-log.h>
+#include <libexif/exif-tag.h>
 
 typedef struct _ExifData        ExifData;
 typedef struct _ExifDataPrivate ExifDataPrivate;
@@ -69,7 +70,9 @@ void          exif_data_foreach_content (ExifData *data,
 					 ExifDataForeachContentFunc func,
 					 void *user_data);
 
-void      exif_data_dump  (ExifData *data);
+/* For debugging purposes and error reporting */
+void exif_data_dump (ExifData *data);
+void exif_data_log  (ExifData *data, ExifLog *log);
 
 /* For your convenience */
 #define exif_data_get_entry(d,t)					\

@@ -1,3 +1,8 @@
+2004-05-15  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-log.[c,h]: New. Proposal for handling of debugging
+	  messages.
+
 2004-05-13  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-data.c: Fill tag data with zeros on save even

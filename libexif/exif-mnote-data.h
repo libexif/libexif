@@ -25,6 +25,8 @@
 extern "C" {
 #endif /* __cplusplus */
 
+#include <libexif/exif-log.h>
+
 typedef struct _ExifMnoteData ExifMnoteData;
 
 void exif_mnote_data_ref   (ExifMnoteData *);
@@ -41,6 +43,8 @@ const char  *exif_mnote_data_get_description (ExifMnoteData *, unsigned int);
 
 /* Returns NULL or val */
 char  *exif_mnote_data_get_value (ExifMnoteData *, unsigned int, char *val, unsigned int maxlen);
+
+void exif_mnote_data_log (ExifMnoteData *, ExifLog *);
 
 #ifdef __cplusplus
 }

@@ -133,3 +133,12 @@ exif_mnote_data_get_value (ExifMnoteData *d, unsigned int n, char *val, unsigned
 	if (!d || !d->methods.get_value) return NULL;
 	return d->methods.get_value (d, n, val, maxlen);
 }
+
+void
+exif_mnote_data_log (ExifMnoteData *d, ExifLog *log)
+{
+	if (!d) return;
+	exif_log_unref (d->log);
+	d->log = log;
+	exif_log_ref (log);
+}

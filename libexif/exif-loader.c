@@ -3,6 +3,9 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
+
+#include <libexif/i18n.h>
 
 #include <libjpeg/jpeg-marker.h>
 
@@ -24,16 +27,36 @@ struct _ExifLoader {
 	unsigned int bytes_read;
 
 	unsigned int ref_count;
+
+	ExifLog *log;
 };
 
 #undef  MIN
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
 
-/*
- * This function imitates code from libexif, written by Lutz
- * Müller. See libexif/exif-data.c:exif_data_new_from_file. Here, it
- * can cope with a sequence of data chunks.
- */
+void
+exif_loader_write_file (ExifLoader *l, const char *path)
+{
+	FILE *f;
+	int size;
+	unsigned char data[1024];
+
+	if (!l) return;
+
+	f = fopen (path, "rb");
+	if (!f) {
+		exif_log (l->log, EXIF_LOG_CODE_NONE, "ExifLoader",
+			  _("The file '%s' could not be opened."), path);
+		return;
+	}
+	while (1) {
+		size = fread (data, 1, sizeof (data), f);
+		if (size <= 0) break;
+		if (!exif_loader_write (l, data, size)) break;
+	}
+	fclose (f);
+}
+
 unsigned char
 exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 {
@@ -42,6 +65,9 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 	if (!eld) return 0;
 	if (eld->state == EL_FAILED) return 0;
 	if (eld->size && eld->bytes_read == eld->size) return 0;
+
+	exif_log (eld->log, EXIF_LOG_CODE_DEBUG, "ExifLoader",
+		  "Scanning %i byte(s) of data...", len);
 
 	for (i = 0; (i < len) && (eld->state != EL_EXIF_FOUND) &&
 				 (eld->state != EL_FAILED); i++) 
@@ -179,5 +205,22 @@ exif_loader_reset (ExifLoader *loader)
 ExifData *
 exif_loader_get_data (ExifLoader *loader)
 {
-	return exif_data_new_from_data (loader->buf, loader->bytes_read);
+	ExifData *ed;
+
+	if (!loader) return NULL;
+
+	ed = exif_data_new ();
+	exif_data_log (ed, loader->log);
+	exif_data_load_data (ed, loader->buf, loader->bytes_read);
+
+	return ed;
+}
+
+void
+exif_loader_log (ExifLoader *loader, ExifLog *log)
+{
+	if (!loader) return;
+	exif_log_unref (loader->log);
+	loader->log = log;
+	exif_log_ref (log);
 }

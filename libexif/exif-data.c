@@ -27,6 +27,7 @@
 #include "exif-utils.h"
 #include "exif-loader.h"
 #include "jpeg-marker.h"
+#include <libexif/exif-log.h>
 
 #include <libexif/olympus/exif-mnote-data-olympus.h>
 #include <libexif/canon/exif-mnote-data-canon.h>
@@ -48,6 +49,8 @@ struct _ExifDataPrivate
 	ExifByteOrder order;
 
 	ExifMnoteData *md;
+
+	ExifLog *log;
 
 	unsigned int ref_count;
 
@@ -112,6 +115,10 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	entry->format     = exif_get_short (d + offset + 2, data->priv->order);
 	entry->components = exif_get_long  (d + offset + 4, data->priv->order);
 
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+		  "Loading entry 0x%x ('%s')...", entry->tag,
+		  exif_tag_get_name (entry->tag));
+
 	/*
 	 * Size? If bigger than 4 bytes, the actual data is not
 	 * in the entry but somewhere else (offset).
@@ -128,20 +135,22 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	if (size < doff + s)
 		return;
 
-	entry->data = malloc (sizeof (char) * s);
-	if (!entry->data)
+	entry->data = malloc (s);
+	if (!entry->data) {
+		EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", s);
 		return;
+	}
 	entry->size = s;
 	memcpy (entry->data, d + doff, s);
 
 	/* If this is the MakerNote, remember the offset */
 	if (entry->tag == EXIF_TAG_MAKER_NOTE) {
-#ifdef DEBUG
-		printf ("%02x %02x %02x %02x %02x %02x %02x\n",
-			entry->data[0], entry->data[1], entry->data[2],
-			entry->data[3], entry->data[4], entry->data[5],
-			entry->data[6]);
-#endif
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+		          "MakerNote found (%02x %02x %02x %02x "
+			  "%02x %02x %02x...).",
+			  entry->data[0], entry->data[1], entry->data[2],
+			  entry->data[3], entry->data[4], entry->data[5],
+			  entry->data[6]);
 		data->priv->offset_mnote = doff;
 	}
 }
@@ -184,8 +193,10 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 		doff = *ds - 6;
 		*ds += s;
 		*d = realloc (*d, *ds);
-		if (!*d)
+		if (!*d) {
+			EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
 		  	return;
+		}
 		exif_set_long (*d + 6 + offset + 8,
 			       data->priv->order, doff);
 	} else
@@ -201,18 +212,19 @@ exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 			       unsigned int ds, ExifLong offset, ExifLong size)
 {
 	if (ds < offset + size) {
-#ifdef DEBUG
-		printf ("Bogus thumbnail offset and size: %i < %i + %i.\n",
-			(int) ds, (int) offset, (int) size);
-#endif
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+			  "Bogus thumbnail offset and size: %i < %i + %i.",
+			  (int) ds, (int) offset, (int) size);
 		return;
 	}
 	if (data->data)
 		free (data->data);
 	data->size = size;
 	data->data = malloc (data->size);
-	if (!data->data) 
-	  return;
+	if (!data->data) {
+		EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", data->size);
+		return;
+	}
 	memcpy (data->data, d + offset, data->size);
 }
 
@@ -230,9 +242,8 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 	/* Read the number of entries */
 	if (offset >= ds - 1) return;
 	n = exif_get_short (d + offset, data->priv->order);
-#ifdef DEBUG
-	printf ("Loading %i entries...\n", n);
-#endif
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+	          "Loading %i entries...", n);
 	offset += 2;
 
 	/* Check if we have enough data. */
@@ -241,10 +252,6 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 	for (i = 0; i < n; i++) {
 
 		tag = exif_get_short (d + offset + 12 * i, data->priv->order);
-#ifdef DEBUG
-		printf ("Loading entry '%s' (%i of %i)...\n",
-			exif_tag_get_name (tag), i + 1, n);
-#endif
 		switch (tag) {
 		case EXIF_TAG_EXIF_IFD_POINTER:
 		case EXIF_TAG_GPS_INFO_IFD_POINTER:
@@ -360,8 +367,10 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	 */
 	*ds += (2 + (ifd->count + n_ptr + n_thumb) * 12 + 4);
 	*d = realloc (*d, *ds);
-	if (!*d)
+	if (!*d) {
+		EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
 	  	return;
+	}
 
 	/* Save the number of entries */
 	exif_set_short (*d + 6 + offset, data->priv->order,
@@ -461,8 +470,11 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 					*ds - 6);
 			*ds += data->size;
 			*d = realloc (*d, *ds);
-			if (!*d)
+			if (!*d) {
+				EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData",
+						    *ds);
 			  	return;
+			}
 			memcpy (*d + *ds - data->size, data->data, data->size);
 			offset += 12;
 #ifdef DEBUG
@@ -697,11 +709,12 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	     * If we are able to interpret the maker note, do so.
 	     */
 	    if (data->priv->md) {
-		exif_mnote_data_set_byte_order (data->priv->md,
-						data->priv->order);
-		exif_mnote_data_set_offset (data->priv->md,
-					    data->priv->offset_mnote);
-		exif_mnote_data_load (data->priv->md, d, ds);
+		    exif_mnote_data_log (data->priv->md, data->priv->log);
+		    exif_mnote_data_set_byte_order (data->priv->md,
+				    		    data->priv->order);
+		    exif_mnote_data_set_offset (data->priv->md,
+				    		data->priv->offset_mnote);
+		    exif_mnote_data_load (data->priv->md, d, ds);
 	    }
 	}
 }
@@ -752,24 +765,11 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 ExifData *
 exif_data_new_from_file (const char *path)
 {
-	FILE *f;
-	int size;
 	ExifData *edata;
 	ExifLoader *loader;
-	unsigned char data[1024];
-
-	f = fopen (path, "rb");
-	if (!f)
-		return (NULL);
 
 	loader = exif_loader_new ();
-	while (1) {
-		size = fread (data, 1, sizeof (data), f);
-		if (size <= 0) break;
-		if (!exif_loader_write (loader, data, size)) break;
-	}
-	fclose (f);
-
+	exif_loader_write_file (loader, path);
 	edata = exif_loader_get_data (loader);
 	exif_loader_unref (loader);
 
@@ -974,4 +974,13 @@ exif_data_set_byte_order (ExifData *data, ExifByteOrder order)
 	data->priv->order = order;
 	if (data->priv->md)
 		exif_mnote_data_set_byte_order (data->priv->md, order);
+}
+
+void
+exif_data_log (ExifData *data, ExifLog *log)
+{
+	if (!data || !data->priv) return;
+	exif_log_unref (data->priv->log);
+	data->priv->log = log;
+	exif_log_ref (log);
 }
