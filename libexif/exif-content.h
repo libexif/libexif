@@ -62,9 +62,6 @@ void         exif_content_foreach_entry (ExifContent *content,
 #define exif_content_get_value(c,t,v,m)					\
 	(exif_content_get_entry (c,t) ?					\
 	 exif_entry_get_value (exif_content_get_entry (c,t),v,m) : NULL)
-#define exif_content_get_value_brief(c,t,v,m)				\
-	(exif_content_get_entry (c,t) ?					\
-	 exif_entry_get_value_brief (exif_content_get_entry (c,t),v,m) : NULL)
 
 void         exif_content_dump  (ExifContent *content, unsigned int indent);
 

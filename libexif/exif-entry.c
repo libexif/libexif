@@ -47,12 +47,12 @@ exif_entry_new (void)
 
 	e = malloc (sizeof (ExifEntry));
 	if (!e)
-		return (NULL);
+		return NULL;
 	memset (e, 0, sizeof (ExifEntry));
 	e->priv = malloc (sizeof (ExifEntryPrivate));
 	if (!e->priv) {
 		free (e);
-		return (NULL);
+		return NULL;
 	}
 	memset (e->priv, 0, sizeof (ExifEntryPrivate));
 	e->priv->ref_count = 1;
@@ -170,7 +170,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 
 	/* We need the byte order */
 	if (!e || !e->parent || !e->parent->parent)
-		return (NULL);
+		return NULL;
 	o = exif_data_get_byte_order (e->parent->parent);
 
 	memset (val, 0, maxlen);
@@ -227,26 +227,27 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			strncpy (val, e->data, MIN (maxlen, e->size));
 		else
 			strncpy (val, _("[None]"), maxlen);
-		strncat (val, " ", maxlen - strlen(val));
-		strncat (val, _("(Photographer)"), maxlen - strlen(val));
+		strncat (val, " ", maxlen - strlen (val));
+		strncat (val, _("(Photographer)"), maxlen - strlen (val));
 
 		/* Second part: Editor. */
-		strncat (val, " - ", maxlen - strlen(val));
+		strncat (val, " - ", maxlen - strlen (val));
 		if (e->size && e->data &&
 		    (strlen ((char *) e->data) + 1 < e->size) &&
 		    (strspn (e->data, " ") != strlen ((char *) e->data)))
-			strncat (val, e->data + strlen (e->data) + 1, maxlen - strlen(val));
+			strncat (val, e->data + strlen (e->data) + 1,
+				 maxlen - strlen (val));
 		else
-			strncat (val, _("[None]"), maxlen - strlen(val));
-		strncat (val, " ", maxlen - strlen(val));
-		strncat (val, _("(Editor)"), maxlen - strlen(val));
+			strncat (val, _("[None]"), maxlen - strlen (val));
+		strncat (val, " ", maxlen - strlen (val));
+		strncat (val, _("(Editor)"), maxlen - strlen (val));
 
 		break;
 	case EXIF_TAG_FNUMBER:
 		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e->components, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) return (NULL);
+		if (!v_rat.denominator) return NULL;
 		snprintf (val, maxlen, "f/%.01f", (float) v_rat.numerator /
 						    (float) v_rat.denominator);
 		break;
@@ -254,7 +255,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e->components, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) return (NULL);
+		if (!v_rat.denominator) return NULL;
 		snprintf (val, maxlen, "f/%.01f",
 			  pow (2 , ((float) v_rat.numerator /
 				    (float) v_rat.denominator) / 2.));
@@ -263,7 +264,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e->components, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) return (NULL);
+		if (!v_rat.denominator) return NULL;
 
 		/*
 		 * For calculation of the 35mm equivalent,
@@ -290,15 +291,16 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 				  (int) (d * (double) v_rat.numerator /
 				  	     (double) v_rat.denominator));
 
-		snprintf (val, maxlen, "%.1f mm%s",
-			  (float) v_rat.numerator / (float) v_rat.denominator,
-			  b);
+		snprintf (val, maxlen, "%.1f mm",
+			(float) v_rat.numerator / (float) v_rat.denominator);
+		if (maxlen > strlen (val) + strlen (b))
+			strncat (val, b, maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_SUBJECT_DISTANCE:
 		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e->components, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) return (NULL);
+		if (!v_rat.denominator) return NULL;
 		snprintf (val, maxlen, "%.1f m", (float) v_rat.numerator /
 						   (float) v_rat.denominator);
 		break;
@@ -306,23 +308,30 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e->components, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) return (NULL);
+		if (!v_rat.denominator) return NULL;
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
 		if (d < 1)
-			snprintf (val, maxlen, _("1/%d sec."),
+			snprintf (val, maxlen, _("1/%d"),
 				  (int) (1. / d));
 		else
-			snprintf (val, maxlen, _("%d sec."), (int) d);
+			snprintf (val, maxlen, _("%d"), (int) d);
+		if (maxlen > strlen (val) + strlen (" sec."))
+			strncat (val, " sec.", maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_SHUTTER_SPEED_VALUE:
 		CF (e->format, EXIF_FORMAT_SRATIONAL, val, maxlen);
 		CC (e->components, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
-		if (!v_srat.denominator) return (NULL);
-		snprintf (val, maxlen, "%.0f/%.0f sec. (APEX: %i)",
-              (float) v_srat.numerator, (float) v_srat.denominator,
-			  (int) pow (sqrt(2), (float) v_srat.numerator /
-					      (float) v_srat.denominator));
+		if (!v_srat.denominator) return NULL;
+		snprintf (val, maxlen, "%.0f/%.0f", (float) v_srat.numerator,
+			  (float) v_srat.denominator);
+		if (maxlen > strlen (val) + strlen (" sec."))
+			strncat (val, " sec.", maxlen - strlen (val) - 1);
+		snprintf (b, sizeof (b), " (APEX: %i)",
+			(int) pow (sqrt(2), (float) v_srat.numerator /
+				            (float) v_srat.denominator));
+		if (maxlen > strlen (val) + strlen (b))
+			strncat (val, b, maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_BRIGHTNESS_VALUE:
 		CF (e->format, EXIF_FORMAT_SRATIONAL, val, maxlen);
@@ -337,14 +346,20 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0: strncpy (val, _("Unknown"), maxlen); break;
-		case 1: strncpy (val, _("Average"), maxlen); break;
-		case 2: strncpy (val, _("Center-Weighted Average"), maxlen); break;
-		case 3: strncpy (val, _("Spot"), maxlen); break;
-		case 4: strncpy (val, _("Multi Spot"), maxlen); break;
-		case 5: strncpy (val, _("Pattern"), maxlen); break;
-		case 6: strncpy (val, _("Partial"), maxlen); break;
-		case 255: strncpy (val, _("Other"), maxlen); break;
+		case 0: strncpy (val, _("Unknown"), maxlen - 1); break;
+		case 1: strncpy (val, _("Average"), maxlen - 1); break;
+		case 2:
+			if (maxlen > strlen (_("Center-Weighted Average")))
+				strncpy (val, _("Center-Weighted Average"),
+					 maxlen - 1);
+			else
+				strncpy (val, _("Center-Weight"), maxlen - 1);
+			break;
+		case 3: strncpy (val, _("Spot"), maxlen - 1); break;
+		case 4: strncpy (val, _("Multi Spot"), maxlen - 1); break;
+		case 5: strncpy (val, _("Pattern"), maxlen - 1); break;
+		case 6: strncpy (val, _("Partial"), maxlen - 1); break;
+		case 255: strncpy (val, _("Other"), maxlen - 1); break;
 		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
@@ -390,8 +405,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			case 6: c = _("B"); break;
 			default: c = _("reserved"); break;
 			}
-			strncat (val, c, maxlen - strlen(val));
-			if (i < 3) strncat (val, " ", maxlen - strlen(val));
+			strncat (val, c, maxlen - strlen (val));
+			if (i < 3) strncat (val, " ", maxlen - strlen (val));
 		}
 		break;
 	case EXIF_TAG_SENSING_METHOD:
@@ -424,39 +439,41 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0: strncpy (val, _("Unknown"), maxlen); break;
-		case 1: strncpy (val, _("Daylight"), maxlen); break;
-		case 2: strncpy (val, _("Fluorescent"), maxlen); break;
+		case 0: strncpy (val, _("Unknown"    ), maxlen - 1); break;
+		case 1: strncpy (val, _("Daylight"   ), maxlen - 1); break;
+		case 2: strncpy (val, _("Fluorescent"), maxlen - 1); break;
 		case 3:
-			strncpy (val, _("Tungsten (incandescent light)"), maxlen);
+			strncpy (val, _("Tungsten"   ), maxlen - 1);
+			c = _(" (incandescent light)");
+			if (maxlen > strlen (val) + strlen (c))
+				strncat (val, c, maxlen - strlen (val) - 1);
 			break;
-		case 4: strncpy (val, _("Flash"), maxlen); break;
-		case 9: strncpy (val, _("Fine weather"), maxlen); break;
-		case 10: strncpy (val, _("Cloudy weather"), maxlen); break;
-		case 11: strncpy (val, _("Shade"), maxlen); break;
+		case 4: strncpy (val, _("Flash"          ), maxlen - 1); break;
+		case 9: strncpy (val, _("Fine weather"   ), maxlen - 1); break;
+		case 10: strncpy (val, _("Cloudy weather"), maxlen - 1); break;
+		case 11: strncpy (val, _("Shade"         ), maxlen - 1); break;
 		case 12:
-			 strncpy (val, _("Daylight fluorescent"), maxlen);
+			 strncpy (val, _("Daylight fluorescent" ), maxlen - 1);
 			 break;
 		case 13:
-			strncpy (val, _("Day white fluorescent"), maxlen);
+			strncpy (val, _("Day white fluorescent" ), maxlen - 1);
 			break;
 		case 14:
-			strncpy (val, _("Cool white fluorescent"), maxlen);
+			strncpy (val, _("Cool white fluorescent"), maxlen - 1);
 			break;
 		case 15:
-			strncpy (val, _("White fluorescent"), maxlen);
+			strncpy (val, _("White fluorescent"     ), maxlen - 1);
 			break;
-		case 17:
-			strncpy (val, _("Standard light A"), maxlen); break;
-		case 18: strncpy (val, _("Standard light B"), maxlen); break;
-		case 19: strncpy (val, _("Standard light C"), maxlen); break;
-		case 20: strncpy (val, _("D55"), maxlen); break;
-		case 21: strncpy (val, _("D65"), maxlen); break;
-		case 22: strncpy (val, _("D75"), maxlen); break;
+		case 17: strncpy (val, _("Standard light A"), maxlen-1); break;
+		case 18: strncpy (val, _("Standard light B"), maxlen-1); break;
+		case 19: strncpy (val, _("Standard light C"), maxlen-1); break;
+		case 20: strncpy (val, _("D55"), maxlen - 1); break;
+		case 21: strncpy (val, _("D65"), maxlen - 1); break;
+		case 22: strncpy (val, _("D75"), maxlen - 1); break;
 		case 24:
-			strncpy (val, _("ISO studio tungsten"), maxlen);
+			strncpy (val, _("ISO studio tungsten"), maxlen - 1);
 			break;
-		case 255: strncpy (val, _("Other"), maxlen); break;
+		case 255: strncpy (val, _("Other"), maxlen - 1); break;
 		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
@@ -466,8 +483,14 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 2: strncpy (val, _("Inch"), maxlen); break;
-		case 3: strncpy (val, _("Centimeter"), maxlen); break;
+		case 2: c = _("Inch");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("in"), maxlen - 1);
+			break;
+		case 3: c = _("Centimeter");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("cm"), maxlen - 1);
+			break;
 		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
@@ -476,28 +499,39 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0: strncpy (val, _("Not defined"), maxlen); break;
-		case 1: strncpy (val, _("Manual"), maxlen); break;
-		case 2: strncpy (val, _("Normal program"), maxlen); break;
-		case 3: strncpy (val, _("Aperture priority"), maxlen); break;
-		case 4: strncpy (val, _("Shutter priority"), maxlen); break;
-		case 5:
-			strncpy (val, _("Creative program (biased toward "
-				      "depth of field)"), maxlen);
+		case 0: strncpy (val, _("Not defined"), maxlen - 1); break;
+		case 1: strncpy (val, _("Manual"), maxlen - 1); break;
+		case 2: c = _("Normal program");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("Normal"), maxlen - 1);
 			break;
-		case 6:
-			strncpy (val, _("Action program (biased toward "
-				      "fast shutter speed)"), maxlen);
+		case 3: c = _("Aperture priority");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("Aperture"), maxlen - 1);
 			break;
-		case 7:
-			strncpy (val, _("Portrait mode (for closeup photos "
-				      "with the background out of focus"),
-				 maxlen);
+		case 4: c = _("Shutter priority");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("Shutter"), maxlen - 1);
 			break;
-		case 8:
-			strncpy (val, _("Landscape mode (for landscape "
-				      "photos with the background in focus"),
-				 maxlen);
+		case 5: c = _("Creative program (biased toward "
+			      "depth of field)");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("Creative"), maxlen - 1);
+			break;
+		case 6: c = _("Action program (biased toward "
+			      "fast shutter speed)");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("Action"), maxlen - 1);
+			break;
+		case 7: c = _("Portrait mode (for closeup photos "
+			      "with the background out of focus");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("Portrait"), maxlen - 1);
+			break;
+		case 8: c = _("Landscape mode (for landscape "
+			      "photos with the background in focus");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("Landscape"), maxlen - 1);
 			break;
 		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
@@ -507,7 +541,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
 		if (!v_srat.denominator)
-			return (NULL);
+			return NULL;
 		snprintf (val, maxlen, "%s%.01f",
 			  v_srat.denominator * v_srat.numerator > 0 ? "+" : "",
 			  (double) v_srat.numerator /
@@ -614,87 +648,94 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0x000:
+		case 0x0000:
 			strncpy (val, _("Flash did not fire."), maxlen);
 			break;
 		case 0x0001:
-			strncpy (val, _("Flash fired."), maxlen);
+			c = _("Flash fired.");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("Yes"), maxlen - 1);
 			break;
 		case 0x0005:
-			strncpy (val, _("Strobe return light not detected."), maxlen);
+			c = _("Strobe return light not detected.");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("W/o strobe"), maxlen - 1);
 			break;
 		case 0x0007:
-			strncpy (val, _("Strobe return light detected."), maxlen);
+			c = _("Strobe return light detected.");
+			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
+			else strncpy (val, _("W. strobe"), maxlen - 1);
 			break;
 		case 0x000d:
 			strncpy (val, _("Flash fired, compulsory flash mode, "
-				"return light not detected."), maxlen);
+				"return light not detected."), maxlen - 1);
 			break;
 		case 0x000f:
 			strncpy (val, _("Flash fired, compulsory flash mode, "
-				"return light detected."), maxlen);
+				"return light detected."), maxlen - 1);
 			break;
 		case 0x0010:
 			strncpy (val, _("Flash did not fire, compulsory flash "
-				"mode."), maxlen);
+				"mode."), maxlen - 1);
 			break;
 		case 0x0018:
-			strncpy (val, _("Flash did not fire, auto mode."), maxlen);
+			strncpy (val, _("Flash did not fire, auto mode."), maxlen - 1);
 			break;
 		case 0x0019:
-			strncpy (val, _("Flash fired, auto mode."), maxlen);
+			strncpy (val, _("Flash fired, auto mode."), maxlen - 1);
 			break;
 		case 0x001d:
 			strncpy (val, _("Flash fired, auto mode, return light "
-				"not detected."), maxlen);
+				"not detected."), maxlen - 1);
 			break;
 		case 0x001f:
 			strncpy (val, _("Flash fired, auto mode, return light "
-				"detected."), maxlen);
+				"detected."), maxlen - 1);
 			break;
 		case 0x0020:
-			strncpy (val, _("No flash function."), maxlen);
+			strncpy (val, _("No flash function."), maxlen - 1);
 			break;
 		case 0x0041:
-			strncpy (val, _("Flash fired, red-eye reduction mode."), maxlen);
+			strncpy (val, _("Flash fired, red-eye reduction "
+					"mode."), maxlen - 1);
 			break;
 		case 0x0045:
 			strncpy (val, _("Flash fired, red-eye reduction mode, "
-				"return light not detected."), maxlen);
+				"return light not detected."), maxlen - 1);
 			break;
 		case 0x0047:
 			strncpy (val, _("Flash fired, red-eye reduction mode, "
-				"return light detected."), maxlen);
+				"return light detected."), maxlen - 1);
 			break;
 		case 0x0049:
 			strncpy (val, _("Flash fired, compulsory flash mode, "
-				"red-eye reduction mode."), maxlen);
+				"red-eye reduction mode."), maxlen - 1);
 			break;
 		case 0x004d:
 			strncpy (val, _("Flash fired, compulsory flash mode, "
 				"red-eye reduction mode, return light not "
-				"detected."), maxlen);
+				"detected."), maxlen - 1);
 			break;
 		case 0x004f:
 			strncpy (val, _("Flash fired, compulsory flash mode, "
 				"red-eye reduction mode, return light "
-				"detected."), maxlen);
+				"detected."), maxlen - 1);
 			break;
 		case 0x0059:
 			strncpy (val, _("Flash fired, auto mode, red-eye "
-				"reduction mode."), maxlen);
+				"reduction mode."), maxlen - 1);
 			break;
 		case 0x005d:
 			strncpy (val, _("Flash fired, auto mode, return light "
-				"not detected, red-eye reduction mode."), maxlen);
+				 "not detected, red-eye reduction mode."),
+				 maxlen - 1);
 			break;
 		case 0x005f:
 			strncpy (val, _("Flash fired, auto mode, return light "
-				"detected, red-eye reduction mode."), maxlen);
+				 "detected, red-eye reduction mode."),
+				 maxlen - 1);
 			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
+		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_MAKER_NOTE:
@@ -708,10 +749,10 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
 		case 0:
-			strncpy (val, _("Normal process"), maxlen);
+			strncpy (val, _("Normal process"), maxlen - 1);
 			break;
 		case 1:
-			strncpy (val, _("Custom process"), maxlen);
+			strncpy (val, _("Custom process"), maxlen - 1);
 			break;
 		default:
 			snprintf (val, maxlen, "%i", v_short);
@@ -724,13 +765,13 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
 		case 0:
-			strncpy (val, _("Auto exposure"), maxlen);
+			strncpy (val, _("Auto exposure"), maxlen - 1);
 			break;
 		case 1:
-			strncpy (val, _("Manual exposure"), maxlen);
+			strncpy (val, _("Manual exposure"), maxlen - 1);
 			break;
 		case 2:
-			strncpy (val, _("Auto bracket"), maxlen);
+			strncpy (val, _("Auto bracket"), maxlen - 1);
 			break;
 		default:
 			snprintf (val, maxlen, "%i", v_short);
@@ -743,10 +784,10 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
 		case 0:
-			strncpy (val, _("Auto white balance"), maxlen);
+			strncpy (val, _("Auto white balance"), maxlen - 1);
 			break;
 		case 1:
-			strncpy (val, _("Manual white balance"), maxlen);
+			strncpy (val, _("Manual white balance"), maxlen - 1);
 			break;
 		default:
 			snprintf (val, maxlen, "%i", v_short);
@@ -758,21 +799,11 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0:
-			strncpy (val, _("Standard"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("Landscape"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("Portrait"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("Night scene"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
+		case 0: strncpy (val, _("Standard"   ), maxlen - 1); break;
+		case 1: strncpy (val, _("Landscape"  ), maxlen - 1); break;
+		case 2: strncpy (val, _("Portrait"   ), maxlen - 1); break;
+		case 3: strncpy (val, _("Night scene"), maxlen - 1); break;
+		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_GAIN_CONTROL:
@@ -780,24 +811,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0:
-			strncpy (val, _("Normal"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("Low gain up"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("High gain up"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("Low gain down"), maxlen);
-			break;
-		case 4:
-			strncpy (val, _("High gain down"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
+		case 0: strncpy (val, _("Normal"        ), maxlen - 1); break;
+		case 1: strncpy (val, _("Low gain up"   ), maxlen - 1); break;
+		case 2: strncpy (val, _("High gain up"  ), maxlen - 1); break;
+		case 3: strncpy (val, _("Low gain down" ), maxlen - 1); break;
+		case 4: strncpy (val, _("High gain down"), maxlen - 1); break;
+		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_SATURATION:
@@ -805,18 +824,10 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0:
-			strncpy (val, _("Normal"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("Low saturation"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("High saturation"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
+		case 0: strncpy (val, _("Normal"         ), maxlen - 1); break;
+		case 1: strncpy (val, _("Low saturation" ), maxlen - 1); break;
+		case 2: strncpy (val, _("High saturation"), maxlen - 1); break;
+		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_CONTRAST:
@@ -825,18 +836,10 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0:
-			strncpy (val, _("Normal"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("Soft"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("Hard"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
+		case 0: strncpy (val, _("Normal"), maxlen - 1); break;
+		case 1: strncpy (val, _("Soft"  ), maxlen - 1); break;
+		case 2: strncpy (val, _("Hard"  ), maxlen - 1); break;
+		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
@@ -844,21 +847,11 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
-		case 0:
-			strncpy (val, _("Unknown"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("Macro"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("Close view"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("Distant view"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
+		case 0: strncpy (val, _("Unknown"     ), maxlen - 1); break;
+		case 1: strncpy (val, _("Macro"       ), maxlen - 1); break;
+		case 2: strncpy (val, _("Close view"  ), maxlen - 1); break;
+		case 3: strncpy (val, _("Distant view"), maxlen - 1); break;
+		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_SUBJECT_AREA:
@@ -902,12 +895,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		case EXIF_FORMAT_SBYTE:
 			v_byte = e->data[0];
 			snprintf (val, maxlen, "0x%02x", v_byte);
-			maxlen -= strlen(val);
+			maxlen -= strlen (val);
 			for (i = 1; i < e->components; i++) {
 				v_byte = e->data[i];
 				snprintf (b, sizeof (b), ", 0x%02x", v_byte);
 				strncat (val, b, maxlen);
-				maxlen -= strlen(b);
+				maxlen -= strlen (b);
 				if ((signed)maxlen <= 0) break;
 			}
 			break;
@@ -915,42 +908,42 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		case EXIF_FORMAT_SSHORT:
 			v_short = exif_get_short (e->data, o);
 			snprintf (val, maxlen, "%i", v_short);
-			maxlen -= strlen(val);
+			maxlen -= strlen (val);
 			for (i = 1; i < e->components; i++) {
 				v_short = exif_get_short (e->data +
 					exif_format_get_size (e->format) *
 					i, o);
 				snprintf (b, sizeof (b), ", %i", v_short);
 				strncat (val, b, maxlen);
-				maxlen -= strlen(b);
+				maxlen -= strlen (b);
 				if ((signed)maxlen <= 0) break;
 			}
 			break;
 		case EXIF_FORMAT_LONG:
 			v_long = exif_get_long (e->data, o);
 			snprintf (val, maxlen, "%i", (int) v_long);
-			maxlen -= strlen(val);
+			maxlen -= strlen (val);
 			for (i = 1; i < e->components; i++) {
 				v_long = exif_get_long (e->data +
 					exif_format_get_size (e->format) *
 					i, o);
 				snprintf (b, sizeof (b), ", %li", v_long);
 				strncat (val, b, maxlen);
-				maxlen -= strlen(b);
+				maxlen -= strlen (b);
 				if ((signed)maxlen <= 0) break;
 			}
 			break;
 		case EXIF_FORMAT_SLONG:
 			v_slong = exif_get_slong (e->data, o);
 			snprintf (val, maxlen, "%li", v_slong);
-			maxlen -= strlen(val);
+			maxlen -= strlen (val);
 			for (i = 1; i < e->components; i++) {
 				v_long = exif_get_slong (e->data +
 					exif_format_get_size (e->format) *
 					i, o);
 				snprintf (b, sizeof (b), ", %li", v_long);
 				strncat (val, b, maxlen);
-				maxlen -= strlen(b);
+				maxlen -= strlen (b);
 				if ((signed)maxlen <= 0) break;
 			}
 			break;
@@ -962,7 +955,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			snprintf (val, maxlen, "%i/%i",
 				  (int) v_rat.numerator,
 				  (int) v_rat.denominator);
-			maxlen -= strlen(val);
+			maxlen -= strlen (val);
 			for (i = 1; i < e->components; i++) {
 				v_rat = exif_get_rational (
 					e->data + 8 * i, o);
@@ -970,7 +963,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 					  (int) v_rat.numerator,
 					  (int) v_rat.denominator);
 				strncat (val, b, maxlen);
-				maxlen -= strlen(b);
+				maxlen -= strlen (b);
 				if ((signed)maxlen <= 0) break;
 			}
 			break;
@@ -979,7 +972,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			snprintf (val, maxlen, "%i/%i",
 				  (int) v_srat.numerator,
 				  (int) v_srat.denominator);
-			maxlen -= strlen(val);
+			maxlen -= strlen (val);
 			for (i = 1; i < e->components; i++) {
 				v_srat = exif_get_srational (
 					e->data + 8 * i, o);
@@ -987,8 +980,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 					  (int) v_srat.numerator,
 					  (int) v_srat.denominator);
 				strncat (val, b, maxlen);
-				maxlen -= strlen(b);
-				if ((signed)maxlen <= 0) break;
+				maxlen -= strlen (b);
+				if ((signed) maxlen <= 0) break;
 			}
 			break;
 		case EXIF_FORMAT_DOUBLE:
@@ -999,210 +992,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 	}
 
-	return (val);
-}
-
-const char *
-exif_entry_get_value_brief (ExifEntry *e, char *val, unsigned int maxlen)
-{
-	ExifByteOrder o;
-	ExifEntry *entry;
-	ExifRational v_rat;
-	ExifSRational v_srat;
-	ExifShort v_short;
-	double d;
-
-	/* We need the byte order */
-	if (!e || !e->parent || !e->parent->parent)
-		return (NULL);
-	o = exif_data_get_byte_order (e->parent->parent);
-
-	memset (val, 0, maxlen);
-    maxlen--;
-
-	switch (e->tag) {
-	case EXIF_TAG_FOCAL_LENGTH:
-		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator)
-			return (NULL);
-
-		/*
-		 * For calculation of the 35mm equivalent,
-		 * Minolta cameras need a multiplier that depends on the
-		 * camera model.
-		 */
-		d = (double) v_rat.numerator / (double) v_rat.denominator;
-		entry = exif_content_get_entry (
-			e->parent->parent->ifd[EXIF_IFD_0], EXIF_TAG_MAKE);
-		if (entry && entry->data &&
-		    !strncmp (entry->data, "Minolta", 7)) {
-			entry = exif_content_get_entry (
-					e->parent->parent->ifd[EXIF_IFD_0],
-					EXIF_TAG_MODEL);
-			if (entry && entry->data) {
-				if (!strncmp (entry->data, "DiMAGE 7", 8))
-					d *= 3.9;
-				else if (!strncmp (entry->data, "DiMAGE 5", 8))
-					d *= 4.9;
-			}
-		}
-		snprintf (val, maxlen, "%dmm",
-				(int) (d * (double) v_rat.numerator /
-				           (double) v_rat.denominator));
-		break;
-	case EXIF_TAG_EXPOSURE_TIME:
-		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator)
-			return (NULL);
-		d = (double) v_rat.numerator / (double) v_rat.denominator;
-		if (d < 1.)
-			snprintf (val, maxlen, "1/%d", (int) (1. / d));
-		else
-			snprintf (val, maxlen, "%d", (int) d);
-		break;
-	case EXIF_TAG_SHUTTER_SPEED_VALUE:
-		CF (e->format, EXIF_FORMAT_SRATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_srat = exif_get_srational (e->data, o);
-		if (!v_srat.denominator)
-			return (NULL);
-		d = 1. / pow (2., (double) v_srat.numerator /
-				  (double) v_srat.denominator);
-		if (d < 1.)
-			snprintf (val, maxlen, "1/%d", (int) (1. / d));
-		else
-			snprintf (val, maxlen, "%d", (int) d);
-		break;
-	case EXIF_TAG_METERING_MODE:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0:
-			strncpy (val, _("unknown"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("average"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("center-weight"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("spot"), maxlen);
-			break;
-		case 4:
-			strncpy (val, _("multi-spot"), maxlen);
-			break;
-		case 5:
-			strncpy (val, _("matrix"), maxlen);
-			break;
-		case 6:
-			strncpy (val, _("partial"), maxlen);
-			break;
-		case 255:
-			strncpy (val, _("other"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
-		}
-		break;
-	case EXIF_TAG_LIGHT_SOURCE:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0:
-			strncpy (val, _("sunny"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("fluorescent"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("tungsten"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("cloudy"), maxlen);
-			break;
-		default:
-			return (exif_entry_get_value (e, val, maxlen));
-		}
-		break;
-	case EXIF_TAG_RESOLUTION_UNIT:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 2:
-			strncpy (val, _("in"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("cm"), maxlen);
-			break;
-		default:
-			return (NULL);
-		}
-		break;
-	case EXIF_TAG_EXPOSURE_PROGRAM:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 1:
-			strncpy (val, _("manual"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("normal"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("aperture"), maxlen);
-			break;
-		case 4:
-			strncpy (val, _("shutter"), maxlen);
-			break;
-		case 5:
-			strncpy (val, _("creative"), maxlen);
-			break;
-		case 6:
-			strncpy (val, _("action"), maxlen);
-			break;
-		case 7:
-			strncpy (val, _("portrait"), maxlen);
-			break;
-		case 8:
-			strncpy (val, _("landscape"), maxlen);
-			break;
-		default:
-			return (exif_entry_get_value (e, val, maxlen));
-		}
-		break;
-	case EXIF_TAG_FLASH:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0x0001:
-			strncpy (val, _("yes"), maxlen);
-			break;
-		case 0x0005:
-			strncpy (val, _("w/o strobe"), maxlen);
-			break;
-		case 0x0007:
-			strncpy (val, _("w. strobe"), maxlen);
-			break;
-		default:
-			return (exif_entry_get_value (e, val, maxlen));
-		}
-		break;
-	default:
-		return (exif_entry_get_value (e, val, maxlen));
-	}
-
-	return (val);
+	return strlen (val) ? val : NULL;
 }
 
 void

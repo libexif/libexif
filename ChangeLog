@@ -1,3 +1,11 @@
+2004-01-08  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c (exif_entry_get_value_brief): merge into
+	  (exif_entry_get_value) and remove.
+	* tests/test-mnote.c: Make it compile again.
+	* tests/test-value.c: New.
+	* configure.in: API-changes -> increment version.
+
 2004-01-07  Jan Patera <patera@users.sourceforge.net>
 
 	Thread-safety, elimination of static variables, fixes of memory

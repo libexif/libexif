@@ -9,7 +9,7 @@ static int
 test_exif_data (ExifData *d)
 {
 	unsigned int i, c;
-	char *v;
+	char v[1024], *p;
 	ExifMnoteData *md;
 
 	fprintf (stdout, "Byte order: %s\n",
@@ -40,11 +40,8 @@ test_exif_data (ExifData *d)
 				exif_mnote_data_get_title (md, i));
 		fprintf (stdout, "  Description: '%s'\n",
 				exif_mnote_data_get_description (md, i));
-		v = exif_mnote_data_get_value (md, i);
-		if (v) {
-			fprintf (stdout, "  Value: '%s'\n", v);
-			free (v);
-		}
+		p = exif_mnote_data_get_value (md, i, v, sizeof (v));
+		if (p) { fprintf (stdout, "  Value: '%s'\n", v); }
 	}
 
 	return 0;
