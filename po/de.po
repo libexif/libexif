@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif vers\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2005-03-12 03:00+0100\n"
-"PO-Revision-Date: 2005-03-12 03:28+0100\n"
+"POT-Creation-Date: 2005-03-12 05:09+0100\n"
+"PO-Revision-Date: 2005-03-12 05:41+0100\n"
 "Last-Translator: Hans Ulrich Niedermann <gp@n-dimensional.de>\n"
 "Language-Team: Deutsch <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2728,7 +2728,10 @@ msgstr ""
 msgid "Full"
 msgstr ""
 
-#: test/test-nls.c:47
+# This is a very special string. It is used for test purposes, and
+# we only test the de locale as a proof-of-concept example. There is
+# no need for anybody to translate it.
+#: test/nls/test-nls.c:19 test/nls/test-nls.c:20 test/nls/test-nls.c:22
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
 msgstr "[DO_NOT_TRANSLATE_THIS_MARKER_de]"
 
