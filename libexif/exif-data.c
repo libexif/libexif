@@ -295,12 +295,15 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 				d, ds, offset + 12 * i);
 	offset += 12 * ifd->count;
 
-	/* Save special entries */
-	if (ifd == data->ifd[EXIF_IFD_1] && (
+	/*
+	 * The pointer to IFD_EXIF is in IFD_0.
+	 * However, the pointer to IFD_INTEROPERABILITY is in IFD_EXIF,
+	 * therefore, if IFD_INTEROPERABILITY is not empty, we need
+	 * IFD_EXIF even if latter is empty.
+	 */
+	if (ifd == data->ifd[EXIF_IFD_0] && (
 			data->ifd[EXIF_IFD_EXIF]->count ||
 			data->ifd[EXIF_IFD_INTEROPERABILITY]->count)) {
-
-		/* EXIF_TAG_EXIF_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
 				EXIF_TAG_EXIF_IFD_POINTER);
 		exif_set_short (*d + 6 + offset + 2, data->priv->order,
@@ -308,14 +311,13 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
 		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 				*ds - 6);
-		exif_data_save_data_content (data, data->ifd[EXIF_IFD_EXIF], d, ds,
-					     *ds - 6);
+		exif_data_save_data_content (data, data->ifd[EXIF_IFD_EXIF], d,
+					     ds, *ds - 6);
 		offset += 12;
 	}
 
-	if (ifd == data->ifd[EXIF_IFD_1] && data->ifd[EXIF_IFD_GPS]->count) {
-
-		/* EXIF_TAG_GPS_INFO_IFD_POINTER */
+	/* The pointer to IFD_GPS is in IFD_0. */
+	if (ifd == data->ifd[EXIF_IFD_0] && data->ifd[EXIF_IFD_GPS]->count) {
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
 				EXIF_TAG_GPS_INFO_IFD_POINTER);
 		exif_set_short (*d + 6 + offset + 2, data->priv->order,
@@ -328,9 +330,8 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		offset += 12;
 	}
 
+	/* The pointer to IFD_INTEROPERABILITY is in IFD_EXIF. See above. */
 	if (ifd == data->ifd[EXIF_IFD_EXIF] && data->ifd[EXIF_IFD_INTEROPERABILITY]->count) {
-
-		/* EXIF_TAG_INTEROPERABILITY_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
 				EXIF_TAG_INTEROPERABILITY_IFD_POINTER);
 		exif_set_short (*d + 6 + offset + 2, data->priv->order,
@@ -510,7 +511,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d, unsigned int size)
 #endif
 
 	/* Parse the actual exif data (offset 14) */
-	exif_data_load_data_content (data, data->ifd[EXIF_IFD_1], d + 6,
+	exif_data_load_data_content (data, data->ifd[EXIF_IFD_0], d + 6,
 				     size - 6, offset);
 
 	/* IFD 1 offset */
@@ -566,7 +567,7 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 #ifdef DEBUG
 	printf ("Saving IFDs...\n");
 #endif
-	exif_data_save_data_content (data, data->ifd[EXIF_IFD_1], d, ds, *ds - 6);
+	exif_data_save_data_content (data, data->ifd[EXIF_IFD_0], d, ds, *ds - 6);
 
 #ifdef DEBUG
 	printf ("Saved %i byte(s) EXIF data.\n", *ds);
