@@ -1,3 +1,11 @@
+2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-utils.[c,h] (exif_array_set_byte_order): New function.
+	* libexif/exif-data.c
+	* libexif/canon/exif-mnote-data-canon.c
+	* libexif/olympus/exif-mnote-data-olympus.c
+	* libexif/pentax/exif-mnote-data-pentax.c: Use new function.
+
 2005-03-09  Jan Patera <patera@users.sourceforge.net>
 
 	* exif_data.c: Final fix of Ubuntu Security Notice USN-91-1

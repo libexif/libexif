@@ -940,75 +940,11 @@ static void
 entry_set_byte_order (ExifEntry *e, void *data)
 {
 	ByteOrderChangeData *d = data;
-	unsigned int i;
-	ExifShort s;
-	ExifLong l;
-	ExifSLong sl;
-	ExifRational r;
-	ExifSRational sr;
 
 	if (!e)
 		return;
 
-	switch (e->format) {
-	case EXIF_FORMAT_SHORT:
-		for (i = 0; i < e->components; i++) {
-			s = exif_get_short (e->data +
-				(i * exif_format_get_size (e->format)),
-				d->old);
-			exif_set_short (e->data +
-				(i * exif_format_get_size (e->format)),
-				d->new, s);
-		}
-		break;
-	case EXIF_FORMAT_LONG:
-		for (i = 0; i < e->components; i++) {
-			l = exif_get_long (e->data +
-				(i * exif_format_get_size (e->format)),
-				d->old);
-			exif_set_long (e->data +
-				(i * exif_format_get_size (e->format)),
-				d->new, l);
-		}
-		break;
-	case EXIF_FORMAT_RATIONAL:
-		for (i = 0; i < e->components; i++) {
-			r = exif_get_rational (e->data +
-				(i * exif_format_get_size (e->format)),
-				d->old);
-			exif_set_rational (e->data +
-				(i * exif_format_get_size (e->format)),
-				d->new, r);
-		}
-		break;
-	case EXIF_FORMAT_SLONG:
-		for (i = 0; i < e->components; i++) {
-			sl = exif_get_slong (e->data +
-				(i * exif_format_get_size (e->format)),
-				d->old);
-			exif_set_slong (e->data +
-				(i * exif_format_get_size (e->format)),
-				d->new, sl);
-		}
-		break;
-	case EXIF_FORMAT_SRATIONAL:
-		for (i = 0; i < e->components; i++) {
-			sr = exif_get_srational (e->data +
-				(i * exif_format_get_size (e->format)),
-				d->old);
-			exif_set_srational (e->data +
-				(i * exif_format_get_size (e->format)),
-				d->new, sr);
-		}
-		break;
-	case EXIF_FORMAT_UNDEFINED:
-	case EXIF_FORMAT_BYTE:
-	case EXIF_FORMAT_SBYTE:
-	case EXIF_FORMAT_ASCII:
-	default:
-		/* Nothing here. */
-		break;
-	}
+	exif_array_set_byte_order (e->format, e->data, e->components, d->old, d->new);
 }
 
 static void

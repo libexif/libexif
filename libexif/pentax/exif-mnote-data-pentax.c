@@ -167,69 +167,18 @@ static void
 exif_mnote_data_pentax_set_byte_order (ExifMnoteData *d, ExifByteOrder o)
 {
 	ExifByteOrder o_orig;
-        ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) d;
-        unsigned int i, fs;
-        ExifShort s;
-        ExifLong l;
-        ExifSLong sl;
-        ExifRational r;
-        ExifSRational sr;
-                                                                                
-        if (!n) return;
-                                                                                
-        o_orig = n->order;
-        n->order = o;
-        for (i = 0; i < n->count; i++) {
-                n->entries[i].order = o;
-                fs = exif_format_get_size (n->entries[i].format);
-                switch (n->entries[i].format) {
-                case EXIF_FORMAT_SHORT:
-                        for (i = 0; i < n->entries[i].components; i++) {
-                                s = exif_get_short (n->entries[i].data + (i*fs),                                                    o_orig);
-                                exif_set_short (n->entries[i].data + (i * fs),
-                                                o, s);
-                        }
-                        break;
-                case EXIF_FORMAT_LONG:
-                        for (i = 0; i < n->entries[i].components; i++) {
-                                l = exif_get_long (n->entries[i].data + (i*fs),
-                                                   o_orig);
-                                exif_set_long (n->entries[i].data + (i * fs),
-                                               o, l);
-                        }
-                        break;
-                case EXIF_FORMAT_RATIONAL:
-                        for (i = 0; i < n->entries[i].components; i++) {
-                                r = exif_get_rational (n->entries[i].data +
-                                                       (i * fs), o_orig);
-                                exif_set_rational (n->entries[i].data +
-                                        (i * fs), o, r);
-                        }
-                        break;
-                case EXIF_FORMAT_SLONG:
-                        for (i = 0; i < n->entries[i].components; i++) {
-                                sl = exif_get_slong (n->entries[i].data +
-                                                (i * fs), o_orig);
-                                exif_set_slong (n->entries[i].data +
-                                                (i * fs), o, sl);
-                        }
-                        break;
-                case EXIF_FORMAT_SRATIONAL:
-                        for (i = 0; i < n->entries[i].components; i++) {
-                                sr = exif_get_srational (n->entries[i].data +
-                                                (i * fs), o_orig);
-                                exif_set_srational (n->entries[i].data +
-                                                (i * fs), o, sr);
-                        }
-                        break;
-                case EXIF_FORMAT_UNDEFINED:
-                case EXIF_FORMAT_BYTE:
-                case EXIF_FORMAT_ASCII:
-                default:
-                        /* Nothing here. */
-                        break;
-                }
-        }
+	ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) d;
+	unsigned int i;
+
+	if (!n) return;
+
+	o_orig = n->order;
+	n->order = o;
+	for (i = 0; i < n->count; i++) {
+		n->entries[i].order = o;
+		exif_array_set_byte_order (n->entries[i].format, n->entries[i].data,
+				n->entries[i].components, o_orig, o);
+	}
 }
 
 ExifMnoteData *

@@ -26,6 +26,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 #include <libexif/exif-byte-order.h>
+#include <libexif/exif-format.h>
 #include <libexif/_stdint.h>
 
 
@@ -58,6 +59,10 @@ void exif_set_rational  (unsigned char *b, ExifByteOrder order,
 			 ExifRational value);
 void exif_set_srational (unsigned char *b, ExifByteOrder order,
 			 ExifSRational value);
+
+/* Please do not use this function outside of the library. */
+void exif_array_set_byte_order (ExifFormat, unsigned char *, unsigned int,
+		ExifByteOrder o_orig, ExifByteOrder o_new);
 
 #undef  MIN
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))

@@ -24,6 +24,60 @@
 
 typedef signed short ExifSShort;
 
+void
+exif_array_set_byte_order (ExifFormat f, unsigned char *b, unsigned int n,
+		ExifByteOrder o_orig, ExifByteOrder o_new)
+{
+	unsigned int j;
+	unsigned int fs = exif_format_get_size (f);
+	ExifShort s;
+	ExifLong l;
+	ExifSLong sl;
+	ExifRational r;
+	ExifSRational sr;
+
+	if (!b || !n) return;
+
+	switch (f) {
+	case EXIF_FORMAT_SHORT:
+		for (j = 0; j < n; j++) {
+			s = exif_get_short (b + j * fs, o_orig);
+			exif_set_short (b + j * fs, o_new, s);
+		}
+		break;
+	case EXIF_FORMAT_LONG:
+		for (j = 0; j < n; j++) {
+			l = exif_get_long (b + j * fs, o_orig);
+			exif_set_long (b + j * fs, o_new, l);
+		}
+		break;
+	case EXIF_FORMAT_RATIONAL:
+		for (j = 0; j < n; j++) {
+			r = exif_get_rational (b + j * fs, o_orig);
+			exif_set_rational (b + j * fs, o_new, r);
+		}
+		break;
+	case EXIF_FORMAT_SLONG:
+		for (j = 0; j < n; j++) {
+			sl = exif_get_slong (b + j * fs, o_orig);
+			exif_set_slong (b + j * fs, o_new, sl);
+		}
+		break;
+	case EXIF_FORMAT_SRATIONAL:
+		for (j = 0; j < n; j++) {
+			sr = exif_get_srational (b + j * fs, o_orig);
+			exif_set_srational (b + j * fs, o_new, sr);
+		}
+		break;
+	case EXIF_FORMAT_UNDEFINED:
+	case EXIF_FORMAT_BYTE:
+	case EXIF_FORMAT_ASCII:
+	default:
+		/* Nothing here. */
+		break;
+	}
+}
+
 static ExifSShort
 exif_get_sshort (const unsigned char *buf, ExifByteOrder order)
 {
