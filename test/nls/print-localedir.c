@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[])
 {
-  puts(LIBEXIF_LOCALEDIR);
+  puts(LOCALEDIR);
   puts("\n");
   return 0;
 }

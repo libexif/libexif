@@ -57,7 +57,7 @@ mnote_canon_tag_get_title (MnoteCanonTag t)
 {
 	unsigned int i;
 
-	bindtextdomain (GETTEXT_PACKAGE, LIBMNOTE_LOCALEDIR); 
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR); 
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
 		if (table[i].tag == t) return (_(table[i].title));
 	return NULL;
@@ -68,7 +68,7 @@ mnote_canon_tag_get_description (MnoteCanonTag t)
 {
 	unsigned int i;
 
-	bindtextdomain (GETTEXT_PACKAGE, LIBMNOTE_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
 		if (table[i].tag == t) return (_(table[i].description));
 	return NULL;

@@ -137,7 +137,7 @@ mnote_olympus_tag_get_title (MnoteOlympusTag t)
 {
 	unsigned int i;
 
-	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
 		if (table[i].tag == t) return (_(table[i].title));
 	return NULL;
@@ -148,7 +148,7 @@ mnote_olympus_tag_get_description (MnoteOlympusTag t)
 {
 	unsigned int i;
 
-	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
 		if (table[i].tag == t) return (_(table[i].description));
 	return NULL;

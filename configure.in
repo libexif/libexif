@@ -63,8 +63,7 @@ dnl We cannot use AC_DEFINE_UNQUOTED() for these definitions, as
 dnl we require make to do insert the proper $(datadir) value
 localedir="\$(datadir)/locale"
 AC_SUBST(localedir)
-AM_CFLAGS="$AM_CFLAGS -DLIBEXIF_LOCALEDIR=\\\"${localedir}\\\""
-AM_CFLAGS="$AM_CFLAGS -DLIBMNOTE_LOCALEDIR=\\\"${localedir}\\\""
+AM_CFLAGS="$AM_CFLAGS -DLOCALEDIR=\\\"${localedir}\\\""
 
 
 dnl ---------------------------------------------------------------------------

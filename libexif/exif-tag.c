@@ -266,7 +266,7 @@ static struct {
 	    "as unknown.")},
 	{EXIF_TAG_EXPOSURE_TIME, "ExposureTime", N_("Exposure Time"),
 	 N_("Exposure time, given in seconds (sec).")},
-	{EXIF_TAG_FNUMBER, "FNumber", "FNumber",
+	{EXIF_TAG_FNUMBER, "FNumber", N_("FNumber"),
 	 N_("The F number.")},
 	{EXIF_TAG_IPTC_NAA, "IPTC/NAA", "IPTC/NAA", ""},
 	{EXIF_TAG_IMAGE_RESOURCES, "ImageResources", N_("Image Resources Block"), ""},
@@ -640,7 +640,7 @@ exif_tag_get_title (ExifTag tag)
 	unsigned int i;
 
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
 	for (i = 0; ExifTagTable[i].title; i++)
 		if (ExifTagTable[i].tag == tag) break;
@@ -653,7 +653,7 @@ exif_tag_get_description (ExifTag tag)
 	unsigned int i;
 
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
 	for (i = 0; ExifTagTable[i].description; i++)
 		if (ExifTagTable[i].tag == tag) break;
