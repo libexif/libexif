@@ -83,4 +83,6 @@ ExifData *jpeg_data_get_exif_data (JPEGData *data);
 
 void      jpeg_data_dump (JPEGData *data);
 
+void      jpeg_data_append_section (JPEGData *data);
+
 #endif /* __JPEG_DATA_H__ */

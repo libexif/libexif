@@ -52,7 +52,7 @@ jpeg_data_new (void)
 	return (data);
 }
 
-static void
+void
 jpeg_data_append_section (JPEGData *data)
 {
 	JPEGSection *s;
