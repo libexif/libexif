@@ -2,13 +2,6 @@
         * libexif/olympus/exif-mnote-data-olympus.c: code 
 	  simplification
 
-2004-03-19  gettextize  <bug-gnu-gettext@gnu.org>
-
-	* Makefile.am (SUBDIRS): Add intl,
-	(ACLOCAL_AMFLAGS): New variable.
-	(EXTRA_DIST): Add config.rpath mkinstalldirs.
-	* configure.in (AC_OUTPUT): Add intl/Makefile,
-
 2004-03-16  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/pentax/exif-mnote-data-pentax.c: Another suggestion by
