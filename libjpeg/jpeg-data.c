@@ -23,8 +23,11 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <string.h>
+
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 
 /* #define DEBUG */
 
@@ -81,7 +84,9 @@ jpeg_data_save_file (JPEGData *data, const char *path)
 	if (!d)
 		return;
 
+#ifdef HAVE_UNISTD_H
 	unlink (path);
+#endif
 	f = fopen (path, "wb");
 	if (!f) {
 		free (d);
