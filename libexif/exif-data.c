@@ -32,7 +32,7 @@
 #undef MAX
 #define MAX(a, b)  (((a) > (b)) ? (a) : (b))
 
-//#define DEBUG
+#define DEBUG
 
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 
@@ -261,14 +261,20 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	/*
 	 * Check if we need some extra entries for pointers or the thumbnail.
 	 */
-	if (ifd == data->ifd[EXIF_IFD_1]) {
+	if (ifd == data->ifd[EXIF_IFD_0]) {
+
+		/*
+		 * The pointer to IFD_EXIF is in IFD_0. The pointer to
+		 * IFD_INTEROPERABILITY is in IFD_EXIF.
+		 */
 		if (data->ifd[EXIF_IFD_EXIF]->count || data->ifd[EXIF_IFD_INTEROPERABILITY]->count)
 			n_ptr++;
+
+		/* The pointer to IFD_GPS is in IFD_0. */
 		if (data->ifd[EXIF_IFD_GPS]->count)
 			n_ptr++;
-	} else if (ifd == data->ifd[EXIF_IFD_1]) {
-		if (data->size)
-			n_thumb = 2;
+	} else if ((ifd == data->ifd[EXIF_IFD_1]) && data->size) {
+		n_thumb = 2;
 	} else if (ifd == data->ifd[EXIF_IFD_EXIF]) {
 		if (data->ifd[EXIF_IFD_INTEROPERABILITY]->count)
 			n_ptr++;
@@ -344,7 +350,8 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		offset += 12;
 	}
 
-	if (n_thumb) {
+	/* Information about the thumbnail (if any) is saved in IFD_1. */
+	if ((ifd == data->ifd[EXIF_IFD_1]) && data->size) {
 
 		/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -365,12 +372,13 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_set_short (*d + 6 + offset + 2, data->priv->order,
 				EXIF_FORMAT_LONG);
 		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
-		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+		exif_set_long  (*d + 6 + offset + 8, data->priv->order, 
 				data->size);
 		offset += 12;
 	}
 
-	if (ifd == data->ifd[EXIF_IFD_0] && data->ifd[EXIF_IFD_1]->count) {
+	if (ifd == data->ifd[EXIF_IFD_0] && (data->ifd[EXIF_IFD_1]->count ||
+					     data->size)) {
 
 		/*
 		 * We are saving IFD 0. Tell where IFD 1 starts and save
@@ -521,6 +529,15 @@ exif_data_load_data (ExifData *data, const unsigned char *d, unsigned int size)
 #ifdef DEBUG
 		printf ("IFD 1 at %i.\n", (int) offset);
 #endif
+
+		/* Sanity check. */
+		if (offset > size - 6) {
+#ifdef DEBUG
+			printf ("Bogus offset!\n");
+#endif
+			return;
+		}
+
 		exif_data_load_data_content (data, data->ifd[EXIF_IFD_1], d + 6,
 					     size - 6, offset);
 	}
