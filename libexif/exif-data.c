@@ -58,6 +58,19 @@ struct _ExifDataPrivate
 	unsigned int offset_mnote;
 };
 
+static void *
+exif_data_alloc (ExifData *data, unsigned int i)
+{
+	void *d;
+
+	/* This is the only call to calloc in this file. */
+	d = calloc (i, 1);
+	if (d) return d;
+
+	if (data) EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", i);
+	return NULL;
+}
+
 ExifMnoteData *
 exif_data_get_mnote_data (ExifData *d)
 {
@@ -70,16 +83,10 @@ exif_data_new (void)
 	ExifData *data;
 	unsigned int i;
 
-	data = malloc (sizeof (ExifData));
-	if (!data)
-		return (NULL);
-	memset (data, 0, sizeof (ExifData));
-	data->priv = malloc (sizeof (ExifDataPrivate));
-	if (!data->priv) {
-		free (data);
-		return (NULL);
-	}
-	memset (data->priv, 0, sizeof (ExifDataPrivate));
+	data = exif_data_alloc (NULL, sizeof (ExifData));
+	if (!data) return (NULL);
+	data->priv = exif_data_alloc (data, sizeof (ExifDataPrivate));
+	if (!data->priv) { free (data); return (NULL); }
 	data->priv->ref_count = 1;
 
 	for (i = 0; i < EXIF_IFD_COUNT; i++) {
@@ -135,11 +142,8 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	if (size < doff + s)
 		return;
 
-	entry->data = malloc (s);
-	if (!entry->data) {
-		EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", s);
-		return;
-	}
+	entry->data = exif_data_alloc (data, s);
+	if (!entry->data) return;
 	entry->size = s;
 	memcpy (entry->data, d + doff, s);
 
@@ -217,14 +221,10 @@ exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 			  (int) ds, (int) offset, (int) size);
 		return;
 	}
-	if (data->data)
-		free (data->data);
+	if (data->data) free (data->data);
 	data->size = size;
-	data->data = malloc (data->size);
-	if (!data->data) {
-		EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", data->size);
-		return;
-	}
+	data->data = exif_data_alloc (data, data->size);
+	if (!data->data) return;
 	memcpy (data->data, d + offset, data->size);
 }
 
@@ -727,9 +727,8 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 
 	/* Header */
 	*ds = 14;
-	*d = malloc (*ds);
-	if (!*d)
-	  	return;
+	*d = exif_data_alloc (data, *ds);
+	if (!*d) return;
 	memcpy (*d, ExifHeader, 6);
 
 	/* Order (offset 6) */

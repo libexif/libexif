@@ -31,6 +31,21 @@ struct _ExifLoader {
 	ExifLog *log;
 };
 
+static void *
+exif_loader_alloc (ExifLoader *l, unsigned int i)
+{
+	void *d;
+
+	if (!i) return NULL;
+
+	/* This is the only call to calloc in this file. */
+	d = calloc (i, 1);
+	if (d) return d;
+
+	if (l) EXIF_LOG_NO_MEMORY (l->log, "ExifLog", i);
+	return NULL;
+}
+
 #undef  MIN
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
 
@@ -143,7 +158,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 
 	if (eld->state == EL_EXIF_FOUND && len_remain > 0) {
 		if (eld->buf == NULL) {
-			eld->buf = malloc (sizeof (unsigned char) * eld->size);
+			eld->buf = exif_loader_alloc (eld, eld->size);
 			if (!eld->buf) return 0;
 			eld->bytes_read = 0;
 		}
@@ -168,10 +183,10 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 ExifLoader *
 exif_loader_new (void)
 {
-	ExifLoader *loader = malloc (sizeof (ExifLoader));
-
+	ExifLoader *loader;
+	
+	loader = exif_loader_alloc (NULL, sizeof (ExifLoader));
 	if (!loader) return NULL;
-	memset (loader, 0, sizeof (ExifLoader));
 	loader->ref_count = 1;
 
 	return loader;

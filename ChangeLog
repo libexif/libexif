@@ -1,3 +1,9 @@
+2004-09-08  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-loader.c
+	* libexif/exif-data.c: Replace a couple of calls to malloc by 
+	  calls to calloc.
+
 2004-09-07  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-entry.c: Use calloc. Hint by Jan Patera
