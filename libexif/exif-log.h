@@ -49,7 +49,12 @@ typedef void (* ExifLogFunc) (ExifLog *log, ExifLogCode, const char *domain,
 void     exif_log_set_func (ExifLog *log, ExifLogFunc func, void *data);
 
 void     exif_log  (ExifLog *log, ExifLogCode, const char *domain,
-		    const char *format, ...);
+		    const char *format, ...)
+#ifdef __GNUC__
+			__attribute__((__format__(printf,4,5)))
+#endif
+;
+
 void     exif_logv (ExifLog *log, ExifLogCode, const char *domain,
 		    const char *format, va_list args);
 

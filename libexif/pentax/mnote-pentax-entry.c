@@ -159,7 +159,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 				  "Internal error (unknown value %i)", vs);
 			break;
 		}
-		snprintf (val, maxlen, items[i].elem[j].string);
+		snprintf (val, maxlen, "%s", items[i].elem[j].string);
 		break;
 
 	case MNOTE_PENTAX_TAG_ZOOM:

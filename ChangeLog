@@ -1,3 +1,8 @@
+2004-09-12  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Patch by marcusmeissner@users.sourceforge.net: Some format string
+	fixes, wrong argument list fixed, format string problems avoided.
+
 2004-09-09  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* configure.in: Remove "([external])" after AM_GNU_GETTEXT as it

@@ -110,7 +110,10 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		(*buf)[6] = n->version;
 		o2 += 2; *buf_size += 2;
 		if (n->version == 2) {
-			exif_set_short (*buf + 10, n->order, (ExifShort) ((n->order == EXIF_BYTE_ORDER_INTEL) ? 'II' : 'MM'));
+			exif_set_short (*buf + 10, n->order, (ExifShort) (
+				(n->order == EXIF_BYTE_ORDER_INTEL) ?
+				('I' << 8) | 'I' :
+				('M' << 8) | 'M'));
 			exif_set_short (*buf + 12, n->order, (ExifShort) 0x2A);
 			exif_set_long (*buf + 14, n->order, (ExifShort) 8);
 			o2 += 2 + 8;
@@ -194,7 +197,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		o2 += 6;
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
 			"Parsing Nikon maker note (0x%02x, %02x, %02x, "
-			"%02x, %02x, %02x, %02x, %02x, %02x)...",
+			"%02x, %02x, %02x, %02x, %02x)...",
 			buf[o2 + 0], buf[o2 + 1], buf[o2 + 2], buf[o2 + 3], 
 			buf[o2 + 4], buf[o2 + 5], buf[o2 + 6], buf[o2 + 7]); 
 
