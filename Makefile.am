@@ -1,5 +1,3 @@
-SUBDIRS = libexif libjpeg test intl po
+SUBDIRS = libexif libjpeg test po
 
 EXTRA_DIST = @PACKAGE@.spec
-
-ACLOCAL_AMFLAGS = -I m4
