@@ -27,6 +27,7 @@
 #include <libjpeg/jpeg-marker.h>
 
 #include <libexif/exif-utils.h>
+#include <libexif/exif-ifd.h>
 
 #undef MAX
 #define MAX(a, b)  (((a) > (b)) ? (a) : (b))
@@ -46,6 +47,7 @@ ExifData *
 exif_data_new (void)
 {
 	ExifData *data;
+	unsigned int i;
 
 	data = malloc (sizeof (ExifData));
 	if (!data)
@@ -59,21 +61,14 @@ exif_data_new (void)
 	memset (data->priv, 0, sizeof (ExifDataPrivate));
 	data->priv->ref_count = 1;
 
-	data->ifd0                 = exif_content_new ();
-	data->ifd1                 = exif_content_new ();
-	data->ifd_exif             = exif_content_new ();
-	data->ifd_gps              = exif_content_new ();
-	data->ifd_interoperability = exif_content_new ();
-	if (!data->ifd_exif || !data->ifd_gps || !data->ifd_interoperability ||
-	    !data->ifd0 || !data->ifd1) {
-		exif_data_free (data);
-		return (NULL);
+	for (i = 0; i < EXIF_IFD_COUNT; i++) {
+		data->ifd[i] = exif_content_new ();
+		if (!data->ifd[i]) {
+			exif_data_free (data);
+			return (NULL);
+		}
+		data->ifd[i]->parent = data;
 	}
-	data->ifd0->parent                 = data;
-	data->ifd1->parent                 = data;
-	data->ifd_exif->parent             = data;
-	data->ifd_gps->parent              = data;
-	data->ifd_interoperability->parent = data;
 
 	return (data);
 }
@@ -211,15 +206,15 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 			switch (tag) {
 			case EXIF_TAG_EXIF_IFD_POINTER:
 				exif_data_load_data_content (data,
-					data->ifd_exif, d, ds, o);
+					data->ifd[EXIF_IFD_EXIF], d, ds, o);
 				break;
 			case EXIF_TAG_GPS_INFO_IFD_POINTER:
 				exif_data_load_data_content (data,
-					data->ifd_gps, d, ds, o);
+					data->ifd[EXIF_IFD_GPS], d, ds, o);
 				break;
 			case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
 				exif_data_load_data_content (data,
-					data->ifd_interoperability, d, ds, o);
+					data->ifd[EXIF_IFD_INTEROPERABILITY], d, ds, o);
 				break;
 			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
 #ifdef DEBUG
@@ -266,16 +261,16 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	/*
 	 * Check if we need some extra entries for pointers or the thumbnail.
 	 */
-	if (ifd == data->ifd0) {
-		if (data->ifd_exif->count || data->ifd_interoperability->count)
+	if (ifd == data->ifd[EXIF_IFD_1]) {
+		if (data->ifd[EXIF_IFD_EXIF]->count || data->ifd[EXIF_IFD_INTEROPERABILITY]->count)
 			n_ptr++;
-		if (data->ifd_gps->count)
+		if (data->ifd[EXIF_IFD_GPS]->count)
 			n_ptr++;
-	} else if (ifd == data->ifd1) {
+	} else if (ifd == data->ifd[EXIF_IFD_1]) {
 		if (data->size)
 			n_thumb = 2;
-	} else if (ifd == data->ifd_exif) {
-		if (data->ifd_interoperability->count)
+	} else if (ifd == data->ifd[EXIF_IFD_EXIF]) {
+		if (data->ifd[EXIF_IFD_INTEROPERABILITY]->count)
 			n_ptr++;
 	}
 
@@ -301,8 +296,9 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	offset += 12 * ifd->count;
 
 	/* Save special entries */
-	if (ifd == data->ifd0 && (data->ifd_exif->count ||
-				  data->ifd_interoperability->count)) {
+	if (ifd == data->ifd[EXIF_IFD_1] && (
+			data->ifd[EXIF_IFD_EXIF]->count ||
+			data->ifd[EXIF_IFD_INTEROPERABILITY]->count)) {
 
 		/* EXIF_TAG_EXIF_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -312,12 +308,12 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
 		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 				*ds - 6);
-		exif_data_save_data_content (data, data->ifd_exif, d, ds,
+		exif_data_save_data_content (data, data->ifd[EXIF_IFD_EXIF], d, ds,
 					     *ds - 6);
 		offset += 12;
 	}
 
-	if (ifd == data->ifd0 && data->ifd_gps->count) {
+	if (ifd == data->ifd[EXIF_IFD_1] && data->ifd[EXIF_IFD_GPS]->count) {
 
 		/* EXIF_TAG_GPS_INFO_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -327,12 +323,12 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
 		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 				*ds - 6);
-		exif_data_save_data_content (data, data->ifd_gps, d, ds,
+		exif_data_save_data_content (data, data->ifd[EXIF_IFD_GPS], d, ds,
 					     *ds - 6);
 		offset += 12;
 	}
 
-	if (ifd == data->ifd_exif && data->ifd_interoperability->count) {
+	if (ifd == data->ifd[EXIF_IFD_EXIF] && data->ifd[EXIF_IFD_INTEROPERABILITY]->count) {
 
 		/* EXIF_TAG_INTEROPERABILITY_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -342,7 +338,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
 		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 				*ds - 6);
-		exif_data_save_data_content (data, data->ifd_interoperability,
+		exif_data_save_data_content (data, data->ifd[EXIF_IFD_INTEROPERABILITY],
 					     d, ds, *ds - 6);
 		offset += 12;
 	}
@@ -373,14 +369,14 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		offset += 12;
 	}
 
-	if (ifd == data->ifd0 && data->ifd1->count) {
+	if (ifd == data->ifd[EXIF_IFD_1] && data->ifd[EXIF_IFD_1]->count) {
 
 		/*
 		 * We are saving IFD 0. Tell where IFD 1 starts and save
 		 * IFD 1.
 		 */
 		exif_set_long (*d + 6 + offset, data->priv->order, *ds - 6);
-		exif_data_save_data_content (data, data->ifd1, d, ds,
+		exif_data_save_data_content (data, data->ifd[EXIF_IFD_1], d, ds,
 					     *ds - 6);
 	} else
 		exif_set_long (*d + 6 + offset, data->priv->order, 0);
@@ -514,7 +510,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d, unsigned int size)
 #endif
 
 	/* Parse the actual exif data (offset 14) */
-	exif_data_load_data_content (data, data->ifd0, d + 6,
+	exif_data_load_data_content (data, data->ifd[EXIF_IFD_1], d + 6,
 				     size - 6, offset);
 
 	/* IFD 1 offset */
@@ -524,7 +520,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d, unsigned int size)
 #ifdef DEBUG
 		printf ("IFD 1 at %i.\n", (int) offset);
 #endif
-		exif_data_load_data_content (data, data->ifd1, d + 6,
+		exif_data_load_data_content (data, data->ifd[EXIF_IFD_1], d + 6,
 					     size - 6, offset);
 	}
 }
@@ -570,7 +566,7 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 #ifdef DEBUG
 	printf ("Saving IFDs...\n");
 #endif
-	exif_data_save_data_content (data, data->ifd0, d, ds, *ds - 6);
+	exif_data_save_data_content (data, data->ifd[EXIF_IFD_1], d, ds, *ds - 6);
 
 #ifdef DEBUG
 	printf ("Saved %i byte(s) EXIF data.\n", *ds);
@@ -658,28 +654,16 @@ exif_data_unref (ExifData *data)
 void
 exif_data_free (ExifData *data)
 {
+	unsigned int i;
+
 	if (!data)
 		return;
 
-	if (data->ifd0) {
-		exif_content_unref (data->ifd0);
-		data->ifd0 = NULL;
-	}
-	if (data->ifd1) {
-		exif_content_unref (data->ifd1);
-		data->ifd1 = NULL;
-	}
-	if (data->ifd_exif) {
-		exif_content_unref (data->ifd_exif);
-		data->ifd_exif = NULL;
-	}
-	if (data->ifd_gps) {
-		exif_content_unref (data->ifd_gps);
-		data->ifd_gps = NULL;
-	}
-	if (data->ifd_interoperability) {
-		exif_content_unref (data->ifd_interoperability);
-		data->ifd_interoperability = NULL;
+	for (i = 0; i < EXIF_IFD_COUNT; i++) {
+		if (data->ifd[i]) {
+			exif_content_unref (data->ifd[i]);
+			data->ifd[i] = NULL;
+		}
 	}
 	if (data->data) {
 		free (data->data);
@@ -695,32 +679,17 @@ exif_data_free (ExifData *data)
 void
 exif_data_dump (ExifData *data)
 {
+	unsigned int i;
+
 	if (!data)
 		return;
 
-	if (data->ifd0->count) {
-		printf ("Dumping IFD 0...\n");
-		exif_content_dump (data->ifd0, 0);
-	}
-
-	if (data->ifd1->count) {
-		printf ("Dumping IFD 1...\n");
-		exif_content_dump (data->ifd1, 0);
-	}
-
-	if (data->ifd_exif->count) {
-		printf ("Dumping IFD EXIF...\n");
-		exif_content_dump (data->ifd_exif, 0);
-	}
-
-	if (data->ifd_gps->count) {
-		printf ("Dumping IFD GPS...\n");
-		exif_content_dump (data->ifd_gps, 0);
-	}
-
-	if (data->ifd_interoperability->count) {
-		printf ("Dumping IFD Interoperability...\n");
-		exif_content_dump (data->ifd_interoperability, 0);
+	for (i = 0; i < EXIF_IFD_COUNT; i++) {
+		if (data->ifd[i] && data->ifd[i]->count) {
+			printf ("Dumping IFD '%s'...\n",
+				exif_ifd_get_name (i));
+			exif_content_dump (data->ifd[i], 0);
+		}
 	}
 
 	if (data->data) {
@@ -747,14 +716,13 @@ void
 exif_data_foreach_content (ExifData *data, ExifDataForeachContentFunc func,
 			   void *user_data)
 {
+	unsigned int i;
+
 	if (!data || !func)
 		return;
 
-	func (data->ifd0,                 user_data);
-	func (data->ifd1,                 user_data);
-	func (data->ifd_exif,             user_data);
-	func (data->ifd_gps,              user_data);
-	func (data->ifd_interoperability, user_data);
+	for (i = 0; i < EXIF_IFD_COUNT; i++)
+		func (data->ifd[i], user_data);
 }
 
 typedef struct _ByteOrderChangeData ByteOrderChangeData;

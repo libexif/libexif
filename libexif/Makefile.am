@@ -13,6 +13,7 @@ libexif_la_SOURCES =		\
 	exif-data.c		\
 	exif-entry.c		\
 	exif-format.c		\
+	exif-ifd.c		\
 	exif-i18n.h		\
 	exif-note.c		\
 	exif-tag.c		\
@@ -30,6 +31,7 @@ libexifinclude_HEADERS = 	\
 	exif-data.h		\
 	exif-entry.h		\
 	exif-format.h		\
+	exif-ifd.h		\
 	exif-note.h		\
 	exif-result.h		\
 	exif-tag.h		\

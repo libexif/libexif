@@ -23,6 +23,7 @@
 #include <stdio.h>
 
 #include <libexif/exif-data.h>
+#include <libexif/exif-ifd.h>
 
 int
 main (int argc, char **argv)
@@ -37,17 +38,17 @@ main (int argc, char **argv)
 
 	printf ("Creating EXIF entry...\n");
 	e = exif_entry_new ();
-	exif_content_add_entry (ed->ifd0, e);
+	exif_content_add_entry (ed->ifd[EXIF_IFD_0], e);
 	exif_entry_initialize (e, EXIF_TAG_EXIF_VERSION);
 
 	printf ("Creating another EXIF entry...\n");
 	e = exif_entry_new ();
-	exif_content_add_entry (ed->ifd0, e);
+	exif_content_add_entry (ed->ifd[EXIF_IFD_0], e);
 	exif_entry_initialize (e, EXIF_TAG_DATE_TIME);
 
 	printf ("Creating an EXIF entry in the EXIF IFD...\n");
 	e = exif_entry_new ();
-	exif_content_add_entry (ed->ifd_exif, e);
+	exif_content_add_entry (ed->ifd[EXIF_IFD_EXIF], e);
 	exif_entry_initialize (e, EXIF_TAG_FLASH_PIX_VERSION);
 
 	exif_data_dump (ed);

@@ -1,5 +1,14 @@
 2002-07-25  Lutz Müller <lutz@users.sourceforge.net>
 
+	* libexif/exif-ifd.[c,h]: New.
+	* libexif/exif-data.h: Introduce an array of ExifContents. This 
+	  doesn't break binary compatibility, but it breaks compilation. 
+	  Do something like "%s/->ifd_0/->ifd[EXIF_IFD_0]" in your source
+	  code to make it compile again.
+	* configure.in: Version 0.5.4.
+
+2002-07-25  Lutz Müller <lutz@users.sourceforge.net>
+
 	Patch by anonymous user:
 
 	* libexif/exif-[byte-order,format,result,tag].h: Make code comply with

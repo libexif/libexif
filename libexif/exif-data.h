@@ -27,6 +27,7 @@ extern "C" {
 
 #include <libexif/exif-tag.h>
 #include <libexif/exif-byte-order.h>
+#include <libexif/exif-ifd.h>
 
 typedef struct _ExifData        ExifData;
 typedef struct _ExifDataPrivate ExifDataPrivate;
@@ -35,11 +36,7 @@ typedef struct _ExifDataPrivate ExifDataPrivate;
 
 struct _ExifData
 {
-	ExifContent *ifd0;
-	ExifContent *ifd1;
-	ExifContent *ifd_exif;
-	ExifContent *ifd_gps;
-	ExifContent *ifd_interoperability;
+	ExifContent *ifd[EXIF_IFD_COUNT];
 
 	unsigned char *data;
 	unsigned int size;

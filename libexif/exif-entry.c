@@ -46,6 +46,7 @@
 #endif
 
 #include "exif-utils.h"
+#include <libexif/exif-ifd.h>
 
 //#define DEBUG
 
@@ -248,12 +249,13 @@ exif_entry_get_value (ExifEntry *e)
 		 * camera model.
 		 */
 		d = 0.;
-		entry = exif_content_get_entry (e->parent->parent->ifd0,
-						EXIF_TAG_MAKE);
+		entry = exif_content_get_entry (
+			e->parent->parent->ifd[EXIF_IFD_0], EXIF_TAG_MAKE);
 		if (entry && entry->data &&
 		    !strncmp (entry->data, "Minolta", 7)) {
-			entry = exif_content_get_entry (e->parent->parent->ifd0,
-							EXIF_TAG_MODEL);
+			entry = exif_content_get_entry (
+					e->parent->parent->ifd[EXIF_IFD_0],
+					EXIF_TAG_MODEL);
 			if (entry && entry->data) {
 				if (!strncmp (entry->data, "DiMAGE 7", 8))
 					d = 3.9;
@@ -1105,12 +1107,13 @@ exif_entry_get_value_brief (ExifEntry *e)
 		 * camera model.
 		 */
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
-		entry = exif_content_get_entry (e->parent->parent->ifd0,
-					        EXIF_TAG_MAKE);
+		entry = exif_content_get_entry (
+			e->parent->parent->ifd[EXIF_IFD_0], EXIF_TAG_MAKE);
 		if (entry && entry->data &&
 		    !strncmp (entry->data, "Minolta", 7)) {
-			entry = exif_content_get_entry (e->parent->parent->ifd0,
-							EXIF_TAG_MODEL);
+			entry = exif_content_get_entry (
+					e->parent->parent->ifd[EXIF_IFD_0],
+					EXIF_TAG_MODEL);
 			if (entry && entry->data) {
 				if (!strncmp (entry->data, "DiMAGE 7", 8))
 					d *= 3.9;
