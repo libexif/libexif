@@ -1,8 +1,9 @@
-AC_PREREQ(2.50)
-AC_INIT(libexif/exif-data.h)
+AC_PREREQ(2.59)
+AC_INIT([EXIF library], [0.6.12], [libexif-devel@lists.sourceforge.net], [libexif])
+AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(libexif, 0.6.12)
-AM_MAINTAINER_MODE
+AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2])
+AM_GNU_GETTEXT_VERSION(0.14.1)
 
 dnl ---------------------------------------------------------------------------
 dnl Versioning:
@@ -39,9 +40,13 @@ AC_MSG_CHECKING([for po/Makevars requiring evil hack])
 GETTEXT_PACKAGE=${PACKAGE}-${LIBEXIF_CURRENT}
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",[The gettext domain we're using])
 AC_SUBST(GETTEXT_PACKAGE)
-if test -f po/Makevars.template
-then
-	sed -e "s/^DOMAIN.*/DOMAIN = ${GETTEXT_PACKAGE}/" < po/Makevars.template > po/Makevars
+if test -f po/Makevars.template; then
+
+sed -f - po/Makevars.template > po/Makevars <<-EOF
+s/^DOMAIN.*/DOMAIN = ${GETTEXT_PACKAGE}/
+s/^COPYRIGHT_HOLDER.*/COPYRIGHT_HOLDER = Lutz Müller and others/
+s/^MSGID_BUGS_ADDRESS.*/MSGID_BUGS_ADDRESS = libexif-devel@lists.sourceforge.net/
+EOF
 	AC_MSG_RESULT([yes. done.])
 else
 	AC_MSG_RESULT([no])
@@ -60,6 +65,8 @@ if test "x$GCC" = "xyes"; then
 fi
 
 AC_CONFIG_FILES([ 
+  intl/Makefile
+  po/Makefile.in
   Makefile
   libexif.spec
   libexif/Makefile
@@ -79,4 +86,5 @@ Configuration (libexif):
 
 	Source code location:  ${srcdir}
 	Compiler:              ${CC}
+	USE_NLS:               ${USE_NLS}
 "
