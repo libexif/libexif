@@ -45,7 +45,7 @@ dnl ---------------------------------------------------------------------------
 # we need sqrt and pow, but checking for sqrt should be sufficient
 AC_CHECK_FUNC([sqrt],,[
 AC_CHECK_LIB([m],[sqrt],[MATHLIBS="-lm"],AC_MSG_ERROR([
-*** Couldn't find sqrt
+*** Could not find sqrt() function
 ]))])
 AC_SUBST(MATHLIBS)
 
