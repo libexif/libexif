@@ -6,45 +6,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libexif\n"
-"POT-Creation-Date: 2002-12-01 20:39+0100\n"
+"POT-Creation-Date: 2002-12-03 08:44+0100\n"
 "PO-Revision-Date: 2002-11-21 10:02+0100\n"
 "Last-Translator: Arnaud Launay <asl@launay.org>\n"
 "Language-Team: Français <traduc@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: libexif/canon/exif-canon-tag.c:31
-msgid "Settings (first part)"
-msgstr "Paramètres (première partie)"
-
-#: libexif/canon/exif-canon-tag.c:32
-msgid "Settings (second part)"
-msgstr "Paramètres (seconde partie)"
-
-#: libexif/canon/exif-canon-tag.c:33
-msgid "Image type"
-msgstr "Type de l'image"
-
-#: libexif/canon/exif-canon-tag.c:34 libexif/olympus/exif-olympus-tag.c:38
-msgid "Firmware version"
-msgstr "Version du logiciel matériel"
-
-#: libexif/canon/exif-canon-tag.c:35
-msgid "Image number"
-msgstr "Numéro de l'image"
-
-#: libexif/canon/exif-canon-tag.c:36
-msgid "Owner name"
-msgstr "Nom du propriétaire"
-
-#: libexif/canon/exif-canon-tag.c:37
-msgid "Serial number"
-msgstr "Numéro de série"
-
-#: libexif/canon/exif-canon-tag.c:38
-msgid "Custom functions"
-msgstr "Fonctions personnalisées"
 
 #: libexif/exif-byte-order.c:32
 msgid "Motorola"
@@ -54,12 +22,12 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-entry.c:123 libexif/olympus/exif-olympus-entry.c:100
+#: libexif/exif-entry.c:123
 #, c-format
 msgid "Invalid format '%s', expected '%s'."
 msgstr "Format invalide '%s', attendait '%s'."
 
-#: libexif/exif-entry.c:135 libexif/olympus/exif-olympus-entry.c:112
+#: libexif/exif-entry.c:135
 #, c-format
 msgid "Invalid number of components (%i, expected %i)."
 msgstr "Nombre invalide de composants (%i, attendait %i)."
@@ -89,15 +57,15 @@ msgstr "Moyenne"
 
 #: libexif/exif-entry.c:311
 msgid "Center-Weighted Average"
-msgstr ""
+msgstr "Mesure pondérée centrale"
 
 #: libexif/exif-entry.c:314
 msgid "Spot"
-msgstr ""
+msgstr "Spot"
 
 #: libexif/exif-entry.c:317
 msgid "Multi Spot"
-msgstr ""
+msgstr "Multi spot"
 
 #: libexif/exif-entry.c:320
 msgid "Pattern"
@@ -552,7 +520,7 @@ msgstr "Doux"
 msgid "Hard"
 msgstr "Dur"
 
-#: libexif/exif-entry.c:926 libexif/olympus/exif-olympus-tag.c:33
+#: libexif/exif-entry.c:926
 msgid "Macro"
 msgstr "Macro"
 
@@ -579,7 +547,7 @@ msgstr "Dans le rectangle (largeur %i, hauteur %i) autour de (x,y) = (%i,%i)"
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Nombre inattendu de composants (%li, attendait 2, 3, ou 4)."
 
-#: libexif/exif-entry.c:1141 libexif/olympus/exif-olympus-entry.c:147
+#: libexif/exif-entry.c:1141
 msgid "unknown"
 msgstr "inconnu"
 
@@ -589,15 +557,15 @@ msgstr "moyenne"
 
 #: libexif/exif-entry.c:1147
 msgid "center-weight"
-msgstr ""
+msgstr "Centre pondéré"
 
 #: libexif/exif-entry.c:1150
 msgid "spot"
-msgstr ""
+msgstr "spot"
 
 #: libexif/exif-entry.c:1153
 msgid "multi-spot"
-msgstr ""
+msgstr "multi-spots"
 
 #: libexif/exif-entry.c:1156
 msgid "matrix"
@@ -639,7 +607,7 @@ msgstr "cm"
 msgid "manual"
 msgstr "manuel"
 
-#: libexif/exif-entry.c:1214 libexif/olympus/exif-olympus-entry.c:144
+#: libexif/exif-entry.c:1214
 msgid "normal"
 msgstr "normal"
 
@@ -667,7 +635,7 @@ msgstr "portrait"
 msgid "landscape"
 msgstr "paysage"
 
-#: libexif/exif-entry.c:1244 libexif/olympus/exif-olympus-entry.c:213
+#: libexif/exif-entry.c:1244
 msgid "yes"
 msgstr "oui"
 
@@ -1703,7 +1671,7 @@ msgstr "Contrôle du gain"
 msgid "This tag indicates the degree of overall image gain adjustment."
 msgstr "Ce marqueur indique le degré général d'ajustement du gain de l'image."
 
-#: libexif/exif-tag.c:549 libexif/fuji/exif-fuji-tag.c:36
+#: libexif/exif-tag.c:549
 msgid "Contrast"
 msgstr "Contraste"
 
@@ -1723,7 +1691,7 @@ msgid ""
 "camera when the image was shot."
 msgstr ""
 
-#: libexif/exif-tag.c:555 libexif/fuji/exif-fuji-tag.c:33
+#: libexif/exif-tag.c:555
 msgid "Sharpness"
 msgstr "Netteté"
 
@@ -1768,159 +1736,3 @@ msgstr ""
 "Ce marqueur indique un identificateur unique assigné à chaque image. Il est "
 "enregistré sous la forme d'une chaîne ASCII équivalente à la notation "
 "hexadécimale et d'une longueur fixe de 128 bits."
-
-#: libexif/fuji/exif-fuji-tag.c:31
-msgid "Version"
-msgstr "Version"
-
-#: libexif/fuji/exif-fuji-tag.c:32 libexif/olympus/exif-olympus-tag.c:32
-msgid "Quality"
-msgstr "Qualité"
-
-#: libexif/fuji/exif-fuji-tag.c:34
-msgid "White balance"
-msgstr "Balance des blancs"
-
-#: libexif/fuji/exif-fuji-tag.c:35
-msgid "Chromaticity saturation"
-msgstr "Saturation chromatique"
-
-#: libexif/fuji/exif-fuji-tag.c:37
-msgid "Flash mode"
-msgstr "Mode flash"
-
-#: libexif/fuji/exif-fuji-tag.c:39
-msgid "Flash firing strength compensation"
-msgstr ""
-
-#: libexif/fuji/exif-fuji-tag.c:40
-msgid "Macro mode"
-msgstr "Mode macro"
-
-#: libexif/fuji/exif-fuji-tag.c:41
-msgid "Focusing mode"
-msgstr "Mode de mise au point"
-
-#: libexif/fuji/exif-fuji-tag.c:42
-msgid "Slow synchro mode"
-msgstr "Mode de synchronisation lente"
-
-#: libexif/fuji/exif-fuji-tag.c:43
-msgid "Picture mode"
-msgstr "Mode de lecture"
-
-#: libexif/fuji/exif-fuji-tag.c:44 libexif/olympus/exif-olympus-tag.c:34
-msgid "Unknown 1"
-msgstr "Inconnu 1"
-
-#: libexif/fuji/exif-fuji-tag.c:45
-msgid "Continuous taking"
-msgstr "Prise de vues continue"
-
-#: libexif/fuji/exif-fuji-tag.c:46 libexif/olympus/exif-olympus-tag.c:36
-msgid "Unknown 2"
-msgstr "Inconnu 2"
-
-#: libexif/fuji/exif-fuji-tag.c:47
-msgid "Blur warning"
-msgstr "Avertissement de flou"
-
-#: libexif/fuji/exif-fuji-tag.c:48
-msgid "Auto focus warning"
-msgstr "Avertissement de mise au point automatique"
-
-#: libexif/fuji/exif-fuji-tag.c:49
-msgid "Auto exposure warning"
-msgstr "Alerte d'exposition automatique"
-
-#: libexif/olympus/exif-olympus-entry.c:139
-msgid "Speed/Sequence/Panorama direction: "
-msgstr ""
-
-#: libexif/olympus/exif-olympus-entry.c:150
-msgid "fast"
-msgstr "rapide"
-
-#: libexif/olympus/exif-olympus-entry.c:153
-msgid "panorama"
-msgstr "panoramique"
-
-#: libexif/olympus/exif-olympus-entry.c:167
-msgid "left to right"
-msgstr "gauche à droite"
-
-#: libexif/olympus/exif-olympus-entry.c:170
-msgid "right to left"
-msgstr "droite à gauche"
-
-#: libexif/olympus/exif-olympus-entry.c:173
-msgid "bottom to top"
-msgstr "bas en haut"
-
-#: libexif/olympus/exif-olympus-entry.c:176
-msgid "top to bottom"
-msgstr "haut en bas"
-
-#: libexif/olympus/exif-olympus-entry.c:187
-msgid "Quality: "
-msgstr "Qualité: "
-
-#: libexif/olympus/exif-olympus-entry.c:190
-msgid "SQ"
-msgstr ""
-
-#: libexif/olympus/exif-olympus-entry.c:193
-msgid "HQ"
-msgstr ""
-
-#: libexif/olympus/exif-olympus-entry.c:196
-msgid "SHQ"
-msgstr ""
-
-#: libexif/olympus/exif-olympus-entry.c:207
-msgid "Macro: "
-msgstr "Macro: "
-
-#: libexif/olympus/exif-olympus-entry.c:210
-msgid "no"
-msgstr "non"
-
-#: libexif/olympus/exif-olympus-entry.c:223
-msgid "Unknown tag."
-msgstr "Marqueur inconnu"
-
-#: libexif/olympus/exif-olympus-entry.c:229
-msgid "Zoom: "
-msgstr "Zoom: "
-
-#: libexif/olympus/exif-olympus-entry.c:232
-msgid "1x"
-msgstr "1x"
-
-#: libexif/olympus/exif-olympus-entry.c:235
-msgid "2x"
-msgstr "2x"
-
-#: libexif/olympus/exif-olympus-tag.c:31
-msgid "Mode"
-msgstr "Mode"
-
-#: libexif/olympus/exif-olympus-tag.c:35
-msgid "Zoom"
-msgstr "Zoom"
-
-#: libexif/olympus/exif-olympus-tag.c:37
-msgid "Unknown 3"
-msgstr "Inconnu 3"
-
-#: libexif/olympus/exif-olympus-tag.c:39
-msgid "Info"
-msgstr "Info "
-
-#: libexif/olympus/exif-olympus-tag.c:40
-msgid "Camera ID"
-msgstr "ID appareil"
-
-#: libexif/olympus/exif-olympus-tag.c:41
-msgid "Unknown 4"
-msgstr "Inconnu 4"
