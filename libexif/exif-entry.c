@@ -169,6 +169,8 @@ exif_entry_get_value (ExifEntry *e)
 			strncpy (v, "Exif Version 2.0", sizeof (v));
 		else if (!memcmp (e->data, "0210", 4))
 			strncpy (v, "Exif Version 2.1", sizeof (v));
+		else if (!memcmp (e->data, "0220", 4))
+			strncpy (v, "Exif Version 2.2", sizeof (v));
 		else
 			strncpy (v, "Unknown Exif Version", sizeof (v));
 		break;
