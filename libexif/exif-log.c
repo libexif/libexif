@@ -19,6 +19,7 @@
  */
 
 #include <config.h>
+
 #include <libexif/exif-log.h>
 #include <libexif/i18n.h>
 

@@ -18,8 +18,9 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "config.h"
-#include "exif-utils.h"
+#include <config.h>
+
+#include <libexif/exif-utils.h>
 
 typedef signed short ExifSShort;
 

@@ -19,15 +19,16 @@
  */
 
 #include <config.h>
-#include "exif-mnote-data.h"
 
-#include "exif-data.h"
-#include "exif-ifd.h"
-#include "exif-mnote-data-priv.h"
-#include "exif-utils.h"
-#include "exif-loader.h"
-#include "jpeg-marker.h"
+#include <libexif/exif-mnote-data.h>
+#include <libexif/exif-data.h>
+#include <libexif/exif-ifd.h>
+#include <libexif/exif-mnote-data-priv.h>
+#include <libexif/exif-utils.h>
+#include <libexif/exif-loader.h>
 #include <libexif/exif-log.h>
+
+#include <libjpeg/jpeg-marker.h>
 
 #include <libexif/olympus/exif-mnote-data-olympus.h>
 #include <libexif/canon/exif-mnote-data-canon.h>

@@ -1,11 +1,11 @@
 #include <config.h>
-#include "exif-loader.h"
+
+#include <libexif/exif-loader.h>
+#include <libexif/i18n.h>
 
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-
-#include <libexif/i18n.h>
 
 #include <libjpeg/jpeg-marker.h>
 

@@ -19,8 +19,9 @@
  */
 
 #include <config.h>
-#include "exif-mnote-data.h"
-#include "exif-mnote-data-priv.h"
+
+#include <libexif/exif-mnote-data.h>
+#include <libexif/exif-mnote-data-priv.h>
 
 #include <stdlib.h>
 #include <string.h>

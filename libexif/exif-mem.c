@@ -1,4 +1,4 @@
-#include "exif-mem.h"
+#include <libexif/exif-mem.h>
 
 #include <stdlib.h>
 

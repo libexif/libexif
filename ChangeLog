@@ -1,5 +1,11 @@
 2004-11-10  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/*.c: Change #include "" to #include <>.
+	* Makefile.am:
+	* exif-result.h: Removed.
+
+2004-11-10  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-tag.[c,h] (exif_tag_from_name): New. Suggested by
 	  Angela Wrobel.
 

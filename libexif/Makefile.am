@@ -41,7 +41,6 @@ libexifinclude_HEADERS = 	\
 	exif-log.h		\
 	exif-mem.h		\
 	exif-mnote-data.h	\
-	exif-result.h		\
 	exif-tag.h		\
 	exif-utils.h		\
 	_stdint.h
