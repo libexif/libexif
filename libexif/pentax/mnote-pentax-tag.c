@@ -66,9 +66,9 @@ mnote_pentax_tag_get_name (MnotePentaxTag t)
 {
 	unsigned int i;
 
-	for (i = 0; sizeof (table) / sizeof (table[0]); i++)
-		if (table[i].tag == t) break;
-	return (table[i].name);
+	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
+		if (table[i].tag == t) return (table[i].name);
+	return NULL;
 }
 
 const char *
@@ -78,8 +78,8 @@ mnote_pentax_tag_get_title (MnotePentaxTag t)
 
 	bindtextdomain (GETTEXT_PACKAGE, LIBMNOTE_LOCALEDIR);
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
-		if (table[i].tag == t) break; 
-	return (_(table[i].title));
+		if (table[i].tag == t) return (_(table[i].title));
+	return NULL;
 }
 
 const char *
@@ -89,6 +89,6 @@ mnote_pentax_tag_get_description (MnotePentaxTag t)
 
 	bindtextdomain (GETTEXT_PACKAGE, LIBMNOTE_LOCALEDIR);
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
-		if (table[i].tag == t) break;
-	return (_(table[i].description));
+		if (table[i].tag == t) return (_(table[i].description));
+	return NULL;
 }

@@ -128,8 +128,8 @@ mnote_olympus_tag_get_name (MnoteOlympusTag t)
 	unsigned int i;
 
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
-		if (table[i].tag == t) break;
-	return (table[i].name);
+		if (table[i].tag == t) return (table[i].name);
+	return NULL;
 }
 
 const char *
@@ -139,8 +139,8 @@ mnote_olympus_tag_get_title (MnoteOlympusTag t)
 
 	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
-		if (table[i].tag == t) break;
-	return (_(table[i].title));
+		if (table[i].tag == t) return (_(table[i].title));
+	return NULL;
 }
 
 const char *
@@ -150,7 +150,6 @@ mnote_olympus_tag_get_description (MnoteOlympusTag t)
 
 	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
-		if (table[i].tag == t) break;
-	if (!table[i].description) return NULL;
-	return (_(table[i].description));
+		if (table[i].tag == t) return (_(table[i].description));
+	return NULL;
 }
