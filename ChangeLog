@@ -1,3 +1,10 @@
+2004-06-23  Serge Droz <serge.droz@psi.ch>
+
+	(committed by Lutz Mueller <lutz@users.sourceforge.net>)
+
+        * libexif/olympus/mnote-olympus-entry.c: Reapply Jan Patera's 
+          change.
+
 2004-06-22  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/olympus/mnote-olympus-entry.c: Correct the usage of 
