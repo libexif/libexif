@@ -1,3 +1,7 @@
+2004-05-10  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif: Support of Nikon maker note
+
 2004-05-07  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-entry.c: fix of EXIF_TAG_COLOR_SPACE,
