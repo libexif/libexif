@@ -63,7 +63,7 @@ exif_mnote_data_pentax_get_value (ExifMnoteData *d, unsigned int i, char *val, u
 	ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) d;
 
 	if (!n) return NULL;
-	if (n->count >= i) return NULL;
+	if (n->count <= i) return NULL;
 	return mnote_pentax_entry_get_value (&n->entries[i], val, maxlen);
 }
 
