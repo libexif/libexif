@@ -159,6 +159,8 @@ exif_entry_get_value (ExifEntry *e)
 	o = exif_data_get_byte_order (e->parent->parent);
 
 	memset (v, 0, sizeof (v));
+	memset (b, 0, sizeof (b));
+
 	switch (e->tag) {
 	case EXIF_TAG_EXIF_VERSION:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
@@ -1044,6 +1046,208 @@ exif_entry_get_value (ExifEntry *e)
 			}
 			break;
 		}
+	}
+
+	return (v);
+}
+
+const char *
+exif_entry_get_value_brief (ExifEntry *e)
+{
+	ExifByteOrder o;
+	ExifEntry *entry;
+	static char v[1024];
+	ExifRational v_rat;
+	ExifSRational v_srat;
+	ExifShort v_short;
+	double d;
+
+	/* We need the byte order */
+	if (!e || !e->parent || !e->parent->parent)
+		return (NULL);
+	o = exif_data_get_byte_order (e->parent->parent);
+
+	memset (v, 0, sizeof (v));
+
+	switch (e->tag) {
+	case EXIF_TAG_FOCAL_LENGTH:
+		CF (e->format, EXIF_FORMAT_RATIONAL, v);
+		CC (e->components, 1, v);
+		v_rat = exif_get_rational (e->data, o);
+		if (!v_rat.denominator)
+			return (NULL);
+		
+		/*
+		 * For calculation of the 35mm equivalent,
+		 * Minolta cameras need a multiplier that depends on the
+		 * camera model.
+		 */
+		d = (double) v_rat.numerator / (double) v_rat.denominator;
+		entry = exif_content_get_entry (e->parent->parent->ifd0,
+					        EXIF_TAG_MAKE);
+		if (entry && entry->data &&
+		    !strncmp (entry->data, "Minolta", 7)) {
+			entry = exif_content_get_entry (e->parent->parent->ifd0,
+							EXIF_TAG_MODEL);
+			if (entry && entry->data) {
+				if (!strncmp (entry->data, "DiMAGE 7", 8))
+					d *= 3.9;
+				else if (!strncmp (entry->data, "DiMAGE 5", 8))
+					d *= 4.9;
+			}
+		}
+		snprintf (v, sizeof (v), "%dmm",
+				(int) (d * (double) v_rat.numerator /
+				           (double) v_rat.denominator));
+		break;
+	case EXIF_TAG_EXPOSURE_TIME:
+		CF (e->format, EXIF_FORMAT_RATIONAL, v);
+		CC (e->components, 1, v);
+		v_rat = exif_get_rational (e->data, o);
+		if (!v_rat.denominator)
+			return (NULL);
+		d = (double) v_rat.numerator / (double) v_rat.denominator;
+		if (d < 1.)
+			snprintf (v, sizeof (v), "1/%d", (int) (1. / d));
+		else
+			snprintf (v, sizeof (v), "%d", (int) d);
+		break;
+	case EXIF_TAG_SHUTTER_SPEED_VALUE:
+		CF (e->format, EXIF_FORMAT_SRATIONAL, v);
+		CC (e->components, 1, v);
+		v_srat = exif_get_srational (e->data, o);
+		if (!v_srat.denominator)
+			return (NULL);
+		d = 1. / pow (2., (double) v_srat.numerator /
+				  (double) v_srat.denominator);
+		if (d < 1.)
+			snprintf (v, sizeof (v), "1/%d", (int) (1. / d));
+		else
+			snprintf (v, sizeof (v), "%d", (int) d);
+		break;
+	case EXIF_TAG_METERING_MODE:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("unknown"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("average"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("center-weight"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("spot"), sizeof (v));
+			break;
+		case 4:
+			strncpy (v, _("multi-spot"), sizeof (v));
+			break;
+		case 5:
+			strncpy (v, _("matrix"), sizeof (v));
+			break;
+		case 6:
+			strncpy (v, _("partial"), sizeof (v));
+			break;
+		case 255:
+			strncpy (v, _("other"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_LIGHT_SOURCE:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("sunny"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("fluorescent"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("tungsten"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("cloudy"), sizeof (v));
+			break;
+		default:
+			return (exif_entry_get_value (e));
+		}
+		break;
+	case EXIF_TAG_RESOLUTION_UNIT:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 2:
+			strncpy (v, _("in"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("cm"), sizeof (v));
+			break;
+		default:
+			return (NULL);
+		}
+		break;
+	case EXIF_TAG_EXPOSURE_PROGRAM:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 1:
+			strncpy (v, _("manual"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("normal"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("aperture"), sizeof (v));
+			break;
+		case 4:
+			strncpy (v, _("shutter"), sizeof (v));
+			break;
+		case 5:
+			strncpy (v, _("creative"), sizeof (v));
+			break;
+		case 6:
+			strncpy (v, _("action"), sizeof (v));
+			break;
+		case 7:
+			strncpy (v, _("portrait"), sizeof (v));
+			break;
+		case 8:
+			strncpy (v, _("landscape"), sizeof (v));
+			break;
+		default:
+			return (exif_entry_get_value (e));
+		}
+		break;
+	case EXIF_TAG_FLASH:
+		CF (e->format, EXIF_FORMAT_SHORT, v); 
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0x0001:
+			strncpy (v, _("yes"), sizeof (v));
+			break;
+		case 0x0005:
+			strncpy (v, _("w/o strobe"), sizeof (v));
+			break;
+		case 0x0007:
+			strncpy (v, _("w. strobe"), sizeof (v));
+			break;
+		default:
+			return (exif_entry_get_value (e));
+		}
+		break;
+	default:
+		return (exif_entry_get_value (e));
 	}
 
 	return (v);

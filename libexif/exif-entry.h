@@ -49,7 +49,9 @@ void        exif_entry_free  (ExifEntry *entry);
 
 void        exif_entry_initialize (ExifEntry *entry, ExifTag tag);
 
-const char *exif_entry_get_value  (ExifEntry *entry);
+/* For your convenience */
+const char *exif_entry_get_value       (ExifEntry *entry);
+const char *exif_entry_get_value_brief (ExifEntry *entry);
 
 void        exif_entry_dump      (ExifEntry *entry, unsigned int indent);
 

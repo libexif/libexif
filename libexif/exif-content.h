@@ -54,6 +54,14 @@ void         exif_content_foreach_entry (ExifContent *content,
 					 ExifContentForeachEntryFunc func,
 					 void *user_data);
 
+/* For your convenience */
+#define exif_content_get_value(c,t)					\
+	(exif_content_get_entry (c,t) ?					\
+	 exif_entry_get_value (exif_content_get_entry (c,t)) : NULL)
+#define exif_content_get_value_brief(c,t)				\
+	(exif_content_get_entry (c,t) ?					\
+	 exif_entry_get_value_brief (exif_content_get_entry (c,t)) : NULL)
+
 void         exif_content_dump  (ExifContent *content, unsigned int indent);
 
 #endif /* __EXIF_CONTENT_H__ */

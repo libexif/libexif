@@ -34,6 +34,13 @@ Right now, I know of the following frontends to libexif:
 If you would like to migrate your program to use libexif or add EXIF support
 to it, don't hesitate to contact the authors.
 
+BUGS
+----
+
+libexif includes a 'libjpeg' that is 'educational code to illustrate the
+syntax of JPEG files'. Please ignore it. It is a bug that it is 
+distributed, but I think it may be useful for other people.
+
 AUTHORS
 -------
 
