@@ -30,37 +30,11 @@
 #include <libexif/exif-format.h>
 #include <libexif/exif-utils.h>
 
-#if 0
-void
-mnote_pentax_entry_dump (MnoteEntry *e, unsigned int indent)
-{
-	MnotePentaxEntry *entry = (MnotePentaxEntry *)e;
 
-	char buf[1024];
-	unsigned int i;
-
-	for (i = 0; i < 2 * indent; i++)
-		buf[i] = ' ';
-	buf[i] = '\0';
-
-	if (!e)
-		return;
-
-	printf ("%sTag: 0x%x ('%s')\n", buf, entry->tag,
-		mnote_pentax_tag_get_name (entry->tag));
-	printf ("%s  Format: %i ('%s')\n", buf, entry->format,
-		exif_format_get_name (entry->format));
-	printf ("%s  Components: %i\n", buf, (int) entry->components);
-	printf ("%s  Size: %i\n", buf, entry->size);
-	printf ("%s  Value: %s\n", buf, mnote_pentax_entry_get_value (entry));
-}
-
-#endif
-
-#define CF(format,target,v)                                     \
+#define CF(format,target,v,maxlen)                              \
 {                                                               \
         if (format != target) {                                 \
-                snprintf (v, sizeof (v),                        \
+                snprintf (v, maxlen,	                        \
                         _("Invalid format '%s', "               \
                         "expected '%s'."),                      \
                         exif_format_get_name (format),          \
@@ -69,10 +43,10 @@ mnote_pentax_entry_dump (MnoteEntry *e, unsigned int indent)
         }                                                       \
 }
 
-#define CC(number,target,v)                                             \
+#define CC(number,target,v,maxlen)                                      \
 {                                                                       \
         if (number != target) {                                         \
-                snprintf (v, sizeof (v),                                \
+                snprintf (v, maxlen,                                    \
                         _("Invalid number of components (%i, "          \
                         "expected %i)."), (int) number, (int) target);  \
                 break;                                                  \
@@ -80,248 +54,246 @@ mnote_pentax_entry_dump (MnoteEntry *e, unsigned int indent)
 }
 
 char *
-mnote_pentax_entry_get_value (MnotePentaxEntry *entry)
+mnote_pentax_entry_get_value (MnotePentaxEntry *entry, char *val, unsigned int maxlen)
 {
-	static char v[1024];
 	ExifLong vl;
 	ExifShort vs;
 
 	if (!entry)
 		return (NULL);
 
-	memset (v, 0, sizeof (v));
+	memset (val, 0, maxlen);
+	maxlen--;
+
 	switch (entry->tag) {
 	case MNOTE_PENTAX_TAG_MODE:
-		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
 		switch (vs) {
 		case 0:
-			strncpy (v, _("Auto"), sizeof (v));
+			strncpy (val, _("Auto"), maxlen);
 			break;
 		case 1:
-			strncpy (v, _("Night-scene"), sizeof (v));
+			strncpy (val, _("Night-scene"), maxlen);
 			break;
 		case 2:
-			strncpy (v, _("Manual"), sizeof (v));
+			strncpy (val, _("Manual"), maxlen);
 			break;
 		default:
-			snprintf (v, sizeof (v), "%i", vs);
+			snprintf (val, maxlen, "%i", vs);
 		}
 		break;
 	case MNOTE_PENTAX_TAG_QUALITY:
-		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
 		switch (vs) {
 		case 0:
-			strncpy (v, _("Good"), sizeof (v));
+			strncpy (val, _("Good"), maxlen);
 			break;
 		case 1:
-			strncpy (v, _("Better"), sizeof (v));
+			strncpy (val, _("Better"), maxlen);
 			break;
 		case 2:
-			strncpy (v, _("Best"), sizeof (v));
+			strncpy (val, _("Best"), maxlen);
 			break;
 		default:
-			snprintf (v, sizeof (v), "%i", vs);
+			snprintf (val, maxlen, "%i", vs);
 		}
 		break;
 	case MNOTE_PENTAX_TAG_FOCUS:
-		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
 		switch (vs) {
 		case 3:
-			strncpy (v, _("Auto"), sizeof (v));
+			strncpy (val, _("Auto"), maxlen);
 			break;
 		case 2:
-			strncpy (v, _("Custom"), sizeof (v));
+			strncpy (val, _("Custom"), maxlen);
 			break;
 		default:
-			snprintf (v, sizeof (v), "%i", vs);
+			snprintf (val, maxlen, "%i", vs);
 		}
 		break;
 	case MNOTE_PENTAX_TAG_FLASH:
-		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
 		switch (vs) {
 		case 1:
-			strncpy (v, _("Auto"), sizeof (v));
+			strncpy (val, _("Auto"), maxlen);
 			break;
 		case 2:
-			strncpy (v, _("Flash On"), sizeof (v));
+			strncpy (val, _("Flash On"), maxlen);
 			break;
 		case 4:
-			strncpy (v, _("Flash Off"), sizeof (v));
+			strncpy (val, _("Flash Off"), maxlen);
 			break;
 		case 6:
-			strncpy (v, _("Red-eye Reduction"), sizeof (v));
+			strncpy (val, _("Red-eye Reduction"), maxlen);
 			break;
 		default:
-			snprintf (v, sizeof (v), "%i", vs);
+			snprintf (val, maxlen, "%i", vs);
 		}
 		break;
 	case MNOTE_PENTAX_TAG_WHITE_BALANCE:
-		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
 		switch (vs) {
 		case 0:
-			strncpy (v, _("Auto"), sizeof (v));
+			strncpy (val, _("Auto"), maxlen);
 			break;
 		case 1:
-			strncpy (v, _("Daylight"), sizeof (v));
+			strncpy (val, _("Daylight"), maxlen);
 			break;
 		case 2:
-			strncpy (v, _("Shade"), sizeof (v));
+			strncpy (val, _("Shade"), maxlen);
 			break;
 		case 3:
-			strncpy (v, _("Tungsten"), sizeof (v));
+			strncpy (val, _("Tungsten"), maxlen);
 			break;
 		case 4:
-			strncpy (v, _("Fluorescent"), sizeof (v));
+			strncpy (val, _("Fluorescent"), maxlen);
 			break;
 		case 5:
-			strncpy (v, _("Manual"), sizeof (v));
+			strncpy (val, _("Manual"), maxlen);
 			break;
 		default:
-			snprintf (v, sizeof (v), "%i", vs);
+			snprintf (val, maxlen, "%i", vs);
 		}
 		break;
 	case MNOTE_PENTAX_TAG_ZOOM:
-		CF (entry->format, EXIF_FORMAT_LONG, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_LONG, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vl = exif_get_long (entry->data, entry->order);
-		switch (vl) {
-		default:
-			snprintf (v, sizeof (v), "%li", vl);
-		}
+		snprintf (val, maxlen, "%li", vl);
 		break;
 	case MNOTE_PENTAX_TAG_SHARPNESS:
-		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
 		switch (vs) {
 		case 0:
-			strncpy (v, _("Normal"), sizeof (v));
+			strncpy (val, _("Normal"), maxlen);
 			break;
 		case 1:
-			strncpy (v, _("Soft"), sizeof (v));
+			strncpy (val, _("Soft"), maxlen);
 			break;
 		case 2:
-			strncpy (v, _("Hard"), sizeof (v));
+			strncpy (val, _("Hard"), maxlen);
 			break;
 		default:
-			snprintf (v, sizeof (v), "%i", vs);
+			snprintf (val, maxlen, "%i", vs);
 		}
 		break;
 	case MNOTE_PENTAX_TAG_CONTRAST:
-		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
 		switch (vs) {
 		case 0:
-			strncpy (v, _("Normal"), sizeof (v));
+			strncpy (val, _("Normal"), maxlen);
 			break;
 		case 1:
-			strncpy (v, _("Low"), sizeof (v));
+			strncpy (val, _("Low"), maxlen);
 			break;
 		case 2:
-			strncpy (v, _("High"), sizeof (v));
+			strncpy (val, _("High"), maxlen);
 			break;
 		default:
-			snprintf (v, sizeof (v), "%i", vs);
+			snprintf (val, maxlen, "%i", vs);
 		}
 		break;
 	case MNOTE_PENTAX_TAG_SATURATION:
-		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
 		switch (vs) {
 		case 0:
-			strncpy (v, _("Normal"), sizeof (v));
+			strncpy (val, _("Normal"), maxlen);
 			break;
 		case 1:
-			strncpy (v, _("Low"), sizeof (v));
+			strncpy (val, _("Low"), maxlen);
 			break;
 		case 2:
-			strncpy (v, _("High"), sizeof (v));
+			strncpy (val, _("High"), maxlen);
 			break;
 		default:
-			snprintf (v, sizeof (v), "%i", vs);
+			snprintf (val, maxlen, "%i", vs);
 		}
 		break;
 	case MNOTE_PENTAX_TAG_ISO_SPEED:
-		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
 		switch (vs) {
 		case 10:
-			strncpy (v, _("100"), sizeof (v));
+			strncpy (val, _("100"), maxlen);
 			break;
 		case 16:
-			strncpy (v, _("200"), sizeof (v));
+			strncpy (val, _("200"), maxlen);
 			break;
 		default:
-			snprintf (v, sizeof (v), "%i", vs);
+			snprintf (val, maxlen, "%i", vs);
 		}
 		break;
 	case MNOTE_PENTAX_TAG_PRINTIM:
-		CF (entry->format, EXIF_FORMAT_UNDEFINED, v);
-		CC (entry->components, 124, v);
-		snprintf (v,  sizeof(v), "%li bytes unknown data", entry->components);
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
+		CC (entry->components, 124, val, maxlen);
+		snprintf (val, maxlen, "%li bytes unknown data", entry->components);
 		break;
 	case MNOTE_PENTAX_TAG_TZ_CITY:
-		CF (entry->format, EXIF_FORMAT_UNDEFINED, v);
-		CC (entry->components, 4, v);
-		snprintf (v,  entry->components, "%s", entry->data);
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
+		CC (entry->components, 4, val, maxlen);
+		snprintf (val, entry->components, "%s", entry->data);
 		break;
 	case MNOTE_PENTAX_TAG_TZ_DST:
-		CF (entry->format, EXIF_FORMAT_UNDEFINED, v);
-		CC (entry->components, 4, v);
-		snprintf (v, entry->components, "%s", entry->data);
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
+		CC (entry->components, 4, val, maxlen);
+		snprintf (val, entry->components, "%s", entry->data);
 		break;
 	case MNOTE_PENTAX_TAG_COLOR:
-		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		CC (entry->components, 1, v);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
 		switch (vs) {
 		case 1:
-			strncpy (v, _("Full"), sizeof (v));
+			strncpy (val, _("Full"), maxlen);
 			break;
 		case 2:
-			strncpy (v, _("Black & White"), sizeof (v));
+			strncpy (val, _("Black & White"), maxlen);
 			break;
 		case 3:
-			strncpy (v, _("Sepia"), sizeof (v));
+			strncpy (val, _("Sepia"), maxlen);
 			break;
 		default:
-			snprintf (v, sizeof (v), "%i", vs);
+			snprintf (val, maxlen, "%i", vs);
 		}
 		break;
 	default:
 		switch (entry->format) {
 		case EXIF_FORMAT_ASCII:
-		  snprintf (v, entry->components, "%s", entry->data);
+		  snprintf (val, entry->components, "%s", entry->data);
 		  break;
 		case EXIF_FORMAT_SHORT:
 		  vs = exif_get_short (entry->data, entry->order);
-		  snprintf (v, sizeof (v), "%i", vs);
+		  snprintf (val, maxlen, "%i", vs);
 		  break;
 		case EXIF_FORMAT_LONG:
 		  vl = exif_get_long (entry->data, entry->order);
-		  snprintf (v, sizeof (v), "%li", vl);
+		  snprintf (val, maxlen, "%li", vl);
 		  break;
 		case EXIF_FORMAT_UNDEFINED:
 		default:
-		  snprintf (v,  sizeof(v), "%li bytes unknown data",
+		  snprintf (val, maxlen, "%li bytes unknown data",
 			    entry->components);
 		  break;
 		}
 		break;
 	}
 
-	return (v);
+	return (val);
 }

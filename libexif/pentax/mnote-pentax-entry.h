@@ -38,6 +38,6 @@ struct _MnotePentaxEntry {
 	ExifByteOrder order;
 };
 
-char *mnote_pentax_entry_get_value (MnotePentaxEntry *entry);
+char *mnote_pentax_entry_get_value (MnotePentaxEntry *entry, char *val, unsigned int maxlen);
 
 #endif /* __MNOTE_PENTAX_ENTRY_H__ */
