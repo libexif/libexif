@@ -606,7 +606,7 @@ exif_tag_get_title (ExifTag tag)
 {
 	unsigned int i;
 
-	bindtextdomain (PACKAGE, LIBEXIF_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 
 	for (i = 0; ExifTagTable[i].title; i++)
 		if (ExifTagTable[i].tag == tag)
@@ -620,7 +620,7 @@ exif_tag_get_description (ExifTag tag)
 {
 	unsigned int i;
 
-	bindtextdomain (PACKAGE, LIBEXIF_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 
 	for (i = 0; ExifTagTable[i].description; i++)
 		if (ExifTagTable[i].tag == tag)
