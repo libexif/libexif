@@ -7,10 +7,10 @@
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details. 
+ * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
@@ -30,7 +30,7 @@
 #include <time.h>
 #include <math.h>
 
-//#define DEBUG
+/* #define DEBUG */
 
 #undef  MIN
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
@@ -201,9 +201,9 @@ exif_entry_get_value (ExifEntry *e)
 	case EXIF_TAG_COPYRIGHT:
 		CF (e->format, EXIF_FORMAT_ASCII, v);
 
-		/* 
+		/*
 		 * First part: Photographer.
-		 * Some cameras store a string like "   " here. Ignore it. 
+		 * Some cameras store a string like "   " here. Ignore it.
 		 */
 		if (e->size && e->data &&
 		    (strspn (e->data, " ") != strlen ((char *) e->data)))
@@ -313,9 +313,9 @@ exif_entry_get_value (ExifEntry *e)
 		CF (e->format, EXIF_FORMAT_SRATIONAL, v);
 		CC (e->components, 1, v);
 		v_srat = exif_get_srational (e->data, o);
-		snprintf (v, sizeof (v), "%i/%i", (int) v_srat.numerator, 
+		snprintf (v, sizeof (v), "%i/%i", (int) v_srat.numerator,
 						  (int) v_srat.denominator);
-		//FIXME: How do I calculate the APEX value?
+		/* FIXME: How do I calculate the APEX value? */
 		break;
 	case EXIF_TAG_METERING_MODE:
 		CF (e->format, EXIF_FORMAT_SHORT, v);
@@ -586,10 +586,10 @@ exif_entry_get_value (ExifEntry *e)
 		}
 		break;
 	case EXIF_TAG_COLOR_SPACE:
-		CF (e->format, EXIF_FORMAT_SHORT, v); 
-		CC (e->components, 1, v); 
-		v_short = exif_get_short (e->data, o); 
-		switch (v_short) { 
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
 		case 1:
 			strncpy (v, _("sRGB"), sizeof (v));
 			break;
@@ -602,7 +602,7 @@ exif_entry_get_value (ExifEntry *e)
 		}
 		break;
 	case EXIF_TAG_FLASH:
-		CF (e->format, EXIF_FORMAT_SHORT, v); 
+		CF (e->format, EXIF_FORMAT_SHORT, v);
 		CC (e->components, 1, v);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
@@ -1006,7 +1006,7 @@ exif_entry_get_value_brief (ExifEntry *e)
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator)
 			return (NULL);
-		
+
 		/*
 		 * For calculation of the 35mm equivalent,
 		 * Minolta cameras need a multiplier that depends on the
@@ -1160,7 +1160,7 @@ exif_entry_get_value_brief (ExifEntry *e)
 		}
 		break;
 	case EXIF_TAG_FLASH:
-		CF (e->format, EXIF_FORMAT_SHORT, v); 
+		CF (e->format, EXIF_FORMAT_SHORT, v);
 		CC (e->components, 1, v);
 		v_short = exif_get_short (e->data, o);
 		switch (v_short) {
@@ -1241,7 +1241,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->data = malloc (e->size);
 		exif_set_short (e->data, o, 0);
 		break;
-	
+
 	/* SHORT, 1 component, default 1 */
         case EXIF_TAG_ORIENTATION:
         case EXIF_TAG_PLANAR_CONFIGURATION:
@@ -1305,7 +1305,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = malloc (e->size);
 		memset (e->data, 0, e->size);
-		break; 
+		break;
 
 	/* RATIONAL, 1 component, no default */
 	case EXIF_TAG_EXPOSURE_TIME:
@@ -1374,7 +1374,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		exif_set_rational (
 			e->data + 5 * exif_format_get_size (e->format), o, r);
 		break;
-	
+
 	/* ASCII, 20 components */
 	case EXIF_TAG_DATE_TIME:
 	case EXIF_TAG_DATE_TIME_ORIGINAL:
@@ -1385,12 +1385,12 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = malloc (e->size);
-		snprintf ((char *) e->data, e->size, 
+		snprintf ((char *) e->data, e->size,
 			  "%04i:%02i:%02i %02i:%02i:%02i",
 			  tm->tm_year + 1900, tm->tm_mon, tm->tm_mday,
 			  tm->tm_hour, tm->tm_min, tm->tm_sec);
 		break;
-	
+
 	/* ASCII, no default */
 	case EXIF_TAG_SUB_SEC_TIME:
 	case EXIF_TAG_SUB_SEC_TIME_ORIGINAL:

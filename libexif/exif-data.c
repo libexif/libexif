@@ -7,10 +7,10 @@
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details. 
+ * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
@@ -32,7 +32,7 @@
 #undef MAX
 #define MAX(a, b)  (((a) > (b)) ? (a) : (b))
 
-//#define DEBUG
+/* #define DEBUG */
 
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 
@@ -421,7 +421,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 					EXIF_FORMAT_LONG);
 			exif_set_long  (*d + 6 + offset + 4, data->priv->order,
 					1);
-			exif_set_long  (*d + 6 + offset + 8, data->priv->order, 
+			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 					data->size);
 			offset += 12;
 		}
@@ -628,7 +628,7 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 	/*
 	 * IFD 0 offset (4 bytes, offset 10).
 	 * We will start 8 bytes after the
-	 * EXIF header (2 bytes for order, another 2 for the test, and 
+	 * EXIF header (2 bytes for order, another 2 for the test, and
 	 * 4 bytes for the IFD 0 offset make 8 bytes together).
 	 */
 	*ds += 4;
@@ -793,7 +793,7 @@ entry_set_byte_order (ExifEntry *e, void *data)
 			s = exif_get_short (e->data +
 				(i * exif_format_get_size (e->format)),
 				d->old);
-			exif_set_short (e->data + 
+			exif_set_short (e->data +
 				(i * exif_format_get_size (e->format)),
 				d->new, s);
 		}
