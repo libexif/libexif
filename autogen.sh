@@ -201,7 +201,7 @@ clean() {
 		rm -rf ${AG_GEN_DIRS}
 		rm -f ${AG_GEN_FILES}
 		echo " done."
-		if test -h INSTALL; then rm -f INSTAL; fi
+		if test -h INSTALL; then rm -f INSTALL; fi
 		echo -n "Cleaning generated Makefile, Makefile.in files..."
 		if "$debug"; then echo; fi
 		find . -type f -name 'Makefile.am' -print | \
