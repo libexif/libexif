@@ -81,6 +81,9 @@ enum _MnoteOlympusTag {
 	MNOTE_NIKON_TAG_UNKNOWN_0X00AA          = 0x00aa,
 	MNOTE_NIKON_TAG_UNKNOWN_0X00AB          = 0x00ab,
 	MNOTE_NIKON_TAG_CAPTUREEDITORDATA       = 0x0e01,
+	MNOTE_NIKON_TAG_CAPTUREEDITORVER	= 0x0e09,
+	MNOTE_NIKON_TAG_UNKNOWN_0X0E0E		= 0x0e0e,
+	MNOTE_NIKON_TAG_UNKNOWN_0X0E10		= 0x0e10,
 
 	/* Nikon v1: real values + our proprietary base to distinguish from v2 */
 	MNOTE_NIKON1_TAG_BASE                   = 0x8000,
