@@ -256,28 +256,46 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			     unsigned char **d, unsigned int *ds,
 			     unsigned int offset)
 {
-	unsigned int i, n_ptr = 0, n_thumb = 0;
+	unsigned int j, n_ptr = 0, n_thumb = 0;
+	ExifIfd i;
+
+	if (!data || !ifd || !d || !ds)
+		return;
+
+	for (i = 0; i < EXIF_IFD_COUNT; i++)
+		if (ifd == data->ifd[i])
+			break;
+	if (i == EXIF_IFD_COUNT)
+		return;
 
 	/*
 	 * Check if we need some extra entries for pointers or the thumbnail.
 	 */
-	if (ifd == data->ifd[EXIF_IFD_0]) {
+	switch (i) {
+	case EXIF_IFD_0:
 
 		/*
 		 * The pointer to IFD_EXIF is in IFD_0. The pointer to
 		 * IFD_INTEROPERABILITY is in IFD_EXIF.
 		 */
-		if (data->ifd[EXIF_IFD_EXIF]->count || data->ifd[EXIF_IFD_INTEROPERABILITY]->count)
+		if (data->ifd[EXIF_IFD_EXIF]->count ||
+		    data->ifd[EXIF_IFD_INTEROPERABILITY]->count)
 			n_ptr++;
 
 		/* The pointer to IFD_GPS is in IFD_0. */
 		if (data->ifd[EXIF_IFD_GPS]->count)
 			n_ptr++;
-	} else if ((ifd == data->ifd[EXIF_IFD_1]) && data->size) {
-		n_thumb = 2;
-	} else if (ifd == data->ifd[EXIF_IFD_EXIF]) {
+
+		break;
+	case EXIF_IFD_1:
+		if (data->size)
+			n_thumb = 2;
+		break;
+	case EXIF_IFD_EXIF:
 		if (data->ifd[EXIF_IFD_INTEROPERABILITY]->count)
 			n_ptr++;
+	default:
+		break;
 	}
 
 	/*
@@ -291,93 +309,127 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	exif_set_short (*d + 6 + offset, data->priv->order,
 			ifd->count + n_ptr + n_thumb);
 	offset += 2;
+
 #ifdef DEBUG
-	printf ("Saving %i entries (offset: %i)...\n", ifd->count, offset);
+	printf ("Saving %i entries (IFD '%s', offset: %i)...\n",
+		ifd->count, exif_ifd_get_name (i), offset);
 #endif
 
 	/* Save each entry */
-	for (i = 0; i < ifd->count; i++)
-		exif_data_save_data_entry (data, ifd->entries[i],
-				d, ds, offset + 12 * i);
+	for (j = 0; j < ifd->count; j++)
+		exif_data_save_data_entry (data, ifd->entries[j],
+				d, ds, offset + 12 * j);
 	offset += 12 * ifd->count;
 
-	/*
-	 * The pointer to IFD_EXIF is in IFD_0.
-	 * However, the pointer to IFD_INTEROPERABILITY is in IFD_EXIF,
-	 * therefore, if IFD_INTEROPERABILITY is not empty, we need
-	 * IFD_EXIF even if latter is empty.
-	 */
-	if (ifd == data->ifd[EXIF_IFD_0] && (
-			data->ifd[EXIF_IFD_EXIF]->count ||
-			data->ifd[EXIF_IFD_INTEROPERABILITY]->count)) {
-		exif_set_short (*d + 6 + offset + 0, data->priv->order,
-				EXIF_TAG_EXIF_IFD_POINTER);
-		exif_set_short (*d + 6 + offset + 2, data->priv->order,
-				EXIF_FORMAT_LONG);
-		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
-		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+	/* Now save special entries. */
+	switch (i) {
+	case EXIF_IFD_0:
+
+		/*
+		 * The pointer to IFD_EXIF is in IFD_0.
+		 * However, the pointer to IFD_INTEROPERABILITY is in IFD_EXIF,
+		 * therefore, if IFD_INTEROPERABILITY is not empty, we need
+		 * IFD_EXIF even if latter is empty.
+		 */
+		if (data->ifd[EXIF_IFD_EXIF]->count ||
+		    data->ifd[EXIF_IFD_INTEROPERABILITY]->count) {
+			exif_set_short (*d + 6 + offset + 0, data->priv->order,
+					EXIF_TAG_EXIF_IFD_POINTER);
+			exif_set_short (*d + 6 + offset + 2, data->priv->order,
+					EXIF_FORMAT_LONG);
+			exif_set_long  (*d + 6 + offset + 4, data->priv->order,
+					1);
+			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+					*ds - 6);
+			exif_data_save_data_content (data,
+				data->ifd[EXIF_IFD_EXIF], d, ds, *ds - 6);
+			offset += 12;
+		}
+
+		/* The pointer to IFD_GPS is in IFD_0, too. */
+		if (data->ifd[EXIF_IFD_GPS]->count) {
+			exif_set_short (*d + 6 + offset + 0, data->priv->order,
+					EXIF_TAG_GPS_INFO_IFD_POINTER);
+			exif_set_short (*d + 6 + offset + 2, data->priv->order,
+					EXIF_FORMAT_LONG);
+			exif_set_long  (*d + 6 + offset + 4, data->priv->order,
+					1);
+			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+					*ds - 6);
+			exif_data_save_data_content (data,
+				data->ifd[EXIF_IFD_GPS], d, ds, *ds - 6);
+			offset += 12;
+		}
+
+		break;
+	case EXIF_IFD_EXIF:
+
+		/*
+		 * The pointer to IFD_INTEROPERABILITY is in IFD_EXIF.
+		 * See note above.
+		 */
+		if (data->ifd[EXIF_IFD_INTEROPERABILITY]->count) {
+			exif_set_short (*d + 6 + offset + 0, data->priv->order,
+					EXIF_TAG_INTEROPERABILITY_IFD_POINTER);
+			exif_set_short (*d + 6 + offset + 2, data->priv->order,
+					EXIF_FORMAT_LONG);
+			exif_set_long  (*d + 6 + offset + 4, data->priv->order,
+					1);
+			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+					*ds - 6);
+			exif_data_save_data_content (data,
+				data->ifd[EXIF_IFD_INTEROPERABILITY], d, ds,
 				*ds - 6);
-		exif_data_save_data_content (data, data->ifd[EXIF_IFD_EXIF], d,
-					     ds, *ds - 6);
-		offset += 12;
-	}
+			offset += 12;
+		}
 
-	/* The pointer to IFD_GPS is in IFD_0. */
-	if (ifd == data->ifd[EXIF_IFD_0] && data->ifd[EXIF_IFD_GPS]->count) {
-		exif_set_short (*d + 6 + offset + 0, data->priv->order,
-				EXIF_TAG_GPS_INFO_IFD_POINTER);
-		exif_set_short (*d + 6 + offset + 2, data->priv->order,
-				EXIF_FORMAT_LONG);
-		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
-		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
-				*ds - 6);
-		exif_data_save_data_content (data, data->ifd[EXIF_IFD_GPS], d, ds,
-					     *ds - 6);
-		offset += 12;
-	}
+		break;
+	case EXIF_IFD_1:
 
-	/* The pointer to IFD_INTEROPERABILITY is in IFD_EXIF. See above. */
-	if (ifd == data->ifd[EXIF_IFD_EXIF] && data->ifd[EXIF_IFD_INTEROPERABILITY]->count) {
-		exif_set_short (*d + 6 + offset + 0, data->priv->order,
-				EXIF_TAG_INTEROPERABILITY_IFD_POINTER);
-		exif_set_short (*d + 6 + offset + 2, data->priv->order,
-				EXIF_FORMAT_LONG);
-		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
-		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
-				*ds - 6);
-		exif_data_save_data_content (data, data->ifd[EXIF_IFD_INTEROPERABILITY],
-					     d, ds, *ds - 6);
-		offset += 12;
-	}
+		/*
+		 * Information about the thumbnail (if any) is saved in
+		 * IFD_1.
+		 */
+		if (data->size) {
 
-	/* Information about the thumbnail (if any) is saved in IFD_1. */
-	if ((ifd == data->ifd[EXIF_IFD_1]) && data->size) {
+			/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT */
+			exif_set_short (*d + 6 + offset + 0, data->priv->order,
+					EXIF_TAG_JPEG_INTERCHANGE_FORMAT);
+			exif_set_short (*d + 6 + offset + 2, data->priv->order,
+					EXIF_FORMAT_LONG);
+			exif_set_long  (*d + 6 + offset + 4, data->priv->order,
+					1);
+			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+					*ds - 6);
+			*ds += data->size;
+			*d = realloc (*d, sizeof (char) * *ds);
+			memcpy (*d + *ds - data->size, data->data, data->size);
+			offset += 12;
+#ifdef DEBUG
+			printf ("Wrote %i bytes of thumbnail data at offset "
+				"%i.\n", data->size, *ds - data->size);
+			printf ("We currently have %i bytes EXIF data.\n", *ds);
+#endif
 
-		/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT */
-		exif_set_short (*d + 6 + offset + 0, data->priv->order,
-				EXIF_TAG_JPEG_INTERCHANGE_FORMAT);
-		exif_set_short (*d + 6 + offset + 2, data->priv->order,
-				EXIF_FORMAT_LONG);
-		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
-		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
-				*ds - 6);
-		*ds += data->size;
-		*d = realloc (*d, sizeof (char) * *ds);
-		memcpy (*d + *ds - data->size, data->data, data->size);
-		offset += 12;
-
-		/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH */
-		exif_set_short (*d + 6 + offset + 0, data->priv->order,
+			/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH */
+			exif_set_short (*d + 6 + offset + 0, data->priv->order,
 				EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH);
-		exif_set_short (*d + 6 + offset + 2, data->priv->order,
-				EXIF_FORMAT_LONG);
-		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
-		exif_set_long  (*d + 6 + offset + 8, data->priv->order, 
-				data->size);
-		offset += 12;
+			exif_set_short (*d + 6 + offset + 2, data->priv->order,
+					EXIF_FORMAT_LONG);
+			exif_set_long  (*d + 6 + offset + 4, data->priv->order,
+					1);
+			exif_set_long  (*d + 6 + offset + 8, data->priv->order, 
+					data->size);
+			offset += 12;
+		}
+
+		break;
+	default:
+		break;
 	}
 
-	if (ifd == data->ifd[EXIF_IFD_0] && (data->ifd[EXIF_IFD_1]->count ||
+	/* Correctly terminate the directory */
+	if (i == EXIF_IFD_0 && (data->ifd[EXIF_IFD_1]->count ||
 					     data->size)) {
 
 		/*
@@ -584,7 +636,8 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 #ifdef DEBUG
 	printf ("Saving IFDs...\n");
 #endif
-	exif_data_save_data_content (data, data->ifd[EXIF_IFD_0], d, ds, *ds - 6);
+	exif_data_save_data_content (data, data->ifd[EXIF_IFD_0], d, ds,
+				     *ds - 6);
 
 #ifdef DEBUG
 	printf ("Saved %i byte(s) EXIF data.\n", *ds);
