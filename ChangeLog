@@ -1,3 +1,9 @@
+2003-12-08  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Suggestion by Jan Patera <patera@pictview.com>:
+
+	* libexif/exif-entry.c: Do not read beyond e->size.
+
 2003-12-01  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/olympus/mnote-olympus-entry.c: Now that EXIF_FORMAT_SSHORT

@@ -177,7 +177,7 @@ exif_entry_get_value (ExifEntry *e)
 	case EXIF_TAG_USER_COMMENT:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
 		if (e->size < 8) break;
-		strncpy (v, e->data + 8, sizeof (v) - 1);
+		strncpy (v, e->data + 8, MIN (e->size, sizeof (v) - 1));
 		break;
 	case EXIF_TAG_EXIF_VERSION:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
