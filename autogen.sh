@@ -78,6 +78,11 @@ init_vars() {
     fi
 
     echo -n "Initializing variables for \`${dir}'..."
+    # FIXME: Just getting those directories and cleaning them isn't enough.
+    #        OK, the "init" part is done recursively by autopoint, so that is easy.
+    #        But the cleaning should also work recursively, but that is difficult
+    #        with the current structure of the script.
+    AG_SUBDIRS="$(for k in $(sed -n 's/^AC_CONFIG_SUBDIRS(\[\{0,1\}\([^])]*\).*/\1/p' "$CONFIGURE_AC"); do echo "${dir}/${k}"; done)"
     AG_AUX="$(sed -n 's/^AC_CONFIG_AUX_DIR(\[\{0,1\}\([^])]*\).*/\1/p' < "$CONFIGURE_AC")"
     if test "x$AG_AUX" = "x"; then
 	AG_AUX="."
@@ -157,38 +162,42 @@ EOF
 
 
 ########################################################################
-# Clean generated files from $1 directory
+# Clean generated files from $* directories
 
 clean() {
-    dir="$1"
     if test "x$AG_GEN_FILES" = "x"; then echo "Internal error"; exit 2; fi
-    echo "$self:clean: Entering directory \`${dir}'"
-(
-if cd "$dir"; then
-    echo -n "Cleaning autogen generated files..."
-    rm -rf ${AG_GEN_DIRS}
-    rm -f ${AG_GEN_FILES}
-    echo " done."
-    echo -n "Cleaning generated Makefile, Makefile.in files..."
-    if "$debug"; then echo; fi
-    find . -type f -name 'Makefile.am' -print | \
-	while read file; do
-		echo "$file" | grep -q '/{arch}' && continue
-		echo "$file" | grep -q '/\.svn'  && continue
-		echo "$file" | grep -q '/CVS'    && continue
-		base="$(dirname "$file")/$(basename "$file" .am)"
-		if "$debug"; then
-		    echo -e "  Removing files created from ${file}"
-		fi
-		rm -f "${base}" "${base}.in"
-	done
-    if "$debug"; then :; else echo " done."; fi
-    echo -n "Removing *~ backup files..."
-    find . -type f -name '*~' -exec rm -f {} \;
-    echo " done."
-fi
-)
-    echo "$self:clean: Left directory \`${dir}'"
+    dir="$1"
+    while test "$dir"; do
+	echo "$self:clean: Entering directory \`${dir}'"
+	(
+	    if cd "$dir"; then
+		echo -n "Cleaning autogen generated files..."
+		rm -rf ${AG_GEN_DIRS}
+		rm -f ${AG_GEN_FILES}
+		echo " done."
+		echo -n "Cleaning generated Makefile, Makefile.in files..."
+		if "$debug"; then echo; fi
+		find . -type f -name 'Makefile.am' -print | \
+		    while read file; do
+		    echo "$file" | grep -q '/{arch}' && continue
+		    echo "$file" | grep -q '/\.svn'  && continue
+		    echo "$file" | grep -q '/CVS'    && continue
+		    base="$(dirname "$file")/$(basename "$file" .am)"
+		    if "$debug"; then
+			echo -e "  Removing files created from ${file}"
+		    fi
+		    rm -f "${base}" "${base}.in"
+		done
+		if "$debug"; then :; else echo " done."; fi
+		echo -n "Removing *~ backup files..."
+		find . -type f -name '*~' -exec rm -f {} \;
+		echo " done."
+	    fi
+	)
+	echo "$self:clean: Left directory \`${dir}'"
+	shift
+	dir="$1"
+    done
 }
 
 
@@ -231,6 +240,7 @@ fi
 commands="init" # default command in case none is given
 pcommands=""
 dirs="$(dirname "$0")"
+#dirs="$(cd "$dirs" && pwd)"
 pdirs=""
 # Yes, unquoted $@ isn't space safe, but it works with simple shells.
 for param in $@; do
@@ -277,7 +287,7 @@ for dir in ${dirs}; do
     fi
     init_vars "$dir"
     for command in ${commands}; do
-	"$command" "$dir"
+	"$command" "$dir" ${AG_SUBDIRS}
     done
 done
 
