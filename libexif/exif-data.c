@@ -931,6 +931,7 @@ entry_set_byte_order (ExifEntry *e, void *data)
 		break;
 	case EXIF_FORMAT_UNDEFINED:
 	case EXIF_FORMAT_BYTE:
+	case EXIF_FORMAT_SBYTE:
 	case EXIF_FORMAT_ASCII:
 	default:
 		/* Nothing here. */

@@ -31,9 +31,13 @@ typedef enum {
         EXIF_FORMAT_SHORT      =  3,
         EXIF_FORMAT_LONG       =  4,
         EXIF_FORMAT_RATIONAL   =  5,
+	EXIF_FORMAT_SBYTE      =  6,
         EXIF_FORMAT_UNDEFINED  =  7,
+	EXIF_FORMAT_SSHORT     =  8,
         EXIF_FORMAT_SLONG      =  9,
-        EXIF_FORMAT_SRATIONAL  = 10
+        EXIF_FORMAT_SRATIONAL  = 10,
+	EXIF_FORMAT_FLOAT      = 11,
+	EXIF_FORMAT_DOUBLE     = 12
 } ExifFormat;
 
 const char   *exif_format_get_name (ExifFormat format);

@@ -899,6 +899,7 @@ exif_entry_get_value (ExifEntry *e)
 		case EXIF_FORMAT_UNDEFINED:
 			break;
 		case EXIF_FORMAT_BYTE:
+		case EXIF_FORMAT_SBYTE:
 			v_byte = e->data[0];
 			snprintf (v, sizeof (v), "0x%02x", v_byte);
 			for (i = 1; i < e->components; i++) {
@@ -909,6 +910,7 @@ exif_entry_get_value (ExifEntry *e)
 			}
 			break;
 		case EXIF_FORMAT_SHORT:
+		case EXIF_FORMAT_SSHORT:
 			v_short = exif_get_short (e->data, o);
 			snprintf (v, sizeof (v), "%i", v_short);
 			for (i = 1; i < e->components; i++) {

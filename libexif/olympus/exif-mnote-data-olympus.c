@@ -86,13 +86,15 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 
 	/* Write the header and the number of entries. */
 	strcpy (*buf, "OLYMP");
-	exif_set_short (*buf + 8, n->order, n->count);
+	exif_set_short (*buf + 8, n->order, (ExifShort) n->count);
 
 	/* Save each entry */
 	for (i = 0; i < n->count; i++) {
 		o = 6 + 2 + 2 + i * 12;
-		exif_set_short (*buf + o + 0, n->order, n->entries[i].tag);
-		exif_set_short (*buf + o + 2, n->order, n->entries[i].format);
+		exif_set_short (*buf + o + 0, n->order,
+				(ExifShort) n->entries[i].tag);
+		exif_set_short (*buf + o + 2, n->order,
+				(ExifShort) n->entries[i].format);
 		exif_set_long  (*buf + o + 4, n->order,
 				n->entries[i].components);
 		o += 8;

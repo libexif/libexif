@@ -182,6 +182,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry)
 	case MNOTE_OLYMPUS_TAG_VERSION:
 		CF (entry->format, EXIF_FORMAT_ASCII, v);
 		CC (entry->components, 5, v);
+		strncpy (v, entry->data, MIN (sizeof (v), entry->size));
 		break;
 	case MNOTE_OLYMPUS_TAG_INFO:
 		CF (entry->format, EXIF_FORMAT_ASCII, v);
@@ -190,6 +191,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry)
 	case MNOTE_OLYMPUS_TAG_ID:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, v);
 		CC (entry->components, 32, v);
+		strncpy (v, entry->data, MIN (sizeof (v), entry->size));
 		break;
 	case MNOTE_OLYMPUS_TAG_UNKNOWN_4:
 		CF (entry->format, EXIF_FORMAT_LONG, v);
