@@ -126,10 +126,14 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 						n->entries[i].components;
 		if (s > 4) {
 			*buf_size += s;
+
+			/* Ensure even offsets. Set padding bytes to 0. */
+			if (s & 1) *buf_size += 1;
 			*buf = exif_mem_realloc (ne->mem, *buf,
 						 sizeof (char) * *buf_size);
 			if (!*buf) return;
 			doff = *buf_size - s;
+			if (s & 1) { doff--; *(*buf + *buf_size - 1) = '\0'; }
 			exif_set_long (*buf + o, n->order, n->offset + doff);
 		} else
 			doff = o;
