@@ -1,3 +1,10 @@
+2003-08-06  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c (exif_entry_initialize): Support some more
+	  tags.
+	* libexif/exif-tag.[c,h]: Cosmetic fix.
+	* libexif/exif-utils.h: Do not let above cosmetic fix break the API.
+
 2003-08-04  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* po/*.po: Updated.

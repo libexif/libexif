@@ -383,7 +383,7 @@ static struct {
 	    "When a <UserComment> area is set aside, it is recommended that "
 	    "the ID code be ASCII and that the following user comment "
 	    "part be filled with blank characters [20.H].")},
-	{EXIF_TAG_SUBSEC_TIME, "SubsecTime", "SubsecTime",
+	{EXIF_TAG_SUB_SEC_TIME, "SubsecTime", "SubsecTime",
 	 N_("A tag used to record fractions of seconds for the "
 	    "<DateTime> tag.")},
 	{EXIF_TAG_SUB_SEC_TIME_ORIGINAL, "SubSecTimeOriginal",

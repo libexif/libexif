@@ -1374,6 +1374,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		exif_set_rational (
 			e->data + 5 * exif_format_get_size (e->format), o, r);
 		break;
+	
+	/* ASCII, 20 components */
 	case EXIF_TAG_DATE_TIME:
 	case EXIF_TAG_DATE_TIME_ORIGINAL:
 	case EXIF_TAG_DATE_TIME_DIGITIZED:
@@ -1387,6 +1389,16 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 			  "%04i:%02i:%02i %02i:%02i:%02i",
 			  tm->tm_year + 1900, tm->tm_mon, tm->tm_mday,
 			  tm->tm_hour, tm->tm_min, tm->tm_sec);
+		break;
+	
+	/* ASCII, no default */
+	case EXIF_TAG_SUB_SEC_TIME:
+	case EXIF_TAG_SUB_SEC_TIME_ORIGINAL:
+	case EXIF_TAG_SUB_SEC_TIME_DIGITIZED:
+		e->components = 0;
+		e->format = EXIF_FORMAT_ASCII;
+		e->size = 0;
+		e->data = NULL;
 		break;
 	case EXIF_TAG_IMAGE_DESCRIPTION:
 	case EXIF_TAG_MAKE:
@@ -1409,6 +1421,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		break;
 
 	/* UNDEFINED, no components, no default */
+	case EXIF_TAG_MAKER_NOTE:
 	case EXIF_TAG_USER_COMMENT:
 		e->components = 0;
 		e->format = EXIF_FORMAT_UNDEFINED;
