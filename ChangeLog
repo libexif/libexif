@@ -1,5 +1,10 @@
 2004-09-07  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-entry.c: Use calloc. Hint by Jan Patera
+	  <patera@pictview.com>.
+
+2004-09-07  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/olympus
 	* libexif/pentax: Fix typo and wrong logic introduced during my
 	  last changes. Thanks to Jan Patera
