@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2005-03-12 05:09+0100\n"
-"PO-Revision-Date: 2005-03-13 23:31+0100\n"
+"PO-Revision-Date: 2005-03-14 00:00+0100\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -125,11 +125,11 @@ msgstr "YCbCr"
 
 #: libexif/exif-entry.c:404
 msgid "Normal process"
-msgstr ""
+msgstr "Normale Verarbeitung"
 
 #: libexif/exif-entry.c:404
 msgid "Custom process"
-msgstr ""
+msgstr "Gesonderte Verarbeitung"
 
 #: libexif/exif-entry.c:406
 msgid "Auto exposure"
@@ -141,7 +141,7 @@ msgstr "Manuelle Belichtungszeit"
 
 #: libexif/exif-entry.c:406
 msgid "Auto bracket"
-msgstr "Automatische Focusbereichswahl"
+msgstr ""
 
 #: libexif/exif-entry.c:408
 msgid "Auto white balance"
@@ -502,12 +502,11 @@ msgstr "Keine Blitzlichtfunktion."
 
 #: libexif/exif-entry.c:507
 msgid "Flash fired, red-eye reduction mode."
-msgstr "Blitz ausgelöst, Rote-Augen Reduktions Modus."
+msgstr "Blitz ausgelöst, Rote Augen Reduktions Modus."
 
 #: libexif/exif-entry.c:508
 msgid "Flash fired, red-eye reduction mode, return light not detected."
-msgstr ""
-"Blitz ausgelöst, Rote Augen Reduktions Modus, Blitzreflektion nicht erkannt."
+msgstr "Blitz ausgelöst, Rote Augen Reduktions Modus, Blitzreflektion nicht erkannt."
 
 #: libexif/exif-entry.c:510
 msgid "Flash fired, red-eye reduction mode, return light detected."
@@ -569,11 +568,11 @@ msgstr "Geringe Entfernung"
 
 #: libexif/exif-entry.c:528
 msgid "close"
-msgstr "nah"
+msgstr "nahe"
 
 #: libexif/exif-entry.c:529
 msgid "Distant view"
-msgstr "Hohe Entfernung"
+msgstr "Große Entfernung"
 
 #: libexif/exif-entry.c:529
 msgid "distant"
@@ -602,7 +601,7 @@ msgstr "Nicht unterstützter JIS String."
 
 #: libexif/exif-entry.c:644
 msgid "Unknown Exif Version"
-msgstr "Unbekannte Exif Version"
+msgstr "Unbekannte Exif-Version"
 
 #: libexif/exif-entry.c:648
 #, c-format
@@ -729,27 +728,24 @@ msgid "Long"
 msgstr "Long Int"
 
 #: libexif/exif-format.c:37
-#, fuzzy
 msgid "Rational"
-msgstr "Partiell"
+msgstr ""
 
 #: libexif/exif-format.c:38
 msgid "SByte"
 msgstr ""
 
 #: libexif/exif-format.c:39
-#, fuzzy
 msgid "SShort"
-msgstr "Weich"
+msgstr ""
 
 #: libexif/exif-format.c:40
 msgid "SLong"
 msgstr ""
 
 #: libexif/exif-format.c:41
-#, fuzzy
 msgid "SRational"
-msgstr "Sättigung"
+msgstr ""
 
 #: libexif/exif-format.c:42
 msgid "Float"
@@ -765,7 +761,7 @@ msgstr "Undefiniert"
 
 #: libexif/exif-tag.c:44
 msgid "A general indication of the kind of data contained in this subfile."
-msgstr ""
+msgstr "Genereller Hinweis auf die Art der Daten in dieser Unterdatei"
 
 #: libexif/exif-tag.c:48
 msgid ""
@@ -927,7 +923,7 @@ msgstr "Die Bildausrichtung in Sicht von Spalten und Zeilen."
 
 #: libexif/exif-tag.c:115
 msgid "Samples per Pixel"
-msgstr "Samples pro Pixel."
+msgstr "Samples pro Pixel"
 
 #: libexif/exif-tag.c:116
 msgid ""
@@ -941,7 +937,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:120
 msgid "Rows per Strip"
-msgstr "Zeilen per Strip"
+msgstr "Zeilen pro Strip"
 
 #: libexif/exif-tag.c:121
 msgid ""
