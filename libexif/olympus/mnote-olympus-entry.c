@@ -158,7 +158,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 {
 	char         buf[32];
 	ExifLong     vl;
-	ExifShort    vs;
+	ExifShort    vs = 0;
 	ExifRational vr;
 	int          i, j;
 	double       r, b;
@@ -309,13 +309,16 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		CF (entry->format, items[i].fmt, v, maxlen);
 		CC (entry->components, 1, v, maxlen);
 		switch (entry->format) {
-			case EXIF_FORMAT_BYTE:
-			case EXIF_FORMAT_UNDEFINED:
-				vs = entry->data[0];
-				break;
-			case EXIF_FORMAT_SHORT:
-				vs = exif_get_short(entry->data, entry->order);
-				break;
+		case EXIF_FORMAT_BYTE:
+		case EXIF_FORMAT_UNDEFINED:
+			vs = entry->data[0];
+			break;
+		case EXIF_FORMAT_SHORT:
+			vs = exif_get_short(entry->data, entry->order);
+			break;
+		default:
+			vs = 0;
+			break;
 		}
 		/* find the value */
 		for (j = 0; items[i].elem[j].string &&
@@ -499,21 +502,26 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	default:
 		switch (entry->format) {
 		case EXIF_FORMAT_ASCII:
-		  strncpy (v, entry->data, MIN (maxlen, entry->components));
-		  break;
+			strncpy (v, entry->data,
+				 MIN (maxlen, entry->components));
+			break;
 		case EXIF_FORMAT_SHORT:
-		  vs = exif_get_short (entry->data, entry->order);
-		  snprintf (v, maxlen, "%hi", vs);
-		  break;
+			vs = exif_get_short (entry->data, entry->order);
+			snprintf (v, maxlen, "%hi", vs);
+			break;
 		case EXIF_FORMAT_LONG:
-		  vl = exif_get_long (entry->data, entry->order);
-		  snprintf (v, maxlen, "%li", vl);
-		  break;
+			vl = exif_get_long (entry->data, entry->order);
+			snprintf (v, maxlen, "%li", vl);
+			break;
 		case EXIF_FORMAT_UNDEFINED:
 		default:
-		  snprintf (v, maxlen, "%li bytes unknown data",
-			    entry->size);
-		  break;
+			snprintf (v, maxlen, "%li bytes unknown data:",
+				  entry->size);
+			for (i = 0; i < entry->size; i++) {
+				sprintf (buf, " %02x", entry->data[i]);
+				strncat (v, buf, maxlen);
+			}
+			break;
 		}
 		break;
 	}

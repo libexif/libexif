@@ -64,6 +64,9 @@ exif_mnote_data_olympus_get_value (ExifMnoteData *d, unsigned int i, char *val, 
 
 	if (!d) return NULL;
 	if (n->count <= i) return NULL;
+	exif_log (d->log, EXIF_LOG_CODE_DEBUG, "MnoteDataOlympus",
+		  "Querying value for tag '%s'...",
+		  mnote_olympus_tag_get_name (n->entries[i].tag));
 	return mnote_olympus_entry_get_value (&n->entries[i], val, maxlen);
 }
 
