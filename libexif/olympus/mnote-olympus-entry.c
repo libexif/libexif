@@ -519,7 +519,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 				  entry->size);
 			for (i = 0; i < entry->size; i++) {
 				sprintf (buf, " %02x", entry->data[i]);
-				strncat (v, buf, maxlen);
+				strncat (v, buf, maxlen - strlen (v));
 			}
 			break;
 		}
