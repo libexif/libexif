@@ -20,6 +20,12 @@ REQUIREMENTS
 
 libexif is written in plain C and does not require any additional library.
 
+LIMITATIONS
+-----------
+
+If you are looking for a library to read/write MakerNotes, get libmnote. 
+libexif is about tags.
+
 FRONTENDS
 ---------
 

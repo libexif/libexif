@@ -1,5 +1,3 @@
-SUBDIRS = canon fuji hp olympus
-
 INCLUDES =              				\
 	-DLIBEXIF_LOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(top_srcdir)/libexif				\
@@ -17,7 +15,6 @@ libexif_la_SOURCES =		\
 	exif-entry.c		\
 	exif-format.c		\
 	exif-ifd.c		\
-	exif-note.c		\
 	exif-tag.c		\
 	exif-utils.c		\
 	i18n.h

@@ -1,7 +1,0 @@
-Makefile
-Makefile.in
-.libs
-.deps
-libexif-fuji.la
-*.o
-*.lo
