@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2002-07-25 18:32+0200\n"
+"POT-Creation-Date: 2002-09-12 19:37+0200\n"
 "PO-Revision-Date: 2002-09-12 19:33+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <de@li.org>\n"
@@ -612,7 +612,7 @@ msgstr "Lichtquelle"
 msgid "The kind of light source."
 msgstr "Die Art der Lichtquelle."
 
-#: libexif/exif-entry.c:480 libexif/exif-tag.c:371
+#: libexif/exif-tag.c:371 libexif/exif-entry.c:480
 msgid "Flash"
 msgstr "Blitz"
 
