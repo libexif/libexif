@@ -1,3 +1,11 @@
+2004-05-07  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-entry.c: fix of EXIF_TAG_COLOR_SPACE,
+	  value 9 of EXIF_TAG_FLASH.
+	* libexif/exif-entry.c: Fix of bug #937505 submitted by Hubert
+	  Verstraete <hubs@users.sourceforge>: value 0x0058 of
+	  EXIF_TAG_FLASH.
+
 2004-05-04  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/olympus: Make it support Nikon maker notes, too. 
