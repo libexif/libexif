@@ -1,5 +1,16 @@
 dnl
+dnl GP_CONFIG_INIT
+dnl      use default LHS width (called implicitly if not called explicitly)
+dnl GP_CONFIG_INIT([WIDTH-OF-LHS])
+dnl      explicitly set the LHS width to the given value
+dnl
 dnl GP_CONFIG_MSG
+dnl      empty output line
+dnl GP_CONFIG_MSG([LHS],[RHS])
+dnl      formatted output line "LHS: RHS"
+dnl
+dnl GP_CONFIG_OUTPUT
+dnl      print all the output messages we collected in the mean time
 dnl
 dnl Simple way to print a configuration summary at the end of ./configure.
 dnl
@@ -11,32 +22,44 @@ dnl    GP_CONFIG_MSG([Compiler],[${CC}])
 dnl    GP_CONFIG_MSG
 dnl    GP_CONFIG_MSG([Feature foo],[${foo}])
 dnl    GP_CONFIG_MSG([Location of bar],[${bar}])
+dnl    [...]
+dnl    AC_OUTPUT
 dnl    GP_CONFIG_OUTPUT
 dnl
 dnl
 AC_DEFUN([GP_CONFIG_INIT],
-[# the empty string must contain at least as many spaces as the substr length
-ndim_config_empty="                        "
-ndim_config_msg="
+[dnl
+AC_REQUIRE([GP_CHECK_SHELL_ENVIRONMENT])
+dnl the empty string must contain at least as many spaces as the substr length
+dnl FIXME: let m4 determine that length
+dnl        (collect left parts in array and choose largest length)
+m4_if([$1],[],[gp_config_len="22"],[gp_config_len="$1"])
+gp_config_empty=""
+n="$gp_config_len"
+while test "$n" -gt 0; do
+      gp_config_empty="${gp_config_empty} "
+      n="$(expr $n - 1)"
+done
+gp_config_msg="
 Configuration (${PACKAGE_TARNAME} ${PACKAGE_VERSION}):
 
-";])dnl
+"
+])dnl
 dnl
 AC_DEFUN([GP_CONFIG_MSG],
 [AC_REQUIRE([GP_CONFIG_INIT])dnl
-m4_if([$1],,[
-# Empty line in config message output
-ndim_config_msg="${ndim_config_msg}
+m4_if([$1],[],[
+gp_config_msg="${gp_config_msg}
 "
 ],[
-ndim_config_msg="${ndim_config_msg}	$(expr "$1:${ndim_config_empty}" : "\(.\{0,22\}\)") $2
+gp_config_msg="${gp_config_msg}	$(expr "$1:${gp_config_empty}" : "\(.\{0,${gp_config_len}\}\)") $2
 "
 ])])dnl
 dnl
 AC_DEFUN([GP_CONFIG_OUTPUT],
 [AC_REQUIRE([GP_CONFIG_INIT])dnl
 AC_REQUIRE([GP_CONFIG_MSG])dnl
-echo "${ndim_config_msg}
+echo "${gp_config_msg}
 You may run \"make\" and \"make install\" now.";])dnl
 dnl
 dnl Please do not remove this:
