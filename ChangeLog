@@ -1,5 +1,11 @@
 2004-05-02  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* configure.in: GETTEXT_PACKAGE=${PACKAGE}-${LIBEXIF_CURRENT}
+	  on request of Ilya Konstantinov <future@shiny.co.il>
+	  (Debian needs it).
+
+2004-05-02  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libjpeg/jpeg-marker.h: No implicit enum declaration. Seen by
 	  Antonio Scuri <scuri@tecgraf.puc-rio.br>.
 

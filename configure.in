@@ -36,7 +36,7 @@ dnl ---------------------------------------------------------------------------
 ALL_LINGUAS="de es fr"
 # EVIL HACKS
 AC_MSG_CHECKING([for po/Makevars requiring evil hack])
-GETTEXT_PACKAGE="${PACKAGE}"
+GETTEXT_PACKAGE=${PACKAGE}-${LIBEXIF_CURRENT}
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",[The gettext domain we're using])
 AC_SUBST(GETTEXT_PACKAGE)
 if test -f po/Makevars.template
