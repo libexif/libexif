@@ -105,6 +105,26 @@ exif_entry_dump (ExifEntry *entry, unsigned int indent)
 	printf ("%s  Value: %s\n", buf, exif_entry_get_value (entry));
 }
 
+#define CF(format,target,v)					\
+{								\
+	if (format != target) {					\
+		snprintf (v, sizeof (v),			\
+			_("Invalid format %i "			\
+			"(expected %i)."), format, target);	\
+		break;						\
+	}							\
+}
+
+#define CC(number,target,v)						\
+{									\
+	if (number != target) {						\
+		snprintf (v, sizeof (v),				\
+			_("Invalid number of components (%i, "		\
+			"expected %i)."), (int) number, (int) target);	\
+		break;							\
+	}								\
+}
+
 const char *
 exif_entry_get_value (ExifEntry *entry)
 {
@@ -120,6 +140,8 @@ exif_entry_get_value (ExifEntry *entry)
 	memset (v, 0, sizeof (v));
 	switch (entry->tag) {
 	case EXIF_TAG_EXIF_VERSION:
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, v);
+		CC (entry->components, 4, v);
 		if (!memcmp (entry->data, "0200", 4))
 			strncpy (v, "Exif Version 2.0", sizeof (v));
 		else if (!memcmp (entry->data, "0210", 4))
@@ -128,12 +150,15 @@ exif_entry_get_value (ExifEntry *entry)
 			strncpy (v, "Unknown Exif Version", sizeof (v));
 		break;
 	case EXIF_TAG_FLASH_PIX_VERSION:
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, v);
+		CC (entry->components, 4, v);
 		if (!memcmp (entry->data, "0100", 4))
 			strncpy (v, "FlashPix Version 1.0", sizeof (v));
 		else
 			strncpy (v, "Unknown FlashPix Version", sizeof (v));
 		break;
 	case EXIF_TAG_COPYRIGHT:
+		CF (entry->format, EXIF_FORMAT_ASCII, v);
 		if (strlen (entry->data))
 			strncpy (v, entry->data, sizeof (v));
 		else
@@ -147,6 +172,8 @@ exif_entry_get_value (ExifEntry *entry)
 		strncat (v, " (Editor)", sizeof (v));
 		break;
 	case EXIF_TAG_APERTURE_VALUE:
+		CF (entry->format, EXIF_FORMAT_RATIONAL, v);
+		CC (entry->components, 1, v);
 		v_rat = exif_get_rational (entry->data, entry->order);
 		snprintf (b, sizeof (b), "%i/%i", (int) v_rat.numerator,
 						  (int) v_rat.denominator);
@@ -155,6 +182,8 @@ exif_entry_get_value (ExifEntry *entry)
 				    (float) v_rat.denominator) / 2.));
 		break;
 	case EXIF_TAG_SHUTTER_SPEED_VALUE:
+		CF (entry->format, EXIF_FORMAT_SRATIONAL, v);
+		CC (entry->components, 1, v);
 		v_srat = exif_get_srational (entry->data, entry->order);
 		snprintf (b, sizeof (b), "%.0f/%.0f sec.",
 			  (float) v_srat.numerator, (float) v_srat.denominator);
@@ -163,12 +192,16 @@ exif_entry_get_value (ExifEntry *entry)
 					      (float) v_srat.denominator));
 		break;
 	case EXIF_TAG_BRIGHTNESS_VALUE:
+		CF (entry->format, EXIF_FORMAT_SRATIONAL, v);
+		CC (entry->components, 1, v);
 		v_srat = exif_get_srational (entry->data, entry->order);
 		snprintf (v, sizeof (v), "%i/%i", (int) v_srat.numerator, 
 						  (int) v_srat.denominator);
 		//FIXME: How do I calculate the APEX value?
 		break;
 	case EXIF_TAG_METERING_MODE:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 1, v);
 		v_short = exif_get_short (entry->data, entry->order);
 		switch (v_short) {
 		case 0:
@@ -201,6 +234,8 @@ exif_entry_get_value (ExifEntry *entry)
 		}
 		break;
 	case EXIF_TAG_COMPRESSION:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 1, v);
 		v_short = exif_get_short (entry->data, entry->order);
 		switch (v_short) {
 		case 1:
@@ -215,6 +250,8 @@ exif_entry_get_value (ExifEntry *entry)
 		}
 		break;
 	case EXIF_TAG_SENSING_METHOD:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 1, v);
 		v_short = exif_get_short (entry->data, entry->order);
 		switch (v_short) {
 		case 1:
@@ -244,6 +281,8 @@ exif_entry_get_value (ExifEntry *entry)
 		}
 		break;
 	case EXIF_TAG_LIGHT_SOURCE:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 1, v);
 		v_short = exif_get_short (entry->data, entry->order);
 		switch (v_short) {
 		case 0:
@@ -284,7 +323,26 @@ exif_entry_get_value (ExifEntry *entry)
 			break;
 		}
 		break;
+	case EXIF_TAG_FOCAL_PLANE_RESOLUTION_UNIT:
+	case EXIF_TAG_RESOLUTION_UNIT:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 1, v);
+		v_short = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 2:
+			strncpy (v, _("Inch"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("Centimeter"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
 	case EXIF_TAG_ORIENTATION:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 1, v);
 		v_short = exif_get_short (entry->data, entry->order);
 		switch (v_short) {
 		case 1:
