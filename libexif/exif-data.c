@@ -161,6 +161,17 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 			data->priv->order, (ExifShort) e->tag);
 	exif_set_short (*d + 6 + offset + 2,
 			data->priv->order, (ExifShort) e->format);
+
+	/* If this is the maker note tag, update it. */
+	if ((e->tag == EXIF_TAG_MAKER_NOTE) && data->priv->md) {
+		free (e->data);
+		e->data = NULL;
+		e->size = 0;
+		exif_mnote_data_set_offset (data->priv->md, *ds - 6);
+		exif_mnote_data_save (data->priv->md, &e->data, &e->size);
+		e->components = e->size;
+	}
+
 	exif_set_long  (*d + 6 + offset + 4,
 			data->priv->order, e->components);
 
@@ -172,22 +183,13 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	if (!s)
 		return;
 	if (s > 4) {
+		doff = *ds - 6;
 		*ds += s;
 		*d = realloc (*d, sizeof (char) * *ds);
-		doff = *ds - 6 - s;
 		exif_set_long (*d + 6 + offset + 8,
 			       data->priv->order, doff);
 	} else
 		doff = offset + 8;
-
-	/* If this is the maker note tag, update it. */
-	if ((e->tag == EXIF_TAG_MAKER_NOTE) && data->priv->md) {
-		free (e->data);
-		e->data = NULL;
-		e->size = 0;
-		exif_mnote_data_set_offset (data->priv->md, doff);
-		exif_mnote_data_save (data->priv->md, &e->data, &e->size);
-	}
 
 	/* Write the data. Fill unneeded bytes with 0. */
 	memcpy (*d + 6 + doff, e->data, e->size);
@@ -666,7 +668,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	    } else {
 			char value[7];
 			em = exif_data_get_entry (data, EXIF_TAG_MAKE);
-	    /* Pentax & some variant of Nikon */
+			/* Pentax & some variant of Nikon */
 			if ((e->size >= 2) && (e->data[0] == 0x00)
 				    && (e->data[1] == 0x1b)) {
 				if (em && !strnicmp (exif_entry_get_value (em, value, sizeof(value)), "Nikon", 5)) {
