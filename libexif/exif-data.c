@@ -582,15 +582,41 @@ exif_data_new_from_file (const char *path)
 	unsigned int size;
 	unsigned char *data;
 	ExifData *edata;
+	int marker, ll, lh;
 
 	f = fopen (path, "rb");
 	if (!f)
 		return (NULL);
 
-	/* For now, we read the data into memory. Patches welcome... */
-	fseek (f, 0, SEEK_END);
-	size = ftell (f);
-	fseek (f, 0, SEEK_SET);
+	while (1) {
+		while ((marker = fgetc (f)) == 0xff);
+
+		/* JPEG_MARKER_SOI */
+		if (marker == JPEG_MARKER_SOI)
+			continue;
+
+		/* JPEG_MARKER_APP0 */
+		if (marker == JPEG_MARKER_APP0) {
+			lh = fgetc (f);
+			ll = fgetc (f);
+			size = (lh << 8) | ll;
+			if (fseek (f, size - 2, SEEK_CUR) < 0)
+				return (NULL);
+			continue;
+		}
+
+		/* JPEG_MARKER_APP1 */
+		if (marker == JPEG_MARKER_APP1)
+			break;
+
+		/* Unknown marker or data. Give up. */
+		return (NULL);
+	}
+
+	/* EXIF data found. Allocate the necessary memory and read the data. */
+	lh = fgetc (f);
+	ll = fgetc (f);
+	size = (lh << 8) | ll;
 	data = malloc (sizeof (char) * size);
 	if (!data)
 		return (NULL);
@@ -695,6 +721,9 @@ void
 exif_data_foreach_content (ExifData *data, ExifDataForeachContentFunc func,
 			   void *user_data)
 {
+	if (!data || !func)
+		return;
+
 	func (data->ifd0,                 user_data);
 	func (data->ifd1,                 user_data);
 	func (data->ifd_exif,             user_data);

@@ -1,3 +1,11 @@
+2002-04-15  Lutz Müller <lutz@users.sourceforge.net>
+
+	Enhancements by Semyon Sosin <sem@best.com>, adapted:
+
+	* libexif/exif-entry.c (exif_entry_get_value): More tags covered.
+	* libexif/exif-data.c (exif_data_new_from_file): Don't read the whole
+	  file into memory.
+
 2002-04-04  Hans Ulrich Niedermann <gp@n-dimensional.de>
 
 	* Makefile.am: dded .tar.bz2 packaging to "make dist"

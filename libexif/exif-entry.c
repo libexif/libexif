@@ -150,6 +150,8 @@ exif_entry_get_value (ExifEntry *e)
 	static char v[1024], b[1024];
 	const char *c;
 	ExifByteOrder o;
+	double d;
+	ExifEntry *entry;
 
 	/* We need the byte order */
 	if (!e || !e->parent || !e->parent->parent)
@@ -190,20 +192,88 @@ exif_entry_get_value (ExifEntry *e)
 			strncat (v, "[None]", sizeof (v));
 		strncat (v, " (Editor)", sizeof (v));
 		break;
+	case EXIF_TAG_FNUMBER:
+		CF (e->format, EXIF_FORMAT_RATIONAL, v);
+		CC (e->components, 1, v);
+		v_rat = exif_get_rational (e->data, o);
+		if (!v_rat.denominator)
+			return (NULL);
+		snprintf (v, sizeof (v), "f/%.01f", (float) v_rat.numerator /
+						    (float) v_rat.denominator);
+		break;
 	case EXIF_TAG_APERTURE_VALUE:
 		CF (e->format, EXIF_FORMAT_RATIONAL, v);
 		CC (e->components, 1, v);
 		v_rat = exif_get_rational (e->data, o);
-		snprintf (b, sizeof (b), "%i/%i", (int) v_rat.numerator,
-						  (int) v_rat.denominator);
-		snprintf (v, sizeof (v), "%s (APEX: f%.01f)", b,
+		if (!v_rat.denominator)
+			return (NULL);
+		snprintf (v, sizeof (v), "f/%.01f",
 			  pow (2 , ((float) v_rat.numerator /
 				    (float) v_rat.denominator) / 2.));
+		break;
+	case EXIF_TAG_FOCAL_LENGTH:
+		CF (e->format, EXIF_FORMAT_RATIONAL, v);
+		CC (e->components, 1, v);
+		v_rat = exif_get_rational (e->data, o);
+		if (!v_rat.denominator)
+			return (NULL);
+
+		/*
+		 * For calculation of the 35mm equivalent,
+		 * Minolta cameras need a multiplier that depends on the
+		 * camera model.
+		 */
+		d = 0.;
+		entry = exif_content_get_entry (e->parent->parent->ifd0,
+						EXIF_TAG_MAKE);
+		if (entry && entry->data &&
+		    !strncmp (entry->data, "Minolta", 7)) {
+			entry = exif_content_get_entry (e->parent->parent->ifd0,
+							EXIF_TAG_MODEL);
+			if (entry && entry->data) {
+				if (!strncmp (entry->data, "DiMAGE 7", 8))
+					d = 3.9;
+				else if (!strncmp (entry->data, "DiMAGE 5", 8))
+					d = 4.9;
+			}
+		}
+		if (d)
+			snprintf (b, sizeof (b), _(" (35 equivalent: %d mm)"),
+				  (int) (d * (double) v_rat.numerator /
+				  	     (double) v_rat.denominator));
+
+		snprintf (v, sizeof (v), "%.1f mm%s",
+			  (float) v_rat.numerator / (float) v_rat.denominator,
+			  b);
+		break;
+	case EXIF_TAG_SUBJECT_DISTANCE:
+		CF (e->format, EXIF_FORMAT_RATIONAL, v);
+		CC (e->components, 1, v);
+		v_rat = exif_get_rational (e->data, o);
+		if (!v_rat.denominator)
+			return (NULL);
+		snprintf (v, sizeof (v), "%.1f m", (float) v_rat.numerator /
+						   (float) v_rat.denominator);
+		break;
+	case EXIF_TAG_EXPOSURE_TIME:
+		CF (e->format, EXIF_FORMAT_RATIONAL, v);
+		CC (e->components, 1, v);
+		v_rat = exif_get_rational (e->data, o);
+		if (!v_rat.denominator)
+			return (NULL);
+		d = (double) v_srat.numerator / (double) v_srat.denominator;
+		if (d < 1)
+			snprintf (v, sizeof (v), _("1/%d sec."),
+				  (int) (1. / d));
+		else
+			snprintf (v, sizeof (v), _("%d sec."), (int) d);
 		break;
 	case EXIF_TAG_SHUTTER_SPEED_VALUE:
 		CF (e->format, EXIF_FORMAT_SRATIONAL, v);
 		CC (e->components, 1, v);
 		v_srat = exif_get_srational (e->data, o);
+		if (!v_rat.denominator)
+			return (NULL);
 		snprintf (b, sizeof (b), "%.0f/%.0f sec.",
 			  (float) v_srat.numerator, (float) v_srat.denominator);
 		snprintf (v, sizeof (v), "%s (APEX: %i)", b,
@@ -492,6 +562,17 @@ exif_entry_get_value (ExifEntry *e)
 			snprintf (v, sizeof (v), "%i", v_short);
 			break;
 		}
+		break;
+	case EXIF_TAG_EXPOSURE_BIAS_VALUE:
+		CF (e->format, EXIF_FORMAT_SRATIONAL, v);
+		CC (e->components, 1, v);
+		v_srat = exif_get_srational (e->data, o);
+		if (!v_srat.denominator)
+			return (NULL);
+		snprintf (v, sizeof (v), "%s%.01f",
+			  v_srat.denominator * v_srat.numerator > 0 ? "+" : "",
+			  (double) v_srat.numerator /
+			  (double) v_srat.denominator);
 		break;
 	case EXIF_TAG_ORIENTATION:
 		CF (e->format, EXIF_FORMAT_SHORT, v);
