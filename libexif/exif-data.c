@@ -434,7 +434,9 @@ exif_data_load_data (ExifData *data, const unsigned char *d, unsigned int size)
 				break;
 
 			/* Unknown marker or data. Give up. */
+#ifdef DEBUG
 			printf ("EXIF marker not found.\n");
+#endif
 			return;
 		}
 		d++;

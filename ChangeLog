@@ -1,3 +1,7 @@
+2002-02-18  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libexif/exif-data.c: Suppress output unless #ifdef DEBUG
+
 2002-02-17  Lutz Müller <lutz@users.sourceforge.net>
 
 	Patch from Fredrik <fredrik@krixor.xy.org>:
