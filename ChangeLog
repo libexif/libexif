@@ -1,5 +1,10 @@
 2003-10-30  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-loader.c: Fix APP0-bug. Patch by Jan Patera
+	  <patera@pictview.com>.
+
+2003-10-30  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-data.c: Add explicit typecasts to ExifShort.
 	  Suggested by Jan Patera <patera@pictview.com>.
 

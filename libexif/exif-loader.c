@@ -18,10 +18,10 @@ typedef enum {
 struct _ExifLoader {
 	ExifLoaderState state;
 
-	int      size;
-	int      last_marker;
+	unsigned int size;
+	int last_marker;
 	unsigned char *buf;
-	int      bytes_read;
+	unsigned int bytes_read;
 
 	unsigned int ref_count;
 };
@@ -29,23 +29,22 @@ struct _ExifLoader {
 #undef  MIN
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
 
-/* This function imitates code from libexif, written by Lutz
+/*
+ * This function imitates code from libexif, written by Lutz
  * Müller. See libexif/exif-data.c:exif_data_new_from_file. Here, it
  * can cope with a sequence of data chunks.
  */
 unsigned char
 exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 {
-	int i;
-	int len_remain;
+	int i, len_remain;
 
 	if (!eld) return 0;
 	if (eld->state == EL_FAILED) return 0;
 	if (eld->size && eld->bytes_read == eld->size) return 0;
 
 	for (i = 0; (i < len) && (eld->state != EL_EXIF_FOUND) &&
-				 (eld->state != EL_FAILED); i++) {
-
+				 (eld->state != EL_FAILED); i++) 
 		switch (eld->state) {
 		case EL_SKIP_BYTES:
 			eld->size--;
@@ -65,6 +64,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 			switch (eld->last_marker) {
 			case JPEG_MARKER_APP0:
 				eld->state = EL_SKIP_BYTES;
+				eld->size -= 2;
 				break;
 
 			case JPEG_MARKER_APP1:
@@ -107,7 +107,6 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 				}
 			}
 		}
-	}
 
 	len_remain = len - i;
 	if (!len_remain) return 1;
