@@ -172,7 +172,7 @@ exif_entry_get_value (ExifEntry *e)
 	double d;
 	ExifEntry *entry;
 
-	bindtextdomain (PACKAGE, LIBEXIF_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 
 	/* We need the byte order */
 	if (!e || !e->parent || !e->parent->parent)
