@@ -29,9 +29,11 @@ dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
 ALL_LINGUAS="de es"
-AM_GNU_GETTEXT
-GETTEXT_PACKAGE='${PACKAGE}${LIBEXIF_CURRENT}'
+# EVIL HACKS
+GETTEXT_PACKAGE="${PACKAGE}${LIBEXIF_VERSION_INFO}foo"
 AC_SUBST(GETTEXT_PACKAGE)
+sed -e "s/^DOMAIN.*/DOMAIN = ${GETTEXT_PACKAGE}/" < po/Makevars.template > po/Makevars
+AM_GNU_GETTEXT
 
 dnl ---------------------------------------------------------------------------
 dnl Warnings
