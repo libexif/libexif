@@ -69,26 +69,32 @@ jpeg_data_append_section (JPEGData *data)
 	data->count++;
 }
 
-void
+/* jpeg_data_save_file returns 1 on succes, 0 on failure */
+int
 jpeg_data_save_file (JPEGData *data, const char *path)
 {
 	FILE *f;
 	unsigned char *d = NULL;
-	unsigned int size = 0;
+	unsigned int size = 0, written;
 
 	jpeg_data_save_data (data, &d, &size);
 	if (!d)
-		return;
+		return 0;
 
 	remove (path);
 	f = fopen (path, "wb");
 	if (!f) {
 		free (d);
-		return;
+		return 0;
 	}
-	fwrite (d, sizeof (char), size, f);
+	written = fwrite (d, 1, size, f);
 	fclose (f);
 	free (d);
+	if (written == size)  {
+		return 1;
+	}
+	remove(path);
+	return 0;
 }
 
 void
@@ -422,6 +428,8 @@ jpeg_data_set_exif_data (JPEGData *data, ExifData *exif_data)
 		memmove (&data->sections[2], &data->sections[1],
 			 sizeof (JPEGSection) * (data->count - 2));
 		section = &data->sections[1];
+	} else {
+		exif_data_unref (section->content.app1);
 	}
 	section->marker = JPEG_MARKER_APP1;
 	section->content.app1 = exif_data;
