@@ -1,7 +1,7 @@
 AC_PREREQ(2.59)
 AC_INIT([EXIF library],[0.6.12],[libexif-devel@lists.sourceforge.net],[libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
-AM_CONFIG_HEADER([config.h])
+AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2])
 GP_CONFIG_INIT
 GP_CONFIG_MSG([Source code location],[${srcdir}])
@@ -26,7 +26,6 @@ LIBEXIF_VERSION_INFO=`expr $LIBEXIF_CURRENT + $LIBEXIF_REVISION`:$LIBEXIF_AGE:$L
 AC_SUBST([LIBEXIF_VERSION_INFO])
 
 AC_PROG_CC
-AM_PROG_CC_STDC
 AC_C_CONST
 AM_PROG_LIBTOOL
 AM_CFLAGS="$CFLAGS"
@@ -57,11 +56,15 @@ GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT}],
                 [Lutz Müller and others])
 ALL_LINGUAS="de es fr"
 AM_GNU_GETTEXT_VERSION([0.14.1])
-AM_GNU_GETTEXT
+AM_GNU_GETTEXT([external])
 GP_GETTEXT_FLAGS
 
-AM_CFLAGS="$AM_CFLAGS -DLIBEXIF_LOCALEDIR=\\\"\$(datadir)/locale\\\""
-AM_CFLAGS="$AM_CFLAGS -DLIBMNOTE_LOCALEDIR=\\\"\$(datadir)/locale\\\""
+dnl We cannot use AC_DEFINE_UNQUOTED() for these definitions, as
+dnl we require make to do insert the proper $(datadir) value
+localedir="\$(datadir)/locale"
+AC_SUBST(localedir)
+AM_CFLAGS="$AM_CFLAGS -DLIBEXIF_LOCALEDIR=\\\"${localedir}\\\""
+AM_CFLAGS="$AM_CFLAGS -DLIBMNOTE_LOCALEDIR=\\\"${localedir}\\\""
 
 
 dnl ---------------------------------------------------------------------------
@@ -78,11 +81,11 @@ fi
 AC_SUBST(AM_CFLAGS)
 AC_SUBST(AM_LDFLAGS)
 
+
 dnl ---------------------------------------------------------------------------
 dnl Output files
 dnl ---------------------------------------------------------------------------
 AC_CONFIG_FILES([ 
-  intl/Makefile
   po/Makefile.in
   Makefile
   libexif.spec

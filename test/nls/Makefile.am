@@ -1,17 +1,15 @@
-# nlstestscripts = check-nls.sh
+nlstestscripts = check-localedir.sh
 
-# TESTS = $(nlstestscripts)
+TESTS = $(nlstestscripts)
 
-# check_SCRIPTS = $(nlstestscripts)
+check_SCRIPTS = $(nlstestscripts)
 
-# check_PROGRAMS = test-nls print-localedir
+check_PROGRAMS = print-localedir
 
-# bin_PROGRAMS = test-nls print-localedir
+CLEANFILES = $(check_SCRIPTS)
 
-# CLEANFILES = $(check_SCRIPTS)
-
-test_nls_LDADD = $(top_builddir)/libexif/libexif.la $(INTLLIBS)
+# test_nls_LDADD = $(top_builddir)/libexif/libexif.la $(INTLLIBS)
 
 %.sh: %.in Makefile
-	sed 's|@top_builddir\@|$(top_builddir)|g;s|@localedir\@|$(localedir)|g' < $< > $@
+	sed 's|@top_builddir\@|$(top_builddir)|g;s|@localedir\@|$(localedir)|g;s|@PRINT_LOCALEDIR\@|./print-localedir$(EXEEXT)|g;s|@build_alias\@|$(build_alias)|g;s|@host_alias\@|$(host_alias)|g' < $< > $@
 	chmod +x $@

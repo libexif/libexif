@@ -10,7 +10,7 @@ dnl    GP_GETTEXT_HACK([${PACKAGE_TARNAME}-${LIBFOO_CURRENT}],
 dnl                    [Copyright Holder],
 dnl                    [foo-translation@example.org])
 dnl    ALL_LINGUAS="de es fr"
-dnl    AM_GNU_GETTEXT
+dnl    AM_GNU_GETTEXT([external])
 dnl    GP_GETTEXT_FLAGS
 dnl
 dnl You can leave out the GP_GETTEXT_HACK parameters if you want to,
@@ -63,7 +63,9 @@ if test "x${BUILD_INCLUDED_LIBINTL}" = "xyes"; then
 fi
 GP_CONFIG_MSG
 GP_CONFIG_MSG([Use translations],[${USE_NLS}])
-GP_CONFIG_MSG([Use included libintl],[${BUILD_INCLUDED_LIBINTL}])
+if test "x$USE_NLS" = "xyes" && test "${BUILD_INCLUDED_LIBINTL}"; then
+   GP_CONFIG_MSG([Use included libintl],[${BUILD_INCLUDED_LIBINTL}])
+fi
 ])
 
 dnl Please do not remove this:
