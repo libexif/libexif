@@ -51,7 +51,7 @@ static struct {
         {EXIF_FORMAT_SHORT,     "Short",     2},
         {EXIF_FORMAT_LONG,      "Long",      4},
         {EXIF_FORMAT_RATIONAL,  "Rational",  8},
-        {EXIF_FORMAT_SLONG,     "SShort",    4},
+        {EXIF_FORMAT_SLONG,     "SLong",     4},
         {EXIF_FORMAT_SRATIONAL, "SRational", 8},
         {EXIF_FORMAT_UNDEFINED, N_("Undefined"), 1},
         {0, NULL, 0}
