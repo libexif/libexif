@@ -1,9 +1,9 @@
 AC_PREREQ(2.59)
 AC_INIT([EXIF library], [0.6.12], [libexif-devel@lists.sourceforge.net], [libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
-AM_CONFIG_HEADER(config.h)
+AM_CONFIG_HEADER([config.h])
 AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2])
-AM_GNU_GETTEXT_VERSION(0.14.1)
+AM_GNU_GETTEXT_VERSION([0.14.1])
 
 dnl ---------------------------------------------------------------------------
 dnl Versioning:
@@ -18,17 +18,17 @@ dnl ---------------------------------------------------------------------------
 LIBEXIF_AGE=0
 LIBEXIF_REVISION=0
 LIBEXIF_CURRENT=12
-AC_SUBST(LIBEXIF_AGE)
-AC_SUBST(LIBEXIF_REVISION)
-AC_SUBST(LIBEXIF_CURRENT)
+AC_SUBST([LIBEXIF_AGE])
+AC_SUBST([LIBEXIF_REVISION])
+AC_SUBST([LIBEXIF_CURRENT])
 LIBEXIF_VERSION_INFO=`expr $LIBEXIF_CURRENT + $LIBEXIF_REVISION`:$LIBEXIF_AGE:$LIBEXIF_REVISION
-AC_SUBST(LIBEXIF_VERSION_INFO)
+AC_SUBST([LIBEXIF_VERSION_INFO])
 
 AM_PROG_LIBTOOL
 
 dnl Create a stdint.h-like file containing size-specific integer definitions
 dnl that will always be available
-AC_NEED_STDINT_H(libexif/_stdint.h)
+AC_NEED_STDINT_H([libexif/_stdint.h])
 
 
 dnl ---------------------------------------------------------------------------
@@ -38,8 +38,8 @@ ALL_LINGUAS="de es fr"
 # EVIL HACKS
 AC_MSG_CHECKING([for po/Makevars requiring evil hack])
 GETTEXT_PACKAGE=${PACKAGE}-${LIBEXIF_CURRENT}
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",[The gettext domain we're using])
-AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["$GETTEXT_PACKAGE"],[The gettext domain we're using])
+AC_SUBST([GETTEXT_PACKAGE])
 if test -f po/Makevars.template; then
 
 sed -f - po/Makevars.template > po/Makevars <<-EOF
