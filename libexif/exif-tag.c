@@ -639,6 +639,7 @@ exif_tag_get_title (ExifTag tag)
 {
 	unsigned int i;
 
+	/* FIXME: This belongs to somewhere else. */
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 

@@ -50,6 +50,7 @@ exif_format_get_name (ExifFormat format)
 {
 	unsigned int i;
 
+	/* FIXME: This belongs to somewhere else. */
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 

@@ -565,6 +565,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		{NULL  , 0,  0}
 	};
 
+	/* FIXME: This belongs to somewhere else. */
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
