@@ -372,6 +372,29 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 	}
 }
 
+static int
+cmp_func (const unsigned char *p1, const unsigned char *p2, ExifByteOrder o)
+{
+	ExifShort tag1 = exif_get_short (p1, o);
+	ExifShort tag2 = exif_get_short (p2, o);
+
+	return (tag1 < tag2) ? -1 : (tag1 > tag2) ? 1 : 0;
+}
+
+static int
+cmp_be_func (const void *elem1, const void *elem2)
+{
+	return cmp_func ((const unsigned char *) elem1,
+			(const unsigned char *) elem2, EXIF_BYTE_ORDER_INTEL);
+}
+
+static int
+cmp_le_func (const void *elem1, const void *elem2)
+{
+	return cmp_func ((const unsigned char *) elem1,
+			(const unsigned char *) elem2, EXIF_BYTE_ORDER_MOTOROLA);
+}
+
 static void
 exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			     unsigned char **d, unsigned int *ds,
@@ -379,7 +402,6 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 {
 	unsigned int j, n_ptr = 0, n_thumb = 0;
 	ExifIfd i;
-	ExifEntry *le = NULL;
 
 	if (!data || !data->priv || !ifd || !d || !ds) return;
 
@@ -435,31 +457,12 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			(ExifShort) (ifd->count + n_ptr + n_thumb));
 	offset += 2;
 
-	/*
-	 * Save each entry. TIFF specification requires entries to be sorted
-	 * by tags. Yes, the sorting routine can be improved. And yes, the addition
-	 * of special entries at the end is wrong (they should be inserted at
-	 * the right position). Please submit a patch.
-	 */
+	/* Save each entry */
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 		  "Saving %i entries (IFD '%s', offset: %i)...",
 		  ifd->count, exif_ifd_get_name (i), offset);
-	for (j = 0; j < ifd->count; j++) {
-		ExifEntry *me = NULL;
-		unsigned int k;
-
-		for (k = 0; k < ifd->count; k++) {
-			if (le && ((ifd->entries[k]->tag < le->tag) ||
-						((ifd->entries[k]->tag == le->tag) && (le <= ifd->entries[k]))))
-				continue;
-			if (!me || (me && ((me->tag > ifd->entries[k]->tag) ||
-							((me->tag == ifd->entries[k]->tag) && (me <= ifd->entries[k])))))
-				me = ifd->entries[k];
-		}
-		if (!me) break;
-		exif_data_save_data_entry (data, me, d, ds, offset + 12 * j);
-		le = me;
-	}
+	for (j = 0; j < ifd->count; j++)
+		exif_data_save_data_entry (data, ifd->entries[j], d, ds, offset + 12 * j);
 
 	offset += 12 * ifd->count;
 
@@ -569,6 +572,11 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	default:
 		break;
 	}
+
+	/* Sort the directory according to TIFF specification */
+	qsort (*d + 6 + offset - (ifd->count + n_ptr + n_thumb) * 12,
+			(ifd->count + n_ptr + n_thumb), 12,
+			data->priv->order == EXIF_BYTE_ORDER_INTEL ? cmp_le_func : cmp_be_func);
 
 	/* Correctly terminate the directory */
 	if (i == EXIF_IFD_0 && (data->ifd[EXIF_IFD_1]->count ||

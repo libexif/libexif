@@ -1,5 +1,9 @@
 2005-03-16  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-data.c (exif_data_save_data_content): Use qsort.
+
+2005-03-16  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libjpeg/jpeg-data.c: Fix #1054322.
 
 2005-03-16  Lutz Mueller <lutz@users.sourceforge.net>
