@@ -1,0 +1,38 @@
+AC_INIT(libexif/exif.h)
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(libexif, 0.1)
+AM_MAINTAINER_MODE
+
+LIBEXIF_VERSION_INFO=0:1:0
+AC_SUBST(LIBEXIF_VERSION_INFO)
+
+AC_PROG_LIBTOOL
+
+dnl ---------------------------------------------------------------------------
+dnl i18n support
+dnl ---------------------------------------------------------------------------
+dnl ALL_LINGUAS=""
+dnl AM_GNU_GETTEXT
+
+dnl ---------------------------------------------------------------------------
+dnl Warnings
+dnl ---------------------------------------------------------------------------
+CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
+LDFLAGS="$LDFLAGS -g -Wall"
+AC_SUBST(CFLAGS)
+AC_SUBST(LDFLAGS)
+
+AC_OUTPUT([
+Makefile
+libexif/Makefile
+test/Makefile
+libexif.pc
+])
+
+echo "
+
+Configuration:
+
+	Source code location:      ${srcdir}
+	Compiler:                  ${CC}
+"

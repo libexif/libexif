@@ -26,3 +26,22 @@ _$*
 *.ln
 core
 # CVS default ignores end
+Makefile
+Makefile.in
+aclocal.m4
+config.cache
+config.guess
+config.h
+config.h.in
+config.log
+config.status
+config.sub
+configure
+install-sh
+libexif.pc
+libtool
+ltmain.sh
+missing
+mkinstalldirs
+stamp-h
+stamp-h.in
