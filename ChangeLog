@@ -1,5 +1,9 @@
 2002-12-11  Lutz Müller <lutz@users.sourceforge.net>
 
+	* libexif/exif-entry.c (exif_entry_initialize): Fix last commit.
+
+2002-12-11  Lutz Müller <lutz@users.sourceforge.net>
+
 	* libexif/exif-entry.c (exif_entry_initialize): Support USER_COMMENT.
 	* configure.in: Version 0.5.9
 

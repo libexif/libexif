@@ -1484,10 +1484,12 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		strcpy (e->data + strlen ("[None]") + 1, "[None]");
 		break;
 
-	/* UNDEFINED, no default */
+	/* UNDEFINED, no components, no default */
 	case EXIF_TAG_USER_COMMENT:
-		memset (e, 0, sizeof (ExifEntry));
+		e->components = 0;
 		e->format = EXIF_FORMAT_UNDEFINED;
+		e->size = 0;
+		e->data = 0;
 		break;
 
 	/* UNDEFINED, 1 component, default 1 */
