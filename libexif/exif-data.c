@@ -265,6 +265,14 @@ if (data->ifd[(i)] == ifd) {				\
 		"'%s' detected. Skipping...",		\
 		exif_ifd_get_name (i));			\
 	break;						\
+}							\
+if (data->ifd[(i)]->count) {				\
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,	\
+		"ExifData", "Attemt to load IFD "	\
+		"'%s' multiple times detected. "	\
+		"Skipping...",				\
+		exif_ifd_get_name (i));			\
+	break;						\
 }
 
 static void

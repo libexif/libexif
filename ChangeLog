@@ -1,3 +1,8 @@
+2004-11-15  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-data.c: Additional debugging message if 
+	  specification is violated.
+
 2004-11-14  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/*: Plug another few memleaks. All found by Angala Wrobel.
