@@ -370,6 +370,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		*ds += data->size;
 		*d = realloc (*d, sizeof (char) * *ds);
 		memcpy (*d + *ds - data->size, data->data, data->size);
+		offset += 12;
 	}
 
 	if (ifd == data->ifd0 && data->ifd1->count) {

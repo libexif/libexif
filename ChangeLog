@@ -1,3 +1,9 @@
+2002-06-08  Lutz Müller <lutz@users.sourceforge.net>
+
+	Patch by Guido Ostkamp <guido.ostkamp@t-online.de>
+
+	* libexif/exif-data.c: Increment offset by 12.
+
 2002-06-06  Lutz Müller <lutz@users.sourceforge.net>
 
 	Bug spotted by Andres <aplaza@smalcamera.com>:
