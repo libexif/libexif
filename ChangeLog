@@ -1,3 +1,8 @@
+2004-05-03  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-tag.c: Hide some functions there that have been 
+	  requested by Antonio Scuri <scuri@tecgraf.puc-rio.br>.
+
 2004-05-02  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* configure.in: GETTEXT_PACKAGE=${PACKAGE}-${LIBEXIF_CURRENT}

@@ -571,6 +571,29 @@ static struct {
 	{0, NULL, NULL, NULL}
 };
 
+/* For now, do not use these functions. */
+ExifTag      exif_tag_table_get_tag  (unsigned int n);
+const char  *exif_tag_table_get_name (unsigned int n);
+unsigned int exif_tag_table_count    (void);
+
+ExifTag
+exif_tag_table_get_tag (unsigned int n)
+{
+	return (n < exif_tag_table_count ()) ? ExifTagTable[n].tag : 0;
+}
+
+const char *
+exif_tag_table_get_name (unsigned int n)
+{
+	return (n < exif_tag_table_count ()) ? ExifTagTable[n].name : NULL;
+}
+
+unsigned int
+exif_tag_table_count (void)
+{
+	return sizeof (ExifTagTable) / sizeof (ExifTagTable[0]);
+}
+
 const char *
 exif_tag_get_name (ExifTag tag)
 {
