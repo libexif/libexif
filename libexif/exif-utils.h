@@ -25,8 +25,8 @@
 extern "C" {
 #endif /* __cplusplus */
 
-#include "libexif/exif-byte-order.h"
-#include "libexif/_stdint.h"
+#include <libexif/exif-byte-order.h>
+#include <libexif/_stdint.h>
 
 
 /* If these definitions don't work for you, please let us fix the 

@@ -39,11 +39,12 @@ libexifinclude_HEADERS = 	\
 	exif-mnote-data.h	\
 	exif-result.h		\
 	exif-tag.h		\
-	exif-utils.h
+	exif-utils.h		\
+	_stdint.h
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libexif.pc
 EXTRA_DIST = libexif.pc.in
 
-clean-generic:
-	rm -f _stdint.h
+DISTCLEANFILES = _stdint.h
+
