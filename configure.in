@@ -59,7 +59,7 @@ if test "x$GCC" = "xyes"; then
     AC_SUBST(LDFLAGS)
 fi
 
-AC_OUTPUT([ 
+AC_CONFIG_FILES([ 
   Makefile
   libexif.spec
   libexif/Makefile
@@ -71,6 +71,7 @@ AC_OUTPUT([
   m4/Makefile
   libexif/libexif.pc
 ])
+AC_OUTPUT
 
 echo "
 
