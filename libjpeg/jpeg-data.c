@@ -125,6 +125,7 @@ jpeg_data_save_data (JPEGData *data, unsigned char **d, unsigned int *ds)
 			break;
 		case JPEG_MARKER_APP1:
 			exif_data_save_data (s.content.app1, &ed, &eds);
+			*d = realloc (*d, sizeof (char) * (*ds + 2));
 			(*d)[*ds + 0] = (eds + 2) >> 8;
 			(*d)[*ds + 1] = (eds + 2) >> 0;
 			*ds += 2;

@@ -1,3 +1,9 @@
+2002-02-25  Lutz MÜller <lutz@users.sourceforge.net>
+
+	Patch by Basil Dias <basil.dias@wipro.com>:
+
+	* libjpeg/jpeg-data.c: Missing realloc.
+
 2002-02-21  Lutz Müller <lutz@users.sourceforge.net>
 
 	* libexif/canon: Set up support for parsing MakerNotes.
