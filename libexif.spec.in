@@ -42,18 +42,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc ChangeLog README
-%{_libdir}/libexif.so.5.0.0
+%{_libdir}/libexif.so.*
 %{_libdir}/libexif.la
 %{_libdir}/libexif.a
+%{_datadir}/locale/*/LC_MESSAGES/*.mo
 
 %files devel
 %defattr(-,root,root)
 %{_libdir}/pkgconfig/libexif.pc
-%{_includedir}/libexif/exif-byte-order.h
-%{_includedir}/libexif/exif-content.h
-%{_includedir}/libexif/exif-data.h
-%{_includedir}/libexif/exif-entry.h
-%{_includedir}/libexif/exif-format.h
-%{_includedir}/libexif/exif-result.h
-%{_includedir}/libexif/exif-tag.h
-%{_includedir}/libexif/exif-utils.h
+%{_includedir}/libexif/*.h
+%{_libdir}/libexif.so
