@@ -1,0 +1,6 @@
+Makefile
+Makefile.in
+.deps
+.libs
+check-localedir.sh
+print-localedir
