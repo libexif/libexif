@@ -1,3 +1,7 @@
+2005-03-16  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c: Marked some strings for translation. Fix #803191.
+
 2005-03-13  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-entry.c (exif_entry_fix): Update also e->components

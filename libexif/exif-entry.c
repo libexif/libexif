@@ -607,7 +607,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		 * NULL terminated.
 		 */
 		if ((e->size >= 8) && !memcmp (e->data, "ASCII\0\0\0", 8)) {
-			strncpy (val, e->data + 8, MIN (e->size - 8, maxlen));
+			strncpy (val, (char *) e->data + 8, MIN (e->size - 8, maxlen));
 			break;
 		}
 		if ((e->size >= 8) && !memcmp (e->data, "UNICODE\0", 8)) {
@@ -673,7 +673,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		 */
 		if (e->size && e->data &&
 		    (strspn (e->data, " ") != strlen ((char *) e->data)))
-			strncpy (val, e->data, MIN (maxlen, e->size));
+			strncpy (val, (char *) e->data, MIN (maxlen, e->size));
 		else
 			strncpy (val, _("[None]"), maxlen);
 		strncat (val, " ", maxlen - strlen (val));
@@ -686,7 +686,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		    (strspn (e->data, " ") != strlen ((char *) e->data)))
 			strncat (val, e->data + strlen (e->data) + 1,
 				 MIN (maxlen - strlen (val),
-				      e->size - (strlen (e->data) + 1)));
+				      e->size - (strlen ((char *) e->data) + 1)));
 		else
 			strncat (val, _("[None]"), maxlen - strlen (val));
 		strncat (val, " ", maxlen - strlen (val));
@@ -765,8 +765,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 				  (int) (1. / d));
 		else
 			snprintf (val, maxlen, _("%d"), (int) d);
-		if (maxlen > strlen (val) + strlen (" sec."))
-			strncat (val, " sec.", maxlen - strlen (val) - 1);
+		if (maxlen > strlen (val) + strlen (_(" sec.")))
+			strncat (val, _(" sec."), maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_SHUTTER_SPEED_VALUE:
 		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
@@ -775,8 +775,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		if (!v_srat.denominator) return NULL;
 		snprintf (val, maxlen, "%.0f/%.0f", (float) v_srat.numerator,
 			  (float) v_srat.denominator);
-		if (maxlen > strlen (val) + strlen (" sec."))
-			strncat (val, " sec.", maxlen - strlen (val) - 1);
+		if (maxlen > strlen (val) + strlen (_(" sec.")))
+			strncat (val, _(" sec."), maxlen - strlen (val) - 1);
 		snprintf (b, sizeof (b), " (APEX: %i)",
 			(int) pow (sqrt(2), (float) v_srat.numerator /
 				            (float) v_srat.denominator));
@@ -1015,7 +1015,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			}
 			break;
 		case EXIF_FORMAT_ASCII:
-			strncpy (val, e->data, MIN (maxlen, e->size));
+			strncpy (val, (char *) e->data, MIN (maxlen, e->size));
 			break;
 		case EXIF_FORMAT_RATIONAL:
 			v_rat = exif_get_rational (e->data, o);
@@ -1287,21 +1287,21 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_MODEL:
 	case EXIF_TAG_SOFTWARE:
 	case EXIF_TAG_ARTIST:
-		e->components = strlen ("[None]") + 1;
+		e->components = strlen (_("[None]")) + 1;
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
 		if (!e->data) break;
-		strncpy (e->data, "[None]", e->size);
+		strncpy (e->data, _("[None]"), e->size);
 		break;
 	case EXIF_TAG_COPYRIGHT:
-		e->components = (strlen ("[None]") + 1) * 2;
+		e->components = (strlen (_("[None]")) + 1) * 2;
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
 		if (!e->data) break;
-		strcpy (e->data +                     0, "[None]");
-		strcpy (e->data + strlen ("[None]") + 1, "[None]");
+		strcpy (e->data + 0, _("[None]"));
+		strcpy (e->data + strlen (_("[None]")) + 1, _("[None]"));
 		break;
 
 	/* UNDEFINED, no components, no default */
