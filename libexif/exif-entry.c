@@ -276,7 +276,7 @@ exif_entry_get_value (ExifEntry *e)
 		CF (e->format, EXIF_FORMAT_SRATIONAL, v);
 		CC (e->components, 1, v);
 		v_srat = exif_get_srational (e->data, o);
-		if (!v_rat.denominator)
+		if (!v_srat.denominator)
 			return (NULL);
 		snprintf (b, sizeof (b), "%.0f/%.0f sec.",
 			  (float) v_srat.numerator, (float) v_srat.denominator);
