@@ -39,7 +39,7 @@ then
 	AC_MSG_RESULT([yes. done.])
 else
 	AC_MSG_RESULT([no])
-fo
+fi
 AM_GNU_GETTEXT
 
 dnl ---------------------------------------------------------------------------
