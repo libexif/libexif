@@ -1,3 +1,4 @@
+SUBDIRS = canon olympus pentax
 INCLUDES =              				\
 	-DLIBEXIF_LOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(top_srcdir)/libexif				\
@@ -16,10 +17,15 @@ libexif_la_SOURCES =		\
 	exif-format.c		\
 	exif-ifd.c		\
 	exif-loader.c		\
+	exif-mnote-data.c	\
+	exif-mnote-data-priv.h	\
 	exif-tag.c		\
 	exif-utils.c		\
 	i18n.h
-libexif_la_LIBADD = -lm
+libexif_la_LIBADD = -lm 		\
+	canon/libmnote-canon.a		\
+	olympus/libmnote-olympus.a	\
+	olympus/libmnote-pentax.a
 
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = 	\
@@ -30,6 +36,7 @@ libexifinclude_HEADERS = 	\
 	exif-format.h		\
 	exif-ifd.h		\
 	exif-loader.h		\
+	exif-mnote-data.h	\
 	exif-result.h		\
 	exif-tag.h		\
 	exif-utils.h

@@ -60,6 +60,9 @@ AC_OUTPUT([
   Makefile
   libexif.spec
   libexif/Makefile
+  libexif/canon/Makefile
+  libexif/olympus/Makefile
+  libexif/pentax/Makefile
   libjpeg/Makefile
   test/Makefile
   libexif/libexif.pc

@@ -33,6 +33,7 @@ typedef struct _ExifData        ExifData;
 typedef struct _ExifDataPrivate ExifDataPrivate;
 
 #include <libexif/exif-content.h>
+#include <libexif/exif-mnote-data.h>
 
 struct _ExifData
 {
@@ -61,12 +62,27 @@ void      exif_data_free  (ExifData *data);
 ExifByteOrder exif_data_get_byte_order  (ExifData *data);
 void          exif_data_set_byte_order  (ExifData *data, ExifByteOrder order);
 
+ExifMnoteData *exif_data_get_mnote_data (ExifData *);
+
 typedef void (* ExifDataForeachContentFunc) (ExifContent *, void *user_data);
 void          exif_data_foreach_content (ExifData *data,
 					 ExifDataForeachContentFunc func,
 					 void *user_data);
 
 void      exif_data_dump  (ExifData *data);
+
+/* For your convenience */
+#define exif_data_get_entry(d,t)					\
+	(exif_content_get_entry(d->ifd[EXIF_IFD_0],t) ?			\
+	 exif_content_get_entry(d->ifd[EXIF_IFD_0],t) :			\
+	 exif_content_get_entry(d->ifd[EXIF_IFD_1],t) ?			\
+	 exif_content_get_entry(d->ifd[EXIF_IFD_1],t) :			\
+	 exif_content_get_entry(d->ifd[EXIF_IFD_EXIF],t) ?		\
+	 exif_content_get_entry(d->ifd[EXIF_IFD_EXIF],t) :		\
+	 exif_content_get_entry(d->ifd[EXIF_IFD_GPS],t) ?		\
+	 exif_content_get_entry(d->ifd[EXIF_IFD_GPS],t) :		\
+	 exif_content_get_entry(d->ifd[EXIF_IFD_INTEROPERABILITY],t) ?	\
+	 exif_content_get_entry(d->ifd[EXIF_IFD_INTEROPERABILITY],t) : NULL)
 
 #ifdef __cplusplus
 }

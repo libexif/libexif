@@ -1,3 +1,10 @@
+2003-10-26  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/olympus
+	* libexif/canon
+	* libexif/pentax: Merge libmnote with libexif. The code compiles but
+	  is completely untested.
+
 2003-10-15  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif.spec.in: Patches by Peter Bieringer <pb@bieringer.de>.

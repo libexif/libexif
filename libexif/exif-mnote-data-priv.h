@@ -1,0 +1,63 @@
+/* exif-mnote-data-priv.h
+ *
+ * Copyright © 2003 Lutz Müller <lutz@users.sourceforge.net>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, 
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details. 
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+#ifndef __EXIF_MNOTE_DATA_PRIV_H__
+#define __EXIF_MNOTE_DATA_PRIV_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+#include <libexif/exif-mnote-data.h>
+
+typedef struct _ExifMnoteDataMethods ExifMnoteDataMethods;
+struct _ExifMnoteDataMethods {
+
+	/* Live cycle */
+	void (* free) (ExifMnoteData *);
+
+	/* Modification */
+	void (* save) (ExifMnoteData *, unsigned char **, unsigned int *);
+	void (* load) (ExifMnoteData *, const unsigned char *, unsigned int);
+
+	/* Query */
+	unsigned int (* count)           (ExifMnoteData *);
+	const char * (* get_name)        (ExifMnoteData *, unsigned int);
+	const char * (* get_title)       (ExifMnoteData *, unsigned int);
+	const char * (* get_description) (ExifMnoteData *, unsigned int);
+	      char * (* get_value)       (ExifMnoteData *, unsigned int);
+};
+
+typedef struct _ExifMnoteDataPriv ExifMnoteDataPriv;
+
+struct _ExifMnoteData 
+{
+	ExifMnoteDataMethods methods;
+
+	ExifMnoteDataPriv *priv;
+};
+
+void exif_mnote_data_construct (ExifMnoteData *);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+
+#endif /* __EXIF_MNOTE_PRIV_H__ */

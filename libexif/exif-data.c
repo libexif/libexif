@@ -18,12 +18,19 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "config.h"
+#include <config.h>
+#include "exif-mnote-data.h"
+
 #include "exif-data.h"
 #include "exif-ifd.h"
+#include "exif-mnote-data-priv.h"
 #include "exif-utils.h"
 #include "exif-loader.h"
 #include "jpeg-marker.h"
+
+#include <libexif/olympus/exif-mnote-data-olympus.h>
+#include <libexif/canon/exif-mnote-data-canon.h>
+#include <libexif/pentax/exif-mnote-data-pentax.h>
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -39,6 +46,8 @@ static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 struct _ExifDataPrivate
 {
 	ExifByteOrder order;
+
+	ExifMnoteData *md;
 
 	unsigned int ref_count;
 };
@@ -451,12 +460,31 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_set_long (*d + 6 + offset, data->priv->order, 0);
 }
 
-void
-exif_data_load_data (ExifData *data, const unsigned char *d, unsigned int size)
+static void
+exif_data_remove_entry (ExifData *d, ExifTag t)
 {
-	unsigned int l, len = size;
+	exif_content_remove_entry (d->ifd[EXIF_IFD_0],
+		exif_content_get_entry (d->ifd[EXIF_IFD_0], t));
+	exif_content_remove_entry (d->ifd[EXIF_IFD_1],
+		exif_content_get_entry (d->ifd[EXIF_IFD_1], t));
+	exif_content_remove_entry (d->ifd[EXIF_IFD_EXIF],
+		exif_content_get_entry (d->ifd[EXIF_IFD_EXIF], t));
+	exif_content_remove_entry (d->ifd[EXIF_IFD_GPS],
+		exif_content_get_entry (d->ifd[EXIF_IFD_GPS], t));
+	exif_content_remove_entry (d->ifd[EXIF_IFD_INTEROPERABILITY],
+		exif_content_get_entry (d->ifd[EXIF_IFD_INTEROPERABILITY], t));
+}
+
+void
+exif_data_load_data (ExifData *data, const unsigned char *d_orig,
+		     unsigned int ds_orig)
+{
+	unsigned int l;
 	ExifLong offset;
 	ExifShort n;
+	ExifEntry *e, *em;
+	const unsigned char *d = d_orig;
+	unsigned int size = ds_orig, len;
 
 	if (!data)
 		return;
@@ -601,6 +629,48 @@ exif_data_load_data (ExifData *data, const unsigned char *d, unsigned int size)
 		exif_data_load_data_content (data, data->ifd[EXIF_IFD_1], d + 6,
 					     size - 6, offset);
 	}
+
+	/*
+	 * If we got an EXIF_TAG_MAKER_NOTE, try to interpret it. Some
+	 * cameras use pointers in the maker note tag that point to the
+	 * space between IFDs. Here is the only place where we have access
+	 * to that data.
+	 */
+	e = exif_data_get_entry (data, EXIF_TAG_MAKER_NOTE);
+	if (e) {
+
+	    /* Olympus */
+	    if ((e->size >= 5) && (!memcmp (e->data, "OLYMP", 5)))
+		data->priv->md = exif_mnote_data_olympus_new (
+						data->priv->order);
+
+	    /* Pentax */
+	    else if ((e->size >= 2) && (e->data[0] == 0x00)
+				    && (e->data[1] == 0x1b))
+		data->priv->md = exif_mnote_data_pentax_new (
+						data->priv->order);
+
+	    else {
+		em = exif_data_get_entry (data, EXIF_TAG_MAKE);
+		if (em) {
+
+		    /* Canon */
+		    if (!strcmp (exif_entry_get_value (em), "Canon"))
+			data->priv->md = exif_mnote_data_canon_new (
+							data->priv->order);
+		}
+	    }
+
+	    /* 
+	     * If we are able to interpret the maker note, interpret it and
+	     * remove the corresponding entry as it may contain invalid
+	     * pointers after this function here returns.
+	     */
+	    if (data->priv->md) {
+		exif_mnote_data_load (data->priv->md, d_orig, ds_orig);
+		exif_data_remove_entry (data, EXIF_TAG_MAKER_NOTE);
+	    }
+	}
 }
 
 void
@@ -718,6 +788,10 @@ exif_data_free (ExifData *data)
 		data->data = NULL;
 	}
 	if (data->priv) {
+		if (data->priv->md) {
+			exif_mnote_data_unref (data->priv->md);
+			data->priv->md = NULL;
+		}
 		free (data->priv);
 		data->priv = NULL;
 	}
