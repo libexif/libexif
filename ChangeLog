@@ -1,5 +1,10 @@
 2004-11-10  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-tag.[c,h] (exif_tag_from_name): New. Suggested by
+	  Angela Wrobel.
+
+2004-11-10  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-data.c (exif_data_free): Fix memleak found by 
 	  Angela Wrobel.
 	* contrib/watcom: Updated files contributed by Angela Wrobel.

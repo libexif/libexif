@@ -136,6 +136,7 @@ typedef enum {
 	EXIF_TAG_IMAGE_UNIQUE_ID		= 0xa420
 } ExifTag;
 
+ExifTag         exif_tag_from_name       (const char *);
 const char     *exif_tag_get_name        (ExifTag tag);
 const char     *exif_tag_get_title       (ExifTag tag);
 const char     *exif_tag_get_description (ExifTag tag);

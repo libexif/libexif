@@ -629,7 +629,7 @@ exif_tag_get_name (ExifTag tag)
 		if (ExifTagTable[i].tag == tag)
 			break;
 
-	return (ExifTagTable[i].name);
+	return ExifTagTable[i].name;
 }
 
 const char *
@@ -641,10 +641,8 @@ exif_tag_get_title (ExifTag tag)
 	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 
 	for (i = 0; ExifTagTable[i].title; i++)
-		if (ExifTagTable[i].tag == tag)
-			break;
-
-	return (_(ExifTagTable[i].title));
+		if (ExifTagTable[i].tag == tag) break;
+	return _(ExifTagTable[i].title);
 }
 
 const char *
@@ -656,8 +654,18 @@ exif_tag_get_description (ExifTag tag)
 	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 
 	for (i = 0; ExifTagTable[i].description; i++)
-		if (ExifTagTable[i].tag == tag)
-			break;
+		if (ExifTagTable[i].tag == tag) break;
+	return _(ExifTagTable[i].description);
+}
 
-	return (_(ExifTagTable[i].description));
+ExifTag 
+exif_tag_from_name (const char *name)
+{
+	unsigned int i;
+
+	if (!name) return 0;
+
+	for (i = 0; ExifTagTable[i].name; i++)
+		if (!strcmp (ExifTagTable[i].name, name)) break;
+	return ExifTagTable[i].tag;
 }
