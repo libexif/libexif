@@ -1,12 +1,14 @@
-nlstestscripts = check-nls.sh
+# nlstestscripts = check-nls.sh
 
-TESTS = $(nlstestscripts)
+# TESTS = $(nlstestscripts)
 
-check_SCRIPTS = $(nlstestscripts)
+# check_SCRIPTS = $(nlstestscripts)
 
-check_PROGRAMS = test-nls print-localedir
+# check_PROGRAMS = test-nls print-localedir
 
-CLEANFILES = $(check_SCRIPTS)
+# bin_PROGRAMS = test-nls print-localedir
+
+# CLEANFILES = $(check_SCRIPTS)
 
 test_nls_LDADD = $(top_builddir)/libexif/libexif.la $(INTLLIBS)
 

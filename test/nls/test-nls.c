@@ -15,12 +15,12 @@ struct _testcase {
 typedef struct _testcase testcase;
 
 static testcase testcases[] = {
+  { "de_DE.UTF-8", 
+    N_("[DO_NOT_TRANSLATE_THIS_MARKER]"), 
+       "[DO_NOT_TRANSLATE_THIS_MARKER_de]" },
   { "C",  
-    "[DO_NOT_TRANSLATE_THIS_MARKER]", 
-    "[DO_NOT_TRANSLATE_THIS_MARKER]" },
-  { "de", 
-    "[DO_NOT_TRANSLATE_THIS_MARKER]", 
-    "[DO_NOT_TRANSLATE_THIS_MARKER_de]" },
+    N_("[DO_NOT_TRANSLATE_THIS_MARKER]"), 
+    N_("[DO_NOT_TRANSLATE_THIS_MARKER]") },
 };
 
 int main(int argc, char *argv[])
@@ -35,30 +35,48 @@ int main(int argc, char *argv[])
 
   localedir = argv[1];
 
+  do {
+    const char *newloc = setlocale(LC_ALL, NULL);
+    printf("Default locale: %s\n", newloc);
+  } while (0);
+
+
   for (i=0; i < sizeof(testcases)/sizeof(testcases[0]); i++) {
     char *locale       = testcases[i].locale;
     char *untranslated = testcases[i].untranslated;
     char *expected     = testcases[i].expected;
     char *translation;
-    char *actual_locale;
 
-    printf("setlocale to %s\n", locale);
-    actual_locale = setlocale(LC_MESSAGES, locale);
-
-    if (actual_locale == NULL) {
-      fprintf(stderr, "Error: Cannot set locale to %s.\n", locale);
-      exit(4);
+    if (1) {
+      printf("setlocale(\"%s\")\n", locale);
+      const char *actual_locale = setlocale(LC_MESSAGES, locale);
+      if (actual_locale == NULL) {
+	fprintf(stderr, "Error: Cannot set locale to %s.\n", locale);
+	return 4;
+      }
+      printf("new locale: %s\n", actual_locale);
     }
 
-    printf("locale is now %s\n", actual_locale);
+    if (1) {
+      const char *basedir = bindtextdomain(GETTEXT_PACKAGE, localedir);
+      printf("message basedir: %s\n", basedir);
+    }
+
+    if (1) {
+      const char *domain = textdomain(GETTEXT_PACKAGE);
+      printf("message domain: %s\n", domain);
+    }
+
+    if (1) {
+      const char *codeset = bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+      printf("message codeset: %s\n", codeset);
+    }
 
     puts("before translation");
-    translation = dgettext(GETTEXT_PACKAGE, untranslated);
+    translation = gettext(untranslated);
     puts("after translation");
 
     if (strcmp(expected, translation) != 0) {
-      fprintf(stderr, "# %s\n", N_("[DO_NOT_TRANSLATE_THIS_MARKER]"));
-
       fprintf(stderr,
 	      "locale:       %s\n"
 	      "localedir:    %s\n"
@@ -73,6 +91,13 @@ int main(int argc, char *argv[])
 	      translation);
       
       return 1;
+    } else {
+      fprintf(stderr,
+	      "expected:     %s\n"
+	      "translation:  %s\n"
+	      "Match!\n",
+	      expected,
+	      translation);
     }
   }
   return 0;
