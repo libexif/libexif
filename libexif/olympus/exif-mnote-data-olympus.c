@@ -72,7 +72,8 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		unsigned char **buf, unsigned int *buf_size)
 {
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) ne;
-	unsigned int i, o, s, doff;
+	unsigned int i, o, s, doff, base = 0, o2 = 6;
+    int datao;
 
 	if (!n || !buf || !buf_size) return;
 
@@ -80,19 +81,48 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	 * Allocate enough memory for all entries and the number of entries.
 	 */
 	*buf_size = 6 + 2 + 2 + n->count * 12;
-	*buf = malloc (*buf_size);
-	if (!*buf) return;
-	memset (*buf, 0, *buf_size);
+	switch (n->version) {
+		case 0: /* Olympus */
+			*buf = malloc (*buf_size);
+			if (!*buf) return;
+			memset (*buf, 0, *buf_size);
 
-	/* Write the header and the number of entries. */
-	strcpy (*buf, "OLYMP");
-	exif_set_short (*buf + 8, n->order, (ExifShort) n->count);
+			/* Write the header and the number of entries. */
+			strcpy (*buf, "OLYMP");
+			o2 += 2;
+			datao = n->offset;
+			break;
+		case 1: /* Nikon v1 */
+			base = MNOTE_NIKON1_TAG_BASE;
+			*buf_size -= 8;
+			/* Fall through */
+		case 2: /* Nikon v2 */
+			*buf_size += 8;
+			*buf = malloc (*buf_size);
+			if (!*buf) return;
+			memset (*buf, 0, *buf_size);
 
+			/* Write the header and the number of entries. */
+			strcpy (*buf, "Nikon");
+			(*buf)[6] = n->version;
+			o2 += 2; *buf_size += 2;
+			if (n->version == 2) {
+				exif_set_short (*buf + 10, n->order, (ExifShort) ((n->order == EXIF_BYTE_ORDER_INTEL) ? 'II' : 'MM'));
+				exif_set_short (*buf + 12, n->order, (ExifShort) 0x2A);
+				exif_set_long (*buf + 14, n->order, (ExifShort) 8);
+				o2 += 2 + 8;
+			}
+			datao = -10;
+			break;
+	}
+
+	exif_set_short (*buf + o2, n->order, (ExifShort) n->count);
+    o2 += 2;
 	/* Save each entry */
 	for (i = 0; i < n->count; i++) {
-		o = 6 + 2 + 2 + i * 12;
+		o = o2 + i * 12;
 		exif_set_short (*buf + o + 0, n->order,
-				(ExifShort) n->entries[i].tag);
+				(ExifShort) (n->entries[i].tag - base));
 		exif_set_short (*buf + o + 2, n->order,
 				(ExifShort) n->entries[i].format);
 		exif_set_long  (*buf + o + 4, n->order,
@@ -101,16 +131,21 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		s = exif_format_get_size (n->entries[i].format) *
 						n->entries[i].components;
 		if (s > 4) {
+			doff = *buf_size;
 			*buf_size += s;
 			*buf = realloc (*buf, *buf_size);
 			if (!*buf) return;
-			doff = *buf_size - s;
-			exif_set_long (*buf + o, n->order, n->offset + doff);
+			exif_set_long (*buf + o, n->order, datao + doff);
 		} else
 			doff = o;
 
 		/* Write the data. */
-		memcpy (*buf + doff, n->entries[i].data, s);
+		if (n->entries[i].data) {
+			memcpy (*buf + doff, n->entries[i].data, s);
+		} else {
+			/* Most certainly damaged input file */
+			memset (*buf + doff, 0, s);
+		}
 	}
 }
 
@@ -138,18 +173,22 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	if (!memcmp (buf + 6 + n->offset, "OLYMP", 5)) {
 		o2 = 6 + n->offset + 8 + 2;
 		c = exif_get_short (buf + 6 + n->offset + 8, n->order);
+		n->version = 0;
 	} else if (!memcmp (buf + 6 + n->offset, "Nikon", 5)) {
 		o2 = 6 + n->offset + 8 + 2;
 		datao = o2;
 		if (!memcmp(buf + o2 - 4, "\2\0\0\0II\x2A\0", 8)) {
 			n->order = EXIF_BYTE_ORDER_INTEL;
 			o2 += exif_get_long(buf + o2 + 4, n->order);
+			n->version = 2;
 		} else if (!memcmp(buf + o2 - 4, "\2\0\0\0MM\0\x2A", 8)) {
 			n->order = EXIF_BYTE_ORDER_MOTOROLA;
 			o2 += exif_get_long(buf + o2 + 4, n->order);
+			n->version = 2;
 		} else if (!memcmp(buf + o2 - 4, "\1\0", 2)) {
 			o2 -= 2;
 			base = MNOTE_NIKON1_TAG_BASE;
+			n->version = 1;
 		} else {
 			return;
 		}
@@ -160,6 +199,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		o2 = 6 + n->offset;
 		c = exif_get_short (buf + o2, n->order);
 		o2 += 2;
+		n->version = 2;
 	} else {
 		return;
 	}
@@ -172,8 +212,8 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 
 	/* Parse the entries */
 	for (i = 0; i < c; i++) {
-	    o = o2 + 12 * i;
-	    if (o + 12 > buf_size) return;
+		o = o2 + 12 * i;
+		if (o + 12 > buf_size) return;
 
 	    n->count = i + 1;
 	    n->entries[i].tag        = exif_get_short (buf + o, n->order) + base;
@@ -187,14 +227,14 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	     */
 	    s = exif_format_get_size (n->entries[i].format) *
 		   			 n->entries[i].components;
-	    if (!s) return;
+	    if (!s) continue;
 	    o += 8;
 	    if (s > 4) o = exif_get_long (buf + o, n->order) + datao;
-	    if (o + s > buf_size) return;
+	    if (o + s > buf_size) continue;
 
 	    /* Sanity check */
 	    n->entries[i].data = malloc (s);
-	    if (!n->entries[i].data) return;
+	    if (!n->entries[i].data) continue;
 	    n->entries[i].size = s;
 	    memcpy (n->entries[i].data, buf + o, s);
 	}
