@@ -22,6 +22,8 @@ dnl
 
 AC_DEFUN([GP_GETTEXT_HACK],
 [
+AC_BEFORE([$0], [AM_GNU_GETTEXT])dnl
+AC_BEFORE([$0], [AM_GNU_GETTEXT_VERSION])dnl
 m4_if([$1],[],[GETTEXT_PACKAGE="${PACKAGE_TARNAME}"],[GETTEXT_PACKAGE="$1"])
 AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"],
                    [The gettext domain we're using])
