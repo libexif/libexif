@@ -227,19 +227,19 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			strncpy (val, e->data, MIN (maxlen, e->size));
 		else
 			strncpy (val, _("[None]"), maxlen);
-		strncat (val, " ", maxlen);
-		strncat (val, _("(Photographer)"), maxlen);
+		strncat (val, " ", maxlen - strlen(val));
+		strncat (val, _("(Photographer)"), maxlen - strlen(val));
 
 		/* Second part: Editor. */
-		strncat (val, " - ", maxlen);
+		strncat (val, " - ", maxlen - strlen(val));
 		if (e->size && e->data &&
 		    (strlen ((char *) e->data) + 1 < e->size) &&
 		    (strspn (e->data, " ") != strlen ((char *) e->data)))
-			strncat (val, e->data + strlen (e->data) + 1, maxlen);
+			strncat (val, e->data + strlen (e->data) + 1, maxlen - strlen(val));
 		else
-			strncat (val, _("[None]"), maxlen);
-		strncat (val, " ", maxlen);
-		strncat (val, _("(Editor)"), maxlen);
+			strncat (val, _("[None]"), maxlen - strlen(val));
+		strncat (val, " ", maxlen - strlen(val));
+		strncat (val, _("(Editor)"), maxlen - strlen(val));
 
 		break;
 	case EXIF_TAG_FNUMBER:
@@ -390,8 +390,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			case 6: c = _("B"); break;
 			default: c = _("reserved"); break;
 			}
-			strncat (val, c, maxlen);
-			if (i < 3) strncat (val, " ", maxlen);
+			strncat (val, c, maxlen - strlen(val));
+			if (i < 3) strncat (val, " ", maxlen - strlen(val));
 		}
 		break;
 	case EXIF_TAG_SENSING_METHOD:
