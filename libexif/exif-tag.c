@@ -84,12 +84,12 @@ static struct {
 	 N_("Image Description"),
 	 N_("A character string giving the title of the image. It may be "
 	    "a comment such as \"1988 company picnic\" or "
-	    "the like. Two-byte character codes cannot be used. "
-	    "When a 2-byte code is necessary, the Exif Private tag "
+	    "the like. Two-bytes character codes cannot be used. "
+	    "When a 2-bytes code is necessary, the Exif Private tag "
 	    "<UserComment> is to be used.")},
 	{EXIF_TAG_MAKE, "Make", N_("Manufacturer"),
 	 N_("The manufacturer of the recording "
-	    "equipment. This is the manuracturer of the DSC, scanner, "
+	    "equipment. This is the manufacturer of the DSC, scanner, "
 	    "video digitizer or other equipment that generated the "
 	    "image. When the field is left blank, it is treated as "
 	    "unknown.")},
