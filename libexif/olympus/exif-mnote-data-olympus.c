@@ -58,13 +58,13 @@ exif_mnote_data_olympus_free (ExifMnoteData *n)
 }
 
 static char *
-exif_mnote_data_olympus_get_value (ExifMnoteData *d, unsigned int i)
+exif_mnote_data_olympus_get_value (ExifMnoteData *d, unsigned int i, char *val, unsigned int maxlen)
 {
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) d;
 
 	if (!d) return NULL;
 	if (n->count <= i) return NULL;
-	return mnote_olympus_entry_get_value (&n->entries[i]);
+	return mnote_olympus_entry_get_value (&n->entries[i], val, maxlen);
 }
 
 static void

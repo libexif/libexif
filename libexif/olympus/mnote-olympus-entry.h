@@ -38,6 +38,6 @@ struct _MnoteOlympusEntry {
 	ExifByteOrder order;
 };
 
-char *mnote_olympus_entry_get_value (MnoteOlympusEntry *entry);
+char *mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *val, unsigned int maxlen);
 
 #endif /* __MNOTE_OLYMPUS_ENTRY_H__ */
