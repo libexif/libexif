@@ -256,6 +256,16 @@ exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 	memcpy (data->data, d + offset, data->size);
 }
 
+#undef CHECK_REC
+#define CHECK_REC(i) 					\
+if (data->ifd[(i)] == ifd) {				\
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, \
+		"ExifData", "Recursive entry in IFD "	\
+		"'%s' detected. Skipping...",		\
+		exif_ifd_get_name (i));			\
+	break;						\
+}
+
 static void
 exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 			     const unsigned char *d,
@@ -292,14 +302,17 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 					   data->priv->order);
 			switch (tag) {
 			case EXIF_TAG_EXIF_IFD_POINTER:
+				CHECK_REC (EXIF_IFD_EXIF);
 				exif_data_load_data_content (data,
 					data->ifd[EXIF_IFD_EXIF], d, ds, o);
 				break;
 			case EXIF_TAG_GPS_INFO_IFD_POINTER:
+				CHECK_REC (EXIF_IFD_GPS);
 				exif_data_load_data_content (data,
 					data->ifd[EXIF_IFD_GPS], d, ds, o);
 				break;
 			case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
+				CHECK_REC (EXIF_IFD_INTEROPERABILITY);
 				exif_data_load_data_content (data,
 					data->ifd[EXIF_IFD_INTEROPERABILITY], d, ds, o);
 				break;

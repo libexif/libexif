@@ -1,3 +1,8 @@
+2004-11-02  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c (exif_entry_fix): Detect more wrong stuff.
+	* libexif/exif-data.c: Detect recursive calls.
+
 2004-11-02  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-entry.c: added LZW

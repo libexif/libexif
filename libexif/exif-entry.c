@@ -159,6 +159,8 @@ exif_entry_fix (ExifEntry *e)
 {
 	unsigned int i;
 	ExifByteOrder o;
+	ExifRational r;
+	ExifSRational sr;
 
 	if (!e || !e->priv) return;
 
@@ -207,6 +209,39 @@ exif_entry_fix (ExifEntry *e)
 				exif_format_get_name (EXIF_FORMAT_SHORT));
 			break;
 		case EXIF_FORMAT_SHORT:
+		default:
+			break;
+		}
+		break;
+
+	/* All these tags need to be of format 'Rational'. */
+	case EXIF_TAG_FNUMBER:
+	case EXIF_TAG_APERTURE_VALUE:
+	case EXIF_TAG_EXPOSURE_TIME:
+	case EXIF_TAG_FOCAL_LENGTH:
+		switch (e->format) {
+		case EXIF_FORMAT_SRATIONAL:
+			if (!e->parent || !e->parent->parent) break;
+			o = exif_data_get_byte_order (e->parent->parent);
+			for (i = 0; i < e->components; i++) {
+				sr = exif_get_srational (e->data + i * 
+					exif_format_get_size (
+						EXIF_FORMAT_SRATIONAL), o);
+				r.numerator = (ExifLong) sr.numerator;
+				r.denominator = (ExifLong) sr.denominator;
+				exif_set_rational (e->data + i *
+					exif_format_get_size (
+						EXIF_FORMAT_RATIONAL), o, r);
+			}
+			e->format = EXIF_FORMAT_RATIONAL;
+			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
+				"Tag '%s' was of format '%s' (which is "
+				"against specification) and has been "
+				"changed to format '%s'.",
+				exif_tag_get_name (e->tag),
+				exif_format_get_name (EXIF_FORMAT_SRATIONAL),
+				exif_format_get_name (EXIF_FORMAT_RATIONAL));
+			break;
 		default:
 			break;
 		}
