@@ -2,6 +2,7 @@ SUBDIRS = intl po libexif libjpeg test m4
 
 EXTRA_DIST = @PACKAGE@.spec
 
+
 ########################################################################
 # The following default options for aclocal and automake
 # are required in the top level Makefile.am for the automatic 
