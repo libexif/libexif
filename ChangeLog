@@ -1,5 +1,11 @@
 2004-08-26  Lutz Mueller <lutz@users.sourceforge.net>
 
+	Achim Bohnet found a spelling mistake:
+
+	* libexif/exif-tag.c: 'colums' -> 'columns'
+
+2004-08-26  Lutz Mueller <lutz@users.sourceforge.net>
+
 	Suggestions from Angela Wrobel <Angela.Wrobel@gmx.de>:
 
 	* libexif/exif-entry.c

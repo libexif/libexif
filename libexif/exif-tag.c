@@ -40,7 +40,7 @@ static struct {
 	{EXIF_TAG_INTEROPERABILITY_VERSION, "InteroperabilityVersion",
 	 "InteroperabilityVersion", ""},
 	{EXIF_TAG_IMAGE_WIDTH, "ImageWidth", N_("Image Width"),
-	 N_("The number of colums of image data, equal to the number of "
+	 N_("The number of columns of image data, equal to the number of "
 	    "pixels per row. In JPEG compressed data a JPEG marker is "
 	    "used instead of this tag.")},
 	{EXIF_TAG_IMAGE_LENGTH, "ImageLength", N_("Image Length"),
@@ -87,7 +87,7 @@ static struct {
 	    "data this designation is not needed and is omitted. See also "
 	    "<RowsPerStrip> and <StripByteCounts>.")},
 	{EXIF_TAG_ORIENTATION, "Orientation", N_("Orientation"),
-	 N_("The image orientation viewed in terms of rows and colums.")},
+	 N_("The image orientation viewed in terms of rows and columns.")},
 	{EXIF_TAG_SAMPLES_PER_PIXEL, "SamplesPerPixel",
 	 N_("Samples per Pixel"),
 	 N_("The number of components per pixel. Since this standard applies "
