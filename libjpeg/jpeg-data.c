@@ -206,6 +206,7 @@ jpeg_data_load_data (JPEGData *data, const unsigned char *d,
 		jpeg_data_append_section (data);
 		s = &data->sections[data->count - 1];
 		s->marker = marker;
+		s->content.generic.data = NULL;
 		o += i + 1;
 
 		switch (s->marker) {
@@ -216,7 +217,9 @@ jpeg_data_load_data (JPEGData *data, const unsigned char *d,
 
 			/* Read the length of the section */
 			len = ((d[o] << 8) | d[o + 1]) - 2;
+			if (len > size) { o = size; break; }
 			o += 2;
+			if (o + len > size) { o = size; break; }
 
 			switch (s->marker) {
 			case JPEG_MARKER_APP1:
