@@ -1,3 +1,8 @@
-libexif/exif-tag.c
+libexif/canon/exif-canon-tag.c
+libexif/exif-byte-order.c
 libexif/exif-entry.c
 libexif/exif-format.c
+libexif/exif-tag.c
+libexif/fuji/exif-fuji-tag.c
+libexif/olympus/exif-olympus-entry.c
+libexif/olympus/exif-olympus-tag.c
