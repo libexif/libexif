@@ -209,6 +209,7 @@ jpeg_data_load_data (JPEGData *data, const unsigned char *d,
 
 		/* Append this section */
 		jpeg_data_append_section (data);
+		if (!data->count) return;
 		s = &data->sections[data->count - 1];
 		s->marker = marker;
 		s->content.generic.data = NULL;
@@ -422,9 +423,12 @@ jpeg_data_set_exif_data (JPEGData *data, ExifData *exif_data)
 {
 	JPEGSection *section;
 
+	if (!data) return;
+
 	section = jpeg_data_get_section (data, JPEG_MARKER_APP1);
 	if (!section) {
 		jpeg_data_append_section (data);
+		if (data->count < 2) return;
 		memmove (&data->sections[2], &data->sections[1],
 			 sizeof (JPEGSection) * (data->count - 2));
 		section = &data->sections[1];
