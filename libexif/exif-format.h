@@ -25,8 +25,7 @@
 extern "C" {
 #endif /* __cplusplus */
 
-typedef enum _ExifFormat ExifFormat;
-enum _ExifFormat {
+typedef enum {
         EXIF_FORMAT_BYTE       =  1,
         EXIF_FORMAT_ASCII      =  2,
         EXIF_FORMAT_SHORT      =  3,
@@ -35,7 +34,7 @@ enum _ExifFormat {
         EXIF_FORMAT_UNDEFINED  =  7,
         EXIF_FORMAT_SLONG      =  9,
         EXIF_FORMAT_SRATIONAL  = 10
-};
+} ExifFormat;
 
 const char   *exif_format_get_name (ExifFormat format);
 unsigned char exif_format_get_size (ExifFormat format);

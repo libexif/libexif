@@ -25,8 +25,7 @@
 extern "C" {
 #endif /* __cplusplus */
 
-typedef enum _ExifTag ExifTag;
-enum _ExifTag {
+typedef enum {
 	EXIF_TAG_INTEROPERABILITY_INDEX		= 0x0001,
 	EXIF_TAG_INTEROPERABILITY_VERSION	= 0x0002,
 	EXIF_TAG_IMAGE_WIDTH 			= 0x0100,
@@ -130,7 +129,7 @@ enum _ExifTag {
 	EXIF_TAG_DEVICE_SETTING_DESCRIPTION	= 0xa40b,
 	EXIF_TAG_SUBJECT_DISTANCE_RANGE		= 0xa40c,
 	EXIF_TAG_IMAGE_UNIQUE_ID		= 0xa420
-};
+} ExifTag;
 
 const char     *exif_tag_get_name        (ExifTag tag);
 const char     *exif_tag_get_title       (ExifTag tag);

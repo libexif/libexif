@@ -25,11 +25,10 @@
 extern "C" {
 #endif /* __cplusplus */
 
-typedef enum _ExifResult ExifResult;
-enum _ExifResult {
+typedef enum {
 	EXIF_OK,
 	EXIF_ERROR
-};
+} ExifResult;
 
 #ifdef __cplusplus
 }

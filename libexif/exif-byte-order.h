@@ -25,11 +25,10 @@
 extern "C" {
 #endif /* __cplusplus */
 
-typedef enum _ExifByteOrder ExifByteOrder;
-enum _ExifByteOrder {
+typedef enum {
 	EXIF_BYTE_ORDER_MOTOROLA,
 	EXIF_BYTE_ORDER_INTEL
-};
+} ExifByteOrder;
 
 const char *exif_byte_order_get_name (ExifByteOrder order);
 

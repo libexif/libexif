@@ -1,5 +1,12 @@
 2002-07-25  Lutz Müller <lutz@users.sourceforge.net>
 
+	Patch by anonymous user:
+
+	* libexif/exif-[byte-order,format,result,tag].h: Make code comply with
+	  ISO C standard, section 6.5.2.3.
+
+2002-07-25  Lutz Müller <lutz@users.sourceforge.net>
+
 	Patch by Takuro Ashie <makeinu@users.sourceforge.net>:
 
 	* libexif/exif-data.c: Plug memory leak.
