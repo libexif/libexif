@@ -38,6 +38,9 @@ static struct {
 	const char *description;
 	ExifSL esl_0[4], esl_1[4], esl_exif[4], esl_gps[4];
 } ExifTagTable[] = {
+	{EXIF_TAG_NEW_SUBFILE_TYPE, "NewSubfileType",
+	 "New Subfile Type", N_("A general indication of the kind of data "
+	    "contained in this subfile.")},
 	{EXIF_TAG_INTEROPERABILITY_INDEX, "InteroperabilityIndex",
 	 "InteroperabilityIndex",
 	 N_("Indicates the identification of the Interoperability rule. "
@@ -169,6 +172,8 @@ static struct {
 	    "Normally this tag is not necessary, since colorspace is "
 	    "specified in the colorspace information tag (<ColorSpace>).")},
 	{EXIF_TAG_TRANSFER_RANGE, "TransferRange", N_("Transfer Range"), ""},
+	{EXIF_TAG_SUB_IFDS, "SubIFDs", "SubIFD Offsets", N_("Defined by Adobe Corporation "
+	    "to enable TIFF Trees within a TIFF file.")},
 	{EXIF_TAG_JPEG_PROC, "JPEGProc", "JPEGProc", ""},
 	{EXIF_TAG_JPEG_INTERCHANGE_FORMAT, "JPEGInterchangeFormat",
 	 N_("JPEG Interchange Format"),
@@ -221,6 +226,7 @@ static struct {
 	    "in a color space information tag, with the default "
 	    "being the value that gives the optimal image characteristics "
 	    "Interoperability these conditions.")},
+	{EXIF_TAG_XML_PACKET, "XMLPacket", N_("XML Packet"), N_("XMP Metadata")},
 	{EXIF_TAG_RELATED_IMAGE_FILE_FORMAT, "RelatedImageFileFormat",
 	 "RelatedImageFileFormat", ""},
 	{EXIF_TAG_RELATED_IMAGE_WIDTH, "RelatedImageWidth",
@@ -261,6 +267,7 @@ static struct {
 	{EXIF_TAG_FNUMBER, "FNumber", "FNumber",
 	 N_("The F number.")},
 	{EXIF_TAG_IPTC_NAA, "IPTC/NAA", "IPTC/NAA", ""},
+	{EXIF_TAG_IMAGE_RESOURCES, "ImageResources", N_("Image Resources Block"), ""},
 	{EXIF_TAG_EXIF_IFD_POINTER, "ExifIFDPointer", "ExifIFDPointer",
 	 N_("A pointer to the Exif IFD. Interoperability, Exif IFD has the "
 	    "same structure as that of the IFD specified in TIFF. "
@@ -532,6 +539,7 @@ static struct {
 	{EXIF_TAG_SUBJECT_AREA, "SubjectArea", N_("Subject Area"),
 	 N_("This tag indicates the location and area of the main subject "
 	    "in the overall scene.")},
+	{EXIF_TAG_TIFF_EP_STANDARD_ID, "TIFF/EPStandardID", N_("TIFF/EP Standard ID"), ""},
 	{EXIF_TAG_CUSTOM_RENDERED, "CustomRendered", N_("Custom Rendered"),
 	 N_("This tag indicates the use of special processing on image "
 	    "data, such as rendering geared to output. When special "
