@@ -1,3 +1,9 @@
+2004-11-10  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-data.c (exif_data_free): Fix memleak found by 
+	  Angela Wrobel.
+	* contrib/watcom: Updated files contributed by Angela Wrobel.
+
 2004-11-03  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-format.c: More translatable strings.

@@ -1,23 +1,20 @@
 # This makefile is made for OpenWatcom/NT and runs on my system.
 # It should not be too hard to make it run on other systems, too.
 #
-# FIRST, rename libexif\_stdint_watcom.h to libexif\_stdint.h 
-#
-# WARNING: there as no care been taken that the depencencies are
-# correct. This should be fixed in the future. Currently, this makefile
-# builds only, so after critical changes to the code, you should type
-# "wmake clean" before rebuilding. Sorry...
-#
-# WARNING: This makefile might run on your system, however, I made it
-# mainly for myself and don't want to waste my time to make it look "nice".
+# FIRST, move this makefile and _stdint.h to the libexif main
+# directory (the place where you find README and COPYING etc.)
 #
 # WARNING: I used another makefile as template, so some things might be
 # thrown away. Don't hesitate to improve this makefile!
 #
+# WARNING: This makefile has been made mainly for myself, I didn't
+# waste time to make it look "nice".
+#
 # LICENSE: no restrictions at all, but USE ON YOUR OWN RISK ONLY.
 #
-# USAGE: Simply type "wmake -f Makefile.wat" or
-#        rename "Makefile.wat" to "Makefile" and type "wmake"
+# USAGE: Simply type "wmake" or "wmake -f <makefilename>" when
+#        being in the libexif main directory. This makefile should
+#        be in that directory, too, of course.
 #
 #   Angela Wrobel <http://www.wrobelnet.de/>
 
@@ -70,6 +67,7 @@ LIBOBJECTS = &
 	$(LIBEXIFDIR)\exif-data.obj $(LIBEXIFDIR)\exif-entry.obj &
 	$(LIBEXIFDIR)\exif-format.obj $(LIBEXIFDIR)\exif-ifd.obj &
 	$(LIBEXIFDIR)\exif-loader.obj $(LIBEXIFDIR)\exif-log.obj &
+	$(LIBEXIFDIR)\exif-mem.obj &
 	$(LIBEXIFDIR)\exif-mnote-data.obj $(LIBEXIFDIR)\exif-tag.obj &
         $(LIBEXIFDIR)\exif-utils.obj &
 	$(LIBEXIFDIR)\exif-mnote-data-olympus.obj &
@@ -92,77 +90,80 @@ libexif.lib: $(LIBOBJECTS)
 	- del libexif.lib
 	* wlib -n libexif.lib $(LIBOBJECTS)
 
-$(LIBEXIFDIR)\exif-byte-order.obj : $(LIBEXIFDIR)\exif-byte-order.c
+$(LIBEXIFDIR)\exif-byte-order.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-byte-order.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-content.obj : $(LIBEXIFDIR)\exif-content.c
+$(LIBEXIFDIR)\exif-content.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-content.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-data.obj : $(LIBEXIFDIR)\exif-data.c
+$(LIBEXIFDIR)\exif-data.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-data.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-entry.obj : $(LIBEXIFDIR)\exif-entry.c
+$(LIBEXIFDIR)\exif-entry.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-entry.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-format.obj : $(LIBEXIFDIR)\exif-format.c
+$(LIBEXIFDIR)\exif-format.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-format.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-ifd.obj : $(LIBEXIFDIR)\exif-ifd.c
+$(LIBEXIFDIR)\exif-ifd.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-ifd.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-loader.obj : $(LIBEXIFDIR)\exif-loader.c
+$(LIBEXIFDIR)\exif-loader.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-loader.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-log.obj : $(LIBEXIFDIR)\exif-log.c
+$(LIBEXIFDIR)\exif-log.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-log.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-mnote-data.obj : $(LIBEXIFDIR)\exif-mnote-data.c
+$(LIBEXIFDIR)\exif-mem.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-mem.c
+	$(CC) -c $(CFLAGS) $[*
+
+$(LIBEXIFDIR)\exif-mnote-data.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-mnote-data.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-tag.obj : $(LIBEXIFDIR)\exif-tag.c
+$(LIBEXIFDIR)\exif-tag.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-tag.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-utils.obj : $(LIBEXIFDIR)\exif-utils.c
+$(LIBEXIFDIR)\exif-utils.obj : .AUTODEPEND $(LIBEXIFDIR)\exif-utils.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-mnote-data-olympus.obj : $(LIBEXIFDIR)\olympus\exif-mnote-data-olympus.c
+$(LIBEXIFDIR)\exif-mnote-data-olympus.obj : .AUTODEPEND $(LIBEXIFDIR)\olympus\exif-mnote-data-olympus.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\mnote-olympus-entry.obj : $(LIBEXIFDIR)\olympus\mnote-olympus-entry.c
+$(LIBEXIFDIR)\mnote-olympus-entry.obj : .AUTODEPEND $(LIBEXIFDIR)\olympus\mnote-olympus-entry.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\mnote-olympus-tag.obj : $(LIBEXIFDIR)\olympus\mnote-olympus-tag.c
+$(LIBEXIFDIR)\mnote-olympus-tag.obj : .AUTODEPEND $(LIBEXIFDIR)\olympus\mnote-olympus-tag.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-mnote-data-pentax.obj : $(LIBEXIFDIR)\pentax\exif-mnote-data-pentax.c
+$(LIBEXIFDIR)\exif-mnote-data-pentax.obj : .AUTODEPEND $(LIBEXIFDIR)\pentax\exif-mnote-data-pentax.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\mnote-pentax-entry.obj : $(LIBEXIFDIR)\pentax\mnote-pentax-entry.c
+$(LIBEXIFDIR)\mnote-pentax-entry.obj : .AUTODEPEND $(LIBEXIFDIR)\pentax\mnote-pentax-entry.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\mnote-pentax-tag.obj : $(LIBEXIFDIR)\pentax\mnote-pentax-tag.c
+$(LIBEXIFDIR)\mnote-pentax-tag.obj : .AUTODEPEND $(LIBEXIFDIR)\pentax\mnote-pentax-tag.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\exif-mnote-data-canon.obj : $(LIBEXIFDIR)\canon\exif-mnote-data-canon.c
+$(LIBEXIFDIR)\exif-mnote-data-canon.obj : .AUTODEPEND $(LIBEXIFDIR)\canon\exif-mnote-data-canon.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\mnote-canon-entry.obj : $(LIBEXIFDIR)\canon\mnote-canon-entry.c
+$(LIBEXIFDIR)\mnote-canon-entry.obj : .AUTODEPEND $(LIBEXIFDIR)\canon\mnote-canon-entry.c
 	$(CC) -c $(CFLAGS) $[*  
 
-$(LIBEXIFDIR)\mnote-canon-tag.obj : $(LIBEXIFDIR)\canon\mnote-canon-tag.c
+$(LIBEXIFDIR)\mnote-canon-tag.obj : .AUTODEPEND $(LIBEXIFDIR)\canon\mnote-canon-tag.c
 	$(CC) -c $(CFLAGS) $[*  
 
 
-test-mem.exe : $(TESTEXIFDIR)\test-mem.c
+test-mem.exe : .AUTODEPEND $(TESTEXIFDIR)\test-mem.c
 	$(CC) $(CFLAGS) $(LDFRLAGS) $< libexif.lib
 
-test-mnote.exe : $(TESTEXIFDIR)\test-mnote.c
+test-mnote.exe : .AUTODEPEND $(TESTEXIFDIR)\test-mnote.c
 	$(CC) $(CFLAGS) $(LDFRLAGS) $< libexif.lib
 
-test-tree.exe : $(TESTEXIFDIR)\test-tree.c
+test-tree.exe : .AUTODEPEND $(TESTEXIFDIR)\test-tree.c
 	$(CC) $(CFLAGS) $(LDFRLAGS) $< libexif.lib
 
-test-value.exe : $(TESTEXIFDIR)\test-value.c
+test-value.exe : .AUTODEPEND $(TESTEXIFDIR)\test-value.c
 	$(CC) $(CFLAGS) $(LDFRLAGS) $< libexif.lib
 
 

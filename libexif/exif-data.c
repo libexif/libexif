@@ -811,6 +811,7 @@ void
 exif_data_free (ExifData *data)
 {
 	unsigned int i;
+	ExifMem *mem = (data && data->priv) ? data->priv->mem : NULL;
 
 	if (!data) return;
 
@@ -821,20 +822,21 @@ exif_data_free (ExifData *data)
 		}
 	}
 
+	if (data->data) {
+		exif_mem_free (mem, data->data);
+		data->data = NULL;
+	}
+
 	if (data->priv) {
-		ExifMem *mem = data->priv->mem;
-		if (data->data) {
-			exif_mem_free (data->priv->mem, data->data);
-			data->data = NULL;
-		}
 		if (data->priv->md) {
 			exif_mnote_data_unref (data->priv->md);
 			data->priv->md = NULL;
 		}
 		exif_mem_free (mem, data->priv);
 		exif_mem_free (mem, data);
-		exif_mem_unref (mem);
 	}
+
+	exif_mem_unref (mem);
 }
 
 void
