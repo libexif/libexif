@@ -1,8 +1,7 @@
-
-SUBDIRS = m4  libexif libjpeg test po
+SUBDIRS = libexif libjpeg test po
 
 CONFIG_CLEAN_FILES =
-EXTRA_DIST = config.rpath  @PACKAGE@.spec
+EXTRA_DIST = @PACKAGE@.spec
 
 
 ########################################################################
@@ -17,5 +16,3 @@ dist-hook:
 dist-bzip2:
 	-chmod -R a+r $(distdir)
 	-$(TAR) chojf $(distdir).tar.bz2 $(distdir)
-
-ACLOCAL_AMFLAGS = -I m4

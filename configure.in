@@ -29,7 +29,7 @@ dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
 ALL_LINGUAS="de es"
-AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT
 
 dnl ---------------------------------------------------------------------------
 dnl Warnings
@@ -41,7 +41,7 @@ if test "x$GCC" = "xyes"; then
     AC_SUBST(LDFLAGS)
 fi
 
-AC_OUTPUT([ m4/Makefile 
+AC_OUTPUT([
   Makefile
   libexif.spec
   libexif/Makefile
