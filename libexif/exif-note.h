@@ -21,14 +21,21 @@
 #ifndef __EXIF_NOTE_H__
 #define __EXIF_NOTE_H__
 
+#include <libexif/exif-byte-order.h>
+
 typedef struct _ExifNote        ExifNote;
 typedef struct _ExifNotePrivate ExifNotePrivate;
 
 typedef struct _ExifNoteMethods ExifNoteMethods;
 struct _ExifNoteMethods {
 	void    (* free)      (ExifNote *);
+
 	void    (* load_data) (ExifNote *, const unsigned char *, unsigned int);
 	void    (* save_data) (ExifNote *, unsigned char **, unsigned int *);
+
+	void          (* set_order) (ExifNote *, ExifByteOrder);
+	ExifByteOrder (* get_order) (ExifNote *);
+
 	char ** (*get_value)  (ExifNote *);
 };
 
@@ -45,5 +52,10 @@ void exif_note_free  (ExifNote *note);
 
 ExifNote *exif_note_new_from_data (const unsigned char *data,
 				   unsigned int size);
+
+char **exif_note_get_value (ExifNote *note);
+
+void          exif_note_set_byte_order (ExifNote *note, ExifByteOrder order);
+ExifByteOrder exif_note_get_byte_order (ExifNote *note);
 
 #endif /* __EXIF_NOTE_H__ */

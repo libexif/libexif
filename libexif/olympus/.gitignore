@@ -1,0 +1,7 @@
+Makefile
+Makefile.in
+.libs
+.deps
+libexif-olympus.la
+*.o
+*.lo

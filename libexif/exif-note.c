@@ -25,8 +25,12 @@
 #include <string.h>
 
 #include <canon/exif-canon-note.h>
+#include <fuji/exif-fuji-note.h>
+#include <olympus/exif-olympus-note.h>
 
 struct _ExifNotePrivate {
+	ExifByteOrder order;
+
 	unsigned int ref_count;
 };
 
@@ -101,9 +105,9 @@ exif_note_new_from_data (const unsigned char *data, unsigned int size)
 	if ((size > 1) && (data[0] == 0x00) && (data[1] == 0x00))
 		note = exif_canon_note_new ();
 
-	/* Insert your maker here... Patches welcome. */
-	else if (0) {
-		note = NULL;
+	/* Olympus notes begin with "OLYMP" */
+	else if ((size >= 5) && !memcmp (data, "OLYMP", 5)) {
+		note = exif_olympus_note_new ();
 
 	} else {
 		note = NULL;
@@ -113,4 +117,36 @@ exif_note_new_from_data (const unsigned char *data, unsigned int size)
 		exif_note_load_data (note, data, size);
 
 	return (note);
+}
+
+char **
+exif_note_get_value (ExifNote *note)
+{
+	if (!note || !note->methods.get_value)
+		return (NULL);
+
+	return (note->methods.get_value (note));
+}
+
+void
+exif_note_set_byte_order (ExifNote *note, ExifByteOrder order)
+{
+	if (!note || !note->priv)
+		return;
+	
+	note->priv->order = order;
+	
+	if (!note->methods.set_order)
+		return;
+
+	note->methods.set_order (note, order);
+}
+
+ExifByteOrder
+exif_note_get_byte_order (ExifNote *note)
+{
+	if (!note || !note->priv)
+		return;
+
+	return (note->priv->order);
 }

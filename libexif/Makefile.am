@@ -1,4 +1,4 @@
-SUBDIRS = canon
+SUBDIRS = canon fuji olympus
 
 INCLUDES =              \
         -I$(top_srcdir)
@@ -16,8 +16,10 @@ libexif_la_SOURCES =		\
 	exif-note.c		\
 	exif-tag.c		\
 	exif-utils.c
-libexif_la_LIBADD = -lm		\
-	canon/libexif-canon.la
+libexif_la_LIBADD = -lm			\
+	canon/libexif-canon.la		\
+	fuji/libexif-fuji.la		\
+	olympus/libexif-olympus.la
 
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = 	\
