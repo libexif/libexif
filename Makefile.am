@@ -1,4 +1,4 @@
-SUBDIRS = intl po libexif libjpeg test m4
+SUBDIRS = m4 intl po libexif libjpeg test
 
 EXTRA_DIST = @PACKAGE@.spec
 
@@ -12,5 +12,3 @@ EXTRA_DIST = @PACKAGE@.spec
 # It is not sufficient to have these options somewhere in autogen.sh!
 
 ACLOCAL_AMFLAGS = -I m4
-AUTOMAKE_OPTIONS = gnu
-

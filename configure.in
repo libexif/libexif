@@ -34,23 +34,12 @@ AC_NEED_STDINT_H([libexif/_stdint.h])
 dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
-ALL_LINGUAS="de es fr"
-# EVIL HACKS
-AC_MSG_CHECKING([for po/Makevars requiring evil hack])
 GETTEXT_PACKAGE=${PACKAGE}-${LIBEXIF_CURRENT}
-AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["$GETTEXT_PACKAGE"],[The gettext domain we're using])
+GP_GETTEXT_HACK([Lutz Müller and others])
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"],
+                   [The gettext domain we're using])
 AC_SUBST([GETTEXT_PACKAGE])
-if test -f po/Makevars.template; then
-
-sed -f - po/Makevars.template > po/Makevars <<-EOF
-s/^DOMAIN.*/DOMAIN = ${GETTEXT_PACKAGE}/
-s/^COPYRIGHT_HOLDER.*/COPYRIGHT_HOLDER = Lutz Müller and others/
-s/^MSGID_BUGS_ADDRESS.*/MSGID_BUGS_ADDRESS = libexif-devel@lists.sourceforge.net/
-EOF
-	AC_MSG_RESULT([yes. done.])
-else
-	AC_MSG_RESULT([no])
-fi
+ALL_LINGUAS="de es fr"
 AM_GNU_GETTEXT
 
 
@@ -86,5 +75,5 @@ Configuration (libexif):
 
 	Source code location:  ${srcdir}
 	Compiler:              ${CC}
-	USE_NLS:               ${USE_NLS}
+	Use translations:      ${USE_NLS}
 "

@@ -1,1 +1,1 @@
-EXTRA_DIST = stdint.m4
+EXTRA_DIST = stdint.m4 gp-gettext-hack.m4
