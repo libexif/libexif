@@ -678,7 +678,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		    (strlen ((char *) e->data) + 1 < e->size) &&
 		    (strspn (e->data, " ") != strlen ((char *) e->data)))
 			strncat (val, e->data + strlen (e->data) + 1,
-				 maxlen - strlen (val));
+				 MIN (maxlen - strlen (val),
+				      e->size - (strlen (e->data) + 1)));
 		else
 			strncat (val, _("[None]"), maxlen - strlen (val));
 		strncat (val, " ", maxlen - strlen (val));

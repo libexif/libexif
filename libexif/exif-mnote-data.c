@@ -54,14 +54,17 @@ exif_mnote_data_ref (ExifMnoteData *d)
 static void
 exif_mnote_data_free (ExifMnoteData *d)
 {
+	ExifMem *mem = d ? d->mem : NULL;
+
 	if (!d) return;
 	if (d->priv) {
 		if (d->methods.free) d->methods.free (d);
-		exif_mem_free (d->mem, d->priv);
+		exif_mem_free (mem, d->priv);
 		d->priv = NULL;
 	}
-	exif_mem_unref (d->mem);
 	d->mem = NULL;
+	exif_mem_free (mem, d);
+	exif_mem_unref (mem);
 }
 
 void
