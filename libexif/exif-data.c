@@ -369,7 +369,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		offset += 12;
 	}
 
-	if (ifd == data->ifd[EXIF_IFD_1] && data->ifd[EXIF_IFD_1]->count) {
+	if (ifd == data->ifd[EXIF_IFD_0] && data->ifd[EXIF_IFD_1]->count) {
 
 		/*
 		 * We are saving IFD 0. Tell where IFD 1 starts and save
