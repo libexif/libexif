@@ -1,4 +1,4 @@
-SUBDIRS = libexif libjpeg test
+SUBDIRS = libexif libjpeg test po
 
 EXTRA_DIST = config.rpath mkinstalldirs  @PACKAGE@.spec
 
