@@ -1,3 +1,7 @@
+2004-03-03  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-entry.c: C-compilability & fix of the 2004/03/02 code
+
 2004-03-02  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* configure.in: No version on GETTEXT_PACKAGE. Requested by
