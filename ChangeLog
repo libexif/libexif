@@ -1,5 +1,9 @@
 2002-12-02  Lutz Müller <lutz@users.sourceforge.net>
 
+	* configure.in: Reflect removal of exif-note.h in version.
+
+2002-12-02  Lutz Müller <lutz@users.sourceforge.net>
+
 	* libexif/exif-note.[c,h]: Removed. Now in libmnote.
 
 2002-09-16  Lutz Müller <lutz@users.sourceforge.net>
