@@ -1,5 +1,10 @@
 2003-07-30  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-data.c: Patch by Torgeir Hansen <torgeir@trenger.ro>
+	  to prevent endless loops.
+
+2003-07-30  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-entry.c: Don't crash if entries are totally insane.
 
 2003-07-20  Lutz Mueller <lutz@users.sourceforge.net>

@@ -660,7 +660,7 @@ exif_data_new_from_file (const char *path)
 	loader = exif_loader_new ();
 	while (1) {
 		size = fread (data, 1, 1024, f);
-		if (size < 0) break;
+		if (size <= 0) break;
 		if (!exif_loader_write (loader, data, size)) break;
 	}
 	fclose (f);
