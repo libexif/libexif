@@ -21,6 +21,10 @@
 #ifndef __EXIF_CONTENT_H__
 #define __EXIF_CONTENT_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef struct _ExifContent        ExifContent;
 typedef struct _ExifContentPrivate ExifContentPrivate;
 
@@ -63,5 +67,9 @@ void         exif_content_foreach_entry (ExifContent *content,
 	 exif_entry_get_value_brief (exif_content_get_entry (c,t)) : NULL)
 
 void         exif_content_dump  (ExifContent *content, unsigned int indent);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_CONTENT_H__ */

@@ -21,6 +21,10 @@
 #ifndef __EXIF_BYTE_ORDER_H__
 #define __EXIF_BYTE_ORDER_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef enum _ExifByteOrder ExifByteOrder;
 enum _ExifByteOrder {
 	EXIF_BYTE_ORDER_MOTOROLA,
@@ -28,5 +32,9 @@ enum _ExifByteOrder {
 };
 
 const char *exif_byte_order_get_name (ExifByteOrder order);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_BYTE_ORDER_H__ */

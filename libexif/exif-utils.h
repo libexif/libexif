@@ -21,6 +21,10 @@
 #ifndef __EXIF_UTILS_H__
 #define __EXIF_UTILS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 #include <libexif/exif-byte-order.h>
 
 typedef char		ExifByte;          /* 1 byte  */
@@ -49,5 +53,9 @@ void exif_set_rational  (unsigned char *b, ExifByteOrder order,
 			 ExifRational value);
 void exif_set_srational (unsigned char *b, ExifByteOrder order,
 			 ExifSRational value);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_UTILS_H__ */

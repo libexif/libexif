@@ -21,6 +21,10 @@
 #ifndef __EXIF_NOTE_H__
 #define __EXIF_NOTE_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 #include <libexif/exif-byte-order.h>
 
 typedef struct _ExifNote        ExifNote;
@@ -57,5 +61,9 @@ char **exif_note_get_value (ExifNote *note);
 
 void          exif_note_set_byte_order (ExifNote *note, ExifByteOrder order);
 ExifByteOrder exif_note_get_byte_order (ExifNote *note);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_NOTE_H__ */

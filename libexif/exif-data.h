@@ -21,6 +21,10 @@
 #ifndef __EXIF_DATA_H__
 #define __EXIF_DATA_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 #include <libexif/exif-tag.h>
 #include <libexif/exif-byte-order.h>
 
@@ -67,6 +71,8 @@ void          exif_data_foreach_content (ExifData *data,
 
 void      exif_data_dump  (ExifData *data);
 
-
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_DATA_H__ */

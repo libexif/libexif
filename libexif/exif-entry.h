@@ -21,6 +21,10 @@
 #ifndef __EXIF_ENTRY_H__
 #define __EXIF_ENTRY_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef struct _ExifEntry        ExifEntry;
 typedef struct _ExifEntryPrivate ExifEntryPrivate;
 
@@ -54,5 +58,9 @@ const char *exif_entry_get_value       (ExifEntry *entry);
 const char *exif_entry_get_value_brief (ExifEntry *entry);
 
 void        exif_entry_dump      (ExifEntry *entry, unsigned int indent);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_ENTRY_H__ */

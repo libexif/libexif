@@ -21,6 +21,10 @@
 #ifndef __EXIF_FORMAT_H__
 #define __EXIF_FORMAT_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef enum _ExifFormat ExifFormat;
 enum _ExifFormat {
         EXIF_FORMAT_BYTE       =  1,
@@ -35,5 +39,9 @@ enum _ExifFormat {
 
 const char   *exif_format_get_name (ExifFormat format);
 unsigned char exif_format_get_size (ExifFormat format);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_FORMAT_H__ */

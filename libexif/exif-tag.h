@@ -21,6 +21,10 @@
 #ifndef __EXIF_TAG_H__
 #define __EXIF_TAG_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef enum _ExifTag ExifTag;
 enum _ExifTag {
 	EXIF_TAG_INTEROPERABILITY_INDEX		= 0x0001,
@@ -131,5 +135,9 @@ enum _ExifTag {
 const char     *exif_tag_get_name        (ExifTag tag);
 const char     *exif_tag_get_title       (ExifTag tag);
 const char     *exif_tag_get_description (ExifTag tag);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_TAG_H__ */

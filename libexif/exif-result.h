@@ -21,10 +21,18 @@
 #ifndef __EXIF_RESULT_H__
 #define __EXIF_RESULT_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef enum _ExifResult ExifResult;
 enum _ExifResult {
 	EXIF_OK,
 	EXIF_ERROR
 };
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_RESULT_H__ */
