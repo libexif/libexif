@@ -379,6 +379,30 @@ exif_entry_get_value (ExifEntry *e)
 		case 3:
 			strncpy (v, _("Tungsten"), sizeof (v));
 			break;
+		case 4:
+			strncpy (v, _("Flash"), sizeof (v));
+			break;
+		case 9:
+			strncpy (v, _("Fine weather"), sizeof (v));
+			break;
+		case 10:
+			strncpy (v, _("Cloudy weather"), sizeof (v));
+			break;
+		case 11:
+			strncpy (v, _("Shade"), sizeof (v));
+			break;
+		case 12:
+			strncpy (v, _("Daylight fluorescent"), sizeof (v));
+			break;
+		case 13:
+			strncpy (v, _("Day white fluorescent"), sizeof (v));
+			break;
+		case 14:
+			strncpy (v, _("Cool white fluorescent"), sizeof (v));
+			break;
+		case 15:
+			strncpy (v, _("White fluorescent"), sizeof (v));
+			break;
 		case 17:
 			strncpy (v, _("Standard light A"), sizeof (v));
 			break;
@@ -396,6 +420,9 @@ exif_entry_get_value (ExifEntry *e)
 			break;
 		case 22:
 			strncpy (v, _("D75"), sizeof (v));
+			break;
+		case 24:
+			strncpy (v, _("ISO studio tungsten"), sizeof (v));
 			break;
 		case 255:
 			strncpy (v, _("Other"), sizeof (v));
@@ -578,6 +605,57 @@ exif_entry_get_value (ExifEntry *e)
 		case 0x0007:
 			strncpy (v, _("Strobe return light detected."), sizeof (v));
 			break;
+		case 0x000d:
+			strncpy (v, _("Flash fired, compulsory flash mode, return light not detected."), sizeof (v));
+			break;
+		case 0x000f:
+			strncpy (v, _("Flash fired, compulsory flash mode, return light detected."), sizeof (v));
+			break;
+		case 0x0010:
+			strncpy (v, _("Flash did not fire, compulsory flash mode."), sizeof (v));
+			break;
+		case 0x0018:
+			strncpy (v, _("Flash did not fire, auto mode."), sizeof (v));
+			break;
+		case 0x0019:
+			strncpy (v, _("Flash fired, auto mode."), sizeof (v));
+			break;
+		case 0x001d:
+			strncpy (v, _("Flash fired, auto mode, return light not detected."), sizeof (v));
+			break;
+		case 0x001f:
+			strncpy (v, _("Flash fired, auto mode, return light detected."), sizeof (v));
+			break;
+		case 0x0020:
+			strncpy (v, _("No flash function."), sizeof (v));
+			break;
+		case 0x0041:
+			strncpy (v, _("Flash fired, red-eye reduction mode."), sizeof (v));
+			break;
+		case 0x0045:
+			strncpy (v, _("Flash fired, red-eye reduction mode, return light not detected."), sizeof (v));
+			break;
+		case 0x0047:
+			strncpy (v, _("Flash fired, red-eye reduction mode, return light detected."), sizeof (v));
+			break;
+		case 0x0049:
+			strncpy (v, _("Flash fired, compulsory flash mode, red-eye reduction mode."), sizeof (v));
+			break;
+		case 0x004d:
+			strncpy (v, _("Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected."), sizeof (v));
+			break;
+		case 0x004f:
+			strncpy (v, _("Flash fired, compulsory flash mode, red-eye reduction mode, return light detected."), sizeof (v));
+			break;
+		case 0x0059:
+			strncpy (v, _("Flash fired, auto mode, red-eye reduction mode."), sizeof (v));
+			break;
+		case 0x005d:
+			strncpy (v, _("Flash fired, auto mode, return light not detected, red-eye reduction mode."), sizeof (v));
+			break;
+		case 0x005f:
+			strncpy (v, _("Flash fired, auto mode, return light detected, red-eye reduction mode."), sizeof (v));
+			break;
 		default:
 			snprintf (v, sizeof (v), "%i", v_short);
 			break;
@@ -587,6 +665,165 @@ exif_entry_get_value (ExifEntry *e)
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
 		snprintf (v, sizeof (v), _("%i bytes unknown data"),
 			  (int) e->components);
+		break;
+	case EXIF_TAG_CUSTOM_RENDERED:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Normal process"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Custom process"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_EXPOSURE_MODE:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Auto exposure"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Manual exposure"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("Auto bracket"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_WHITE_BALANCE:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Auto white balance"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Manual white balance"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_SCENE_CAPTURE_TYPE:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Standard"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Landscape"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("Portrait"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("Night scene"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_GAIN_CONTROL:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Normal"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Low gain up"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("High gain up"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("Low gain down"), sizeof (v));
+			break;
+		case 4:
+			strncpy (v, _("High gain down"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_SATURATION:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Normal"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Low saturation"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("High saturation"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_CONTRAST:
+	case EXIF_TAG_SHARPNESS:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Normal"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Soft"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("Hard"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		CC (e->components, 1, v);
+		v_short = exif_get_short (e->data, o);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Unknown"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Macro"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("Close view"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("Distant view"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
 		break;
 	default:
 		switch (e->format) {
@@ -711,6 +948,11 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_SENSING_METHOD:
 	case EXIF_TAG_PHOTOMETRIC_INTERPRETATION:
 	case EXIF_TAG_COMPRESSION:
+	case EXIF_TAG_EXPOSURE_MODE:
+	case EXIF_TAG_WHITE_BALANCE:
+	case EXIF_TAG_FOCAL_LENGTH_IN_35MM_FILM:
+	case EXIF_TAG_GAIN_CONTROL:
+	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
 
 	/* SHORT, 1 component, default 0 */
 	case EXIF_TAG_IMAGE_WIDTH:
@@ -718,6 +960,11 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_EXPOSURE_PROGRAM:
 	case EXIF_TAG_LIGHT_SOURCE:
 	case EXIF_TAG_METERING_MODE:
+	case EXIF_TAG_CUSTOM_RENDERED:
+	case EXIF_TAG_SCENE_CAPTURE_TYPE:
+	case EXIF_TAG_CONTRAST:
+	case EXIF_TAG_SATURATION:
+	case EXIF_TAG_SHARPNESS:
 		e->components = 1;
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
@@ -803,6 +1050,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_APERTURE_VALUE:
 	case EXIF_TAG_COMPRESSED_BITS_PER_PIXEL:
 	case EXIF_TAG_PRIMARY_CHROMATICITIES:
+	case EXIF_TAG_DIGITAL_ZOOM_RATIO:
 		e->components = 1;
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;

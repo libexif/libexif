@@ -507,6 +507,68 @@ static struct {
 	 N_("Indicates the type of scene. If a DSC recorded the image, "
 	    "this tag value must always be set to 1, indicating that the "
 	    "image was directly photographed.")},
+	{EXIF_TAG_NEW_CFA_PATTERN, "CFAPattern",
+	 N_("CFA Pattern"),
+	 N_("Indicates the color filter array (CFA) geometric pattern of the "
+	    "image sensor when a one-chip color area sensor is used. "
+	    "It does not apply to all sensing methods.")},
+	{EXIF_TAG_SUBJECT_AREA, "SubjectArea", N_("Subject Area"),
+	 N_("This tag indicates the location and area of the main subject "
+	    "in the overall scene.")},
+	{EXIF_TAG_CUSTOM_RENDERED, "CustomRendered", N_("Custom Rendered"),
+	 N_("This tag indicates the use of special processing on image "
+	    "data, such as rendering geared to output. When special "
+	    "processing is performed, the reader is expected to disable "
+	    "or minimize any further processing.")},
+	{EXIF_TAG_EXPOSURE_MODE, "ExposureMode", N_("Exposure Mode"),
+	 N_("This tag indicates the exposure mode set when the image was "
+	    "shot. In auto-bracketing mode, the camera shoots a series of "
+	    "frames of the same scene at different exposure settings.")},
+	{EXIF_TAG_WHITE_BALANCE, "WhiteBalance", N_("White Balance"),
+	 N_("This tag indicates the white balance mode set when the image "
+	    "was shot.")},
+	{EXIF_TAG_DIGITAL_ZOOM_RATIO, "DigitalZoomRatio",
+	 N_("Digital Zoom Ratio"),
+	 N_("This tag indicates the digital zoom ratio when the image was "
+	    "shot. If the numerator of the recorded value is 0, this "
+	    "indicates that digital zoom was not used.")},
+	{EXIF_TAG_FOCAL_LENGTH_IN_35MM_FILM, "FocalLengthIn35mmFilm",
+	 N_("Focal Length In 35mm Film"),
+	 N_("This tag indicates the equivalent focal length assuming a "
+	    "35mm film camera, in mm. A value of 0 means the focal "
+	    "length is unknown. Note that this tag differs from the "
+	    "FocalLength tag.")},
+	{EXIF_TAG_SCENE_CAPTURE_TYPE, "SceneCaptureType",
+	 N_("Scene Capture Type"),
+	 N_("This tag indicates the type of scene that was shot. It can "
+	    "also be used to record the mode in which the image was "
+	    "shot. Note that this differs from the scene type "
+	    "(SceneType) tag.")},
+	{EXIF_TAG_GAIN_CONTROL, "GainControl", N_("Gain Control"),
+	 N_("This tag indicates the degree of overall image gain "
+	    "adjustment.")},
+	{EXIF_TAG_CONTRAST, "Contrast", N_("Contrast"),
+	 N_("This tag indicates the direction of contrast processing "
+	    "applied by the camera when the image was shot.")},
+	{EXIF_TAG_SATURATION, "Saturation", N_("Saturation"),
+	 N_("This tag indicates the direction of saturation processing "
+	    "applied by the camera when the image was shot.")},
+	{EXIF_TAG_SHARPNESS, "Sharpness", N_("Sharpness"),
+	 N_("This tag indicates the direction of sharpness processing "
+	    "applied by the camera when the image was shot.")},
+	{EXIF_TAG_DEVICE_SETTING_DESCRIPTION, "DeviceSettingDescription",
+	 N_("Device Setting Description"),
+	 N_("This tag indicates information on the picture-taking "
+	    "conditions of a particular camera model. The tag is used "
+	    "only to indicate the picture-taking conditions in the "
+	    "reader.")},
+	{EXIF_TAG_SUBJECT_DISTANCE_RANGE, "SubjectDistanceRange",
+	 N_("Subject Distance Range"),
+	 N_("This tag indicates the distance to the subject.")},
+	{EXIF_TAG_IMAGE_UNIQUE_ID, "ImageUniqueID", N_("Image Unique ID"),
+	 N_("This tag indicates an identifier assigned uniquely to "
+	    "each image. It is recorded as an ASCII string equivalent "
+	    "to hexadecimal notation and 128-bit fixed length.")},
 	{0, NULL, NULL, NULL}
 };
 

@@ -1,3 +1,10 @@
+2002-02-28  Lutz Müller <lutz@users.sourceforge.net>
+
+	Patch by Javier Achirica <achirica@ttd.net>:
+
+	* libexif/exif-tag.[c,h]:
+	* libexif/exif-entry.c: Support EXIF-2.2 tags.
+
 2002-02-25  Lutz MÜller <lutz@users.sourceforge.net>
 
 	Patch by Basil Dias <basil.dias@wipro.com>:
