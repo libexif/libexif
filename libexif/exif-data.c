@@ -186,11 +186,16 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 	ExifTag tag;
 
 	/* Read the number of entries */
+	if (offset >= ds - 1) return;
 	n = exif_get_short (d + offset, data->priv->order);
 #ifdef DEBUG
 	printf ("Loading %i entries...\n", n);
 #endif
 	offset += 2;
+
+	/* Check if we have enough data. */
+	if (offset + 12 * n > ds) n = (ds - offset) / 12;
+
 	for (i = 0; i < n; i++) {
 
 		tag = exif_get_short (d + offset + 12 * i, data->priv->order);
