@@ -46,8 +46,8 @@ config.sub
 config.rpath
 configure
 install-sh
-libexif.pc
-libexif.spec
+*.pc
+*.spec
 libtool
 ltmain.sh
 missing
@@ -58,3 +58,5 @@ stamp-h.in
 conftest
 conftest.c
 ABOUT-NLS
+ChangeLog.cvs
+cvs2cl.usermap
