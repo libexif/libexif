@@ -397,8 +397,8 @@ static struct {
 	{EXIF_TAG_FLASH_PIX_VERSION, "FlashPixVersion", "FlashPixVersion",
 	 N_("The FlashPix format version supported by a FPXR file.")},
 	{EXIF_TAG_COLOR_SPACE, "ColorSpace", N_("Color Space"),
-	 N_("The color space information tag (<ColorSpace>) is always "
-	    "recorede as the color space specifier. Normally sRGB (=1) "
+	 N_("The color space information tag is always "
+	    "recorded as the color space specifier. Normally sRGB (=1) "
 	    "is used to define the color space based on the PC monitor "
 	    "conditions and environment. If a color space other than "
 	    "sRGB is used, Uncalibrated (=FFFF.H) is set. Image data "
