@@ -139,7 +139,8 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		if (s > 4) {
 			doff = *buf_size;
 			*buf_size += s;
-			*buf = realloc (*buf, *buf_size);
+			*buf = exif_mem_realloc (ne->mem, *buf,
+						 sizeof (char) * *buf_size);
 			if (!*buf) return;
 			exif_set_long (*buf + o, n->order, datao + doff);
 		} else

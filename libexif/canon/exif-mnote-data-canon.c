@@ -178,7 +178,8 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 						n->entries[i].components;
 		if (s > 4) {
 			*buf_size += s;
-			*buf = realloc (*buf, sizeof (char) * *buf_size);
+			*buf = exif_mem_realloc (ne->mem, *buf,
+						 sizeof (char) * *buf_size);
 			if (!*buf) return;
 			doff = *buf_size - s;
 			exif_set_long (*buf + o, n->order, n->offset + doff);
@@ -211,7 +212,8 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 	    if (o + 8 > buf_size) return;
 
 	    n->count = i + 1;
-	    n->entries = realloc (n->entries, sizeof (MnoteCanonEntry) * (i+1));
+	    n->entries = exif_mem_realloc (ne->mem, n->entries,
+					   sizeof (MnoteCanonEntry) * (i+1));
 	    memset (&n->entries[i], 0, sizeof (MnoteCanonEntry));
 	    n->entries[i].tag        = exif_get_short (buf + o, n->order);
 	    n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
