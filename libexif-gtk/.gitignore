@@ -1,7 +1,0 @@
-Makefile
-Makefile.in
-.libs
-.deps
-libexif-gtk.la
-*.o
-*.lo
