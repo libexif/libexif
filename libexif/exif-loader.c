@@ -75,7 +75,7 @@ exif_loader_write_file (ExifLoader *l, const char *path)
 unsigned char
 exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 {
-	int i, len_remain;
+	unsigned int i, len_remain;
 
 	if (!eld || !buf || !len) return 0;
 	if (eld->state == EL_FAILED) return 0;
@@ -156,7 +156,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 	len_remain = len - i;
 	if (!len_remain) return 1;
 
-	if (eld->state == EL_EXIF_FOUND && len_remain > 0) {
+	if (eld->state == EL_EXIF_FOUND) {
 		if (eld->buf == NULL) {
 			eld->buf = exif_loader_alloc (eld, eld->size);
 			if (!eld->buf) return 0;

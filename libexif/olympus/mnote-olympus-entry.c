@@ -526,7 +526,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		default:
 			snprintf (v, maxlen, _("%li bytes unknown data: "),
 				  entry->size);
-			for (i = 0; i < entry->size; i++) {
+			for (i = 0; i < (int)entry->size; i++) {
 				sprintf (buf, "%02x", entry->data[i]);
 				strncat (v, buf, maxlen - strlen (v));
 			}

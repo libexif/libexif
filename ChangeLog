@@ -1,3 +1,9 @@
+2004-09-15  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-loader.c: int -> unsigned int.
+	* libexif/olympus/mnote-olympus-entry.c: typecast.
+	  Both changes made to avoid compiler warnings.
+
 2004-09-12  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Patch by marcusmeissner@users.sourceforge.net: Some format string
