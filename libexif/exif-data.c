@@ -677,7 +677,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			/* Pentax & some variant of Nikon */
 			if ((e->size >= 2) && (e->data[0] == 0x00)
 				    && (e->data[1] == 0x1b)) {
-				if (em && !strnicmp (exif_entry_get_value (em, value, sizeof(value)), "Nikon", 5)) {
+				if (em && !strncmp (exif_entry_get_value (em, value, sizeof(value)), "Nikon", 5)) {
 					data->priv->md = exif_mnote_data_olympus_new ();
 				} else {
 					data->priv->md = exif_mnote_data_pentax_new ();
