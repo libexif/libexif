@@ -1,3 +1,8 @@
+2004-09-02  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c: First part of a patch to be less strict on
+	  the USER_COMMENT-tag. Submitted by Angela Wrobel, slightly adapted.
+
 2004-09-01  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-tag.c: First ideas on how to support generation of

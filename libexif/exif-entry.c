@@ -336,12 +336,41 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_USER_COMMENT:
 
 		/*
+		 * The specification says UNDEFINED, but some
+		 * manufacturers don't care and use ASCII.
+		 */
+		if (e->format == EXIF_FORMAT_ASCII) {
+			if ((e->size <= 8) || (
+			     memcmp (e->data, "ASCII\0\0\0", 8) &&
+			     memcmp (e->data, "UNICODE\0", 8) &&
+			     memcmp (e->data, "JIS\0\0\0\0\0", 8) &&
+			     memcmp (e->data, "\0\0\0\0\0\0\0\0", 8))) {
+				snprintf (val, maxlen, _("%s (illegal "
+					"format ASCII, expected UNDEFINED)"),
+					e->data);
+				break;
+			}
+		} else CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
+
+		/*
 		 * According to Ralf Holzer <rholzer@cmu.edu>,
 		 * the user comment field does not have to be 
 		 * NULL terminated.
 		 */
 		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		if (e->size < 8) break;
+		if (!memcmp (e->data, "ASCII\0\0\0", 8)) {
+			strncpy (val, e->data + 8, MIN (e->size - 8, maxlen));
+			break;
+		}
+		if (!memcmp (e->data, "UNICODE\0", 8)) {
+			strncpy (val, _("Unsupported UNICODE string"), maxlen);
+			break;
+		}
+		if (!memcmp (e->data, "JIS\0\0\0\0\0", 8)) {
+			strncpy (val, _("Unsupported JIS string"), maxlen);
+			break;
+		}
 		strncpy (val, e->data + 8, MIN (e->size - 8, maxlen));
 		break;
 
