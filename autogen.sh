@@ -17,7 +17,7 @@ fi
 
 debug=false
 self="$(basename "$0")"
-autogen_version="0.3.0"
+autogen_version="0.3.2"
 
 
 ########################################################################
@@ -266,6 +266,7 @@ fi
 
 commands="init" # default command in case none is given
 pcommands=""
+check_versions=false
 dirs="$(dirname "$0")"
 #dirs="$(cd "$dirs" && pwd)"
 pdirs=""
@@ -277,6 +278,7 @@ for param in $@; do
 	    ;;
 	--init)
 	    pcommands="$pcommands init"
+	    check_versions=:
 	    ;;
 	--verbose)
 	    debug="true"
@@ -301,10 +303,39 @@ done
 if test "x$pcommands" != "x"; then
     # commands given on command line? use them!
     commands="$pcommands"
+else
+    check_versions=:
 fi
 if test "x$pdirs" != "x"; then
     # dirs given on command line? use them!
     dirs="$pdirs"
+fi
+
+if "$check_versions"; then
+	# check tool versions
+	errors=false
+	lf="
+"
+	while read tool minversion; do
+		version="$("$tool" --version | sed 's/^.*(.*) *\(.*\)$/\1/g;1q')"
+		first="$(echo "$version$lf$minversion" | sort -n | sed '1q')"
+		if test "x$minversion" != "x$first" && test "x$version" = "x$first"; then
+			echo "Version \`$version' of \`$tool' not sufficient. At least \`$minversion' required."
+			errors=:
+		fi
+	done <<EOF
+${ACLOCAL-"aclocal"}	1.8
+${AUTOMAKE-"automake"}	1.8
+${AUTOCONF-"autoconf"}	2.59
+${AUTOHEADER-"autoheader"}	2.59
+${AUTOPOINT-"autopoint"}	0.14.1
+${LIBTOOLIZE-"libtoolize"}	1.4
+EOF
+	if "$errors"; then
+		echo "Please update your toolset."
+		echo "If you want to continue regardless of your old toolset, press ENTER."
+		read
+	fi
 fi
 
 
