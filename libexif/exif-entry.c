@@ -397,6 +397,7 @@ static struct {
       {  0, {NULL}}}},
   { EXIF_TAG_COMPRESSION,
     { {1, {N_("Uncompressed"), NULL}},
+      {5, {N_("LZW compression"), NULL}},
       {6, {N_("JPEG compression"), NULL}},
       {0, {NULL}}}},
   { EXIF_TAG_LIGHT_SOURCE,
