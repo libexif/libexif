@@ -148,6 +148,18 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 	}
 }
 
+/* XXX
+ * FIXME: exif_mnote_data_canon_load() may fail and there is no
+ *        semantics to express that.
+ *        See bug #1054323 for details, especially the comment by liblit
+ *        after it has supposedly been fixed:
+ *
+ *        https://sourceforge.net/tracker/?func=detail&aid=1054323&group_id=12272&atid=112272
+ *        Unfortunately, the "return" statements aren't commented at
+ *        all, so it isn't trivial to find out what is a normal
+ *        return, and what is a reaction to an error condition.
+ */
+
 static void
 exif_mnote_data_canon_load (ExifMnoteData *ne,
 	const unsigned char *buf, unsigned int buf_size)
