@@ -1,3 +1,9 @@
+2002-02-17  Lutz Müller <lutz@users.sourceforge.net>
+
+	Patch from Fredrik <fredrik@krixor.xy.org>:
+
+	* libexif/exif-data.c: Better checks for size.
+
 2002-02-13  Lutz Müller <lutz@users.sourceforge.net>
 
 	* libexif/configure.in: Introduce proper versionning.

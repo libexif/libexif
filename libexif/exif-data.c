@@ -392,8 +392,8 @@ exif_data_load_data (ExifData *data, const unsigned char *d, unsigned int size)
 	if (size < 6) {
 #ifdef DEBUG
 		printf ("Size too small.\n");
-		return;
 #endif
+		return;
 	}
 	if (!memcmp (d, ExifHeader, 6)) {
 #ifdef DEBUG
@@ -460,14 +460,14 @@ exif_data_load_data (ExifData *data, const unsigned char *d, unsigned int size)
 	if (size < 6) {
 #ifdef DEBUG
 		printf ("Size too small.\n");
-		return;
 #endif
+		return;
 	}
 	if (memcmp (d, ExifHeader, 6)) {
 #ifdef DEBUG
 		printf ("EXIF header not found.\n");
-		return;
 #endif
+		return;
 	}
 
 #ifdef DEBUG
