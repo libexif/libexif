@@ -3,7 +3,12 @@ dnl
 dnl If you want to set the PKG_CONFIG_PATH, best do so before
 dnl calling GP_PKG_CONFIG
 AC_DEFUN([GP_PKG_CONFIG],[
-AC_ARG_VAR([PKG_CONFIG_PATH],[where pkg-config looks for *.pc files])
+#
+# [GP_PKG_CONFIG]
+#
+AC_ARG_VAR([PKG_CONFIG],[pkg-config package config utility])
+export PKG_CONFIG
+AC_ARG_VAR([PKG_CONFIG_PATH],[directory where pkg-config looks for *.pc files])
 export PKG_CONFIG_PATH
 
 AC_MSG_CHECKING([PKG_CONFIG_PATH])
@@ -13,7 +18,18 @@ else
 	AC_MSG_RESULT([${PKG_CONFIG_PATH}])
 fi
 
-AC_PATH_PROG([PKG_CONFIG],[pkg-config])
+dnl AC_REQUIRE([PKG_CHECK_MODULES])
+AC_PATH_PROG([PKG_CONFIG],[pkg-config],[false])
+if test "$PKG_CONFIG" = "false"; then
+AC_MSG_ERROR([
+*** Build requires pkg-config
+***
+*** Possible solutions:
+***   - set PKG_CONFIG to where your pkg-config is located
+***   - set PATH to include the directory where pkg-config is installed
+***   - get it from http://freedesktop.org/software/pkgconfig/ and install it
+])
+fi
 ])dnl
 
 dnl Please do not remove this:
