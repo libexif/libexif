@@ -137,10 +137,49 @@ exif_entry_dump (ExifEntry *e, unsigned int indent)
 	}								\
 }
 
+static struct {
+	ExifTag tag;
+	const char *strings[10];
+} list[] = {
+  { EXIF_TAG_PLANAR_CONFIGURATION,
+    {N_("chunky format"), N_("planar format"), NULL}},
+  { EXIF_TAG_SENSING_METHOD,
+    { "", N_("Not defined"), N_("One-chip color area sensor"),
+      N_("Two-chip color area sensor"), N_("Three-chip color area sensor"),
+      N_("Color sequential area sensor"), "", N_("Trilinear sensor"),
+      N_("Color sequential linear sensor"), NULL}},
+  { EXIF_TAG_ORIENTATION,
+    { "", N_("top - left"), N_("top - right"), N_("bottom - right"),
+      N_("bottom - left"), N_("left - top"), N_("right - top"),
+      N_("right - bottom"), N_("left - bottom"), NULL}},
+  { EXIF_TAG_YCBCR_POSITIONING,
+    { "", N_("centered"), N_("co-sited"), NULL}},
+  { EXIF_TAG_PHOTOMETRIC_INTERPRETATION, {"", N_("RGB"), N_("YCbCr"), NULL}},
+  { EXIF_TAG_COLOR_SPACE,
+    { "", N_("sRGB"), N_("Uncalibrated"), NULL}},
+  { EXIF_TAG_CUSTOM_RENDERED,
+    { "", N_("Normal process"), N_("Custom process"), NULL}},
+  { EXIF_TAG_EXPOSURE_MODE,
+    { N_("Auto exposure"), N_("Manual exposure"), N_("Auto bracket"), NULL}},
+  { EXIF_TAG_WHITE_BALANCE,
+    { N_("Auto white balance"), N_("Manual white balance"), NULL}},
+  { EXIF_TAG_SCENE_CAPTURE_TYPE,
+    { N_("Stanard"), N_("Landscape"), N_("Portrait"),
+      N_("Night scene"), NULL}},
+  { EXIF_TAG_GAIN_CONTROL,
+    { N_("Normal"), N_("Low gain up"), N_("High gain up"),
+      N_("Low gain down"), N_("High gain down"), NULL}},
+  { EXIF_TAG_SATURATION,
+    { N_("Normal"), N_("Low saturation"), N_("High saturation"), NULL}},
+  { EXIF_TAG_CONTRAST , {N_("Normal"), N_("Soft"), N_("Hard"), NULL}},
+  { EXIF_TAG_SHARPNESS, {N_("Normal"), N_("Soft"), N_("Hard"), NULL}},
+  { 0, {NULL}}
+};
+
 const char *
 exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 {
-	unsigned int i;
+	unsigned int i, j;
 	ExifByte v_byte;
 	ExifShort v_short, v_short2, v_short3, v_short4;
 	ExifLong v_long;
@@ -381,16 +420,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		default: snprintf (val, maxlen, "0x%02x", e->data[0]); break;
 		}
 		break;
-	case EXIF_TAG_PLANAR_CONFIGURATION:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 1: strncpy (val, _("chunky format"), maxlen); break;
-		case 2: strncpy (val, _("planar format"), maxlen); break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
-		}
-		break;
 	case EXIF_TAG_COMPONENTS_CONFIGURATION:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (e->components, 4, val, maxlen);
@@ -407,31 +436,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			}
 			strncat (val, c, maxlen - strlen (val));
 			if (i < 3) strncat (val, " ", maxlen - strlen (val));
-		}
-		break;
-	case EXIF_TAG_SENSING_METHOD:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 1: strncpy (val, _("Not defined"), maxlen); break;
-		case 2:
-			strncpy (val, _("One-chip color area sensor"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("Two-chip color area sensor"), maxlen);
-			break;
-		case 4:
-			strncpy (val, _("Three-chip color area sensor"), maxlen);
-			break;
-		case 5:
-			strncpy (val, _("Color sequential area sensor"), maxlen);
-			break;
-		case 7: strncpy (val, _("Trilinear sensor"), maxlen); break;
-		case 8:
-			strncpy (val, _("Color sequential linear sensor"), maxlen);
-			break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_LIGHT_SOURCE:
@@ -547,56 +551,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			  (double) v_srat.numerator /
 			  (double) v_srat.denominator);
 		break;
-	case EXIF_TAG_ORIENTATION:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 1:
-			strncpy (val, _("top - left"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("top - right"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("bottom - right"), maxlen);
-			break;
-		case 4:
-			strncpy (val, _("bottom - left"), maxlen);
-			break;
-		case 5:
-			strncpy (val, _("left - top"), maxlen);
-			break;
-		case 6:
-			strncpy (val, _("right - top"), maxlen);
-			break;
-		case 7:
-			strncpy (val, _("right - bottom"), maxlen);
-			break;
-		case 8:
-			strncpy (val, _("left - bottom"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
-		}
-		break;
-	case EXIF_TAG_YCBCR_POSITIONING:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 1:
-			strncpy (val, _("centered"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("co-sited"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
-		}
-		break;
 	case EXIF_TAG_YCBCR_SUB_SAMPLING:
 		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
 		CC (e->components, 2, val, maxlen);
@@ -610,38 +564,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			strncpy (val, _("YCbCr4:2:0"), maxlen);
 		else
 			snprintf (val, maxlen, "%i, %i", v_short, v_short2);
-		break;
-	case EXIF_TAG_PHOTOMETRIC_INTERPRETATION:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short  = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 2:
-			strncpy (val, _("RGB"), maxlen);
-			break;
-		case 6:
-			strncpy (val, _("YCbCr"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
-		}
-		break;
-	case EXIF_TAG_COLOR_SPACE:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 1:
-			strncpy (val, _("sRGB"), maxlen);
-			break;
-		case 0xffff:
-			strncpy (val, _("Uncalibrated"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
-		}
 		break;
 	case EXIF_TAG_FLASH:
 		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
@@ -743,115 +665,16 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		snprintf (val, maxlen, _("%i bytes unknown data"),
 			  (int) e->components);
 		break;
-	case EXIF_TAG_CUSTOM_RENDERED:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0:
-			strncpy (val, _("Normal process"), maxlen - 1);
-			break;
-		case 1:
-			strncpy (val, _("Custom process"), maxlen - 1);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
-		}
-		break;
-	case EXIF_TAG_EXPOSURE_MODE:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0:
-			strncpy (val, _("Auto exposure"), maxlen - 1);
-			break;
-		case 1:
-			strncpy (val, _("Manual exposure"), maxlen - 1);
-			break;
-		case 2:
-			strncpy (val, _("Auto bracket"), maxlen - 1);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
-		}
-		break;
-	case EXIF_TAG_WHITE_BALANCE:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0:
-			strncpy (val, _("Auto white balance"), maxlen - 1);
-			break;
-		case 1:
-			strncpy (val, _("Manual white balance"), maxlen - 1);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", v_short);
-			break;
-		}
-		break;
-	case EXIF_TAG_SCENE_CAPTURE_TYPE:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0: strncpy (val, _("Standard"   ), maxlen - 1); break;
-		case 1: strncpy (val, _("Landscape"  ), maxlen - 1); break;
-		case 2: strncpy (val, _("Portrait"   ), maxlen - 1); break;
-		case 3: strncpy (val, _("Night scene"), maxlen - 1); break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
-		}
-		break;
-	case EXIF_TAG_GAIN_CONTROL:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0: strncpy (val, _("Normal"        ), maxlen - 1); break;
-		case 1: strncpy (val, _("Low gain up"   ), maxlen - 1); break;
-		case 2: strncpy (val, _("High gain up"  ), maxlen - 1); break;
-		case 3: strncpy (val, _("Low gain down" ), maxlen - 1); break;
-		case 4: strncpy (val, _("High gain down"), maxlen - 1); break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
-		}
-		break;
-	case EXIF_TAG_SATURATION:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0: strncpy (val, _("Normal"         ), maxlen - 1); break;
-		case 1: strncpy (val, _("Low saturation" ), maxlen - 1); break;
-		case 2: strncpy (val, _("High saturation"), maxlen - 1); break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
-		}
-		break;
-	case EXIF_TAG_CONTRAST:
-	case EXIF_TAG_SHARPNESS:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0: strncpy (val, _("Normal"), maxlen - 1); break;
-		case 1: strncpy (val, _("Soft"  ), maxlen - 1); break;
-		case 2: strncpy (val, _("Hard"  ), maxlen - 1); break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
-		}
-		break;
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
 		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
 		CC (e->components, 1, val, maxlen);
+		char* entries[] = {"Unknown", "Macro", "Close view", "Distant view"};
 		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0: strncpy (val, _("Unknown"     ), maxlen - 1); break;
-		case 1: strncpy (val, _("Macro"       ), maxlen - 1); break;
-		case 2: strncpy (val, _("Close view"  ), maxlen - 1); break;
-		case 3: strncpy (val, _("Distant view"), maxlen - 1); break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
+		if (v_short < 4) {
+		  strncpy (val, _(entries[v_short]), maxlen -1);
+		}
+		else {
+		  snprintf (val, maxlen, "%i", v_short);
 		}
 		break;
 	case EXIF_TAG_SUBJECT_AREA:
@@ -886,6 +709,34 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 				"of components (%li, expected 2, 3, or 4)."),
 				e->components);
 		}
+	case EXIF_TAG_PLANAR_CONFIGURATION:
+	case EXIF_TAG_SENSING_METHOD:
+	case EXIF_TAG_ORIENTATION:
+	case EXIF_TAG_YCBCR_POSITIONING:
+	case EXIF_TAG_PHOTOMETRIC_INTERPRETATION:
+	case EXIF_TAG_COLOR_SPACE:
+	case EXIF_TAG_CUSTOM_RENDERED:
+	case EXIF_TAG_EXPOSURE_MODE:
+	case EXIF_TAG_WHITE_BALANCE:
+	case EXIF_TAG_SCENE_CAPTURE_TYPE:
+	case EXIF_TAG_GAIN_CONTROL:
+	case EXIF_TAG_SATURATION:
+	case EXIF_TAG_CONTRAST:
+	case EXIF_TAG_SHARPNESS:
+		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (e->components, 1, val, maxlen);
+		v_short = exif_get_short (e->data, o);
+		for (i = 0; list[i].tag && (list[i].tag != e->tag); i++);
+		if (!list[i].tag) {
+			strncpy (val, "Internal error.", maxlen - 1);
+			break;
+		}
+		for (j = 0; list[i].strings[j] && (j <= v_short); j++);
+		if (!list[i].strings[j])
+			snprintf (val, maxlen, "%i", v_short);
+		else
+			strncpy (val, _(list[i].strings[j]), maxlen - 1);
+		break; 	
 	default:
 		if (!e->components) break;
 		switch (e->format) {

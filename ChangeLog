@@ -1,3 +1,13 @@
+2004-03-02  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* configure.in: No version on GETTEXT_PACKAGE. Requested by
+	  gernot@bigpond.com.
+	* libexif/exif-entry.c: Some formatting.
+
+2004-03-02  Joerg Hoh<joerg@devone.org>
+
+	* libexif/exif-entry.c: moved redundant code into a static structure
+
 2004-03-01  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/pentax/exif-mnote-data-pentax.c: Fixed flipped inequation
