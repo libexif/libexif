@@ -1,3 +1,8 @@
+2003-10-27  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif: The code now compiles and loads the canon maker note,
+	  but crashes if you query its contents.
+
 2003-10-26  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* test/test-mnote.c: New.

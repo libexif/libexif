@@ -33,23 +33,30 @@
 #define DEBUG
 
 static void
-exif_mnote_data_canon_free (ExifMnoteData *n)
+exif_mnote_data_canon_clear (ExifMnoteDataCanon *n)
 {
-        ExifMnoteDataCanon *note = (ExifMnoteDataCanon *) n;
-        unsigned int i;
+	unsigned int i;
 
 	if (!n) return;
 
-        if (note->entries) {
-                for (i = 0; i < note->count; i++)
-			if (note->entries[i].data) {
-				free (note->entries[i].data);
-				note->entries[i].data = NULL;
+	if (n->entries) {
+		for (i = 0; i < n->count; i++)
+			if (n->entries[i].data) {
+				free (n->entries[i].data);
+				n->entries[i].data = NULL;
 			}
-                free (note->entries);
-                note->entries = NULL;
-                note->count = 0;
-        }
+		free (n->entries);
+		n->entries = NULL;
+		n->count = 0;
+	}
+}
+
+static void
+exif_mnote_data_canon_free (ExifMnoteData *n)
+{
+	if (!n) return;
+
+	exif_mnote_data_canon_clear ((ExifMnoteDataCanon *) n);
 }
 
 static char *
@@ -63,9 +70,73 @@ exif_mnote_data_canon_get_value (ExifMnoteData *note, unsigned int n)
 }
 
 static void
-exif_mnote_data_canon_set_byte_order (ExifMnoteData *n, ExifByteOrder o)
+exif_mnote_data_canon_set_byte_order (ExifMnoteData *d, ExifByteOrder o)
 {
-	if (n) ((ExifMnoteDataCanon *) n)->order = o;
+	ExifByteOrder o_orig;
+	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) d;
+	unsigned int i, fs;
+	ExifShort s;
+	ExifLong l;
+	ExifSLong sl;
+	ExifRational r;
+	ExifSRational sr;
+
+	if (!n) return;
+
+	o_orig = n->order;
+	n->order = o;
+	for (i = 0; i < n->count; i++) {
+		n->entries[i].order = o;
+		fs = exif_format_get_size (n->entries[i].format);
+		switch (n->entries[i].format) {
+		case EXIF_FORMAT_SHORT:
+			for (i = 0; i < n->entries[i].components; i++) {
+				s = exif_get_short (n->entries[i].data + (i*fs),
+						    o_orig);
+				exif_set_short (n->entries[i].data + (i * fs),
+						o, s);
+			}
+			break;
+		case EXIF_FORMAT_LONG:
+			for (i = 0; i < n->entries[i].components; i++) {
+				l = exif_get_long (n->entries[i].data + (i*fs),
+						   o_orig);
+				exif_set_long (n->entries[i].data + (i * fs),
+					       o, l);
+			}
+			break;
+		case EXIF_FORMAT_RATIONAL:
+			for (i = 0; i < n->entries[i].components; i++) {
+				r = exif_get_rational (n->entries[i].data +
+						       (i * fs), o_orig);
+				exif_set_rational (n->entries[i].data +
+					(i * fs), o, r);
+			}
+			break;
+		case EXIF_FORMAT_SLONG:
+			for (i = 0; i < n->entries[i].components; i++) {
+				sl = exif_get_slong (n->entries[i].data +
+						(i * fs), o_orig);
+				exif_set_slong (n->entries[i].data +
+						(i * fs), o, sl);
+			}
+			break;
+		case EXIF_FORMAT_SRATIONAL:
+			for (i = 0; i < n->entries[i].components; i++) {
+				sr = exif_get_srational (n->entries[i].data +
+						(i * fs), o_orig);
+				exif_set_srational (n->entries[i].data +
+						(i * fs), o, sr);
+			}
+			break;
+		case EXIF_FORMAT_UNDEFINED:
+		case EXIF_FORMAT_BYTE:
+		case EXIF_FORMAT_ASCII:
+		default:
+			/* Nothing here. */
+			break;
+		}
+	}
 }
 
 static void
@@ -75,105 +146,53 @@ exif_mnote_data_canon_set_offset (ExifMnoteData *n, unsigned int o)
 }
 
 static void
-exif_mnote_data_canon_load_entry_with_exif (ExifMnoteDataCanon *note,
-                                            MnoteCanonEntry *entry,
-                                            const unsigned char *d,
-                                            unsigned int size, unsigned int offset,
-				            const unsigned char *exifdata,
-					    unsigned int exifsize)
-{
-        unsigned int s, doff, sizetmp = size;
-	const unsigned char *temp = d;
-
-        entry->tag        = exif_get_short (d + offset + 0, note->order);
-        entry->format     = exif_get_short (d + offset + 2, note->order);
-        entry->components = exif_get_long  (d + offset + 4, note->order);
-
-        /*
-         * Size? If bigger than 4 bytes, the actual data is not
-         * in the entry but somewhere else (offset).
-         */
-        s = exif_format_get_size (entry->format) * entry->components;
-        if (!s)
-                return;
-        if (s > 4)
-        {
-		doff = exif_get_long (d + offset + 8, note->order) + 0xC;
-		sizetmp = exifsize;
-		temp = exifdata;
-	}
-        else
-                doff = offset + 8;
-
-#ifdef DEBUG
-		printf ("Comp %x %d %d %x %x\n",doff, s, sizetmp,temp[doff],temp[doff+1]);
-#endif
-        /* Sanity check */
-        if (sizetmp < doff + s)
-                return;
-	entry->data = malloc (sizeof (char) * s);
-        if (!entry->data)
-                return;
-        entry->size = s;
-        memcpy (entry->data, temp + doff, s);
-	entry->order = note->order;
-}
-
-static void
 exif_mnote_data_canon_load (ExifMnoteData *ne,
 	const unsigned char *buf, unsigned int buf_size)
 {
-	ExifMnoteDataCanon *data = (ExifMnoteDataCanon *) ne;
-	const unsigned char *d = buf;
-	ExifShort n;
-	unsigned int i;
-	unsigned int size = buf_size;
-	MnoteCanonTag tag;
+	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) ne;
+	ExifShort c;
+	unsigned int i, o, s;
 
-	if (!data)
-		return;
-	if (!buf || !buf_size)
-		return;
+	if (!n || !buf || !buf_size || (buf_size < 6 + n->offset + 2)) return;
 
-#ifdef DEBUG
-	printf ("Parsing %i byte(s) data at offset %i...\n", size,
-		data->offset);
-#endif
-#if 0
-        int j;
-        for (j=0;j<size;j++)
-        {
-                if (!(j%16)) printf("\n");
-                printf("%02X ",d[j]);}
+	/* Read the number of entries and remove old ones. */
+	c = exif_get_short (buf + 6 + n->offset, n->order);
+	exif_mnote_data_canon_clear (n);
 
-        printf("\n%d\n",size);
-        printf("%d\n",data->order);
-#endif
+	/* Parse the entries */
+	for (i = 0; i < c; i++) {
+	    o = 6 + 2 + n->offset + 12 * i;
+	    if (o + 8 > buf_size) return;
 
-	/* Read the number of entries */
-	n = exif_get_short (buf + 6 + data->offset, data->order);
-#ifdef DEBUG
-	printf ("Loading %i entries...\n", n);
-#endif
-	d += 2;
-	size -= 2;
+	    n->count = i + 1;
+	    n->entries = realloc (n->entries, sizeof (MnoteCanonEntry) * (i+1));
+	    memset (&n->entries[i], 0, sizeof (MnoteCanonEntry));
+	    n->entries[i].tag        = exif_get_short (buf + o, n->order);
+	    n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
+	    n->entries[i].components = exif_get_long (buf + o + 4, n->order);
+	    n->entries[i].order      = n->order;
 
-	if (12 * n > size) return;
-
-	for (i = 0; i < n; i++) {
-
-		tag = exif_get_short (d + 12 * i, data->order);
-#ifdef DEBUG
-		printf ("Loading entry '%s' (%i of %i)...\n",
-			mnote_canon_tag_get_name (tag), i + 1, n);
-#endif
-		data->count++;
-		data->entries = realloc (data->entries,
-				sizeof (MnoteCanonEntry) * data->count);
-		exif_mnote_data_canon_load_entry_with_exif (data,
-				&data->entries[data->count - 1],
-				d, size, 12 * i, buf, buf_size);
+	    /*
+	     * Size? If bigger than 4 bytes, the actual data is not
+	     * in the entry but somewhere else (offset).
+	     */
+	    s = exif_format_get_size (n->entries[i].format) *
+		    		      n->entries[i].components;
+	    if (!s) return;
+	    o += 8;
+	    if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
+	    if (o + s > buf_size) return;
+	    
+	    /* Sanity check */
+	    n->entries[i].data = malloc (sizeof (char) * s);
+	    if (!n->entries[i].data) return;
+	    n->entries[i].size = s;
+	    memcpy (n->entries[i].data, buf + o, s);
 	}
+
+#ifdef DEBUG
+	printf ("Loaded %i entries.\n", n->count);
+#endif
 }
 
 static unsigned int

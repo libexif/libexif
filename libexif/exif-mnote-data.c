@@ -39,7 +39,6 @@ exif_mnote_data_construct (ExifMnoteData *d)
 	if (!d->priv) return;
 	memset (d->priv, 0, sizeof (ExifMnoteDataPriv));
 	d->priv->ref_count = 1;
-	memset (&d->methods, 0, sizeof (ExifMnoteDataMethods));
 }
 
 void

@@ -135,8 +135,15 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	memcpy (entry->data, d + doff, s);
 
 	/* If this is the MakerNote, remember the offset */
-	if (entry->tag == EXIF_TAG_MAKER_NOTE)
+	if (entry->tag == EXIF_TAG_MAKER_NOTE) {
+#ifdef DEBUG
+		printf ("%02x %02x %02x %02x %02x %02x %02x\n",
+			entry->data[0], entry->data[1], entry->data[2],
+			entry->data[3], entry->data[4], entry->data[5],
+			entry->data[6]);
+#endif
 		data->priv->offset_mnote = doff;
+	}
 }
 
 static void
@@ -958,4 +965,6 @@ exif_data_set_byte_order (ExifData *data, ExifByteOrder order)
 	d.new = order;
 	exif_data_foreach_content (data, content_set_byte_order, &d);
 	data->priv->order = order;
+	if (data->priv->md)
+		exif_mnote_data_set_byte_order (data->priv->md, order);
 }

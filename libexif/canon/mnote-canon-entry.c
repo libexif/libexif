@@ -32,41 +32,6 @@
 
 /* #define DEBUG */
 
-#if 0
-void
-mnote_canon_entry_dump (MnoteEntry *e, unsigned int indent)
-{
-        MnoteCanonEntry *entry = (MnoteCanonEntry *)e;
-
-        char buf[1024];
-        unsigned int i;
-
-        for (i = 0; i < 2 * indent; i++)
-                buf[i] = ' ';
-        buf[i] = '\0';
-
-        if (!e)
-                return;
-#ifndef DEBUG
-     if (mnote_canon_tag_get_name (entry->tag)!=NULL)
-     {
-#endif
-        printf ("%sTag: 0x%x ('%s')\n", buf, entry->tag,
-                mnote_canon_tag_get_name (entry->tag));
-#ifdef DEBUG
-        printf ("%s  Format: %i ('%s')\n", buf, entry->format,
-                exif_format_get_name (entry->format));
-        printf ("%s  Components: %i\n", buf, (int) entry->components);
-        printf ("%s  Size: %i\n", buf, entry->size);
-#endif
-        printf ("%s  Value: %s\n", buf, mnote_canon_entry_get_value (entry));
-#ifndef DEBUG
-     }
-#endif
-}
-
-#endif
-
 #define CF(format,target,v)                                     \
 {                                                               \
         if (format != target) {                                 \
@@ -94,306 +59,297 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry)
 {
         char v[1024], buf[1024];
         ExifLong vl;
-        ExifShort vs,n;
+        ExifShort vs, n;
 	int i;
 	unsigned char *data = entry->data;
 
-        if (!entry)
-                return (NULL);
+        if (!entry) return NULL;
 
         memset (v, 0, sizeof (v));
-#ifdef DEBUG
-	printf ("Processing Tag %x\n",entry->tag);
-#endif
 	switch (entry->tag) {
 	case MNOTE_CANON_TAG_SETTINGS_1:
 		CF (entry->format, EXIF_FORMAT_SHORT, v);
 		n = exif_get_short (data, entry->order)/2;
 		data+=2;
 		CC (entry->components, n, v);
-#ifdef DEBUG
-		printf ("Setting1 size %d %d\n",n,entry->size);
-#endif
-		for (i=1;i<n;i++)
-		{
-			vs = exif_get_short (data, entry->order);
-			data+=2;
-			switch(i) {
+		for (i = 1; i < n; i++) {
+		    vs = exif_get_short (data, entry->order);
+		    data += 2;
+		    switch(i) {
+		    case 1:
+			strncpy (v, _("Macro mode : "), sizeof (v) - 1);
+			switch (vs) {
 			case 1:
-				strncpy (v, _("Macro mode : "), sizeof (v) - 1);
-				switch (vs) {
-                		case 1:
-					strncat (v, _("Macro"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 2:
-                        		strncat (v, _("Normal"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "%i???", vs);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                		}
-				break;
+			    strncat (v, _("Macro"), sizeof (v) - 1 - strlen(v));
+			    break;
 			case 2:
-				if (vs)
-				{
-					snprintf (buf, sizeof (buf), _(" / Self Timer : %i (ms)"), vs*100);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                        	}
-				break;
+			    strncat (v, _("Normal"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "%i???", vs);
+			    strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 2:
+			if (vs) {
+				snprintf (buf, sizeof (buf),
+					_(" / Self Timer : %i (ms)"), vs*100);
+				strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 4:
+			strncat (v,_(" / Flash mode : "), sizeof (v) - 1 - strlen(v));
+			switch (vs) {
+			case 0:
+			    strncat (v, _("Flash not fired"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 1:
+			    strncat (v, _("auto"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 2:
+			    strncat (v, _("on"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 3:
+			    strncat (v, _("red eyes reduction"), sizeof (v) - 1 - strlen(v));
+			    break;
 			case 4:
-				strncat (v,_(" / Flash mode : "), sizeof (v) - 1 - strlen(v));
-				switch (vs) {
-                		case 0:
-					strncat (v, _("Flash not fired"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 1:
-                        		strncat (v, _("auto"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 2:
-                        		strncat (v, _("on"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 3:
-                        		strncat (v, _("red eyes reduction"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 4:
-                        		strncat (v, _("slow synchro"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 5:
-                        		strncat (v, _("auto + red eyes reduction"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 6:
-                        		strncat (v, _("on + red eyes reduction"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 16:
-                        		strncat (v, _("external"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "%i???", vs);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                		}
-				break;
+			    strncat (v, _("slow synchro"), sizeof (v) - 1 - strlen(v));
+			    break;
 			case 5:
-				strncat (v, _(" / Continuous drive mode : "), sizeof (v) - 1 - strlen(v));
-				switch (vs) {
-                		case 0:
-					strncat (v, _("single or timer"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 1:
-                        		strncat (v, _("continuous"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "%i???", vs);
-					strncat (v, buf, sizeof (v) - 1 - strlen(v));
-                		}
-				break;
-			case 7:
-				strncat (v, _(" / Focus mode : "), sizeof (v) - 1 - strlen(v));
-				switch (vs) {
-                		case 0:
-					strncat (v, _("One-Shot"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 1:
-                        		strncat (v, _("AI Servo"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 2:
-                        		strncat (v, _("AI Focus"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 3:
-                        		strncat (v, _("MF"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 4:
-                        		strncat (v, _("Single"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 5:
-                        		strncat (v, _("Continuous"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 6:
-                        		strncat (v, _("MF"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "%i???", vs);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                		}
-				break;
-			case 10:
-				strncat (v, _(" / Image size : "), sizeof (v) - 1 - strlen(v));
-				switch (vs) {
-                		case 0:
-					strncat (v, _("Large"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 1:
-                        		strncat (v, _("Medium"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 2:
-                        		strncat (v, _("Small"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "%i???", vs);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                		}
-				break;
-			case 11:
-				strncat (v, _(" / Easy shooting mode : "), sizeof (v) - 1 - strlen(v));
-				switch (vs) {
-                		case 0:
-					strncat (v, _("Full Auto"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 1:
-                        		strncat (v, _("Manual"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 2:
-                        		strncat (v, _("Landscape"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 3:
-                        		strncat (v, _("Fast Shutter"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 4:
-                        		strncat (v, _("Slow Shutter"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 5:
-                        		strncat (v, _("Night"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 6:
-                        		strncat (v, _("Black & White"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 7:
-                        		strncat (v, _("Sepia"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 8:
-                        		strncat (v, _("Portrait"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 9:
-                        		strncat (v, _("Sports"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 10:
-                        		strncat (v, _("Macro / Close-Up"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 11:
-                        		strncat (v, _("Pan Focus"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "%i???", vs);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                		}
-				break;
-			case 13:
-				strncat (v, _(" / Contrast : "), sizeof (v) - 1 - strlen(v));
-				switch (vs) {
-                		case 0xffff:
-					strncat (v, _("Low"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 0x0000:
-                        		strncat (v, _("Normal"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 0x0001:
-                        		strncat (v, _("High"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "%i???", vs);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                		}
-				break;
-			case 14:
-				strncat (v, _(" / Saturation : "), sizeof (v) - 1 - strlen(v));
-				switch (vs) {
-                		case 0xffff:
-					strncat (v, _("Low"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 0x0000:
-                        		strncat (v, _("Normal"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 0x0001:
-                        		strncat (v, _("High"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "%i???", vs);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                		}
-				break;
-			case 15:
-				strncat (v, _(" / Sharpness : "), sizeof (v) - 1 - strlen(v));
-				switch (vs) {
-                		case 0xffff:
-					strncat (v, _("Low"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 0x0000:
-                        		strncat (v, _("Normal"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 0x0001:
-                        		strncat (v, _("High"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "%i???", vs);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                		}
-				break;
+			    strncat (v, _("auto + red eyes reduction"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 6:
+			    strncat (v, _("on + red eyes reduction"), sizeof (v) - 1 - strlen(v));
+			    break;
 			case 16:
-				if (vs)
-				{
-					strncat (v, _(" / ISO : "), sizeof (v) - 1 - strlen(v));
-					switch (vs) {
-                			case 15:
-						strncat (v, _("auto"), sizeof (v) - 1 - strlen(v));
-                        			break;
-                			case 16:
-                        			strncat (v, _("50"), sizeof (v) - 1 - strlen(v));
-                        			break;
-					case 17:
-                        			strncat (v, _("100"), sizeof (v) - 1 - strlen(v));
-                        			break;
-					case 18:
-                        			strncat (v, _("200"), sizeof (v) - 1 - strlen(v));
-                        			break;
-					case 19:
-                        			strncat (v, _("400"), sizeof (v) - 1 - strlen(v));
-                        			break;
-					default:
-                        			snprintf (buf, sizeof (buf), "%i???", vs);
-						strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                			}
-					break;
-				}
-			case 17:
-				strncat (v, _(" / Metering mode : "), sizeof (v) - 1 - strlen(v));
-				switch (vs) {
-                		case 3:
-					strncat (v, _("Evaluative"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 4:
-                        		strncat (v, _("Partial"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 5:
-                        		strncat (v, _("Center-weighted"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "%i???", vs);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                		}
+			    strncat (v, _("external"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "%i???", vs);
+			    strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 5:
+			strncat (v, _(" / Continuous drive mode : "), sizeof (v) - 1 - strlen(v));
+			switch (vs) {
+			case 0:
+			    strncat (v, _("single or timer"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 1:
+			    strncat (v, _("continuous"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "%i???", vs);
+			    strncat (v, buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 7:
+			strncat (v, _(" / Focus mode : "), sizeof (v) - 1 - strlen(v));
+			switch (vs) {
+			case 0:
+			    strncat (v, _("One-Shot"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 1:
+			    strncat (v, _("AI Servo"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 2:
+			    strncat (v, _("AI Focus"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 3:
+			    strncat (v, _("MF"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 4:
+			    strncat (v, _("Single"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 5:
+			    strncat (v, _("Continuous"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 6:
+			    strncat (v, _("MF"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "%i???", vs);
+			    strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 10:
+			strncat (v, _(" / Image size : "), sizeof (v) - 1 - strlen(v));
+			switch (vs) {
+			case 0:
+			    strncat (v, _("Large"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 1:
+			    strncat (v, _("Medium"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 2:
+			    strncat (v, _("Small"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "%i???", vs);
+			    strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 11:
+			strncat (v, _(" / Easy shooting mode : "), sizeof (v) - 1 - strlen(v));
+			switch (vs) {
+			case 0:
+			    strncat (v, _("Full Auto"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 1:
+			    strncat (v, _("Manual"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 2:
+			    strncat (v, _("Landscape"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 3:
+			    strncat (v, _("Fast Shutter"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 4:
+			    strncat (v, _("Slow Shutter"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 5:
+			    strncat (v, _("Night"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 6:
+			    strncat (v, _("Black & White"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 7:
+			    strncat (v, _("Sepia"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 8:
+			    strncat (v, _("Portrait"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 9:
+			    strncat (v, _("Sports"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 10:
+			    strncat (v, _("Macro / Close-Up"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 11:
+			    strncat (v, _("Pan Focus"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "%i???", vs);
+			    strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 13:
+			strncat (v, _(" / Contrast : "), sizeof (v) - 1 - strlen(v));
+			switch (vs) {
+			case 0xffff:
+			    strncat (v, _("Low"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 0x0000:
+			    strncat (v, _("Normal"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 0x0001:
+			    strncat (v, _("High"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "%i???", vs);
+			    strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 14:
+			strncat (v, _(" / Saturation : "), sizeof (v) - 1 - strlen(v));
+			switch (vs) {
+			case 0xffff:
+			    strncat (v, _("Low"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 0x0000:
+			    strncat (v, _("Normal"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 0x0001:
+			    strncat (v, _("High"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "%i???", vs);
+			    strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 15:
+			strncat (v, _(" / Sharpness : "), sizeof (v) - 1 - strlen(v));
+			switch (vs) {
+			case 0xffff:
+			    strncat (v, _("Low"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 0x0000:
+			    strncat (v, _("Normal"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 0x0001:
+			    strncat (v, _("High"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "%i???", vs);
+			    strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 16:
+			if (vs) {
+			    strncat (v, _(" / ISO : "), sizeof (v) - 1 - strlen(v));
+			    switch (vs) {
+			    case 15:
+				strncat (v, _("auto"), sizeof (v) - 1 - strlen(v));
 				break;
-			case 19:
-				strncat (v, _(" / AF point selected : "), sizeof (v) - 1 - strlen(v));
-				switch (vs) {
-                		case 0x3000:
-					strncat (v, _("none (MF)"), sizeof (v) - 1 - strlen(v));
-                        		break;
-                		case 0x3001:
-                        		strncat (v, _("auto-selected"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 0x3002:
-                        		strncat (v, _("right"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 0x3003:
-                        		strncat (v, _("center"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				case 0x3004:
-                        		strncat (v, _("left"), sizeof (v) - 1 - strlen(v));
-                        		break;
-				default:
-                        		snprintf (buf, sizeof (buf), "0x%x???", vs);
-					strncat (v,buf, sizeof (v) - 1 - strlen(v));
-                		}
+			    case 16:
+				strncat (v, _("50"), sizeof (v) - 1 - strlen(v));
 				break;
-			case 20:
+			    case 17:
+				strncat (v, _("100"), sizeof (v) - 1 - strlen(v));
+				break;
+			    case 18:
+				strncat (v, _("200"), sizeof (v) - 1 - strlen(v));
+				break;
+			    case 19:
+				strncat (v, _("400"), sizeof (v) - 1 - strlen(v));
+				break;
+			    default:
+				snprintf (buf, sizeof (buf), "%i???", vs);
+				strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			    }
+			    break;
+			}
+		    case 17:
+			strncat (v, _(" / Metering mode : "), sizeof (v) - 1 - strlen(v));
+			switch (vs) {
+			case 3:
+			    strncat (v, _("Evaluative"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 4:
+			    strncat (v, _("Partial"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 5:
+			    strncat (v, _("Center-weighted"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "%i???", vs);
+			    strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 19:
+			strncat (v, _(" / AF point selected : "), sizeof (v) - 1 - strlen(v));
+			switch (vs) {
+			case 0x3000:
+			    strncat (v, _("none (MF)"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 0x3001:
+			    strncat (v, _("auto-selected"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 0x3002:
+			    strncat (v, _("right"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 0x3003:
+			    strncat (v, _("center"), sizeof (v) - 1 - strlen(v));
+			    break;
+			case 0x3004:
+			    strncat (v, _("left"), sizeof (v) - 1 - strlen(v));
+			    break;
+			default:
+			    snprintf (buf, sizeof (buf), "0x%x???", vs);
+			    strncat (v,buf, sizeof (v) - 1 - strlen(v));
+			}
+			break;
+		    case 20:
 				strncat (v, _(" / Exposure mode : "), sizeof (v) - 1 - strlen(v));
 				switch (vs) {
                 		case 0:
@@ -552,6 +508,7 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry)
 		break;
 
 	case MNOTE_CANON_TAG_IMAGE_TYPE:
+	case MNOTE_CANON_TAG_OWNER:
 		CF (entry->format, EXIF_FORMAT_ASCII, v);
 		CC (entry->components, 32, v);
 		strncpy (v,data,sizeof (v));
@@ -568,12 +525,6 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry)
 		CC (entry->components, 1, v);
 		vl = exif_get_long (data, entry->order);
 		snprintf (v, sizeof (v), "%03lu-%04lu", vl/10000,vl%10000);
-		break;
-
-	case MNOTE_CANON_TAG_OWNER:
-		CF (entry->format, EXIF_FORMAT_ASCII, v);
-		CC (entry->components, 32, v);
-		strncpy (v,data,sizeof (v));
 		break;
 
 	case MNOTE_CANON_TAG_SERIAL_NUMBER:

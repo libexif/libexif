@@ -24,6 +24,9 @@ main (int argc, char **argv)
 		fprintf (stderr, "Could not load data from '%s'!\n", argv[1]);
 		return 1;
 	}
+	fprintf (stdout, "Loaded '%s'.\n", argv[1]);
+	fprintf (stdout, "Byte order: %s\n",
+		 exif_byte_order_get_name (exif_data_get_byte_order (d)));
 
 	fprintf (stdout, "Parsing maker note...\n");
 	md = exif_data_get_mnote_data (d);
@@ -33,6 +36,13 @@ main (int argc, char **argv)
 		return 1;
 	}
 
+	fprintf (stdout, "Increasing ref-count...\n");
+	exif_mnote_data_ref (md);
+
+	fprintf (stdout, "Decreasing ref-count...\n");
+	exif_mnote_data_unref (md);
+
+	fprintf (stdout, "Counting entries...\n");
 	c = exif_mnote_data_count (md);
 	for (i = 0; i < c; i++) {
 		fprintf (stdout, "%s", exif_mnote_data_get_name (md, i));
@@ -48,4 +58,6 @@ main (int argc, char **argv)
 	}
 
 	exif_data_unref (d);
+
+	return 1;
 }
