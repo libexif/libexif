@@ -187,7 +187,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 	default:
 		switch (entry->format) {
 		case EXIF_FORMAT_ASCII:
-		  strncpy (val, entry->data, min(maxlen, entry->components));
+		  strncpy (val, entry->data, MIN(maxlen, entry->components));
 		  break;
 		case EXIF_FORMAT_SHORT:
 		  vs = exif_get_short (entry->data, entry->order);

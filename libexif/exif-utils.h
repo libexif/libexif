@@ -59,6 +59,9 @@ void exif_set_rational  (unsigned char *b, ExifByteOrder order,
 void exif_set_srational (unsigned char *b, ExifByteOrder order,
 			 ExifSRational value);
 
+#undef  MIN
+#define MIN(a, b)  (((a) < (b)) ? (a) : (b))
+
 /* For compatibility with older versions */
 #define EXIF_TAG_SUBSEC_TIME EXIF_TAG_SUB_SEC_TIME
 
