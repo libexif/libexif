@@ -287,6 +287,12 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 			}
 			break;
 		default:
+
+			/*
+			 * If we don't know the tag, changes are high
+			 * that the EXIF data does not follow the standard.
+			 */
+			if (!exif_tag_get_name (tag)) return;
 			entry = exif_entry_new ();
 			exif_content_add_entry (ifd, entry);
 			exif_data_load_data_entry (data, entry, d, ds,

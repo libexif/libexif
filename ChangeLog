@@ -1,3 +1,8 @@
+2004-04-04  Lutz Mueller lutz@users.sourceforge.net
+
+	* libexif/exif-data.c: If we don't know a tag we are going to parse,
+	  stop loading. This should fix bug #138238.
+
 2004-04-02  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/pentax/exif-mnote-data-pentax.c: correct search for values
