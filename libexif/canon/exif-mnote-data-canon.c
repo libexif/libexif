@@ -60,13 +60,13 @@ exif_mnote_data_canon_free (ExifMnoteData *n)
 }
 
 static char *
-exif_mnote_data_canon_get_value (ExifMnoteData *note, unsigned int n)
+exif_mnote_data_canon_get_value (ExifMnoteData *note, unsigned int n, char *val, unsigned int maxlen)
 {
-        ExifMnoteDataCanon *cnote = (ExifMnoteDataCanon *) note;
+	ExifMnoteDataCanon *cnote = (ExifMnoteDataCanon *) note;
 
 	if (!note) return NULL;
 	if (cnote->count <= n) return NULL;
-	return mnote_canon_entry_get_value (&cnote->entries[n]);
+	return mnote_canon_entry_get_value (&cnote->entries[n], val, maxlen);
 }
 
 static void
@@ -164,13 +164,13 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 	memset (*buf, 0, sizeof (char) * *buf_size);
 
 	/* Save the number of entries */
-	exif_set_short (*buf, n->order, n->count);
+	exif_set_short (*buf, n->order, (ExifShort) n->count);
 	
 	/* Save each entry */
 	for (i = 0; i < n->count; i++) {
 		o = 2 + i * 12;
-		exif_set_short (*buf + o + 0, n->order, n->entries[i].tag);
-		exif_set_short (*buf + o + 2, n->order, n->entries[i].format);
+		exif_set_short (*buf + o + 0, n->order, (ExifShort) n->entries[i].tag);
+		exif_set_short (*buf + o + 2, n->order, (ExifShort) n->entries[i].format);
 		exif_set_long  (*buf + o + 4, n->order,
 				n->entries[i].components);
 		o += 8;
