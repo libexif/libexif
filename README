@@ -43,6 +43,12 @@ Right now, I know of the following frontends to libexif:
 If you would like to migrate your program to use libexif or add EXIF support
 to it, don't hesitate to contact the authors.
 
+LIBRARIES
+---------
+
+I know of the following libraries that use or have been inspired by libexif:
+ - pel: PHP-Code (http://pel.sourceforge.net)
+
 BUGS
 ----
 
