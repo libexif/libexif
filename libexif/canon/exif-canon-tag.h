@@ -25,7 +25,6 @@
 extern "C" {
 #endif /* __cplusplus */
 
-typedef enum _ExifCanonTag ExifCanonTag;
 enum _ExifCanonTag {
 	EXIF_CANON_TAG_UNKNOWN_0	= 0x0,
 	EXIF_CANON_TAG_SETTINGS_1	= 0x1,
@@ -40,6 +39,7 @@ enum _ExifCanonTag {
 	EXIF_CANON_TAG_UNKNOWN_13	= 0xd,
 	EXIF_CANON_TAG_CUSTOM_FUNCS	= 0xf
 };
+typedef enum _ExifCanonTag ExifCanonTag;
 
 const char *exif_canon_tag_get_name (ExifCanonTag tag);
 

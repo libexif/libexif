@@ -25,7 +25,6 @@
 extern "C" {
 #endif /* __cplusplus */
 
-typedef enum _ExifFujiTag ExifFujiTag;
 enum _ExifFujiTag {
 	EXIF_FUJI_TAG_VERSION			= 0x0000,
 	EXIF_FUJI_TAG_QUALITY			= 0x1000,
@@ -46,6 +45,7 @@ enum _ExifFujiTag {
 	EXIF_FUJI_TAG_FOCUS_WARNING		= 0x1301,
 	EXIF_FUJI_TAG_AUTO_EXPOSURE_WARNING	= 0x1302
 };
+typedef enum _ExifFujiTag ExifFujiTag;
 
 const char *exif_fuji_tag_get_name (ExifFujiTag tag);
 

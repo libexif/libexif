@@ -25,7 +25,6 @@
 extern "C" {
 #endif /* __cplusplus */
 
-typedef enum _ExifOlympusTag ExifOlympusTag;
 enum _ExifOlympusTag {
 	EXIF_OLYMPUS_TAG_MODE		= 0x0200,
 	EXIF_OLYMPUS_TAG_QUALITY	= 0x0201,
@@ -39,6 +38,7 @@ enum _ExifOlympusTag {
 	EXIF_OLYMPUS_TAG_ID		= 0x0209,
 	EXIF_OLYMPUS_TAG_UNKNOWN_4	= 0x0f04
 };
+typedef enum _ExifOlympusTag ExifOlympusTag;
 
 const char *exif_olympus_tag_get_name (ExifOlympusTag tag);
 
