@@ -58,9 +58,6 @@ AC_OUTPUT([
   libexif.spec
   libexif/Makefile
   libjpeg/Makefile
-  intl/Makefile
-  m4/Makefile
-  po/Makefile.in
   test/Makefile
   libexif/libexif.pc
 ])
