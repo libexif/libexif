@@ -33,7 +33,7 @@ ALL_LINGUAS="de es"
 AC_MSG_CHECKING([for po/Makevars requiring evil hack])
 GETTEXT_PACKAGE="${PACKAGE}${LIBEXIF_CURRENT}"
 AC_SUBST(GETTEXT_PACKAGE)
-if po/Makevars.template
+if test -f po/Makevars.template
 then
 	sed -e "s/^DOMAIN.*/DOMAIN = ${GETTEXT_PACKAGE}/" < po/Makevars.template > po/Makevars
 	AC_MSG_RESULT([yes. done.])
