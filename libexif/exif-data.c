@@ -263,23 +263,21 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 {
 	unsigned int i, n_ptr = 0, n_thumb = 0;
 
-	/* If we are to save IFD 0 or 1, we need some extra entries. */
+	/*
+	 * Check if we need some extra entries for pointers or the thumbnail.
+	 */
 	if (ifd == data->ifd0) {
-		if (data->ifd_exif->count)
+		if (data->ifd_exif->count || data->ifd_interoperability->count)
 			n_ptr++;
 		if (data->ifd_gps->count)
 			n_ptr++;
 	} else if (ifd == data->ifd1) {
+		if (data->size)
+			n_thumb = 2;
+	} else if (ifd == data->ifd_exif) {
 		if (data->ifd_interoperability->count)
 			n_ptr++;
 	}
-
-	/*
-	 * If we are to save IFD 1, we can point to the thumbnail if it
-	 * exists.
-	 */
-	if ((ifd == data->ifd1) && data->data)
-		n_thumb = 2;
 
 	/*
 	 * Allocate enough memory for all entries
@@ -303,7 +301,8 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	offset += 12 * ifd->count;
 
 	/* Save special entries */
-	if (ifd == data->ifd0 && data->ifd_exif->count) {
+	if (ifd == data->ifd0 && (data->ifd_exif->count ||
+				  data->ifd_interoperability->count)) {
 
 		/* EXIF_TAG_EXIF_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -333,7 +332,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		offset += 12;
 	}
 
-	if (ifd == data->ifd1 && data->ifd_interoperability->count) {
+	if (ifd == data->ifd_exif && data->ifd_interoperability->count) {
 
 		/* EXIF_TAG_INTEROPERABILITY_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -374,8 +373,8 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		offset += 12;
 	}
 
-	if (ifd == data->ifd0 && (data->ifd1->count ||
-				  data->ifd_interoperability->count)) {
+	if (ifd == data->ifd0 && data->ifd1->count) {
+
 		/*
 		 * We are saving IFD 0. Tell where IFD 1 starts and save
 		 * IFD 1.
