@@ -1,3 +1,8 @@
+2004-09-07  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c: More guards against malloc returning NULL.
+	  Problem spotted by Angela Wrobel.
+
 2004-09-02  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-entry.c: First part of a patch to be less strict on

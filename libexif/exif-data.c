@@ -984,3 +984,12 @@ exif_data_log (ExifData *data, ExifLog *log)
 	data->priv->log = log;
 	exif_log_ref (log);
 }
+
+/* Used internally within libexif */
+ExifLog *exif_data_get_log (ExifData *);
+ExifLog *
+exif_data_get_log (ExifData *data)
+{
+	if (!data || !data->priv) return NULL;
+	return data->priv->log;
+}

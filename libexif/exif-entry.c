@@ -40,15 +40,37 @@ struct _ExifEntryPrivate
 	unsigned int ref_count;
 };
 
+/* This function is hidden in exif-data.c */
+ExifLog *exif_data_get_log (ExifData *);
+
+static void *
+exif_entry_malloc (ExifEntry *e, unsigned int i)
+{
+	void *d;
+	ExifLog *l = NULL;
+
+	if (!i) return NULL;
+
+	/* This is the only call to malloc in this file. */
+	d = malloc (i);
+	if (d) return d;
+
+	if (e && e->parent && e->parent->parent)
+		l = exif_data_get_log (e->parent->parent);
+	EXIF_LOG_NO_MEMORY (l, "ExifEntry", i);
+
+	return NULL;
+}
+
 ExifEntry *
 exif_entry_new (void)
 {
-	ExifEntry *e;
+	ExifEntry *e = NULL;
 
-	e = malloc (sizeof (ExifEntry));
+	e = exif_entry_malloc (e, sizeof (ExifEntry));
 	if (!e) return NULL;
 	memset (e, 0, sizeof (ExifEntry));
-	e->priv = malloc (sizeof (ExifEntryPrivate));
+	e->priv = exif_entry_malloc (e, sizeof (ExifEntryPrivate));
 	if (!e->priv) { free (e); return NULL; }
 	memset (e->priv, 0, sizeof (ExifEntryPrivate));
 	e->priv->ref_count = 1;
@@ -822,7 +844,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 1;
 		e->format = EXIF_FORMAT_LONG;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
 		if (e->data) memset (e->data, 0, e->size);
 		break;
 
@@ -851,7 +873,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 1;
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
 		exif_set_short (e->data, o, 0);
 		break;
 
@@ -862,7 +884,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 1;
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
 		exif_set_short (e->data, o, 1);
 		break;
 
@@ -872,7 +894,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 1;
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
 		exif_set_short (e->data, o, 2);
 		break;
 
@@ -881,7 +903,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 1;
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
 		exif_set_short (e->data, o, 3);
 		break;
 
@@ -889,7 +911,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 3;
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
+		if (!e->data) break;
 		exif_set_short (e->data, o, 8);
 		exif_set_short (
 			e->data + exif_format_get_size (e->format),
@@ -902,7 +925,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 2;
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
+		if (!e->data) break;
 		exif_set_short (e->data, o, 2);
 		exif_set_short (
 			e->data + exif_format_get_size (e->format),
@@ -916,7 +940,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 1;
 		e->format = EXIF_FORMAT_SRATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
 		if (e->data) memset (e->data, 0, e->size);
 		break;
 
@@ -937,7 +961,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 1;
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
 		if (e->data) memset (e->data, 0, e->size);
 		break;
 
@@ -947,7 +971,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 1;
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
 		r.numerator = 72;
 		r.denominator = 1;
 		exif_set_rational (e->data, o, r);
@@ -958,7 +982,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 2;
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
 		if (e->data) memset (e->data, 0, e->size);
 		break;
 
@@ -967,7 +991,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 6;
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
+		if (!e->data) break;
 		r.denominator = 1;
 		r.numerator = 0;
 		exif_set_rational (e->data, o, r);
@@ -997,7 +1022,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 20;
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
+		if (!e->data) break;
 		snprintf ((char *) e->data, e->size,
 			  "%04i:%02i:%02i %02i:%02i:%02i",
 			  tm->tm_year + 1900, tm->tm_mon, tm->tm_mday,
@@ -1021,14 +1047,16 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = strlen ("[None]") + 1;
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
+		if (!e->data) break;
 		strncpy (e->data, "[None]", e->size);
 		break;
 	case EXIF_TAG_COPYRIGHT:
 		e->components = (strlen ("[None]") + 1) * 2;
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
+		if (!e->data) break;
 		strcpy (e->data +                     0, "[None]");
 		strcpy (e->data + strlen ("[None]") + 1, "[None]");
 		break;
@@ -1039,7 +1067,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 0;
 		e->format = EXIF_FORMAT_UNDEFINED;
 		e->size = 0;
-		e->data = 0;
+		e->data = NULL;
 		break;
 
 	/* UNDEFINED, 1 component, default 1 */
@@ -1047,7 +1075,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 1;
 		e->format = EXIF_FORMAT_UNDEFINED;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
+		if (!e->data) break;
 		e->data[0] = 0x01;
 		break;
 
@@ -1056,7 +1085,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->components = 1;
 		e->format = EXIF_FORMAT_UNDEFINED;
 		e->size = exif_format_get_size (e->format) * e->components;
-		e->data = malloc (e->size);
+		e->data = exif_entry_malloc (e, e->size);
+		if (!e->data) break;
 		e->data[0] = 0x03;
 		break;
 
@@ -1065,7 +1095,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
                 e->components = 4;
                 e->format = EXIF_FORMAT_UNDEFINED;
                 e->size = exif_format_get_size (e->format) * e->components;
-                e->data = malloc (e->size);
+                e->data = exif_entry_malloc (e, e->size);
+		if (!e->data) break;
                 memcpy (e->data, "0100", 4);
                 break;
 
@@ -1074,7 +1105,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
                 e->components = 4;
                 e->format = EXIF_FORMAT_UNDEFINED;
                 e->size = exif_format_get_size (e->format) * e->components;
-                e->data = malloc (e->size);
+                e->data = exif_entry_malloc (e, e->size);
+		if (!e->data) break;
                 memcpy (e->data, "0210", 4);
                 break;
 
