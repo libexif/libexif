@@ -183,7 +183,9 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	if (s > 4) {
 		doff = *ds - 6;
 		*ds += s;
-		*d = realloc (*d, sizeof (char) * *ds);
+		*d = realloc (*d, *ds);
+		if (!*d)
+		  	return;
 		exif_set_long (*d + 6 + offset + 8,
 			       data->priv->order, doff);
 	} else
@@ -208,7 +210,9 @@ exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 	if (data->data)
 		free (data->data);
 	data->size = size;
-	data->data = malloc (sizeof (char) * data->size);
+	data->data = malloc (data->size);
+	if (!data->data) 
+	  return;
 	memcpy (data->data, d + offset, data->size);
 }
 
@@ -355,7 +359,9 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	 * and the number of entries.
 	 */
 	*ds += (2 + (ifd->count + n_ptr + n_thumb) * 12 + 4);
-	*d = realloc (*d, sizeof (char) * *ds);
+	*d = realloc (*d, *ds);
+	if (!*d)
+	  	return;
 
 	/* Save the number of entries */
 	exif_set_short (*d + 6 + offset, data->priv->order,
@@ -454,7 +460,9 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 					*ds - 6);
 			*ds += data->size;
-			*d = realloc (*d, sizeof (char) * *ds);
+			*d = realloc (*d, *ds);
+			if (!*d)
+			  	return;
 			memcpy (*d + *ds - data->size, data->data, data->size);
 			offset += 12;
 #ifdef DEBUG
@@ -707,6 +715,8 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 	/* Header */
 	*ds = 14;
 	*d = malloc (*ds);
+	if (!*d)
+	  	return;
 	memcpy (*d, ExifHeader, 6);
 
 	/* Order (offset 6) */
