@@ -1,3 +1,12 @@
+2004-01-07  Jan Patera <patera@users.sourceforge.net>
+
+	Thread-safety, elimination of static variables, fixes of memory
+	corruption (writing beyond provided space), no more memory leaks
+	in mnote, 2 new args of exif_entry_get_value,
+	exif_entry_get_value_brief, exif_mnote_data_get_value.
+
+	* libexif, libexif/canon, libexif/olympus, libexif/pentax
+
 2003-12-09  Lutz Mueller <lutz@users.sourceforge.net>
 
 	A couple of fixes by Jan Patera <patera@pictview.com>:
