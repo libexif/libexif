@@ -17,7 +17,6 @@ dnl
 AC_DEFUN([GP_CONFIG_INIT],
 [
 ndim_config_msg="
-
 Configuration (${PACKAGE_TARNAME} ${PACKAGE_VERSION}):
 
 "
