@@ -34,12 +34,14 @@ AM_GNU_GETTEXT
 dnl ---------------------------------------------------------------------------
 dnl Warnings
 dnl ---------------------------------------------------------------------------
-CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
-LDFLAGS="$LDFLAGS -g -Wall"
-AC_SUBST(CFLAGS)
-AC_SUBST(LDFLAGS)
+if test "x$GCC" = "xyes"; then
+    CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
+    LDFLAGS="$LDFLAGS -g -Wall"
+    AC_SUBST(CFLAGS)
+    AC_SUBST(LDFLAGS)
+fi
 
-AC_OUTPUT([
+AC_OUTPUT([ m4/Makefile 
   Makefile
   libexif.spec
   libexif/Makefile
