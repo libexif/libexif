@@ -346,16 +346,6 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 
 	if (n_thumb) {
 
-		/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH */
-		exif_set_short (*d + 6 + offset + 0, data->priv->order,
-				EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH);
-		exif_set_short (*d + 6 + offset + 2, data->priv->order,
-				EXIF_FORMAT_LONG);
-		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
-		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
-				data->size);
-		offset += 12;
-		
 		/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
 				EXIF_TAG_JPEG_INTERCHANGE_FORMAT);
@@ -367,6 +357,16 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		*ds += data->size;
 		*d = realloc (*d, sizeof (char) * *ds);
 		memcpy (*d + *ds - data->size, data->data, data->size);
+		offset += 12;
+
+		/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH */
+		exif_set_short (*d + 6 + offset + 0, data->priv->order,
+				EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH);
+		exif_set_short (*d + 6 + offset + 2, data->priv->order,
+				EXIF_FORMAT_LONG);
+		exif_set_long  (*d + 6 + offset + 4, data->priv->order, 1);
+		exif_set_long  (*d + 6 + offset + 8, data->priv->order,
+				data->size);
 		offset += 12;
 	}
 
