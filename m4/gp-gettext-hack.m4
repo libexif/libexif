@@ -1,16 +1,21 @@
 dnl
 dnl GP_GETTEXT_HACK
 dnl
-dnl gphoto2 gettext hack, designed for libexif, libgphoto2, and Co.
+dnl gettext hack, originally designed for libexif, libgphoto2, and Co.
+dnl This creates a po/Makevars file with adequate values if the
+dnl po/Makevars.template is present.
 dnl
 dnl Example usage:
 dnl    GETTEXT_PACKAGE=${PACKAGE}-${LIBEXIF_CURRENT}
-dnl    GP_GETTEXT_HACK
+dnl    GP_GETTEXT_HACK([Copyright Holder],[foo-translation@example.org])
 dnl    AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["$GETTEXT_PACKAGE"],
 dnl                       [The gettext domain we're using])
 dnl    AC_SUBST([GETTEXT_PACKAGE])
 dnl    ALL_LINGUAS="de es fr"
 dnl    AM_GNU_GETTEXT
+dnl
+dnl You can leave out GP_GETTEXT_HACK parameters if you want to,
+dnl GP_GETTEXT_HACK will try fall back to sensible values in that case.
 dnl
 
 AC_DEFUN([GP_GETTEXT_HACK],
