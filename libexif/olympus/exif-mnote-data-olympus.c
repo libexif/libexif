@@ -52,18 +52,9 @@ exif_mnote_data_olympus_clear (ExifMnoteDataOlympus *n)
 static void
 exif_mnote_data_olympus_free (ExifMnoteData *n)
 {
-	ExifMnoteDataOlympus *note = (ExifMnoteDataOlympus *) n;
-	unsigned int i;
+	if (!n) return;
 
-	if (note->entries) {
-		for (i = 0; i < note->count; i++) {
-			free (note->entries[i].data);
-			note->entries[i].data = NULL;
-		}
-		free (note->entries);
-		note->entries = NULL;
-		note->count = 0;
-	}
+	exif_mnote_data_olympus_clear ((ExifMnoteDataOlympus *) n);
 }
 
 static char *

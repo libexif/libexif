@@ -31,20 +31,30 @@
 /* #define DEBUG */
 
 static void
-exif_mnote_data_pentax_free (ExifMnoteData *n)
+exif_mnote_data_pentax_clear (ExifMnoteDataPentax *n)
 {
-	ExifMnoteDataPentax *note = (ExifMnoteDataPentax *) n;
 	unsigned int i;
 
-	if (note->entries) {
-		for (i = 0; i < note->count; i++) {
-			free (note->entries[i].data);
-			note->entries[i].data = NULL;
-		}
-		free (note->entries);
-		note->entries = NULL;
-		note->count = 0;
+	if (!n) return;
+
+	if (n->entries) {
+		for (i = 0; i < n->count; i++)
+			if (n->entries[i].data) {
+				free (n->entries[i].data);
+				n->entries[i].data = NULL;
+			}
+		free (n->entries);
+		n->entries = NULL;
+		n->count = 0;
 	}
+}
+
+static void
+exif_mnote_data_pentax_free (ExifMnoteData *n)
+{
+	if (!n) return;
+
+	exif_mnote_data_pentax_clear ((ExifMnoteDataPentax *) n);
 }
 
 static char *
@@ -58,71 +68,48 @@ exif_mnote_data_pentax_get_value (ExifMnoteData *d, unsigned int i)
 }
 
 static void
-exif_mnote_data_pentax_load_entry (ExifMnoteDataPentax *note,
-				  MnotePentaxEntry *entry,
-				  const unsigned char *d,
-				  unsigned int size, unsigned int offset)
-{
-	unsigned int s, doff;
-
-	entry->tag        = exif_get_short (d + offset + 0, note->order);
-	entry->format     = exif_get_short (d + offset + 2, note->order);
-	entry->components = exif_get_long  (d + offset + 4, note->order);
-	entry->order      = note->order;
-
-        /*
-         * Size? If bigger than 4 bytes, the actual data is not
-         * in the entry but somewhere else (offset).
-         */
-        s = exif_format_get_size (entry->format) * entry->components;
-        if (!s)
-                return;
-        if (s > 4)
-                doff = exif_get_long (d + offset + 8, note->order);
-        else
-                doff = offset + 8;
-
-        /* Sanity check */
-        if (size < doff + s)
-                return;
-
-        entry->data = malloc (sizeof (char) * s);
-        if (!entry->data)
-                return;
-        entry->size = s;
-        memcpy (entry->data, d + doff, s);
-}
-
-static void
 exif_mnote_data_pentax_load (ExifMnoteData *en,
-		const unsigned char *data, unsigned int size)
+		const unsigned char *buf, unsigned int buf_size)
 {
-	ExifMnoteDataPentax *note = (ExifMnoteDataPentax *) en;
-	MnotePentaxTag tag;
-	unsigned int i, n;
+	ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) en;
+	unsigned int i, o, s;
+	ExifShort c;
 
 	/* Number of entries */
-	if (size < 2)
+	if (buf_size < 2)
 		return;
-	n = exif_get_short (data, note->order);
-#ifdef DEBUG
-	printf ("Reading %i entries...\n", n);
-#endif
-	data += 2;
-	size -= 2;
+	c = exif_get_short (buf + 6 + n->offset, n->order);
 
-	for (i = 0; i < n; i++) {
-		tag = exif_get_short (data + 12 * i, note->order);
-#ifdef DEBUG
-		printf ("Loading entry '%s' (%i)...\n",
-			mnote_pentax_tag_get_name (tag), i + 1);
-#endif
-		note->count++;
-		note->entries = realloc (note->entries,
-				sizeof (MnotePentaxEntry) * note->count);
-		exif_mnote_data_pentax_load_entry (note,
-			&note->entries[note->count - 1], data, size, 12 * i);
-	}
+	for (i = 0; i < c; i++) {
+	    o = 6 + 2 + n->offset + 12 * i;
+	    if (o + 8 > buf_size) return;
+
+	    n->count = i + 1;
+	    n->entries = realloc (n->entries, sizeof (MnotePentaxEntry)*(i+1));
+	    memset (&n->entries[i], 0, sizeof (MnotePentaxEntry));
+	    n->entries[i].tag        = exif_get_short (buf + o, n->order);
+	    n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
+	    n->entries[i].components = exif_get_long (buf + o + 4, n->order);
+	    n->entries[i].order      = n->order;
+
+            /*
+             * Size? If bigger than 4 bytes, the actual data is not
+             * in the entry but somewhere else (offset).
+             */
+            s = exif_format_get_size (n->entries[i].format) *
+                                      n->entries[i].components;
+            if (!s) return;
+            o += 8;
+            if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
+            if (o + s > buf_size) return;
+                                                                                
+            /* Sanity check */
+            n->entries[i].data = malloc (sizeof (char) * s);
+            if (!n->entries[i].data) return;
+            memset (n->entries[i].data, 0, sizeof (char) * s);
+            n->entries[i].size = s;
+            memcpy (n->entries[i].data, buf + o, s);
+        }
 }
 
 static unsigned int
@@ -170,7 +157,70 @@ exif_mnote_data_pentax_set_offset (ExifMnoteData *d, unsigned int o)
 static void
 exif_mnote_data_pentax_set_byte_order (ExifMnoteData *d, ExifByteOrder o)
 {
-	if (d) ((ExifMnoteDataPentax *) d)->order = o;
+	ExifByteOrder o_orig;
+        ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) d;
+        unsigned int i, fs;
+        ExifShort s;
+        ExifLong l;
+        ExifSLong sl;
+        ExifRational r;
+        ExifSRational sr;
+                                                                                
+        if (!n) return;
+                                                                                
+        o_orig = n->order;
+        n->order = o;
+        for (i = 0; i < n->count; i++) {
+                n->entries[i].order = o;
+                fs = exif_format_get_size (n->entries[i].format);
+                switch (n->entries[i].format) {
+                case EXIF_FORMAT_SHORT:
+                        for (i = 0; i < n->entries[i].components; i++) {
+                                s = exif_get_short (n->entries[i].data + (i*fs),                                                    o_orig);
+                                exif_set_short (n->entries[i].data + (i * fs),
+                                                o, s);
+                        }
+                        break;
+                case EXIF_FORMAT_LONG:
+                        for (i = 0; i < n->entries[i].components; i++) {
+                                l = exif_get_long (n->entries[i].data + (i*fs),
+                                                   o_orig);
+                                exif_set_long (n->entries[i].data + (i * fs),
+                                               o, l);
+                        }
+                        break;
+                case EXIF_FORMAT_RATIONAL:
+                        for (i = 0; i < n->entries[i].components; i++) {
+                                r = exif_get_rational (n->entries[i].data +
+                                                       (i * fs), o_orig);
+                                exif_set_rational (n->entries[i].data +
+                                        (i * fs), o, r);
+                        }
+                        break;
+                case EXIF_FORMAT_SLONG:
+                        for (i = 0; i < n->entries[i].components; i++) {
+                                sl = exif_get_slong (n->entries[i].data +
+                                                (i * fs), o_orig);
+                                exif_set_slong (n->entries[i].data +
+                                                (i * fs), o, sl);
+                        }
+                        break;
+                case EXIF_FORMAT_SRATIONAL:
+                        for (i = 0; i < n->entries[i].components; i++) {
+                                sr = exif_get_srational (n->entries[i].data +
+                                                (i * fs), o_orig);
+                                exif_set_srational (n->entries[i].data +
+                                                (i * fs), o, sr);
+                        }
+                        break;
+                case EXIF_FORMAT_UNDEFINED:
+                case EXIF_FORMAT_BYTE:
+                case EXIF_FORMAT_ASCII:
+                default:
+                        /* Nothing here. */
+                        break;
+                }
+        }
 }
 
 ExifMnoteData *
