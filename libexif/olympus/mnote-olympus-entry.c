@@ -426,7 +426,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		break;
 	case MNOTE_OLYMPUS_TAG_VERSION:
 		CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-		CC (entry->components, 5, v, maxlen);
+		CC2 (entry->components, 5, 8, v, maxlen);
 		strncpy (v, entry->data, MIN (maxlen, entry->size));
 		break;
 	case MNOTE_OLYMPUS_TAG_INFO:
