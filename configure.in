@@ -16,7 +16,7 @@ dnl                      removals.
 dnl ---------------------------------------------------------------------------
 LIBEXIF_AGE=0
 LIBEXIF_REVISION=0
-LIBEXIF_CURRENT=11
+LIBEXIF_CURRENT=12
 AC_SUBST(LIBEXIF_AGE)
 AC_SUBST(LIBEXIF_REVISION)
 AC_SUBST(LIBEXIF_CURRENT)

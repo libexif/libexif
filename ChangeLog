@@ -1,3 +1,15 @@
+2004-10-16  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* configure.in: set CURRENT to 12. There have been quite a few
+	  additions to the header files.
+
+2004-10-16  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Martin Willers <willers@xm-arts.de> found an off-by-one error:
+
+	* libexif/exif-entry.c: libexif forget to add 1 
+	  to tm_mon from struct tm
+	
 2004-10-05  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c: Support for WatCom. Convert debugging code
