@@ -1,5 +1,11 @@
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-data.c (exif_data_save_data_entry): According to the TIFF
+		specification, the offset must be an even number. If we need to introduce
+	  a padding byte, we set it to 0.
+
+2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-utils.[c,h] (exif_array_set_byte_order): New function.
 	* libexif/exif-data.c
 	* libexif/canon/exif-mnote-data-canon.c

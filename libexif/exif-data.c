@@ -225,13 +225,21 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	if (s > 4) {
 		doff = *ds - 6;
 		*ds += s;
+
+		/*
+		 * According to the TIFF specification,
+		 * the offset must be an even number. If we need to introduce
+		 * a padding byte, we set it to 0.
+		 */
+		if (s & 1) *ds++;
 		*d = exif_mem_realloc (data->priv->mem, *d, *ds);
 		if (!*d) {
 			EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
 		  	return;
 		}
-		exif_set_long (*d + 6 + offset + 8,
-			       data->priv->order, doff);
+		exif_set_long (*d + 6 + offset + 8, data->priv->order, doff);
+		if (s & 1) *(*d + *ds - 1) = '\0';
+
 	} else
 		doff = offset + 8;
 
