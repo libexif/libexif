@@ -1,5 +1,10 @@
 2004-11-11  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-log.c: Plug another memory leak. Detected by 
+	  Angela Wrobel.
+
+2004-11-11  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/canon/exif-mnote-data-canon.c: Do not crash on strange
 	  data. Pointed out by Angela Wrobel.
 

@@ -111,9 +111,12 @@ exif_log_unref (ExifLog *log)
 void
 exif_log_free (ExifLog *log)
 {
+	ExifMem *mem = log ? log->mem : NULL;
+
 	if (!log) return;
 
-	exif_mem_free (log->mem, log);
+	exif_mem_free (mem, log);
+	exif_mem_unref (mem);
 }
 
 void
