@@ -32,7 +32,7 @@
 #undef MAX
 #define MAX(a, b)  (((a) > (b)) ? (a) : (b))
 
-#define DEBUG
+//#define DEBUG
 
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 
