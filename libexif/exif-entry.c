@@ -347,7 +347,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		if (e->size < 8) break;
 		strncpy (val, e->data + 8, MIN (e->size - 8, maxlen));
-		if (maxlen > e->size - 8) val[e->size - 8] = '\0';
 		break;
 
 	case EXIF_TAG_EXIF_VERSION:
