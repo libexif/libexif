@@ -30,6 +30,8 @@ dnl i18n support
 dnl ---------------------------------------------------------------------------
 ALL_LINGUAS="de es"
 AM_GNU_GETTEXT
+GETTEXT_PACKAGE='${PACKAGE}${LIBEXIF_CURRENT}'
+AC_SUBST(GETTEXT_PACKAGE)
 
 dnl ---------------------------------------------------------------------------
 dnl Warnings
