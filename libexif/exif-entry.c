@@ -24,8 +24,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <libjpeg/jpeg-marker.h>
-
 //#define DEBUG
 
 #undef  MIN

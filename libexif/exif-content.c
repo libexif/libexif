@@ -24,8 +24,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <libjpeg/jpeg-marker.h>
-
 //#define DEBUG
 
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
