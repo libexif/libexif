@@ -85,6 +85,8 @@ if $try_gtkdoc; then
 	fi
 fi
 AM_CONDITIONAL([ENABLE_GTK_DOC], [$have_gtkdoc])
+GP_CONFIG_MSG([build API docs with gtk-doc],[$gtkdoc_msg])
+
 
 # ---------------------------------------------------------------------------
 # Give the user the possibility to install html documentation in a 
