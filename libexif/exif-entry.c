@@ -32,9 +32,6 @@
 #include <time.h>
 #include <math.h>
 
-#undef  MIN
-#define MIN(a, b)  (((a) < (b)) ? (a) : (b))
-
 struct _ExifEntryPrivate
 {
 	unsigned int ref_count;
@@ -987,7 +984,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			break;
 		case EXIF_FORMAT_LONG:
 			v_long = exif_get_long (e->data, o);
-			snprintf (val, maxlen, "%i", (int) v_long);
+			snprintf (val, maxlen, "%li", (long int) v_long);
 			maxlen -= strlen (val);
 			for (i = 1; i < e->components; i++) {
 				v_long = exif_get_long (e->data +

@@ -22,8 +22,6 @@
 
 #include <libexif/exif-utils.h>
 
-typedef signed short ExifSShort;
-
 void
 exif_array_set_byte_order (ExifFormat f, unsigned char *b, unsigned int n,
 		ExifByteOrder o_orig, ExifByteOrder o_new)
@@ -31,6 +29,7 @@ exif_array_set_byte_order (ExifFormat f, unsigned char *b, unsigned int n,
 	unsigned int j;
 	unsigned int fs = exif_format_get_size (f);
 	ExifShort s;
+	ExifSShort ss;
 	ExifLong l;
 	ExifSLong sl;
 	ExifRational r;
@@ -43,6 +42,12 @@ exif_array_set_byte_order (ExifFormat f, unsigned char *b, unsigned int n,
 		for (j = 0; j < n; j++) {
 			s = exif_get_short (b + j * fs, o_orig);
 			exif_set_short (b + j * fs, o_new, s);
+		}
+		break;
+	case EXIF_FORMAT_SSHORT:
+		for (j = 0; j < n; j++) {
+			ss = exif_get_sshort (b + j * fs, o_orig);
+			exif_set_sshort (b + j * fs, o_new, ss);
 		}
 		break;
 	case EXIF_FORMAT_LONG:
@@ -100,7 +105,7 @@ exif_get_short (const unsigned char *buf, ExifByteOrder order)
 }
 
 void
-exif_set_short (unsigned char *b, ExifByteOrder order, ExifShort value)
+exif_set_sshort (unsigned char *b, ExifByteOrder order, ExifSShort value)
 {
 	if (!b) return;
 	switch (order) {
@@ -113,6 +118,12 @@ exif_set_short (unsigned char *b, ExifByteOrder order, ExifShort value)
 		b[1] = (unsigned char) (value >> 8);
 		break;
 	}
+}
+
+void
+exif_set_short (unsigned char *b, ExifByteOrder order, ExifShort value)
+{
+	exif_set_sshort (b, order, value);
 }
 
 ExifSLong

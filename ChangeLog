@@ -1,3 +1,8 @@
+2005-03-10  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-utils.*,exif-entry.c: Full support of EXIF_FORMAT_SSHORT
+	  (used by Nikon & Olympus mnote tags)
+
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-utils.c (exif_array_set_byte_order): Return if an invalid

@@ -36,6 +36,7 @@ extern "C" {
 typedef char		ExifByte;          /* 1 byte  */
 typedef char *		ExifAscii;
 typedef uint16_t	ExifShort;         /* 2 bytes */
+typedef int16_t         ExifSShort;        /* 2 bytes */
 typedef uint32_t	ExifLong;          /* 4 bytes */
 typedef struct {ExifLong numerator; ExifLong denominator;} ExifRational;
 typedef char		ExifUndefined;     /* 1 byte  */
@@ -44,6 +45,7 @@ typedef struct {ExifSLong numerator; ExifSLong denominator;} ExifSRational;
 
 
 ExifShort     exif_get_short     (const unsigned char *b, ExifByteOrder order);
+ExifSShort    exif_get_sshort    (const unsigned char *b, ExifByteOrder order);
 ExifLong      exif_get_long      (const unsigned char *b, ExifByteOrder order);
 ExifSLong     exif_get_slong     (const unsigned char *b, ExifByteOrder order);
 ExifRational  exif_get_rational  (const unsigned char *b, ExifByteOrder order);
@@ -51,6 +53,8 @@ ExifSRational exif_get_srational (const unsigned char *b, ExifByteOrder order);
 
 void exif_set_short     (unsigned char *b, ExifByteOrder order,
 			 ExifShort value);
+void exif_set_sshort    (unsigned char *b, ExifByteOrder order,
+			 ExifSShort value);
 void exif_set_long      (unsigned char *b, ExifByteOrder order,
 			 ExifLong value);
 void exif_set_slong     (unsigned char *b, ExifByteOrder order,
