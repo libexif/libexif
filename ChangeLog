@@ -1,3 +1,10 @@
+2002-07-10  Lutz Müller <lutz@users.sourceforge.net>
+
+	Bug spotted by Andres <aplaza@smalcamera.com>:
+
+	* libexif/exif-data.c: Save the EXIF_TAG_INTEROPERABILITY_IFD_POINTER
+	  in ifd_exif, not in ifd0.
+
 2002-06-26  Lutz Müller <lutz@users.sourceforge.net>
 
 	Patch by Jos van den Oever <oever@fenk.wau.nl>: Make libexif c++

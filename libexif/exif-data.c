@@ -263,12 +263,13 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 {
 	unsigned int i, n_ptr = 0, n_thumb = 0;
 
-	/* If we are to save IFD 0, we need some extra entries. */
+	/* If we are to save IFD 0 or 1, we need some extra entries. */
 	if (ifd == data->ifd0) {
 		if (data->ifd_exif->count)
 			n_ptr++;
 		if (data->ifd_gps->count)
 			n_ptr++;
+	} else if (ifd == data->ifd1) {
 		if (data->ifd_interoperability->count)
 			n_ptr++;
 	}
@@ -332,7 +333,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		offset += 12;
 	}
 
-	if (ifd == data->ifd0 && data->ifd_interoperability->count) {
+	if (ifd == data->ifd1 && data->ifd_interoperability->count) {
 
 		/* EXIF_TAG_INTEROPERABILITY_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -373,7 +374,8 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		offset += 12;
 	}
 
-	if (ifd == data->ifd0 && data->ifd1->count) {
+	if (ifd == data->ifd0 && (data->ifd1->count ||
+				  data->ifd_interoperability->count)) {
 		/*
 		 * We are saving IFD 0. Tell where IFD 1 starts and save
 		 * IFD 1.
