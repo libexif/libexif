@@ -28,7 +28,7 @@ AM_PROG_LIBTOOL
 dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
-ALL_LINGUAS="de es"
+ALL_LINGUAS="de es fr"
 # EVIL HACKS
 AC_MSG_CHECKING([for po/Makevars requiring evil hack])
 GETTEXT_PACKAGE="${PACKAGE}-${LIBEXIF_CURRENT}"
