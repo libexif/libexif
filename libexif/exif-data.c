@@ -27,6 +27,7 @@
 #include <libexif/exif-utils.h>
 #include <libexif/exif-loader.h>
 #include <libexif/exif-log.h>
+#include <libexif/i18n.h>
 
 #include <libexif/olympus/exif-mnote-data-olympus.h>
 #include <libexif/canon/exif-mnote-data-canon.h>
@@ -641,6 +642,10 @@ exif_data_get_type_maker_note (ExifData *d)
 	return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
 }
 
+#define LOG_TOO_SMALL \
+exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData", \
+		_("Size of data too small to allow for EXIF data."));
+
 void
 exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		     unsigned int ds_orig)
@@ -661,8 +666,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	 * not, search the EXIF marker.
 	 */
 	if (ds < 6) {
-		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-		          "Size too small.");
+		LOG_TOO_SMALL;
 		return;
 	}
 	if (!memcmp (d, ExifHeader, 6)) {
@@ -699,15 +703,14 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 				break;
 
 			/* Unknown marker or data. Give up. */
-			exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
-				  "ExifData", "EXIF marker not found.");
+			exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				  "ExifData", _("EXIF marker not found."));
 			return;
 		}
 		d++;
 		ds--;
 		if (ds < 2) {
-			exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
-				  "ExifData", "Size too small.");
+			LOG_TOO_SMALL;
 			return;
 		}
 		len = (d[0] << 8) | d[1];
@@ -723,13 +726,12 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	 * (offset 2, length 6).
 	 */
 	if (ds < 6) {
-		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-			  "Size too small.");
+		LOG_TOO_SMALL;
 		return;
 	}
 	if (memcmp (d, ExifHeader, 6)) {
-		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-			  "EXIF header not found.");
+		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				"ExifData", _("EXIF header not found."));
 		return;
 	}
 
@@ -743,8 +745,11 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		data->priv->order = EXIF_BYTE_ORDER_INTEL;
 	else if (!memcmp (d + 6, "MM", 2))
 		data->priv->order = EXIF_BYTE_ORDER_MOTOROLA;
-	else
+	else {
+		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				"ExifData", _("Unknown encoding."));
 		return;
+	}
 
 	/* Fixed value */
 	if (exif_get_short (d + 8, data->priv->order) != 0x002a)
@@ -774,8 +779,8 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 
 		/* Sanity check. */
 		if (offset > ds - 6) {
-			exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, 
-				  "ExifData", "Bogus offset!");
+			exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				  "ExifData", "Bogus offset.");
 			return;
 		}
 

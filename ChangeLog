@@ -1,3 +1,7 @@
+2005-03-30  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-data.c: Convert some DEBUG messages to CORRUPT_DATA.
+
 2005-03-29  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libjpeg: Removed.
