@@ -16,7 +16,8 @@ libexif_la_SOURCES =		\
 	exif-note.c		\
 	exif-tag.c		\
 	exif-utils.c
-libexif_la_LIBADD = -lm
+libexif_la_LIBADD = -lm		\
+	canon/libexif-canon.la
 
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = 	\

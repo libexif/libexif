@@ -24,6 +24,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <canon/exif-canon-note.h>
+
 struct _ExifNotePrivate {
 	unsigned int ref_count;
 };
@@ -74,4 +76,41 @@ exif_note_free (ExifNote *note)
 	}
 
 	free (note);
+}
+
+static void
+exif_note_load_data (ExifNote *note,
+		     const unsigned char *data, unsigned int size)
+{
+	if (!note)
+		return;
+
+	if (note->methods.load_data)
+		note->methods.load_data (note, data, size);
+}
+
+ExifNote *
+exif_note_new_from_data (const unsigned char *data, unsigned int size)
+{
+	ExifNote *note = NULL;
+
+	if (!size || !data)
+		return (NULL);
+
+	/* Canon notes begin with 0x0000 */
+	if ((size > 1) && (data[0] == 0x00) && (data[1] == 0x00))
+		note = exif_canon_note_new ();
+
+	/* Insert your maker here... Patches welcome. */
+	else if (0) {
+		note = NULL;
+
+	} else {
+		note = NULL;
+	}
+
+	if (note)
+		exif_note_load_data (note, data, size);
+
+	return (note);
 }

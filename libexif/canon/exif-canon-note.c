@@ -52,7 +52,7 @@ exif_canon_note_save_data (ExifNote *n, unsigned char **data,
 }
 
 static void
-exif_canon_note_load_data (ExifNote *n, unsigned char *data,
+exif_canon_note_load_data (ExifNote *n, const unsigned char *data,
 			   unsigned int size)
 {
 	ExifCanonNote *note = (ExifCanonNote *) n;
