@@ -2,7 +2,11 @@ SUBDIRS = canon olympus pentax
 
 lib_LTLIBRARIES = libexif.la
 
-libexif_la_LDFLAGS = -version-info @LIBEXIF_VERSION_INFO@
+# The -no-undefined makes it possible to build DLLs for Windows,
+# or shared libraries for Tru64 or AIX (according to the autobook
+# chapter on "Portable Library Design"). It doesn't seem to hurt
+# elsewhere, so we can leave it in.
+libexif_la_LDFLAGS = -no-undefined -version-info @LIBEXIF_VERSION_INFO@
 libexif_la_SOURCES =		\
 	exif-byte-order.c	\
 	exif-content.c		\
