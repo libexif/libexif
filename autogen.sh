@@ -79,6 +79,9 @@ init_vars() {
 
     echo -n "Initializing variables for \`${dir}'..."
     AG_AUX="$(sed -n 's/^AC_CONFIG_AUX_DIR(\[\{0,1\}\([^])]*\).*/\1/p' < "$CONFIGURE_AC")"
+    if test "x$AG_AUX" = "x"; then
+	AG_AUX="."
+    fi
     AG_CONFIG_H="$(sed -n 's/^\(A[CM]_CONFIG_HEADERS\?\)(\[\{0,1\}\([^]),]*\).*/\2/p' < "$CONFIGURE_AC")"
     AG_CONFIG_K="$(sed -n 's/^\(A[CM]_CONFIG_HEADERS\?\)(\[\{0,1\}\([^]),]*\).*/\1/p' < "$CONFIGURE_AC")"
     if echo "x$AG_CONFIG_H" | grep -q ':'; then
