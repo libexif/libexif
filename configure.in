@@ -1,6 +1,7 @@
+AC_PREREQ(2.50)
 AC_INIT(libexif/exif-data.h)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(libexif, 0.5.1)
+AM_INIT_AUTOMAKE(libexif, 0.5.2)
 AM_MAINTAINER_MODE
 
 dnl ---------------------------------------------------------------------------

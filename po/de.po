@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2002-06-10 13:50+0200\n"
+"POT-Creation-Date: 2002-06-10 20:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <de@li.org>\n"
@@ -819,6 +819,11 @@ msgid ""
 "left edge, prior to rotation processing as per the <Rotation> tag. The first "
 "value indicates the X column number and second indicates the Y row number."
 msgstr ""
+
+#: libexif/exif-tag.c:513
+#, fuzzy
+msgid "Exposure index"
+msgstr "Belichtungsart"
 
 #: libexif/exif-tag.c:514
 msgid ""
