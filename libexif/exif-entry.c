@@ -1224,7 +1224,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		if (!e->data) break;
 		snprintf ((char *) e->data, e->size,
 			  "%04i:%02i:%02i %02i:%02i:%02i",
-			  tm->tm_year + 1900, tm->tm_mon, tm->tm_mday,
+			  tm->tm_year + 1900, tm->tm_mon + 1, tm->tm_mday,
 			  tm->tm_hour, tm->tm_min, tm->tm_sec);
 		break;
 
