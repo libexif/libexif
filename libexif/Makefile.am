@@ -1,7 +1,7 @@
 INCLUDES =              \
         -I$(top_srcdir)
 
-noinst_LTLIBRARIES = libexif.la
+lib_LTLIBRARIES = libexif.la
 
 libexif_la_LDFLAGS = -version-info @LIBEXIF_VERSION_INFO@
 libexif_la_SOURCES =		\
