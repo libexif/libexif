@@ -6,7 +6,7 @@ AM_MAINTAINER_MODE
 LIBEXIF_VERSION_INFO=0:1:0
 AC_SUBST(LIBEXIF_VERSION_INFO)
 
-AC_PROG_LIBTOOL
+AM_PROG_LIBTOOL
 
 dnl ---------------------------------------------------------------------------
 dnl i18n support
@@ -39,6 +39,31 @@ AC_SUBST(GTK_LIBS)
 AM_CONDITIONAL(HAVE_GTK, $have_gtk)
 
 dnl ---------------------------------------------------------------------------
+dnl gdk-pixbuf support?
+dnl ---------------------------------------------------------------------------
+have_gdk_pixbuf=false
+try_gdk_pixbuf=true
+gtk_gdk_pixbuf=no
+AC_ARG_WITH(gdk-pixbuf, [  --without-gdk-pixbuf       Don't use gdk-pixbuf],
+        if test x$withval = xno; then
+                try_gdk_pixbuf=false
+        fi
+)
+if $try_gdk_pixbuf; then
+        AC_PATH_PROG(GDK_PIXBUF_CONFIG,gdk-pixbuf-config)
+        if test -n "$GDK_PIXBUF_CONFIG" ; then
+                have_gdk_pixbuf=true
+                gdk_pixbuf_msg=yes
+                GDK_PIXBUF_CFLAGS=`$GDK_PIXBUF_CONFIG --cflags`
+                GDK_PIXBUF_LIBS=`$GDK_PIXBUF_CONFIG --libs`
+		AC_DEFINE(HAVE_GDK_PIXBUF)
+        fi
+fi
+AC_SUBST(GDK_PIXBUF_CFLAGS)
+AC_SUBST(GDK_PIXBUF_LIBS)
+AM_CONDITIONAL(HAVE_GDK_PIXBUF, $have_gdk_pixbuf)
+
+dnl ---------------------------------------------------------------------------
 dnl Warnings
 dnl ---------------------------------------------------------------------------
 CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
@@ -48,6 +73,7 @@ AC_SUBST(LDFLAGS)
 
 AC_OUTPUT([
 Makefile
+gexif/Makefile
 libexif/Makefile
 libexif-gtk/Makefile
 libexif-gtk/gtk-extensions/Makefile
@@ -65,4 +91,5 @@ Configuration (libexif):
 	Compiler:              ${CC}
 
 	GTK support:           $gtk_msg
+	gdk-pixbuf support:    $gdk_pixbuf_msg
 "

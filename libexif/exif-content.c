@@ -48,6 +48,7 @@ exif_content_new (void)
 		return (NULL);
 	}
 	memset (content->priv, 0, sizeof (ExifContentPrivate));
+
 	content->priv->ref_count = 1;
 
 	return (content);
@@ -77,37 +78,6 @@ exif_content_free (ExifContent *content)
 	free (content->entries);
 	free (content->priv);
 	free (content);
-}
-
-void
-exif_content_parse (ExifContent *content, const unsigned char *data,
-		    unsigned int size, unsigned int offset,
-		    ExifByteOrder order)
-{
-	unsigned int i;
-	ExifShort n;
-	ExifEntry *entry;
-
-	if (!content)
-		return;
-
-	content->order = order;
-
-	/* Read number of entries */
-	if (size < offset + 2)
-		return;
-	n = exif_get_short (data + offset, order);
-#ifdef DEBUG
-	printf ("Parsing directory with %i entries...\n", n);
-#endif
-
-	for (i = 0; i < n; i++) {
-		entry = exif_entry_new ();
-		exif_content_add_entry (content, entry);
-		exif_entry_parse (content->entries[i], data, size,
-				  offset + 2 + 12 * i, order);
-		exif_entry_unref (entry);
-	}
 }
 
 void

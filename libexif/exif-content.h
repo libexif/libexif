@@ -34,8 +34,6 @@ struct _ExifContent {
         ExifEntry **entries;
         unsigned int count;
 
-	ExifEntry *parent;
-
 	ExifContentPrivate *priv;
 };
 
@@ -44,11 +42,6 @@ ExifContent *exif_content_new   (void);
 void         exif_content_ref   (ExifContent *content);
 void         exif_content_unref (ExifContent *content);
 void         exif_content_free  (ExifContent *content);
-
-void         exif_content_parse (ExifContent *content,
-				 const unsigned char *data,
-				 unsigned int size,
-				 unsigned int offset, ExifByteOrder order);
 
 void         exif_content_add_entry    (ExifContent *content, ExifEntry *e);
 void         exif_content_remove_entry (ExifContent *content, ExifEntry *e);

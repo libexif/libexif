@@ -1,4 +1,4 @@
-/* gtk-exif_tag_menu.c
+/* gtk-exif-tag-menu.c
  *
  * Copyright (C) 2001 Lutz Müller <lutz@users.sourceforge.net>
  *
@@ -23,6 +23,8 @@
 
 #include <gtk/gtksignal.h>
 
+#include <string.h>
+
 #ifdef ENABLE_NLS
 #  include <libintl.h>
 #  undef _
@@ -45,8 +47,8 @@
 struct _GtkExifTagMenuPrivate {
 };
 
-#define PARENT_TYPE GTK_TYPE_OPTIONS
-static GtkOptionsClass *parent_class;
+#define PARENT_TYPE GTK_TYPE_MENU_OPTION
+static GtkMenuOptionClass *parent_class;
 
 enum {
 	TAG_SELECTED,
@@ -119,7 +121,7 @@ gtk_exif_tag_menu_get_type (void)
 }
 
 static void
-on_option_selected (GtkOptions *options, guint option, GtkExifTagMenu *menu)
+on_option_selected (GtkMenuOption *options, guint option, GtkExifTagMenu *menu)
 {
 	gtk_signal_emit (GTK_OBJECT (menu), signals[TAG_SELECTED],
 			 option);
@@ -131,14 +133,14 @@ GtkWidget *
 gtk_exif_tag_menu_new (void)
 {
 	GtkExifTagMenu *menu;
-	GtkOptionsList tags[LIST_SIZE];
+	GtkOptions tags[LIST_SIZE];
 	guint i, t;
 	const gchar *name;
 
 	menu = gtk_type_new (GTK_EXIF_TYPE_TAG_MENU);
 
 	t = i = 0;
-	memset (tags, 0, sizeof (GtkOptionsList) * LIST_SIZE);
+	memset (tags, 0, sizeof (GtkOptions) * LIST_SIZE);
 	while ((t < 0xffff) && (i < LIST_SIZE - 1)) {
 		name = exif_tag_get_name (t);
 		if (name) {
@@ -148,7 +150,8 @@ gtk_exif_tag_menu_new (void)
 		}
 		t++;
 	}
-	gtk_options_construct (GTK_OPTIONS (menu), tags);
+
+	gtk_menu_option_construct (GTK_MENU_OPTION (menu), tags);
 	gtk_signal_connect (GTK_OBJECT (menu), "option_selected",
 			    GTK_SIGNAL_FUNC (on_option_selected), menu);
 

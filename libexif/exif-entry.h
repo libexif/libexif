@@ -38,8 +38,6 @@ struct _ExifEntry {
         unsigned char *data;
         unsigned int size;
 
-        ExifContent *content;
-
 	/* Content containing this entry */
 	ExifContent *parent;
 
@@ -51,10 +49,6 @@ ExifEntry  *exif_entry_new   (void);
 void        exif_entry_ref   (ExifEntry *entry);
 void        exif_entry_unref (ExifEntry *entry);
 void        exif_entry_free  (ExifEntry *entry);
-
-void        exif_entry_parse     (ExifEntry *entry, const unsigned char *data,
-			          unsigned int size, unsigned int offset,
-			          ExifByteOrder order);
 
 void        exif_entry_initialize (ExifEntry *entry, ExifTag tag);
 

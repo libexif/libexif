@@ -29,6 +29,8 @@
 #include <gtk/gtklabel.h>
 #include <gtk/gtkentry.h>
 
+#include <string.h>
+
 struct _GtkExifEntryAsciiPrivate {
 	ExifEntry *entry;
 

@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <math.h>
 
 //#define DEBUG
 
@@ -54,13 +55,6 @@ exif_entry_new (void)
 	memset (entry->priv, 0, sizeof (ExifEntryPrivate));
 	entry->priv->ref_count = 1;
 
-	entry->content = exif_content_new ();
-	if (!entry->content) {
-		exif_entry_free (entry);
-		return (NULL);
-	}
-	entry->content->parent = entry;
-
 	return (entry);
 }
 
@@ -83,55 +77,8 @@ exif_entry_free (ExifEntry *entry)
 {
 	if (entry->data)
 		free (entry->data);
-	exif_content_unref (entry->content);
 	free (entry->priv);
 	free (entry);
-}
-
-void
-exif_entry_parse (ExifEntry *entry, const unsigned char *data,
-		  unsigned int size, unsigned int offset, ExifByteOrder order)
-{
-	unsigned int s, doff;
-
-	entry->order = order;
-	entry->tag         = exif_get_short (data + offset + 0, order);
-	entry->format      = exif_get_short (data + offset + 2, order);
-	entry->components  = exif_get_long  (data + offset + 4, order);
-
-#ifdef DEBUG
-	printf ("Parsing entry (tag 0x%x - '%s')...\n", entry->tag,
-		exif_tag_get_name (entry->tag));
-#endif
-
-	/*
-	 * Size? If bigger than 4 bytes, the actual data is not
-	 * in the entry but somewhere else (offset). Beware of subdirectories.
-	 */
-	s = exif_format_get_size (entry->format) * entry->components;
-	if (!s)
-		return;
-	if ((s > 4) || (entry->tag == EXIF_TAG_EXIF_IFD_POINTER) ||
-		       (entry->tag == EXIF_TAG_GPS_INFO_IFD_POINTER) ||
-		       (entry->tag == EXIF_TAG_INTEROPERABILITY_IFD_POINTER))
-		doff = exif_get_long (data + offset + 8, order);
-	else
-		doff = offset + 8;
-
-	/* Sanity check */
-	if (size < doff + s)
-		return;
-
-	entry->data = malloc (sizeof (char) * s);
-	if (!entry->data)
-		return;
-	entry->size = s;
-	memcpy (entry->data, data + doff, s);
-
-	if ((entry->tag == EXIF_TAG_EXIF_IFD_POINTER) ||
-	    (entry->tag == EXIF_TAG_GPS_INFO_IFD_POINTER) ||
-	    (entry->tag == EXIF_TAG_INTEROPERABILITY_IFD_POINTER))
-		exif_content_parse (entry->content, data, size, doff, order);
 }
 
 void
@@ -154,8 +101,6 @@ exif_entry_dump (ExifEntry *entry, unsigned int indent)
 	printf ("%s  Components: %i\n", buf, (int) entry->components);
 	printf ("%s  Size: %i\n", buf, entry->size);
 	printf ("%s  Value: %s\n", buf, exif_entry_get_value (entry));
-	if (entry->content->count)
-		exif_content_dump (entry->content, indent + 1);
 }
 
 const char *
@@ -198,6 +143,28 @@ exif_entry_get_value (ExifEntry *entry)
 		else
 			strncat (v, "[None]", sizeof (v));
 		strncat (v, " (Editor)", sizeof (v));
+		break;
+	case EXIF_TAG_APERTURE_VALUE:
+		v_rat = exif_get_rational (entry->data, entry->order);
+		snprintf (b, sizeof (b), "%i/%i", (int) v_rat.numerator,
+						  (int) v_rat.denominator);
+		snprintf (v, sizeof (v), "%s (APEX: f%.01f)", b,
+			  pow (2 , ((float) v_rat.numerator /
+				    (float) v_rat.denominator) / 2.));
+		break;
+	case EXIF_TAG_SHUTTER_SPEED_VALUE:
+		v_srat = exif_get_srational (entry->data, entry->order);
+		snprintf (b, sizeof (b), "%.0f/%.0f sec.",
+			  (float) v_srat.numerator, (float) v_srat.denominator);
+		snprintf (v, sizeof (v), "%s (APEX: %i)", b,
+			  (int) pow (sqrt(2), (float) v_srat.numerator /
+					      (float) v_srat.denominator));
+		break;
+	case EXIF_TAG_BRIGHTNESS_VALUE:
+		v_srat = exif_get_srational (entry->data, entry->order);
+		snprintf (v, sizeof (v), "%i/%i", (int) v_srat.numerator, 
+						  (int) v_srat.denominator);
+		//FIXME: How do I calculate the APEX value?
 		break;
 	default:
 		switch (entry->format) {

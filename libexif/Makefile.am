@@ -12,6 +12,7 @@ libexif_la_SOURCES =		\
 	exif-i18n.h		\
 	exif-tag.c		\
 	exif-utils.c
+libexif_la_LIBADD = -lm
 
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = 	\

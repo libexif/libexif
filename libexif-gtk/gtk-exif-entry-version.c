@@ -35,12 +35,15 @@
 
 #include <libexif/exif-i18n.h>
 
+#include "gtk-extensions/gtk-option-menu-option.h"
 #include "gtk-extensions/gtk-options.h"
+
+#include <string.h>
 
 struct _GtkExifEntryVersionPrivate {
 	ExifEntry *entry;
 
-	GtkOptions *options;
+	GtkOptionMenuOption *menu;
 };
 
 #define PARENT_TYPE GTK_EXIF_TYPE_ENTRY
@@ -125,13 +128,13 @@ enum _FlashPixVersion {
 	FLASH_PIX_VERSION_1
 };
 
-static GtkOptionsList exif_list[] = {
+static GtkOptions exif_list[] = {
         {EXIF_VERSION_2_0, N_("Exif Format Version 2.0")},
         {EXIF_VERSION_2_1, N_("Exif Format Version 2.1")},
         {0, NULL}
 };
 
-static GtkOptionsList flash_pix_list[] = {
+static GtkOptions flash_pix_list[] = {
         {FLASH_PIX_VERSION_1, N_("FlashPix Format Version 1.0")},
         {0, NULL}
 };
@@ -160,14 +163,12 @@ gtk_exif_entry_version_load (GtkExifEntryVersion *entry)
 
 	g_return_if_fail (GTK_EXIF_IS_ENTRY_VERSION (entry));
 
-	gtk_signal_handler_block_by_data (GTK_OBJECT (entry->priv->options),
-					  entry);
 	switch (entry->priv->entry->tag) {
 	case EXIF_TAG_EXIF_VERSION:
 		for (i = 0; exif_versions[i].data; i++)
 			if (!memcmp (exif_versions[i].data,
 				     entry->priv->entry->data, 4)) {
-				gtk_options_set (entry->priv->options,
+				gtk_option_menu_option_set (entry->priv->menu,
 						 exif_versions[i].version);
 				break;
 			}
@@ -176,7 +177,7 @@ gtk_exif_entry_version_load (GtkExifEntryVersion *entry)
 		for (i = 0; flash_pix_versions[i].data; i++)
 			if (!memcmp (flash_pix_versions[i].data, 
 				     entry->priv->entry->data, 4)) {
-				gtk_options_set (entry->priv->options, 
+				gtk_option_menu_option_set (entry->priv->menu, 
 						 flash_pix_versions[i].version);
 				break;
 			}
@@ -184,8 +185,6 @@ gtk_exif_entry_version_load (GtkExifEntryVersion *entry)
 	default:
 		break;
 	}
-	gtk_signal_handler_unblock_by_data (GTK_OBJECT (entry->priv->options),
-					    entry);
 }
 
 static void
@@ -193,7 +192,7 @@ gtk_exif_entry_version_save (GtkExifEntryVersion *entry)
 {
 	guint option, i;
 
-	option = gtk_options_get (entry->priv->options);
+	option = gtk_option_menu_option_get (entry->priv->menu);
 	switch (entry->priv->entry->tag) {
 	case EXIF_TAG_EXIF_VERSION:
 		for (i = 0; exif_versions[i].data; i++)
@@ -252,16 +251,16 @@ gtk_exif_entry_version_new (ExifEntry *e)
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 	switch (e->tag) {
 	case EXIF_TAG_EXIF_VERSION:
-		options = gtk_options_new (exif_list);
+		options = gtk_option_menu_option_new (exif_list);
 		break;
 	case EXIF_TAG_FLASH_PIX_VERSION:
 	default:
-		options = gtk_options_new (flash_pix_list);
+		options = gtk_option_menu_option_new (flash_pix_list);
 		break;
 	}
 	gtk_widget_show (options);
 	gtk_box_pack_start (GTK_BOX (hbox), options, FALSE, FALSE, 0);
-	entry->priv->options = GTK_OPTIONS (options);
+	entry->priv->menu = GTK_OPTION_MENU_OPTION (options);
 	gtk_signal_connect (GTK_OBJECT (options), "option_selected",
 			    GTK_SIGNAL_FUNC (on_option_selected), entry);
 

@@ -21,8 +21,10 @@
 #include <config.h>
 #include "gtk-exif-content-list.h"
 
-static void gtk_exif_content_list_add_content (GtkExifContentList *list,
-					       ExifContent *content);
+#include <gtk/gtkmenu.h>
+#include <gtk/gtkmenuitem.h>
+
+#include "gtk-exif-tag-menu.h"
 
 struct _GtkExifContentListPrivate {
 };
@@ -31,8 +33,10 @@ struct _GtkExifContentListPrivate {
 static GtkCListClass *parent_class;
 
 enum {
+	ENTRY_ADDED,
+	ENTRY_REMOVED,
+	ENTRY_CHANGED,
 	ENTRY_SELECTED,
-	CONTENT_CHANGED,
 	LAST_SIGNAL
 };
 
@@ -74,9 +78,17 @@ gtk_exif_content_list_class_init (GtkExifContentListClass *klass)
 		GTK_RUN_LAST, object_class->type,
 		GTK_SIGNAL_OFFSET (GtkExifContentListClass, entry_selected),
 		gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1, GTK_TYPE_POINTER);
-	signals[CONTENT_CHANGED] = gtk_signal_new ("content_changed",
-		GTK_RUN_LAST, object_class->type,
-		GTK_SIGNAL_OFFSET (GtkExifContentListClass, content_changed),
+	signals[ENTRY_ADDED] = gtk_signal_new ("entry_added",
+		GTK_RUN_FIRST, object_class->type,
+		GTK_SIGNAL_OFFSET (GtkExifContentListClass, entry_added),
+		gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1, GTK_TYPE_POINTER);
+	signals[ENTRY_CHANGED] = gtk_signal_new ("entry_changed",
+		GTK_RUN_FIRST, object_class->type,
+		GTK_SIGNAL_OFFSET (GtkExifContentListClass, entry_changed),
+		gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1, GTK_TYPE_POINTER);
+	signals[ENTRY_REMOVED] = gtk_signal_new ("entry_removed",
+		GTK_RUN_FIRST, object_class->type,
+		GTK_SIGNAL_OFFSET (GtkExifContentListClass, entry_removed),
 		gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1, GTK_TYPE_POINTER);
 	gtk_object_class_add_signals (object_class, signals, LAST_SIGNAL);
 
@@ -109,6 +121,80 @@ gtk_exif_content_list_get_type (void)
 }
 
 static void
+on_hide (GtkWidget *widget, GtkMenu *menu)
+{
+	gtk_object_unref (GTK_OBJECT (menu));
+}
+
+static void
+on_remove_activate (GtkMenuItem *item, GtkExifContentList *list)
+{
+	ExifEntry *entry;
+	guint row;
+
+	while (GTK_CLIST (list)->selection) {
+		row = GPOINTER_TO_INT (GTK_CLIST (list)->selection->data);
+		entry = gtk_clist_get_row_data (GTK_CLIST (list), row);
+		exif_entry_ref (entry);
+		gtk_clist_remove (GTK_CLIST (list), row);
+		gtk_signal_emit (GTK_OBJECT (list), signals[ENTRY_REMOVED],
+				 entry);
+		exif_entry_unref (entry);
+	}
+}
+
+static void
+on_tag_selected (GtkExifTagMenu *menu, ExifTag tag, GtkExifContentList *list)
+{
+	ExifEntry *entry;
+
+	entry = exif_entry_new ();
+	exif_content_add_entry (list->content, entry);
+	exif_entry_initialize (entry, tag);
+	gtk_exif_content_list_add_entry (list, entry);
+	exif_entry_unref (entry);
+}
+
+static gint
+on_button_press_event (GtkWidget *widget, GdkEventButton *event, 
+		       GtkExifContentList *list)
+{
+	GtkWidget *menu, *item, *smenu;
+
+	g_return_val_if_fail (GTK_EXIF_IS_CONTENT_LIST (list), FALSE);
+
+	switch (event->button) {
+	case 3:
+		menu = gtk_menu_new ();
+		gtk_widget_show (menu);
+		gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL,
+				event->button, event->time);
+		gtk_signal_connect (GTK_OBJECT (menu), "hide",
+				    GTK_SIGNAL_FUNC (on_hide), menu);
+
+		/* Add */
+		item = gtk_menu_item_new_with_label ("Add");
+		gtk_widget_show (item);
+		gtk_menu_append (GTK_MENU (menu), item);
+		smenu = gtk_exif_tag_menu_new ();
+		gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), smenu);
+		gtk_signal_connect (GTK_OBJECT (smenu), "tag_selected",
+				GTK_SIGNAL_FUNC (on_tag_selected), list);
+
+		/* Remove */
+		item = gtk_menu_item_new_with_label ("Remove");
+		gtk_widget_show (item);
+		gtk_menu_append (GTK_MENU (menu), item);
+		gtk_signal_connect (GTK_OBJECT (item), "activate",
+				GTK_SIGNAL_FUNC (on_remove_activate), list);
+
+		return (TRUE);
+	default:
+		return (FALSE);
+	}
+}
+
+static void
 on_select_row (GtkCList *list, gint row, gint col, GdkEvent *event)
 {
 	gtk_signal_emit (GTK_OBJECT (list), signals[ENTRY_SELECTED],
@@ -127,7 +213,9 @@ gtk_exif_content_list_new (void)
 	gtk_clist_set_auto_sort (GTK_CLIST (list), TRUE);
 
 	gtk_signal_connect (GTK_OBJECT (list), "select_row",
-			    GTK_SIGNAL_FUNC (on_select_row), NULL);
+			    GTK_SIGNAL_FUNC (on_select_row), list);
+	gtk_signal_connect (GTK_OBJECT (list), "button_press_event",
+			    GTK_SIGNAL_FUNC (on_button_press_event), list);
 
 	return (GTK_WIDGET (list));
 }
@@ -150,27 +238,15 @@ gtk_exif_content_list_add_entry (GtkExifContentList *list, ExifEntry *entry)
 	exif_entry_ref (entry);
 	gtk_clist_set_row_data_full (GTK_CLIST (list), row, entry,
 				     row_destroy_notify);
-	gtk_signal_emit (GTK_OBJECT (list), signals[CONTENT_CHANGED],
-			 list->content);
-}
-
-static void
-gtk_exif_content_list_add_content (GtkExifContentList *list,
-				   ExifContent *content)
-{
-	guint i;
-
-	g_return_if_fail (GTK_EXIF_IS_CONTENT_LIST (list));
-	g_return_if_fail (content != NULL);
-
-	for (i = 0; i < content->count; i++)
-		gtk_exif_content_list_add_entry (list, content->entries[i]);
+	gtk_signal_emit (GTK_OBJECT (list), signals[ENTRY_ADDED], entry);
 }
 
 void
 gtk_exif_content_list_set_content (GtkExifContentList *list,
 				   ExifContent *content)
 {
+	guint i;
+
 	g_return_if_fail (GTK_EXIF_IS_CONTENT_LIST (list));
 	g_return_if_fail (content != NULL);
 
@@ -180,7 +256,9 @@ gtk_exif_content_list_set_content (GtkExifContentList *list,
 	exif_content_ref (content);
 
 	gtk_clist_clear (GTK_CLIST (list));
-	gtk_exif_content_list_add_content (list, content);
+
+	for (i = 0; i < content->count; i++)
+		gtk_exif_content_list_add_entry (list, content->entries[i]);
 	gtk_clist_set_column_auto_resize (GTK_CLIST (list), 0, TRUE);
 	gtk_clist_set_column_auto_resize (GTK_CLIST (list), 1, TRUE);
 	gtk_clist_sort (GTK_CLIST (list));

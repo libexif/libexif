@@ -33,6 +33,8 @@
 
 #include <libexif/exif-i18n.h>
 
+#include <string.h>
+
 struct _GtkExifEntryCopyrightPrivate {
 	ExifEntry *entry;
 

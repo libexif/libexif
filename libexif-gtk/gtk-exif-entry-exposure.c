@@ -35,12 +35,12 @@
 
 #include <libexif/exif-i18n.h>
 
-#include "gtk-extensions/gtk-options.h"
+#include <gtk-extensions/gtk-option-menu-option.h>
 
 struct _GtkExifEntryExposurePrivate {
 	ExifEntry *entry;
 
-	GtkOptions *options;
+	GtkOptionMenuOption *menu;
 };
 
 #define PARENT_TYPE GTK_EXIF_TYPE_ENTRY
@@ -123,12 +123,7 @@ gtk_exif_entry_exposure_load (GtkExifEntryExposure *entry)
 
 	value = exif_get_short (entry->priv->entry->data,
 				entry->priv->entry->order);
-
-	gtk_signal_handler_block_by_data (GTK_OBJECT (entry->priv->options),
-					  entry);
-	gtk_options_set (entry->priv->options, value);
-	gtk_signal_handler_unblock_by_data (GTK_OBJECT (entry->priv->options),
-					    entry);
+	gtk_option_menu_option_set (entry->priv->menu, value);
 }
 
 static void
@@ -136,7 +131,7 @@ gtk_exif_entry_exposure_save (GtkExifEntryExposure *entry)
 {
 	ExifShort value;
 
-	value = gtk_options_get (entry->priv->options);
+	value = gtk_option_menu_option_get (entry->priv->menu);
 	exif_set_short (entry->priv->entry->data, entry->priv->entry->order,
 			value);
 	gtk_signal_emit_by_name (GTK_OBJECT (entry), "entry_changed",
@@ -144,12 +139,13 @@ gtk_exif_entry_exposure_save (GtkExifEntryExposure *entry)
 }
 
 static void
-on_option_selected (GtkOptions *options, guint option, GtkExifEntryExposure *entry)
+on_option_selected (GtkOptionMenuOption *menu, guint option,
+		    GtkExifEntryExposure *entry)
 {
 	gtk_exif_entry_exposure_save (entry);
 }
 
-static GtkOptionsList programs[] = {
+static GtkOptions programs[] = {
 	{0, N_("Not defined")},
 	{1, N_("Manual")},
 	{2, N_("Normal program")},
@@ -187,10 +183,10 @@ gtk_exif_entry_exposure_new (ExifEntry *e)
 	label = gtk_label_new (_("Exposure Program:"));
 	gtk_widget_show (label);
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-	options = gtk_options_new (programs);
+	options = gtk_option_menu_option_new (programs);
 	gtk_widget_show (options);
 	gtk_box_pack_start (GTK_BOX (hbox), options, FALSE, FALSE, 0);
-	entry->priv->options = GTK_OPTIONS (options);
+	entry->priv->menu = GTK_OPTION_MENU_OPTION (options);
 	gtk_signal_connect (GTK_OBJECT (options), "option_selected",
 			    GTK_SIGNAL_FUNC (on_option_selected), entry);
 

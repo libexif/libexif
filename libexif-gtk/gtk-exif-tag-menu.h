@@ -21,7 +21,7 @@
 #ifndef __GTK_EXIF_TAG_MENU_H__
 #define __GTK_EXIF_TAG_MENU_H__
 
-#include <gtk-extensions/gtk-options.h>
+#include <gtk-extensions/gtk-menu-option.h>
 #include <libexif/exif-tag.h>
 
 #define GTK_EXIF_TYPE_TAG_MENU     (gtk_exif_tag_menu_get_type())
@@ -35,14 +35,14 @@ typedef struct _GtkExifTagMenuClass   GtkExifTagMenuClass;
 
 struct _GtkExifTagMenu
 {
-	GtkOptions parent;
+	GtkMenuOption parent;
 
 	GtkExifTagMenuPrivate *priv;
 };
 
 struct _GtkExifTagMenuClass
 {
-	GtkOptionsClass parent_class;
+	GtkMenuOptionClass parent_class;
 
 	/* Signals */
 	void (* tag_selected) (GtkExifTagMenu *menu, ExifTag tag);

@@ -48,7 +48,9 @@ struct _GtkExifContentListClass
 
 	/* Signals */
 	void (* entry_selected)  (GtkExifContentList *list, ExifEntry *);
-	void (* content_changed) (GtkExifContentList *list, ExifContent *);
+	void (* entry_added)     (GtkExifContentList *list, ExifEntry *);
+	void (* entry_changed)   (GtkExifContentList *list, ExifEntry *);
+	void (* entry_removed)   (GtkExifContentList *list, ExifEntry *);
 };
 
 GtkType    gtk_exif_content_list_get_type (void);
