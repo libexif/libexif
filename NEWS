@@ -1,0 +1,40 @@
+New in 0.6.12 (2005-??-??) since 0.6.11:
+
+  * Final fix of Ubuntu Security Notice USN-91-1
+    https://bugzilla.ubuntulinux.org/show_bug.cgi?id=7152
+
+  * Updated build system with cross compile capabilities
+
+
+New in 0.6.11 (2004-10-16) since 0.6.10 (2004-08-27):
+
+  * Improved tag names, titles, and descriptions.
+
+  * Bug fixes for memory leaks, format strings, month one off, ...
+
+  * Support for Watcom compiler.
+
+
+New in 0.6.10 (2004-08-27) since 0.5.9 (2002-12-11):
+
+  * New tags suppored, and added a few more checks.
+
+
+????
+
+  * API changes
+
+  * libmnote has been merged back into libexif
+
+
+General remarks:
+
+  * This file contains changes visible to users.
+
+  * Small bug fixes (typos, memory leaks, ...) and feature
+    enhancements (new tag types, ...) are not mentionened
+    explicitly.
+
+  * If someone wants to reconstruct past changes and log them here,
+    you're welcome. Apart from that, I would like to ask committers
+    to update this file when they commit user visible changes.

@@ -1,4 +1,5 @@
 2005-03-09  Jan Patera <patera@users.sourceforge.net>
+
 	* exif_data.c: Final fix of Ubuntu Security Notice USN-91-1
 	  https://bugzilla.ubuntulinux.org/show_bug.cgi?id=7152
 
@@ -203,8 +204,9 @@
 
 2004-09-12  Lutz Mueller <lutz@users.sourceforge.net>
 
-	Patch by marcusmeissner@users.sourceforge.net: Some format string
-	fixes, wrong argument list fixed, format string problems avoided.
+	* ???: Some format string fixes, wrong argument list fixed, format
+	  string problems avoided.
+	  (Patch by marcusmeissner@users.sourceforge.net)
 
 2004-09-09  Lutz Mueller <lutz@users.sourceforge.net>
 
