@@ -1,3 +1,9 @@
+2004-10-18  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Patch by Krisztian VASAS <iron@ironiq.hu>:
+
+	* configure.in: Create po/Makefile.in from po/Makefile.in.in
+
 2004-10-16  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* configure.in: We are now working on version 0.6.12.
