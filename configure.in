@@ -60,6 +60,7 @@ if test "x$GCC" = "xyes"; then
 fi
 
 AC_OUTPUT([
+  intl/Makefile 
   po/Makefile.in
   Makefile
   libexif.spec

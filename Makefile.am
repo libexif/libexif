@@ -1,4 +1,4 @@
-SUBDIRS =  libexif libjpeg test po m4
+SUBDIRS = intl po libexif libjpeg test m4
 
 EXTRA_DIST = @PACKAGE@.spec
 

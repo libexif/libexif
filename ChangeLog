@@ -1,3 +1,8 @@
+2004-10-20  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* Makefile.am: Add intl
+	* configure.in: Add intl/Makefile. Now "make distcheck" works.
+
 2004-10-18  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Patch by Krisztian VASAS <iron@ironiq.hu>:
