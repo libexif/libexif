@@ -26,6 +26,8 @@
 #include <time.h>
 #include <math.h>
 
+#include <exif-i18n.h>
+
 //#define DEBUG
 
 #undef  MIN
@@ -165,6 +167,154 @@ exif_entry_get_value (ExifEntry *entry)
 		snprintf (v, sizeof (v), "%i/%i", (int) v_srat.numerator, 
 						  (int) v_srat.denominator);
 		//FIXME: How do I calculate the APEX value?
+		break;
+	case EXIF_TAG_METERING_MODE:
+		v_short = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Unknown"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Average"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("Center-Weighted Average"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("Spot"), sizeof (v));
+			break;
+		case 4:
+			strncpy (v, _("Multi Spot"), sizeof (v));
+			break;
+		case 5:
+			strncpy (v, _("Pattern"), sizeof (v));
+			break;
+		case 6:
+			strncpy (v, _("Partial"), sizeof (v));
+			break;
+		case 255:
+			strncpy (v, _("Other"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_COMPRESSION:
+		v_short = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 1:
+			strncpy (v, _("Uncompressed"), sizeof (v));
+			break;
+		case 6:
+			strncpy (v, _("JPEG compression"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_SENSING_METHOD:
+		v_short = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 1:
+			strncpy (v, _("Not defined"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("One-chip color area sensor"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("Two-chip color area sensor"), sizeof (v));
+			break;
+		case 4:
+			strncpy (v, _("Three-chip color area sensor"), sizeof (v));
+			break;
+		case 5:
+			strncpy (v, _("Color sequential area sensor"), sizeof (v));
+			break;
+		case 7:
+			strncpy (v, _("Trilinear sensor"), sizeof (v));
+			break;
+		case 8:
+			strncpy (v, _("Color sequential linear sensor"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_LIGHT_SOURCE:
+		v_short = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Unknown"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Daylight"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("Fluorescent"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("Tungsten"), sizeof (v));
+			break;
+		case 17:
+			strncpy (v, _("Standard light A"), sizeof (v));
+			break;
+		case 18:
+			strncpy (v, _("Standard light B"), sizeof (v));
+			break;
+		case 19:
+			strncpy (v, _("Standard light C"), sizeof (v));
+			break;
+		case 20:
+			strncpy (v, _("D55"), sizeof (v));
+			break;
+		case 21:
+			strncpy (v, _("D65"), sizeof (v));
+			break;
+		case 22:
+			strncpy (v, _("D75"), sizeof (v));
+			break;
+		case 255:
+			strncpy (v, _("Other"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_ORIENTATION:
+		v_short = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 1:
+			strncpy (v, _("top - left"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("top - right"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("bottom - right"), sizeof (v));
+			break;
+		case 4:
+			strncpy (v, _("bottom - left"), sizeof (v));
+			break;
+		case 5:
+			strncpy (v, _("left - top"), sizeof (v));
+			break;
+		case 6:
+			strncpy (v, _("right - top"), sizeof (v));
+			break;
+		case 7:
+			strncpy (v, _("right - bottom"), sizeof (v));
+			break;
+		case 8:
+			strncpy (v, _("left - bottom"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
 		break;
 	default:
 		switch (entry->format) {
