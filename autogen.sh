@@ -83,6 +83,8 @@ case "$CC" in
 *xlc | *xlc\ * | *lcc | *lcc\ *) am_opt=--include-deps;;
 esac
 
+ACLOCAL_FLAGS="-I ${srcdir}/m4 ${ACLOCAL_FLAGS}"
+
 gettext_version=`gettextize --version 2>&1 | sed -n 's/^.*GNU gettext.* \([0-9]*\.[0-9.]*\).*$/\1/p'`
 case $gettext_version in
 0.10.*)

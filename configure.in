@@ -25,6 +25,11 @@ AC_SUBST(LIBEXIF_VERSION_INFO)
 
 AM_PROG_LIBTOOL
 
+dnl Create a stdint.h-like file containing size-specific integer definitions
+dnl that will always be available
+AC_NEED_STDINT_H(libexif/_stdint.h)
+
+
 dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
@@ -42,6 +47,7 @@ else
 	AC_MSG_RESULT([no])
 fi
 AM_GNU_GETTEXT
+
 
 dnl ---------------------------------------------------------------------------
 dnl Warnings
@@ -62,6 +68,7 @@ AC_OUTPUT([
   libexif/pentax/Makefile
   libjpeg/Makefile
   test/Makefile
+  m4/Makefile
   libexif/libexif.pc
 ])
 

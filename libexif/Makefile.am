@@ -45,3 +45,5 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libexif.pc
 EXTRA_DIST = libexif.pc.in
 
+clean-generic:
+	rm -f _stdint.h

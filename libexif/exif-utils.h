@@ -25,13 +25,13 @@
 extern "C" {
 #endif /* __cplusplus */
 
-#include <libexif/exif-byte-order.h>
+#include "libexif/exif-byte-order.h"
+#include "libexif/_stdint.h"
 
-/* Works correct only on machines with a stdint.h, otherwise it assumes
- * sizeof(long) == 4                                                    */
-  
-#ifdef HAVE_INTTYPES_H
-#include <inttypes.h>
+
+/* If these definitions don't work for you, please let us fix the 
+ * macro generating _stdint.h */
+	
 typedef char		ExifByte;          /* 1 byte  */
 typedef char *		ExifAscii;
 typedef uint16_t	ExifShort;         /* 2 bytes */
@@ -41,16 +41,6 @@ typedef char		ExifUndefined;     /* 1 byte  */
 typedef int32_t		ExifSLong;         /* 4 bytes */
 typedef struct {ExifSLong numerator; ExifSLong denominator;} ExifSRational;
 
-#else
-typedef char		ExifByte;          /* 1 byte  */
-typedef char *		ExifAscii;
-typedef unsigned short	ExifShort;         /* 2 bytes */
-typedef unsigned long	ExifLong;          /* 4 bytes */
-typedef struct {ExifLong numerator; ExifLong denominator;} ExifRational;
-typedef char		ExifUndefined;     /* 1 byte  */
-typedef signed long	ExifSLong;         /* 4 bytes */
-typedef struct {ExifSLong numerator; ExifSLong denominator;} ExifSRational;
-#endif
 
 ExifShort     exif_get_short     (const unsigned char *b, ExifByteOrder order);
 ExifLong      exif_get_long      (const unsigned char *b, ExifByteOrder order);
