@@ -120,6 +120,10 @@ do
 
     echo "Running gettextize $gettext_opt"
     gettextize $gettext_opt || fail
+    echo "########################################################################"
+    echo "# If gettextize asks you to acknowledge some stuff and press Return,   #"
+    echo "# just do that. autogen.sh already does what gettextize wants done.    #"
+    echo "########################################################################"
     if test -f po/Makevars.template
     then
 	cp po/Makevars.template po/Makevars
