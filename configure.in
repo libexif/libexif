@@ -1,4 +1,4 @@
-AC_INIT(libexif/exif.h)
+AC_INIT(libexif/exif-data.h)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(libexif, 0.1)
 AM_MAINTAINER_MODE
@@ -15,6 +15,30 @@ dnl ALL_LINGUAS=""
 dnl AM_GNU_GETTEXT
 
 dnl ---------------------------------------------------------------------------
+dnl gtk-support
+dnl ---------------------------------------------------------------------------
+have_gtk=false
+try_gtk=true
+gtk_msg=no
+AC_ARG_WITH(gtk, [  --without-gtk       Don't use gtk],
+	if test x$withval = xno; then
+		try_gtk=false
+	fi
+)
+if $try_gtk; then
+	AC_PATH_PROG(GTK_CONFIG,gtk-config)
+	if test -n "$GTK_CONFIG" ; then
+		have_gtk=true
+		gtk_msg=yes
+		GTK_CFLAGS=`$GTK_CONFIG --cflags`
+		GTK_LIBS=`$GTK_CONFIG --libs`
+	fi
+fi
+AC_SUBST(GTK_CFLAGS)
+AC_SUBST(GTK_LIBS)
+AM_CONDITIONAL(HAVE_GTK, $have_gtk)
+
+dnl ---------------------------------------------------------------------------
 dnl Warnings
 dnl ---------------------------------------------------------------------------
 CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
@@ -25,14 +49,20 @@ AC_SUBST(LDFLAGS)
 AC_OUTPUT([
 Makefile
 libexif/Makefile
+libexif-gtk/Makefile
+libexif-gtk/gtk-extensions/Makefile
+libjpeg/Makefile
 test/Makefile
-libexif.pc
+libexif/libexif.pc
+libexif-gtk/libexif-gtk.pc
 ])
 
 echo "
 
-Configuration:
+Configuration (libexif):
 
-	Source code location:      ${srcdir}
-	Compiler:                  ${CC}
+	Source code location:  ${srcdir}
+	Compiler:              ${CC}
+
+	GTK support:           $gtk_msg
 "

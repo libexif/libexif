@@ -1,3 +1,7 @@
+2001-12-21  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	Move new version from gtkam to here.
+
 2001-12-11  Lutz Müller <urc8@rz.uni-karlsruhe.de>
 
 	Initial automake setup.

@@ -1,0 +1,7 @@
+Makefile
+Makefile.in
+.libs
+.deps
+libjpeg.la
+*.o
+*.lo
