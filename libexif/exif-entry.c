@@ -287,6 +287,7 @@ exif_entry_fix (ExifEntry *e)
 			memmove (e->data + 8, e->data, e->size);
 			memcpy (e->data, "ASCII\0\0\0", 8);
 			e->size += 8;
+			e->components += 8;
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
 				"Tag 'UserComment' has been expanded to at "
 				"least 8 bytes in order to follow the "
@@ -322,6 +323,7 @@ exif_entry_fix (ExifEntry *e)
 			memmove (e->data + 8, e->data, e->size);
 			memcpy (e->data, "ASCII\0\0\0", 8);
 			e->size += 8;
+			e->components += 8;
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
 				"Tag 'UserComment' did not start with "
 				"format identifyer. This has been fixed.");

@@ -1,8 +1,12 @@
 2005-03-13  Jan Patera <patera@users.sourceforge.net>
 
+	* libexif/exif-entry.c (exif_entry_fix): Update also e->components
+
+2005-03-13  Jan Patera <patera@users.sourceforge.net>
+
 	* libexif/exif-data.c: critical fix of 2005-03-09 change: saving
 	  IFD containing data of odd length was causing memory corruption
-          and total lost of entire EXIF data
+	  and total lost of entire EXIF data
 
 2005-03-13  Hans Ulrich Niedermann <gp@n-dimensional.de>
 
