@@ -34,7 +34,7 @@ GP_CONFIG_MSG([Compiler],[${CC}])
 
 dnl Create a stdint.h-like file containing size-specific integer definitions
 dnl that will always be available
-AC_NEED_STDINT_H([libexif/_stdint.h])
+AX_NEED_STDINT_H([libexif/_stdint.h])
 
 
 dnl ---------------------------------------------------------------------------
