@@ -1,5 +1,11 @@
 2004-05-03  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-entry.c (exif_entry_initialize):
+	  Added EXIF_TAG_PIXEL_[X,Y]_DIMENSION (thanks to Antonio Scuri
+	  <scuri@tecgraf.puc-rio.br>).
+
+2004-05-03  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-tag.c: Hide some functions there that have been 
 	  requested by Antonio Scuri <scuri@tecgraf.puc-rio.br>.
 

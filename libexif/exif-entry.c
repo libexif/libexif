@@ -778,6 +778,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	switch (tag) {
 
 	/* LONG, 1 component, no default */
+	case EXIF_TAG_PIXEL_X_DIMENSION:
+	case EXIF_TAG_PIXEL_Y_DIMENSION:
 	case EXIF_TAG_EXIF_IFD_POINTER:
 	case EXIF_TAG_GPS_INFO_IFD_POINTER:
 	case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
