@@ -1,3 +1,7 @@
+2002-04-04  Hans Ulrich Niedermann <gp@n-dimensional.de>
+
+	* Makefile.am: dded .tar.bz2 packaging to "make dist"
+
 2002-03-01  Lutz Müller <lutz@users.sourceforge.net>
 
 	Patch by Mark Pulford <mark@kyne.com.au>:
