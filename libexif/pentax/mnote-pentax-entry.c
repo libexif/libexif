@@ -59,7 +59,7 @@ static struct {
 	struct {
 		int index;
 		const char *string;
-	} elem[10];
+	} elem[7];
 } items[] = {
   { MNOTE_PENTAX_TAG_MODE,
     { {0, N_("Auto")},
@@ -104,9 +104,11 @@ static struct {
       {2, N_("High")},
       {0, NULL}}},
   { MNOTE_PENTAX_TAG_ISO_SPEED,
-    { {10, N_("100")},
-      {16, N_("200")},
-      { 0, NULL}}},
+    { {10,  N_("100")},
+      {16,  N_("200")},
+      {100, N_("100")},
+      {200, N_("200")},
+      { 0,  NULL}}},
   { MNOTE_PENTAX_TAG_COLOR,
     { {1, N_("Full")},
       {2, N_("Black & White")},
@@ -145,19 +147,19 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		/* search the tag */
 		for (i = 0; (items[i].tag && items[i].tag != entry->tag); i++);
 		if (!items[i].tag) {
-		  	strncpy (val, "Internal error", maxlen - 1);
+		  	strncpy (val, "Internal error", maxlen);
 		  	break;
 		}
 
 		/* find the value */
-		for (j = 0; items[i].elem[j].index &&
+		for (j = 0; items[i].elem[j].string &&
 			    (items[i].elem[j].index < vs); j++);
 		if (items[i].elem[j].index != vs) {
-			snprintf (val, maxlen - 1,
+			snprintf (val, maxlen,
 				  "Internal error (unknown value %i)", vs);
 			break;
 		}
-		snprintf (val, maxlen - 1, items[i].elem[j].string);
+		snprintf (val, maxlen, items[i].elem[j].string);
 		break;
 
 	case MNOTE_PENTAX_TAG_ZOOM:
