@@ -153,6 +153,18 @@ exif_entry_get_value (ExifEntry *e)
 	ExifByteOrder o;
 	double d;
 	ExifEntry *entry;
+	static struct {
+		char *label;
+		char major, minor;
+	} versions[] = {
+		{"0110", 1,  1},
+		{"0120", 1,  2},
+		{"0200", 2,  0},
+		{"0210", 2,  1},
+		{"0220", 2,  2},
+		{"0221", 2, 21},
+		{NULL  , 0,  0}
+	};
 
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
@@ -177,26 +189,29 @@ exif_entry_get_value (ExifEntry *e)
 	case EXIF_TAG_USER_COMMENT:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
 		if (e->size < 8) break;
-		strncpy (v, e->data + 8, MIN (e->size, sizeof (v) - 1));
+		strncpy (v, e->data + 8, MIN (e->size - 8, sizeof (v) - 1));
 		break;
 	case EXIF_TAG_EXIF_VERSION:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
 		CC (e->components, 4, v);
-		if (!memcmp (e->data, "0110", 4))
-			strncpy (v, "Exif Version 1.1", sizeof (v) - 1);
-		else if (!memcmp (e->data, "0200", 4))
-			strncpy (v, "Exif Version 2.0", sizeof (v) - 1);
-		else if (!memcmp (e->data, "0210", 4))
-			strncpy (v, "Exif Version 2.1", sizeof (v) - 1);
-		else if (!memcmp (e->data, "0220", 4))
-			strncpy (v, "Exif Version 2.2", sizeof (v) - 1);
-		else strncpy (v, _("Unknown Exif Version"), sizeof (v) - 1);
+		strncpy (v, _("Unknown Exif Version"), sizeof (v) - 1);
+		for (i = 0; versions[i].label; i++) {
+			if (!memcmp (e->data, versions[i].label, 4)) {
+    				snprintf (v, sizeof (v) - 1,
+					_("Exif Version %d.%d"),
+					versions[i].major,
+					versions[i].minor);
+    				break;
+			}
+		}
 		break;
 	case EXIF_TAG_FLASH_PIX_VERSION:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
 		CC (e->components, 4, v);
 		if (!memcmp (e->data, "0100", 4))
-			strncpy (v, "FlashPix Version 1.0", sizeof (v));
+			strncpy (v, _("FlashPix Version 1.0"), sizeof (v));
+		else if (!memcmp (e->data, "0101", 4))
+			strncpy (v, _("FlashPix Version 1.01"), sizeof (v));
 		else
 			strncpy (v, _("Unknown FlashPix Version"), sizeof (v));
 		break;
@@ -978,6 +993,11 @@ exif_entry_get_value (ExifEntry *e)
 				strncat (v, ", ", sizeof (v));
 				strncat (v, b, sizeof (v));
 			}
+			break;
+		case EXIF_FORMAT_DOUBLE:
+		case EXIF_FORMAT_FLOAT:
+		default:
+			/* What to do here? */
 			break;
 		}
 	}

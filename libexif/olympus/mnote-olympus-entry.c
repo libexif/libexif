@@ -66,6 +66,9 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry)
 		return (NULL);
 
 	memset (v, 0, sizeof (v));
+
+	if ((!entry->data) && (entry->components > 0)) return (strdup(v));
+
 	switch (entry->tag) {
 	case MNOTE_OLYMPUS_TAG_MODE:
 		CF (entry->format, EXIF_FORMAT_LONG, v);

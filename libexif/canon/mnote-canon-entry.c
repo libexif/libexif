@@ -32,6 +32,9 @@
 
 /* #define DEBUG */
 
+#undef  MIN
+#define MIN(a, b)  (((a) < (b)) ? (a) : (b))
+
 #define CF(format,target,v)                                     \
 {                                                               \
         if (format != target) {                                 \
@@ -52,6 +55,16 @@
                         "expected %i)."), (int) number, (int) target);  \
                 break;                                                  \
         }                                                               \
+}
+#define CC2(number,t1,t2,v)                                             \
+{                                                                       \
+	if ((number != t1) && (number != t2)) {                         \
+		snprintf (v, sizeof (v),                                \
+			_("Invalid number of components (%i, "          \
+			"expected %i or %i)."), (int) number,		\
+			(int) t1, (int) t2);  				\
+		break;                                                  \
+	}                                                               \
 }
 
 char *
@@ -511,13 +524,13 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry)
 	case MNOTE_CANON_TAG_OWNER:
 		CF (entry->format, EXIF_FORMAT_ASCII, v);
 		CC (entry->components, 32, v);
-		strncpy (v,data,sizeof (v));
+		strncpy (v,data,MIN (entry->size, sizeof (v) - 1));
 		break;
 
 	case MNOTE_CANON_TAG_FIRMWARE:
 		CF (entry->format, EXIF_FORMAT_ASCII, v);
-		CC (entry->components, 24, v);
-		strncpy (v,data,sizeof (v));
+		CC2 (entry->components, 24, 32, v);
+		strncpy (v,data,MIN (entry->size, sizeof (v) - 1));
 		break;
 
 	case MNOTE_CANON_TAG_IMAGE_NUMBER:
@@ -566,7 +579,7 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry)
 			printf ("Value%d=%d\n", i, vs);
 		}
 		else if (entry->format == EXIF_FORMAT_ASCII)
-			strncpy (v, data, sizeof (v));
+		    strncpy (v,data,MIN (entry->size, sizeof (v) - 1));
 #endif
 		break;
         }
