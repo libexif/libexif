@@ -1,3 +1,8 @@
+2004-02-02  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-loader.c: propper skipping of JPEG_MARKER_COM when
+	  searching for JPEG_MARKER_APP1 with exif data
+
 2004-01-19  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* contrib/c++: Files contributed by Hans Meine <hans_meine@gmx.net>.
