@@ -142,7 +142,7 @@ static struct {
 	const char *strings[10];
 } list[] = {
   { EXIF_TAG_PLANAR_CONFIGURATION,
-    {N_("chunky format"), N_("planar format"), NULL}},
+    { N_("chunky format"), N_("planar format"), NULL}},
   { EXIF_TAG_SENSING_METHOD,
     { "", N_("Not defined"), N_("One-chip color area sensor"),
       N_("Two-chip color area sensor"), N_("Three-chip color area sensor"),
@@ -173,15 +173,124 @@ static struct {
     { N_("Normal"), N_("Low saturation"), N_("High saturation"), NULL}},
   { EXIF_TAG_CONTRAST , {N_("Normal"), N_("Soft"), N_("Hard"), NULL}},
   { EXIF_TAG_SHARPNESS, {N_("Normal"), N_("Soft"), N_("Hard"), NULL}},
+  { EXIF_TAG_SUBJECT_DISTANCE_RANGE,
+    {N_("Unknown"), N_("Macro"),N_("Close view"),N_("Distant view"), NULL}},
   { 0, {NULL}}
 };
 
-static char* sdr_entries[] = {"Unknown", "Macro", "Close view", "Distant view"};
+static struct {
+  ExifTag tag;
+  struct {
+    int index;
+    const char *values[4];
+  } elem[25];
+} list2[] = {
+  { EXIF_TAG_METERING_MODE,
+    { {  0, {N_("Unknown"), NULL}},
+      {  1, {N_("Average"), N_("avg"), NULL}},
+      {  2, {N_("Center-Weighted Average"), N_("Center-Weight"), NULL}},
+      {  3, {N_("Spot"), NULL}},
+      {  4, {N_("Multi Spot"), NULL}},
+      {  5, {N_("Pattern"), NULL}},
+      {  6, {N_("Partial"), NULL}},
+      {255, {N_("Other"), NULL}},
+      {  0, {NULL}}}},
+  { EXIF_TAG_COMPRESSION,
+    { {1, {N_("Uncompressed"), NULL}},
+      {6, {N_("JPEG compression"), NULL}},
+      {0, {NULL}}}},
+  { EXIF_TAG_LIGHT_SOURCE,
+    { {  0, {N_("Unknown"), NULL}},
+      {  1, {N_("Daylight"), NULL}},
+      {  2, {N_("Fluorescent"), NULL}},
+      {  3, {N_("Tungsten incandescent light"), N_("Tungsten"), NULL}},
+      {  4, {N_("Flash"), NULL}},
+      {  9, {N_("Fine weather"), NULL}},
+      { 10, {N_("Cloudy weather"), N_("cloudy"), NULL}},
+      { 11, {N_("Shade"), NULL}},
+      { 12, {N_("Daylight fluorescent"), NULL}},
+      { 13, {N_("Day white fluorescent"), NULL}},
+      { 14, {N_("Cool white fluorescent"), NULL}},
+      { 15, {N_("White fluorescent"), NULL}},
+      { 17, {N_("Standard light A"), NULL}},
+      { 18, {N_("Standard light B"), NULL}},
+      { 19, {N_("Standard light C"), NULL}},
+      { 20, {N_("D55"), NULL}},
+      { 21, {N_("D65"), NULL}},
+      { 22, {N_("D75"), NULL}},
+      { 24, {N_("ISO studio tungsten"),NULL}},
+      {255, {N_("Other"), NULL}},
+      {  0, {NULL}}}},
+  { EXIF_TAG_FOCAL_PLANE_RESOLUTION_UNIT,
+    { {2, {N_("Inch"), N_("in"), NULL}},
+      {3, {N_("Centimeter"), N_("cm"), NULL}},
+      {0, {NULL}}}},
+  { EXIF_TAG_RESOLUTION_UNIT,
+    { {2, {N_("Inch"), N_("in"), NULL}},
+      {3, {N_("Centimeter"), N_("cm"), NULL}}, 
+      {0, {NULL}}}},
+  { EXIF_TAG_EXPOSURE_PROGRAM,
+    { {0, {N_("Not defined"), NULL}},
+      {1, {N_("Manual"), NULL}},
+      {2, {N_("Normal program"), N_("Normal"), NULL}},
+      {3, {N_("Aperture priority"), N_("Aperture"), NULL}},
+      {4, {N_("Shutter priority"),N_("Shutter"), NULL}},
+      {5, {N_("Creative program (biased toward depth of field)"),
+	   N_("Creative"), NULL}},
+      {6, {N_("Creative program (biased toward fast shutter speed"),
+	   N_("Action"), NULL}},
+      {7, {N_("Portrait mode (for closeup photos with the background out "
+	      "of focus)"), N_("Portrait"), NULL}},
+      {8, {N_("Landscape mode (for landscape photos with the background "
+	      "in focus)"), N_("Landscape"), NULL}},
+      {0, {NULL}}}},
+  { EXIF_TAG_FLASH,
+    { {0x0000, {N_("Flash did not fire."), N_("no flash"), NULL}},
+      {0x0001, {N_("Flash fired."), N_("flash"), N_("Yes"), NULL}},
+      {0x0005, {N_("Strobe return light not detected."), N_("W/o strobe"),
+		NULL}},
+      {0x0007, {N_("Strobe return light detected."), N_("W. strobe"), NULL}},
+      {0x000d, {N_("Flash fired, compulsatory flash mode, return light "
+		   "not detected."), NULL}},
+      {0x000f, {N_("Flash fired, compulsatory flash mode, return light "
+		   "detected."), NULL}},
+      {0x0010, {N_("Flash did not fire, compulsatory flash mode."), NULL}},
+      {0x0018, {N_("Flash did not fire, auto mode."), NULL}},
+      {0x0019, {N_("Flash fired, auto mode."), NULL}},
+      {0x001d, {N_("Flash fired, auto mode, return light not detected."),
+		NULL}},
+      {0x001f, {N_("Flash fired, auto mode, return light detected."), NULL}},
+      {0x0020, {N_("No flash function."),NULL}},
+      {0x0041, {N_("Flash fired, red-eye reduction mode."), NULL}},
+      {0x0045, {N_("Flash fired, red-eye reduction mode, return light "
+		   "not detected."), NULL}},
+      {0x0047, {N_("Flash fired, red-eye reduction mode, return light "
+		   "detected."), NULL}},
+      {0x0049, {N_("Flash fired, compulsory flash mode, red-eye reduction "
+		   "mode."), NULL}},
+      {0x004d, {N_("Flash fired, compulsory flash mode, red-eye reduction "
+		  "mode, return light not detected"), NULL}},
+      {0x004f, {N_("Flash fired, compulsory flash mode, red-eye reduction, "
+		   "return light detected"), NULL}},
+      {0x0059, {N_("Flash fired, auto mode, red-eye reduction mode"), NULL}},
+      {0x005d, {N_("Flash fired, auto mode, return light not detected, "
+		   "red-eye reduction mode."), NULL}},
+      {0x005f, {N_("Flash fired, auto mode, return light detected, "
+		   "red-eye reduction mode."), NULL}},
+      {0x0000, {NULL}}}},
+  {EXIF_TAG_SUBJECT_DISTANCE_RANGE, 
+    { {0, {N_("Unknown"), N_("?"), NULL}},
+      {1, {N_("Macro"), NULL}},
+      {2, {N_("Close view"), N_("close"), NULL}},
+      {3, {N_("Distant view"), N_("distant"), NULL}},
+      {0, {NULL}}}},
+  {0, }
+};
 
 const char *
 exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 {
-	unsigned int i, j;
+	unsigned int i, j, k, l;
 	ExifByte v_byte;
 	ExifShort v_short, v_short2, v_short3, v_short4;
 	ExifLong v_long;
@@ -382,38 +491,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 						  (int) v_srat.denominator);
 		/* FIXME: How do I calculate the APEX value? */
 		break;
-	case EXIF_TAG_METERING_MODE:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0: strncpy (val, _("Unknown"), maxlen - 1); break;
-		case 1: strncpy (val, _("Average"), maxlen - 1); break;
-		case 2:
-			if (maxlen > strlen (_("Center-Weighted Average")))
-				strncpy (val, _("Center-Weighted Average"),
-					 maxlen - 1);
-			else
-				strncpy (val, _("Center-Weight"), maxlen - 1);
-			break;
-		case 3: strncpy (val, _("Spot"), maxlen - 1); break;
-		case 4: strncpy (val, _("Multi Spot"), maxlen - 1); break;
-		case 5: strncpy (val, _("Pattern"), maxlen - 1); break;
-		case 6: strncpy (val, _("Partial"), maxlen - 1); break;
-		case 255: strncpy (val, _("Other"), maxlen - 1); break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
-		}
-		break;
-	case EXIF_TAG_COMPRESSION:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 1: strncpy (val, _("Uncompressed"), maxlen); break;
-		case 6: strncpy (val, _("JPEG compression"), maxlen); break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
-		}
-		break;
 	case EXIF_TAG_FILE_SOURCE:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (e->components, 1, val, maxlen);
@@ -438,108 +515,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			}
 			strncat (val, c, maxlen - strlen (val));
 			if (i < 3) strncat (val, " ", maxlen - strlen (val));
-		}
-		break;
-	case EXIF_TAG_LIGHT_SOURCE:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0: strncpy (val, _("Unknown"    ), maxlen - 1); break;
-		case 1: strncpy (val, _("Daylight"   ), maxlen - 1); break;
-		case 2: strncpy (val, _("Fluorescent"), maxlen - 1); break;
-		case 3:
-			strncpy (val, _("Tungsten"   ), maxlen - 1);
-			c = _(" (incandescent light)");
-			if (maxlen > strlen (val) + strlen (c))
-				strncat (val, c, maxlen - strlen (val) - 1);
-			break;
-		case 4: strncpy (val, _("Flash"          ), maxlen - 1); break;
-		case 9: strncpy (val, _("Fine weather"   ), maxlen - 1); break;
-		case 10: strncpy (val, _("Cloudy weather"), maxlen - 1); break;
-		case 11: strncpy (val, _("Shade"         ), maxlen - 1); break;
-		case 12:
-			 strncpy (val, _("Daylight fluorescent" ), maxlen - 1);
-			 break;
-		case 13:
-			strncpy (val, _("Day white fluorescent" ), maxlen - 1);
-			break;
-		case 14:
-			strncpy (val, _("Cool white fluorescent"), maxlen - 1);
-			break;
-		case 15:
-			strncpy (val, _("White fluorescent"     ), maxlen - 1);
-			break;
-		case 17: strncpy (val, _("Standard light A"), maxlen-1); break;
-		case 18: strncpy (val, _("Standard light B"), maxlen-1); break;
-		case 19: strncpy (val, _("Standard light C"), maxlen-1); break;
-		case 20: strncpy (val, _("D55"), maxlen - 1); break;
-		case 21: strncpy (val, _("D65"), maxlen - 1); break;
-		case 22: strncpy (val, _("D75"), maxlen - 1); break;
-		case 24:
-			strncpy (val, _("ISO studio tungsten"), maxlen - 1);
-			break;
-		case 255: strncpy (val, _("Other"), maxlen - 1); break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
-		}
-		break;
-	case EXIF_TAG_FOCAL_PLANE_RESOLUTION_UNIT:
-	case EXIF_TAG_RESOLUTION_UNIT:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 2: c = _("Inch");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("in"), maxlen - 1);
-			break;
-		case 3: c = _("Centimeter");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("cm"), maxlen - 1);
-			break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
-		}
-		break;
-	case EXIF_TAG_EXPOSURE_PROGRAM:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0: strncpy (val, _("Not defined"), maxlen - 1); break;
-		case 1: strncpy (val, _("Manual"), maxlen - 1); break;
-		case 2: c = _("Normal program");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("Normal"), maxlen - 1);
-			break;
-		case 3: c = _("Aperture priority");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("Aperture"), maxlen - 1);
-			break;
-		case 4: c = _("Shutter priority");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("Shutter"), maxlen - 1);
-			break;
-		case 5: c = _("Creative program (biased toward "
-			      "depth of field)");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("Creative"), maxlen - 1);
-			break;
-		case 6: c = _("Action program (biased toward "
-			      "fast shutter speed)");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("Action"), maxlen - 1);
-			break;
-		case 7: c = _("Portrait mode (for closeup photos "
-			      "with the background out of focus");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("Portrait"), maxlen - 1);
-			break;
-		case 8: c = _("Landscape mode (for landscape "
-			      "photos with the background in focus");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("Landscape"), maxlen - 1);
-			break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
 		}
 		break;
 	case EXIF_TAG_EXPOSURE_BIAS_VALUE:
@@ -567,116 +542,10 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		else
 			snprintf (val, maxlen, "%i, %i", v_short, v_short2);
 		break;
-	case EXIF_TAG_FLASH:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		switch (v_short) {
-		case 0x0000:
-			strncpy (val, _("Flash did not fire."), maxlen);
-			break;
-		case 0x0001:
-			c = _("Flash fired.");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("Yes"), maxlen - 1);
-			break;
-		case 0x0005:
-			c = _("Strobe return light not detected.");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("W/o strobe"), maxlen - 1);
-			break;
-		case 0x0007:
-			c = _("Strobe return light detected.");
-			if (maxlen > strlen (c)) strncpy (val, c, maxlen - 1);
-			else strncpy (val, _("W. strobe"), maxlen - 1);
-			break;
-		case 0x000d:
-			strncpy (val, _("Flash fired, compulsory flash mode, "
-				"return light not detected."), maxlen - 1);
-			break;
-		case 0x000f:
-			strncpy (val, _("Flash fired, compulsory flash mode, "
-				"return light detected."), maxlen - 1);
-			break;
-		case 0x0010:
-			strncpy (val, _("Flash did not fire, compulsory flash "
-				"mode."), maxlen - 1);
-			break;
-		case 0x0018:
-			strncpy (val, _("Flash did not fire, auto mode."), maxlen - 1);
-			break;
-		case 0x0019:
-			strncpy (val, _("Flash fired, auto mode."), maxlen - 1);
-			break;
-		case 0x001d:
-			strncpy (val, _("Flash fired, auto mode, return light "
-				"not detected."), maxlen - 1);
-			break;
-		case 0x001f:
-			strncpy (val, _("Flash fired, auto mode, return light "
-				"detected."), maxlen - 1);
-			break;
-		case 0x0020:
-			strncpy (val, _("No flash function."), maxlen - 1);
-			break;
-		case 0x0041:
-			strncpy (val, _("Flash fired, red-eye reduction "
-					"mode."), maxlen - 1);
-			break;
-		case 0x0045:
-			strncpy (val, _("Flash fired, red-eye reduction mode, "
-				"return light not detected."), maxlen - 1);
-			break;
-		case 0x0047:
-			strncpy (val, _("Flash fired, red-eye reduction mode, "
-				"return light detected."), maxlen - 1);
-			break;
-		case 0x0049:
-			strncpy (val, _("Flash fired, compulsory flash mode, "
-				"red-eye reduction mode."), maxlen - 1);
-			break;
-		case 0x004d:
-			strncpy (val, _("Flash fired, compulsory flash mode, "
-				"red-eye reduction mode, return light not "
-				"detected."), maxlen - 1);
-			break;
-		case 0x004f:
-			strncpy (val, _("Flash fired, compulsory flash mode, "
-				"red-eye reduction mode, return light "
-				"detected."), maxlen - 1);
-			break;
-		case 0x0059:
-			strncpy (val, _("Flash fired, auto mode, red-eye "
-				"reduction mode."), maxlen - 1);
-			break;
-		case 0x005d:
-			strncpy (val, _("Flash fired, auto mode, return light "
-				 "not detected, red-eye reduction mode."),
-				 maxlen - 1);
-			break;
-		case 0x005f:
-			strncpy (val, _("Flash fired, auto mode, return light "
-				 "detected, red-eye reduction mode."),
-				 maxlen - 1);
-			break;
-		default: snprintf (val, maxlen, "%i", v_short); break;
-		}
-		break;
 	case EXIF_TAG_MAKER_NOTE:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		snprintf (val, maxlen, _("%i bytes unknown data"),
 			  (int) e->components);
-		break;
-	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
-		v_short = exif_get_short (e->data, o);
-		if (v_short < 4) {
-		  strncpy (val, _(sdr_entries[v_short]), maxlen -1);
-		}
-		else {
-		  snprintf (val, maxlen, "%i", v_short);
-		}
 		break;
 	case EXIF_TAG_SUBJECT_AREA:
 		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
@@ -708,8 +577,49 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		default:
 			snprintf (val, maxlen, _("Unexpected number "
 				"of components (%li, expected 2, 3, or 4)."),
-				e->components);
+				e->components);	
 		}
+		break;
+
+	case EXIF_TAG_METERING_MODE:
+	case EXIF_TAG_COMPRESSION:
+	case EXIF_TAG_FOCAL_PLANE_RESOLUTION_UNIT:
+	case EXIF_TAG_RESOLUTION_UNIT:
+	case EXIF_TAG_EXPOSURE_PROGRAM:
+	case EXIF_TAG_FLASH:
+	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
+		CF (e->format,EXIF_FORMAT_SHORT, val, maxlen);
+		CC (e->components, 1, val, maxlen);
+		v_short = exif_get_short (e->data, o);
+
+		/* Search the tag */
+		for (i = 0; list2[i].tag && (list2[i].tag != e->tag); i++);
+		if (!list2[i].tag) {
+			strncpy (val, "Internal error.", maxlen - 1);
+			break;
+		}
+
+		/* Find the value */
+		for (j = 0; list2[i].elem[j].values &&
+			    (list2[i].elem[j].index < v_short); j++);
+		if (list2[i].elem[j].index != v_short) {
+			snprintf (val, maxlen, "Internal error (unknown "
+				  "value %i).", v_short);
+			*((int *) 0) = 0;
+			break;
+		}
+
+		/* Find a short enough value */
+		memset (val, 0, maxlen);
+		for (k = 0; list2[i].elem[j].values &&
+			    list2[i].elem[j].values[k]; k++) {
+		  l = strlen (_(list2[i].elem[j].values[k]));
+		  if ((maxlen > l) && (strlen (val) < l))
+		    strncpy (val, _(list2[i].elem[j].values[k]), maxlen - 1);
+		}
+		if (!strlen (val)) snprintf (val, maxlen, "%i", v_short);
+
+		break;
 	case EXIF_TAG_PLANAR_CONFIGURATION:
 	case EXIF_TAG_SENSING_METHOD:
 	case EXIF_TAG_ORIENTATION:
@@ -727,11 +637,15 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
+
+		/* Search the tag */
 		for (i = 0; list[i].tag && (list[i].tag != e->tag); i++);
 		if (!list[i].tag) {
 			strncpy (val, "Internal error.", maxlen - 1);
 			break;
 		}
+
+		/* Find the value */
 		for (j = 0; list[i].strings[j] && (j < v_short); j++);
 		if (!list[i].strings[j])
 			snprintf (val, maxlen, "%i", v_short);

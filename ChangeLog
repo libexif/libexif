@@ -1,3 +1,8 @@
+2004-03-03  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c: Patch by Joerg Hoh <joerg@devone.org>,
+	  enhanced by myself.
+
 2004-03-03  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-entry.c: C-compilability & fix of the 2004/03/02 code
