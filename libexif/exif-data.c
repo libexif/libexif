@@ -696,7 +696,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		  "Found EXIF header.");
 
 	/* Byte order (offset 6, length 2) */
-	if (ds < 12)
+	if (ds < 14)
 		return;
 	if (!memcmp (d + 6, "II", 2))
 		data->priv->order = EXIF_BYTE_ORDER_INTEL;
@@ -714,7 +714,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData", 
 		  "IFD 0 at %i.", (int) offset);
 
-	/* Parse the actual exif data (offset 14) */
+	/* Parse the actual exif data (usually offset 14 from start) */
 	exif_data_load_data_content (data, data->ifd[EXIF_IFD_0], d + 6,
 				     ds - 6, offset);
 
