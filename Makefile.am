@@ -1,6 +1,6 @@
 SUBDIRS = m4 po libexif test
 
-EXTRA_DIST = @PACKAGE_TARNAME@.spec
+EXTRA_DIST = @PACKAGE_TARNAME@.spec autogen.sh
 
 ACLOCAL_AMFLAGS = -I m4
 
