@@ -33,6 +33,7 @@ struct _ExifContentPrivate
 	unsigned int ref_count;
 
 	ExifMem *mem;
+	ExifLog *log;
 };
 
 ExifContent *
@@ -88,19 +89,22 @@ exif_content_unref (ExifContent *content)
 void
 exif_content_free (ExifContent *content)
 {
+	ExifMem *mem = (content && content->priv) ? content->priv->mem : NULL;
 	unsigned int i;
 
 	if (!content) return;
 
 	for (i = 0; i < content->count; i++)
 		exif_entry_unref (content->entries[i]);
+	exif_mem_free (mem, content->entries);
+
 	if (content->priv) {
-		ExifMem *mem = content->priv->mem;
-		exif_mem_free (mem, content->entries);
-		exif_mem_free (mem, content->priv);
-		exif_mem_free (mem, content);
-		exif_mem_unref (mem);
+		exif_log_unref (content->priv->log);
 	}
+
+	exif_mem_free (mem, content->priv);
+	exif_mem_free (mem, content);
+	exif_mem_unref (mem);
 }
 
 void
@@ -123,17 +127,26 @@ exif_content_dump (ExifContent *content, unsigned int indent)
 }
 
 void
-exif_content_add_entry (ExifContent *content, ExifEntry *entry)
+exif_content_add_entry (ExifContent *c, ExifEntry *entry)
 {
-	if (!content || !content->priv || !entry || entry->parent) return;
+	if (!c || !c->priv || !entry || entry->parent) return;
 
-	entry->parent = content;
-	content->entries = exif_mem_realloc (content->priv->mem,
-		content->entries, sizeof (ExifEntry) * (content->count + 1));
-	if (!content->entries) return;
-	content->entries[content->count] = entry;
+	/* One tag can only be added once to an IFD. */
+	if (exif_content_get_entry (c, entry->tag)) {
+		exif_log (c->priv->log, EXIF_LOG_CODE_DEBUG, "ExifContent",
+			"An attempt has been made to add "
+			"the tag '%s' twice to an IFD. This is against "
+			"specification.", exif_tag_get_name (entry->tag));
+		return;
+	}
+
+	entry->parent = c;
+	c->entries = exif_mem_realloc (c->priv->mem,
+		c->entries, sizeof (ExifEntry) * (c->count + 1));
+	if (!c->entries) return;
+	c->entries[c->count] = entry;
 	exif_entry_ref (entry);
-	content->count++;
+	c->count++;
 }
 
 void
@@ -182,4 +195,15 @@ exif_content_foreach_entry (ExifContent *content,
 
 	for (i = 0; i < content->count; i++)
 		func (content->entries[i], data);
+}
+
+void
+exif_content_log (ExifContent *content, ExifLog *log)
+{
+	if (!content || !content->priv || !log || content->priv->log == log)
+		return;
+
+	if (content->priv->log) exif_log_unref (content->priv->log);
+	content->priv->log = log;
+	exif_log_ref (log);
 }

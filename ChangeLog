@@ -1,5 +1,10 @@
 2004-11-15  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-content.c: Complain if the same tag is added twice
+	  to an IFD. Suggestion by Angela Wrobel.
+
+2004-11-15  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-data.c: Additional debugging message if 
 	  specification is violated.
 

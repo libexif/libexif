@@ -31,6 +31,7 @@ typedef struct _ExifContentPrivate ExifContentPrivate;
 #include <libexif/exif-tag.h>
 #include <libexif/exif-entry.h>
 #include <libexif/exif-data.h>
+#include <libexif/exif-log.h>
 #include <libexif/exif-mem.h>
 
 struct _ExifContent
@@ -65,7 +66,8 @@ void         exif_content_foreach_entry (ExifContent *content,
 	(exif_content_get_entry (c,t) ?					\
 	 exif_entry_get_value (exif_content_get_entry (c,t),v,m) : NULL)
 
-void         exif_content_dump  (ExifContent *content, unsigned int indent);
+void exif_content_dump  (ExifContent *content, unsigned int indent);
+void exif_content_log   (ExifContent *content, ExifLog *log);
 
 #ifdef __cplusplus
 }
