@@ -7,7 +7,9 @@ noinst_PROGRAMS =	\
 
 test_tree_LDADD =		\
 	../libjpeg/libjpeg.la	\
-	../libexif/libexif.la
+	../libexif/libexif.la	\
+	../intl/libintl.a
 
 test_mem_LDADD =		\
-	../libexif/libexif.la
+	../libexif/libexif.la	\
+	../intl/libintl.a
