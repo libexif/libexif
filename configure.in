@@ -24,7 +24,6 @@ AC_SUBST(LDFLAGS)
 
 AC_OUTPUT([
 Makefile
-gexif/Makefile
 libexif/Makefile
 libjpeg/Makefile
 test/Makefile
@@ -37,7 +36,4 @@ Configuration (libexif):
 
 	Source code location:  ${srcdir}
 	Compiler:              ${CC}
-
-	GTK support:           $gtk_msg
-	gdk-pixbuf support:    $gdk_pixbuf_msg
 "
