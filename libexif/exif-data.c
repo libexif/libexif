@@ -437,8 +437,9 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 
 	/*
 	 * Save each entry. TIFF specification requires entries to be sorted
-	 * by tags. Yes, the sorting routine can be improved. Please submit a
-	 * patch.
+	 * by tags. Yes, the sorting routine can be improved. And yes, the addition
+	 * of special entries at the end is wrong (they should be inserted at
+	 * the right position). Please submit a patch.
 	 */
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 		  "Saving %i entries (IFD '%s', offset: %i)...",

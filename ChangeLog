@@ -1,5 +1,10 @@
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-data.c (exif_data_save_data_content): Update comment that
+		this code does not honor the specification yet.
+
+2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-data.c (exif_data_save_data_content): Save entries in
 		the correct order.
 
