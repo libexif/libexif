@@ -1,3 +1,8 @@
+2004-08-31  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* test/test-mem.c: Plug some memory leaks. Suggested by Angela Wrobel
+	  (http://www.wrobelnet.de/contact.html).
+
 2004-08-27  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* configure.in: 0.6.10 -> 0.6.11, as libexif-0.6.10 has just been

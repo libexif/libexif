@@ -44,16 +44,19 @@ main (int argc, char **argv)
 	e = exif_entry_new ();
 	exif_content_add_entry (ed->ifd[EXIF_IFD_0], e);
 	exif_entry_initialize (e, EXIF_TAG_EXIF_VERSION);
+	exif_entry_unref (e);
 
 	printf ("Creating another EXIF entry...\n");
 	e = exif_entry_new ();
 	exif_content_add_entry (ed->ifd[EXIF_IFD_0], e);
 	exif_entry_initialize (e, EXIF_TAG_DATE_TIME);
+	exif_entry_unref (e);
 
 	printf ("Creating an EXIF entry in the EXIF IFD...\n");
 	e = exif_entry_new ();
 	exif_content_add_entry (ed->ifd[EXIF_IFD_EXIF], e);
 	exif_entry_initialize (e, EXIF_TAG_FLASH_PIX_VERSION);
+	exif_entry_unref (e);
 
 	exif_data_dump (ed);
 
