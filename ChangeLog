@@ -1,3 +1,9 @@
+2004-11-02  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-entry.c: added LZW
+	* libexif/exif-tag.*: added few tags used by .NEF
+	* libexif/exif-data.c: logging unknown tags
+
 2004-10-20  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* Makefile.am: Add intl
