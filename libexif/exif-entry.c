@@ -265,7 +265,7 @@ exif_entry_get_value (ExifEntry *e)
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator)
 			return (NULL);
-		d = (double) v_srat.numerator / (double) v_srat.denominator;
+		d = (double) v_rat.numerator / (double) v_rat.denominator;
 		if (d < 1)
 			snprintf (v, sizeof (v), _("1/%d sec."),
 				  (int) (1. / d));
