@@ -46,14 +46,10 @@ exif_entry_new (void)
 	ExifEntry *e;
 
 	e = malloc (sizeof (ExifEntry));
-	if (!e)
-		return NULL;
+	if (!e) return NULL;
 	memset (e, 0, sizeof (ExifEntry));
 	e->priv = malloc (sizeof (ExifEntryPrivate));
-	if (!e->priv) {
-		free (e);
-		return NULL;
-	}
+	if (!e->priv) { free (e); return NULL; }
 	memset (e->priv, 0, sizeof (ExifEntryPrivate));
 	e->priv->ref_count = 1;
 
@@ -798,7 +794,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_LONG;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = malloc (e->size);
-		memset (e->data, 0, e->size);
+		if (e->data) memset (e->data, 0, e->size);
 		break;
 
 	/* SHORT, 1 component, no default */
@@ -892,7 +888,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SRATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = malloc (e->size);
-		memset (e->data, 0, e->size);
+		if (e->data) memset (e->data, 0, e->size);
 		break;
 
 	/* RATIONAL, 1 component, no default */
@@ -913,7 +909,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = malloc (e->size);
-		memset (e->data, 0, e->size);
+		if (e->data) memset (e->data, 0, e->size);
 		break;
 
 	/* RATIONAL, 1 component, default 72/1 */
@@ -934,7 +930,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = malloc (e->size);
-		memset (e->data, 0, e->size);
+		if (e->data) memset (e->data, 0, e->size);
 		break;
 
 	/* RATIONAL, 6 components */

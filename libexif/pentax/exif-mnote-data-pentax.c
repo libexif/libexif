@@ -79,6 +79,7 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 	if (buf_size < 2) return;
 	c = exif_get_short (buf + 6 + n->offset, n->order);
 	n->entries = malloc (sizeof (MnotePentaxEntry) * c);
+	if (!n->entries) return;
 	memset (n->entries, 0, sizeof (MnotePentaxEntry) * c);
 
 	for (i = 0; i < c; i++) {

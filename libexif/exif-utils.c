@@ -26,6 +26,7 @@ typedef signed short ExifSShort;
 static ExifSShort
 exif_get_sshort (const unsigned char *buf, ExifByteOrder order)
 {
+	if (!buf) return 0;
         switch (order) {
         case EXIF_BYTE_ORDER_MOTOROLA:
                 return ((buf[0] << 8) | buf[1]);
@@ -46,6 +47,7 @@ exif_get_short (const unsigned char *buf, ExifByteOrder order)
 void
 exif_set_short (unsigned char *b, ExifByteOrder order, ExifShort value)
 {
+	if (!b) return;
 	switch (order) {
 	case EXIF_BYTE_ORDER_MOTOROLA:
 		b[0] = (unsigned char) (value >> 8);
@@ -61,6 +63,7 @@ exif_set_short (unsigned char *b, ExifByteOrder order, ExifShort value)
 ExifSLong
 exif_get_slong (const unsigned char *b, ExifByteOrder order)
 {
+	if (!b) return 0;
         switch (order) {
         case EXIF_BYTE_ORDER_MOTOROLA:
                 return ((b[0] << 24) | (b[1] << 16) | (b[2] << 8) | b[3]);
@@ -75,6 +78,7 @@ exif_get_slong (const unsigned char *b, ExifByteOrder order)
 void
 exif_set_slong (unsigned char *b, ExifByteOrder order, ExifSLong value)
 {
+	if (!b) return;
 	switch (order) {
 	case EXIF_BYTE_ORDER_MOTOROLA:
 		b[0] = (unsigned char) (value >> 24);
@@ -108,8 +112,8 @@ exif_get_srational (const unsigned char *buf, ExifByteOrder order)
 {
 	ExifSRational r;
 
-	r.numerator   = exif_get_slong (buf, order);
-	r.denominator = exif_get_slong (buf + 4, order);
+	r.numerator   = buf ? exif_get_slong (buf, order) : 0;
+	r.denominator = buf ? exif_get_slong (buf + 4, order) : 0;
 
 	return (r);
 }
@@ -119,8 +123,8 @@ exif_get_rational (const unsigned char *buf, ExifByteOrder order)
 {
 	ExifRational r;
 
-	r.numerator   = exif_get_long (buf, order);
-	r.denominator = exif_get_long (buf + 4, order);
+	r.numerator   = buf ? exif_get_long (buf, order) : 0;
+	r.denominator = buf ? exif_get_long (buf + 4, order) : 0;
 
 	return (r);
 }
@@ -129,6 +133,7 @@ void
 exif_set_rational (unsigned char *buf, ExifByteOrder order,
 		   ExifRational value)
 {
+	if (!buf) return;
 	exif_set_long (buf, order, value.numerator);
 	exif_set_long (buf + 4, order, value.denominator);
 }
@@ -137,6 +142,7 @@ void
 exif_set_srational (unsigned char *buf, ExifByteOrder order,
 		    ExifSRational value)
 {
+	if (!buf) return;
 	exif_set_slong (buf, order, value.numerator);
 	exif_set_slong (buf + 4, order, value.denominator);
 }

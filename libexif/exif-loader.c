@@ -62,7 +62,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 {
 	int i, len_remain;
 
-	if (!eld) return 0;
+	if (!eld || !buf || !len) return 0;
 	if (eld->state == EL_FAILED) return 0;
 	if (eld->size && eld->bytes_read == eld->size) return 0;
 
@@ -144,6 +144,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 	if (eld->state == EL_EXIF_FOUND && len_remain > 0) {
 		if (eld->buf == NULL) {
 			eld->buf = malloc (sizeof (unsigned char) * eld->size);
+			if (!eld->buf) return 0;
 			eld->bytes_read = 0;
 		}
 
@@ -169,9 +170,10 @@ exif_loader_new (void)
 {
 	ExifLoader *loader = malloc (sizeof (ExifLoader));
 
+	if (!loader) return NULL;
 	memset (loader, 0, sizeof (ExifLoader));
 	loader->ref_count = 1;
-	
+
 	return loader;
 }
 

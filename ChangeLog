@@ -1,3 +1,13 @@
+2004-08-26  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Suggestions from Angela Wrobel <Angela.Wrobel@gmx.de>:
+
+	* libexif/exif-entry.c
+	* libexif/exif-loader.c
+	* libexif/exif-utils.c
+	* olympus/exif-mnote-data-olympus.c
+	* pentax/exif-mnote-data-pentax.c: Check if malloc returned NULL.
+
 2004-07-13  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-mnote-*.*: added exif_mnote_data_get_id()
