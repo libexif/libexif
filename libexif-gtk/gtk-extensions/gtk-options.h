@@ -18,51 +18,18 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __GTK_OPTIONS_H__
+#ifndef __GTK_OPTIONS_H__ 
 #define __GTK_OPTIONS_H__
 
-#include <gtk/gtkoptionmenu.h>
+#include <glib.h>
 
-#define GTK_TYPE_OPTIONS     (gtk_options_get_type())
-#define GTK_OPTIONS(o)       (GTK_CHECK_CAST((o),GTK_TYPE_OPTIONS,GtkOptions))
-#define GTK_OPTIONS_CLASS(k) (GTK_CHECK_CLASS_CAST((k),GTK_TYPE_OPTIONS,GtkOptionsClass))
-#define GTK_IS_OPTIONS(o)    (GTK_CHECK_TYPE((o),GTK_TYPE_OPTIONS))
-
-typedef struct _GtkOptions        GtkOptions;
-typedef struct _GtkOptionsPrivate GtkOptionsPrivate;
-typedef struct _GtkOptionsClass   GtkOptionsClass;
-
-struct _GtkOptions
-{
-	GtkOptionMenu parent;
-
-	GtkOptionsPrivate *priv;
-};
-
-struct _GtkOptionsClass
-{
-	GtkOptionMenuClass parent_class;
-
-	/* Signals */
-	void (* option_selected) (GtkOptions *options, guint option);
-};
-
-typedef struct _GtkOptionsList GtkOptionsList;
-struct _GtkOptionsList {
+typedef struct _GtkOptions GtkOptions;
+struct _GtkOptions {
 	guint option;
 	const gchar *name;
 };
 
-GtkType    gtk_options_get_type  (void);
-GtkWidget *gtk_options_new       (GtkOptionsList *list);
-void       gtk_options_construct (GtkOptions *options, GtkOptionsList *list);
-
-void       gtk_options_set       (GtkOptions *options, guint option);
-guint      gtk_options_get       (GtkOptions *options);
-
-void       gtk_options_set_sensitive_all (GtkOptions *options,
-					  gboolean sensitive);
-void       gtk_options_set_sensitive     (GtkOptions *options, guint option,
-				          gboolean sensitive);
+void gtk_options_sort (GtkOptions *options);
 
 #endif /* __GTK_OPTIONS_H__ */
+
