@@ -130,7 +130,7 @@ exif_entry_get_value (ExifEntry *entry)
 {
 	unsigned int i;
 	ExifByte v_byte;
-	ExifShort v_short;
+	ExifShort v_short, v_short2;
 	ExifLong v_long;
 	ExifSLong v_slong;
 	ExifRational v_rat;
@@ -244,6 +244,34 @@ exif_entry_get_value (ExifEntry *entry)
 			break;
 		case 6:
 			strncpy (v, _("JPEG compression"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
+	case EXIF_TAG_FILE_SOURCE:
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, v);
+		CC (entry->components, 1, v);
+		switch (entry->data[0]) {
+		case 0x03:
+			strncpy (v, _("DSC"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "0x%02x", entry->data[0]);
+			break;
+		}
+		break;
+	case EXIF_TAG_PLANAR_CONFIGURATION:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 1, v);
+		v_short = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 1:
+			strncpy (v, _("chunky format"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("planar format"), sizeof (v));
 			break;
 		default:
 			snprintf (v, sizeof (v), "%i", v_short);
@@ -469,6 +497,36 @@ exif_entry_get_value (ExifEntry *entry)
 			break;
 		}
 		break;
+	case EXIF_TAG_YCBCR_SUB_SAMPLING:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 2, v);
+		v_short  = exif_get_short (entry->data, entry->order);
+		v_short2 = exif_get_short (
+			entry->data + exif_format_get_size (entry->format),
+			entry->order);
+		if ((v_short == 2) && (v_short2 == 1))
+			strncpy (v, _("YCbCr4:2:2"), sizeof (v));
+		else if ((v_short == 2) && (v_short2 == 2))
+			strncpy (v, _("YCbCr4:2:0"), sizeof (v));
+		else
+			snprintf (v, sizeof (v), "%i, %i", v_short, v_short2);
+		break;
+	case EXIF_TAG_PHOTOMETRIC_INTERPRETATION:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 1, v);
+		v_short  = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 2:
+			strncpy (v, _("RGB"), sizeof (v));
+			break;
+		case 6:
+			strncpy (v, _("YCbCr"), sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
 	case EXIF_TAG_COLOR_SPACE:
 		CF (entry->format, EXIF_FORMAT_SHORT, v); 
 		CC (entry->components, 1, v); 
@@ -518,19 +576,49 @@ exif_entry_get_value (ExifEntry *entry)
 			break;
 		case EXIF_FORMAT_BYTE:
 			v_byte = entry->data[0];
-			snprintf (v, sizeof (v), "%i", v_byte);
+			snprintf (v, sizeof (v), "0x%02x", v_byte);
+			for (i = 1; i < entry->components; i++) {
+				v_byte = entry->data[i];
+				snprintf (b, sizeof (b), "0x%02x", v_byte);
+				strncat (v, ", ", sizeof (v));
+				strncat (v, b, sizeof (v));
+			}
 			break;
 		case EXIF_FORMAT_SHORT:
 			v_short = exif_get_short (entry->data, entry->order);
 			snprintf (v, sizeof (v), "%i", v_short);
+			for (i = 1; i < entry->components; i++) {
+				v_short = exif_get_short (entry->data +
+					exif_format_get_size (entry->format) *
+					i, entry->order);
+				snprintf (b, sizeof (b), "%i", v_short);
+				strncat (v, ", ", sizeof (v));
+				strncat (v, b, sizeof (v));
+			}
 			break;
 		case EXIF_FORMAT_LONG:
 			v_long = exif_get_long (entry->data, entry->order);
 			snprintf (v, sizeof (v), "%i", (int) v_long);
+			for (i = 1; i < entry->components; i++) {
+				v_long = exif_get_long (entry->data +
+					exif_format_get_size (entry->format) *
+					i, entry->order);
+				snprintf (b, sizeof (b), "%li", v_long);
+				strncat (v, ", ", sizeof (v));
+				strncat (v, b, sizeof (v));
+			}
 			break;
 		case EXIF_FORMAT_SLONG:
 			v_slong = exif_get_slong (entry->data, entry->order);
-			snprintf (v, sizeof (v), "%i", (int) v_slong);
+			snprintf (v, sizeof (v), "%li", v_slong);
+			for (i = 1; i < entry->components; i++) {
+				v_long = exif_get_slong (entry->data +
+					exif_format_get_size (entry->format) *
+					i, entry->order);
+				snprintf (b, sizeof (b), "%li", v_long);
+				strncat (v, ", ", sizeof (v));
+				strncat (v, b, sizeof (v));
+			}
 			break;
 		case EXIF_FORMAT_ASCII:
 			strncpy (v, entry->data, MIN (sizeof (v), entry->size));
