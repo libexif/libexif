@@ -8,4 +8,4 @@ Description: Library for easy access to EXIF data
 Requires:
 Version: @VERSION@
 Libs: -L${libdir} -lexif -lm
-Cflags: -I${includedir}/libexif -I${includedir}
+Cflags: -I${includedir}
