@@ -1,9 +1,7 @@
-2002-09-16  gettextize  <bug-gnu-gettext@gnu.org>
+2002-09-16  Lutz Müller <lutz@users.sourceforge.net>
 
-	* Makefile.am (SUBDIRS): Add m4.
-	(ACLOCAL_AMFLAGS): New variable.
-	(EXTRA_DIST): Add config.rpath.
-	* configure.in (AC_OUTPUT): Add m4/Makefile.
+	* libexif: Some fixes for Windows (Visual C++) by
+	  Andres <aplaza@smalcamera.com>
 
 2002-09-15  Lutz Müller <lutz@users.sourceforge.net>
 

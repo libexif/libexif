@@ -48,12 +48,12 @@ exif_set_short (unsigned char *b, ExifByteOrder order, ExifShort value)
 {
 	switch (order) {
 	case EXIF_BYTE_ORDER_MOTOROLA:
-		b[0] = value >> 8;
-		b[1] = value;
+		b[0] = (unsigned char) (value >> 8);
+		b[1] = (unsigned char) value;
 		break;
 	case EXIF_BYTE_ORDER_INTEL:
-		b[0] = value;
-		b[1] = value >> 8;
+		b[0] = (unsigned char) value;
+		b[1] = (unsigned char) (value >> 8);
 		break;
 	}
 }
@@ -77,16 +77,16 @@ exif_set_slong (unsigned char *b, ExifByteOrder order, ExifSLong value)
 {
 	switch (order) {
 	case EXIF_BYTE_ORDER_MOTOROLA:
-		b[0] = value >> 24;
-		b[1] = value >> 16;
-		b[2] = value >> 8;
-		b[3] = value;
+		b[0] = (unsigned char) (value >> 24);
+		b[1] = (unsigned char) (value >> 16);
+		b[2] = (unsigned char) (value >> 8);
+		b[3] = (unsigned char) value;
 		break;
 	case EXIF_BYTE_ORDER_INTEL:
-		b[3] = value >> 24;
-		b[2] = value >> 16;
-		b[1] = value >> 8;
-		b[0] = value;
+		b[3] = (unsigned char) (value >> 24);
+		b[2] = (unsigned char) (value >> 16);
+		b[1] = (unsigned char) (value >> 8);
+		b[0] = (unsigned char) value;
 		break;
 	}
 }
