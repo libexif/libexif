@@ -1,3 +1,10 @@
+2004-12-17  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Lars Ellenberg <l.g.e@web.de> fixed a bug that I introduced
+	in the last commit:
+
+	* libexif/exif-loader.c: Don't substract 2 bytes twice.
+
 2004-12-12  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Pointed out by Lars Ellenberg <l.g.e@web.de>:

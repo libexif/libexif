@@ -195,7 +195,6 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 			break;
 		case EL_READ_SIZE_BYTE_00:
 			eld->size |= eld->b[i] << 0;
-			eld->size -= 2;
 			switch (eld->data_format) {
 			case EL_DATA_FORMAT_JPEG:
 				eld->state = EL_SKIP_BYTES;
