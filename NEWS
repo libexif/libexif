@@ -5,6 +5,9 @@ New in 0.6.12 (2005-??-??) since 0.6.11:
 
   * Updated build system with cross compile capabilities
 
+  * Small fixes:
+    Fix tag order, use even offsets, improve Nikon&Olympus mnote tags.
+
 
 New in 0.6.11 (2004-10-16) since 0.6.10 (2004-08-27):
 
