@@ -1,4 +1,4 @@
-/* exif-loader.h
+/* exif-mem.h
  *
  * Copyright © 2003 Lutz Müller <lutz@users.sourceforge.net>
  *
@@ -18,40 +18,37 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __EXIF_LOADER_H__
-#define __EXIF_LOADER_H__
+#ifndef __EXIF_MEM_H__
+#define __EXIF_MEM_H__
 
-#include <libexif/exif-data.h>
-#include <libexif/exif-loader.h>
-#include <libexif/exif-log.h>
-#include <libexif/exif-mem.h>
+#include <libexif/exif-utils.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
 
-typedef struct _ExifLoader ExifLoader;
+typedef void * (* ExifMemAllocFunc)   (ExifLong);
+typedef void * (* ExifMemReallocFunc) (void *, ExifLong);
+typedef void   (* ExifMemFreeFunc)    (void *);
 
-ExifLoader *exif_loader_new     (void);
-ExifLoader *exif_loader_new_mem (ExifMem *);
-void        exif_loader_ref     (ExifLoader *);
-void        exif_loader_unref   (ExifLoader *);
+typedef struct _ExifMem ExifMem;
 
-void        exif_loader_write_file (ExifLoader *, const char *fname);
+ExifMem *exif_mem_new   (ExifMemAllocFunc, ExifMemReallocFunc,
+			 ExifMemFreeFunc);
+void     exif_mem_ref   (ExifMem *);
+void     exif_mem_unref (ExifMem *);
 
-/*
- * Returns 1 while EXIF data is read (or while there is still 
- * hope that there will be EXIF data later on), 0 otherwise.
- */
-unsigned char exif_loader_write (ExifLoader *, unsigned char *, unsigned int);
+void *exif_mem_alloc   (ExifMem *, ExifLong);
+void *exif_mem_realloc (ExifMem *, void *, ExifLong);
+void  exif_mem_free    (ExifMem *, void *);
 
-void          exif_loader_reset (ExifLoader *);
-ExifData     *exif_loader_get_data (ExifLoader *);
-
-void exif_loader_log (ExifLoader *, ExifLog *);
+/* For your convenience */
+void *exif_mem_alloc_func   (ExifLong);
+void *exif_mem_realloc_func (void *, ExifLong);
+void  exif_mem_free_func    (void *);
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
-#endif /* __EXIF_LOADER_H__ */
+#endif /* __EXIF_MEM_H__ */

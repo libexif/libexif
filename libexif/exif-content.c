@@ -32,27 +32,46 @@ static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 struct _ExifContentPrivate
 {
 	unsigned int ref_count;
+
+	ExifMem *mem;
 };
 
 ExifContent *
 exif_content_new (void)
 {
 	ExifContent *content;
+	ExifMem *mem = exif_mem_new (exif_mem_alloc_func,
+			exif_mem_realloc_func, exif_mem_free_func);
 
-	content = malloc (sizeof (ExifContent));
+	content = exif_content_new_mem (mem);
+	exif_mem_unref (mem);
+
+	return content;
+}
+
+ExifContent *
+exif_content_new_mem (ExifMem *mem)
+{
+	ExifContent *content;
+
+	if (!mem) return NULL;
+
+	content = exif_mem_alloc (mem, (ExifLong) sizeof (ExifContent));
 	if (!content)
-		return (NULL);
-	memset (content, 0, sizeof (ExifContent));
-	content->priv = malloc (sizeof (ExifContentPrivate));
+		return NULL;
+	content->priv = exif_mem_alloc (mem,
+				(ExifLong) sizeof (ExifContentPrivate));
 	if (!content->priv) {
-		free (content);
-		return (NULL);
+		exif_mem_free (mem, content);
+		return NULL;
 	}
-	memset (content->priv, 0, sizeof (ExifContentPrivate));
 
 	content->priv->ref_count = 1;
 
-	return (content);
+	content->priv->mem = mem;
+	exif_mem_ref (mem);
+
+	return content;
 }
 
 void
@@ -74,11 +93,17 @@ exif_content_free (ExifContent *content)
 {
 	unsigned int i;
 
+	if (!content) return;
+
 	for (i = 0; i < content->count; i++)
 		exif_entry_unref (content->entries[i]);
-	free (content->entries);
-	free (content->priv);
-	free (content);
+	if (content->priv) {
+		ExifMem *mem = content->priv->mem;
+		exif_mem_free (mem, content->entries);
+		exif_mem_free (mem, content->priv);
+		exif_mem_free (mem, content);
+		exif_mem_unref (mem);
+	}
 }
 
 void
@@ -103,14 +128,12 @@ exif_content_dump (ExifContent *content, unsigned int indent)
 void
 exif_content_add_entry (ExifContent *content, ExifEntry *entry)
 {
-	if (entry->parent)
-		return;
+	if (!content || !content->priv || !entry || entry->parent) return;
 
 	entry->parent = content;
-	content->entries = realloc (content->entries,
-				    sizeof (ExifEntry) * (content->count + 1));
-	if (!content->entries)
-	  	return;
+	content->entries = exif_mem_realloc (content->priv->mem,
+		content->entries, sizeof (ExifEntry) * (content->count + 1));
+	if (!content->entries) return;
 	content->entries[content->count] = entry;
 	exif_entry_ref (entry);
 	content->count++;
@@ -121,8 +144,7 @@ exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 {
 	unsigned int i;
 
-	if (!c || !e) return;
-	if (e->parent != c) return;
+	if (!c || !c->priv || !e || (e->parent != c)) return;
 
 	/* Search the entry */
 	for (i = 0; i < c->count; i++) if (c->entries[i] == e) break;
@@ -134,7 +156,8 @@ exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 	c->count--;
 	e->parent = NULL;
 	exif_entry_unref (e);
-	c->entries = realloc(c->entries,sizeof(ExifEntry) * c->count);
+	c->entries = exif_mem_realloc (c->priv->mem, c->entries,
+					sizeof(ExifEntry) * c->count);
 }
 
 ExifEntry *

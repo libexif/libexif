@@ -31,6 +31,7 @@ typedef struct _ExifContentPrivate ExifContentPrivate;
 #include <libexif/exif-tag.h>
 #include <libexif/exif-entry.h>
 #include <libexif/exif-data.h>
+#include <libexif/exif-mem.h>
 
 struct _ExifContent
 {
@@ -44,10 +45,11 @@ struct _ExifContent
 };
 
 /* Lifecycle */
-ExifContent *exif_content_new   (void);
-void         exif_content_ref   (ExifContent *content);
-void         exif_content_unref (ExifContent *content);
-void         exif_content_free  (ExifContent *content);
+ExifContent *exif_content_new     (void);
+ExifContent *exif_content_new_mem (ExifMem *);
+void         exif_content_ref     (ExifContent *content);
+void         exif_content_unref   (ExifContent *content);
+void         exif_content_free    (ExifContent *content);
 
 void         exif_content_add_entry     (ExifContent *content, ExifEntry *e);
 void         exif_content_remove_entry  (ExifContent *content, ExifEntry *e);

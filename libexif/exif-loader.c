@@ -29,6 +29,7 @@ struct _ExifLoader {
 	unsigned int ref_count;
 
 	ExifLog *log;
+	ExifMem *mem;
 };
 
 static void *
@@ -36,13 +37,12 @@ exif_loader_alloc (ExifLoader *l, unsigned int i)
 {
 	void *d;
 
-	if (!i) return NULL;
+	if (!l || !i) return NULL;
 
-	/* This is the only call to calloc in this file. */
-	d = calloc (i, 1);
+	d = exif_mem_alloc (l->mem, i);
 	if (d) return d;
 
-	if (l) EXIF_LOG_NO_MEMORY (l->log, "ExifLog", i);
+	EXIF_LOG_NO_MEMORY (l->log, "ExifLog", i);
 	return NULL;
 }
 
@@ -183,11 +183,29 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 ExifLoader *
 exif_loader_new (void)
 {
+	ExifLoader *l;
+	ExifMem *mem = exif_mem_new (exif_mem_alloc_func, 
+			exif_mem_realloc_func, exif_mem_free_func);
+
+	l = exif_loader_new_mem (mem);
+	exif_mem_unref (mem);
+
+	return l;
+}
+
+ExifLoader *
+exif_loader_new_mem (ExifMem *mem)
+{
 	ExifLoader *loader;
+
+	if (!mem) return NULL;
 	
-	loader = exif_loader_alloc (NULL, sizeof (ExifLoader));
+	loader = exif_mem_alloc (mem, sizeof (ExifLoader));
 	if (!loader) return NULL;
 	loader->ref_count = 1;
+
+	loader->mem = mem;
+	exif_mem_ref (mem);
 
 	return loader;
 }
@@ -198,21 +216,32 @@ exif_loader_ref (ExifLoader *loader)
 	if (loader) loader->ref_count++;
 }
 
+static void
+exif_loader_free (ExifLoader *loader)
+{
+	ExifMem *mem;
+
+	if (!loader) return;
+
+	mem = loader->mem;
+	exif_loader_reset (loader);
+	exif_mem_free (mem, loader);
+	exif_mem_unref (mem);
+}
+	
 void
 exif_loader_unref (ExifLoader *loader)
 {
 	if (!loader) return;
-	if (!--loader->ref_count) {
-		exif_loader_reset (loader);
-		free (loader);
-	}
+	if (!--loader->ref_count)
+		exif_loader_free (loader);
 }
 
 void
 exif_loader_reset (ExifLoader *loader)
 {
 	if (!loader) return;
-	free (loader->buf); loader->buf = NULL;
+	exif_mem_free (loader->mem, loader->buf); loader->buf = NULL;
 	loader->size = 0;
 	loader->bytes_read = 0;
 	loader->last_marker = 0;
@@ -226,7 +255,7 @@ exif_loader_get_data (ExifLoader *loader)
 
 	if (!loader) return NULL;
 
-	ed = exif_data_new ();
+	ed = exif_data_new_mem (loader->mem);
 	exif_data_log (ed, loader->log);
 	exif_data_load_data (ed, loader->buf, loader->bytes_read);
 

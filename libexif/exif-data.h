@@ -35,6 +35,7 @@ typedef struct _ExifDataPrivate ExifDataPrivate;
 
 #include <libexif/exif-content.h>
 #include <libexif/exif-mnote-data.h>
+#include <libexif/exif-mem.h>
 
 struct _ExifData
 {
@@ -46,7 +47,8 @@ struct _ExifData
 	ExifDataPrivate *priv;
 };
 
-ExifData *exif_data_new   (void);
+ExifData *exif_data_new           (void);
+ExifData *exif_data_new_mem       (ExifMem *);
 ExifData *exif_data_new_from_file (const char *path);
 ExifData *exif_data_new_from_data (const unsigned char *data,
 				   unsigned int size);

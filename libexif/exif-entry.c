@@ -39,6 +39,8 @@
 struct _ExifEntryPrivate
 {
 	unsigned int ref_count;
+
+	ExifMem *mem;
 };
 
 /* This function is hidden in exif-data.c */
@@ -63,16 +65,14 @@ exif_entry_alloc (ExifEntry *e, unsigned int i)
 	void *d;
 	ExifLog *l = NULL;
 
-	if (!i) return NULL;
+	if (!e || !e->priv || !i) return NULL;
 
-	/* This is the only call to calloc in this file. */
-	d = calloc (i, 1);
+	d = exif_mem_alloc (e->priv->mem, i);
 	if (d) return d;
 
-	if (e && e->parent && e->parent->parent)
+	if (e->parent && e->parent->parent)
 		l = exif_data_get_log (e->parent->parent);
 	EXIF_LOG_NO_MEMORY (l, "ExifEntry", i);
-
 	return NULL;
 }
 
@@ -82,38 +82,53 @@ exif_entry_realloc (ExifEntry *e, void *d_orig, unsigned int i)
 	void *d;
 	ExifLog *l = NULL;
 
-	if (!i) { free (d_orig); return NULL; }
+	if (!e || !e->priv) return NULL;
 
-	/* This is the only call to realloc in this file. */
-	d = realloc (d_orig, i);
+	if (!i) { exif_mem_free (e->priv->mem, d_orig); return NULL; }
+
+	d = exif_mem_realloc (e->priv->mem, d_orig, i);
 	if (d) return d;
 
-	if (e && e->parent && e->parent->parent)
+	if (e->parent && e->parent->parent)
 		l = exif_data_get_log (e->parent->parent);
 	EXIF_LOG_NO_MEMORY (l, "ExifEntry", i);
-
 	return NULL;
 }
 
 ExifEntry *
 exif_entry_new (void)
 {
+	ExifEntry *e;
+	ExifMem *mem = exif_mem_new (exif_mem_alloc_func,
+			exif_mem_realloc_func, exif_mem_free_func);
+
+	e = exif_entry_new_mem (mem);
+	exif_mem_unref (mem);
+
+	return e;
+}
+
+ExifEntry *
+exif_entry_new_mem (ExifMem *mem)
+{
 	ExifEntry *e = NULL;
 
-	e = exif_entry_alloc (e, sizeof (ExifEntry));
+	e = exif_mem_alloc (mem, sizeof (ExifEntry));
 	if (!e) return NULL;
-	e->priv = exif_entry_alloc (e, sizeof (ExifEntryPrivate));
-	if (!e->priv) { free (e); return NULL; }
+	e->priv = exif_mem_alloc (mem, sizeof (ExifEntryPrivate));
+	if (!e->priv) { exif_mem_free (mem, e); return NULL; }
 	e->priv->ref_count = 1;
 
-	return (e);
+	e->priv->mem = mem;
+	exif_mem_ref (mem);
+
+	return e;
 }
 
 void
 exif_entry_ref (ExifEntry *e)
 {
-	if (!e)
-		return;
+	if (!e) return;
 
 	e->priv->ref_count++;
 }
@@ -121,8 +136,7 @@ exif_entry_ref (ExifEntry *e)
 void
 exif_entry_unref (ExifEntry *e)
 {
-	if (!e)
-		return;
+	if (!e) return;
 
 	e->priv->ref_count--;
 	if (!e->priv->ref_count)
@@ -132,13 +146,16 @@ exif_entry_unref (ExifEntry *e)
 void
 exif_entry_free (ExifEntry *e)
 {
-	if (!e)
-		return;
+	if (!e) return;
 
-	if (e->data)
-		free (e->data);
-	free (e->priv);
-	free (e);
+	if (e->priv) {
+		ExifMem *mem = e->priv->mem;
+		if (e->data)
+			exif_mem_free (mem, e->data);
+		exif_mem_free (mem, e->priv);
+		exif_mem_free (mem, e);
+		exif_mem_unref (mem);
+	}
 }
 
 void
@@ -147,7 +164,7 @@ exif_entry_fix (ExifEntry *e)
 	unsigned int i;
 	ExifByteOrder o;
 
-	if (!e) return;
+	if (!e || !e->priv) return;
 
 	switch (e->tag) {
 	
@@ -217,7 +234,7 @@ exif_entry_fix (ExifEntry *e)
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
 				"Tag 'UserComment' contained unnecessary "
 				"data which has been removed.");
-			free (e->data);
+			exif_mem_free (e->priv->mem, e->data);
 			e->data = NULL;
 			e->size = 0;
 			e->components = 0;

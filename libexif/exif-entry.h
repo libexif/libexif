@@ -30,6 +30,7 @@ typedef struct _ExifEntryPrivate ExifEntryPrivate;
 
 #include <libexif/exif-content.h>
 #include <libexif/exif-format.h>
+#include <libexif/exif-mem.h>
 
 struct _ExifEntry {
         ExifTag tag;
@@ -46,9 +47,10 @@ struct _ExifEntry {
 };
 
 /* Lifecycle */
-ExifEntry  *exif_entry_new   (void);
-void        exif_entry_ref   (ExifEntry *entry);
-void        exif_entry_unref (ExifEntry *entry);
+ExifEntry  *exif_entry_new     (void);
+ExifEntry  *exif_entry_new_mem (ExifMem *);
+void        exif_entry_ref     (ExifEntry *entry);
+void        exif_entry_unref   (ExifEntry *entry);
 void        exif_entry_free  (ExifEntry *entry);
 
 void        exif_entry_initialize (ExifEntry *entry, ExifTag tag);

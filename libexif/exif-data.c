@@ -51,6 +51,7 @@ struct _ExifDataPrivate
 	ExifMnoteData *md;
 
 	ExifLog *log;
+	ExifMem *mem;
 
 	unsigned int ref_count;
 
@@ -63,11 +64,12 @@ exif_data_alloc (ExifData *data, unsigned int i)
 {
 	void *d;
 
-	/* This is the only call to calloc in this file. */
-	d = calloc (i, 1);
+	if (!data || !i) return NULL;
+
+	d = exif_mem_alloc (data->priv->mem, i);
 	if (d) return d;
 
-	if (data) EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", i);
+	EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", i);
 	return NULL;
 }
 
@@ -80,17 +82,35 @@ exif_data_get_mnote_data (ExifData *d)
 ExifData *
 exif_data_new (void)
 {
+	ExifData *d;
+	ExifMem *mem = exif_mem_new (exif_mem_alloc_func,
+			exif_mem_realloc_func, exif_mem_free_func);
+
+	d = exif_data_new_mem (mem);
+	exif_mem_unref (mem);
+
+	return d;
+}
+
+ExifData *
+exif_data_new_mem (ExifMem *mem)
+{
 	ExifData *data;
 	unsigned int i;
 
-	data = exif_data_alloc (NULL, sizeof (ExifData));
+	if (!mem) return NULL;
+
+	data = exif_mem_alloc (mem, sizeof (ExifData));
 	if (!data) return (NULL);
-	data->priv = exif_data_alloc (data, sizeof (ExifDataPrivate));
-	if (!data->priv) { free (data); return (NULL); }
+	data->priv = exif_mem_alloc (mem, sizeof (ExifDataPrivate));
+	if (!data->priv) { exif_mem_free (mem, data); return (NULL); }
 	data->priv->ref_count = 1;
 
+	data->priv->mem = mem;
+	exif_mem_ref (mem);
+
 	for (i = 0; i < EXIF_IFD_COUNT; i++) {
-		data->ifd[i] = exif_content_new ();
+		data->ifd[i] = exif_content_new_mem (data->priv->mem);
 		if (!data->ifd[i]) {
 			exif_data_free (data);
 			return (NULL);
@@ -170,6 +190,8 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 {
 	unsigned int doff, s;
 
+	if (!data || !data->priv) return;
+
 	/*
 	 * Each entry is 12 bytes long. The memory for the entry has
 	 * already been allocated.
@@ -181,7 +203,7 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 
 	/* If this is the maker note tag, update it. */
 	if ((e->tag == EXIF_TAG_MAKER_NOTE) && data->priv->md) {
-		free (e->data);
+		exif_mem_free (data->priv->mem, e->data);
 		e->data = NULL;
 		e->size = 0;
 		exif_mnote_data_set_offset (data->priv->md, *ds - 6);
@@ -200,7 +222,7 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	if (s > 4) {
 		doff = *ds - 6;
 		*ds += s;
-		*d = realloc (*d, *ds);
+		*d = exif_mem_realloc (data->priv->mem, *d, *ds);
 		if (!*d) {
 			EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
 		  	return;
@@ -225,7 +247,7 @@ exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 			  (int) ds, (int) offset, (int) size);
 		return;
 	}
-	if (data->data) free (data->data);
+	if (data->data) exif_mem_free (data->priv->mem, data->data);
 	data->size = size;
 	data->data = exif_data_alloc (data, data->size);
 	if (!data->data) return;
@@ -242,6 +264,8 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 	ExifEntry *entry;
 	unsigned int i;
 	ExifTag tag;
+
+	if (!data || !data->priv) return;
 
 	/* Read the number of entries */
 	if (offset >= ds - 1) return;
@@ -308,7 +332,7 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 			 * that the EXIF data does not follow the standard.
 			 */
 			if (!exif_tag_get_name (tag)) return;
-			entry = exif_entry_new ();
+			entry = exif_entry_new_mem (data->priv->mem);
 			exif_content_add_entry (ifd, entry);
 			exif_data_load_data_entry (data, entry, d, ds,
 						   offset + 12 * i);
@@ -326,8 +350,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	unsigned int j, n_ptr = 0, n_thumb = 0;
 	ExifIfd i;
 
-	if (!data || !ifd || !d || !ds)
-		return;
+	if (!data || !data->priv || !ifd || !d || !ds) return;
 
 	for (i = 0; i < EXIF_IFD_COUNT; i++)
 		if (ifd == data->ifd[i])
@@ -370,7 +393,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	 * and the number of entries.
 	 */
 	*ds += (2 + (ifd->count + n_ptr + n_thumb) * 12 + 4);
-	*d = realloc (*d, *ds);
+	*d = exif_mem_realloc (data->priv->mem, *d, *ds);
 	if (!*d) {
 		EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
 	  	return;
@@ -473,7 +496,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 					*ds - 6);
 			*ds += data->size;
-			*d = realloc (*d, *ds);
+			*d = exif_mem_realloc (data->priv->mem, *d, *ds);
 			if (!*d) {
 				EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData",
 						    *ds);
@@ -530,14 +553,10 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	const unsigned char *d = d_orig;
 	unsigned int ds = ds_orig, len;
 
-	if (!data)
-		return;
-	if (!d || !ds)
-		return;
+	if (!data || !data->priv || !d || !ds) return;
 
-#ifdef DEBUG
-	printf ("Parsing %i byte(s) EXIF data...\n", ds);
-#endif
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+		  "Parsing %i byte(s) EXIF data...\n", ds);
 
 	/*
 	 * It can be that the data starts with the EXIF header. If it does
@@ -804,8 +823,7 @@ exif_data_free (ExifData *data)
 {
 	unsigned int i;
 
-	if (!data)
-		return;
+	if (!data) return;
 
 	for (i = 0; i < EXIF_IFD_COUNT; i++) {
 		if (data->ifd[i]) {
@@ -813,19 +831,21 @@ exif_data_free (ExifData *data)
 			data->ifd[i] = NULL;
 		}
 	}
-	if (data->data) {
-		free (data->data);
-		data->data = NULL;
-	}
+
 	if (data->priv) {
+		ExifMem *mem = data->priv->mem;
+		if (data->data) {
+			exif_mem_free (data->priv->mem, data->data);
+			data->data = NULL;
+		}
 		if (data->priv->md) {
 			exif_mnote_data_unref (data->priv->md);
 			data->priv->md = NULL;
 		}
-		free (data->priv);
-		data->priv = NULL;
+		exif_mem_free (mem, data->priv);
+		exif_mem_free (mem, data);
+		exif_mem_unref (mem);
 	}
-	free (data);
 }
 
 void

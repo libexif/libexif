@@ -537,7 +537,9 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, char *val, unsigned i
 		CF (entry->format, EXIF_FORMAT_LONG, val, maxlen);
 		CC (entry->components, 1, val, maxlen);
 		vl = exif_get_long (data, entry->order);
-		snprintf (val, maxlen, "%03lu-%04lu", vl/10000,vl%10000);
+		snprintf (val, maxlen, "%03lu-%04lu",
+				(unsigned long) vl/10000,
+				(unsigned long) vl%10000);
 		break;
 
 	case MNOTE_CANON_TAG_SERIAL_NUMBER:

@@ -18,6 +18,7 @@ libexif_la_SOURCES =		\
 	exif-ifd.c		\
 	exif-loader.c		\
 	exif-log.c		\
+	exif-mem.c		\
 	exif-mnote-data.c	\
 	exif-mnote-data-priv.h	\
 	exif-tag.c		\
@@ -38,6 +39,7 @@ libexifinclude_HEADERS = 	\
 	exif-ifd.h		\
 	exif-loader.h		\
 	exif-log.h		\
+	exif-mem.h		\
 	exif-mnote-data.h	\
 	exif-result.h		\
 	exif-tag.h		\

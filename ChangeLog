@@ -1,3 +1,8 @@
+2004-10-02  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-mem.[c,h]: New. First attempt to offer out-sourcing
+	  of memory management.
+
 2004-10-01  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-entry.c: exif_entry_fix:
