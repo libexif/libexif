@@ -21,7 +21,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-$Id: main.c,v 1.1.1.1 2000/10/09 19:19:47 curtisg Exp $
+$Id: test-exif.c,v 1.1 2001/12/11 20:28:30 lutz Exp $
 
 */
 
@@ -68,7 +68,7 @@ main(int argc, char **argv)
   int i;
 
   exif_init(NULL, NULL, NULL);
-  if (argc < 1) {
+  if (argc < 2) {
     usage();
     exit(1);
   }
