@@ -1,8 +1,7 @@
-#include <config.h>
+#include "config.h"
+#include "libjpeg/jpeg-data.h"
 
 #include <stdio.h>
-
-#include <libjpeg/jpeg-data.h>
 
 int
 main (int argc, char **argv)

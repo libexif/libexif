@@ -17,17 +17,16 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-#include <config.h>
+
+#include "config.h"
 #include "exif-data.h"
+#include "exif-ifd.h"
+#include "exif-utils.h"
+#include "jpeg-marker.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
-#include <libjpeg/jpeg-marker.h>
-
-#include <libexif/exif-utils.h>
-#include <libexif/exif-ifd.h>
 
 #undef MAX
 #define MAX(a, b)  (((a) > (b)) ? (a) : (b))

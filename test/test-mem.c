@@ -18,12 +18,11 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <config.h>
+#include "config.h"
+#include "exif-data.h"
+#include "exif-ifd.h"
 
 #include <stdio.h>
-
-#include <libexif/exif-data.h>
-#include <libexif/exif-ifd.h>
 
 int
 main (int argc, char **argv)

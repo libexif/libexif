@@ -18,11 +18,12 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <config.h>
+#include "config.h"
 #include "exif-canon-note.h"
 
 #include <stdlib.h>
 #include <string.h>
+
 
 static void
 exif_canon_note_free (ExifNote *n)

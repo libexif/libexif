@@ -1,4 +1,4 @@
-/* exif-i18n.h
+/* i18n.h
  *
  * Copyright (C) 2001 Lutz Müller <lutz@users.sourceforge.net>
  *
@@ -18,8 +18,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __EXIF_I18N_H__
-#define __EXIF_I18N_H__
+#ifndef __I18N_H__
+#define __I18N_H__
 
 #ifdef ENABLE_NLS
 #  include <libintl.h>
@@ -40,4 +40,4 @@
 #  define N_(String) (String)
 #endif
 
-#endif /* __EXIF_I18N_H__ */
+#endif /* __I18N_H__ */

@@ -18,14 +18,13 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <config.h>
+#include "config.h"
+#include "exif-byte-order.h"
 #include "exif-fuji-note.h"
+#include "exif-utils.h"
 
 #include <stdlib.h>
 #include <string.h>
-
-#include <libexif/exif-byte-order.h>
-#include <libexif/exif-utils.h>
 
 struct _ExifFujiNotePrivate {
 	ExifByteOrder order;
