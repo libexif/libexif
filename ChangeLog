@@ -1,3 +1,7 @@
+2004-11-14  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/*: Plug another few memleaks. All found by Angala Wrobel.
+
 2004-11-12  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c: Clean up handling of MakerNote tags.

@@ -62,7 +62,7 @@ exif_mnote_data_free (ExifMnoteData *d)
 		exif_mem_free (mem, d->priv);
 		d->priv = NULL;
 	}
-	d->mem = NULL;
+	exif_log_unref (d->log);
 	exif_mem_free (mem, d);
 	exif_mem_unref (mem);
 }

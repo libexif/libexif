@@ -169,7 +169,6 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 		memcpy (entry->data, d + doff, s);
 	}
 
-#ifndef EXIF_DONT_CHANGE_MAKER_NOTE
 	/* If this is the MakerNote, remember the offset */
 	if (entry->tag == EXIF_TAG_MAKER_NOTE) {
 		if (entry->size > 6) exif_log (data->priv->log,
@@ -181,7 +180,6 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 			  entry->data[6]);
 		data->priv->offset_mnote = doff;
 	}
-#endif
 
 	exif_entry_fix (entry);
 }
@@ -204,6 +202,7 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	exif_set_short (*d + 6 + offset + 2,
 			data->priv->order, (ExifShort) e->format);
 
+#ifndef EXIF_DONT_CHANGE_MAKER_NOTE
 	/* If this is the maker note tag, update it. */
 	if ((e->tag == EXIF_TAG_MAKER_NOTE) && data->priv->md) {
 		exif_mem_free (data->priv->mem, e->data);
@@ -213,6 +212,7 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 		exif_mnote_data_save (data->priv->md, &e->data, &e->size);
 		e->components = e->size;
 	}
+#endif
 
 	exif_set_long  (*d + 6 + offset + 4,
 			data->priv->order, e->components);
@@ -826,12 +826,10 @@ exif_data_ref (ExifData *data)
 void
 exif_data_unref (ExifData *data)
 {
-	if (!data)
-		return;
+	if (!data) return;
 
 	data->priv->ref_count--;
-	if (!data->priv->ref_count)
-		exif_data_free (data);
+	if (!data->priv->ref_count) exif_data_free (data);
 }
 
 void
@@ -855,6 +853,10 @@ exif_data_free (ExifData *data)
 	}
 
 	if (data->priv) {
+		if (data->priv->log) {
+			exif_log_unref (data->priv->log);
+			data->priv->log = NULL;
+		}
 		if (data->priv->md) {
 			exif_mnote_data_unref (data->priv->md);
 			data->priv->md = NULL;
