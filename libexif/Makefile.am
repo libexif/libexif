@@ -6,7 +6,7 @@ INCLUDES =              				\
 
 lib_LTLIBRARIES = libexif.la
 
-libexif_la_LDFLAGS = -version-info $(LIBEXIF_CURRENT):$(LIBEXIF_REVISION):$(LIBEXIF_AGE)
+libexif_la_LDFLAGS = -version-info @LIBEXIF_VERSION_INFO@
 libexif_la_SOURCES =		\
 	exif-byte-order.c	\
 	exif-content.c		\

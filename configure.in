@@ -5,7 +5,7 @@ AM_INIT_AUTOMAKE(libexif, 0.5.3)
 AM_MAINTAINER_MODE
 
 dnl ---------------------------------------------------------------------------
-dnl Versioning (libexif-AGE.CURRENT.REVISION):
+dnl Versioning:
 dnl  - AGE (Micro):      Increment if any interfaces have been added; set to 0
 dnl		         if any interfaces have been removed. Removal has 
 dnl                      precedence over adding, so set to 0 if both happened.
@@ -20,6 +20,8 @@ LIBEXIF_CURRENT=6
 AC_SUBST(LIBEXIF_AGE)
 AC_SUBST(LIBEXIF_REVISION)
 AC_SUBST(LIBEXIF_CURRENT)
+LIBEXIF_VERSION_INFO=`expr $LIBEXIF_CURRENT + $LIBEXIF_REVISION`:$LIBEXIF_AGE:$LIBEXIF_REVISION
+AC_SUBST(LIBEXIF_VERSION_INFO)
 
 AM_PROG_LIBTOOL
 
