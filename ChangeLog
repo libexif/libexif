@@ -1,3 +1,11 @@
+2005-03-13  Hans Ulrich Niedermann <gp@n-dimensional.de>
+
+	* NEWS: Release 0.6.12
+
+2005-03-12  Hans Ulrich Niedermann <gp@n-dimensional.de>
+
+	* po/de.po: Partial translation update
+
 2005-03-11  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Spotted by Jan Patera <patera@users.sourceforge.net>:
