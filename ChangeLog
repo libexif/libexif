@@ -1,3 +1,7 @@
+2004-10-05  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* contrib/watcom: Files contributed by Angela Wrobel.
+
 2004-10-04  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-mem.h: Documentation.
