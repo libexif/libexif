@@ -65,8 +65,8 @@ static struct {
 	{MNOTE_NIKON_TAG_FLASHUSED,       "FLASHUSED", N_("Flash used"), NULL},
 	{MNOTE_NIKON_TAG_AFFOCUSPOSITION, "AFFOCUSPOSITION", N_("AF Focus position"), NULL},
 	{MNOTE_NIKON_TAG_BRACKETING,      "BRACKETING", N_("Bracketing"), NULL},
-	{MNOTE_NIKON_TAG_UNKNOWN_0X008A,  "UNKNOWN_0X008A", N_("0x008a"), NULL},
-	{MNOTE_NIKON_TAG_UNKNOWN_0X008B,  "UNKNOWN_0X008B", N_("0x008b"), NULL},
+	{MNOTE_NIKON_TAG_UNKNOWN_0X008A,  NULL, NULL, NULL},
+	{MNOTE_NIKON_TAG_UNKNOWN_0X008B,  NULL, NULL, NULL},
 	{MNOTE_NIKON_TAG_CURVE,           "CURVE,", N_("Contrast curve"), NULL},
 	{MNOTE_NIKON_TAG_COLORMODE,       "COLORMODE,", N_("Colormode"), NULL},
 	{MNOTE_NIKON_TAG_LIGHTYPE,        "LIGHTYPE,", N_("Lightype"), NULL},
@@ -127,7 +127,8 @@ mnote_olympus_tag_get_name (MnoteOlympusTag t)
 {
 	unsigned int i;
 
-	for (i = 0; table[i].name; i++) if (table[i].tag == t) break;
+	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
+		if (table[i].tag == t) break;
 	return (table[i].name);
 }
 
@@ -137,7 +138,8 @@ mnote_olympus_tag_get_title (MnoteOlympusTag t)
 	unsigned int i;
 
 	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
-	for (i = 0; table[i].title; i++) if (table[i].tag == t) break;
+	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
+		if (table[i].tag == t) break;
 	return (_(table[i].title));
 }
 
@@ -147,7 +149,8 @@ mnote_olympus_tag_get_description (MnoteOlympusTag t)
 	unsigned int i;
 
 	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
-	for (i = 0; table[i].description; i++) if (table[i].tag == t) break;
+	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
+		if (table[i].tag == t) break;
 	if (!table[i].description) return NULL;
 	return (_(table[i].description));
 }

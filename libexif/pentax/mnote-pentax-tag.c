@@ -66,7 +66,8 @@ mnote_pentax_tag_get_name (MnotePentaxTag t)
 {
 	unsigned int i;
 
-	for (i = 0; table[i].name; i++) if (table[i].tag == t) break;
+	for (i = 0; sizeof (table) / sizeof (table[0]); i++)
+		if (table[i].tag == t) break;
 	return (table[i].name);
 }
 
@@ -76,7 +77,8 @@ mnote_pentax_tag_get_title (MnotePentaxTag t)
 	unsigned int i;
 
 	bindtextdomain (GETTEXT_PACKAGE, LIBMNOTE_LOCALEDIR);
-	for (i = 0; table[i].title; i++) if (table[i].tag == t) break; 
+	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
+		if (table[i].tag == t) break; 
 	return (_(table[i].title));
 }
 
@@ -86,6 +88,7 @@ mnote_pentax_tag_get_description (MnotePentaxTag t)
 	unsigned int i;
 
 	bindtextdomain (GETTEXT_PACKAGE, LIBMNOTE_LOCALEDIR);
-	for (i = 0; table[i].description; i++) if (table[i].tag == t) break;
+	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
+		if (table[i].tag == t) break;
 	return (_(table[i].description));
 }

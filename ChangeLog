@@ -1,5 +1,12 @@
 2004-09-07  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/olympus
+	* libexif/pentax
+	* libexif/canon: Correctly return names, titles and descriptions of
+	  tages. Pointed out by Angela Wrobel.
+
+2004-09-07  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-entry.c: More guards against malloc returning NULL.
 	  Problem spotted by Angela Wrobel.
 
