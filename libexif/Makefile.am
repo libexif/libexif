@@ -1,6 +1,7 @@
 SUBDIRS = canon fuji olympus
 
-INCLUDES =              \
+INCLUDES =              				\
+	-DLIBEXIF_LOCALEDIR=\""$(datadir)/locale"\"	\
         -I$(top_srcdir)
 
 lib_LTLIBRARIES = libexif.la

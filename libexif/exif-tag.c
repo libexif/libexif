@@ -23,7 +23,24 @@
 
 #include <stdlib.h>
 
-#include "exif-i18n.h"
+#ifdef ENABLE_NLS
+#  include <libintl.h>
+#  undef _
+#  define _(String) dgettext (PACKAGE, String)
+#  ifdef gettext_noop
+#    define N_(String) gettext_noop (String)
+#  else
+#    define N_(String) (String)
+#  endif
+#else
+#  define textdomain(String) (String)
+#  define gettext(String) (String)
+#  define dgettext(Domain,Message) (Message)
+#  define dcgettext(Domain,Message,Type) (Message)
+#  define bindtextdomain(Domain,Directory) (Domain)
+#  define _(String) (String)
+#  define N_(String) (String)
+#endif
 
 static struct {
 	ExifTag tag;
@@ -255,7 +272,7 @@ static struct {
 	 N_("The class of the program used by the camera to set exposure "
 	    "when the picture is taken.")},
 	{EXIF_TAG_SPECTRAL_SENSITIVITY, "SpectralSensitivity",
-	 N_("SpectralSensitivity"),
+	 N_("Spectral Sensitivity"),
 	 N_("Indicates the spectral sensitivity of each channel of the "
 	    "camera used. The tag value is an ASCII string compatible "
 	    "with the standard developed by the ASTM Technical committee.")},
@@ -577,6 +594,8 @@ exif_tag_get_name (ExifTag tag)
 {
 	unsigned int i;
 
+	bindtextdomain (PACKAGE, LIBEXIF_LOCALEDIR);
+
 	for (i = 0; ExifTagTable[i].name; i++)
 		if (ExifTagTable[i].tag == tag)
 			break;
@@ -589,6 +608,8 @@ exif_tag_get_title (ExifTag tag)
 {
 	unsigned int i;
 
+	bindtextdomain (PACKAGE, LIBEXIF_LOCALEDIR);
+
 	for (i = 0; ExifTagTable[i].title; i++)
 		if (ExifTagTable[i].tag == tag)
 			break;
@@ -600,6 +621,8 @@ const char *
 exif_tag_get_description (ExifTag tag)
 {
 	unsigned int i;
+
+	bindtextdomain (PACKAGE, LIBEXIF_LOCALEDIR);
 
 	for (i = 0; ExifTagTable[i].description; i++)
 		if (ExifTagTable[i].tag == tag)

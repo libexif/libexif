@@ -1,4 +1,4 @@
-SUBDIRS = libexif libjpeg test
+SUBDIRS = libexif libjpeg test po intl
 
 CONFIG_CLEAN_FILES =
 EXTRA_DIST = @PACKAGE@.spec

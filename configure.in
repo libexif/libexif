@@ -1,6 +1,6 @@
 AC_INIT(libexif/exif-data.h)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(libexif, 0.5.0)
+AM_INIT_AUTOMAKE(libexif, 0.5.1)
 AM_MAINTAINER_MODE
 
 dnl ---------------------------------------------------------------------------
@@ -13,9 +13,9 @@ dnl			 0 if you incremented CURRENT.
 dnl  - CURRENT (Major):  Increment if the interface has additions, changes,
 dnl                      removals.
 dnl ---------------------------------------------------------------------------
-LIBEXIF_AGE=0
+LIBEXIF_AGE=1
 LIBEXIF_REVISION=0
-LIBEXIF_CURRENT=5
+LIBEXIF_CURRENT=6
 AC_SUBST(LIBEXIF_AGE)
 AC_SUBST(LIBEXIF_REVISION)
 AC_SUBST(LIBEXIF_CURRENT)
@@ -25,8 +25,8 @@ AM_PROG_LIBTOOL
 dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
-dnl ALL_LINGUAS=""
-dnl AM_GNU_GETTEXT
+ALL_LINGUAS="de"
+AM_GNU_GETTEXT
 
 dnl ---------------------------------------------------------------------------
 dnl Warnings
@@ -37,15 +37,17 @@ AC_SUBST(CFLAGS)
 AC_SUBST(LDFLAGS)
 
 AC_OUTPUT([
-Makefile
-libexif.spec
-libexif/Makefile
-libexif/canon/Makefile
-libexif/fuji/Makefile
-libexif/olympus/Makefile
-libjpeg/Makefile
-test/Makefile
-libexif/libexif.pc
+  Makefile
+  libexif.spec
+  libexif/Makefile
+  libexif/canon/Makefile
+  libexif/fuji/Makefile
+  libexif/olympus/Makefile
+  libjpeg/Makefile
+  test/Makefile
+  libexif/libexif.pc
+  po/Makefile.in
+  intl/Makefile
 ])
 
 echo "
