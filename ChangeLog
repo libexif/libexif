@@ -1,5 +1,9 @@
 2002-12-02  Lutz Müller <lutz@users.sourceforge.net>
 
+	* libexif/Makefile.am: Forgot to remove the some subdirs.
+
+2002-12-02  Lutz Müller <lutz@users.sourceforge.net>
+
 	* configure.in: Remove some Makefiles
 
 2002-12-02  Lutz Müller <lutz@users.sourceforge.net>

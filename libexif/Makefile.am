@@ -18,11 +18,7 @@ libexif_la_SOURCES =		\
 	exif-tag.c		\
 	exif-utils.c		\
 	i18n.h
-libexif_la_LIBADD = -lm			\
-	canon/libexif-canon.la		\
-	fuji/libexif-fuji.la		\
-	hp/libexif-hp.la		\
-	olympus/libexif-olympus.la
+libexif_la_LIBADD = -lm
 
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = 	\
@@ -32,7 +28,6 @@ libexifinclude_HEADERS = 	\
 	exif-entry.h		\
 	exif-format.h		\
 	exif-ifd.h		\
-	exif-note.h		\
 	exif-result.h		\
 	exif-tag.h		\
 	exif-utils.h
