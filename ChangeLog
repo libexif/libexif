@@ -1,3 +1,7 @@
+2003-10-08  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-entry.c: Patch by Jan Patera <patera@pictview.com>.
+
 2003-09-28  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* Makefile.am

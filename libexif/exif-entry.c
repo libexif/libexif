@@ -182,7 +182,9 @@ exif_entry_get_value (ExifEntry *e)
 	case EXIF_TAG_EXIF_VERSION:
 		CF (e->format, EXIF_FORMAT_UNDEFINED, v);
 		CC (e->components, 4, v);
-		if (!memcmp (e->data, "0200", 4))
+		if (!memcmp (e->data, "0110", 4))
+			strncpy (v, "Exif Version 1.1", sizeof (v) - 1);
+		else if (!memcmp (e->data, "0200", 4))
 			strncpy (v, "Exif Version 2.0", sizeof (v) - 1);
 		else if (!memcmp (e->data, "0210", 4))
 			strncpy (v, "Exif Version 2.1", sizeof (v) - 1);
