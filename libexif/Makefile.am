@@ -19,6 +19,7 @@ libexif_la_SOURCES =		\
 	exif-utils.c		\
 	i18n.h
 libexif_la_LIBADD = -lm 		\
+	$(LTLIBINTL)			\
 	canon/libmnote-canon.la		\
 	olympus/libmnote-olympus.la	\
 	pentax/libmnote-pentax.la
