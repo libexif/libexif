@@ -36,7 +36,7 @@ exif_array_set_byte_order (ExifFormat f, unsigned char *b, unsigned int n,
 	ExifRational r;
 	ExifSRational sr;
 
-	if (!b || !n) return;
+	if (!b || !n || !fs) return;
 
 	switch (f) {
 	case EXIF_FORMAT_SHORT:

@@ -1,5 +1,10 @@
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-utils.c (exif_array_set_byte_order): Return if an invalid
+		format is supplied.
+
+2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-entry.c (exif_entry_fix): Update e->size.
 
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
