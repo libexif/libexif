@@ -31,7 +31,7 @@ extern "C" {
  * sizeof(long) == 4                                                    */
   
 #ifdef HAVE_INTTYPES_H
-#include <stdint.h>
+#include <inttypes.h>
 typedef char		ExifByte;          /* 1 byte  */
 typedef char *		ExifAscii;
 typedef uint16_t	ExifShort;         /* 2 bytes */
