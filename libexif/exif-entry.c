@@ -155,10 +155,8 @@ static struct {
   { EXIF_TAG_YCBCR_POSITIONING,
     { "", N_("centered"), N_("co-sited"), NULL}},
   { EXIF_TAG_PHOTOMETRIC_INTERPRETATION, {"", N_("RGB"), N_("YCbCr"), NULL}},
-  { EXIF_TAG_COLOR_SPACE,
-    { "", N_("sRGB"), N_("Uncalibrated"), NULL}},
   { EXIF_TAG_CUSTOM_RENDERED,
-    { "", N_("Normal process"), N_("Custom process"), NULL}},
+    { N_("Normal process"), N_("Custom process"), NULL}},
   { EXIF_TAG_EXPOSURE_MODE,
     { N_("Auto exposure"), N_("Manual exposure"), N_("Auto bracket"), NULL}},
   { EXIF_TAG_WHITE_BALANCE,
@@ -173,8 +171,6 @@ static struct {
     { N_("Normal"), N_("Low saturation"), N_("High saturation"), NULL}},
   { EXIF_TAG_CONTRAST , {N_("Normal"), N_("Soft"), N_("Hard"), NULL}},
   { EXIF_TAG_SHARPNESS, {N_("Normal"), N_("Soft"), N_("Hard"), NULL}},
-  { EXIF_TAG_SUBJECT_DISTANCE_RANGE,
-    {N_("Unknown"), N_("Macro"),N_("Close view"),N_("Distant view"), NULL}},
   { 0, {NULL}}
 };
 
@@ -250,6 +246,7 @@ static struct {
       {0x0005, {N_("Strobe return light not detected."), N_("W/o strobe"),
 		NULL}},
       {0x0007, {N_("Strobe return light detected."), N_("W. strobe"), NULL}},
+      {0x0009, {N_("Flash fired, compulsatory flash mode"), NULL}},
       {0x000d, {N_("Flash fired, compulsatory flash mode, return light "
 		   "not detected."), NULL}},
       {0x000f, {N_("Flash fired, compulsatory flash mode, return light "
@@ -272,6 +269,7 @@ static struct {
 		  "mode, return light not detected"), NULL}},
       {0x004f, {N_("Flash fired, compulsory flash mode, red-eye reduction, "
 		   "return light detected"), NULL}},
+      {0x0058, {N_("Flash did not fire, auto mode, red-eye reduction mode"), NULL}},
       {0x0059, {N_("Flash fired, auto mode, red-eye reduction mode"), NULL}},
       {0x005d, {N_("Flash fired, auto mode, return light not detected, "
 		   "red-eye reduction mode."), NULL}},
@@ -284,6 +282,9 @@ static struct {
       {2, {N_("Close view"), N_("close"), NULL}},
       {3, {N_("Distant view"), N_("distant"), NULL}},
       {0, {NULL}}}},
+  { EXIF_TAG_COLOR_SPACE,
+    { {1, {N_("sRGB"), NULL}},
+      {0xffff, {N_("Uncalibrated"), NULL}}}},
   {0, }
 };
 
@@ -588,6 +589,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_EXPOSURE_PROGRAM:
 	case EXIF_TAG_FLASH:
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
+	case EXIF_TAG_COLOR_SPACE:
 		CF (e->format,EXIF_FORMAT_SHORT, val, maxlen);
 		CC (e->components, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
@@ -605,7 +607,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		if (list2[i].elem[j].index != v_short) {
 			snprintf (val, maxlen, "Internal error (unknown "
 				  "value %i).", v_short);
-			*((int *) 0) = 0;
 			break;
 		}
 
@@ -625,7 +626,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_ORIENTATION:
 	case EXIF_TAG_YCBCR_POSITIONING:
 	case EXIF_TAG_PHOTOMETRIC_INTERPRETATION:
-	case EXIF_TAG_COLOR_SPACE:
 	case EXIF_TAG_CUSTOM_RENDERED:
 	case EXIF_TAG_EXPOSURE_MODE:
 	case EXIF_TAG_WHITE_BALANCE:
@@ -822,34 +822,34 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		break;
 
 	/* SHORT, 1 component, default 1 */
-        case EXIF_TAG_ORIENTATION:
-        case EXIF_TAG_PLANAR_CONFIGURATION:
-        case EXIF_TAG_YCBCR_POSITIONING:
-                e->components = 1;
-                e->format = EXIF_FORMAT_SHORT;
-                e->size = exif_format_get_size (e->format) * e->components;
-                e->data = malloc (e->size);
-                exif_set_short (e->data, o, 1);
-                break;
+    case EXIF_TAG_ORIENTATION:
+    case EXIF_TAG_PLANAR_CONFIGURATION:
+    case EXIF_TAG_YCBCR_POSITIONING:
+		e->components = 1;
+		e->format = EXIF_FORMAT_SHORT;
+		e->size = exif_format_get_size (e->format) * e->components;
+		e->data = malloc (e->size);
+		exif_set_short (e->data, o, 1);
+		break;
 
 	/* SHORT, 1 component, default 2 */
-        case EXIF_TAG_RESOLUTION_UNIT:
+    case EXIF_TAG_RESOLUTION_UNIT:
 	case EXIF_TAG_FOCAL_PLANE_RESOLUTION_UNIT:
-                e->components = 1;
-                e->format = EXIF_FORMAT_SHORT;
-                e->size = exif_format_get_size (e->format) * e->components;
-                e->data = malloc (e->size);
-                exif_set_short (e->data, o, 2);
-                break;
+		e->components = 1;
+		e->format = EXIF_FORMAT_SHORT;
+		e->size = exif_format_get_size (e->format) * e->components;
+		e->data = malloc (e->size);
+		exif_set_short (e->data, o, 2);
+		break;
 
 	/* SHORT, 1 component, default 3 */
-        case EXIF_TAG_SAMPLES_PER_PIXEL:
-                e->components = 1;
-                e->format = EXIF_FORMAT_SHORT;
+    case EXIF_TAG_SAMPLES_PER_PIXEL:
+		e->components = 1;
+		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
-                e->data = malloc (e->size);
-                exif_set_short (e->data, o, 3);
-                break;
+		e->data = malloc (e->size);
+		exif_set_short (e->data, o, 3);
+		break;
 
 	case EXIF_TAG_BITS_PER_SAMPLE:
 		e->components = 3;
