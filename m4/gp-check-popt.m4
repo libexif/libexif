@@ -15,6 +15,7 @@ m4_if([$1],[mandatory],        [_GP_CHECK_POPT([mandatory])],
       [$1],[default-enabled],  [_GP_CHECK_POPT([disable])],
       [$1],[default-disabled], [_GP_CHECK_POPT([enable])],
       [m4_errprint([Illegal argument to GP_CHECK_POPT: "$1"
+Valid are: mandatory, default-enabled, default-disabled
 ])m4_exit(1)])dnl
 ])dnl
 dnl
@@ -52,12 +53,12 @@ if test "$require_popt" != yes; then
 fi
 
 dnl Implicit AC_SUBST
-AC_ARG_VAR([POPT_CFLAGS],[cflags to compile with libpopt])dnl
+AC_ARG_VAR([POPT_CPPFLAGS],[cppflags to compile with libpopt])dnl
 AC_ARG_VAR([POPT_LIBS],[location of libpopt to link against])dnl
 
 have_popt=no
 
-if test "x$POPT_CFLAGS" = "x" && test "x$POPT_LIBS" = "x"; then
+if test "x$POPT_CPPFLAGS" = "x" && test "x$POPT_LIBS" = "x"; then
 
 	# try to find options to compile popt.h
 	CPPFLAGS_save="$CPPFLAGS"
@@ -79,15 +80,15 @@ if test "x$POPT_CFLAGS" = "x" && test "x$POPT_LIBS" = "x"; then
 	CPPFLAGS="$CPPFLAGS_save"
 	if test "$popth_found" = "yes"; then
 		if test "$popt_prefix" = ""; then
-			POPT_CFLAGS=""
+			POPT_CPPFLAGS=""
 		else
-			POPT_CFLAGS="-I${popt_prefix}/include"
+			POPT_CPPFLAGS="-I${popt_prefix}/include"
 		fi
 	else
 		AC_MSG_ERROR([
 * Cannot autodetect popt.h
 *
-* Set POPT_CFLAGS and POPT_LIBS correctly.
+* Set POPT_CPPFLAGS and POPT_LIBS correctly.
 ])
 	fi
 
@@ -134,17 +135,17 @@ if test "x$POPT_CFLAGS" = "x" && test "x$POPT_LIBS" = "x"; then
 		AC_MSG_ERROR([
 * Cannot autodetect library directory containing popt
 *
-* Set POPT_CFLAGS and POPT_LIBS correctly.
+* Set POPT_CPPFLAGS and POPT_LIBS correctly.
 ])
 	fi
 	have_popt=yes
-elif test "x$POPT_CFLAGS" != "x" && test "x$POPT_LIBS" != "x"; then
+elif test "x$POPT_CPPFLAGS" != "x" && test "x$POPT_LIBS" != "x"; then
     # just use the user specivied option
     popt_msg="yes (user specified)"
     have_popt=yes
 else
 	AC_MSG_ERROR([
-* Fatal: Either set both POPT_CFLAGS and POPT_LIBS or neither of them.
+* Fatal: Either set both POPT_CPPFLAGS and POPT_LIBS or neither.
 ])
 fi
 
@@ -154,7 +155,7 @@ if test "$require_popt$have_popt" = "yesno"; then
 	AC_MSG_ERROR([
 * popt library not found
 * Fatal: ${PACKAGE_NAME} (${PACKAGE_TARNAME}) requires popt
-* Please install it and/or set POPT_CFLAGS and POPT_LIBS.
+* Please install it and/or set POPT_CPPFLAGS and POPT_LIBS.
 ])
 fi
 AC_MSG_RESULT([${have_popt}])
@@ -163,8 +164,9 @@ GP_CONFIG_MSG([use popt library], [${have_popt}])
 if test "$have_popt" = "yes"; then
 	AC_DEFINE([HAVE_POPT],[1],[whether the popt library is available])
 	GP_CONFIG_MSG([popt libs],[${POPT_LIBS}])
-	GP_CONFIG_MSG([popt cflags],[${POPT_CFLAGS}])
+	GP_CONFIG_MSG([popt cppflags],[${POPT_CPPFLAGS}])
 fi
+AM_CONDITIONAL([HAVE_POPT],[test "$have_popt" = "yes"])
 ])dnl
 dnl
 dnl Please do not remove this:
