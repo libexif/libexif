@@ -264,8 +264,14 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	unsigned int i, n_ptr = 0, n_thumb = 0;
 
 	/* If we are to save IFD 0, we need some extra entries. */
-	if (ifd == data->ifd0)
-		n_ptr = 3;
+	if (ifd == data->ifd0) {
+		if (data->ifd_exif->count)
+			n_ptr++;
+		if (data->ifd_gps->count)
+			n_ptr++;
+		if (data->ifd_interoperability->count)
+			n_ptr++;
+	}
 
 	/*
 	 * If we are to save IFD 1, we can point to the thumbnail if it
@@ -278,7 +284,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	 * Allocate enough memory for all entries
 	 * and the number of entries.
 	 */
-	*ds += (2 + (ifd->count + n_ptr + n_thumb) * 12 + (n_ptr ? 4 : 0));
+	*ds += (2 + (ifd->count + n_ptr + n_thumb) * 12 + 4);
 	*d = realloc (*d, sizeof (char) * *ds);
 
 	/* Save the number of entries */
@@ -296,7 +302,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	offset += 12 * ifd->count;
 
 	/* Save special entries */
-	if (n_ptr) {
+	if (ifd == data->ifd0 && data->ifd_exif->count) {
 
 		/* EXIF_TAG_EXIF_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -309,6 +315,9 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_data_save_data_content (data, data->ifd_exif, d, ds,
 					     *ds - 6);
 		offset += 12;
+	}
+
+	if (ifd == data->ifd0 && data->ifd_gps->count) {
 
 		/* EXIF_TAG_GPS_INFO_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -321,6 +330,9 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_data_save_data_content (data, data->ifd_gps, d, ds,
 					     *ds - 6);
 		offset += 12;
+	}
+
+	if (ifd == data->ifd0 && data->ifd_interoperability->count) {
 
 		/* EXIF_TAG_INTEROPERABILITY_IFD_POINTER */
 		exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -333,14 +345,6 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_data_save_data_content (data, data->ifd_interoperability,
 					     d, ds, *ds - 6);
 		offset += 12;
-
-		/*
-		 * We are saving IFD 0. Tell where IFD 1 starts and save
-		 * IFD 1.
-		 */
-		exif_set_long (*d + 6 + offset, data->priv->order, *ds - 6);
-		exif_data_save_data_content (data, data->ifd1, d, ds,
-					     *ds - 6);
 	}
 
 	if (n_thumb) {
@@ -367,6 +371,17 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		*d = realloc (*d, sizeof (char) * *ds);
 		memcpy (*d + *ds - data->size, data->data, data->size);
 	}
+
+	if (ifd == data->ifd0 && data->ifd1->count) {
+		/*
+		 * We are saving IFD 0. Tell where IFD 1 starts and save
+		 * IFD 1.
+		 */
+		exif_set_long (*d + 6 + offset, data->priv->order, *ds - 6);
+		exif_data_save_data_content (data, data->ifd1, d, ds,
+					     *ds - 6);
+	} else
+		exif_set_long (*d + 6 + offset, data->priv->order, 0);
 }
 
 void
