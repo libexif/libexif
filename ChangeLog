@@ -1,3 +1,8 @@
+2004-05-13  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-data.c: Fill tag data with zeros on save even
+	  if 0 components (buggy Kodak-210)
+
 2004-05-12  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-utils.h: definition of MIN

@@ -180,8 +180,6 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	 * the entry but somewhere else.
 	 */
 	s = exif_format_get_size (e->format) * e->components;
-	if (!s)
-		return;
 	if (s > 4) {
 		doff = *ds - 6;
 		*ds += s;
@@ -192,7 +190,7 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 		doff = offset + 8;
 
 	/* Write the data. Fill unneeded bytes with 0. */
-	memcpy (*d + 6 + doff, e->data, e->size);
+	memcpy (*d + 6 + doff, e->data, s);
 	if (s < 4) memset (*d + 6 + doff + s, 0, (4 - s));
 }
 
