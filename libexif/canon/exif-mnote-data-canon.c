@@ -186,8 +186,12 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 		} else
 			doff = o;
 
-		/* Write the data. Fill unneeded bytes with 0. */
-		memcpy (*buf + doff, n->entries[i].data, s);
+		/*
+		 * Write the data. Fill unneeded bytes with 0. Do not
+		 * crash if data is NULL.
+		 */
+		if (!n->entries[i].data) memset (*buf + doff, 0, s);
+		else memcpy (*buf + doff, n->entries[i].data, s);
 		if (s < 4) memset (*buf + doff + s, 0, (4 - s));
 	}
 }

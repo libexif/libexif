@@ -1,6 +1,12 @@
 2004-11-11  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/canon/exif-mnote-data-canon.c: Do not crash on strange
+	  data. Pointed out by Angela Wrobel.
+
+2004-11-11  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/*: Replace another few realloc by exif_mem_realloc.
+	  Pointed out by Angela Wrobel.
 
 2004-11-10  Lutz Mueller <lutz@users.sourceforge.net>
 
