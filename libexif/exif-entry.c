@@ -340,6 +340,49 @@ exif_entry_get_value (ExifEntry *entry)
 			break;
 		}
 		break;
+	case EXIF_TAG_EXPOSURE_PROGRAM:
+		CF (entry->format, EXIF_FORMAT_SHORT, v);
+		CC (entry->components, 1, v);
+		v_short = exif_get_short (entry->data, entry->order);
+		switch (v_short) {
+		case 0:
+			strncpy (v, _("Not defined"), sizeof (v));
+			break;
+		case 1:
+			strncpy (v, _("Manual"), sizeof (v));
+			break;
+		case 2:
+			strncpy (v, _("Normal program"), sizeof (v));
+			break;
+		case 3:
+			strncpy (v, _("Aperture priority"), sizeof (v));
+			break;
+		case 4:
+			strncpy (v, _("Shutter priority"), sizeof (v));
+			break;
+		case 5:
+			strncpy (v, _("Creative program (biased toward "
+				      "depth of field)"), sizeof (v));
+			break;
+		case 6:
+			strncpy (v, _("Action program (biased toward "
+				      "fast shutter speed)"), sizeof (v));
+			break;
+		case 7:
+			strncpy (v, _("Portrait mode (for closeup photos "
+				      "with the background out of focus"),
+				 sizeof (v));
+			break;
+		case 8:
+			strncpy (v, _("Landscape mode (for landscape "
+				      "photos with the background in focus"),
+				 sizeof (v));
+			break;
+		default:
+			snprintf (v, sizeof (v), "%i", v_short);
+			break;
+		}
+		break;
 	case EXIF_TAG_ORIENTATION:
 		CF (entry->format, EXIF_FORMAT_SHORT, v);
 		CC (entry->components, 1, v);
