@@ -214,28 +214,28 @@ dirs="$(dirname "$0")"
 pdirs=""
 # Yes, unquoted $@ isn't space safe, but it works with simple shells.
 for param in $@; do
-	case "$param" in
-	    --clean)
-		pcommands="$pcommands clean"
-		;;
-	    --init)
-		pcommands="$pcommands init"
-		;;
-	    --verbose)
-		debug="true"
-		;;
-	    -h|--help)
-		print_help
-		exit 0
-		;;
-	    -*)
-		echo "Unhandled $self option: $param"
-		exit 1
-		;;
-	    *)
-		pdirs="${pdirs} ${param}"
-		;;
-	esac
+    case "$param" in
+	--clean)
+	    pcommands="$pcommands clean"
+	    ;;
+	--init)
+	    pcommands="$pcommands init"
+	    ;;
+	--verbose)
+	    debug="true"
+	    ;;
+	-h|--help)
+	    print_help
+	    exit 0
+	    ;;
+	-*)
+	    echo "Unhandled $self option: $param"
+	    exit 1
+	    ;;
+	*)
+	    pdirs="${pdirs} ${param}"
+	    ;;
+    esac
 done
 if test "x$pcommands" != "x"; then
     # commands given on command line? use them!
