@@ -82,7 +82,7 @@ jpeg_data_save_file (JPEGData *data, const char *path)
 		return;
 
 	unlink (path);
-	f = fopen (path, "w");
+	f = fopen (path, "wb");
 	if (!f) {
 		free (d);
 		return;
@@ -265,7 +265,7 @@ jpeg_data_load_file (JPEGData *data, const char *path)
 	if (!path)
 		return;
 
-	f = fopen (path, "r");
+	f = fopen (path, "rb");
 	if (!f)
 		return;
 

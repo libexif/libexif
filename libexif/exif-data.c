@@ -568,7 +568,7 @@ exif_data_new_from_file (const char *path)
 	unsigned char *data;
 	ExifData *edata;
 
-	f = fopen (path, "r");
+	f = fopen (path, "rb");
 	if (!f)
 		return (NULL);
 
