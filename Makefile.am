@@ -1,5 +1,3 @@
 SUBDIRS = libexif libjpeg test po
 
-EXTRA_DIST = config.rpath mkinstalldirs  @PACKAGE@.spec
-
-ACLOCAL_AMFLAGS = -I m4
+EXTRA_DIST = @PACKAGE@.spec
