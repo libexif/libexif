@@ -142,7 +142,7 @@ exif_entry_get_value (ExifEntry *e)
 {
 	unsigned int i;
 	ExifByte v_byte;
-	ExifShort v_short, v_short2;
+	ExifShort v_short, v_short2, v_short3, v_short4;
 	ExifLong v_long;
 	ExifSLong v_slong;
 	ExifRational v_rat;
@@ -377,7 +377,8 @@ exif_entry_get_value (ExifEntry *e)
 			strncpy (v, _("Fluorescent"), sizeof (v));
 			break;
 		case 3:
-			strncpy (v, _("Tungsten"), sizeof (v));
+			strncpy (v, _("Tungsten (incandescent light)"),
+				 sizeof (v));
 			break;
 		case 4:
 			strncpy (v, _("Flash"), sizeof (v));
@@ -600,61 +601,82 @@ exif_entry_get_value (ExifEntry *e)
 			strncpy (v, _("Flash fired."), sizeof (v));
 			break;
 		case 0x0005:
-			strncpy (v, _("Strobe return light not detected."), sizeof (v));
+			strncpy (v, _("Strobe return light not detected."),
+				 sizeof (v));
 			break;
 		case 0x0007:
-			strncpy (v, _("Strobe return light detected."), sizeof (v));
+			strncpy (v, _("Strobe return light detected."),
+				 sizeof (v));
 			break;
 		case 0x000d:
-			strncpy (v, _("Flash fired, compulsory flash mode, return light not detected."), sizeof (v));
+			strncpy (v, _("Flash fired, compulsory flash mode, "
+				"return light not detected."), sizeof (v));
 			break;
 		case 0x000f:
-			strncpy (v, _("Flash fired, compulsory flash mode, return light detected."), sizeof (v));
+			strncpy (v, _("Flash fired, compulsory flash mode, "
+				"return light detected."), sizeof (v));
 			break;
 		case 0x0010:
-			strncpy (v, _("Flash did not fire, compulsory flash mode."), sizeof (v));
+			strncpy (v, _("Flash did not fire, compulsory flash "
+				"mode."), sizeof (v));
 			break;
 		case 0x0018:
-			strncpy (v, _("Flash did not fire, auto mode."), sizeof (v));
+			strncpy (v, _("Flash did not fire, auto mode."),
+				 sizeof (v));
 			break;
 		case 0x0019:
 			strncpy (v, _("Flash fired, auto mode."), sizeof (v));
 			break;
 		case 0x001d:
-			strncpy (v, _("Flash fired, auto mode, return light not detected."), sizeof (v));
+			strncpy (v, _("Flash fired, auto mode, return light "
+				"not detected."), sizeof (v));
 			break;
 		case 0x001f:
-			strncpy (v, _("Flash fired, auto mode, return light detected."), sizeof (v));
+			strncpy (v, _("Flash fired, auto mode, return light "
+				"detected."), sizeof (v));
 			break;
 		case 0x0020:
 			strncpy (v, _("No flash function."), sizeof (v));
 			break;
 		case 0x0041:
-			strncpy (v, _("Flash fired, red-eye reduction mode."), sizeof (v));
+			strncpy (v, _("Flash fired, red-eye reduction mode."),
+				 sizeof (v));
 			break;
 		case 0x0045:
-			strncpy (v, _("Flash fired, red-eye reduction mode, return light not detected."), sizeof (v));
+			strncpy (v, _("Flash fired, red-eye reduction mode, "
+				"return light not detected."), sizeof (v));
 			break;
 		case 0x0047:
-			strncpy (v, _("Flash fired, red-eye reduction mode, return light detected."), sizeof (v));
+			strncpy (v, _("Flash fired, red-eye reduction mode, "
+				"return light detected."), sizeof (v));
 			break;
 		case 0x0049:
-			strncpy (v, _("Flash fired, compulsory flash mode, red-eye reduction mode."), sizeof (v));
+			strncpy (v, _("Flash fired, compulsory flash mode, "
+				"red-eye reduction mode."), sizeof (v));
 			break;
 		case 0x004d:
-			strncpy (v, _("Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected."), sizeof (v));
+			strncpy (v, _("Flash fired, compulsory flash mode, "
+				"red-eye reduction mode, return light not "
+				"detected."), sizeof (v));
 			break;
 		case 0x004f:
-			strncpy (v, _("Flash fired, compulsory flash mode, red-eye reduction mode, return light detected."), sizeof (v));
+			strncpy (v, _("Flash fired, compulsory flash mode, "
+				"red-eye reduction mode, return light "
+				"detected."), sizeof (v));
 			break;
 		case 0x0059:
-			strncpy (v, _("Flash fired, auto mode, red-eye reduction mode."), sizeof (v));
+			strncpy (v, _("Flash fired, auto mode, red-eye "
+				"reduction mode."), sizeof (v));
 			break;
 		case 0x005d:
-			strncpy (v, _("Flash fired, auto mode, return light not detected, red-eye reduction mode."), sizeof (v));
+			strncpy (v, _("Flash fired, auto mode, return light "
+				"not detected, red-eye reduction mode."),
+				sizeof (v));
 			break;
 		case 0x005f:
-			strncpy (v, _("Flash fired, auto mode, return light detected, red-eye reduction mode."), sizeof (v));
+			strncpy (v, _("Flash fired, auto mode, return light "
+				"detected, red-eye reduction mode."),
+				sizeof (v));
 			break;
 		default:
 			snprintf (v, sizeof (v), "%i", v_short);
@@ -825,6 +847,38 @@ exif_entry_get_value (ExifEntry *e)
 			break;
 		}
 		break;
+	case EXIF_TAG_SUBJECT_AREA:
+		CF (e->format, EXIF_FORMAT_SHORT, v);
+		switch (e->components) {
+		case 2:
+			v_short  = exif_get_short (e->data, o);
+			v_short2 = exif_get_short (e->data + 2, o);
+			snprintf (v, sizeof (v), _("(x,y) = (%i,%i)"),
+				  v_short, v_short2);
+			break;
+		case 3:
+			v_short  = exif_get_short (e->data, o);
+			v_short2 = exif_get_short (e->data + 2, o);
+			v_short3 = exif_get_short (e->data + 4, o);
+			snprintf (v, sizeof (v), _("Within distance %i of "
+				"(x,y) = (%i,%i)"), v_short3, v_short,
+				v_short2);
+			break;
+		case 4:
+			v_short  = exif_get_short (e->data, o);
+			v_short2 = exif_get_short (e->data + 2, o);
+			v_short3 = exif_get_short (e->data + 4, o);
+			v_short4 = exif_get_short (e->data + 6, o);
+			snprintf (v, sizeof (v), _("Withing rectangle "
+				"(width %i, height %i) around "
+				"(x,y) = (%i,%i)"), v_short3, v_short4,
+				v_short, v_short2);
+			break;
+		default:
+			snprintf (v, sizeof (v), _("Unexpected number "
+				"of components (%li, expected 2, 3, or 4)."),
+				e->components);
+		}
 	default:
 		switch (e->format) {
 		case EXIF_FORMAT_UNDEFINED:

@@ -1,5 +1,10 @@
 2002-02-28  Lutz Müller <lutz@users.sourceforge.net>
 
+	* libexif/exif-entry.c (exif_entry_get_value): Add support for
+	  EXIF_TAG_SUBJECT_AREA.
+
+2002-02-28  Lutz Müller <lutz@users.sourceforge.net>
+
 	Patch by Javier Achirica <achirica@ttd.net>:
 
 	* libexif/exif-tag.[c,h]:
