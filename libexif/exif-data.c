@@ -719,7 +719,13 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 				     ds - 6, offset);
 
 	/* IFD 1 offset */
+	if (offset + 6 + 2 > ds) {
+		return;
+	}
 	n = exif_get_short (d + 6 + offset, data->priv->order);
+	if (offset + 6 + 2 + 12 * n + 4 > ds) {
+		return;
+	}
 	offset = exif_get_long (d + 6 + offset + 2 + 12 * n, data->priv->order);
 	if (offset) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
