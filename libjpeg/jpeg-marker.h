@@ -24,8 +24,7 @@
 extern "C" {
 #endif /* __cplusplus */
 
-typedef enum _JPEGMarker JPEGMarker;
-enum _JPEGMarker {
+typedef enum {
         JPEG_MARKER_SOF0        = 0xc0,
         JPEG_MARKER_SOF1        = 0xc1,
         JPEG_MARKER_SOF2        = 0xc2,
@@ -89,7 +88,7 @@ enum _JPEGMarker {
 	JPEG_MARKER_JPG12	= 0xfc,
 	JPEG_MARKER_JPG13	= 0xfd,
         JPEG_MARKER_COM         = 0xfe
-};
+} JPEGMarker;
 
 #define JPEG_IS_MARKER(m) (((m) >= JPEG_MARKER_SOF0) &&		\
 			   ((m) <= JPEG_MARKER_COM))
