@@ -20,6 +20,7 @@
 
 #include <config.h>
 #include <libexif/exif-log.h>
+#include <libexif/i18n.h>
 
 #include <stdlib.h>
 #include <string.h>
@@ -30,6 +31,38 @@ struct _ExifLog {
 	ExifLogFunc func;
 	void *data;
 };
+
+static struct {
+	ExifLogCode code;
+	const char *title;
+	const char *message;
+} codes[] = {
+	{ EXIF_LOG_CODE_DEBUG, N_("Debugging information"),
+	  N_("Debugging information is available.") },
+	{ EXIF_LOG_CODE_NO_MEMORY, N_("Not enough memory"),
+	  N_("The system cannot provide enough memory.") },
+	{ EXIF_LOG_CODE_CORRUPT_DATA, N_("Corrupt data"),
+	  N_("The data provided does not follow the specification.") },
+	{ 0, NULL, NULL }
+};
+
+const char *
+exif_log_code_get_title (ExifLogCode code)
+{
+	unsigned int i;
+
+	for (i = 0; codes[i].title; i++) if (codes[i].code == code) break;
+	return _(codes[i].title);
+}
+
+const char *
+exif_log_code_get_message (ExifLogCode code)
+{
+	unsigned int i;
+
+	for (i = 0; codes[i].message; i++) if (codes[i].code == code) break;
+	return _(codes[i].message);
+}
 
 ExifLog *
 exif_log_new (void)

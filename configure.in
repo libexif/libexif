@@ -16,7 +16,7 @@ dnl                      removals.
 dnl ---------------------------------------------------------------------------
 LIBEXIF_AGE=0
 LIBEXIF_REVISION=0
-LIBEXIF_CURRENT=10
+LIBEXIF_CURRENT=11
 AC_SUBST(LIBEXIF_AGE)
 AC_SUBST(LIBEXIF_REVISION)
 AC_SUBST(LIBEXIF_CURRENT)
@@ -46,7 +46,7 @@ then
 else
 	AC_MSG_RESULT([no])
 fi
-AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT
 
 
 dnl ---------------------------------------------------------------------------
@@ -59,7 +59,7 @@ if test "x$GCC" = "xyes"; then
     AC_SUBST(LDFLAGS)
 fi
 
-AC_OUTPUT([ po/Makefile.in 
+AC_OUTPUT([
   Makefile
   libexif.spec
   libexif/Makefile

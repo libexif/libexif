@@ -40,6 +40,8 @@ typedef enum {
 	EXIF_LOG_CODE_NO_MEMORY,
 	EXIF_LOG_CODE_CORRUPT_DATA
 } ExifLogCode;
+const char *exif_log_code_get_title   (ExifLogCode); /* Title for dialog   */
+const char *exif_log_code_get_message (ExifLogCode); /* Message for dialog */
 
 typedef void (* ExifLogFunc) (ExifLog *log, ExifLogCode, const char *domain,
 			      const char *format, va_list args, void *data);

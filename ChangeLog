@@ -1,3 +1,10 @@
+2004-09-09  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* configure.in: Remove "([external])" after AM_GNU_GETTEXT as it
+	  doesn't work for David MacMahon <davidm@astro.berkeley.edu>.
+	* libexif/exif-log.[c,h]: Provide some standard messages and titles.
+	* configure.in: Increment version as interfaces have been added.
+
 2004-09-08  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-entry.c: Change comment to point to specification.
