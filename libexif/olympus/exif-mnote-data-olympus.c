@@ -137,7 +137,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	exif_mnote_data_olympus_clear (n);
 
 	n->entries = malloc (sizeof (MnoteOlympusEntry) * c);
-	memset (&n->entries, 0, sizeof (MnoteOlympusEntry) * c);
+	memset (n->entries, 0, sizeof (MnoteOlympusEntry) * c);
 
 	/* Parse the entries */
 	for (i = 0; i < c; i++) {
