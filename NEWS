@@ -1,3 +1,18 @@
+New in CVS HEAD since 0.6.12 (2005-03-13):
+
+  * Bug fixes: #803191, #1051994, #1054321, #1054323
+  
+  * For pkg-config users, force usage of #include <libexif/exif-*.h>
+    (disable #include <exif-.h>)
+
+  * Updated German translation
+
+  * Build system tuning
+
+  * Misc changes:
+    Fix COPYRIGHT tag, fix memory corruption, use qsort.
+
+
 New in 0.6.12 (2005-03-13) since 0.6.11 (2004-10-16):
 
   * Final fix of Ubuntu Security Notice USN-91-1 (CAN-2005-0664)
