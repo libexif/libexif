@@ -128,9 +128,13 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	 * Olympus headers start with "OLYMP" and need to have at least
 	 * a size of 22 bytes (6 for 'OLYMP', 2 other bytes, 2 for the
 	 * number of entries, and 12 for one entry.
+	 *
+	 * Nikon headers start with "Nikon".
 	 */
+	if (buf_size - n->offset - 6 < 5) return;
+	if (memcmp (buf + 6 + n->offset, "Nikon", 5) ||
+	    memcmp (buf + 6 + n->offset, "OLYMP", 5)) return;
 	if (buf_size - n->offset < 22) return;
-	if (memcmp (buf + 6 + n->offset, "OLYMP", 5)) return;
 
 	/* Read the number of entries and remove old ones. */
 	c = exif_get_short (buf + 6 + n->offset + 8, n->order);

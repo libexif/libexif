@@ -660,7 +660,8 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	if (e) {
 
 	    /* Olympus */
-	    if ((e->size >= 5) && (!memcmp (e->data, "OLYMP", 5)))
+	    if ((e->size >= 5) && (!memcmp (e->data, "OLYMP", 5) ||
+				   !memcmp (e->data, "Nikon", 5)))
 		data->priv->md = exif_mnote_data_olympus_new ();
 
 	    /* Pentax */

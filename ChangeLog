@@ -1,3 +1,8 @@
+2004-05-04  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/olympus: Make it support Nikon maker notes, too. 
+	  Code based on work by Serge Droz <serge.droz@psi.ch>.
+
 2004-05-03  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-entry.c (exif_entry_initialize):
