@@ -3,8 +3,8 @@ INCLUDES =						\
 	-I$(top_srcdir)					\
 	-I$(top_srcdir)/intl
 
-noinst_LIBRARIES = libmnote-olympus.a
-libmnote_olympus_a_SOURCES =					\
+noinst_LTLIBRARIES = libmnote-olympus.la
+libmnote_olympus_la_SOURCES =					\
 	mnote-olympus-entry.c mnote-olympus-entry.h		\
 	exif-mnote-data-olympus.c exif-mnote-data-olympus.h	\
 	mnote-olympus-tag.c mnote-olympus-tag.h

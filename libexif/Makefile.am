@@ -25,7 +25,7 @@ libexif_la_SOURCES =		\
 libexif_la_LIBADD = -lm 		\
 	canon/libmnote-canon.a		\
 	olympus/libmnote-olympus.a	\
-	olympus/libmnote-pentax.a
+	pentax/libmnote-pentax.a
 
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = 	\

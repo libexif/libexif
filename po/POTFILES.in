@@ -2,3 +2,9 @@ libexif/exif-byte-order.c
 libexif/exif-entry.c
 libexif/exif-format.c
 libexif/exif-tag.c
+libexif/canon/mnote-canon-tag.c
+libexif/canon/mnote-canon-entry.c
+libexif/olympus/mnote-olympus-tag.c
+libexif/olympus/mnote-olympus-entry.c
+libexif/pentax/mnote-pentax-tag.c
+libexif/pentax/mnote-pentax-entry.c
