@@ -43,6 +43,19 @@ struct _ExifEntryPrivate
 /* This function is hidden in exif-data.c */
 ExifLog *exif_data_get_log (ExifData *);
 
+static void
+exif_entry_log (ExifEntry *e, ExifLogCode code, const char *format, ...)
+{
+	va_list args;
+	ExifLog *l = NULL;
+
+	if (e && e->parent && e->parent->parent)
+		l = exif_data_get_log (e->parent->parent);
+	va_start (args, format);
+	exif_logv (l, code, "ExifEntry", format, args);
+	va_end (args);
+}
+
 static void *
 exif_entry_alloc (ExifEntry *e, unsigned int i)
 {
@@ -131,24 +144,27 @@ exif_entry_dump (ExifEntry *e, unsigned int indent)
 	printf ("%s  Value: %s\n", buf, exif_entry_get_value (e, value, sizeof(value)));
 }
 
-#define CF(format,target,v,maxlen)				\
-{								\
-	if (format != target) {					\
-		snprintf (v, maxlen,				\
-			_("Invalid format '%s', "		\
-			"expected '%s'."),			\
-			exif_format_get_name (format),		\
-			exif_format_get_name (target));		\
-		break;						\
-	}							\
+#define CF(entry,target,v,maxlen)					\
+{									\
+	if (entry->format != target) {					\
+		exif_entry_log (entry, EXIF_LOG_CODE_CORRUPT_DATA,	\
+			_("The tag '%s' contains data of an invalid "	\
+			"format ('%s', expected '%s')."),		\
+			exif_tag_get_name (entry->tag),			\
+			exif_format_get_name (entry->format),		\
+			exif_format_get_name (target));			\
+		break;							\
+	}								\
 }
 
-#define CC(number,target,v,maxlen)					\
+#define CC(entry,target,v,maxlen)					\
 {									\
-	if (number != target) {						\
-		snprintf (v, maxlen,					\
-			_("Invalid number of components (%i, "		\
-			"expected %i)."), (int) number, (int) target);	\
+	if (entry->components != target) {				\
+		exif_entry_log (entry, EXIF_LOG_CODE_CORRUPT_DATA,	\
+			_("The tag '%s' contains an invalid number of "	\
+			  "components (%i, expected %i)."),		\
+			exif_tag_get_name (entry->tag),		\
+			(int) entry->components, (int) target);		\
 		break;							\
 	}								\
 }
@@ -357,27 +373,23 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 
 		/*
 		 * The specification says UNDEFINED, but some
-		 * manufacturers don't care and use ASCII.
+		 * manufacturers don't care and use ASCII. If this is the
+		 * case here, only refuse to read it if there is no chance
+		 * of finding readable data.
 		 */
-		if (e->format == EXIF_FORMAT_ASCII) {
-			if ((e->size <= 8) || (
-			     memcmp (e->data, "ASCII\0\0\0", 8) &&
-			     memcmp (e->data, "UNICODE\0", 8) &&
-			     memcmp (e->data, "JIS\0\0\0\0\0", 8) &&
-			     memcmp (e->data, "\0\0\0\0\0\0\0\0", 8))) {
-				snprintf (val, maxlen, _("%s (illegal "
-					"format ASCII, expected UNDEFINED)"),
-					e->data);
-				break;
-			}
-		} else CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
+		if ((e->format != EXIF_FORMAT_ASCII) || 
+		    (e->size <= 8) ||
+		    ( memcmp (e->data, "ASCII\0\0\0"  , 8) &&
+		      memcmp (e->data, "UNICODE\0"    , 8) &&
+		      memcmp (e->data, "JIS\0\0\0\0\0", 8) &&
+		      memcmp (e->data, "\0\0\0\0\0\0\0\0", 8)))
+			CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
 
 		/*
 		 * According to Ralf Holzer <rholzer@cmu.edu>,
 		 * the user comment field does not have to be 
 		 * NULL terminated.
 		 */
-		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		if (e->size < 8) break;
 		if (!memcmp (e->data, "ASCII\0\0\0", 8)) {
 			strncpy (val, e->data + 8, MIN (e->size - 8, maxlen));
@@ -395,8 +407,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		break;
 
 	case EXIF_TAG_EXIF_VERSION:
-		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		CC (e->components, 4, val, maxlen);
+		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
+		CC (e, 4, val, maxlen);
 		strncpy (val, _("Unknown Exif Version"), maxlen);
 		for (i = 0; versions[i].label; i++) {
 			if (!memcmp (e->data, versions[i].label, 4)) {
@@ -409,8 +421,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 		break;
 	case EXIF_TAG_FLASH_PIX_VERSION:
-		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		CC (e->components, 4, val, maxlen);
+		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
+		CC (e, 4, val, maxlen);
 		if (!memcmp (e->data, "0100", 4))
 			strncpy (val, _("FlashPix Version 1.0"), maxlen);
 		else if (!memcmp (e->data, "0101", 4))
@@ -419,7 +431,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			strncpy (val, _("Unknown FlashPix Version"), maxlen);
 		break;
 	case EXIF_TAG_COPYRIGHT:
-		CF (e->format, EXIF_FORMAT_ASCII, val, maxlen);
+		CF (e, EXIF_FORMAT_ASCII, val, maxlen);
 
 		/*
 		 * First part: Photographer.
@@ -447,16 +459,16 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 
 		break;
 	case EXIF_TAG_FNUMBER:
-		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
+		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator) return NULL;
 		snprintf (val, maxlen, "f/%.01f", (float) v_rat.numerator /
 						    (float) v_rat.denominator);
 		break;
 	case EXIF_TAG_APERTURE_VALUE:
-		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
+		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator) return NULL;
 		snprintf (val, maxlen, "f/%.01f",
@@ -464,8 +476,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 				    (float) v_rat.denominator) / 2.));
 		break;
 	case EXIF_TAG_FOCAL_LENGTH:
-		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
+		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator) return NULL;
 
@@ -500,16 +512,16 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			strncat (val, b, maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_SUBJECT_DISTANCE:
-		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
+		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator) return NULL;
 		snprintf (val, maxlen, "%.1f m", (float) v_rat.numerator /
 						   (float) v_rat.denominator);
 		break;
 	case EXIF_TAG_EXPOSURE_TIME:
-		CF (e->format, EXIF_FORMAT_RATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
+		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator) return NULL;
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
@@ -522,8 +534,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			strncat (val, " sec.", maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_SHUTTER_SPEED_VALUE:
-		CF (e->format, EXIF_FORMAT_SRATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
+		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
 		if (!v_srat.denominator) return NULL;
 		snprintf (val, maxlen, "%.0f/%.0f", (float) v_srat.numerator,
@@ -537,24 +549,24 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			strncat (val, b, maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_BRIGHTNESS_VALUE:
-		CF (e->format, EXIF_FORMAT_SRATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
+		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
 		snprintf (val, maxlen, "%i/%i", (int) v_srat.numerator,
 						  (int) v_srat.denominator);
 		/* FIXME: How do I calculate the APEX value? */
 		break;
 	case EXIF_TAG_FILE_SOURCE:
-		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
+		CC (e, 1, val, maxlen);
 		switch (e->data[0]) {
 		case 0x03: strncpy (val, _("DSC"), maxlen); break;
 		default: snprintf (val, maxlen, "0x%02x", e->data[0]); break;
 		}
 		break;
 	case EXIF_TAG_COMPONENTS_CONFIGURATION:
-		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		CC (e->components, 4, val, maxlen);
+		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
+		CC (e, 4, val, maxlen);
 		for (i = 0; i < 4; i++) {
 			switch (e->data[i]) {
 			case 0: c = _("-"); break;
@@ -571,8 +583,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 		break;
 	case EXIF_TAG_EXPOSURE_BIAS_VALUE:
-		CF (e->format, EXIF_FORMAT_SRATIONAL, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
+		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
 		if (!v_srat.denominator)
 			return NULL;
@@ -582,8 +594,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			  (double) v_srat.denominator);
 		break;
 	case EXIF_TAG_YCBCR_SUB_SAMPLING:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 2, val, maxlen);
+		CF (e, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (e, 2, val, maxlen);
 		v_short  = exif_get_short (e->data, o);
 		v_short2 = exif_get_short (
 			e->data + exif_format_get_size (e->format),
@@ -596,12 +608,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			snprintf (val, maxlen, "%i, %i", v_short, v_short2);
 		break;
 	case EXIF_TAG_MAKER_NOTE:
-		CF (e->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
+		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		snprintf (val, maxlen, _("%i bytes unknown data"),
 			  (int) e->components);
 		break;
 	case EXIF_TAG_SUBJECT_AREA:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
+		CF (e, EXIF_FORMAT_SHORT, val, maxlen);
 		switch (e->components) {
 		case 2:
 			v_short  = exif_get_short (e->data, o);
@@ -642,8 +654,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_FLASH:
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
 	case EXIF_TAG_COLOR_SPACE:
-		CF (e->format,EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e,EXIF_FORMAT_SHORT, val, maxlen);
+		CC (e, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 
 		/* Search the tag */
@@ -686,8 +698,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_SATURATION:
 	case EXIF_TAG_CONTRAST:
 	case EXIF_TAG_SHARPNESS:
-		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (e->components, 1, val, maxlen);
+		CF (e, EXIF_FORMAT_SHORT, val, maxlen);
+		CC (e, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
 
 		/* Search the tag */

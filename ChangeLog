@@ -1,5 +1,11 @@
 2004-09-08  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-entry.c: Redirect error messages to the logging 
+	  mechanism.
+	* libexif/exif-log.h: EXIF_LOG_CODE_CORRUPT_DATA: New.
+
+2004-09-08  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-loader.c
 	* libexif/exif-data.c: Replace a couple of calls to malloc by 
 	  calls to calloc.

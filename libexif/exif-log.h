@@ -37,7 +37,8 @@ void     exif_log_free  (ExifLog *log);
 typedef enum {
 	EXIF_LOG_CODE_NONE,
 	EXIF_LOG_CODE_DEBUG,
-	EXIF_LOG_CODE_NO_MEMORY
+	EXIF_LOG_CODE_NO_MEMORY,
+	EXIF_LOG_CODE_CORRUPT_DATA
 } ExifLogCode;
 
 typedef void (* ExifLogFunc) (ExifLog *log, ExifLogCode, const char *domain,
