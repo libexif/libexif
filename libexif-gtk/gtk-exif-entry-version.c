@@ -214,7 +214,8 @@ gtk_exif_entry_version_save (GtkExifEntryVersion *entry)
 	default:
 		break;
 	}
-	exif_entry_notify (entry->priv->entry, EXIF_ENTRY_EVENT_CHANGED);
+	gtk_signal_emit_by_name (GTK_OBJECT (entry), "entry_changed",
+				 entry->priv->entry);
 }
 
 static void

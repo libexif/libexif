@@ -116,7 +116,8 @@ on_text_changed (GtkEditable *editable, GtkExifEntryAscii *entry)
 	entry->priv->entry->data = txt;
 	entry->priv->entry->size = strlen (txt) + 1;
 	entry->priv->entry->components = entry->priv->entry->size;
-	exif_entry_notify (entry->priv->entry, EXIF_ENTRY_EVENT_CHANGED);
+	gtk_signal_emit_by_name (GTK_OBJECT (entry), "entry_changed",
+				 entry->priv->entry);
 }
 
 GtkWidget *

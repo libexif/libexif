@@ -63,17 +63,6 @@ void        exif_entry_ref   (ExifEntry *entry);
 void        exif_entry_unref (ExifEntry *entry);
 void        exif_entry_free  (ExifEntry *entry);
 
-/* Notification */
-typedef enum _ExifEntryEvent ExifEntryEvent;
-enum _ExifEntryEvent {
-	EXIF_ENTRY_EVENT_CHANGED = 1 << 0
-};
-typedef void (* ExifEntryNotifyFunc)  (ExifEntry *entry, void *data);
-unsigned int exif_entry_add_notify    (ExifEntry *entry, ExifEntryEvent events,
-				       ExifEntryNotifyFunc func, void *data);
-void         exif_entry_remove_notify (ExifEntry *entry, unsigned int id);
-void         exif_entry_notify        (ExifEntry *entry, ExifEntryEvent event);
-
 void        exif_entry_parse     (ExifEntry *entry, const unsigned char *data,
 			          unsigned int size, unsigned int offset,
 			          ExifByteOrder order);

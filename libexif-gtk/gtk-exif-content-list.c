@@ -23,11 +23,8 @@
 
 static void gtk_exif_content_list_add_content (GtkExifContentList *list,
 					       ExifContent *content);
-static void gtk_exif_content_list_add_entry   (GtkExifContentList *list,
-					       ExifEntry *entry);
 
 struct _GtkExifContentListPrivate {
-	ExifContent *content;
 };
 
 #define PARENT_TYPE GTK_TYPE_CLIST
@@ -35,6 +32,7 @@ static GtkCListClass *parent_class;
 
 enum {
 	ENTRY_SELECTED,
+	CONTENT_CHANGED,
 	LAST_SIGNAL
 };
 
@@ -45,9 +43,9 @@ gtk_exif_content_list_destroy (GtkObject *object)
 {
 	GtkExifContentList *list = GTK_EXIF_CONTENT_LIST (object);
 
-	if (list->priv->content) {
-		exif_content_unref (list->priv->content);
-		list->priv->content = NULL;
+	if (list->content) {
+		exif_content_unref (list->content);
+		list->content = NULL;
 	}
 
 	GTK_OBJECT_CLASS (parent_class)->destroy (object);
@@ -75,6 +73,10 @@ gtk_exif_content_list_class_init (GtkExifContentListClass *klass)
 	signals[ENTRY_SELECTED] = gtk_signal_new ("entry_selected",
 		GTK_RUN_LAST, object_class->type,
 		GTK_SIGNAL_OFFSET (GtkExifContentListClass, entry_selected),
+		gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1, GTK_TYPE_POINTER);
+	signals[CONTENT_CHANGED] = gtk_signal_new ("content_changed",
+		GTK_RUN_LAST, object_class->type,
+		GTK_SIGNAL_OFFSET (GtkExifContentListClass, content_changed),
 		gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1, GTK_TYPE_POINTER);
 	gtk_object_class_add_signals (object_class, signals, LAST_SIGNAL);
 
@@ -136,21 +138,7 @@ row_destroy_notify (gpointer data)
 	exif_entry_unref ((ExifEntry *) data);
 }
 
-static void
-notify_entry_changed (ExifEntry *entry, void *data)
-{
-	GtkExifContentList *list;
-	gint row;
-
-	g_return_if_fail (GTK_EXIF_IS_CONTENT_LIST (data));
-	list = GTK_EXIF_CONTENT_LIST (data);
-
-	row = gtk_clist_find_row_from_data (GTK_CLIST (list), entry);
-	gtk_clist_set_text (GTK_CLIST (list), row, 1, 
-			    exif_entry_get_value (entry));
-}
-
-static void
+void
 gtk_exif_content_list_add_entry (GtkExifContentList *list, ExifEntry *entry)
 {
 	gint row;
@@ -162,27 +150,8 @@ gtk_exif_content_list_add_entry (GtkExifContentList *list, ExifEntry *entry)
 	exif_entry_ref (entry);
 	gtk_clist_set_row_data_full (GTK_CLIST (list), row, entry,
 				     row_destroy_notify);
-	gtk_exif_content_list_add_content (list, entry->content);
-	exif_entry_add_notify (entry, EXIF_ENTRY_EVENT_CHANGED,
-			       notify_entry_changed, list);
-}
-
-static void
-on_entry_added (ExifContent *content, ExifEntry *entry, void *data)
-{
-	GtkExifContentList *list = GTK_EXIF_CONTENT_LIST (data);
-
-	gtk_exif_content_list_add_entry (list, entry);
-}
-
-static void
-on_entry_removed (ExifContent *content, ExifEntry *entry, void *data)
-{
-	GtkExifContentList *list = GTK_EXIF_CONTENT_LIST (data);
-	gint row;
-
-	row = gtk_clist_find_row_from_data (GTK_CLIST (list), entry);
-	gtk_clist_remove (GTK_CLIST (list), row);
+	gtk_signal_emit (GTK_OBJECT (list), signals[CONTENT_CHANGED],
+			 list->content);
 }
 
 static void
@@ -193,11 +162,6 @@ gtk_exif_content_list_add_content (GtkExifContentList *list,
 
 	g_return_if_fail (GTK_EXIF_IS_CONTENT_LIST (list));
 	g_return_if_fail (content != NULL);
-
-	exif_content_add_notify (content, EXIF_CONTENT_EVENT_ADD,
-				 on_entry_added, list);
-	exif_content_add_notify (content, EXIF_CONTENT_EVENT_REMOVE,
-				 on_entry_removed, list);
 
 	for (i = 0; i < content->count; i++)
 		gtk_exif_content_list_add_entry (list, content->entries[i]);
@@ -210,9 +174,9 @@ gtk_exif_content_list_set_content (GtkExifContentList *list,
 	g_return_if_fail (GTK_EXIF_IS_CONTENT_LIST (list));
 	g_return_if_fail (content != NULL);
 
-	if (list->priv->content)
-		exif_content_unref (list->priv->content);
-	list->priv->content = content;
+	if (list->content)
+		exif_content_unref (list->content);
+	list->content = content;
 	exif_content_ref (content);
 
 	gtk_clist_clear (GTK_CLIST (list));

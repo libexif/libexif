@@ -139,7 +139,8 @@ gtk_exif_entry_light_save (GtkExifEntryLight *entry)
 	value = gtk_options_get (entry->priv->options);
 	exif_set_short (entry->priv->entry->data, entry->priv->entry->order,
 			value);
-	exif_entry_notify (entry->priv->entry, EXIF_ENTRY_EVENT_CHANGED);
+	gtk_signal_emit_by_name (GTK_OBJECT (entry), "entry_changed",
+				 entry->priv->entry);
 }
 
 static void

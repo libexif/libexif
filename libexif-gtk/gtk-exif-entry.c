@@ -34,6 +34,9 @@ struct _GtkExifEntryPrivate {
 static GtkVBoxClass *parent_class;
 
 enum {
+	ENTRY_ADDED,
+	ENTRY_REMOVED,
+	ENTRY_CHANGED,
 	LAST_SIGNAL
 };
 
@@ -68,6 +71,18 @@ gtk_exif_entry_class_init (GtkExifEntryClass *klass)
 	object_class->destroy  = gtk_exif_entry_destroy;
 	object_class->finalize = gtk_exif_entry_finalize;
 
+	signals[ENTRY_ADDED] = gtk_signal_new ("entry_added", GTK_RUN_FIRST,
+		object_class->type,
+		GTK_SIGNAL_OFFSET (GtkExifEntryClass, entry_added),
+		gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1, GTK_TYPE_POINTER);
+	signals[ENTRY_REMOVED] = gtk_signal_new ("entry_removed",
+		GTK_RUN_FIRST, object_class->type,
+		GTK_SIGNAL_OFFSET (GtkExifEntryClass, entry_removed),
+		gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1, GTK_TYPE_POINTER);
+	signals[ENTRY_CHANGED] = gtk_signal_new ("entry_changed",
+		GTK_RUN_FIRST, object_class->type,
+		GTK_SIGNAL_OFFSET (GtkExifEntryClass, entry_changed),
+		gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1, GTK_TYPE_POINTER);
 	gtk_object_class_add_signals (object_class, signals, LAST_SIGNAL);
 
 	parent_class = gtk_type_class (PARENT_TYPE);

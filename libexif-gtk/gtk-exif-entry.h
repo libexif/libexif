@@ -43,6 +43,11 @@ struct _GtkExifEntry
 struct _GtkExifEntryClass
 {
 	GtkVBoxClass parent_class;
+
+	/* Signals */
+	void (* entry_changed) (GtkExifEntry *entry, ExifEntry *e);
+	void (* entry_removed) (GtkExifEntry *entry, ExifEntry *e);
+	void (* entry_added)   (GtkExifEntry *entry, ExifEntry *e);
 };
 
 GtkType    gtk_exif_entry_get_type  (void);

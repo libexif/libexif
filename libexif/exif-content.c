@@ -28,58 +28,10 @@
 
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 
-typedef struct _ExifContentNotifyData ExifContentNotifyData;
-struct _ExifContentNotifyData {
-	ExifContentEvent events;
-	ExifContentNotifyFunc func;
-	void *data;
-};
-
 struct _ExifContentPrivate
 {
-	ExifContentNotifyData *notifications;
-	unsigned int count;
-
 	unsigned int ref_count;
 };
-
-unsigned int
-exif_content_add_notify (ExifContent *content, ExifContentEvent events,
-			 ExifContentNotifyFunc func, void *data)
-{
-	if (!content)
-		return (0);
-
-	if (!content->priv->notifications)
-		content->priv->notifications =
-				malloc (sizeof (ExifContentNotifyData));
-	else
-		content->priv->notifications = 
-			realloc (content->priv->notifications,
-				 sizeof (ExifContentNotifyData) *
-				 	(content->priv->count + 1));
-	content->priv->notifications[content->priv->count].events = events;
-	content->priv->notifications[content->priv->count].func = func;
-	content->priv->notifications[content->priv->count].data = data;
-	content->priv->count++;
-
-	return (content->priv->count);
-}
-
-void
-exif_content_remove_notify (ExifContent *content, unsigned int id)
-{
-	if (!content)
-		return;
-	if (id > content->priv->count)
-		return;
-
-	memmove (content->priv->notifications + id - 1,
-		 content->priv->notifications + id,
-		 sizeof (ExifContentNotifyData) *
-		 	(content->priv->count - id));
-	content->priv->count--;
-}
 
 ExifContent *
 exif_content_new (void)
@@ -177,18 +129,6 @@ exif_content_dump (ExifContent *content, unsigned int indent)
 		exif_entry_dump (content->entries[i], indent + 1);
 }
 
-static void
-exif_content_notify (ExifContent *content, ExifEntry *entry,
-		     ExifContentEvent event)
-{
-	unsigned int i;
-
-	for (i = 0; i < content->priv->count; i++)
-		if (content->priv->notifications[i].events & event)
-			content->priv->notifications[i].func (content, entry,
-					content->priv->notifications[i].data);
-}
-
 void
 exif_content_add_entry (ExifContent *content, ExifEntry *entry)
 {
@@ -201,8 +141,6 @@ exif_content_add_entry (ExifContent *content, ExifEntry *entry)
 	content->entries[content->count] = entry;
 	exif_entry_ref (entry);
 	content->count++;
-
-	exif_content_notify (content, entry, EXIF_CONTENT_EVENT_ADD);
 }
 
 void
@@ -222,8 +160,6 @@ exif_content_remove_entry (ExifContent *content, ExifEntry *entry)
 	memmove (&content->entries[i], &content->entries[i + 1],
 		 sizeof (ExifEntry) * (content->count - i - 1));
 	content->count--;
-
-	exif_content_notify (content, entry, EXIF_CONTENT_EVENT_REMOVE);
 
 	entry->parent = NULL;
 	exif_entry_unref (entry);

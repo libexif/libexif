@@ -60,4 +60,9 @@ void       gtk_options_construct (GtkOptions *options, GtkOptionsList *list);
 void       gtk_options_set       (GtkOptions *options, guint option);
 guint      gtk_options_get       (GtkOptions *options);
 
+void       gtk_options_set_sensitive_all (GtkOptions *options,
+					  gboolean sensitive);
+void       gtk_options_set_sensitive     (GtkOptions *options, guint option,
+				          gboolean sensitive);
+
 #endif /* __GTK_OPTIONS_H__ */

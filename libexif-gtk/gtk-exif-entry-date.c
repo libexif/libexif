@@ -155,7 +155,8 @@ gtk_exif_entry_date_save (GtkExifEntryDate *entry)
 		 (gint) entry->priv->a_hour->value,
 		 (gint) entry->priv->a_min->value,
 		 (gint) entry->priv->a_sec->value);
-	exif_entry_notify (entry->priv->entry, EXIF_ENTRY_EVENT_CHANGED);
+	gtk_signal_emit_by_name (GTK_OBJECT (entry), "entry_changed",
+				 entry->priv->entry);
 }
 
 static void

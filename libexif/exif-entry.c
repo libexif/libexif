@@ -46,18 +46,8 @@ static struct {
         {0, 0}
 };
 
-typedef struct _ExifEntryNotifyData ExifEntryNotifyData;
-struct _ExifEntryNotifyData {
-	ExifEntryEvent events;
-	ExifEntryNotifyFunc func;
-	void *data;
-};
-
 struct _ExifEntryPrivate
 {
-	ExifEntryNotifyData *notifications;
-	unsigned int count;
-
 	unsigned int ref_count;
 };
 
@@ -113,55 +103,6 @@ exif_entry_free (ExifEntry *entry)
 }
 
 void
-exif_entry_notify (ExifEntry *entry, ExifEntryEvent event)
-{
-	unsigned int i;
-
-	for (i = 0; i < entry->priv->count; i++)
-		if (entry->priv->notifications[i].events & event)
-			entry->priv->notifications[i].func (entry,
-				entry->priv->notifications[i].data);
-}
-
-void
-exif_entry_remove_notify (ExifEntry *entry, unsigned int id)
-{
-	if (!entry)
-		return;
-	if (id > entry->priv->count)
-		return;
-
-	memmove (entry->priv->notifications + id - 1,
-		 entry->priv->notifications + id,
-		 sizeof (ExifEntryNotifyData) *
-			(entry->priv->count - id));
-	entry->priv->count--;
-}
-
-unsigned int
-exif_entry_add_notify (ExifEntry *entry, ExifEntryEvent events,
-		       ExifEntryNotifyFunc func, void *data)
-{
-	if (!entry)
-		return (0);
-
-	if (!entry->priv->notifications)
-		entry->priv->notifications =
-				malloc (sizeof (ExifEntryNotifyData));
-	else
-		entry->priv->notifications = 
-			realloc (entry->priv->notifications, 
-				 sizeof (ExifEntryNotifyData) *
-				 	(entry->priv->count + 1));
-	entry->priv->notifications[entry->priv->count].events = events;
-	entry->priv->notifications[entry->priv->count].func = func;
-	entry->priv->notifications[entry->priv->count].data = data;
-	entry->priv->count++;
-
-	return (entry->priv->count);
-}
-
-void
 exif_entry_parse (ExifEntry *entry, const unsigned char *data,
 		  unsigned int size, unsigned int offset, ExifByteOrder order)
 {
@@ -188,8 +129,9 @@ exif_entry_parse (ExifEntry *entry, const unsigned char *data,
 		}
 	if (!s)
 		return;
-	if ((s > 4) || (entry->tag == EXIF_TAG_EXIF_OFFSET) ||
-		       (entry->tag == EXIF_TAG_INTEROPERABILITY_OFFSET))
+	if ((s > 4) || (entry->tag == EXIF_TAG_EXIF_IFD_POINTER) ||
+		       (entry->tag == EXIF_TAG_GPS_INFO_IFD_POINTER) ||
+		       (entry->tag == EXIF_TAG_INTEROPERABILITY_IFD_POINTER))
 		doff = exif_get_long (data + offset + 8, order);
 	else
 		doff = offset + 8;
@@ -204,8 +146,9 @@ exif_entry_parse (ExifEntry *entry, const unsigned char *data,
 	entry->size = s;
 	memcpy (entry->data, data + doff, s);
 
-	if ((entry->tag == EXIF_TAG_EXIF_OFFSET) ||
-	    (entry->tag == EXIF_TAG_INTEROPERABILITY_OFFSET))
+	if ((entry->tag == EXIF_TAG_EXIF_IFD_POINTER) ||
+	    (entry->tag == EXIF_TAG_GPS_INFO_IFD_POINTER) ||
+	    (entry->tag == EXIF_TAG_INTEROPERABILITY_IFD_POINTER))
 		exif_content_parse (entry->content, data, size, doff, order);
 }
 

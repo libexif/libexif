@@ -119,7 +119,8 @@ on_value_changed (GtkToggleButton *toggle, GtkExifEntryFlash *entry)
 		entry->priv->entry->data[0] |= 0x04;
 	else if (entry->priv->r3->active)
 		entry->priv->entry->data[0] |= 0x06;
-	exif_entry_notify (entry->priv->entry, EXIF_ENTRY_EVENT_CHANGED);
+	gtk_signal_emit_by_name (GTK_OBJECT (entry), "entry_changed",
+				 entry->priv->entry);
 }
 
 GtkWidget *

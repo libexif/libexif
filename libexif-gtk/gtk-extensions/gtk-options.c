@@ -49,6 +49,8 @@ struct _GtkOptionsPrivate
 	guint current;
 
 	GArray *array;
+
+	GPtrArray *items;
 };
 
 #define PARENT_TYPE GTK_TYPE_OPTION_MENU
@@ -69,6 +71,11 @@ gtk_options_destroy (GtkObject *object)
 	if (options->priv->array) {
 		g_array_free (options->priv->array, TRUE);
 		options->priv->array = NULL;
+	}
+
+	if (options->priv->items) {
+		g_ptr_array_free (options->priv->items, TRUE);
+		options->priv->items = NULL;
 	}
 
 	GTK_OBJECT_CLASS (parent_class)->destroy (object);
@@ -107,6 +114,7 @@ gtk_options_init (GtkOptions *options)
 {
 	options->priv = g_new0 (GtkOptionsPrivate, 1);
 	options->priv->array = g_array_new (FALSE, TRUE, sizeof (guint));
+	options->priv->items = g_ptr_array_new ();
 }
 
 GtkType
@@ -170,6 +178,7 @@ gtk_options_construct (GtkOptions *options, GtkOptionsList *list)
 		gtk_signal_connect (GTK_OBJECT (item), "activate",
 				GTK_SIGNAL_FUNC (on_item_activate), options);
 		g_array_append_val (options->priv->array, list[i].option);
+		g_ptr_array_add (options->priv->items, item);
 	}
 	gtk_option_menu_set_menu (GTK_OPTION_MENU (options), menu);
 }
@@ -196,4 +205,34 @@ gtk_options_get (GtkOptions *options)
 	g_return_val_if_fail (GTK_IS_OPTIONS (options), 0);
 
 	return (options->priv->current);
+}
+
+void
+gtk_options_set_sensitive (GtkOptions *options, guint option,
+			   gboolean sensitive)
+{
+	guint i;
+
+	g_return_if_fail (GTK_IS_OPTIONS (options));
+
+	for (i = 0; i < options->priv->array->len; i++)
+		if (g_array_index (options->priv->array, guint, i) == option)
+			break;
+	if (i == options->priv->array->len)
+		return;
+	gtk_widget_set_sensitive (GTK_WIDGET (options->priv->items->pdata[i]),
+				  sensitive);
+}
+
+void
+gtk_options_set_sensitive_all (GtkOptions *options, gboolean sensitive)
+{
+	guint i;
+
+	g_return_if_fail (GTK_IS_OPTIONS (options));
+
+	for (i = 0; i < options->priv->items->len; i++)
+		gtk_widget_set_sensitive (
+			GTK_WIDGET (options->priv->items->pdata[i]), 
+			sensitive);
 }

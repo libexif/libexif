@@ -244,7 +244,11 @@ static struct {
 	{EXIF_TAG_FNUMBER, "FNumber", "FNumber",
 	 N_("The F number.")},
 	{EXIF_TAG_IPTC_NAA, "IPTC/NAA", "IPTC/NAA", ""},
-	{EXIF_TAG_EXIF_OFFSET, "ExifOffset", "ExifOffset", ""},
+	{EXIF_TAG_EXIF_IFD_POINTER, "ExifIFDPointer", "ExifIFDPointer",
+	 N_("A pointer to the Exif IFD. Interoperability, Exif IFD has the "
+	    "same structure as that of the IFD specified in TIFF. "
+	    "ordinarily, however, it does not contain image data as in "
+	    "the case of TIFF.")},
 	{EXIF_TAG_INTER_COLOR_PROFILE, "InterColorProfile",
 	 "InterColorProfile", ""},
 	{EXIF_TAG_EXPOSURE_PROGRAM, "ExposureProgram", "ExposureProgram",
@@ -255,6 +259,11 @@ static struct {
 	 N_("Indicates the spectral sensitivity of each channel of the "
 	    "camera used. The tag value is an ASCII string compatible "
 	    "with the standard developed by the ASTM Technical committee.")},
+	{EXIF_TAG_GPS_INFO_IFD_POINTER, "GPSInfoIFDPointer", 
+	 "GPSInfoIFDPointer",
+	 N_("A pointer to the GPS Info IFD. The "
+	    "Interoperability structure of the GPS Info IFD, like that of "
+	    "Exif IFD, has no image data.")},
 #if 0
 	{EXIF_TAG_GPS_VERSION_ID, "GPSVersionID", "",
 	 N_("Indicates the version of <GPSInfoIFD>. The version is given "
@@ -444,8 +453,16 @@ static struct {
 	    "NULL. When this tag is used to map audio files, the relation "
 	    "of the audio file to image data must also be indicated on the "
 	    "audio file end.")},
-	{EXIF_TAG_INTEROPERABILITY_OFFSET, "InteroperabilityOffset",
-	 "InteroperabilityOffset", ""},
+	{EXIF_TAG_INTEROPERABILITY_IFD_POINTER, "InteroperabilityIFDPointer",
+	 "InteroperabilityIFDPointer",
+	 N_("Interoperability IFD is composed of tags which stores the "
+	    "information to ensure the Interoperability and pointed "
+	    "by the following tag located in Exif IFD. "
+	    "The Interoperability structure of Interoperability IFD is "
+	    "the same as TIFF defined IFD structure "
+	    "but does not contain the "
+	    "image data characteristically compared with normal TIFF "
+	    "IFD.")},
 	{EXIF_TAG_FLASH_ENERGY, "FlashEnergy", N_("Flash Energy"),
 	 N_("Indicates the strobe energy at the time the image is "
 	    "captured, as measured in Beam Candle Power Seconds (BCPS).")},

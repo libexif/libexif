@@ -37,6 +37,8 @@ struct _GtkExifContentList
 {
 	GtkCList parent;
 
+	ExifContent *content;
+
 	GtkExifContentListPrivate *priv;
 };
 
@@ -45,12 +47,15 @@ struct _GtkExifContentListClass
 	GtkCListClass parent_class;
 
 	/* Signals */
-	void (* entry_selected) (GtkExifContentList *list, ExifEntry *entry);
+	void (* entry_selected)  (GtkExifContentList *list, ExifEntry *);
+	void (* content_changed) (GtkExifContentList *list, ExifContent *);
 };
 
 GtkType    gtk_exif_content_list_get_type (void);
 GtkWidget *gtk_exif_content_list_new      (void);
 
+void       gtk_exif_content_list_add_entry   (GtkExifContentList *list,
+					      ExifEntry *entry);
 void       gtk_exif_content_list_set_content (GtkExifContentList *list,
 					      ExifContent *content);
 
