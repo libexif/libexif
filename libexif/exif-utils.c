@@ -127,16 +127,16 @@ exif_get_rational (const unsigned char *buf, ExifByteOrder order)
 
 void
 exif_set_rational (unsigned char *buf, ExifByteOrder order,
-		   ExifLong numerator, ExifLong denominator)
+		   ExifRational value)
 {
-	exif_set_long (buf, order, numerator);
-	exif_set_long (buf + 4, order, denominator);
+	exif_set_long (buf, order, value.numerator);
+	exif_set_long (buf + 4, order, value.denominator);
 }
 
 void
 exif_set_srational (unsigned char *buf, ExifByteOrder order,
-		    ExifSLong numerator, ExifSLong denominator)
+		    ExifSRational value)
 {
-	exif_set_slong (buf, order, numerator);
-	exif_set_slong (buf + 4, order, denominator);
+	exif_set_slong (buf, order, value.numerator);
+	exif_set_slong (buf + 4, order, value.denominator);
 }

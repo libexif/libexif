@@ -57,8 +57,8 @@ static struct {
 	    "primary image is JPEG compressed, this designation is "
 	    "not necessary and is omitted. When thumbnails use JPEG "
 	    "compression, this tag value is set to 6.")},
-	{EXIF_TAG_PHOTOMETRIC_INTERPOLATION, "PhotometricInterpolation",
-	 N_("Photometric Interpolation"),
+	{EXIF_TAG_PHOTOMETRIC_INTERPRETATION, "PhotometricInterpretation",
+	 N_("Photometric Interpretation"),
 	 N_("The pixel composition. In JPEG compressed data a JPEG "
 	    "marker is used instead of this tag.")},
 	{EXIF_TAG_FILL_ORDER, "FillOrder", "FillOrder", ""},

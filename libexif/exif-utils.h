@@ -50,8 +50,8 @@ void exif_set_long      (unsigned char *b, ExifByteOrder order,
 void exif_set_slong     (unsigned char *b, ExifByteOrder order,
 			 ExifSLong value);
 void exif_set_rational  (unsigned char *b, ExifByteOrder order,
-			 ExifLong numerator, ExifLong denominator);
+			 ExifRational value);
 void exif_set_srational (unsigned char *b, ExifByteOrder order,
-			 ExifSLong numberator, ExifSLong denominator);
+			 ExifSRational value);
 
 #endif /* __EXIF_UTILS_H__ */

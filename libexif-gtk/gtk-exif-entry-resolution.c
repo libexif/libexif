@@ -156,54 +156,58 @@ on_centimeter_activate (GtkMenuItem *item, GtkExifEntryResolution *entry)
 }
 
 static void
-on_wp_value_changed (GtkAdjustment *a, GtkExifEntryResolution *entry)
+on_w_value_changed (GtkAdjustment *a, GtkExifEntryResolution *entry)
 {
 	ExifEntry *e;
+	ExifRational r;
+	ExifSRational sr;
 
 	e = exif_content_get_entry (entry->priv->content,
 				    entry->priv->tag_x);
 	g_return_if_fail (e != NULL);
-	exif_set_rational (e->data, e->order, entry->priv->ox.ap->value, 
-					      entry->priv->ox.aq->value);
+	switch (e->format) {
+	case EXIF_FORMAT_RATIONAL:
+		r.numerator   = entry->priv->ox.ap->value;
+		r.denominator = entry->priv->ox.aq->value;
+		exif_set_rational (e->data, e->order, r);
+		break;
+	case EXIF_FORMAT_SRATIONAL:
+		sr.numerator   = entry->priv->ox.ap->value;
+		sr.denominator = entry->priv->ox.aq->value;
+		exif_set_srational (e->data, e->order, sr);
+		break;
+	default:
+		g_warning ("Invalid format!");
+		return;
+	}
 	gtk_signal_emit_by_name (GTK_OBJECT (entry), "entry_changed", e);
 }
 
 static void
-on_wq_value_changed (GtkAdjustment *a, GtkExifEntryResolution *entry)
+on_h_value_changed (GtkAdjustment *a, GtkExifEntryResolution *entry)
 {
 	ExifEntry *e;
-
-	e = exif_content_get_entry (entry->priv->content,
-				    entry->priv->tag_x);
-	g_return_if_fail (e != NULL);
-	exif_set_rational (e->data, e->order, entry->priv->ox.ap->value,
-					      entry->priv->ox.aq->value);
-	gtk_signal_emit_by_name (GTK_OBJECT (entry), "entry_changed", e);
-}
-
-static void
-on_hp_value_changed (GtkAdjustment *a, GtkExifEntryResolution *entry)
-{
-	ExifEntry *e;
-
-	e = exif_content_get_entry (entry->priv->content,
-				    entry->priv->tag_y);
-	g_return_if_fail (e != NULL);
-	exif_set_rational (e->data, e->order, entry->priv->oy.ap->value,
-					      entry->priv->oy.aq->value);
-	gtk_signal_emit_by_name (GTK_OBJECT (entry), "entry_changed", e);
-}
-
-static void
-on_hq_value_changed (GtkAdjustment *a, GtkExifEntryResolution *entry)
-{
-	ExifEntry *e;
+	ExifRational r;
+	ExifSRational sr;
 
 	e = exif_content_get_entry (entry->priv->content,
 				    entry->priv->tag_y);
 	g_return_if_fail (e != NULL);
-	exif_set_rational (e->data, e->order, entry->priv->oy.ap->value,
-					      entry->priv->oy.aq->value);
+	switch (e->format) {
+	case EXIF_FORMAT_RATIONAL:
+		r.numerator   = entry->priv->oy.ap->value;
+		r.denominator = entry->priv->oy.aq->value;
+		exif_set_rational (e->data, e->order, r);
+		break;
+	case EXIF_FORMAT_SRATIONAL:
+		sr.numerator   = entry->priv->oy.ap->value;
+		sr.denominator = entry->priv->oy.aq->value;
+		exif_set_srational (e->data, e->order, sr);
+		break;
+	default:
+		g_warning ("Invalid format!");
+		return;
+	}
 	gtk_signal_emit_by_name (GTK_OBJECT (entry), "entry_changed", e);
 }
 
@@ -241,12 +245,15 @@ gtk_exif_entry_resolution_load (GtkExifEntryResolution *entry, ExifEntry *e)
 
 	switch (e->tag) {
 	case EXIF_TAG_X_RESOLUTION:
+	case EXIF_TAG_FOCAL_PLANE_X_RESOLUTION:
 		o = entry->priv->ox;
 		break;
 	case EXIF_TAG_Y_RESOLUTION:
+	case EXIF_TAG_FOCAL_PLANE_Y_RESOLUTION:
 		o = entry->priv->oy;
 		break;
 	default:
+		g_warning ("Invalid tag!");
 		return;
 	}
 
@@ -378,7 +385,7 @@ gtk_exif_entry_resolution_new (ExifContent *content, gboolean focal_plane)
 	hbox = gtk_hbox_new (FALSE, 5);
 	gtk_widget_show (hbox);
 	gtk_box_pack_start (GTK_BOX (entry), hbox, TRUE, FALSE, 0);
-	c = gtk_check_button_new_with_label (_("Image width direction"));
+	c = gtk_check_button_new_with_label (_("Image width direction:"));
 	gtk_widget_show (c);
 	gtk_box_pack_start (GTK_BOX (hbox), c, FALSE, FALSE, 0);
 	entry->priv->ox.check = GTK_TOGGLE_BUTTON (c);
@@ -393,7 +400,7 @@ gtk_exif_entry_resolution_new (ExifContent *content, gboolean focal_plane)
 	gtk_widget_set_sensitive (sp, (e != NULL));
 	entry->priv->ox.sp = sp;
 	gtk_signal_connect (ap, "value_changed",
-			    GTK_SIGNAL_FUNC (on_wp_value_changed), entry);
+			    GTK_SIGNAL_FUNC (on_w_value_changed), entry);
 	label = gtk_label_new ("/");
 	gtk_widget_show (label);
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
@@ -405,7 +412,7 @@ gtk_exif_entry_resolution_new (ExifContent *content, gboolean focal_plane)
 	gtk_widget_set_sensitive (sq, (e != NULL));
 	entry->priv->ox.sq = sq;
 	gtk_signal_connect (aq, "value_changed",
-			    GTK_SIGNAL_FUNC (on_wq_value_changed), entry);
+			    GTK_SIGNAL_FUNC (on_w_value_changed), entry);
 	if (e)
 		gtk_exif_entry_resolution_load (entry, e);
 
@@ -429,7 +436,7 @@ gtk_exif_entry_resolution_new (ExifContent *content, gboolean focal_plane)
 	entry->priv->oy.sp = sp;
 	gtk_widget_set_sensitive (sp, (e != NULL));
 	gtk_signal_connect (ap, "value_changed",
-			    GTK_SIGNAL_FUNC (on_hp_value_changed), entry);
+			    GTK_SIGNAL_FUNC (on_h_value_changed), entry);
 	label = gtk_label_new ("/");
 	gtk_widget_show (label);
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
@@ -441,7 +448,7 @@ gtk_exif_entry_resolution_new (ExifContent *content, gboolean focal_plane)
 	entry->priv->oy.sq = sq;
 	gtk_widget_set_sensitive (sq, (e != NULL));
 	gtk_signal_connect (aq, "value_changed",
-			    GTK_SIGNAL_FUNC (on_hq_value_changed), entry);
+			    GTK_SIGNAL_FUNC (on_h_value_changed), entry);
 	if (e)
 		gtk_exif_entry_resolution_load (entry, e);
 

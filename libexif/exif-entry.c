@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 //#define DEBUG
 
@@ -30,21 +31,6 @@
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
 
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
-
-static struct {
-        ExifFormat format;
-        unsigned char size;
-} ExifFormatSize[] = {
-        {EXIF_FORMAT_BYTE,     1},
-        {EXIF_FORMAT_ASCII,    1},
-        {EXIF_FORMAT_SHORT,    2},
-        {EXIF_FORMAT_LONG,     4},
-        {EXIF_FORMAT_RATIONAL, 8},
-        {EXIF_FORMAT_SLONG,     4},
-        {EXIF_FORMAT_SRATIONAL, 8},
-	{EXIF_FORMAT_UNDEFINED, 1},
-        {0, 0}
-};
 
 struct _ExifEntryPrivate
 {
@@ -106,7 +92,7 @@ void
 exif_entry_parse (ExifEntry *entry, const unsigned char *data,
 		  unsigned int size, unsigned int offset, ExifByteOrder order)
 {
-	unsigned int j, s, doff;
+	unsigned int s, doff;
 
 	entry->order = order;
 	entry->tag         = exif_get_short (data + offset + 0, order);
@@ -122,11 +108,7 @@ exif_entry_parse (ExifEntry *entry, const unsigned char *data,
 	 * Size? If bigger than 4 bytes, the actual data is not
 	 * in the entry but somewhere else (offset). Beware of subdirectories.
 	 */
-	for (s = j = 0; ExifFormatSize[j].size; j++)
-		if (ExifFormatSize[j].format == entry->format) {
-			s = ExifFormatSize[j].size * entry->components;
-			break;
-		}
+	s = exif_format_get_size (entry->format) * entry->components;
 	if (!s)
 		return;
 	if ((s > 4) || (entry->tag == EXIF_TAG_EXIF_IFD_POINTER) ||
@@ -165,11 +147,13 @@ exif_entry_dump (ExifEntry *entry, unsigned int indent)
 	if (!entry)
 		return;
 
-	printf ("%s  Tag: 0x%x ('%s')\n", buf, entry->tag,
+	printf ("%sTag: 0x%x ('%s')\n", buf, entry->tag,
 		exif_tag_get_name (entry->tag));
-	printf ("%s  Format: %i\n", buf, entry->format);
+	printf ("%s  Format: %i ('%s')\n", buf, entry->format,
+		exif_format_get_name (entry->format));
 	printf ("%s  Components: %i\n", buf, (int) entry->components);
 	printf ("%s  Size: %i\n", buf, entry->size);
+	printf ("%s  Value: %s\n", buf, exif_entry_get_value (entry));
 	if (entry->content->count)
 		exif_content_dump (entry->content, indent + 1);
 }
@@ -201,6 +185,19 @@ exif_entry_get_value (ExifEntry *entry)
 			strncpy (v, "FlashPix Version 1.0", sizeof (v));
 		else
 			strncpy (v, "Unknown FlashPix Version", sizeof (v));
+		break;
+	case EXIF_TAG_COPYRIGHT:
+		if (strlen (entry->data))
+			strncpy (v, entry->data, sizeof (v));
+		else
+			strncpy (v, "[None]", sizeof (v));
+		strncat (v, " (Photographer) - ", sizeof (v));
+		if (strlen (entry->data + strlen (entry->data) + 1))
+			strncat (v, entry->data + strlen (entry->data) + 1,
+				 sizeof (v));
+		else
+			strncat (v, "[None]", sizeof (v));
+		strncat (v, " (Editor)", sizeof (v));
 		break;
 	default:
 		switch (entry->format) {
@@ -264,28 +261,151 @@ exif_entry_get_value (ExifEntry *entry)
 void
 exif_entry_initialize (ExifEntry *entry, ExifTag tag)
 {
+	time_t t;
+	struct tm *tm;
+	ExifRational r;
+
 	if (!entry)
 		return;
-	if (!entry->content || entry->data)
+	if (!entry->parent || entry->data)
 		return;
 
-	entry->order = entry->content->order;
+	entry->order = entry->parent->order;
 	entry->tag = tag;
 	switch (tag) {
+	case EXIF_TAG_EXIF_IFD_POINTER:
+	case EXIF_TAG_GPS_INFO_IFD_POINTER:
+	case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
+		entry->components = 1;
+		entry->format = EXIF_FORMAT_LONG;
+		entry->size = sizeof (ExifLong);
+		entry->data = malloc (entry->size);
+		exif_set_long (entry->data, entry->order, 0);
+		break;
+	case EXIF_TAG_IMAGE_WIDTH:
+	case EXIF_TAG_IMAGE_LENGTH:
+		entry->components = 1;
+		entry->format = EXIF_FORMAT_SHORT;
+		entry->size = sizeof (ExifShort);
+		entry->data = malloc (entry->size);
+		exif_set_short (entry->data, entry->order, 0);
+		break;
+	case EXIF_TAG_BITS_PER_SAMPLE:
+		entry->components = 3;
+		entry->format = EXIF_FORMAT_SHORT;
+		entry->size = sizeof (ExifShort) * entry->components;
+		entry->data = malloc (entry->size);
+		exif_set_short (entry->data + 0, entry->order, 8);
+		exif_set_short (entry->data + 2, entry->order, 8);
+		exif_set_short (entry->data + 4, entry->order, 8);
+		break;
+	case EXIF_TAG_YCBCR_SUB_SAMPLING:
+		entry->components = 2;
+		entry->size = sizeof (ExifShort) * entry->components;
+		entry->data = malloc (entry->size);
+		exif_set_short (entry->data + 0, entry->order, 2);
+		exif_set_short (entry->data + 2, entry->order, 1);
+		break;
+	case EXIF_TAG_COMPRESSION:
+	case EXIF_TAG_ORIENTATION:
+	case EXIF_TAG_PLANAR_CONFIGURATION:
+	case EXIF_TAG_YCBCR_POSITIONING:
+		entry->components = 1;
+		entry->format = EXIF_FORMAT_SHORT;
+		entry->size = sizeof (ExifShort);
+		entry->data = malloc (entry->size);
+		exif_set_short (entry->data, entry->order, 1);
+		break;
+	case EXIF_TAG_PHOTOMETRIC_INTERPRETATION:
+	case EXIF_TAG_RESOLUTION_UNIT:
+		entry->components = 1;
+		entry->format = EXIF_FORMAT_SHORT;
+		entry->size = sizeof (ExifShort);
+		entry->data = malloc (entry->size);
+		exif_set_short (entry->data, entry->order, 2);
+		break;
+	case EXIF_TAG_SAMPLES_PER_PIXEL:
+		entry->components = 1; 
+		entry->format = EXIF_FORMAT_SHORT; 
+		entry->size = sizeof (ExifShort);
+		entry->data = malloc (entry->size);
+		exif_set_short (entry->data, entry->order, 3);
+		break;
 	case EXIF_TAG_X_RESOLUTION:
 	case EXIF_TAG_Y_RESOLUTION:
 		entry->components = 1;
 		entry->format = EXIF_FORMAT_RATIONAL;
-		entry->data = malloc (sizeof (ExifRational));
 		entry->size = sizeof (ExifRational);
-		exif_set_rational (entry->data, entry->order, 72, 1);
+		entry->data = malloc (entry->size);
+		r.numerator = 72;
+		r.denominator = 1;
+		exif_set_rational (entry->data, entry->order, r);
 		break;
-	case EXIF_TAG_RESOLUTION_UNIT:
-		entry->components = 1;
-		entry->format = EXIF_FORMAT_SHORT;
-		entry->data = malloc (sizeof (ExifShort));
-		entry->size = sizeof (ExifShort);
-		exif_set_short (entry->data, entry->order, 2);
+	case EXIF_TAG_REFERENCE_BLACK_WHITE:
+		entry->components = 6;
+		entry->format = EXIF_FORMAT_RATIONAL;
+		entry->size = sizeof (ExifRational) * entry->components;
+		entry->data = malloc (entry->size);
+		r.denominator = 1;
+		r.numerator = 0;
+		exif_set_rational (entry->data +   0, entry->order, r);
+		r.numerator = 255;
+		exif_set_rational (entry->data +   8, entry->order, r);
+		r.numerator = 0;
+		exif_set_rational (entry->data +  16, entry->order, r);
+		r.numerator = 255;
+		exif_set_rational (entry->data +  32, entry->order, r);
+		r.numerator = 0;
+		exif_set_rational (entry->data +  64, entry->order, r);
+		r.numerator = 255;
+		exif_set_rational (entry->data + 128, entry->order, r);
+		break;
+	case EXIF_TAG_DATE_TIME:
+	case EXIF_TAG_DATE_TIME_ORIGINAL:
+	case EXIF_TAG_DATE_TIME_DIGITIZED:
+		t = time (NULL);
+		tm = localtime (&t);
+		entry->components = 20;
+		entry->format = EXIF_FORMAT_ASCII;
+		entry->size = sizeof (ExifByte) * entry->components;
+		entry->data = malloc (entry->size);
+		snprintf (entry->data, entry->size, 
+			  "%04i:%02i:%02i %02i:%02i:%02i",
+			  tm->tm_year + 1900, tm->tm_mon, tm->tm_mday,
+			  tm->tm_hour, tm->tm_min, tm->tm_sec);
+		break;
+	case EXIF_TAG_IMAGE_DESCRIPTION:
+	case EXIF_TAG_MAKE:
+	case EXIF_TAG_MODEL:
+	case EXIF_TAG_SOFTWARE:
+	case EXIF_TAG_ARTIST:
+		entry->components = strlen ("[None]") + 1;
+		entry->format = EXIF_FORMAT_ASCII;
+		entry->size = sizeof (ExifByte) * entry->components;
+		entry->data = malloc (entry->size);
+		strncpy (entry->data, "[None]", entry->size);
+		break;
+	case EXIF_TAG_COPYRIGHT:
+		entry->components = (strlen ("[None]") + 1) * 2;
+		entry->format = EXIF_FORMAT_ASCII;
+		entry->size = sizeof (ExifByte) * entry->components;
+		entry->data = malloc (entry->size);
+		strcpy (entry->data +                     0, "[None]");
+		strcpy (entry->data + strlen ("[None]") + 1, "[None]");
+		break;
+	case EXIF_TAG_EXIF_VERSION:
+		entry->components = 4;
+		entry->format = EXIF_FORMAT_UNDEFINED;
+		entry->size = sizeof (ExifUndefined) * entry->components;
+		entry->data = malloc (entry->size);
+		memcpy (entry->data, "0210", 4);
+		break;
+	case EXIF_TAG_FLASH_PIX_VERSION:
+		entry->components = 4;
+		entry->format = EXIF_FORMAT_UNDEFINED;
+		entry->size = sizeof (ExifUndefined) * entry->components;
+		entry->data = malloc (entry->size);
+		memcpy (entry->data, "0100", 4);
 		break;
 	default:
 		break;

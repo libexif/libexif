@@ -132,7 +132,8 @@ gtk_exif_entry_generic_new (ExifEntry *e)
 	label = gtk_label_new ("Format:");
 	gtk_widget_show (label);
 	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1, 0, 0, 0, 0);
-	txt = g_strdup_printf ("%i", e->format);
+	txt = g_strdup_printf ("%i ('%s')", e->format,
+			       exif_format_get_name (e->format));
 	label = gtk_label_new (txt);
 	g_free (txt);
 	gtk_widget_show (label);

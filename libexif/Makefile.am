@@ -8,6 +8,7 @@ libexif_la_SOURCES =		\
 	exif-content.c		\
 	exif-data.c		\
 	exif-entry.c		\
+	exif-format.c		\
 	exif-i18n.h		\
 	exif-tag.c		\
 	exif-utils.c
@@ -17,6 +18,7 @@ libexifinclude_HEADERS = 	\
 	exif-content.h		\
 	exif-data.h		\
 	exif-entry.h		\
+	exif-format.h		\
 	exif-result.h		\
 	exif-tag.h		\
 	exif-utils.h

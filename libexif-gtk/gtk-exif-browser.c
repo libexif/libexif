@@ -34,13 +34,16 @@
 #include "gtk-exif-tree.h"
 #include "gtk-exif-content-list.h"
 #include "gtk-exif-entry-ascii.h"
+#include "gtk-exif-entry-copyright.h"
 #include "gtk-exif-entry-date.h"
 #include "gtk-exif-entry-exposure.h"
 #include "gtk-exif-entry-flash.h"
 #include "gtk-exif-entry-generic.h"
 #include "gtk-exif-entry-light.h"
 #include "gtk-exif-entry-meter.h"
+#include "gtk-exif-entry-number.h"
 #include "gtk-exif-entry-orientation.h"
+#include "gtk-exif-entry-rational.h"
 #include "gtk-exif-entry-resolution.h"
 #include "gtk-exif-entry-sensing.h"
 #include "gtk-exif-entry-version.h"
@@ -215,6 +218,9 @@ gtk_exif_browser_show_entry (GtkExifBrowser *browser, ExifEntry *entry)
 	case EXIF_TAG_FLASH_PIX_VERSION:
 		w = gtk_exif_entry_version_new (entry);
 		break;
+	case EXIF_TAG_COPYRIGHT:
+		w = gtk_exif_entry_copyright_new (entry);
+		break;
 	case EXIF_TAG_FLASH:
 		w = gtk_exif_entry_flash_new (entry);
 		break;
@@ -259,7 +265,21 @@ gtk_exif_browser_show_entry (GtkExifBrowser *browser, ExifEntry *entry)
 		w = gtk_exif_entry_date_new (entry);
 		break;
 	default:
-		w = gtk_exif_entry_generic_new (entry);
+		switch (entry->format) {
+		case EXIF_FORMAT_RATIONAL:
+		case EXIF_FORMAT_SRATIONAL:
+			w = gtk_exif_entry_rational_new (entry);
+			break;
+		case EXIF_FORMAT_BYTE:
+		case EXIF_FORMAT_SHORT:
+		case EXIF_FORMAT_LONG:
+		case EXIF_FORMAT_SLONG:
+			w = gtk_exif_entry_number_new (entry);
+			break;
+		default:
+			w = gtk_exif_entry_generic_new (entry);
+			break;
+		}
 		break;
 	}
 	gtk_widget_show (w);
@@ -299,11 +319,11 @@ on_tag_selected (GtkExifTagMenu *menu, ExifTag tag, GtkExifBrowser *browser)
 	ExifEntry *entry;
 
 	entry = exif_entry_new ();
-	exif_entry_initialize (entry, tag);
 	exif_content_add_entry (browser->priv->list->content, entry);
-	exif_entry_unref (entry);
+	exif_entry_initialize (entry, tag);
 	gtk_exif_content_list_add_entry (browser->priv->list, entry);
 	gtk_exif_browser_show_entry (browser, entry);
+	exif_entry_unref (entry);
 }
 
 static void
