@@ -109,6 +109,8 @@ exif_content_add_entry (ExifContent *content, ExifEntry *entry)
 	entry->parent = content;
 	content->entries = realloc (content->entries,
 				    sizeof (ExifEntry) * (content->count + 1));
+	if (!content->entries)
+	  	return;
 	content->entries[content->count] = entry;
 	exif_entry_ref (entry);
 	content->count++;
@@ -132,6 +134,7 @@ exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 	c->count--;
 	e->parent = NULL;
 	exif_entry_unref (e);
+	c->entries = realloc(c->entries,sizeof(ExifEntry) * c->count);
 }
 
 ExifEntry *
