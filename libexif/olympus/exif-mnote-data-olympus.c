@@ -80,9 +80,9 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	 * Allocate enough memory for all entries and the number of entries.
 	 */
 	*buf_size = 6 + 2 + 2 + n->count * 12;
-	*buf = malloc (sizeof (char) * *buf_size);
+	*buf = malloc (*buf_size);
 	if (!*buf) return;
-	memset (*buf, 0, sizeof (char) * *buf_size);
+	memset (*buf, 0, *buf_size);
 
 	/* Write the header and the number of entries. */
 	strcpy (*buf, "OLYMP");
@@ -102,16 +102,15 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 						n->entries[i].components;
 		if (s > 4) {
 			*buf_size += s;
-			*buf = realloc (*buf, sizeof (char) * *buf_size);
+			*buf = realloc (*buf, *buf_size);
 			if (!*buf) return;
 			doff = *buf_size - s;
 			exif_set_long (*buf + o, n->order, n->offset + doff);
 		} else
 			doff = o;
 
-		/* Write the data. Fill unneeded bytes with 0. */
+		/* Write the data. */
 		memcpy (*buf + doff, n->entries[i].data, s);
-		if (s < 4) memset (*buf + doff + s, 0, (4 - s));
 	}
 }
 
@@ -137,15 +136,15 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	c = exif_get_short (buf + 6 + n->offset + 8, n->order);
 	exif_mnote_data_olympus_clear (n);
 
+	n->entries = malloc (sizeof (MnoteOlympusEntry) * c);
+	memset (&n->entries, 0, sizeof (MnoteOlympusEntry) * c);
+
 	/* Parse the entries */
 	for (i = 0; i < c; i++) {
 	    o = 6 + n->offset + 8 + 2 + 12 * i;
 	    if (o + 12 > buf_size) return;
 
 	    n->count = i + 1;
-	    n->entries = realloc (n->entries, sizeof (MnoteOlympusEntry) *
-								(i + 1));
-	    memset (&n->entries[i], 0, sizeof (MnoteOlympusEntry));
 	    n->entries[i].tag        = exif_get_short (buf + o, n->order);
 	    n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
 	    n->entries[i].components = exif_get_long (buf + o + 4, n->order);
@@ -163,9 +162,8 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	    if (o + s > buf_size) return;
 
 	    /* Sanity check */
-	    n->entries[i].data = malloc (sizeof (char) * s);
+	    n->entries[i].data = malloc (s);
 	    if (!n->entries[i].data) return;
-	    memset (n->entries[i].data, 0, sizeof (char) * s);
 	    n->entries[i].size = s;
 	    memcpy (n->entries[i].data, buf + o, s);
 	}
