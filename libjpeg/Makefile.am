@@ -1,6 +1,6 @@
 INCLUDES =				\
 	-I$(top_srcdir)/libexif		\
-	-I$(top_srcdir)intl		\
+	-I$(top_srcdir)/intl		\
 	-I$(top_srcdir)
 
 noinst_LTLIBRARIES = libjpeg.la
