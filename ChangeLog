@@ -1,3 +1,7 @@
+2004-06-15  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/olympus/mnote-olympus-entry.c: MNOTE_OLYMPUS_TAG_INFO
+
 2004-06-06  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/olympus/exif-mnote-data-olympus.c: More documentation,
