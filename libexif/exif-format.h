@@ -34,7 +34,7 @@ enum _ExifFormat {
         EXIF_FORMAT_RATIONAL   =  5,
         EXIF_FORMAT_UNDEFINED  =  7,
         EXIF_FORMAT_SLONG      =  9,
-        EXIF_FORMAT_SRATIONAL  = 10,
+        EXIF_FORMAT_SRATIONAL  = 10
 };
 
 const char   *exif_format_get_name (ExifFormat format);

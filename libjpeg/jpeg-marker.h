@@ -20,6 +20,10 @@
 #ifndef __JPEG_MARKER_H__
 #define __JPEG_MARKER_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef enum _JPEGMarker JPEGMarker;
 enum _JPEGMarker {
         JPEG_MARKER_SOF0        = 0xc0,
@@ -92,5 +96,9 @@ enum _JPEGMarker {
 
 const char *jpeg_marker_get_name        (JPEGMarker marker);
 const char *jpeg_marker_get_description (JPEGMarker marker);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __JPEG_MARKER_H__ */

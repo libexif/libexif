@@ -204,12 +204,12 @@ exif_entry_get_value (ExifEntry *e)
 		break;
 	case EXIF_TAG_COPYRIGHT:
 		CF (e->format, EXIF_FORMAT_ASCII, v);
-		if (strlen (e->data))
+		if (strlen ((char *) e->data))
 			strncpy (v, e->data, sizeof (v));
 		else
 			strncpy (v, "[None]", sizeof (v));
 		strncat (v, " (Photographer) - ", sizeof (v));
-		if (strlen (e->data + strlen (e->data) + 1))
+		if (strlen ((char *) e->data + strlen ((char *) e->data) + 1))
 			strncat (v, e->data + strlen (e->data) + 1,
 				 sizeof (v));
 		else
@@ -1474,7 +1474,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = malloc (e->size);
-		snprintf (e->data, e->size, 
+		snprintf ((char *) e->data, e->size, 
 			  "%04i:%02i:%02i %02i:%02i:%02i",
 			  tm->tm_year + 1900, tm->tm_mon, tm->tm_mday,
 			  tm->tm_hour, tm->tm_min, tm->tm_sec);

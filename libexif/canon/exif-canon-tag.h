@@ -21,6 +21,10 @@
 #ifndef __EXIF_CANON_TAG_H__
 #define __EXIF_CANON_TAG_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef enum _ExifCanonTag ExifCanonTag;
 enum _ExifCanonTag {
 	EXIF_CANON_TAG_UNKNOWN_0	= 0x0,
@@ -38,5 +42,9 @@ enum _ExifCanonTag {
 };
 
 const char *exif_canon_tag_get_name (ExifCanonTag tag);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_CANON_TAG_H__ */

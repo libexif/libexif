@@ -66,7 +66,7 @@ exif_note_unref (ExifNote *note)
 	note->priv->ref_count--;
 	if (!note->priv->ref_count)
 		exif_note_free (note);
-};
+}
 
 void
 exif_note_free (ExifNote *note)

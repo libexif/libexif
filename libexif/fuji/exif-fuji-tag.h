@@ -21,6 +21,10 @@
 #ifndef __EXIF_FUJI_TAG_H__
 #define __EXIF_FUJI_TAG_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef enum _ExifFujiTag ExifFujiTag;
 enum _ExifFujiTag {
 	EXIF_FUJI_TAG_VERSION			= 0x0000,
@@ -44,5 +48,9 @@ enum _ExifFujiTag {
 };
 
 const char *exif_fuji_tag_get_name (ExifFujiTag tag);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_FUJI_TAG_H__ */

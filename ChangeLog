@@ -1,3 +1,8 @@
+2002-06-26  Lutz Müller <lutz@users.sourceforge.net>
+
+	Patch by Jos van den Oever <oever@fenk.wau.nl>: Make libexif c++
+	friendly.
+
 2002-06-14  Lutz Müller <lutz@users.sourceforge.net>
 
 	* configure.in: Correct -version-info.

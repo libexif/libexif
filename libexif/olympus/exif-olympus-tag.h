@@ -21,6 +21,10 @@
 #ifndef __EXIF_OLYMPUS_TAG_H__
 #define __EXIF_OLYMPUS_TAG_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef enum _ExifOlympusTag ExifOlympusTag;
 enum _ExifOlympusTag {
 	EXIF_OLYMPUS_TAG_MODE		= 0x0200,
@@ -37,5 +41,9 @@ enum _ExifOlympusTag {
 };
 
 const char *exif_olympus_tag_get_name (ExifOlympusTag tag);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_OLYMPUS_TAG_H__ */
