@@ -164,7 +164,7 @@ static struct {
   { EXIF_TAG_WHITE_BALANCE,
     { N_("Auto white balance"), N_("Manual white balance"), NULL}},
   { EXIF_TAG_SCENE_CAPTURE_TYPE,
-    { N_("Stanard"), N_("Landscape"), N_("Portrait"),
+    { N_("Standard"), N_("Landscape"), N_("Portrait"),
       N_("Night scene"), NULL}},
   { EXIF_TAG_GAIN_CONTROL,
     { N_("Normal"), N_("Low gain up"), N_("High gain up"),
