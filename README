@@ -50,13 +50,6 @@ LIBRARIES
 I know of the following libraries that use or have been inspired by libexif:
  - pel: PHP-Code (http://pel.sourceforge.net)
 
-BUGS
-----
-
-libexif includes a 'libjpeg' that is 'educational code to illustrate the
-syntax of JPEG files'. Please ignore it. It is a bug that it is 
-distributed, but I think it may be useful for other people.
-
 TODO
 ----
 

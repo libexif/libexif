@@ -28,8 +28,6 @@
 #include <libexif/exif-loader.h>
 #include <libexif/exif-log.h>
 
-#include <libjpeg/jpeg-marker.h>
-
 #include <libexif/olympus/exif-mnote-data-olympus.h>
 #include <libexif/canon/exif-mnote-data-canon.h>
 #include <libexif/pentax/exif-mnote-data-pentax.h>
@@ -44,6 +42,13 @@
 #if defined(__WATCOMC__) || defined(_MSC_VER)
 #      define strncasecmp strnicmp
 #endif
+
+#undef JPEG_MARKER_SOI
+#define JPEG_MARKER_SOI  0xd8
+#undef JPEG_MARKER_APP0
+#define JPEG_MARKER_APP0 0xe0
+#undef JPEG_MARKER_APP1
+#define JPEG_MARKER_APP1 0xe1
 
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 

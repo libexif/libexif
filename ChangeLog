@@ -1,3 +1,14 @@
+2005-03-29  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libjpeg: Removed.
+	* README
+	* Makefile.am
+	* configure.in
+	* libexif/exif-loader.c
+	* libexif/exif-data.c: Remove references to libjpeg.
+	* test/test-tree.c: Removed.
+	* test/Makefile.am: Remove test-tree
+
 2005-03-16  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-entry.c (exif_entry_get_value): Fix tag COPYRIGHT.

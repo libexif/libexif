@@ -75,7 +75,6 @@ dnl Compiler/Linker Options and Warnings
 dnl ---------------------------------------------------------------------------
 AM_CFLAGS="$AM_CFLAGS -I\$(top_srcdir)"
 AM_CFLAGS="$AM_CFLAGS -I\$(top_srcdir)/libexif"
-AM_CFLAGS="$AM_CFLAGS -I\$(top_srcdir)/libjpeg"
 AM_LDFLAGS="$LDFLAGS"
 if test "x$GCC" = "xyes"; then
     AM_CFLAGS="$AM_CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
@@ -96,7 +95,6 @@ AC_CONFIG_FILES([
   libexif/canon/Makefile
   libexif/olympus/Makefile
   libexif/pentax/Makefile
-  libjpeg/Makefile
   test/Makefile
   test/nls/Makefile
   m4/Makefile

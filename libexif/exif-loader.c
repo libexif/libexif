@@ -7,7 +7,16 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <libjpeg/jpeg-marker.h>
+#undef JPEG_MARKER_SOI
+#define JPEG_MARKER_SOI  0xd8
+#undef JPEG_MARKER_APP0
+#define JPEG_MARKER_APP0 0xe0
+#undef JPEG_MARKER_APP1
+#define JPEG_MARKER_APP1 0xe1
+#undef JPEG_MARKER_APP13
+#define JPEG_MARKER_APP13 0xed
+#undef JPEG_MARKER_COM
+#define JPEG_MARKER_COM 0xfe
 
 typedef enum {
 	EL_READ = 0,

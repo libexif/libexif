@@ -1,4 +1,4 @@
-SUBDIRS = m4 po libexif libjpeg test
+SUBDIRS = m4 po libexif test
 
 EXTRA_DIST = @PACKAGE_TARNAME@.spec
 
