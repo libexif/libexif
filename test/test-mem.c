@@ -32,7 +32,7 @@ main (int argc, char **argv)
 {
 	ExifData *ed;
 	ExifEntry *e;
-	unsigned char *eb;
+	unsigned char *eb, size[2];
 	unsigned int ebs;
 	ExifLoader *loader;
 	unsigned int i;
@@ -66,6 +66,9 @@ main (int argc, char **argv)
 
 	printf ("Writing %i byte(s) EXIF data to loader...\n", ebs);
 	loader = exif_loader_new ();
+	size[0] = ebs;
+	size[1] = ebs << 8;
+	exif_loader_write (loader, size, 2);
 	for (i = 0; i < ebs && exif_loader_write (loader, eb + i, 1); i++);
 	printf ("Wrote %i byte(s).\n", i);
 	free (eb);

@@ -1,5 +1,9 @@
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* test/test-mem.c: Write size to loader to make the test work again.
+
+2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/canon/exif-mnote-data-canon.c (exif_mnote_data_canon_save):
 		Ensure even offsets.
 
