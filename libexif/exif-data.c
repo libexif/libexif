@@ -658,13 +658,37 @@ exif_data_unref (ExifData *data)
 void
 exif_data_free (ExifData *data)
 {
-	if (data->ifd0)
+	if (!data)
+		return;
+
+	if (data->ifd0) {
 		exif_content_unref (data->ifd0);
-	if (data->ifd1)
+		data->ifd0 = NULL;
+	}
+	if (data->ifd1) {
 		exif_content_unref (data->ifd1);
-	if (data->data)
+		data->ifd1 = NULL;
+	}
+	if (data->ifd_exif) {
+		exif_content_unref (data->ifd_exif);
+		data->ifd_exif = NULL;
+	}
+	if (data->ifd_gps) {
+		exif_content_unref (data->ifd_gps);
+		data->ifd_gps = NULL;
+	}
+	if (data->ifd_interoperability) {
+		exif_content_unref (data->ifd_interoperability);
+		data->ifd_interoperability = NULL;
+	}
+	if (data->data) {
 		free (data->data);
-	free (data->priv);
+		data->data = NULL;
+	}
+	if (data->priv) {
+		free (data->priv);
+		data->priv = NULL;
+	}
 	free (data);
 }
 

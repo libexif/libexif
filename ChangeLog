@@ -1,3 +1,9 @@
+2002-07-25  Lutz Müller <lutz@users.sourceforge.net>
+
+	Patch by Takuro Ashie <makeinu@users.sourceforge.net>:
+
+	* libexif/exif-data.c: Plug memory leak.
+
 2002-07-10  Lutz Müller <lutz@users.sourceforge.net>
 
 	Bug spotted by Andres <aplaza@smalcamera.com>:
