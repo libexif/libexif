@@ -1,3 +1,4 @@
 ChangeLog
 *.gmo
 libexif.pot
+po/Makevars
