@@ -6,11 +6,11 @@ dnl Parameters:
 dnl
 dnl    VARNAMEPART            partial variable name for variable definitions
 dnl    libname                name of library
+dnl    VERSION-REQUIREMENT    check for the version using pkg-config
+dnl                           default: []
 dnl    headername             name of header file
 dnl                           default: []
 dnl    functionname           name of function name in library
-dnl                           default: []
-dnl    VERSION-REQUIREMENT    check for the version using pkg-config
 dnl                           default: []
 dnl    ACTION-IF-FOUND        shell action to execute if found
 dnl                           default: []
@@ -79,8 +79,11 @@ fi
 dnl
 AC_DEFUN([_GP_CHECK_LIBRARY],[
 # ----------------------------------------------------------------------
-# [GP_CHECK_LIBRARY]([$1],[$2],[$3],[$4],[$5],[...],[...],[$8])
-m4_if([$9],[],[],[# $9
+# [GP_CHECK_LIBRARY]([$1],[$2],[$3],
+#                    [$4],[$5],
+#                    [...],[...],[$8])
+m4_ifval([$9],[dnl
+# $9
 ])dnl
 # ----------------------------------------------------------------------
 dnl
@@ -106,9 +109,9 @@ if test "x${[$1][_LIBS]}" = "x" && test "x${[$1][_CFLAGS]}" = "x"; then
 	AC_MSG_RESULT([${try_][$1][}])
 	m4_popdef([gp_lib_arg])dnl
 	if test "x${[try_][$1]}" = "xautodetect"; then
-		m4_if([$3],[],
-			[PKG_CHECK_MODULES([$1],[$2],     [have_][$1][=yes])],
-			[PKG_CHECK_MODULES([$1],[$2][ $3],[have_][$1][=yes])]
+		m4_ifval([$3],
+			[PKG_CHECK_MODULES([$1],[$2][ $3],[have_][$1][=yes])],
+			[PKG_CHECK_MODULES([$1],[$2],     [have_][$1][=yes])]
 		)dnl
 		if test "x${[have_][$1]}" = "xno"; then
 			ifs="$IFS"
@@ -161,30 +164,54 @@ else
 * or neither.
 ])
 fi
+dnl
+dnl ACTION-IF-FOUND
+dnl
+m4_ifval([$6],[dnl
 if test "x${[have_][$1]}" = "xyes"; then
-	# ACTION-IF-FOUND
-	m4_if([$4],[],[:],[$4])
-elif test "x${[have_][$1]}" = "xno"; then
-	# ACTION-IF-NOT-FOUND
-	m4_if([$5],[],[:],[$5])
-fi
-m4_if([$4],[],[],[dnl
-if test "x${[have_][$1]}" = "xyes"; then
-AC_MSG_CHECKING([whether ][$2][ test compile succeeds])
-AC_CHECK_HEADER([$4],[],[have_][$1][=no])
-AC_MSG_RESULT([${[have_][$1]}])
+# ACTION-IF-FOUND
+$6
 fi
 ])dnl
-m4_if([$5],[],[],[dnl
-if test "x${[have_][$1]}" = "xyes"; then
-AC_MSG_CHECKING([whether ][$2][ test link succeeds])
-libs="$LIBS"
-LIBS="${[$1]_LIBS}"
-AC_TRY_LINK_FUNC([$5],[],[have_][$1][=no])
-LIBS="$libs"
-AC_MSG_RESULT([${[have_][$1]}])
+dnl
+dnl ACTION-IF-NOT-FOUND
+dnl
+m4_ifval([$7],[dnl
+if test "x${[have_][$1]}" = "xno"; then
+# ACTION-IF-NOT-FOUND
+$7
 fi
 ])dnl
+dnl
+dnl Run our own test compilation
+dnl
+m4_ifval([$4],[dnl
+if test "x${[have_][$1]}" = "xyes"; then
+dnl AC_MSG_CHECKING([whether ][$2][ test compile succeeds])
+dnl AC_MSG_RESULT([${[have_][$1]}])
+CPPFLAGS_save="$CPPFLAGS"
+CPPFLAGS="${[$1]_CFLAGS}"
+AC_CHECK_HEADER([$4],[have_][$1][=yes],[have_][$1][=no])
+CPPFLAGS="$CPPFLAGS_save"
+fi
+])dnl
+dnl
+dnl Run our own test link
+dnl    Does not work for *.la libs, so we deactivated it.
+dnl
+dnl m4_ifval([$5],[dnl
+dnl if test "x${[have_][$1]}" = "xyes"; then
+dnl AC_MSG_CHECKING([whether ][$2][ test link succeeds])
+dnl LDFLAGS_save="$LDFLAGS"
+dnl LDFLAGS="${[$1]_LIBS}"
+dnl AC_TRY_LINK_FUNC([$5],[],[have_][$1][=no])
+dnl LDFLAGS="$LDFLAGS_save"
+dnl AC_MSG_RESULT([${[have_][$1]}])
+dnl fi
+dnl ])dnl
+dnl
+dnl Abort configure script if mandatory, but not found
+dnl
 m4_if([$8],[mandatory],[
 if test "x${[have_][$1]}" = "xno"; then
 	AC_MSG_ERROR([
@@ -198,7 +225,7 @@ PKG_CONFIG_PATH=${PKG_CONFIG_PATH}
 *   - set PKG_CONFIG_PATH to adequate value
 *   - call configure with [$1][_LIBS]=.. and [$1][_CFLAGS]=..
 *   - call configure with one of the --with-$2 parameters
-]m4_if([$9],[],[dnl
+]m4_ifval([$9],[dnl
 *   - get $2 and install it
 ],[dnl
 *   - get $2 and install it:
@@ -224,9 +251,9 @@ dnl
 dnl ####################################################################
 dnl
 AC_DEFUN([_GP_CHECK_LIBRARY_SYNTAX_ERROR],[dnl
-m4_errprint([
-Calling $0 macro with old syntax
-Aborting.
+m4_errprint(__file__:__line__:[ Error:
+*** Calling $0 macro with old syntax
+*** Aborting.
 ])dnl
 m4_exit(1)dnl
 ])dnl
@@ -245,7 +272,8 @@ m4_if([$8], [], [dnl
       _GP_CHECK_LIBRARY([$1],[$2],[$3],[$4],[$5],[$6],[$7],[$8],[$9])],
       [$8], [mandatory], [dnl
       _GP_CHECK_LIBRARY([$1],[$2],[$3],[$4],[$5],[$6],[$7],[$8],[$9])],
-      [m4_errprint([Illegal argument 6 to $0
+      [m4_errprint(__file__:__line__:[ Error:
+Illegal argument 6 to $0: `$6'
 It must be one of "default-on", "default-off", "mandatory".
 ])m4_exit(1)])dnl
 ])dnl
