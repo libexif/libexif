@@ -27,7 +27,9 @@
 extern "C" {
 #endif /* __cplusplus */
 
+/* Should work like calloc: Needs to return initialized memory. */
 typedef void * (* ExifMemAllocFunc)   (ExifLong);
+
 typedef void * (* ExifMemReallocFunc) (void *, ExifLong);
 typedef void   (* ExifMemFreeFunc)    (void *);
 
