@@ -53,9 +53,10 @@ EOF
 init_vars() {
     dir="$1"
     echo -n "Looking for \`${dir}/configure.{ac,in}'..."
+    # There are shells which don't understand {,} wildcards
     CONFIGURE_AC=""
-    for tmp in "${dir}/configure".{ac,in}; do
-	if test -s "$tmp"; then
+    for tmp in "${dir}/configure.ac" "${dir}/configure.in"; do
+	if test -f "$tmp"; then
 	    CONFIGURE_AC="$tmp"
 	    echo " $tmp"
 	    break
@@ -67,7 +68,12 @@ init_vars() {
     fi
 
     if "$debug"; then
-	AUTORECONF_OPTS="$AUTORECONF_OPTS --verbose -Wall"
+	if test "$(uname -o)" = "Cygwin"; then
+	    # Cygwin autoreconf doesn't understand -Wall
+	    AUTORECONF_OPTS="$AUTORECONF_OPTS --verbose"
+	else
+	    AUTORECONF_OPTS="$AUTORECONF_OPTS --verbose -Wall"
+	fi
     fi
 
     echo -n "Initializing variables for \`${dir}'..."
@@ -136,7 +142,7 @@ EOF
 clean() {
     dir="$1"
     if test "x$AG_GEN_FILES" = "x"; then echo "Internal error"; exit 2; fi
-    echo "$self clean: Entering \`${dir}'"
+    echo "$self:clean: Entering directory \`${dir}'"
 (
 if cd "$dir"; then
     echo -n "Cleaning autogen generated files..."
@@ -160,9 +166,9 @@ if cd "$dir"; then
     echo -n "Removing *~ backup files..."
     find . -type f -name '*~' -exec rm -f {} \;
     echo " done."
-    echo "$self clean: Leaving \`${dir}'"
 fi
 )
+    echo "$self:clean: Left directory \`${dir}'"
 }
 
 
@@ -172,8 +178,11 @@ fi
 init() {
     dir="$1"
     if test "x$AG_GEN_FILES" = "x"; then echo "Internal error"; exit 2; fi
-    echo "Running <<" autoreconf --install --symlink ${AUTORECONF_OPTS} "$CONFIGURE_AC" ">>"
-    if autoreconf --install --symlink ${AUTORECONF_OPTS} "$CONFIGURE_AC"; then
+    echo "$self:init: Entering directory \`${dir}'"
+(
+if cd "${dir}"; then
+    echo "Running <<" autoreconf --install --symlink ${AUTORECONF_OPTS} ">>"
+    if autoreconf --install --symlink ${AUTORECONF_OPTS}; then
 	:; else
 	status="$?"
 	echo "autoreconf quit with exit code $status, aborting."
@@ -181,6 +190,16 @@ init() {
     fi    
     echo "You may run ./configure now in \`${dir}'."
     echo "Run as \"./configure --help\" to find out about config options."
+else
+    exit "$?"
+fi
+)
+    # Just error propagation
+    status="$?"
+    echo "$self:init: Left directory \`${dir}'"
+    if test "$status" -ne "0"; then
+	exit "$status"
+    fi
 }
 
 
@@ -193,9 +212,8 @@ commands="init" # default command in case none is given
 pcommands=""
 dirs="$(dirname "$0")"
 pdirs=""
-while :; do
-    param="$1"
-    if shift; then
+# Yes, unquoted $@ isn't space safe, but it works with simple shells.
+for param in $@; do
 	case "$param" in
 	    --clean)
 		pcommands="$pcommands clean"
@@ -218,9 +236,6 @@ while :; do
 		pdirs="${pdirs} ${param}"
 		;;
 	esac
-    else
-	break
-    fi
 done
 if test "x$pcommands" != "x"; then
     # commands given on command line? use them!
