@@ -6,7 +6,8 @@ Source: http://prdownloads.sourceforge.net/libexif/%{name}-%{version}.tar.gz
 Url: http://sourceforge.net/projects/libexif/
 Group: System Environment/Libraries
 Copyright: GPL
-Packager: Mark Pulford <mark@kyne.com.au>
+# replaced Packager: header, as most people making packages will be somebody
+# else. original spec file author is Mark Pulford <mark@kyne.com.au>
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Prefix: %{_prefix}
 
