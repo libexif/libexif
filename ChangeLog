@@ -1,5 +1,11 @@
 2004-10-05  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-data.c: Support for WatCom. Convert debugging code
+	  to exif-log API.
+	* libexif/i18n.h: Support for WatCom. Patch by Angela Wrobel.
+
+2004-10-05  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* contrib/watcom: Files contributed by Angela Wrobel.
 
 2004-10-04  Lutz Mueller <lutz@users.sourceforge.net>

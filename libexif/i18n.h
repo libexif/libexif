@@ -35,8 +35,13 @@
 #  define gettext(String) (String)
 #  define dgettext(Domain,Message) (Message)
 #  define dcgettext(Domain,Message,Type) (Message)
-#  define bind_textdomain_codeset(Domain,Codeset) (Codeset)
-#  define bindtextdomain(Domain,Directory) (Domain)
+#ifdef __WATCOMC__
+#    define bind_textdomain_codeset(Domain,Codeset)
+#    define bindtextdomain(Domain,Directory)
+#else
+#    define bind_textdomain_codeset(Domain,Codeset) (Codeset)
+#    define bindtextdomain(Domain,Directory) (Domain)
+#endif
 #  define _(String) (String)
 #  define N_(String) (String)
 #endif

@@ -40,7 +40,9 @@
 #undef MAX
 #define MAX(a, b)  (((a) > (b)) ? (a) : (b))
 
-/* #define DEBUG */
+#ifdef __WATCOMC__
+#      define strncasecmp strnicmp
+#endif
 
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 
@@ -166,6 +168,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 		memcpy (entry->data, d + doff, s);
 	}
 
+#ifndef EXIF_DONT_CHANGE_MAKER_NOTE
 	/* If this is the MakerNote, remember the offset */
 	if (entry->tag == EXIF_TAG_MAKER_NOTE) {
 		if (entry->size > 6) exif_log (data->priv->log,
@@ -177,6 +180,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 			  entry->data[6]);
 		data->priv->offset_mnote = doff;
 	}
+#endif
 
 	exif_entry_fix (entry);
 }
@@ -300,9 +304,6 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 					data->ifd[EXIF_IFD_INTEROPERABILITY], d, ds, o);
 				break;
 			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
-#ifdef DEBUG
-				printf ("Thumbnail at %i.\n", (int) o);
-#endif
 				thumbnail_offset = o;
 				if (thumbnail_offset && thumbnail_length)
 					exif_data_load_data_thumbnail (data, d,
@@ -310,9 +311,6 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 						thumbnail_length);
 				break;
 			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH:
-#ifdef DEBUG
-				printf ("Thumbnail size: %i.\n", (int) o);
-#endif
 				thumbnail_length = o;
 				if (thumbnail_offset && thumbnail_length)
 					exif_data_load_data_thumbnail (data, d,
@@ -402,12 +400,10 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			(ExifShort) (ifd->count + n_ptr + n_thumb));
 	offset += 2;
 
-#ifdef DEBUG
-	printf ("Saving %i entries (IFD '%s', offset: %i)...\n",
-		ifd->count, exif_ifd_get_name (i), offset);
-#endif
-
 	/* Save each entry */
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+		  "Saving %i entries (IFD '%s', offset: %i)...",
+		  ifd->count, exif_ifd_get_name (i), offset);
 	for (j = 0; j < ifd->count; j++)
 		exif_data_save_data_entry (data, ifd->entries[j],
 				d, ds, offset + 12 * j);
@@ -502,11 +498,6 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			}
 			memcpy (*d + *ds - data->size, data->data, data->size);
 			offset += 12;
-#ifdef DEBUG
-			printf ("Wrote %i bytes of thumbnail data at offset "
-				"%i.\n", data->size, *ds - data->size);
-			printf ("We currently have %i bytes EXIF data.\n", *ds);
-#endif
 
 			/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH */
 			exif_set_short (*d + 6 + offset + 0, data->priv->order,
@@ -561,20 +552,14 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	 * not, search the EXIF marker.
 	 */
 	if (ds < 6) {
-#ifdef DEBUG
-		printf ("Size too small.\n");
-#endif
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+		          "Size too small.");
 		return;
 	}
 	if (!memcmp (d, ExifHeader, 6)) {
-#ifdef DEBUG
-		printf ("Found EXIF header.\n");
-#endif
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+			  "Found EXIF header.");
 	} else {
-#ifdef DEBUG
-		printf ("Data begins with 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x "
-			"0x%x...\n", d[0], d[1], d[2], d[3], d[4], d[5], d[6]);
-#endif
 		while (1) {
 			while ((d[0] == 0xff) && ds) {
 				d++;
@@ -605,23 +590,21 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 				break;
 
 			/* Unknown marker or data. Give up. */
-#ifdef DEBUG
-			printf ("EXIF marker not found.\n");
-#endif
+			exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
+				  "ExifData", "EXIF marker not found.");
 			return;
 		}
 		d++;
 		ds--;
 		if (ds < 2) {
-#ifdef DEBUG
-			printf ("Size too small.\n");
-#endif
+			exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
+				  "ExifData", "Size too small.");
 			return;
 		}
 		len = (d[0] << 8) | d[1];
-#ifdef DEBUG
-		printf ("We have to deal with %i byte(s) of EXIF data.\n", len);
-#endif
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+			  "We have to deal with %i byte(s) of EXIF data.",
+			  len);
 		d += 2;
 		ds -= 2;
 	}
@@ -631,21 +614,18 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	 * (offset 2, length 6).
 	 */
 	if (ds < 6) {
-#ifdef DEBUG
-		printf ("Size too small.\n");
-#endif
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+			  "Size too small.");
 		return;
 	}
 	if (memcmp (d, ExifHeader, 6)) {
-#ifdef DEBUG
-		printf ("EXIF header not found.\n");
-#endif
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+			  "EXIF header not found.");
 		return;
 	}
 
-#ifdef DEBUG
-	printf ("Found EXIF header.\n");
-#endif
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+		  "Found EXIF header.");
 
 	/* Byte order (offset 6, length 2) */
 	if (ds < 12)
@@ -663,9 +643,8 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 
 	/* IFD 0 offset */
 	offset = exif_get_long (d + 10, data->priv->order);
-#ifdef DEBUG
-	printf ("IFD 0 at %i.\n", (int) offset);
-#endif
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData", 
+		  "IFD 0 at %i.", (int) offset);
 
 	/* Parse the actual exif data (offset 14) */
 	exif_data_load_data_content (data, data->ifd[EXIF_IFD_0], d + 6,
@@ -675,15 +654,13 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	n = exif_get_short (d + 6 + offset, data->priv->order);
 	offset = exif_get_long (d + 6 + offset + 2 + 12 * n, data->priv->order);
 	if (offset) {
-#ifdef DEBUG
-		printf ("IFD 1 at %i.\n", (int) offset);
-#endif
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+			  "IFD 1 at %i.", (int) offset);
 
 		/* Sanity check. */
 		if (offset > ds - 6) {
-#ifdef DEBUG
-			printf ("Bogus offset!\n");
-#endif
+			exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, 
+				  "ExifData", "Bogus offset!");
 			return;
 		}
 
@@ -771,15 +748,12 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 	exif_set_long (*d + 10, data->priv->order, 8);
 
 	/* Now save IFD 0. IFD 1 will be saved automatically. */
-#ifdef DEBUG
-	printf ("Saving IFDs...\n");
-#endif
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+		  "Saving IFDs...");
 	exif_data_save_data_content (data, data->ifd[EXIF_IFD_0], d, ds,
 				     *ds - 6);
-
-#ifdef DEBUG
-	printf ("Saved %i byte(s) EXIF data.\n", *ds);
-#endif
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+		  "Saved %i byte(s) EXIF data.", *ds);
 }
 
 ExifData *
