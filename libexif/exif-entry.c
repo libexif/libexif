@@ -569,7 +569,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 
 	/* We need the byte order */
 	if (!e || !e->parent || !e->parent->parent)
-		return NULL;
+		return val;
 	o = exif_data_get_byte_order (e->parent->parent);
 
 	memset (val, 0, maxlen);
@@ -697,7 +697,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) return NULL;
+		if (!v_rat.denominator) return val;
 		snprintf (val, maxlen, "f/%.01f", (float) v_rat.numerator /
 						    (float) v_rat.denominator);
 		break;
@@ -705,7 +705,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) return NULL;
+		if (!v_rat.denominator) return val;
 		snprintf (val, maxlen, "f/%.01f",
 			  pow (2 , ((float) v_rat.numerator /
 				    (float) v_rat.denominator) / 2.));
@@ -714,7 +714,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) return NULL;
+		if (!v_rat.denominator) return val;
 
 		/*
 		 * For calculation of the 35mm equivalent,
@@ -750,7 +750,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) return NULL;
+		if (!v_rat.denominator) return val;
 		snprintf (val, maxlen, "%.1f m", (float) v_rat.numerator /
 						   (float) v_rat.denominator);
 		break;
@@ -758,7 +758,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) return NULL;
+		if (!v_rat.denominator) return val;
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
 		if (d < 1)
 			snprintf (val, maxlen, _("1/%d"),
@@ -772,7 +772,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
-		if (!v_srat.denominator) return NULL;
+		if (!v_srat.denominator) return val;
 		snprintf (val, maxlen, "%.0f/%.0f", (float) v_srat.numerator,
 			  (float) v_srat.denominator);
 		if (maxlen > strlen (val) + strlen (_(" sec.")))
@@ -821,8 +821,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
-		if (!v_srat.denominator)
-			return NULL;
+		if (!v_srat.denominator) return val;
 		snprintf (val, maxlen, "%s%.01f",
 			  v_srat.denominator * v_srat.numerator > 0 ? "+" : "",
 			  (double) v_srat.numerator /

@@ -612,7 +612,7 @@ exif_data_get_type_maker_note (ExifData *d)
 	if (!em) return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
 
 	/* Canon */
-	if (!strcmp (exif_entry_get_value (em, value, sizeof(value)), "Canon"))
+	if (!strcmp (exif_entry_get_value (em, value, sizeof (value)), "Canon"))
 		return EXIF_DATA_TYPE_MAKER_NOTE_CANON;
 
 	/* Pentax & some variant of Nikon */
