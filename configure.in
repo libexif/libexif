@@ -51,7 +51,6 @@ AC_OUTPUT([
   test/Makefile
   libexif/libexif.pc
   po/Makefile.in
-  intl/Makefile
 ])
 
 echo "
