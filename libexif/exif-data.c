@@ -150,7 +150,10 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *entry,
 			       data->priv->order, doff);
 	} else
 		doff = offset + 8;
+
+	/* Write the data. Fill unneeded bytes with 0. */
 	memcpy (*d + 6 + doff, entry->data, entry->size);
+	if (s < 4) memset (*d + 6 + doff + s, 0, (4 - s));
 }
 
 static void
