@@ -3,7 +3,7 @@ AC_INIT([EXIF library], [0.6.12], [libexif-devel@lists.sourceforge.net], [libexi
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AM_CONFIG_HEADER([config.h])
 AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2])
-AM_GNU_GETTEXT_VERSION([0.14.1])
+GP_CONFIG_MSG([Source code location],[${srcdir}])
 
 dnl ---------------------------------------------------------------------------
 dnl Versioning:
@@ -30,6 +30,17 @@ dnl Create a stdint.h-like file containing size-specific integer definitions
 dnl that will always be available
 AC_NEED_STDINT_H([libexif/_stdint.h])
 
+dnl ---------------------------------------------------------------------------
+dnl Compiler/Linker Warnings
+dnl ---------------------------------------------------------------------------
+if test "x$GCC" = "xyes"; then
+    CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
+    LDFLAGS="$LDFLAGS -g -Wall"
+    AC_SUBST(CFLAGS)
+    AC_SUBST(LDFLAGS)
+fi
+GP_CONFIG_MSG([Compiler],[${CC}])
+
 
 dnl ---------------------------------------------------------------------------
 dnl i18n support
@@ -40,19 +51,14 @@ AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"],
                    [The gettext domain we're using])
 AC_SUBST([GETTEXT_PACKAGE])
 ALL_LINGUAS="de es fr"
+AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT
+NDIM_CONFIG_MSG([Use translations],[${USE_NLS}])
 
 
 dnl ---------------------------------------------------------------------------
-dnl Warnings
+dnl Output files
 dnl ---------------------------------------------------------------------------
-if test "x$GCC" = "xyes"; then
-    CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
-    LDFLAGS="$LDFLAGS -g -Wall"
-    AC_SUBST(CFLAGS)
-    AC_SUBST(LDFLAGS)
-fi
-
 AC_CONFIG_FILES([ 
   intl/Makefile
   po/Makefile.in
@@ -69,11 +75,4 @@ AC_CONFIG_FILES([
 ])
 AC_OUTPUT
 
-echo "
-
-Configuration (libexif):
-
-	Source code location:  ${srcdir}
-	Compiler:              ${CC}
-	Use translations:      ${USE_NLS}
-"
+GP_CONFIG_OUTPUT
