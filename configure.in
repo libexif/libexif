@@ -30,7 +30,7 @@ AC_SUBST([LIBEXIF_VERSION_INFO])
 AC_PROG_CC
 AC_C_CONST
 AM_PROG_LIBTOOL
-AM_CFLAGS="$CFLAGS"
+AM_CPPFLAGS="$CPPFLAGS"
 GP_CONFIG_MSG([Compiler],[${CC}])
 
 
@@ -67,20 +67,23 @@ dnl We cannot use AC_DEFINE_UNQUOTED() for these definitions, as
 dnl we require make to do insert the proper $(datadir) value
 localedir="\$(datadir)/locale"
 AC_SUBST(localedir)
-AM_CFLAGS="$AM_CFLAGS -DLOCALEDIR=\\\"${localedir}\\\""
+AM_CPPFLAGS="$AM_CPPFLAGS -DLOCALEDIR=\\\"${localedir}\\\""
 
 
 dnl ---------------------------------------------------------------------------
 dnl Compiler/Linker Options and Warnings
 dnl ---------------------------------------------------------------------------
-AM_CFLAGS="$AM_CFLAGS -I\$(top_srcdir)"
-AM_CFLAGS="$AM_CFLAGS -I\$(top_srcdir)/libexif"
+AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_srcdir)"
+AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_srcdir)/libexif"
 AM_LDFLAGS="$LDFLAGS"
 if test "x$GCC" = "xyes"; then
-    AM_CFLAGS="$AM_CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
+    AM_CPPFLAGS="$AM_CPPFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
     AM_LDFLAGS="$AM_LDFLAGS -g -Wall"
 fi
-AC_SUBST(AM_CFLAGS)
+
+
+
+AC_SUBST(AM_CPPFLAGS)
 AC_SUBST(AM_LDFLAGS)
 
 
