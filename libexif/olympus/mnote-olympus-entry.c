@@ -179,7 +179,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		CC (entry->components, 4, v, maxlen);
 		vl = exif_get_long (entry->data, entry->order);
 		if ((vl & 0xF0F0F0F0) == 0x30303030) {
-			memcpy (v, entry->data, MIN(maxlen, 4));
+			memcpy (v, entry->data, MIN (maxlen, 4));
 		} else {
 			snprintf (v, maxlen, "%04lx", vl);
 		}

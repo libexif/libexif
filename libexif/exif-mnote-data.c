@@ -52,8 +52,7 @@ exif_mnote_data_free (ExifMnoteData *d)
 {
 	if (!d) return;
 	if (d->priv) {
-		if (d->methods.free)
-			d->methods.free (d);
+		if (d->methods.free) d->methods.free (d);
 		free (d->priv);
 		d->priv = NULL;
 	}
@@ -62,8 +61,7 @@ exif_mnote_data_free (ExifMnoteData *d)
 void
 exif_mnote_data_unref (ExifMnoteData *d)
 {
-	if (!d || !d->priv)
-		return;
+	if (!d || !d->priv) return;
 	if (d->priv->ref_count > 0) d->priv->ref_count--;
 	if (!d->priv->ref_count)
 		exif_mnote_data_free (d);

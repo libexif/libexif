@@ -1,5 +1,5 @@
 INCLUDES =						\
-	-DLIBMNOTE_LOCALEDIR=\""$(datadir)/locale"\"	\
+	-DLIBEXIF_LOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(top_srcdir)					\
 	-I$(top_srcdir)/intl
 

@@ -22,6 +22,7 @@
 #include "mnote-olympus-tag.h"
 
 #include <libexif/i18n.h>
+#include <libexif/exif-utils.h>
 
 #include <stdlib.h>
 
@@ -133,7 +134,7 @@ mnote_olympus_tag_get_title (MnoteOlympusTag t)
 {
 	unsigned int i;
 
-	bindtextdomain (GETTEXT_PACKAGE, LIBMNOTE_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 	for (i = 0; table[i].title; i++) if (table[i].tag == t) break;
 	return (_(table[i].title));
 }
@@ -143,7 +144,8 @@ mnote_olympus_tag_get_description (MnoteOlympusTag t)
 {
 	unsigned int i;
 
-	bindtextdomain (GETTEXT_PACKAGE, LIBMNOTE_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 	for (i = 0; table[i].description; i++) if (table[i].tag == t) break;
+	if (!table[i].description) return NULL;
 	return (_(table[i].description));
 }
