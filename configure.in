@@ -1,7 +1,7 @@
 AC_PREREQ(2.50)
 AC_INIT(libexif/exif-data.h)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(libexif, 0.5.9)
+AM_INIT_AUTOMAKE(libexif, 0.5.10)
 AM_MAINTAINER_MODE
 
 dnl ---------------------------------------------------------------------------
@@ -14,9 +14,9 @@ dnl			 0 if you incremented CURRENT.
 dnl  - CURRENT (Major):  Increment if the interface has additions, changes,
 dnl                      removals.
 dnl ---------------------------------------------------------------------------
-LIBEXIF_AGE=1
-LIBEXIF_REVISION=1
-LIBEXIF_CURRENT=8
+LIBEXIF_AGE=2
+LIBEXIF_REVISION=0
+LIBEXIF_CURRENT=9
 AC_SUBST(LIBEXIF_AGE)
 AC_SUBST(LIBEXIF_REVISION)
 AC_SUBST(LIBEXIF_CURRENT)
