@@ -386,7 +386,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
 
 		/*
-		 * According to Ralf Holzer <rholzer@cmu.edu>,
+		 * According to the specification (V2.1, p 40),
 		 * the user comment field does not have to be 
 		 * NULL terminated.
 		 */

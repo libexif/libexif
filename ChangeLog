@@ -1,5 +1,9 @@
 2004-09-08  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-entry.c: Change comment to point to specification.
+
+2004-09-08  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-entry.c: Redirect error messages to the logging 
 	  mechanism.
 	* libexif/exif-log.h: EXIF_LOG_CODE_CORRUPT_DATA: New.
