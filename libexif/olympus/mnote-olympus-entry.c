@@ -295,17 +295,18 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
 		CC (entry->components, 4, v, maxlen);
 		{
-                        float c,d;
-                        unsigned long a,b;
-                        vr = exif_get_rational (entry->data, entry->order);
-                        a = vr.numerator / vr.denominator;
-                        vr = exif_get_rational (entry->data+8, entry->order);
-                        b = vr.numerator / vr.denominator;
-                        vr = exif_get_rational (entry->data+16, entry->order);
-                        c = (1.0*vr.numerator) / vr.denominator;
-                        vr = exif_get_rational (entry->data+24, entry->order);
-                        d = (1.0*vr.numerator) / vr.denominator;
-                        //printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);                         snprintf (v, sizeof (v), "%ld-%ldmm 1:%3.1f - %3.1f",a,b,c,d);
+			float c,d;
+			unsigned long a,b;
+			vr = exif_get_rational (entry->data, entry->order);
+			a = vr.numerator / vr.denominator;
+			vr = exif_get_rational (entry->data+8, entry->order);
+			b = vr.numerator / vr.denominator;
+			vr = exif_get_rational (entry->data+16, entry->order);
+			c = (1.0*vr.numerator) / vr.denominator;
+			vr = exif_get_rational (entry->data+24, entry->order);
+			d = (1.0*vr.numerator) / vr.denominator;
+                        //printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);
+			snprintf (v, maxlen, "%ld-%ldmm 1:%3.1f - %3.1f",a,b,c,d);
 		}
 		break;
 
