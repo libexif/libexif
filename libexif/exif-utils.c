@@ -83,7 +83,7 @@ exif_array_set_byte_order (ExifFormat f, unsigned char *b, unsigned int n,
 	}
 }
 
-static ExifSShort
+ExifSShort
 exif_get_sshort (const unsigned char *buf, ExifByteOrder order)
 {
 	if (!buf) return 0;
