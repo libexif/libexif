@@ -1,3 +1,11 @@
+2003-08-04  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* po/*.po: Updated.
+	* Makefile.am: Add m4 and intl to SUBDIRS. automake complains
+	  otherwise.
+	* configure.in: Add m4/Makefile. make distcheck complains otherwise.
+	  Version 0.5.12
+
 2003-07-30  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* configure.in: Version 0.5.11

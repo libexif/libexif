@@ -1,7 +1,7 @@
 AC_PREREQ(2.50)
 AC_INIT(libexif/exif-data.h)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(libexif, 0.5.11)
+AM_INIT_AUTOMAKE(libexif, 0.5.12)
 AM_MAINTAINER_MODE
 
 dnl ---------------------------------------------------------------------------
@@ -58,6 +58,9 @@ AC_OUTPUT([
   libexif.spec
   libexif/Makefile
   libjpeg/Makefile
+  intl/Makefile
+  m4/Makefile
+  po/Makefile.in
   test/Makefile
   libexif/libexif.pc
 ])
