@@ -1,11 +1,19 @@
 #!/bin/sh
-# Run this in the directory containing configure.{ac,in}
+# autogen.sh - initialize and clean automake&co based build trees
+#
+# For more detailed info, run "autogen.sh --help" or scroll down to the
+# print_help() function.
+
+
+########################################################################
+# Initial values
 
 debug=false
-
-#AUTORECONF_OPTS=""
-
 self="$(basename "$0")"
+
+
+########################################################################
+# Print help message
 
 print_help() {
     cat<<EOF
@@ -16,7 +24,7 @@ Usage:
 
 Runs given command sequence on all given directories, in sequence.
 If there is no command given, --init is assumed.
-If there is no directory given, the directory of $self is assumed.
+If there is no directory given, the location of $self is assumed.
 
 Commands:
     --help
@@ -31,12 +39,16 @@ Commands:
         ./configure && make && make install
 
 $self depends on automake, autoconf, libtool and gettext.
-To make sure a certain installation of a tool is called by autoreconf, set
-the corresponding environment variable:
-    AUTOCONF, AUTOHEADER, AUTOMAKE, ACLOCAL, AUTOPOINT, LIBTOOLIZE
 
+You may want to set AUTOCONF, AUTOHEADER, AUTOMAKE, ACLOCAL,
+AUTOPOINT, LIBTOOLIZE to use specific version of these tools, and
+AUTORECONF_OPTS to add options to the call to autoreconf.
 EOF
 }
+
+
+########################################################################
+# Initialize variables for configure.{in,ac} in $1
 
 init_vars() {
     dir="$1"
@@ -117,6 +129,10 @@ EOF
     if "$debug"; then set | grep '^AG_'; fi
 }
 
+
+########################################################################
+# Clean generated files from $1 directory
+
 clean() {
     dir="$1"
     if test "x$AG_GEN_FILES" = "x"; then echo "Internal error"; exit 2; fi
@@ -149,6 +165,10 @@ fi
 )
 }
 
+
+########################################################################
+# Initialize build system in $1 directory
+
 init() {
     dir="$1"
     if test "x$AG_GEN_FILES" = "x"; then echo "Internal error"; exit 2; fi
@@ -162,6 +182,12 @@ init() {
     echo "You may run ./configure now in \`${dir}'."
     echo "Run as \"./configure --help\" to find out about config options."
 }
+
+
+########################################################################
+# Parse command line.
+# This still accepts more than the help text says it does, but that
+# isn't supported.
 
 commands="init" # default command in case none is given
 pcommands=""
@@ -204,6 +230,10 @@ if test "x$pdirs" != "x"; then
     # dirs given on command line? use them!
     dirs="$pdirs"
 fi
+
+
+########################################################################
+# Actually run the commands
 
 for dir in ${dirs}; do
     echo "Running commands on directory \`${dir}'"
