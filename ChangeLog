@@ -1,5 +1,11 @@
 2003-04-28  Lutz Mueller <lutz@users.sourceforge.net>
 
+	Bug discovered by Jay Love <jslove@users.sourceforge.net>
+
+	* libexif/exif-entry.c: Don't crash if EXIF_TAG_COPYRIGHT is NULL.
+
+2003-04-28  Lutz Mueller <lutz@users.sourceforge.net>
+
 	Patch by Gernot Jander <gernot@bigpond.com>:
 
 	* libexif/exif-tag.c: Add call to bind_textdomain_codeset

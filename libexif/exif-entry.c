@@ -192,12 +192,13 @@ exif_entry_get_value (ExifEntry *e)
 		break;
 	case EXIF_TAG_COPYRIGHT:
 		CF (e->format, EXIF_FORMAT_ASCII, v);
-		if (strlen ((char *) e->data))
+		if (e->size && e->data)
 			strncpy (v, e->data, sizeof (v));
 		else
 			strncpy (v, "[None]", sizeof (v));
 		strncat (v, " (Photographer) - ", sizeof (v));
-		if (strlen ((char *) e->data + strlen ((char *) e->data) + 1))
+		if (e->size && e->data &&
+		    strlen ((char *) e->data + strlen ((char *) e->data) + 1))
 			strncat (v, e->data + strlen (e->data) + 1,
 				 sizeof (v));
 		else
