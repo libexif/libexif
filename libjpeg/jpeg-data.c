@@ -25,10 +25,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
-
 /* #define DEBUG */
 
 struct _JPEGDataPrivate
@@ -84,9 +80,7 @@ jpeg_data_save_file (JPEGData *data, const char *path)
 	if (!d)
 		return;
 
-#ifdef HAVE_UNISTD_H
-	unlink (path);
-#endif
+	remove (path);
 	f = fopen (path, "wb");
 	if (!f) {
 		free (d);
