@@ -57,7 +57,9 @@ GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT}],
 ALL_LINGUAS="de es fr"
 AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT([external])
-GP_GETTEXT_FLAGS
+AM_PO_SUBDIRS()
+AM_ICONV()
+GP_GETTEXT_FLAGS()
 
 dnl We cannot use AC_DEFINE_UNQUOTED() for these definitions, as
 dnl we require make to do insert the proper $(datadir) value
