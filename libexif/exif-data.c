@@ -346,7 +346,7 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 		default:
 
 			/*
-			 * If we don't know the tag, changes are high
+			 * If we don't know the tag, chances are high
 			 * that the EXIF data does not follow the standard.
 			 */
 			if (!exif_tag_get_name (tag)) {

@@ -1,4 +1,13 @@
+2004-12-11  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Inspired by suggestions from Lars Ellenberg <l.g.e@web.de>:
+
+	* libexif/exif-data.c: Fix spelling error.
+	* libexif/exif-loader.c (exif_loader_write): Rewrite logic to 
+	  make the loader handle more file types.
+
 2004-12-08  Jan Patera <patera@users.sourceforge.net>
+
 	* libexif/exif-entry.c: Data format of EXIF_TAG_USER_COMMENT:
 	  Some packages like Canon ZoomBrowser EX 4.5 store only
 	  one zero byte followed by 7 bytes of rubbish
