@@ -29,6 +29,7 @@
 
 #include <libexif/exif-format.h>
 #include <libexif/exif-utils.h>
+#include <libexif/exif-entry.h>
 
 
 #define CF(format,target,v,maxlen)                              \
@@ -53,197 +54,123 @@
         }                                                               \
 }
 
+static struct {
+	ExifTag tag;
+	struct {
+		int index;
+		const char *string;
+	} elem[10];
+} items[] = {
+  { MNOTE_PENTAX_TAG_MODE,
+    { {0, N_("Auto")},
+      {1, N_("Night-scene")},
+      {2, N_("Manual")},
+      {0, NULL}}},
+  { MNOTE_PENTAX_TAG_QUALITY,
+    { {0, N_("Good")},
+      {1, N_("Better")},
+      {2, N_("Best")},{0,NULL}}},
+  { MNOTE_PENTAX_TAG_FOCUS,
+    { {2, N_("Custom")},
+      {3, N_("Auto")},
+      {0, NULL}}},
+  { MNOTE_PENTAX_TAG_FLASH,
+    { {1, N_("Auto")},
+      {2, N_("Flash on")},
+      {4, N_("Flash off")},
+      {6, N_("Red-eye Reduction")},
+      {0, NULL}}},
+  { MNOTE_PENTAX_TAG_WHITE_BALANCE,
+    { {0, N_("Auto")},
+      {1, N_("Daylight")},
+      {2, N_("Shade")},
+      {3, N_("Tungsten")},
+      {4, N_("Fluorescent")},
+      {5, N_("Manual")},
+      {0, NULL}}},
+  { MNOTE_PENTAX_TAG_SHARPNESS,
+    { {0, N_("Normal")},
+      {1, N_("Soft")},
+      {2, N_("Hard")},
+      {0, NULL}}},
+  { MNOTE_PENTAX_TAG_CONTRAST,
+    { {0, N_("Normal")},
+      {1, N_("Low")},
+      {2, N_("High")},
+      {0, NULL}}},
+  { MNOTE_PENTAX_TAG_SATURATION,
+    { {0, N_("Normal")},
+      {1, N_("Low")},
+      {2, N_("High")},
+      {0, NULL}}},
+  { MNOTE_PENTAX_TAG_ISO_SPEED,
+    { {10, N_("100")},
+      {16, N_("200")},
+      { 0, NULL}}},
+  { MNOTE_PENTAX_TAG_COLOR,
+    { {1, N_("Full")},
+      {2, N_("Black & White")},
+      {3, N_("Sepia")},
+      {0, NULL}}},
+};
+
 char *
-mnote_pentax_entry_get_value (MnotePentaxEntry *entry, char *val, unsigned int maxlen)
+mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
+			      char *val, unsigned int maxlen)
 {
 	ExifLong vl;
 	ExifShort vs;
+	int i = 0, j = 0;
 
-	if (!entry)
-		return (NULL);
+	if (!entry) return (NULL);
 
 	memset (val, 0, maxlen);
 	maxlen--;
 
 	switch (entry->tag) {
-	case MNOTE_PENTAX_TAG_MODE:
+	  case MNOTE_PENTAX_TAG_MODE:
+	  case MNOTE_PENTAX_TAG_QUALITY:
+	  case MNOTE_PENTAX_TAG_FOCUS:
+	  case MNOTE_PENTAX_TAG_FLASH:
+	  case MNOTE_PENTAX_TAG_WHITE_BALANCE:
+	  case MNOTE_PENTAX_TAG_SHARPNESS:
+	  case MNOTE_PENTAX_TAG_CONTRAST:
+	  case MNOTE_PENTAX_TAG_SATURATION:
+	  case MNOTE_PENTAX_TAG_ISO_SPEED:
+	  case MNOTE_PENTAX_TAG_COLOR:
 		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
 		CC (entry->components, 1, val, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (val, _("Auto"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("Night-scene"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("Manual"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", vs);
+
+		/* search the tag */
+		for (i = 0; (items[i].tag && items[i].tag != entry->tag); i++);
+		if (!items[i].tag) {
+		  	strncpy (val, "Internal error", maxlen - 1);
+		  	break;
 		}
-		break;
-	case MNOTE_PENTAX_TAG_QUALITY:
-		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (entry->components, 1, val, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (val, _("Good"), maxlen);
+
+		/* find the value */
+		for (j = 0; items[i].elem[j].index &&
+			    (items[i].elem[j].index < vs); j++);
+		if (items[i].elem[j].index != vs) {
+			snprintf (val, maxlen - 1,
+				  "Internal error (unknown value %i)", vs);
 			break;
-		case 1:
-			strncpy (val, _("Better"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("Best"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", vs);
 		}
+		snprintf (val, maxlen - 1, items[i].elem[j].string);
 		break;
-	case MNOTE_PENTAX_TAG_FOCUS:
-		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (entry->components, 1, val, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 3:
-			strncpy (val, _("Auto"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("Custom"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", vs);
-		}
-		break;
-	case MNOTE_PENTAX_TAG_FLASH:
-		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (entry->components, 1, val, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 1:
-			strncpy (val, _("Auto"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("Flash On"), maxlen);
-			break;
-		case 4:
-			strncpy (val, _("Flash Off"), maxlen);
-			break;
-		case 6:
-			strncpy (val, _("Red-eye Reduction"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", vs);
-		}
-		break;
-	case MNOTE_PENTAX_TAG_WHITE_BALANCE:
-		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (entry->components, 1, val, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (val, _("Auto"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("Daylight"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("Shade"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("Tungsten"), maxlen);
-			break;
-		case 4:
-			strncpy (val, _("Fluorescent"), maxlen);
-			break;
-		case 5:
-			strncpy (val, _("Manual"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", vs);
-		}
-		break;
+
 	case MNOTE_PENTAX_TAG_ZOOM:
 		CF (entry->format, EXIF_FORMAT_LONG, val, maxlen);
 		CC (entry->components, 1, val, maxlen);
 		vl = exif_get_long (entry->data, entry->order);
 		snprintf (val, maxlen, "%li", vl);
 		break;
-	case MNOTE_PENTAX_TAG_SHARPNESS:
-		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (entry->components, 1, val, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (val, _("Normal"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("Soft"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("Hard"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", vs);
-		}
-		break;
-	case MNOTE_PENTAX_TAG_CONTRAST:
-		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (entry->components, 1, val, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (val, _("Normal"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("Low"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("High"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", vs);
-		}
-		break;
-	case MNOTE_PENTAX_TAG_SATURATION:
-		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (entry->components, 1, val, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 0:
-			strncpy (val, _("Normal"), maxlen);
-			break;
-		case 1:
-			strncpy (val, _("Low"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("High"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", vs);
-		}
-		break;
-	case MNOTE_PENTAX_TAG_ISO_SPEED:
-		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (entry->components, 1, val, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 10:
-			strncpy (val, _("100"), maxlen);
-			break;
-		case 16:
-			strncpy (val, _("200"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", vs);
-		}
-		break;
 	case MNOTE_PENTAX_TAG_PRINTIM:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (entry->components, 124, val, maxlen);
-		snprintf (val, maxlen, "%li bytes unknown data", entry->components);
+		snprintf (val, maxlen, "%li bytes unknown data",
+			  entry->components);
 		break;
 	case MNOTE_PENTAX_TAG_TZ_CITY:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
@@ -254,24 +181,6 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry, char *val, unsigned int m
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (entry->components, 4, val, maxlen);
 		snprintf (val, entry->components, "%s", entry->data);
-		break;
-	case MNOTE_PENTAX_TAG_COLOR:
-		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC (entry->components, 1, val, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		switch (vs) {
-		case 1:
-			strncpy (val, _("Full"), maxlen);
-			break;
-		case 2:
-			strncpy (val, _("Black & White"), maxlen);
-			break;
-		case 3:
-			strncpy (val, _("Sepia"), maxlen);
-			break;
-		default:
-			snprintf (val, maxlen, "%i", vs);
-		}
 		break;
 	default:
 		switch (entry->format) {
