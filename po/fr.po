@@ -1299,7 +1299,6 @@ msgid "Aperture"
 msgstr "Ouverture"
 
 #: libexif/exif-tag.c:334
-#, fuzzy
 msgid "The lens aperture. The unit is the APEX value."
 msgstr "Ouverture de la lentille. L'unité est la valeur APEX."
 
@@ -1596,17 +1595,22 @@ msgid ""
 "Indicates the image source. If a DSC recorded the image, this tag value of "
 "this tag always be set to 3, indicating that the image was recorded on a DSC."
 msgstr ""
+"Indique la source de l'image. Si un DSC a enregistré l'image, la valeur de "
+"ce marqueur doit toujours être de 3, indiquant que l'image a été directement "
+"photographiée."
 
 #: libexif/exif-tag.c:505
 msgid "Scene Type"
 msgstr "Type de scène"
 
 #: libexif/exif-tag.c:506
-#, fuzzy
 msgid ""
 "Indicates the type of scene. If a DSC recorded the image, this tag value "
 "must always be set to 1, indicating that the image was directly photographed."
-msgstr "Indique le type de scène."
+msgstr ""
+"Indique le type de scène. Si un DSC a enregistré l'image, la valeur de ce "
+"marqueur doit toujours être de 1, indiquant que l'image a été directement "
+"photographiée."
 
 #: libexif/exif-tag.c:514
 msgid "Subject Area"
