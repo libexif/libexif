@@ -1,3 +1,10 @@
+2003-04-28  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Patch by Gernot Jander <gernot@bigpond.com>:
+
+	* libexif/exif-tag.c: Add call to bind_textdomain_codeset
+	* po/*.UTF-8: New.
+
 2003-03-13  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libjpeg/jpeg-data.c: Aravind <aravinds1@users.sourceforge.net>

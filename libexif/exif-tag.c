@@ -588,6 +588,7 @@ exif_tag_get_title (ExifTag tag)
 {
 	unsigned int i;
 
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 
 	for (i = 0; ExifTagTable[i].title; i++)
@@ -602,6 +603,7 @@ exif_tag_get_description (ExifTag tag)
 {
 	unsigned int i;
 
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 
 	for (i = 0; ExifTagTable[i].description; i++)

@@ -154,6 +154,7 @@ exif_entry_get_value (ExifEntry *e)
 	double d;
 	ExifEntry *entry;
 
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	bindtextdomain (GETTEXT_PACKAGE, LIBEXIF_LOCALEDIR);
 
 	/* We need the byte order */
