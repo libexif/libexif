@@ -176,6 +176,8 @@ static struct {
   { 0, {NULL}}
 };
 
+static char* sdr_entries[] = {"Unknown", "Macro", "Close view", "Distant view"};
+
 const char *
 exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 {
@@ -668,10 +670,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
 		CF (e->format, EXIF_FORMAT_SHORT, val, maxlen);
 		CC (e->components, 1, val, maxlen);
-		char* entries[] = {"Unknown", "Macro", "Close view", "Distant view"};
 		v_short = exif_get_short (e->data, o);
 		if (v_short < 4) {
-		  strncpy (val, _(entries[v_short]), maxlen -1);
+		  strncpy (val, _(sdr_entries[v_short]), maxlen -1);
 		}
 		else {
 		  snprintf (val, maxlen, "%i", v_short);
@@ -731,7 +732,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			strncpy (val, "Internal error.", maxlen - 1);
 			break;
 		}
-		for (j = 0; list[i].strings[j] && (j <= v_short); j++);
+		for (j = 0; list[i].strings[j] && (j < v_short); j++);
 		if (!list[i].strings[j])
 			snprintf (val, maxlen, "%i", v_short);
 		else
