@@ -1,5 +1,10 @@
 2003-10-27  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif: Canon maker notes seem to work now (both loading and
+	  saving).
+
+2003-10-27  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif: The code now compiles and loads the canon maker note,
 	  but crashes if you query its contents.
 

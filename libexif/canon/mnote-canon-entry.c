@@ -69,13 +69,13 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry)
 	switch (entry->tag) {
 	case MNOTE_CANON_TAG_SETTINGS_1:
 		CF (entry->format, EXIF_FORMAT_SHORT, v);
-		n = exif_get_short (data, entry->order)/2;
-		data+=2;
+		n = exif_get_short (data, entry->order) / 2;
+		data += 2;
 		CC (entry->components, n, v);
 		for (i = 1; i < n; i++) {
 		    vs = exif_get_short (data, entry->order);
 		    data += 2;
-		    switch(i) {
+		    switch (i) {
 		    case 1:
 			strncpy (v, _("Macro mode : "), sizeof (v) - 1);
 			switch (vs) {

@@ -5,28 +5,15 @@
 
 #include <libexif/exif-data.h>
 
-int
-main (int argc, char **argv)
+static int
+test_exif_data (ExifData *d)
 {
-	ExifData *d;
-	ExifMnoteData *md;
-	unsigned int c, i;
+	unsigned int i, c;
 	char *v;
+	ExifMnoteData *md;
 
-	if (argc <= 1) {
-		fprintf (stderr, "You need to supply a filename!\n");
-		return 1;
-	}
-
-	fprintf (stdout, "Loading '%s'...\n", argv[1]);
-	d = exif_data_new_from_file (argv[1]);
-	if (!d) {
-		fprintf (stderr, "Could not load data from '%s'!\n", argv[1]);
-		return 1;
-	}
-	fprintf (stdout, "Loaded '%s'.\n", argv[1]);
 	fprintf (stdout, "Byte order: %s\n",
-		 exif_byte_order_get_name (exif_data_get_byte_order (d)));
+		exif_byte_order_get_name (exif_data_get_byte_order (d)));
 
 	fprintf (stdout, "Parsing maker note...\n");
 	md = exif_data_get_mnote_data (d);
@@ -44,20 +31,60 @@ main (int argc, char **argv)
 
 	fprintf (stdout, "Counting entries...\n");
 	c = exif_mnote_data_count (md);
+	fprintf (stdout, "Found %i entries.\n", c);
 	for (i = 0; i < c; i++) {
-		fprintf (stdout, "%s", exif_mnote_data_get_name (md, i));
-		fprintf (stdout, "  Title: %s",
-			 exif_mnote_data_get_title (md, i));
-		fprintf (stdout, "  Description: %s",
-			 exif_mnote_data_get_description (md, i));
+		fprintf (stdout, "Dumping entry number %i...\n", i);
+		fprintf (stdout, "  Name: '%s'\n",
+				exif_mnote_data_get_name (md, i));
+		fprintf (stdout, "  Title: '%s'\n",
+				exif_mnote_data_get_title (md, i));
+		fprintf (stdout, "  Description: '%s'\n",
+				exif_mnote_data_get_description (md, i));
 		v = exif_mnote_data_get_value (md, i);
 		if (v) {
-			fprintf (stdout, "  Value: '%s'", v);
+			fprintf (stdout, "  Value: '%s'\n", v);
 			free (v);
 		}
 	}
 
+	return 0;
+}
+
+int
+main (int argc, char **argv)
+{
+	ExifData *d;
+	unsigned int buf_size;
+	unsigned char *buf;
+	int r;
+
+	if (argc <= 1) {
+		fprintf (stderr, "You need to supply a filename!\n");
+		return 1;
+	}
+
+	fprintf (stdout, "Loading '%s'...\n", argv[1]);
+	d = exif_data_new_from_file (argv[1]);
+	if (!d) {
+		fprintf (stderr, "Could not load data from '%s'!\n", argv[1]);
+		return 1;
+	}
+	fprintf (stdout, "Loaded '%s'.\n", argv[1]);
+
+	fprintf (stdout, "######### Test 1 #########\n");
+	r = test_exif_data (d);
+	if (r) return r;
+
+	exif_data_save_data (d, &buf, &buf_size);
 	exif_data_unref (d);
+	d = exif_data_new_from_data (buf, buf_size);
+	free (buf);
+
+	fprintf (stdout, "######### Test 2 #########\n");
+	r = test_exif_data (d);
+	if (r) return r;
+
+	fprintf (stdout, "Test successful!\n");
 
 	return 1;
 }

@@ -147,7 +147,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 }
 
 static void
-exif_data_save_data_entry (ExifData *data, ExifEntry *entry,
+exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 			   unsigned char **d, unsigned int *ds,
 			   unsigned int offset)
 {
@@ -158,30 +158,39 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *entry,
 	 * already been allocated.
 	 */
 	exif_set_short (*d + 6 + offset + 0,
-			data->priv->order, entry->tag);
+			data->priv->order, e->tag);
 	exif_set_short (*d + 6 + offset + 2,
-			data->priv->order, entry->format);
+			data->priv->order, e->format);
 	exif_set_long  (*d + 6 + offset + 4,
-			data->priv->order, entry->components);
+			data->priv->order, e->components);
 
 	/*
 	 * Size? If bigger than 4 bytes, the actual data is not in
 	 * the entry but somewhere else.
 	 */
-	s = exif_format_get_size (entry->format) * entry->components;
+	s = exif_format_get_size (e->format) * e->components;
 	if (!s)
 		return;
 	if (s > 4) {
-		*ds += entry->size;
+		*ds += s;
 		*d = realloc (*d, sizeof (char) * *ds);
-		doff = *ds - 6 - entry->size;
+		doff = *ds - 6 - s;
 		exif_set_long (*d + 6 + offset + 8,
 			       data->priv->order, doff);
 	} else
 		doff = offset + 8;
 
+	/* If this is the maker note tag, update it. */
+	if ((e->tag == EXIF_TAG_MAKER_NOTE) && data->priv->md) {
+		free (e->data);
+		e->data = NULL;
+		e->size = 0;
+		exif_mnote_data_set_offset (data->priv->md, doff);
+		exif_mnote_data_save (data->priv->md, &e->data, &e->size);
+	}
+
 	/* Write the data. Fill unneeded bytes with 0. */
-	memcpy (*d + 6 + doff, entry->data, entry->size);
+	memcpy (*d + 6 + doff, e->data, e->size);
 	if (s < 4) memset (*d + 6 + doff + s, 0, (4 - s));
 }
 
@@ -480,21 +489,6 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_set_long (*d + 6 + offset, data->priv->order, 0);
 }
 
-static void
-exif_data_remove_entry (ExifData *d, ExifTag t)
-{
-	exif_content_remove_entry (d->ifd[EXIF_IFD_0],
-		exif_content_get_entry (d->ifd[EXIF_IFD_0], t));
-	exif_content_remove_entry (d->ifd[EXIF_IFD_1],
-		exif_content_get_entry (d->ifd[EXIF_IFD_1], t));
-	exif_content_remove_entry (d->ifd[EXIF_IFD_EXIF],
-		exif_content_get_entry (d->ifd[EXIF_IFD_EXIF], t));
-	exif_content_remove_entry (d->ifd[EXIF_IFD_GPS],
-		exif_content_get_entry (d->ifd[EXIF_IFD_GPS], t));
-	exif_content_remove_entry (d->ifd[EXIF_IFD_INTEROPERABILITY],
-		exif_content_get_entry (d->ifd[EXIF_IFD_INTEROPERABILITY], t));
-}
-
 void
 exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		     unsigned int ds_orig)
@@ -679,9 +673,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	    }
 
 	    /* 
-	     * If we are able to interpret the maker note, interpret it and
-	     * remove the corresponding entry as it may contain invalid
-	     * pointers after this function here returns.
+	     * If we are able to interpret the maker note, do so.
 	     */
 	    if (data->priv->md) {
 		exif_mnote_data_set_byte_order (data->priv->md,
@@ -689,7 +681,6 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		exif_mnote_data_set_offset (data->priv->md,
 					    data->priv->offset_mnote);
 		exif_mnote_data_load (data->priv->md, d, ds);
-		exif_data_remove_entry (data, EXIF_TAG_MAKER_NOTE);
 	    }
 	}
 }

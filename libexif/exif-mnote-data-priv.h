@@ -52,9 +52,9 @@ typedef struct _ExifMnoteDataPriv ExifMnoteDataPriv;
 
 struct _ExifMnoteData 
 {
-	ExifMnoteDataMethods methods;
-
 	ExifMnoteDataPriv *priv;
+
+	ExifMnoteDataMethods methods;
 };
 
 void exif_mnote_data_construct      (ExifMnoteData *);

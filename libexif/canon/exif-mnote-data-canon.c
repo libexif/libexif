@@ -65,7 +65,7 @@ exif_mnote_data_canon_get_value (ExifMnoteData *note, unsigned int n)
         ExifMnoteDataCanon *cnote = (ExifMnoteDataCanon *) note;
 
 	if (!note) return NULL;
-	if (cnote->count >= n) return NULL;
+	if (cnote->count <= n) return NULL;
 	return mnote_canon_entry_get_value (&cnote->entries[n]);
 }
 
@@ -146,6 +146,52 @@ exif_mnote_data_canon_set_offset (ExifMnoteData *n, unsigned int o)
 }
 
 static void
+exif_mnote_data_canon_save (ExifMnoteData *ne, 
+	unsigned char **buf, unsigned int *buf_size)
+{
+	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) ne;
+	unsigned int i, o, s, doff;
+
+	if (!n || !buf || !buf_size) return;
+
+	/*
+	 * Allocate enough memory for all entries and the number
+	 * of entries.
+	 */
+	*buf_size = 2 + n->count * 12 + 4;
+	*buf = malloc (sizeof (char) * *buf_size);
+	if (!*buf) return;
+	memset (*buf, 0, sizeof (char) * *buf_size);
+
+	/* Save the number of entries */
+	exif_set_short (*buf, n->order, n->count);
+	
+	/* Save each entry */
+	for (i = 0; i < n->count; i++) {
+		o = 2 + i * 12;
+		exif_set_short (*buf + o + 0, n->order, n->entries[i].tag);
+		exif_set_short (*buf + o + 2, n->order, n->entries[i].format);
+		exif_set_long  (*buf + o + 4, n->order,
+				n->entries[i].components);
+		o += 8;
+		s = exif_format_get_size (n->entries[i].format) *
+						n->entries[i].components;
+		if (s > 4) {
+			*buf_size += s;
+			*buf = realloc (*buf, sizeof (char) * *buf_size);
+			if (!*buf) return;
+			doff = *buf_size - s;
+			exif_set_long (*buf + o, n->order, n->offset + doff);
+		} else
+			doff = o;
+
+		/* Write the data. Fill unneeded bytes with 0. */
+		memcpy (*buf + doff, n->entries[i].data, s);
+		if (s < 4) memset (*buf + doff + s, 0, (4 - s));
+	}
+}
+
+static void
 exif_mnote_data_canon_load (ExifMnoteData *ne,
 	const unsigned char *buf, unsigned int buf_size)
 {
@@ -186,13 +232,10 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 	    /* Sanity check */
 	    n->entries[i].data = malloc (sizeof (char) * s);
 	    if (!n->entries[i].data) return;
+	    memset (n->entries[i].data, 0, sizeof (char) * s);
 	    n->entries[i].size = s;
 	    memcpy (n->entries[i].data, buf + o, s);
 	}
-
-#ifdef DEBUG
-	printf ("Loaded %i entries.\n", n->count);
-#endif
 }
 
 static unsigned int
@@ -246,6 +289,7 @@ exif_mnote_data_canon_new (void)
 	d->methods.set_byte_order  = exif_mnote_data_canon_set_byte_order;
 	d->methods.set_offset      = exif_mnote_data_canon_set_offset;
 	d->methods.load            = exif_mnote_data_canon_load;
+	d->methods.save            = exif_mnote_data_canon_save;
 	d->methods.count           = exif_mnote_data_canon_count;
 	d->methods.get_name        = exif_mnote_data_canon_get_name;
 	d->methods.get_title       = exif_mnote_data_canon_get_title;
