@@ -1,5 +1,9 @@
 2004-10-16  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* configure.in: We are now working on version 0.6.12.
+
+2004-10-16  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* configure.in: set CURRENT to 12. There have been quite a few
 	  additions to the header files.
 
