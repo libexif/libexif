@@ -32,6 +32,7 @@ autom4te.cache
 configure.scan
 autoscan.log
 *.tar.gz
+*.tar.bz2
 Makefile
 Makefile.in
 aclocal.m4
