@@ -797,16 +797,26 @@ exif_entry_initialize (ExifEntry *entry, ExifTag tag)
 	case EXIF_TAG_EXIF_VERSION:
 		entry->components = 4;
 		entry->format = EXIF_FORMAT_UNDEFINED;
-		entry->size = sizeof (ExifUndefined) * entry->components;
+		entry->size = exif_format_get_size (entry->format) *
+							entry->components;
 		entry->data = malloc (entry->size);
 		memcpy (entry->data, "0210", 4);
 		break;
 	case EXIF_TAG_FLASH_PIX_VERSION:
 		entry->components = 4;
 		entry->format = EXIF_FORMAT_UNDEFINED;
-		entry->size = sizeof (ExifUndefined) * entry->components;
+		entry->size = exif_format_get_size (entry->format) *
+							entry->components;
 		entry->data = malloc (entry->size);
 		memcpy (entry->data, "0100", 4);
+		break;
+	case EXIF_TAG_FILE_SOURCE:
+		entry->components = 1;
+		entry->format = EXIF_FORMAT_UNDEFINED;
+		entry->size = exif_format_get_size (entry->format) *
+							entry->components;
+		entry->data = malloc (entry->size);
+		entry->data[0] = 0x03;
 		break;
 	default:
 		break;
