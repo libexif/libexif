@@ -145,10 +145,60 @@ void
 exif_entry_fix (ExifEntry *e)
 {
 	unsigned int i;
+	ExifByteOrder o;
 
 	if (!e) return;
 
 	switch (e->tag) {
+	
+	/* These tags all need to be of format SHORT. */
+	case EXIF_TAG_YCBCR_SUB_SAMPLING:
+	case EXIF_TAG_SUBJECT_AREA:
+	case EXIF_TAG_COLOR_SPACE:
+	case EXIF_TAG_PLANAR_CONFIGURATION:
+	case EXIF_TAG_SENSING_METHOD:
+	case EXIF_TAG_ORIENTATION:
+	case EXIF_TAG_YCBCR_POSITIONING:
+	case EXIF_TAG_PHOTOMETRIC_INTERPRETATION:
+	case EXIF_TAG_CUSTOM_RENDERED:
+	case EXIF_TAG_EXPOSURE_MODE:
+	case EXIF_TAG_WHITE_BALANCE:
+	case EXIF_TAG_SCENE_CAPTURE_TYPE:
+	case EXIF_TAG_GAIN_CONTROL:
+	case EXIF_TAG_SATURATION:
+	case EXIF_TAG_CONTRAST:
+	case EXIF_TAG_SHARPNESS:
+		switch (e->format) {
+		case EXIF_FORMAT_LONG:
+			if (!e->parent || !e->parent->parent) break;
+			o = exif_data_get_byte_order (e->parent->parent);
+			for (i = 0; i < e->components; i++)
+				exif_set_short (
+					e->data + i *
+					exif_format_get_size (
+					EXIF_FORMAT_SHORT),
+					(ExifShort) exif_get_long (
+					e->data + i *
+					exif_format_get_size (
+					EXIF_FORMAT_LONG), o), o);
+			e->format = EXIF_FORMAT_SHORT;
+			e->size = e->components *
+				exif_format_get_size (e->format);
+			e->data = exif_entry_realloc (e, e->data, e->size);
+			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
+				"Tag '%s' was of format '%s' (which is "
+				"against specification) and has been "
+				"changed to format '%s'.",
+				exif_tag_get_name (e->tag), 
+				exif_format_get_name (EXIF_FORMAT_LONG),
+				exif_format_get_name (EXIF_FORMAT_SHORT));
+			break;
+		case EXIF_FORMAT_SHORT:
+		default:
+			break;
+		}
+		break;
+
 	case EXIF_TAG_USER_COMMENT:
 
 		/* Format needs to be UNDEFINED. */
