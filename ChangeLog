@@ -1,3 +1,12 @@
+2002-06-05  Lutz Müller <lutz@users.sourceforge.net>
+
+	* COPYING: Check the text of the LGPL in, because otherwise, 
+	  automake --add-missing would use the text of the GPL.
+
+2002-06-03  Lutz Müller <lutz@users.sourceforge.net>
+
+	* configure.in: Version 0.5.1
+
 2002-05-01  Lutz Müller <lutz@users.sourceforge.net>
 
 	Patch by Arnaud Rouanet <rouanet@labri.fr>:
