@@ -1,3 +1,9 @@
+2005-03-13  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-data.c: critical fix of 2005-03-09 change: saving
+	  IFD containing data of odd length was causing memory corruption
+          and total lost of entire EXIF data
+
 2005-03-13  Hans Ulrich Niedermann <gp@n-dimensional.de>
 
 	* NEWS: Release 0.6.12
@@ -20,7 +26,7 @@
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-utils.c (exif_array_set_byte_order): Return if an invalid
-		format is supplied.
+	  format is supplied.
 
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
@@ -29,12 +35,12 @@
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c (exif_data_save_data_content): Update comment that
-		this code does not honor the specification yet.
+	  this code does not honor the specification yet.
 
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c (exif_data_save_data_content): Save entries in
-		the correct order.
+	  the correct order.
 
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
@@ -43,12 +49,12 @@
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/canon/exif-mnote-data-canon.c (exif_mnote_data_canon_save):
-		Ensure even offsets.
+	  Ensure even offsets.
 
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c (exif_data_save_data_entry): According to the TIFF
-		specification, the offset must be an even number. If we need to introduce
+	  specification, the offset must be an even number. If we need to introduce
 	  a padding byte, we set it to 0.
 
 2005-03-09  Lutz Mueller <lutz@users.sourceforge.net>

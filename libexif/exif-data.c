@@ -231,7 +231,7 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 		 * the offset must be an even number. If we need to introduce
 		 * a padding byte, we set it to 0.
 		 */
-		if (s & 1) *ds++;
+		if (s & 1) (*ds)++;
 		*d = exif_mem_realloc (data->priv->mem, *d, *ds);
 		if (!*d) {
 			EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
