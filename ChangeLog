@@ -1,3 +1,11 @@
+2004-09-01  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Suggestion by Angela Wrobel (http://www.wrobelnet.de/contact.html):
+
+	* libexif/pentax:
+	* libexif/olympus: Improve user experience by removing information
+	  from the output that was only intended for developers.
+
 2004-08-31  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* test/test-mem.c: Plug some memory leaks. Suggested by Angela Wrobel
