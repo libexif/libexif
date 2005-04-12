@@ -1,19 +1,19 @@
 # translation of de.po to deutsch
 # German Translation
-# Copyright © YEAR Free Software Foundation, Inc.
-# Lutz Müller <lutz@users.sourceforge.net>, 2002.
+# Copyright Â© YEAR Free Software Foundation, Inc.
+# Lutz MÃ¼ller <lutz@users.sourceforge.net>, 2002.
 # Marcus Meissner <marcus@jet.franken.de>, 2004, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2005-03-26 18:40+0100\n"
+"POT-Creation-Date: 2005-03-30 16:53+0200\n"
 "PO-Revision-Date: 2005-03-17 05:04+0100\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.2\n"
 
@@ -29,14 +29,14 @@ msgstr "Intel"
 #, c-format
 msgid "The tag '%s' contains data of an invalid format ('%s', expected '%s')."
 msgstr ""
-"Der Tag '%s' enthält ein ungültiges Datenformat ('%s', '%s' wurde erwartet)."
+"Der Tag '%s' enthÃ¤lt ein ungÃ¼ltiges Datenformat ('%s', '%s' wurde erwartet)."
 
 #: libexif/exif-entry.c:379
 #, c-format
 msgid ""
 "The tag '%s' contains an invalid number of components (%i, expected %i)."
 msgstr ""
-"Der Tag '%s' enthält eine ungültige Anzahl von Komponenten (%i, %i wurden "
+"Der Tag '%s' enthÃ¤lt eine ungÃ¼ltige Anzahl von Komponenten (%i, %i wurden "
 "erwartet)."
 
 #: libexif/exif-entry.c:392
@@ -145,11 +145,11 @@ msgstr ""
 
 #: libexif/exif-entry.c:410
 msgid "Auto white balance"
-msgstr "Automatischer Weißabgleich"
+msgstr "Automatischer WeiÃŸabgleich"
 
 #: libexif/exif-entry.c:410
 msgid "Manual white balance"
-msgstr "Manueller Weißabgleich"
+msgstr "Manueller WeiÃŸabgleich"
 
 #: libexif/exif-entry.c:412
 msgid "Standard"
@@ -200,11 +200,11 @@ msgstr ""
 
 #: libexif/exif-entry.c:418
 msgid "Low saturation"
-msgstr "Geringe Sättigung"
+msgstr "Geringe SÃ¤ttigung"
 
 #: libexif/exif-entry.c:418
 msgid "High saturation"
-msgstr "Hohe Sättigung"
+msgstr "Hohe SÃ¤ttigung"
 
 #: libexif/exif-entry.c:419 libexif/exif-entry.c:420
 #: libexif/olympus/mnote-olympus-entry.c:150
@@ -281,11 +281,11 @@ msgstr "Tageslicht"
 
 #: libexif/exif-entry.c:449 libexif/pentax/mnote-pentax-entry.c:88
 msgid "Fluorescent"
-msgstr "Leuchstoffröhre"
+msgstr "LeuchstoffrÃ¶hre"
 
 #: libexif/exif-entry.c:450
 msgid "Tungsten incandescent light"
-msgstr "weißglühendes Wolfram Licht"
+msgstr "weiÃŸglÃ¼hendes Wolfram Licht"
 
 #: libexif/exif-entry.c:450 libexif/canon/mnote-canon-entry.c:468
 #: libexif/pentax/mnote-pentax-entry.c:87
@@ -319,15 +319,15 @@ msgstr "Tageslicht Leuchtstoff"
 
 #: libexif/exif-entry.c:456
 msgid "Day white fluorescent"
-msgstr "Tageslichtweiß Leuchtstoff"
+msgstr "TageslichtweiÃŸ Leuchtstoff"
 
 #: libexif/exif-entry.c:457
 msgid "Cool white fluorescent"
-msgstr "Kühles weißes Leuchtstoff"
+msgstr "KÃ¼hles weiÃŸes Leuchtstoff"
 
 #: libexif/exif-entry.c:458
 msgid "White fluorescent"
-msgstr "Weißes Leuchtstofflicht"
+msgstr "WeiÃŸes Leuchtstofflicht"
 
 #: libexif/exif-entry.c:459
 msgid "Standard light A"
@@ -403,7 +403,7 @@ msgstr "Belichtungszeit"
 
 #: libexif/exif-entry.c:482
 msgid "Creative program (biased toward depth of field)"
-msgstr "Kreatives Programm (bevorzugt Schärfentiefe)"
+msgstr "Kreatives Programm (bevorzugt SchÃ¤rfentiefe)"
 
 #: libexif/exif-entry.c:483
 msgid "Creative"
@@ -419,15 +419,15 @@ msgstr "Action"
 
 #: libexif/exif-entry.c:486
 msgid "Portrait mode (for closeup photos with the background out of focus)"
-msgstr "Portrait Modus (für Nahaufnahmen mit unscharfem Hintergrund)"
+msgstr "Portrait Modus (fÃ¼r Nahaufnahmen mit unscharfem Hintergrund)"
 
 #: libexif/exif-entry.c:488
 msgid "Landscape mode (for landscape photos with the background in focus)"
-msgstr "Landschafts Modus (für Landschaftsaufnahmen mit scharfem Hintergrund)"
+msgstr "Landschafts Modus (fÃ¼r Landschaftsaufnahmen mit scharfem Hintergrund)"
 
 #: libexif/exif-entry.c:492
 msgid "Flash did not fire."
-msgstr "Blitz löste nicht aus."
+msgstr "Blitz lÃ¶ste nicht aus."
 
 #: libexif/exif-entry.c:492
 msgid "no flash"
@@ -435,7 +435,7 @@ msgstr "kein Blitz"
 
 #: libexif/exif-entry.c:493
 msgid "Flash fired."
-msgstr "Blitz löste aus."
+msgstr "Blitz lÃ¶ste aus."
 
 #: libexif/exif-entry.c:493
 msgid "flash"
@@ -452,7 +452,7 @@ msgstr "Blitzlicht nicht erkannt."
 
 #: libexif/exif-entry.c:494
 msgid "W/o strobe"
-msgstr "Ohne Röhrenblitz"
+msgstr "Ohne RÃ¶hrenblitz"
 
 #: libexif/exif-entry.c:496
 msgid "Strobe return light detected."
@@ -460,41 +460,41 @@ msgstr "Blitzlicht erkannt."
 
 #: libexif/exif-entry.c:496
 msgid "W. strobe"
-msgstr "Mit Röhrenblitz"
+msgstr "Mit RÃ¶hrenblitz"
 
 #: libexif/exif-entry.c:497
 msgid "Flash fired, compulsatory flash mode"
-msgstr "Blitz ausgelöst, festgelegter Blitzmodus"
+msgstr "Blitz ausgelÃ¶st, festgelegter Blitzmodus"
 
 #: libexif/exif-entry.c:498
 msgid "Flash fired, compulsatory flash mode, return light not detected."
 msgstr ""
-"Blitz ausgelöst, festgelegter Blitzmodus, Blitzlichtreflektion nicht erkannt."
+"Blitz ausgelÃ¶st, festgelegter Blitzmodus, Blitzlichtreflektion nicht erkannt."
 
 #: libexif/exif-entry.c:500
 msgid "Flash fired, compulsatory flash mode, return light detected."
 msgstr ""
-"Blitz ausgelöst, festgelegter Blitzmodus, Blitzlichtreflektion erkannt."
+"Blitz ausgelÃ¶st, festgelegter Blitzmodus, Blitzlichtreflektion erkannt."
 
 #: libexif/exif-entry.c:502
 msgid "Flash did not fire, compulsatory flash mode."
-msgstr "Blitz löste nicht aus, erzwungener Blitzmodus."
+msgstr "Blitz lÃ¶ste nicht aus, erzwungener Blitzmodus."
 
 #: libexif/exif-entry.c:503
 msgid "Flash did not fire, auto mode."
-msgstr "Blitz löste nicht aus, automatischer Modus."
+msgstr "Blitz lÃ¶ste nicht aus, automatischer Modus."
 
 #: libexif/exif-entry.c:504
 msgid "Flash fired, auto mode."
-msgstr "Blitz löste aus, automatischer Modus."
+msgstr "Blitz lÃ¶ste aus, automatischer Modus."
 
 #: libexif/exif-entry.c:505
 msgid "Flash fired, auto mode, return light not detected."
-msgstr "Blitz löste aus, automatischer Modus, keine Blitzreflektion erkannt."
+msgstr "Blitz lÃ¶ste aus, automatischer Modus, keine Blitzreflektion erkannt."
 
 #: libexif/exif-entry.c:507
 msgid "Flash fired, auto mode, return light detected."
-msgstr "Blitz ausgelöst, automatischer Modus, Blitzreflektion erkannt."
+msgstr "Blitz ausgelÃ¶st, automatischer Modus, Blitzreflektion erkannt."
 
 #: libexif/exif-entry.c:508
 msgid "No flash function."
@@ -502,56 +502,56 @@ msgstr "Keine Blitzlichtfunktion."
 
 #: libexif/exif-entry.c:509
 msgid "Flash fired, red-eye reduction mode."
-msgstr "Blitz ausgelöst, Rote Augen Reduktions Modus."
+msgstr "Blitz ausgelÃ¶st, Rote Augen Reduktions Modus."
 
 #: libexif/exif-entry.c:510
 msgid "Flash fired, red-eye reduction mode, return light not detected."
 msgstr ""
-"Blitz ausgelöst, Rote Augen Reduktions Modus, Blitzreflektion nicht erkannt."
+"Blitz ausgelÃ¶st, Rote Augen Reduktions Modus, Blitzreflektion nicht erkannt."
 
 #: libexif/exif-entry.c:512
 msgid "Flash fired, red-eye reduction mode, return light detected."
-msgstr "Blitz ausgelöst, Rote Augen Reduktions Modus, Blitzreflektion erkannt."
+msgstr "Blitz ausgelÃ¶st, Rote Augen Reduktions Modus, Blitzreflektion erkannt."
 
 #: libexif/exif-entry.c:514
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode."
-msgstr "Blitz ausgelöst, fester Blitzmodus, Rote Augen Reduktions Modus."
+msgstr "Blitz ausgelÃ¶st, fester Blitzmodus, Rote Augen Reduktions Modus."
 
 #: libexif/exif-entry.c:516
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
 "detected"
 msgstr ""
-"Blitz ausgelöst, fester Blitzmodus, Rote Augen Reduktions Modus, keine "
+"Blitz ausgelÃ¶st, fester Blitzmodus, Rote Augen Reduktions Modus, keine "
 "Blitzreflektion erkannt."
 
 #: libexif/exif-entry.c:518
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction, return light detected"
 msgstr ""
-"Blitz ausgelöst, fester Blitzmodus, Rote Augen Reduktions Modus, "
+"Blitz ausgelÃ¶st, fester Blitzmodus, Rote Augen Reduktions Modus, "
 "Blitzreflektion erkannt."
 
 #: libexif/exif-entry.c:520
 msgid "Flash did not fire, auto mode, red-eye reduction mode"
 msgstr ""
-"Blitz nicht ausgelöst, automatischer Modus, Rote Augen Reduktions Modus."
+"Blitz nicht ausgelÃ¶st, automatischer Modus, Rote Augen Reduktions Modus."
 
 #: libexif/exif-entry.c:521
 msgid "Flash fired, auto mode, red-eye reduction mode"
-msgstr "Blitz ausgelöst, automatischer Modus, Rote Augen Reduktions Modus."
+msgstr "Blitz ausgelÃ¶st, automatischer Modus, Rote Augen Reduktions Modus."
 
 #: libexif/exif-entry.c:522
 msgid ""
 "Flash fired, auto mode, return light not detected, red-eye reduction mode."
 msgstr ""
-"Blitz ausgelöst, automatischer Modus, Blitzreflektion nicht erkannt, Rote "
+"Blitz ausgelÃ¶st, automatischer Modus, Blitzreflektion nicht erkannt, Rote "
 "Augen Reduktionsmodus."
 
 #: libexif/exif-entry.c:524
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode."
 msgstr ""
-"Blitz ausgelöst, automatischer Modus, Blitzreflektion erkannt, Rote Augen "
+"Blitz ausgelÃ¶st, automatischer Modus, Blitzreflektion erkannt, Rote Augen "
 "Reduktionsmodus."
 
 #: libexif/exif-entry.c:528
@@ -573,7 +573,7 @@ msgstr "nahe"
 
 #: libexif/exif-entry.c:531
 msgid "Distant view"
-msgstr "Große Entfernung"
+msgstr "GroÃŸe Entfernung"
 
 #: libexif/exif-entry.c:531
 msgid "distant"
@@ -590,15 +590,15 @@ msgstr "Unkalibriert"
 #: libexif/exif-entry.c:583
 #, c-format
 msgid "Invalid size of entry (%i, expected %li x %i)."
-msgstr "Ungültige Größe des Eintrags (%i, erwartet %li x %i)."
+msgstr "UngÃ¼ltige GrÃ¶ÃŸe des Eintrags (%i, erwartet %li x %i)."
 
 #: libexif/exif-entry.c:616
 msgid "Unsupported UNICODE string"
-msgstr "Nicht unterstützter UNICODE String."
+msgstr "Nicht unterstÃ¼tzter UNICODE String."
 
 #: libexif/exif-entry.c:620
 msgid "Unsupported JIS string"
-msgstr "Nicht unterstützter JIS String."
+msgstr "Nicht unterstÃ¼tzter JIS String."
 
 #: libexif/exif-entry.c:648
 msgid "Unknown Exif Version"
@@ -638,7 +638,7 @@ msgstr "(Editor)"
 #: libexif/exif-entry.c:741
 #, c-format
 msgid " (35 equivalent: %d mm)"
-msgstr " (35 äquivalent: %d mm)"
+msgstr " (35 Ã¤quivalent: %d mm)"
 
 #: libexif/exif-entry.c:765
 #, c-format
@@ -712,7 +712,7 @@ msgstr "Innerhalb einer Entfernung %i von (x,y) = (%i,%i)"
 #: libexif/exif-entry.c:872
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
-msgstr "Innerhalb eines Rechtecks (Breite %i, Höhe %i) um (x,y) = (%i,%i)"
+msgstr "Innerhalb eines Rechtecks (Breite %i, HÃ¶he %i) um (x,y) = (%i,%i)"
 
 #: libexif/exif-entry.c:878
 #, c-format
@@ -778,10 +778,10 @@ msgid ""
 "(NULL). see the separate volume of Recommended Exif Interoperability Rules "
 "(ExifR98) for other tags used for ExifR98."
 msgstr ""
-"Spezifiziert die Identifikation der Interoperabilitätsregel. Benutze \"R98\" "
-"für ExifR98 Regeln. 4 Bytes werden benutzt inklusive des End Codes (NULL). "
+"Spezifiziert die Identifikation der InteroperabilitÃ¤tsregel. Benutze \"R98\" "
+"fÃ¼r ExifR98 Regeln. 4 Bytes werden benutzt inklusive des End Codes (NULL). "
 "Siehe auch das seperate Dokument der \"Recommended Exif Interoperability "
-"Rules\" (ExifR98) für andere Tags die für ExifR98 benutzt werden."
+"Rules\" (ExifR98) fÃ¼r andere Tags die fÃ¼r ExifR98 benutzt werden."
 
 #: libexif/exif-tag.c:55
 msgid "Image Width"
@@ -798,7 +798,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:60
 msgid "Image Length"
-msgstr "Bildlänge"
+msgstr "BildlÃ¤nge"
 
 #: libexif/exif-tag.c:61
 msgid ""
@@ -834,8 +834,8 @@ msgid ""
 "compressed, this designation is not necessary and is omitted. When "
 "thumbnails use JPEG compression, this tag value is set to 6."
 msgstr ""
-"Das Kompressionsschema das für diese Bilddaten verwendet wird. Wenn ein "
-"Primärbild komprimiert wird ist diese Spezifikation nicht notwendig und wird "
+"Das Kompressionsschema das fÃ¼r diese Bilddaten verwendet wird. Wenn ein "
+"PrimÃ¤rbild komprimiert wird ist diese Spezifikation nicht notwendig und wird "
 "weggelassen. Wenn die Vorschaubilder JPEG Kompression verwenden, hat dieses "
 "Tag den Wert 6."
 
@@ -853,7 +853,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:81
 msgid "Fill Order"
-msgstr "Füllreihenfolge"
+msgstr "FÃ¼llreihenfolge"
 
 #: libexif/exif-tag.c:82
 msgid "Document Name"
@@ -871,8 +871,8 @@ msgid ""
 "is to be used."
 msgstr ""
 "Ein ASCII String der den Titel des Bildes spezifiziert. Dieser kann ein "
-"Kommentar sein wie zb \"1988 Firmen Picknick\" oder ähnlich. 2 Byte "
-"Character Codes können nicht benutzt werden. Wenn ein 2 Byte Code notwendig "
+"Kommentar sein wie zb \"1988 Firmen Picknick\" oder Ã¤hnlich. 2 Byte "
+"Character Codes kÃ¶nnen nicht benutzt werden. Wenn ein 2 Byte Code notwendig "
 "ist, sollte das Exif Private Tag <UserComment> benutzt werden."
 
 #: libexif/exif-tag.c:91
@@ -885,7 +885,7 @@ msgid ""
 "DSC, scanner, video digitizer or other equipment that generated the image. "
 "When the field is left blank, it is treated as unknown."
 msgstr ""
-"Der Hersteller des Bildaufzeichnungsgerätes.Dies ist der Hersteller der "
+"Der Hersteller des BildaufzeichnungsgerÃ¤tes.Dies ist der Hersteller der "
 "Kamera, des Scanners, des Video Digitalisierers oder anderem Equipment "
 "welches dieses Bild erzeugte. Wenn das Feld leer ist, wird er als unbekannt "
 "behandelt."
@@ -916,10 +916,10 @@ msgid ""
 "JPEG compressed data this designation is not needed and is omitted. See also "
 "<RowsPerStrip> and <StripByteCounts>."
 msgstr ""
-"Für jeden Strip ist dies das Offset für diesen Strip in Bytes. Es wird "
-"empfohlen, diese so zu wählen, das die Anzahl an Byts pro Strip nicht 64 "
-"KBytes überschreitet. In einem JPEG Datenstrom diese Spezifikation nicht "
-"nötig und wird weggelassen. Siehe auch <RowsPerStrip> und <StripByteCounts>."
+"FÃ¼r jeden Strip ist dies das Offset fÃ¼r diesen Strip in Bytes. Es wird "
+"empfohlen, diese so zu wÃ¤hlen, das die Anzahl an Byts pro Strip nicht 64 "
+"KBytes Ã¼berschreitet. In einem JPEG Datenstrom diese Spezifikation nicht "
+"nÃ¶tig und wird weggelassen. Siehe auch <RowsPerStrip> und <StripByteCounts>."
 
 #: libexif/exif-tag.c:111
 msgid "Orientation"
@@ -956,7 +956,7 @@ msgid ""
 msgstr ""
 "Die Anzahl der Zeilen pro Strip. Dieses ist die Anzahl der Zeilen in einem "
 "Strip falls ein Bild in Strips unterteilt ist. In einem JPEG Datenstrom ist "
-"dieses Tag nicht nötig und wird weggelassen. Siehe auch <RowsPerStrip> und "
+"dieses Tag nicht nÃ¶tig und wird weggelassen. Siehe auch <RowsPerStrip> und "
 "<StripByteCounts>."
 
 #: libexif/exif-tag.c:126
@@ -969,11 +969,11 @@ msgid ""
 "designation is not needed and is omitted."
 msgstr ""
 "Die Anzahl der Bytes pro Strip. In einem JPEG Datenstrom ist dieses Tag "
-"nicht nötig und wird weggelassen."
+"nicht nÃ¶tig und wird weggelassen."
 
 #: libexif/exif-tag.c:129
 msgid "x-Resolution"
-msgstr "Auflösung in x-Richtung"
+msgstr "AuflÃ¶sung in x-Richtung"
 
 #: libexif/exif-tag.c:130
 msgid ""
@@ -985,7 +985,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:133
 msgid "y-Resolution"
-msgstr "Auflösung in y-Richtung"
+msgstr "AuflÃ¶sung in y-Richtung"
 
 #: libexif/exif-tag.c:134
 msgid ""
@@ -1011,7 +1011,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:142
 msgid "Resolution Unit"
-msgstr "Maßeinheit der Auflösung"
+msgstr "MaÃŸeinheit der AuflÃ¶sung"
 
 #: libexif/exif-tag.c:143
 msgid ""
@@ -1020,7 +1020,7 @@ msgid ""
 "unknown, 2 (inches) is designated."
 msgstr ""
 "Die Einheit zur Messung von <XResolution> und <YResolution>. Die selbe "
-"Einheit wird für <XResolution> und <YResolution> verwendet. Wenn diese "
+"Einheit wird fÃ¼r <XResolution> und <YResolution> verwendet. Wenn diese "
 "unbekannt ist, wird der Default von 2 (Zoll) angenommen."
 
 #: libexif/exif-tag.c:147
@@ -1033,8 +1033,8 @@ msgid ""
 "tag is not necessary, since color space is specified in the color space "
 "information tag (<ColorSpace>)."
 msgstr ""
-"Eine Transferfunktion für das Bild, beschrieben in tabuliertem Stil. "
-"Normalerweise ist dieses Tag nicht nötig, da der Farbraum bereits im "
+"Eine Transferfunktion fÃ¼r das Bild, beschrieben in tabuliertem Stil. "
+"Normalerweise ist dieses Tag nicht nÃ¶tig, da der Farbraum bereits im "
 "Farbraum Informations Tag angegeben wurde (<ColorSpace>)."
 
 #: libexif/exif-tag.c:151
@@ -1049,7 +1049,7 @@ msgid ""
 "followed. When the field is left blank, it is treated as unknown."
 msgstr ""
 "Dieses Tag spezifiziert den Namen und die Version der Software oder Firmware "
-"des Kameras oder anderen Bildeingabegerätes, das dieses Bild erzeugt hat. "
+"des Kameras oder anderen BildeingabegerÃ¤tes, das dieses Bild erzeugt hat. "
 "Das detaillierte Format ist nicht spezifiziert, aber es ist empfohlen, das "
 "das untenstehende Beispiel nachgeahmt wird. Wenn das Feld leer ist, wird es "
 "als unbekannt angenommen."
@@ -1068,7 +1068,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:161
 msgid "Artist"
-msgstr "Künstler"
+msgstr "KÃ¼nstler"
 
 #: libexif/exif-tag.c:162
 msgid ""
@@ -1077,15 +1077,15 @@ msgid ""
 "the information be written as in the example below for ease of "
 "Interoperability. When the field is left blank, it is treated as unknown."
 msgstr ""
-"Dieses Tag enthält den Namen des Besitzers der Kamera, des Photographen oder "
+"Dieses Tag enthÃ¤lt den Namen des Besitzers der Kamera, des Photographen oder "
 "Bilderschaffers. Das Format ist nicht festgelegt, aber es wird empfohlen die "
-"Informationen wie in unten stehendem Beispiel anzugeben für besser "
-"Interoperabilität. Wenn das Feld leer ist, wird der Name als unbekannt "
+"Informationen wie in unten stehendem Beispiel anzugeben fÃ¼r besser "
+"InteroperabilitÃ¤t. Wenn das Feld leer ist, wird der Name als unbekannt "
 "angenommen."
 
 #: libexif/exif-tag.c:167
 msgid "White Point"
-msgstr "Weißpunkt"
+msgstr "WeiÃŸpunkt"
 
 #: libexif/exif-tag.c:168
 msgid ""
@@ -1123,11 +1123,11 @@ msgid ""
 "is not used for primary image JPEG data."
 msgstr ""
 "Der Abstand zum Startbyte (SOI) der JPEG Vorschaubilddaten. Dieses Tag wird "
-"nicht für die primären JPEG Daten benutzt."
+"nicht fÃ¼r die primÃ¤ren JPEG Daten benutzt."
 
 #: libexif/exif-tag.c:186
 msgid "JPEG Interchange Format Length"
-msgstr "JPEG Interchange Format Länge"
+msgstr "JPEG Interchange Format LÃ¤nge"
 
 #: libexif/exif-tag.c:187
 msgid ""
@@ -1138,9 +1138,9 @@ msgid ""
 "Kbytes, including all other data to be recorded in APP1."
 msgstr ""
 "Die Anzahl an Bytes von JPEG Daten im Vorschaubild. Dieses Tag wird nicht "
-"für die primären Bilddaten benutzt. JPEG Vorschau Daten werden nicht "
+"fÃ¼r die primÃ¤ren Bilddaten benutzt. JPEG Vorschau Daten werden nicht "
 "aufgeteilt, sondern als kontinuierlicher Datenstrom zwischen den SOI und EOI "
-"Markern aufgezeichnet. JPEG komprimierte Vorschaubilder müssen inklusive "
+"Markern aufgezeichnet. JPEG komprimierte Vorschaubilder mÃ¼ssen inklusive "
 "aller anderen Daten in weniger als 64 KByte aufgezeichnet werden um in den "
 "APP1 JPEG Marker zu passen."
 
@@ -1156,11 +1156,11 @@ msgid ""
 "color space information tag, with the default being the value that gives the "
 "optimal image characteristics Interoperability this condition."
 msgstr ""
-"Die Matrix Koeffizienten für Transformationen von RGB in YCbCr Imagedaten. "
+"Die Matrix Koeffizienten fÃ¼r Transformationen von RGB in YCbCr Imagedaten. "
 "In TIFF ist kein Default angegeben, aber hier wird der Wert, der in Appendix "
 "E \"Color Space Guidelines\" angegeben ist, als Default verwendet. Der "
 "Farbraum ist im Farbraum Informations Tag deklariert, mit dem Defaultwert, "
-"welche die beste Bild Interoperabilität unter diesen Bedingungen ergibt."
+"welche die beste Bild InteroperabilitÃ¤t unter diesen Bedingungen ergibt."
 
 #: libexif/exif-tag.c:204
 msgid "YCbCr Sub-Sampling"
@@ -1193,7 +1193,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:224
 msgid "Reference Black/White"
-msgstr "Schwarz/Weiß Referenz"
+msgstr "Schwarz/WeiÃŸ Referenz"
 
 #: libexif/exif-tag.c:225
 msgid ""
@@ -1203,10 +1203,10 @@ msgid ""
 "being the value that gives the optimal image characteristics "
 "Interoperability these conditions."
 msgstr ""
-"Der Referenz Schwarzwert und der Referenzweißwert. Im TIFF Standard sind "
+"Der Referenz Schwarzwert und der ReferenzweiÃŸwert. Im TIFF Standard sind "
 "keine Defaults angegeben, aber unten stehende Werte werden als Default hier "
 "verwendet. Der Farbraum ist in einem Farbraum Informations Tag deklariert, "
-"mit dem Wert als Default, der die besten Bildwerte für Interoperabilität "
+"mit dem Wert als Default, der die besten Bildwerte fÃ¼r InteroperabilitÃ¤t "
 "garantiert."
 
 #: libexif/exif-tag.c:231
@@ -1228,7 +1228,7 @@ msgid ""
 "methods."
 msgstr ""
 "Gibt das geometrische Muster des Farbfilter Arrays (CFA - Color Filter "
-"Array) des Bildsensors an, wenn ein 1 Chip Farbflächen Sensor benutzt wird. "
+"Array) des Bildsensors an, wenn ein 1 Chip FarbflÃ¤chen Sensor benutzt wird. "
 "Es bezieht sich nicht auf alle Sensormethoden."
 
 #: libexif/exif-tag.c:245
@@ -1285,8 +1285,8 @@ msgid ""
 "as that of the IFD specified in TIFF. ordinarily, however, it does not "
 "contain image data as in the case of TIFF."
 msgstr ""
-"Ein Zeiger auf die Exif IFD Interoperabilität, Exif IFD hat die gleiche "
-"Struktur wie die des im TIFF spezifizierte IFD, allerdings enthält es keine "
+"Ein Zeiger auf die Exif IFD InteroperabilitÃ¤t, Exif IFD hat die gleiche "
+"Struktur wie die des im TIFF spezifizierte IFD, allerdings enthÃ¤lt es keine "
 "Bilddaten wie im Fall von TIFF."
 
 #: libexif/exif-tag.c:281
@@ -1761,7 +1761,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:554 libexif/pentax/mnote-pentax-tag.c:40
 msgid "White Balance"
-msgstr "Weißabgleich"
+msgstr "WeiÃŸabgleich"
 
 #: libexif/exif-tag.c:555
 msgid "This tag indicates the white balance mode set when the image was shot."
@@ -1820,7 +1820,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:580 libexif/pentax/mnote-pentax-tag.c:46
 msgid "Saturation"
-msgstr "Sättigung"
+msgstr "SÃ¤ttigung"
 
 #: libexif/exif-tag.c:581
 msgid ""
@@ -1830,7 +1830,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:583 libexif/pentax/mnote-pentax-tag.c:44
 msgid "Sharpness"
-msgstr "Schärfe"
+msgstr "SchÃ¤rfe"
 
 #: libexif/exif-tag.c:584
 msgid ""
@@ -1907,20 +1907,20 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-entry.c:39
 #, c-format
 msgid "Invalid format '%s', expected '%s'."
-msgstr "Ungültiges Format '%s', '%s' wurde erwartet."
+msgstr "UngÃ¼ltiges Format '%s', '%s' wurde erwartet."
 
 #: libexif/canon/mnote-canon-entry.c:54
 #: libexif/olympus/mnote-olympus-entry.c:49
 #: libexif/pentax/mnote-pentax-entry.c:51
 #, c-format
 msgid "Invalid number of components (%i, expected %i)."
-msgstr "Ungültige Anzahl von Komponenten (%i, %i wurden erwartet)."
+msgstr "UngÃ¼ltige Anzahl von Komponenten (%i, %i wurden erwartet)."
 
 #: libexif/canon/mnote-canon-entry.c:63
 #: libexif/olympus/mnote-olympus-entry.c:59
 #, fuzzy, c-format
 msgid "Invalid number of components (%i, expected %i or %i)."
-msgstr "Ungültige Anzahl von Komponenten (%i, %i wurden erwartet)."
+msgstr "UngÃ¼ltige Anzahl von Komponenten (%i, %i wurden erwartet)."
 
 #: libexif/canon/mnote-canon-entry.c:95
 msgid "Macro mode : "
@@ -1949,7 +1949,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:119
 #, fuzzy
 msgid "Flash not fired"
-msgstr "Blitz löste nicht aus."
+msgstr "Blitz lÃ¶ste nicht aus."
 
 #: libexif/canon/mnote-canon-entry.c:122 libexif/canon/mnote-canon-entry.c:307
 msgid "auto"
@@ -2101,12 +2101,12 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:269
 #, fuzzy
 msgid " / Saturation : "
-msgstr "Sättigung"
+msgstr "SÃ¤ttigung"
 
 #: libexif/canon/mnote-canon-entry.c:286
 #, fuzzy
 msgid " / Sharpness : "
-msgstr "Schärfe"
+msgstr "SchÃ¤rfe"
 
 #: libexif/canon/mnote-canon-entry.c:304
 msgid " / ISO : "
@@ -2327,7 +2327,7 @@ msgstr "Exif Version"
 #: libexif/olympus/mnote-olympus-tag.c:53
 #, fuzzy
 msgid "ISO Setting"
-msgstr "Schärfe"
+msgstr "SchÃ¤rfe"
 
 #: libexif/olympus/mnote-olympus-tag.c:39
 msgid "Colormode (?)"
@@ -2347,7 +2347,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:42
 #, fuzzy
 msgid "Image Sharpening"
-msgstr "Bildlänge"
+msgstr "BildlÃ¤nge"
 
 #: libexif/olympus/mnote-olympus-tag.c:43 libexif/pentax/mnote-pentax-tag.c:36
 #, fuzzy
@@ -2391,7 +2391,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:96
 #, fuzzy
 msgid "Image Adjustment"
-msgstr "Bildlänge"
+msgstr "BildlÃ¤nge"
 
 #: libexif/olympus/mnote-olympus-tag.c:59
 msgid "Tonecompensation"
@@ -2423,7 +2423,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:65
 #, fuzzy
 msgid "Flash used"
-msgstr "Blitz löste aus."
+msgstr "Blitz lÃ¶ste aus."
 
 #: libexif/olympus/mnote-olympus-tag.c:66
 msgid "AF Focus position"
@@ -2500,7 +2500,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:118
 #, fuzzy
 msgid "Sharpness Setting"
-msgstr "Schärfe"
+msgstr "SchÃ¤rfe"
 
 #: libexif/olympus/mnote-olympus-tag.c:119
 msgid "White Balance Setting"
@@ -2535,7 +2535,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-entry.c:82
 #, fuzzy
 msgid "Flash did not fire"
-msgstr "Blitz löste nicht aus."
+msgstr "Blitz lÃ¶ste nicht aus."
 
 #: libexif/olympus/mnote-olympus-entry.c:83
 msgid "Flash unit unknown"

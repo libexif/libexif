@@ -1,4 +1,5 @@
-/* exif-log.h
+/*! \file exif-log.h
+ *  \brief log message infrastructure
  *
  * Copyright © 2004 Lutz Müller <lutz@users.sourceforge.net>
  *
@@ -45,9 +46,13 @@ typedef enum {
 const char *exif_log_code_get_title   (ExifLogCode); /* Title for dialog   */
 const char *exif_log_code_get_message (ExifLogCode); /* Message for dialog */
 
+/** Log callback function prototype.
+ */
 typedef void (* ExifLogFunc) (ExifLog *log, ExifLogCode, const char *domain,
 			      const char *format, va_list args, void *data);
 
+/** Register log callback function.
+ */
 void     exif_log_set_func (ExifLog *log, ExifLogFunc func, void *data);
 
 void     exif_log  (ExifLog *log, ExifLogCode, const char *domain,

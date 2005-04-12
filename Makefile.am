@@ -1,8 +1,10 @@
-SUBDIRS = m4m po libexif test
+SUBDIRS = m4m po libexif test doc
 
 EXTRA_DIST = @PACKAGE_TARNAME@.spec autogen.sh
 
 ACLOCAL_AMFLAGS = -I m4m
+
+doc_DATA = README AUTHORS NEWS ChangeLog ABOUT-NLS COPYING
 
 #######################################################################
 # Help for the maintainer

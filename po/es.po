@@ -1,17 +1,17 @@
 # libexif Spanish Translation.
-# Copyright © 2002 Free Software Foundation, Inc.
+# Copyright ¬© 2002 Free Software Foundation, Inc.
 # Fabian Mandelbaum <fabman@mandrakesoft.com>, 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libexif\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2005-03-26 18:40+0100\n"
+"POT-Creation-Date: 2005-03-30 16:53+0200\n"
 "PO-Revision-Date: 2005-03-12 05:43+0100\n"
 "Last-Translator: Fabian Mandelbaum <fabman@mandrakesoft.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: libexif/exif-byte-order.c:33
@@ -25,13 +25,13 @@ msgstr ""
 #: libexif/exif-entry.c:366
 #, fuzzy, c-format
 msgid "The tag '%s' contains data of an invalid format ('%s', expected '%s')."
-msgstr "Formato no v·lido '%s', se esperaba '%s'."
+msgstr "Formato no v√°lido '%s', se esperaba '%s'."
 
 #: libexif/exif-entry.c:379
 #, fuzzy, c-format
 msgid ""
 "The tag '%s' contains an invalid number of components (%i, expected %i)."
-msgstr "Cantidad de componentes no v·lida (%i, se esperaba %i)."
+msgstr "Cantidad de componentes no v√°lida (%i, se esperaba %i)."
 
 #: libexif/exif-entry.c:392
 msgid "chunky format"
@@ -47,19 +47,19 @@ msgstr "No definido"
 
 #: libexif/exif-entry.c:394
 msgid "One-chip color area sensor"
-msgstr "Sensor de ·rea de color de un chip"
+msgstr "Sensor de √°rea de color de un chip"
 
 #: libexif/exif-entry.c:395
 msgid "Two-chip color area sensor"
-msgstr "Sensor de ·rea de color de dos chips"
+msgstr "Sensor de √°rea de color de dos chips"
 
 #: libexif/exif-entry.c:395
 msgid "Three-chip color area sensor"
-msgstr "Sensor de ·rea de color de tres chips"
+msgstr "Sensor de √°rea de color de tres chips"
 
 #: libexif/exif-entry.c:396
 msgid "Color sequential area sensor"
-msgstr "Sensor de ·rea de color secuencial"
+msgstr "Sensor de √°rea de color secuencial"
 
 #: libexif/exif-entry.c:396
 msgid "Trilinear sensor"
@@ -127,11 +127,11 @@ msgstr "Proceso personalizado"
 
 #: libexif/exif-entry.c:408
 msgid "Auto exposure"
-msgstr "ExposiciÛn autom·tica"
+msgstr "Exposici√≥n autom√°tica"
 
 #: libexif/exif-entry.c:408
 msgid "Manual exposure"
-msgstr "ExposiciÛn manual"
+msgstr "Exposici√≥n manual"
 
 #: libexif/exif-entry.c:408
 msgid "Auto bracket"
@@ -139,7 +139,7 @@ msgstr "Auto bracket"
 
 #: libexif/exif-entry.c:410
 msgid "Auto white balance"
-msgstr "Balance de blanco autom·tico"
+msgstr "Balance de blanco autom√°tico"
 
 #: libexif/exif-entry.c:410
 msgid "Manual white balance"
@@ -147,7 +147,7 @@ msgstr "Balance de blanco manual"
 
 #: libexif/exif-entry.c:412
 msgid "Standard"
-msgstr "Est·ndar"
+msgstr "Est√°ndar"
 
 #: libexif/exif-entry.c:412 libexif/exif-entry.c:489
 #: libexif/canon/mnote-canon-entry.c:217
@@ -194,11 +194,11 @@ msgstr "Ganancia alta baja"
 
 #: libexif/exif-entry.c:418
 msgid "Low saturation"
-msgstr "Baja saturaciÛn"
+msgstr "Baja saturaci√≥n"
 
 #: libexif/exif-entry.c:418
 msgid "High saturation"
-msgstr "Alta saturaciÛn"
+msgstr "Alta saturaci√≥n"
 
 #: libexif/exif-entry.c:419 libexif/exif-entry.c:420
 #: libexif/olympus/mnote-olympus-entry.c:150
@@ -248,7 +248,7 @@ msgstr "Multi Lugar"
 
 #: libexif/exif-entry.c:437
 msgid "Pattern"
-msgstr "PatrÛn"
+msgstr "Patr√≥n"
 
 #: libexif/exif-entry.c:438 libexif/canon/mnote-canon-entry.c:334
 msgid "Partial"
@@ -265,16 +265,16 @@ msgstr "Descomprimido"
 #: libexif/exif-entry.c:443
 #, fuzzy
 msgid "LZW compression"
-msgstr "compresiÛn JPEG"
+msgstr "compresi√≥n JPEG"
 
 #: libexif/exif-entry.c:444
 msgid "JPEG compression"
-msgstr "compresiÛn JPEG"
+msgstr "compresi√≥n JPEG"
 
 #: libexif/exif-entry.c:448 libexif/olympus/mnote-olympus-entry.c:118
 #: libexif/pentax/mnote-pentax-entry.c:85
 msgid "Daylight"
-msgstr "Luz de dÌa"
+msgstr "Luz de d√≠a"
 
 #: libexif/exif-entry.c:449 libexif/pentax/mnote-pentax-entry.c:88
 msgid "Fluorescent"
@@ -314,15 +314,15 @@ msgstr "Sombra"
 
 #: libexif/exif-entry.c:455
 msgid "Daylight fluorescent"
-msgstr "Luz de dÌa fluorescente"
+msgstr "Luz de d√≠a fluorescente"
 
 #: libexif/exif-entry.c:456
 msgid "Day white fluorescent"
-msgstr "DÌa blanco fluorescente"
+msgstr "D√≠a blanco fluorescente"
 
 #: libexif/exif-entry.c:457
 msgid "Cool white fluorescent"
-msgstr "Blanco frÌo fluorescente"
+msgstr "Blanco fr√≠o fluorescente"
 
 #: libexif/exif-entry.c:458
 msgid "White fluorescent"
@@ -330,15 +330,15 @@ msgstr "Blanco fluorescente"
 
 #: libexif/exif-entry.c:459
 msgid "Standard light A"
-msgstr "Luz est·ndar A"
+msgstr "Luz est√°ndar A"
 
 #: libexif/exif-entry.c:460
 msgid "Standard light B"
-msgstr "Luz est·ndar B"
+msgstr "Luz est√°ndar B"
 
 #: libexif/exif-entry.c:461
 msgid "Standard light C"
-msgstr "Luz est·ndar C"
+msgstr "Luz est√°ndar C"
 
 #: libexif/exif-entry.c:462
 msgid "D55"
@@ -366,7 +366,7 @@ msgstr "pulg"
 
 #: libexif/exif-entry.c:470 libexif/exif-entry.c:474
 msgid "Centimeter"
-msgstr "CentÌmetro"
+msgstr "Cent√≠metro"
 
 #: libexif/exif-entry.c:470 libexif/exif-entry.c:474
 msgid "cm"
@@ -413,12 +413,12 @@ msgstr "creativo"
 #: libexif/exif-entry.c:484
 #, fuzzy
 msgid "Creative program (biased toward fast shutter speed"
-msgstr "Programa de acciÛn (orientado a velocidad r·pida del obturador)"
+msgstr "Programa de acci√≥n (orientado a velocidad r√°pida del obturador)"
 
 #: libexif/exif-entry.c:485
 #, fuzzy
 msgid "Action"
-msgstr "acciÛn"
+msgstr "acci√≥n"
 
 #: libexif/exif-entry.c:486
 #, fuzzy
@@ -432,7 +432,7 @@ msgstr "Modo paisaje (para fotos de paisaje con el fondo en foco"
 
 #: libexif/exif-entry.c:492
 msgid "Flash did not fire."
-msgstr "El flash no disparÛ."
+msgstr "El flash no dispar√≥."
 
 #: libexif/exif-entry.c:492
 #, fuzzy
@@ -441,7 +441,7 @@ msgstr "Flash"
 
 #: libexif/exif-entry.c:493
 msgid "Flash fired."
-msgstr "El flash disparÛ."
+msgstr "El flash dispar√≥."
 
 #: libexif/exif-entry.c:493
 #, fuzzy
@@ -452,86 +452,86 @@ msgstr "Flash"
 #: libexif/olympus/mnote-olympus-entry.c:159
 #, fuzzy
 msgid "Yes"
-msgstr "sÌ"
+msgstr "s√≠"
 
 #: libexif/exif-entry.c:494
 msgid "Strobe return light not detected."
-msgstr "Luz de retorno estrosboscÛpica no detectada."
+msgstr "Luz de retorno estrosbosc√≥pica no detectada."
 
 #: libexif/exif-entry.c:494
 #, fuzzy
 msgid "W/o strobe"
-msgstr "sin estrosboscÛpica"
+msgstr "sin estrosbosc√≥pica"
 
 #: libexif/exif-entry.c:496
 msgid "Strobe return light detected."
-msgstr "Luz de retorno estrosboscÛpica detectada."
+msgstr "Luz de retorno estrosbosc√≥pica detectada."
 
 #: libexif/exif-entry.c:496
 #, fuzzy
 msgid "W. strobe"
-msgstr "con estrosboscÛpica"
+msgstr "con estrosbosc√≥pica"
 
 #: libexif/exif-entry.c:497
 #, fuzzy
 msgid "Flash fired, compulsatory flash mode"
-msgstr "El flash no disparÛ, modo compulsivo del flash."
+msgstr "El flash no dispar√≥, modo compulsivo del flash."
 
 #: libexif/exif-entry.c:498
 #, fuzzy
 msgid "Flash fired, compulsatory flash mode, return light not detected."
 msgstr ""
-"El flash disparÛ, modo compulsivo del flash, luz de retorno no detectada."
+"El flash dispar√≥, modo compulsivo del flash, luz de retorno no detectada."
 
 #: libexif/exif-entry.c:500
 #, fuzzy
 msgid "Flash fired, compulsatory flash mode, return light detected."
-msgstr "El flash disparÛ, modo compulsivo del flash, luz de retorno detectada."
+msgstr "El flash dispar√≥, modo compulsivo del flash, luz de retorno detectada."
 
 #: libexif/exif-entry.c:502
 #, fuzzy
 msgid "Flash did not fire, compulsatory flash mode."
-msgstr "El flash no disparÛ, modo compulsivo del flash."
+msgstr "El flash no dispar√≥, modo compulsivo del flash."
 
 #: libexif/exif-entry.c:503
 msgid "Flash did not fire, auto mode."
-msgstr "El flash no disparÛ, modo autom·tico."
+msgstr "El flash no dispar√≥, modo autom√°tico."
 
 #: libexif/exif-entry.c:504
 msgid "Flash fired, auto mode."
-msgstr "El flash disparÛ, modo autom·tico."
+msgstr "El flash dispar√≥, modo autom√°tico."
 
 #: libexif/exif-entry.c:505
 msgid "Flash fired, auto mode, return light not detected."
-msgstr "El flash disparÛ, modo autom·tico, luz de retorno no detectada."
+msgstr "El flash dispar√≥, modo autom√°tico, luz de retorno no detectada."
 
 #: libexif/exif-entry.c:507
 msgid "Flash fired, auto mode, return light detected."
-msgstr "El flash disparÛ, modo autom·tico, luz de retorno detectada."
+msgstr "El flash dispar√≥, modo autom√°tico, luz de retorno detectada."
 
 #: libexif/exif-entry.c:508
 msgid "No flash function."
-msgstr "Sin funciÛn de flash."
+msgstr "Sin funci√≥n de flash."
 
 #: libexif/exif-entry.c:509
 msgid "Flash fired, red-eye reduction mode."
-msgstr "El flash disparÛ, modo de reducciÛn de ojos rojos."
+msgstr "El flash dispar√≥, modo de reducci√≥n de ojos rojos."
 
 #: libexif/exif-entry.c:510
 msgid "Flash fired, red-eye reduction mode, return light not detected."
 msgstr ""
-"El flash disparÛ, modo de reducciÛn de ojos rojos, luz de retorno no "
+"El flash dispar√≥, modo de reducci√≥n de ojos rojos, luz de retorno no "
 "detectada."
 
 #: libexif/exif-entry.c:512
 msgid "Flash fired, red-eye reduction mode, return light detected."
 msgstr ""
-"El flash disparÛ, modo de reducciÛn de ojos rojos, luz de retorno detectada."
+"El flash dispar√≥, modo de reducci√≥n de ojos rojos, luz de retorno detectada."
 
 #: libexif/exif-entry.c:514
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode."
 msgstr ""
-"El flash disparÛ, modo compulsivo del flash, modo de reducciÛn de ojos rojos."
+"El flash dispar√≥, modo compulsivo del flash, modo de reducci√≥n de ojos rojos."
 
 #: libexif/exif-entry.c:516
 #, fuzzy
@@ -539,7 +539,7 @@ msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
 "detected"
 msgstr ""
-"El flash disparÛ, modo compulsivo del flash, modo de reducciÛn de ojos "
+"El flash dispar√≥, modo compulsivo del flash, modo de reducci√≥n de ojos "
 "rojos, luz de retorno no detectada."
 
 #: libexif/exif-entry.c:518
@@ -547,30 +547,30 @@ msgstr ""
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction, return light detected"
 msgstr ""
-"El flash disparÛ, modo compulsivo del flash, modo de reducciÛn de ojos "
+"El flash dispar√≥, modo compulsivo del flash, modo de reducci√≥n de ojos "
 "rojos, luz de retorno detectada."
 
 #: libexif/exif-entry.c:520
 #, fuzzy
 msgid "Flash did not fire, auto mode, red-eye reduction mode"
-msgstr "El flash disparÛ, modo autom·tico, modo de reducciÛn de ojos rojos."
+msgstr "El flash dispar√≥, modo autom√°tico, modo de reducci√≥n de ojos rojos."
 
 #: libexif/exif-entry.c:521
 #, fuzzy
 msgid "Flash fired, auto mode, red-eye reduction mode"
-msgstr "El flash disparÛ, modo autom·tico, modo de reducciÛn de ojos rojos."
+msgstr "El flash dispar√≥, modo autom√°tico, modo de reducci√≥n de ojos rojos."
 
 #: libexif/exif-entry.c:522
 msgid ""
 "Flash fired, auto mode, return light not detected, red-eye reduction mode."
 msgstr ""
-"El flash disparÛ, modo autom·tico, modo de reducciÛn de ojos rojos, luz de "
+"El flash dispar√≥, modo autom√°tico, modo de reducci√≥n de ojos rojos, luz de "
 "retorno no detectada."
 
 #: libexif/exif-entry.c:524
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode."
 msgstr ""
-"El flash disparÛ, modo autom·tico, modo de reducciÛn de ojos rojos, luz de "
+"El flash dispar√≥, modo autom√°tico, modo de reducci√≥n de ojos rojos, luz de "
 "retorno detectada."
 
 #: libexif/exif-entry.c:528
@@ -611,7 +611,7 @@ msgstr "Descalibrado"
 #: libexif/exif-entry.c:583
 #, fuzzy, c-format
 msgid "Invalid size of entry (%i, expected %li x %i)."
-msgstr "Cantidad de componentes no v·lida (%i, se esperaba %i)."
+msgstr "Cantidad de componentes no v√°lida (%i, se esperaba %i)."
 
 #: libexif/exif-entry.c:616
 msgid "Unsupported UNICODE string"
@@ -624,12 +624,12 @@ msgstr ""
 #: libexif/exif-entry.c:648
 #, fuzzy
 msgid "Unknown Exif Version"
-msgstr "VersiÛn Exif"
+msgstr "Versi√≥n Exif"
 
 #: libexif/exif-entry.c:652
 #, fuzzy, c-format
 msgid "Exif Version %d.%d"
-msgstr "VersiÛn Exif"
+msgstr "Versi√≥n Exif"
 
 #: libexif/exif-entry.c:663
 msgid "FlashPix Version 1.0"
@@ -735,7 +735,7 @@ msgstr "Dentro de la distancia %i de (x,y) = (%i,%i)"
 #: libexif/exif-entry.c:872
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
-msgstr "Dentro del rect·ngulo (ancho %i, alto %i) alrededor de (x,y) = (%i,%i)"
+msgstr "Dentro del rect√°ngulo (ancho %i, alto %i) alrededor de (x,y) = (%i,%i)"
 
 #: libexif/exif-entry.c:878
 #, c-format
@@ -745,7 +745,7 @@ msgstr "Cantidad de componentes inesperada (%li, esperados 2, 3, o 4)."
 #: libexif/exif-format.c:33
 #, fuzzy
 msgid "Byte"
-msgstr "CentÌmetro"
+msgstr "Cent√≠metro"
 
 #: libexif/exif-format.c:34
 msgid "Ascii"
@@ -763,7 +763,7 @@ msgstr ""
 #: libexif/exif-format.c:37
 #, fuzzy
 msgid "Rational"
-msgstr "acciÛn"
+msgstr "acci√≥n"
 
 #: libexif/exif-format.c:38
 msgid "SByte"
@@ -781,7 +781,7 @@ msgstr ""
 #: libexif/exif-format.c:41
 #, fuzzy
 msgid "SRational"
-msgstr "acciÛn"
+msgstr "acci√≥n"
 
 #: libexif/exif-format.c:42
 #, fuzzy
@@ -807,9 +807,9 @@ msgid ""
 "(NULL). see the separate volume of Recommended Exif Interoperability Rules "
 "(ExifR98) for other tags used for ExifR98."
 msgstr ""
-"Indica la identificaciÛn de la regla de inter-operatibilidad. Utilice \"R98"
+"Indica la identificaci√≥n de la regla de inter-operatibilidad. Utilice \"R98"
 "\" para indicar reglas ExifR98. Se utilizan cuatro bytes incluyendo el "
-"cÛdigo de terminaciÛn (NULL). Vea el volumen separado de Recommended Exif "
+"c√≥digo de terminaci√≥n (NULL). Vea el volumen separado de Recommended Exif "
 "Interoperatibility Rules (ExifR98) para otras etiquetas usadas en ExifR98."
 
 #: libexif/exif-tag.c:55
@@ -849,14 +849,14 @@ msgid ""
 "<SamplesPerPixel>. In JPEG compressed data a JPEG marker is used instead of "
 "this tag."
 msgstr ""
-"La cantidad de bits por componente de imagen. En este est·ndar cada "
+"La cantidad de bits por componente de imagen. En este est√°ndar cada "
 "componente de imagen es 8 bits, por lo que el valor de esta etiqueta es 9. "
-"Vea tambiÈn <SamplesPerPixel>. En datos comprimidos JPEG se utliza un "
+"Vea tambi√©n <SamplesPerPixel>. En datos comprimidos JPEG se utliza un "
 "marcador JPEG en vez de esta etiqueta."
 
 #: libexif/exif-tag.c:70
 msgid "Compression"
-msgstr "CompresiÛn"
+msgstr "Compresi√≥n"
 
 #: libexif/exif-tag.c:71
 msgid ""
@@ -864,21 +864,21 @@ msgid ""
 "compressed, this designation is not necessary and is omitted. When "
 "thumbnails use JPEG compression, this tag value is set to 6."
 msgstr ""
-"El esquema de compresiÛn utilizado para los datos de la imagen. Cuando una "
-"imagen primaria est· comprimida con JPEG, esto no es necesario y se omite. "
-"Cuando las diapositivas utilizan compresiÛn JPEG, el valor de esta etiqueta "
+"El esquema de compresi√≥n utilizado para los datos de la imagen. Cuando una "
+"imagen primaria est√° comprimida con JPEG, esto no es necesario y se omite. "
+"Cuando las diapositivas utilizan compresi√≥n JPEG, el valor de esta etiqueta "
 "es 6."
 
 #: libexif/exif-tag.c:77
 msgid "Photometric Interpretation"
-msgstr "InterpretaciÛn fotomÈtrica"
+msgstr "Interpretaci√≥n fotom√©trica"
 
 #: libexif/exif-tag.c:78
 msgid ""
 "The pixel composition. In JPEG compressed data a JPEG marker is used instead "
 "of this tag."
 msgstr ""
-"La composiciÛn del pixel. En datos comprimidos JPEG se utliza un marcador "
+"La composici√≥n del pixel. En datos comprimidos JPEG se utliza un marcador "
 "JPEG en vez de esta etiqueta."
 
 #: libexif/exif-tag.c:81
@@ -891,7 +891,7 @@ msgstr "Nombre del documento"
 
 #: libexif/exif-tag.c:84
 msgid "Image Description"
-msgstr "DescripciÛn de la imagen"
+msgstr "Descripci√≥n de la imagen"
 
 #: libexif/exif-tag.c:85
 msgid ""
@@ -900,9 +900,9 @@ msgid ""
 "used. When a 2-bytes code is necessary, the Exif Private tag <UserComment> "
 "is to be used."
 msgstr ""
-"Una cadena de caracteres que da tÌtulo a la imagen. Puede ser un comentario "
+"Una cadena de caracteres que da t√≠tulo a la imagen. Puede ser un comentario "
 "como \"picnic de 1988\" o algo por el estilo. No se pueden utilizar "
-"caracteres codificados con 2 bytes. Cuando se necesita un cÛdigo de 2 bytes, "
+"caracteres codificados con 2 bytes. Cuando se necesita un c√≥digo de 2 bytes, "
 "se debe usar la etiqueta privada Exif <UserComment>."
 
 #: libexif/exif-tag.c:91
@@ -915,8 +915,8 @@ msgid ""
 "DSC, scanner, video digitizer or other equipment that generated the image. "
 "When the field is left blank, it is treated as unknown."
 msgstr ""
-"El fabricante del equipo. Este es el fabricante del DSC, esc·ner, "
-"digitalizador de vÌdeo u otro equipo que generÛ la imagen. Cuando el campo "
+"El fabricante del equipo. Este es el fabricante del DSC, esc√°ner, "
+"digitalizador de v√≠deo u otro equipo que gener√≥ la imagen. Cuando el campo "
 "se deja en blanco, se trata como desconocido."
 
 #: libexif/exif-tag.c:98
@@ -929,8 +929,8 @@ msgid ""
 "number of the DSC, scanner, video digitizer or other equipment that "
 "generated the image. When the field is left blank, it is treated as unknown."
 msgstr ""
-"El nombre o n˙mero de modelo del equipo. Este es el nombre del modelo o "
-"n˙mero del DSC, esc·ner, digitalizador de vÌdeo u otro equipo que generÛ la "
+"El nombre o n√∫mero de modelo del equipo. Este es el nombre del modelo o "
+"n√∫mero del DSC, esc√°ner, digitalizador de v√≠deo u otro equipo que gener√≥ la "
 "imagen. Cuando el campo se deja en blanco, se trata como desconocido."
 
 #: libexif/exif-tag.c:104
@@ -946,17 +946,17 @@ msgid ""
 msgstr ""
 "El desplazamiento en bytes de cada tira. Se recomienda que se seleccione de "
 "manera tal que la cantidad de bytes de la tira no exceda 64 Kbytes. Con "
-"datos comprimidos JPEG esto no es necesario y se omite. Vea tambiÈn "
+"datos comprimidos JPEG esto no es necesario y se omite. Vea tambi√©n "
 "<RowsPerStrip> y <StripByteCounts>."
 
 #: libexif/exif-tag.c:111
 msgid "Orientation"
-msgstr "OrientaciÛn"
+msgstr "Orientaci√≥n"
 
 #: libexif/exif-tag.c:112
 #, fuzzy
 msgid "The image orientation viewed in terms of rows and columns."
-msgstr "La orientaciÛn de la imagen vista en tÈrminos de filas y columnas."
+msgstr "La orientaci√≥n de la imagen vista en t√©rminos de filas y columnas."
 
 #: libexif/exif-tag.c:115
 msgid "Samples per Pixel"
@@ -968,8 +968,8 @@ msgid ""
 "YCbCr images, the value set for this tag is 3. In JPEG compressed data a "
 "JPEG marker is used instead of this tag."
 msgstr ""
-"La cantidad de componentes por pixel. Debido a que este est·ndar se aplica a "
-"im·genes RGB e YCbCr, el valor para esta etiqueta es 3. En datos comprimidos "
+"La cantidad de componentes por pixel. Debido a que este est√°ndar se aplica a "
+"im√°genes RGB e YCbCr, el valor para esta etiqueta es 3. En datos comprimidos "
 "JPEG se utliza un marcador JPEG en vez de esta etiqueta."
 
 #: libexif/exif-tag.c:120
@@ -985,7 +985,7 @@ msgid ""
 msgstr ""
 "La cantidad de filas por tira. Esta es la cantidad de filas en la imagen de "
 "una tira cuando se divide a la imagen en tiras. En datos comprimidos JPEG "
-"esto no es necesario y se omite. Vea tambiÈn <RowsPerStrip> y "
+"esto no es necesario y se omite. Vea tambi√©n <RowsPerStrip> y "
 "<StripByteCounts>."
 
 #: libexif/exif-tag.c:126
@@ -1002,31 +1002,31 @@ msgstr ""
 
 #: libexif/exif-tag.c:129
 msgid "x-Resolution"
-msgstr "ResoluciÛn X"
+msgstr "Resoluci√≥n X"
 
 #: libexif/exif-tag.c:130
 msgid ""
 "The number of pixels per <ResolutionUnit> in the <ImageWidth> direction. "
 "When the image resolution is unknown, 72 [dpi] is designated."
 msgstr ""
-"La cantidad de pixels por <ResolutionUnit> en la direcciÛn <ImageWidth>. "
-"Cuando se desconoce la resoluciÛn de una imagen, se utilizan 72 [dpi]."
+"La cantidad de pixels por <ResolutionUnit> en la direcci√≥n <ImageWidth>. "
+"Cuando se desconoce la resoluci√≥n de una imagen, se utilizan 72 [dpi]."
 
 #: libexif/exif-tag.c:133
 msgid "y-Resolution"
-msgstr "ResoluciÛn Y"
+msgstr "Resoluci√≥n Y"
 
 #: libexif/exif-tag.c:134
 msgid ""
 "The number of pixels per <ResolutionUnit> in the <ImageLength> direction. "
 "The same value as <XResolution> is designated."
 msgstr ""
-"La cantidad de pixels por <ResolutionUnit> en la direcciÛn <ImageLength>. Se "
+"La cantidad de pixels por <ResolutionUnit> en la direcci√≥n <ImageLength>. Se "
 "utiliza el mismo valor que <XResolution>."
 
 #: libexif/exif-tag.c:137
 msgid "Planar Configuration"
-msgstr "ConfiguraciÛn planar"
+msgstr "Configuraci√≥n planar"
 
 #: libexif/exif-tag.c:138
 msgid ""
@@ -1041,7 +1041,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:142
 msgid "Resolution Unit"
-msgstr "Unidad de resoluciÛn"
+msgstr "Unidad de resoluci√≥n"
 
 #: libexif/exif-tag.c:143
 msgid ""
@@ -1050,12 +1050,12 @@ msgid ""
 "unknown, 2 (inches) is designated."
 msgstr ""
 "La unidad para medir <XResolution> e <YResolution>. Se utiliza la misma "
-"unidad para ambas. Si la resoluciÛn de la imagen se desconoce, se designa 2 "
+"unidad para ambas. Si la resoluci√≥n de la imagen se desconoce, se designa 2 "
 "(pulgadas)."
 
 #: libexif/exif-tag.c:147
 msgid "Transfer Function"
-msgstr "FunciÛn de transferencia"
+msgstr "Funci√≥n de transferencia"
 
 #: libexif/exif-tag.c:148
 msgid ""
@@ -1063,9 +1063,9 @@ msgid ""
 "tag is not necessary, since color space is specified in the color space "
 "information tag (<ColorSpace>)."
 msgstr ""
-"Una funciÛn de transferencia para la imagen, descripta en forma tabular. "
+"Una funci√≥n de transferencia para la imagen, descripta en forma tabular. "
 "Normalmente esta etiqueta no es necesaria, dado que el espacio de color se "
-"especifica en la etiqueta de informaciÛn de espacio de color (<ColorSpace>)."
+"especifica en la etiqueta de informaci√≥n de espacio de color (<ColorSpace>)."
 
 #: libexif/exif-tag.c:151
 msgid "Software"
@@ -1078,8 +1078,8 @@ msgid ""
 "is not specified, but it is recommended that the example shown below be "
 "followed. When the field is left blank, it is treated as unknown."
 msgstr ""
-"Esta etiqueta registra el nombre y la versiÛn del software o firmware de la "
-"c·mara o dispositivo de entrada de imagen utilizado para generar la im·gen. "
+"Esta etiqueta registra el nombre y la versi√≥n del software o firmware de la "
+"c√°mara o dispositivo de entrada de imagen utilizado para generar la im√°gen. "
 "No se especifica el formato detallado, pero se recomienda que se siga el "
 "ejemplo mostrado debajo. Cuando el campo se deja en blanco, se trata como "
 "desconocido."
@@ -1093,8 +1093,8 @@ msgid ""
 "The date and time of image creation. In this standard (EXIF-2.1) it is the "
 "date and time the file was changed."
 msgstr ""
-"La fecha y hora de la creaciÛn de la imagen. En este est·ndar (EXIF-2.1) es "
-"la fecha y hora en la que cambiÛ el archivo."
+"La fecha y hora de la creaci√≥n de la imagen. En este est√°ndar (EXIF-2.1) es "
+"la fecha y hora en la que cambi√≥ el archivo."
 
 #: libexif/exif-tag.c:161
 msgid "Artist"
@@ -1107,9 +1107,9 @@ msgid ""
 "the information be written as in the example below for ease of "
 "Interoperability. When the field is left blank, it is treated as unknown."
 msgstr ""
-"Esta etiqueta registra el nombre del dueÒo de la c·mara, fotÛgrafo o creador "
+"Esta etiqueta registra el nombre del due√±o de la c√°mara, fot√≥grafo o creador "
 "de la imagen. No se especifica el formato detallado, pero se recomienda que "
-"se escriba la informaciÛn en como en el ejemplo de abajo para facilitar la "
+"se escriba la informaci√≥n en como en el ejemplo de abajo para facilitar la "
 "inter-operabilidad. Cuando el campo se deja en blanco, se trata como "
 "desconocido."
 
@@ -1125,7 +1125,7 @@ msgid ""
 msgstr ""
 "La cromaticidad del punto blanco de la imagen. Normalmente esta etiqueta no "
 "es necesaria ya que el espacio de color se especifica en la etiqueta de "
-"informaciÛn del espacio de color (<ColorSpace>)."
+"informaci√≥n del espacio de color (<ColorSpace>)."
 
 #: libexif/exif-tag.c:172
 msgid "Primary Chromaticities"
@@ -1139,7 +1139,7 @@ msgid ""
 msgstr ""
 "La cromaticidad de los tres colores primarios de la imagen. Normalmente esta "
 "etiqueta no es necesaria ya que el espacio de color se especifica en la "
-"etiqueta de informaciÛn del espacio de color (<ColorSpace>)."
+"etiqueta de informaci√≥n del espacio de color (<ColorSpace>)."
 
 #: libexif/exif-tag.c:176
 msgid "Transfer Range"
@@ -1175,9 +1175,9 @@ msgid ""
 msgstr ""
 "La cantidad de bytes de datos comprimidos de diapositiva JPEG. Esto no se "
 "utiliza para los datos primarios JPEG. Las diapositivas JPEG no se dividen "
-"sino que se graban como un flujo de bits contÌnuo desde SOI hasta EOI. No se "
-"deberÌan registrar marcadores Appn y COM. Las diapositivas comprimidas "
-"deberÌan grabarse en no m·s de 64 Kbytes, incluyendo todos los otros datos a "
+"sino que se graban como un flujo de bits cont√≠nuo desde SOI hasta EOI. No se "
+"deber√≠an registrar marcadores Appn y COM. Las diapositivas comprimidas "
+"deber√≠an grabarse en no m√°s de 64 Kbytes, incluyendo todos los otros datos a "
 "grabar en APP1."
 
 #: libexif/exif-tag.c:195
@@ -1192,11 +1192,11 @@ msgid ""
 "color space information tag, with the default being the value that gives the "
 "optimal image characteristics Interoperability this condition."
 msgstr ""
-"Los coeficientes de la matriz para la transformaciÛn de RGB a datos de "
-"imagen YCbCr. No hay predeterminados en TIFF; pero aquÌ se utiliza el valor "
-"dado en el ApÈndice E, \"Color Space Guidelines\" como predeterminado. El "
-"espacio de color se declara en una etiqueta de informaciÛn del espacio de "
-"color, siendo el predeterminado el que da las caracterÌsticas Ûptimas de "
+"Los coeficientes de la matriz para la transformaci√≥n de RGB a datos de "
+"imagen YCbCr. No hay predeterminados en TIFF; pero aqu√≠ se utiliza el valor "
+"dado en el Ap√©ndice E, \"Color Space Guidelines\" como predeterminado. El "
+"espacio de color se declara en una etiqueta de informaci√≥n del espacio de "
+"color, siendo el predeterminado el que da las caracter√≠sticas √≥ptimas de "
 "inter-operabilidad para la imagen."
 
 #: libexif/exif-tag.c:204
@@ -1208,7 +1208,7 @@ msgid ""
 "The sampling ratio of chrominance components in relation to the luminance "
 "component. In JPEG compressed data a JPEG marker is used instead of this tag."
 msgstr ""
-"La relaciÛn de muestreo de los componentes de crominancia en relaciÛn con el "
+"La relaci√≥n de muestreo de los componentes de crominancia en relaci√≥n con el "
 "componente de luminancia. En datos comprimidos JPEG se utliza un marcador "
 "JPEG en vez de esta etiqueta."
 
@@ -1230,15 +1230,15 @@ msgid ""
 "the value in this field. It is preferable that readers be able to support "
 "both centered and co-sited positioning."
 msgstr ""
-"La posiciÛn de los componentes de crominancia en relaciÛn con el de "
-"luminancia. Este campo se designa sÛlo para datos comprimidos JPEG o datos "
+"La posici√≥n de los componentes de crominancia en relaci√≥n con el de "
+"luminancia. Este campo se designa s√≥lo para datos comprimidos JPEG o datos "
 "no comprimidos YCbCr. El valor predeterminado TIFF es 1 (centrado); pero "
-"cuando Y:Cb:Cr = 4:2:2 se recomienda en este est·ndar que se utilice 2 (co-"
+"cuando Y:Cb:Cr = 4:2:2 se recomienda en este est√°ndar que se utilice 2 (co-"
 "sitiado) para registrar los datos, para mejorar la calidad de la imagen "
 "cuando se ve en sistemas de TV. Cuando este campo no existe, el lector "
-"deber· asumir el predeterminado TIFF. En caso que Y:Cb:Cr = 4:2:0, se "
+"deber√° asumir el predeterminado TIFF. En caso que Y:Cb:Cr = 4:2:0, se "
 "recomienda el predeterminado TIFF (centrado). Si el lector no tiene la "
-"capacidad de soportar ambos tipos de <YCbCrPositioning>, deberÌa seguir el "
+"capacidad de soportar ambos tipos de <YCbCrPositioning>, deber√≠a seguir el "
 "predeterminado TIFF sin importar el valor de este campo. Es preferible que "
 "los lectores puedan soportar el posicionamiento centrado y co-sitiado."
 
@@ -1255,10 +1255,10 @@ msgid ""
 "Interoperability these conditions."
 msgstr ""
 "El valor de referencia de los puntos blanco y negro. En TIFF no se dan "
-"predeterminados, pero los valores de abajo se dan como predeterminados aquÌ. "
-"El espacio de color se declara en una etiqueta de informaciÛn de espacio de "
-"color, siendo el valor predeterminado aquel que da las caracterÌsticas de "
-"inter-operabilidad Ûptimas para la imagen."
+"predeterminados, pero los valores de abajo se dan como predeterminados aqu√≠. "
+"El espacio de color se declara en una etiqueta de informaci√≥n de espacio de "
+"color, siendo el valor predeterminado aquel que da las caracter√≠sticas de "
+"inter-operabilidad √≥ptimas para la imagen."
 
 #: libexif/exif-tag.c:231
 msgid "XML Packet"
@@ -1270,7 +1270,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:241 libexif/exif-tag.c:537
 msgid "CFA Pattern"
-msgstr "PatrÛn CFA"
+msgstr "Patr√≥n CFA"
 
 #: libexif/exif-tag.c:242 libexif/exif-tag.c:538
 msgid ""
@@ -1278,13 +1278,13 @@ msgid ""
 "when a one-chip color area sensor is used. It does not apply to all sensing "
 "methods."
 msgstr ""
-"Indica el patrÛn geomÈtrico de la matriz de filtro de color (CFA) del sensor "
-"de imagen cuando se utiliza un sensor de ·rea color de un chip. No aplica a "
-"todos los mÈtodos de sensado."
+"Indica el patr√≥n geom√©trico de la matriz de filtro de color (CFA) del sensor "
+"de imagen cuando se utiliza un sensor de √°rea color de un chip. No aplica a "
+"todos los m√©todos de sensado."
 
 #: libexif/exif-tag.c:245
 msgid "Battery Level"
-msgstr "Nivel de la baterÌa"
+msgstr "Nivel de la bater√≠a"
 
 #: libexif/exif-tag.c:246
 msgid "Copyright"
@@ -1308,39 +1308,39 @@ msgid ""
 "a terminating NULL code, then the editor copyright is given (see example 3). "
 "When the field is left blank, it is treated as unknown."
 msgstr ""
-"InformaciÛn del Copyright. En este est·ndar la etiqueta se utiliza para "
-"indicar tanto el copyright del fotÛgrafo como el del editor. Es la nota de "
-"copyright de la persona u OrganizaciÛn que reclama derechos sobre la imagen. "
-"En este campo deberÌa escribirse la declaraciÛn de copyrtight de inter-"
+"Informaci√≥n del Copyright. En este est√°ndar la etiqueta se utiliza para "
+"indicar tanto el copyright del fot√≥grafo como el del editor. Es la nota de "
+"copyright de la persona u Organizaci√≥n que reclama derechos sobre la imagen. "
+"En este campo deber√≠a escribirse la declaraci√≥n de copyrtight de inter-"
 "operabilidad, incluyendo la fecha y los derechos; ej: \"Copyright, Juan "
-"Perez, 20xx. Todos los derechos reservados.\" En este est·ndar el campo "
-"registra tanto al copyright del fotÛgrafo como el del editor, con cada uno "
-"registrado en una parte separada de la declaraciÛn. Cuando hay una "
-"distinciÛn clara entre ambos copyrights, primero deberÌa escribirse el del "
-"fotÛgrafo seguido por el del editor, separados por NULL (en este caso, "
-"debido a que la declaraciÛn tambiÈn termina con un NULL, hay dos cÛdigos "
-"NULL) (vea el ejemplo 1). Cuando se da sÛlo el del fotÛgrafo, est· terminado "
-"por un cÛdigo NULL (vea el ejemplo 2). Cuando se da sÛlo el del editor, la "
-"parte del copyright del fotÛgrafo consiste de un espacio seguido de un "
-"cÛdigo de terminaciÛn NULL, luego se da el copyright del editor (vea el "
+"Perez, 20xx. Todos los derechos reservados.\" En este est√°ndar el campo "
+"registra tanto al copyright del fot√≥grafo como el del editor, con cada uno "
+"registrado en una parte separada de la declaraci√≥n. Cuando hay una "
+"distinci√≥n clara entre ambos copyrights, primero deber√≠a escribirse el del "
+"fot√≥grafo seguido por el del editor, separados por NULL (en este caso, "
+"debido a que la declaraci√≥n tambi√©n termina con un NULL, hay dos c√≥digos "
+"NULL) (vea el ejemplo 1). Cuando se da s√≥lo el del fot√≥grafo, est√° terminado "
+"por un c√≥digo NULL (vea el ejemplo 2). Cuando se da s√≥lo el del editor, la "
+"parte del copyright del fot√≥grafo consiste de un espacio seguido de un "
+"c√≥digo de terminaci√≥n NULL, luego se da el copyright del editor (vea el "
 "ejemplo 3). Cuando el campo se deja en blanco, se trata como desconocido."
 
 #: libexif/exif-tag.c:267
 msgid "Exposure Time"
-msgstr "Tiempo de exposiciÛn"
+msgstr "Tiempo de exposici√≥n"
 
 #: libexif/exif-tag.c:268
 msgid "Exposure time, given in seconds (sec)."
-msgstr "Tiempo de exposiciÛn, dado en segundos (seg)."
+msgstr "Tiempo de exposici√≥n, dado en segundos (seg)."
 
 #: libexif/exif-tag.c:269
 #, fuzzy
 msgid "FNumber"
-msgstr "El n˙mero F."
+msgstr "El n√∫mero F."
 
 #: libexif/exif-tag.c:270
 msgid "The F number."
-msgstr "El n˙mero F."
+msgstr "El n√∫mero F."
 
 #: libexif/exif-tag.c:272
 msgid "Image Resources Block"
@@ -1353,7 +1353,7 @@ msgid ""
 "contain image data as in the case of TIFF."
 msgstr ""
 "Un puntero al IFD Exif. Inter-operabilidad, el IFD Exif tiene la misma "
-"estructura que la del IFD especificado en TIFF. Sin embargo, por lo com˙n, "
+"estructura que la del IFD especificado en TIFF. Sin embargo, por lo com√∫n, "
 "no contiene datos de imagen como en el caso de TIFF."
 
 #: libexif/exif-tag.c:281
@@ -1361,7 +1361,7 @@ msgid ""
 "The class of the program used by the camera to set exposure when the picture "
 "is taken."
 msgstr ""
-"La clase de programa utilizado por la c·mara para ajustar la exposiciÛn "
+"La clase de programa utilizado por la c√°mara para ajustar la exposici√≥n "
 "cuando se toma la foto."
 
 #: libexif/exif-tag.c:284
@@ -1374,9 +1374,9 @@ msgid ""
 "tag value is an ASCII string compatible with the standard developed by the "
 "ASTM Technical committee."
 msgstr ""
-"Indica la sensibilidad espectral de cada canal de la c·mara utilizada. El "
+"Indica la sensibilidad espectral de cada canal de la c√°mara utilizada. El "
 "valor de la etiqueta es una cadena de caracteres ASCII compatible con el "
-"est·ndar desarrollado por el ASTM Tecnical committee."
+"est√°ndar desarrollado por el ASTM Tecnical committee."
 
 #: libexif/exif-tag.c:290
 msgid ""
@@ -1393,10 +1393,10 @@ msgid ""
 "is given in bytes, unlike the <ExifVersion> tag. When the version is "
 "2.0.0.0, the tag value is 02000000.H)."
 msgstr ""
-"Indica la versiÛn de <GPSInfoIFD>. La versiÛn est· dada como 2.0.0.0. Esta "
-"etiqueta es obligatoria cuando est· presente la etiqueta <GPSInfo>. (Nota: "
-"La etiqueta <GPSVersion ID> est· dada en bytes, a diferencia de la etiqueta "
-"<ExifVersion>. Cuando la versiÛn es 2.0.0.0, el valor de la etiqueta es "
+"Indica la versi√≥n de <GPSInfoIFD>. La versi√≥n est√° dada como 2.0.0.0. Esta "
+"etiqueta es obligatoria cuando est√° presente la etiqueta <GPSInfo>. (Nota: "
+"La etiqueta <GPSVersion ID> est√° dada en bytes, a diferencia de la etiqueta "
+"<ExifVersion>. Cuando la versi√≥n es 2.0.0.0, el valor de la etiqueta es "
 "02000000.H)."
 
 #: libexif/exif-tag.c:301
@@ -1452,7 +1452,7 @@ msgid ""
 "Indicates the ISO Speed and ISO Latitude of the camera or input device as "
 "specified in ISO 12232."
 msgstr ""
-"Indica la velocidad ISO y la latitud ISO de la c·mara o dispositivo de "
+"Indica la velocidad ISO y la latitud ISO de la c√°mara o dispositivo de "
 "entrada como se especifica en ISO 12232."
 
 #: libexif/exif-tag.c:328
@@ -1461,21 +1461,21 @@ msgid ""
 "14524. <OECF> is the relationship between the camera optical input and the "
 "image values."
 msgstr ""
-"Indica la FunciÛn de ConversiÛn Opto-ElectrÛnica (OECF) especificada en ISO "
-"14524. <OECF> es la relaciÛn entre la entrada Ûptica de la c·mara y los "
+"Indica la Funci√≥n de Conversi√≥n Opto-Electr√≥nica (OECF) especificada en ISO "
+"14524. <OECF> es la relaci√≥n entre la entrada √≥ptica de la c√°mara y los "
 "valores de la imagen."
 
 #: libexif/exif-tag.c:331
 msgid "Exif Version"
-msgstr "VersiÛn Exif"
+msgstr "Versi√≥n Exif"
 
 #: libexif/exif-tag.c:332
 msgid ""
 "The version of this standard supported. Nonexistence of this field is taken "
 "to mean nonconformance to the standard."
 msgstr ""
-"La versiÛn soportada de este est·ndar. Si este campo no existe se toma como "
-"que significa que no se cumple con el est·ndar."
+"La versi√≥n soportada de este est√°ndar. Si este campo no existe se toma como "
+"que significa que no se cumple con el est√°ndar."
 
 #: libexif/exif-tag.c:335
 msgid "Date and Time (original)"
@@ -1487,7 +1487,7 @@ msgid ""
 "still camera the date and time the picture was taken are recorded."
 msgstr ""
 "La fecha y hora cuando se generaron los datos originales de la imagen. Para "
-"una c·mara digital se registra la fecha y la hora en la que se tomÛ la foto."
+"una c√°mara digital se registra la fecha y la hora en la que se tom√≥ la foto."
 
 #: libexif/exif-tag.c:340
 msgid "Date and Time (digitized)"
@@ -1496,7 +1496,7 @@ msgstr "Fecha y Hora (digitalizado)"
 #: libexif/exif-tag.c:341
 msgid "The date and time when the image was stored as digital data. "
 msgstr ""
-"La fehca y hora cuando se almacenÛ la imagen en forma de datos digitales."
+"La fehca y hora cuando se almacen√≥ la imagen en forma de datos digitales."
 
 #: libexif/exif-tag.c:344
 msgid ""
@@ -1507,10 +1507,10 @@ msgid ""
 "Cb and Cr, this tag is provided for cases when compressed data uses "
 "components other than Y, Cb, and Cr and to enable support of other sequences."
 msgstr ""
-"InformaciÛn especÌfica de los datos comprimidos. Los canales de cada "
+"Informaci√≥n espec√≠fica de los datos comprimidos. Los canales de cada "
 "componente se arreglan en orden desde el 1er componente al 4to. Para datos "
 "no comprimidos el arreglo de los datos se da en la etiqueta "
-"<PhometricInterpretation>. Sin embargo, debido a que dicha etiqueta sÛlo "
+"<PhometricInterpretation>. Sin embargo, debido a que dicha etiqueta s√≥lo "
 "puede expresar el orden de Y, Cb y Cr, esta etiqueta se da para los casos en "
 "los que los datos comprimidos usan componentes que no son Y, Cb y Cr y para "
 "permitir el soporte de otras secuencias."
@@ -1524,8 +1524,8 @@ msgid ""
 "Information specific to compressed data. The compression mode used for a "
 "compressed image is indicated in unit bits per pixel."
 msgstr ""
-"InformaciÛn especÌfica sobre los datos comprimidos. El modo de compresiÛn "
-"utilizado para una imagen comprimida est· indicado en unidades de bits por "
+"Informaci√≥n espec√≠fica sobre los datos comprimidos. El modo de compresi√≥n "
+"utilizado para una imagen comprimida est√° indicado en unidades de bits por "
 "pixel."
 
 #: libexif/exif-tag.c:357
@@ -1538,7 +1538,7 @@ msgid ""
 "Exposure) setting (see Appendix C)."
 msgstr ""
 "Velocidad del obturador. La unidad es el ajuste APEX (Sistema aditivo de "
-"exposiciÛn fotogr·fica) (vea el ApÈndice C)."
+"exposici√≥n fotogr√°fica) (vea el Ap√©ndice C)."
 
 #: libexif/exif-tag.c:361
 msgid "The lens aperture. The unit is the APEX value."
@@ -1558,14 +1558,14 @@ msgstr ""
 
 #: libexif/exif-tag.c:366
 msgid "Exposure Bias"
-msgstr "Ajuste de exposiciÛn"
+msgstr "Ajuste de exposici√≥n"
 
 #: libexif/exif-tag.c:367
 msgid ""
 "The exposure bias. The units is the APEX value. Ordinarily it is given in "
 "the range of -99.99 to 99.99."
 msgstr ""
-"El ajuste de exposiciÛn. La unidad es el valor APEX. Por lo general, se da "
+"El ajuste de exposici√≥n. La unidad es el valor APEX. Por lo general, se da "
 "en el rango -99,99 a 99,99."
 
 #: libexif/exif-tag.c:370
@@ -1573,8 +1573,8 @@ msgid ""
 "The smallest F number of the lens. The unit is the APEX value. Ordinarily it "
 "is given in the range of 00.00 to 99.99, but it is not limited to this range."
 msgstr ""
-"El valor F m·s pequeÒo de la lente. La unidad es el valor APEX. Por lo "
-"general, se da en el rango de 00,00 a 99,99 pero no est· limitado a dicho "
+"El valor F m√°s peque√±o de la lente. La unidad es el valor APEX. Por lo "
+"general, se da en el rango de 00,00 a 99,99 pero no est√° limitado a dicho "
 "rango."
 
 #: libexif/exif-tag.c:374
@@ -1587,11 +1587,11 @@ msgstr "La distancia al sujeto, dada en metros."
 
 #: libexif/exif-tag.c:376
 msgid "Metering Mode"
-msgstr "Modo de mÈtrica"
+msgstr "Modo de m√©trica"
 
 #: libexif/exif-tag.c:377
 msgid "The metering mode."
-msgstr "El modo de la mÈtrica."
+msgstr "El modo de la m√©trica."
 
 #: libexif/exif-tag.c:378
 msgid "Light Source"
@@ -1606,7 +1606,7 @@ msgid ""
 "This tag is recorded when an image is taken using a strobe light (flash)."
 msgstr ""
 "Esta etiqueta se registra cuando se toma una imagen usando una luz "
-"estrosboscÛpica (flash)."
+"estrosbosc√≥pica (flash)."
 
 #: libexif/exif-tag.c:383
 msgid "Focal Length"
@@ -1617,8 +1617,8 @@ msgid ""
 "The actual focal length of the lens, in mm. Conversion is not made to the "
 "focal length of a 35 mm film camera."
 msgstr ""
-"La distancia focal real de la lente, en mm. No se realiza la conversiÛn a la "
-"distancia focal de una m·quina de pelÌcula de 35 mm."
+"La distancia focal real de la lente, en mm. No se realiza la conversi√≥n a la "
+"distancia focal de una m√°quina de pel√≠cula de 35 mm."
 
 #: libexif/exif-tag.c:386
 msgid "Maker Note"
@@ -1630,7 +1630,7 @@ msgid ""
 "The contents are up to the manufacturer."
 msgstr ""
 "Una etiqueta para que los fabricantes o escritores Exif registren cualquier "
-"informaciÛn deseada. El contenido queda a cargo del fabricante."
+"informaci√≥n deseada. El contenido queda a cargo del fabricante."
 
 #: libexif/exif-tag.c:389
 msgid "User Comment"
@@ -1658,23 +1658,23 @@ msgid ""
 "with blank characters [20.H]."
 msgstr ""
 "Una etiqueta para que los usuarios de Exif escriban palabras clave o "
-"comentarios en la imagen adem·s de los de <ImageDescription>, y sin "
-"limitaciones en la codificaciÛn de caracteres de dicha etiqueta. El cÛdigo "
-"de caracteres utilizado en esta etiqueta se identifica bas·ndose en un "
-"cÛdigo ID en un ·rea fija de 8 bytes al comienzo del ·rea de datos de la "
-"etiqueta. La porciÛn no utilizada del ·rea se completa con NULL (\"00.h\"). "
-"Los cÛdigos ID se asignan por medio de registro. En la tabla 6 se dan el "
-"mÈtodo de designaciÛn y referencias para cada cÛdigo de caracter. El valor "
-"de CountN est· determinado basado en los 8 bytes en el ·rea de cÛdigo de "
+"comentarios en la imagen adem√°s de los de <ImageDescription>, y sin "
+"limitaciones en la codificaci√≥n de caracteres de dicha etiqueta. El c√≥digo "
+"de caracteres utilizado en esta etiqueta se identifica bas√°ndose en un "
+"c√≥digo ID en un √°rea fija de 8 bytes al comienzo del √°rea de datos de la "
+"etiqueta. La porci√≥n no utilizada del √°rea se completa con NULL (\"00.h\"). "
+"Los c√≥digos ID se asignan por medio de registro. En la tabla 6 se dan el "
+"m√©todo de designaci√≥n y referencias para cada c√≥digo de caracter. El valor "
+"de CountN est√° determinado basado en los 8 bytes en el √°rea de c√≥digo de "
 "caracter y la cantidad de bytes en la parte del comentario del usuario. Dado "
-"que TYPE no es ASCII, no es necesaria la terminaciÛn NULL (ver fig. 9). El "
-"cÛdigo ID para el ·rea <UserComment> puede ser un cÛdigo definido como JIS o "
+"que TYPE no es ASCII, no es necesaria la terminaci√≥n NULL (ver fig. 9). El "
+"c√≥digo ID para el √°rea <UserComment> puede ser un c√≥digo definido como JIS o "
 "ASCII, o puede ser no definido. El nombre no definido es UndefinedText, y el "
-"cÛdigo ID se completa con 8 bytes de todos \"NULL\" (\"00.H\"). Un lector "
-"Exif que lee la etiqueta <UserComment> debe tener una funciÛn para "
-"determinar el cÛdigo ID. Esta funciÛn no se necesita en lectores Exif que no "
+"c√≥digo ID se completa con 8 bytes de todos \"NULL\" (\"00.H\"). Un lector "
+"Exif que lee la etiqueta <UserComment> debe tener una funci√≥n para "
+"determinar el c√≥digo ID. Esta funci√≥n no se necesita en lectores Exif que no "
 "usan la etiqueta <UserComment> (ver tabla 7). Cuando se deja a un lado el "
-"·rea <UserComment>, se recomienda que el cÛdigo ID sea ASCII y que se "
+"√°rea <UserComment>, se recomienda que el c√≥digo ID sea ASCII y que se "
 "complete la parte de comentario de usuario siguiente con caracteres espacio "
 "[20.H]."
 
@@ -1700,7 +1700,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:425
 msgid "The FlashPix format version supported by a FPXR file."
-msgstr "La versiÛn del formato FlashPix soportada por un archivo FPXR."
+msgstr "La versi√≥n del formato FlashPix soportada por un archivo FPXR."
 
 #: libexif/exif-tag.c:426
 msgid "Color Space"
@@ -1715,13 +1715,13 @@ msgid ""
 "used, Uncalibrated (=FFFF.H) is set. Image data recorded as Uncalibrated can "
 "be treated as sRGB when it is converted to FlashPix. On sRGB see Appendix E."
 msgstr ""
-"La etiqueta de informaciÛn de espacio de color (<ColorSpace>) siempre se "
+"La etiqueta de informaci√≥n de espacio de color (<ColorSpace>) siempre se "
 "registra como el especificador de espacio de color. Normalmente se utiliza "
 "sRGB (=1) para definir el espacio de color basado en las condiciones "
 "ambientales y del monitor de la PC. Si se utiliza un espacio de color "
 "distinto a sRGB, se ajusta en Uncalibrated (=FFFF.H). Los datos de imagen "
 "registrados como no calibrados pueden tratarse como sRGB cuando se convierte "
-"a FlashPix. Vea el ApÈndice E sobre sRGB."
+"a FlashPix. Vea el Ap√©ndice E sobre sRGB."
 
 #: libexif/exif-tag.c:435
 msgid ""
@@ -1731,11 +1731,11 @@ msgid ""
 "not exist in an uncompressed file. For details see section 2.8.1 and "
 "Appendix F."
 msgstr ""
-"InformaciÛn especÌfica a los datos comprimidos. Cuando se registra un "
-"archivo comprimido, el ancho v·lido de la imagen significativa se debe "
-"registrar en esta etiqueta, haya o no datos de colchÛn o una marca de "
-"reinicio. Esta etiqueta no deberÌa existir en un archivo no comprimido. Vea "
-"la secciÛn 2.8.1 y el ApÈndice F para m·s detalles."
+"Informaci√≥n espec√≠fica a los datos comprimidos. Cuando se registra un "
+"archivo comprimido, el ancho v√°lido de la imagen significativa se debe "
+"registrar en esta etiqueta, haya o no datos de colch√≥n o una marca de "
+"reinicio. Esta etiqueta no deber√≠a existir en un archivo no comprimido. Vea "
+"la secci√≥n 2.8.1 y el Ap√©ndice F para m√°s detalles."
 
 #: libexif/exif-tag.c:442
 msgid ""
@@ -1747,13 +1747,13 @@ msgid ""
 "number of lines recorded in this valid image height tag will in fact be the "
 "same as that recorded in the SOF."
 msgstr ""
-"InformaciÛn especÌfica a los datos comprimidos. Cuando se registra un "
-"archivo comprimido, la altura v·lida de la imagen significativa deberÌa "
-"registrarse en esta etiqueta, haya o no datos de colchÛn o una marca de "
-"reinicio. Esta etiqueta no deberÌa existir en un archivo no comprimido. Vea "
-"la secciÛn 2.8.1 y el ApÈndice F para m·s detalles. Dado que no es necesario "
-"el colchÛn de datos en la direcciÛn vertical, la cantidad de lÌneas "
-"registradas en esta etiqueta v·lida de altura de imagen ser·, de hecho, la "
+"Informaci√≥n espec√≠fica a los datos comprimidos. Cuando se registra un "
+"archivo comprimido, la altura v√°lida de la imagen significativa deber√≠a "
+"registrarse en esta etiqueta, haya o no datos de colch√≥n o una marca de "
+"reinicio. Esta etiqueta no deber√≠a existir en un archivo no comprimido. Vea "
+"la secci√≥n 2.8.1 y el Ap√©ndice F para m√°s detalles. Dado que no es necesario "
+"el colch√≥n de datos en la direcci√≥n vertical, la cantidad de l√≠neas "
+"registradas en esta etiqueta v√°lida de altura de imagen ser√°, de hecho, la "
 "misma que la registrada en el SOF."
 
 #: libexif/exif-tag.c:452
@@ -1783,32 +1783,32 @@ msgid ""
 "also be indicated on the audio file end."
 msgstr ""
 "Esta etiqueta se utiliza para registrar el nombre de un archivo de audio "
-"relacionado a los datos de imagen. La ˙nica informaciÛn relacional "
-"registrada aquÌ es el nombre y la extensiÛn del archivo de audio Exif (una "
+"relacionado a los datos de imagen. La √∫nica informaci√≥n relacional "
+"registrada aqu√≠ es el nombre y la extensi√≥n del archivo de audio Exif (una "
 "cadena de caracteres ASCII que consiste en 8 caracteres, un '.' y 3 "
-"caracteres m·s). No se registra la ruta. Las estipulaciones acerca del audio "
-"se dan en la secciÛn 3.6.3. Las convenciones para los nombres de archivo se "
-"dan en la secciÛn 3.7.1. Cuando se usa esta etiqueta, los archivos de audio "
-"se deben grabar en conformidad con el formato de audio Exif. TambiÈn se "
+"caracteres m√°s). No se registra la ruta. Las estipulaciones acerca del audio "
+"se dan en la secci√≥n 3.6.3. Las convenciones para los nombres de archivo se "
+"dan en la secci√≥n 3.7.1. Cuando se usa esta etiqueta, los archivos de audio "
+"se deben grabar en conformidad con el formato de audio Exif. Tambi√©n se "
 "permite a los escritores almacenar los datos tales como Audio dentro de APP2 "
-"como un flujo de datos de extensiÛn de FlashPix. Los archivos de audio se "
+"como un flujo de datos de extensi√≥n de FlashPix. Los archivos de audio se "
 "deben grabar en conformidad con el formato de audio Exif. El mapeo de "
 "archivos de imagen y archivos de audio Exif se realiza en cualquiera de las "
-"tres maneras que se muestran en la Tabla 8. Si m˙ltiples archivos mapean a "
+"tres maneras que se muestran en la Tabla 8. Si m√∫ltiples archivos mapean a "
 "uno solo como en [2] o [3] de la tabla, el formato anterior se usa para "
-"registrar sÛlo un nombre de archivo de audio. Si hay m˙ltiples archivos de "
+"registrar s√≥lo un nombre de archivo de audio. Si hay m√∫ltiples archivos de "
 "audio, se da el primero grabado. En el caso de [3] en la Tabla 8, por "
-"ejemplo, para el archivo de imagen Exif \"DSC00001.JPG\" sÛlo se da "
+"ejemplo, para el archivo de imagen Exif \"DSC00001.JPG\" s√≥lo se da "
 "\"SND00001.WAV\" como el archivo de audio Exif relacionado. Cuando hay tres "
 "archivos de audio Exif, \"SND00001.WAV\", \"SND00002.WAV\" y \"SND00003.WAV"
 "\", se indica el nombre de archivo de imagen Exif para cada uno de ellos, "
-"\"DSC00001.JPG\". Al combinar informaciÛn relacional m˙ltiple, es posible "
-"soportar una variedad de posibilidades de reproducciÛn. El mÈtodo de "
-"utilizar informaciÛn relacional se deja a la implementaciÛn del lado del "
-"reproductor. Dado que esta informaciÛn es una cadena de caracteres ASCII, la "
-"misma est· terminada por NULL. Cuando esta etiqueta se utiliza para mapear "
-"archivos de audio, tambiÈn se debe indicar al final del archivo de audio la "
-"relaciÛn a los datos de la imagen."
+"\"DSC00001.JPG\". Al combinar informaci√≥n relacional m√∫ltiple, es posible "
+"soportar una variedad de posibilidades de reproducci√≥n. El m√©todo de "
+"utilizar informaci√≥n relacional se deja a la implementaci√≥n del lado del "
+"reproductor. Dado que esta informaci√≥n es una cadena de caracteres ASCII, la "
+"misma est√° terminada por NULL. Cuando esta etiqueta se utiliza para mapear "
+"archivos de audio, tambi√©n se debe indicar al final del archivo de audio la "
+"relaci√≥n a los datos de la imagen."
 
 #: libexif/exif-tag.c:484
 msgid ""
@@ -1818,23 +1818,23 @@ msgid ""
 "TIFF defined IFD structure but does not contain the image data "
 "characteristically compared with normal TIFF IFD."
 msgstr ""
-"El IFD de interoperabilidad est· compuesto de etiquetas que almacenan la "
-"informaciÛn para asegurar la interoperabilidad y apuntado por la etiqueta "
+"El IFD de interoperabilidad est√° compuesto de etiquetas que almacenan la "
+"informaci√≥n para asegurar la interoperabilidad y apuntado por la etiqueta "
 "siguiente ubicada en el IFD Exif. La estructura de interoperabilidad de el "
 "IFD de interoperabilidad es la misma que la estructura IFD definida por "
-"TIFF, pero no contiene los datos de imagen caracterÌsticos del IFD normal de "
+"TIFF, pero no contiene los datos de imagen caracter√≠sticos del IFD normal de "
 "TIFF."
 
 #: libexif/exif-tag.c:492
 msgid "Flash Energy"
-msgstr "EnergÌa del flash"
+msgstr "Energ√≠a del flash"
 
 #: libexif/exif-tag.c:493
 msgid ""
 "Indicates the strobe energy at the time the image is captured, as measured "
 "in Beam Candle Power Seconds (BCPS)."
 msgstr ""
-"Indica la energÌa del flash en el momento que se captura la imagen, medida "
+"Indica la energ√≠a del flash en el momento que se captura la imagen, medida "
 "en Beam Candle Power Seconds (BCPS)."
 
 #: libexif/exif-tag.c:496
@@ -1847,37 +1847,37 @@ msgid ""
 "values in the direction of image width, image height, and diagonal "
 "direction, as specified in ISO 12233."
 msgstr ""
-"Este etiqueta registra la tabla de frecuencia espacial de la c·mara o "
+"Este etiqueta registra la tabla de frecuencia espacial de la c√°mara o "
 "dispositivo de entrada y los valores SFR en las direcciones de ancho, alto y "
 "diagonal de la imagen, como se especifica en ISO 12233."
 
 #: libexif/exif-tag.c:502
 msgid "Focal Plane x-Resolution"
-msgstr "ResoluciÛn X del plano focal"
+msgstr "Resoluci√≥n X del plano focal"
 
 #: libexif/exif-tag.c:503
 msgid ""
 "Indicates the number of pixels in the image width (X) direction per "
 "<FocalPlaneResolutionUnit> on the camera focal plane."
 msgstr ""
-"Indica la cantidad de pixels en la direcciÛn del ancho (X) de la imagen por "
-"<FocalPlaneResolutionUnit> del plano focal de la c·mara."
+"Indica la cantidad de pixels en la direcci√≥n del ancho (X) de la imagen por "
+"<FocalPlaneResolutionUnit> del plano focal de la c√°mara."
 
 #: libexif/exif-tag.c:506
 msgid "Focal Plane y-Resolution"
-msgstr "ResoluciÛn Y del plano focal"
+msgstr "Resoluci√≥n Y del plano focal"
 
 #: libexif/exif-tag.c:507
 msgid ""
 "Indicates the number of pixels in the image height (V) direction per "
 "<FocalPlaneResolutionUnit> on the camera focal plane."
 msgstr ""
-"Indica la cantidad de pixels en la direcciÛn del alto (Y) de la imagen por "
-"<FocalPlaneResolutionUnit> del plano focal de la c·mara."
+"Indica la cantidad de pixels en la direcci√≥n del alto (Y) de la imagen por "
+"<FocalPlaneResolutionUnit> del plano focal de la c√°mara."
 
 #: libexif/exif-tag.c:510
 msgid "Focal Plane Resolution Unit"
-msgstr "Unidad de resoluciÛn del plano focal"
+msgstr "Unidad de resoluci√≥n del plano focal"
 
 #: libexif/exif-tag.c:511
 msgid ""
@@ -1889,7 +1889,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:515
 msgid "Subject Location"
-msgstr "UbicaciÛn del sujeto"
+msgstr "Ubicaci√≥n del sujeto"
 
 #: libexif/exif-tag.c:516
 msgid ""
@@ -1898,32 +1898,32 @@ msgid ""
 "left edge, prior to rotation processing as per the <Rotation> tag. The first "
 "value indicates the X column number and second indicates the Y row number."
 msgstr ""
-"Indica la ubicaciÛn del sujeto principal de la escena. El valor de esta "
+"Indica la ubicaci√≥n del sujeto principal de la escena. El valor de esta "
 "etiqueta representa el pixel en el centro del sujeto principal relativo al "
-"borde izquierdo, antes del proceso de rotaciÛn como lo indica la etiqueta "
-"<Rotation>. El primer valor indica el n˙mero de columna X y el segundo el "
-"n˙mero de fila Y."
+"borde izquierdo, antes del proceso de rotaci√≥n como lo indica la etiqueta "
+"<Rotation>. El primer valor indica el n√∫mero de columna X y el segundo el "
+"n√∫mero de fila Y."
 
 #: libexif/exif-tag.c:522
 msgid "Exposure index"
-msgstr "Õndice de exposiciÛn"
+msgstr "√çndice de exposici√≥n"
 
 #: libexif/exif-tag.c:523
 msgid ""
 "Indicates the exposure index selected on the camera or input device at the "
 "time the image is captured."
 msgstr ""
-"Indica el Ìndice de exposiciÛn seleccionado en la c·mara o dispositivo de "
+"Indica el √≠ndice de exposici√≥n seleccionado en la c√°mara o dispositivo de "
 "entrada en el momento que se captura la imagen."
 
 #: libexif/exif-tag.c:525
 msgid "Sensing Method"
-msgstr "MÈtodo de sensado"
+msgstr "M√©todo de sensado"
 
 #: libexif/exif-tag.c:526
 msgid "Indicates the image sensor type on the camera or input device."
 msgstr ""
-"Indica el tipo de sensor de imagen en la c·mara o dispositivo de entrada."
+"Indica el tipo de sensor de imagen en la c√°mara o dispositivo de entrada."
 
 #: libexif/exif-tag.c:528
 msgid "File Source"
@@ -1934,8 +1934,8 @@ msgid ""
 "Indicates the image source. If a DSC recorded the image, this tag value of "
 "this tag always be set to 3, indicating that the image was recorded on a DSC."
 msgstr ""
-"Indica la fuente de la imagen. Si la imagen se registrÛ en un DSC, el valor "
-"de esta etiqueta siempre debe ser 3, indicando que la imagen se registrÛ en "
+"Indica la fuente de la imagen. Si la imagen se registr√≥ en un DSC, el valor "
+"de esta etiqueta siempre debe ser 3, indicando que la imagen se registr√≥ en "
 "un DSC."
 
 #: libexif/exif-tag.c:532
@@ -1947,20 +1947,20 @@ msgid ""
 "Indicates the type of scene. If a DSC recorded the image, this tag value "
 "must always be set to 1, indicating that the image was directly photographed."
 msgstr ""
-"Indica el tipo de la escena. Si la imagen se registrÛ en un DSC, el valor de "
-"esta etiqueta siempre debe ser 1, indicando que la imagen se registrÛ en un "
+"Indica el tipo de la escena. Si la imagen se registr√≥ en un DSC, el valor de "
+"esta etiqueta siempre debe ser 1, indicando que la imagen se registr√≥ en un "
 "DSC."
 
 #: libexif/exif-tag.c:541
 msgid "Subject Area"
-msgstr "¡rea del sujeto"
+msgstr "√Årea del sujeto"
 
 #: libexif/exif-tag.c:542
 msgid ""
 "This tag indicates the location and area of the main subject in the overall "
 "scene."
 msgstr ""
-"Esta etiqueta indica la ubicaciÛn y el ·rea del sujeto principal en la "
+"Esta etiqueta indica la ubicaci√≥n y el √°rea del sujeto principal en la "
 "escena general."
 
 #: libexif/exif-tag.c:544
@@ -1984,7 +1984,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:550
 msgid "Exposure Mode"
-msgstr "Modo de exposiciÛn"
+msgstr "Modo de exposici√≥n"
 
 #: libexif/exif-tag.c:551
 msgid ""
@@ -1992,9 +1992,9 @@ msgid ""
 "bracketing mode, the camera shoots a series of frames of the same scene at "
 "different exposure settings."
 msgstr ""
-"Esta etiqueta indica el modo de exposiciÛn ajustado cuando se tomÛ la "
-"imagen. En el modo auto-bracketing, la c·mara toma una serie de cuadros de "
-"la misma escena con ajustes de exposiciÛn diferentes."
+"Esta etiqueta indica el modo de exposici√≥n ajustado cuando se tom√≥ la "
+"imagen. En el modo auto-bracketing, la c√°mara toma una serie de cuadros de "
+"la misma escena con ajustes de exposici√≥n diferentes."
 
 #: libexif/exif-tag.c:554 libexif/pentax/mnote-pentax-tag.c:40
 msgid "White Balance"
@@ -2003,12 +2003,12 @@ msgstr "Balance de blanco"
 #: libexif/exif-tag.c:555
 msgid "This tag indicates the white balance mode set when the image was shot."
 msgstr ""
-"Esta etiqueta indica el modo de balance de blanco ajustado cuando se tomÛ la "
+"Esta etiqueta indica el modo de balance de blanco ajustado cuando se tom√≥ la "
 "imagen."
 
 #: libexif/exif-tag.c:558
 msgid "Digital Zoom Ratio"
-msgstr "RelaciÛn de zoom digital"
+msgstr "Relaci√≥n de zoom digital"
 
 #: libexif/exif-tag.c:559
 msgid ""
@@ -2016,13 +2016,13 @@ msgid ""
 "numerator of the recorded value is 0, this indicates that digital zoom was "
 "not used."
 msgstr ""
-"Esta etiqueta indica la relaciÛn del zoom digital cuando se tomÛ la imagen. "
-"Si el numerador del valor registrado es 0, esto indica que no se utilizÛ el "
+"Esta etiqueta indica la relaci√≥n del zoom digital cuando se tom√≥ la imagen. "
+"Si el numerador del valor registrado es 0, esto indica que no se utiliz√≥ el "
 "zoom digital."
 
 #: libexif/exif-tag.c:563
 msgid "Focal Length In 35mm Film"
-msgstr "Distancia focal en pelÌcula de 35mm"
+msgstr "Distancia focal en pel√≠cula de 35mm"
 
 #: libexif/exif-tag.c:564
 msgid ""
@@ -2030,8 +2030,8 @@ msgid ""
 "in mm. A value of 0 means the focal length is unknown. Note that this tag "
 "differs from the FocalLength tag."
 msgstr ""
-"Esta etiqueta indica la distancia focal equivalente asumiendo una c·mara de "
-"pelÌcula de 35mm, en mm. Un valor de 0 significa que se desconoce la "
+"Esta etiqueta indica la distancia focal equivalente asumiendo una c√°mara de "
+"pel√≠cula de 35mm, en mm. Un valor de 0 significa que se desconoce la "
 "distancia focal. Note que esta etiqueta difiere de la etiqueta FocalLength."
 
 #: libexif/exif-tag.c:569
@@ -2044,8 +2044,8 @@ msgid ""
 "record the mode in which the image was shot. Note that this differs from the "
 "scene type (SceneType) tag."
 msgstr ""
-"Esta etiqueta indica el tipo de escena que se tomÛ. TambiÈn se puede "
-"utilizar para registrar el modo en el cual se tomÛ la imagen. Note que esto "
+"Esta etiqueta indica el tipo de escena que se tom√≥. Tambi√©n se puede "
+"utilizar para registrar el modo en el cual se tom√≥ la imagen. Note que esto "
 "difiere de la etiqueta SceneType."
 
 #: libexif/exif-tag.c:574
@@ -2066,20 +2066,20 @@ msgid ""
 "This tag indicates the direction of contrast processing applied by the "
 "camera when the image was shot."
 msgstr ""
-"Esta etiqueta indica la direcciÛn del procesamiento de contraste aplicado "
-"por la c·mara cuando se tomÛ la imagen."
+"Esta etiqueta indica la direcci√≥n del procesamiento de contraste aplicado "
+"por la c√°mara cuando se tom√≥ la imagen."
 
 #: libexif/exif-tag.c:580 libexif/pentax/mnote-pentax-tag.c:46
 msgid "Saturation"
-msgstr "SaturaciÛn"
+msgstr "Saturaci√≥n"
 
 #: libexif/exif-tag.c:581
 msgid ""
 "This tag indicates the direction of saturation processing applied by the "
 "camera when the image was shot."
 msgstr ""
-"Esta etiqueta indica la direcciÛn del procesamiento de stauraciÛn aplicado "
-"por la c·mara cuando se tomÛ la imagen."
+"Esta etiqueta indica la direcci√≥n del procesamiento de stauraci√≥n aplicado "
+"por la c√°mara cuando se tom√≥ la imagen."
 
 #: libexif/exif-tag.c:583 libexif/pentax/mnote-pentax-tag.c:44
 msgid "Sharpness"
@@ -2090,12 +2090,12 @@ msgid ""
 "This tag indicates the direction of sharpness processing applied by the "
 "camera when the image was shot."
 msgstr ""
-"Esta etiqueta indica la direcciÛn del procesamiento de nitidez aplicado por "
-"la c·mara cuando se tomÛ la imagen."
+"Esta etiqueta indica la direcci√≥n del procesamiento de nitidez aplicado por "
+"la c√°mara cuando se tom√≥ la imagen."
 
 #: libexif/exif-tag.c:587
 msgid "Device Setting Description"
-msgstr "DescripciÛn de ajuste del dispositivo"
+msgstr "Descripci√≥n de ajuste del dispositivo"
 
 #: libexif/exif-tag.c:588
 msgid ""
@@ -2103,8 +2103,8 @@ msgid ""
 "particular camera model. The tag is used only to indicate the picture-taking "
 "conditions in the reader."
 msgstr ""
-"Esta etiqueta indica informaciÛn sobre las condiciones de toma de la foto de "
-"un modelo de c·mara en particular. La etiqueta sÛlo se usa para indicar las "
+"Esta etiqueta indica informaci√≥n sobre las condiciones de toma de la foto de "
+"un modelo de c√°mara en particular. La etiqueta s√≥lo se usa para indicar las "
 "condiciones de toma de fotos en el lector."
 
 #: libexif/exif-tag.c:593
@@ -2117,7 +2117,7 @@ msgstr "Esta etiqueta indica la distancia al sujeto."
 
 #: libexif/exif-tag.c:595
 msgid "Image Unique ID"
-msgstr "ID ˙nico de imagen"
+msgstr "ID √∫nico de imagen"
 
 #: libexif/exif-tag.c:596
 msgid ""
@@ -2125,8 +2125,8 @@ msgid ""
 "recorded as an ASCII string equivalent to hexadecimal notation and 128-bit "
 "fixed length."
 msgstr ""
-"Esta etiqueta indica un identificador asignado unÌvocamente a cada imagen. "
-"Se registra como una cadena de caracteres ASCII equivalente a notaciÛn "
+"Esta etiqueta indica un identificador asignado un√≠vocamente a cada imagen. "
+"Se registra como una cadena de caracteres ASCII equivalente a notaci√≥n "
 "hexadecimal y de una longitud fija de 128 bits."
 
 #: libexif/canon/mnote-canon-tag.c:34
@@ -2149,7 +2149,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-tag.c:38
 #, fuzzy
 msgid "Image number"
-msgstr "ID ˙nico de imagen"
+msgstr "ID √∫nico de imagen"
 
 #: libexif/canon/mnote-canon-tag.c:39
 msgid "Owner name"
@@ -2158,7 +2158,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-tag.c:40
 #, fuzzy
 msgid "Serial number"
-msgstr "El n˙mero F."
+msgstr "El n√∫mero F."
 
 #: libexif/canon/mnote-canon-tag.c:41
 #, fuzzy
@@ -2170,20 +2170,20 @@ msgstr "Proceso personalizado"
 #: libexif/pentax/mnote-pentax-entry.c:39
 #, c-format
 msgid "Invalid format '%s', expected '%s'."
-msgstr "Formato no v·lido '%s', se esperaba '%s'."
+msgstr "Formato no v√°lido '%s', se esperaba '%s'."
 
 #: libexif/canon/mnote-canon-entry.c:54
 #: libexif/olympus/mnote-olympus-entry.c:49
 #: libexif/pentax/mnote-pentax-entry.c:51
 #, c-format
 msgid "Invalid number of components (%i, expected %i)."
-msgstr "Cantidad de componentes no v·lida (%i, se esperaba %i)."
+msgstr "Cantidad de componentes no v√°lida (%i, se esperaba %i)."
 
 #: libexif/canon/mnote-canon-entry.c:63
 #: libexif/olympus/mnote-olympus-entry.c:59
 #, fuzzy, c-format
 msgid "Invalid number of components (%i, expected %i or %i)."
-msgstr "Cantidad de componentes no v·lida (%i, se esperaba %i)."
+msgstr "Cantidad de componentes no v√°lida (%i, se esperaba %i)."
 
 #: libexif/canon/mnote-canon-entry.c:95
 msgid "Macro mode : "
@@ -2212,12 +2212,12 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:119
 #, fuzzy
 msgid "Flash not fired"
-msgstr "El flash no disparÛ."
+msgstr "El flash no dispar√≥."
 
 #: libexif/canon/mnote-canon-entry.c:122 libexif/canon/mnote-canon-entry.c:307
 #, fuzzy
 msgid "auto"
-msgstr "acciÛn"
+msgstr "acci√≥n"
 
 #: libexif/canon/mnote-canon-entry.c:125
 msgid "on"
@@ -2226,7 +2226,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:128
 #, fuzzy
 msgid "red eyes reduction"
-msgstr "El flash disparÛ, modo de reducciÛn de ojos rojos."
+msgstr "El flash dispar√≥, modo de reducci√≥n de ojos rojos."
 
 #: libexif/canon/mnote-canon-entry.c:131
 msgid "slow synchro"
@@ -2235,12 +2235,12 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:134
 #, fuzzy
 msgid "auto + red eyes reduction"
-msgstr "El flash disparÛ, modo de reducciÛn de ojos rojos."
+msgstr "El flash dispar√≥, modo de reducci√≥n de ojos rojos."
 
 #: libexif/canon/mnote-canon-entry.c:137
 #, fuzzy
 msgid "on + red eyes reduction"
-msgstr "El flash disparÛ, modo de reducciÛn de ojos rojos."
+msgstr "El flash dispar√≥, modo de reducci√≥n de ojos rojos."
 
 #: libexif/canon/mnote-canon-entry.c:140
 msgid "external"
@@ -2371,7 +2371,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:269
 #, fuzzy
 msgid " / Saturation : "
-msgstr "SaturaciÛn"
+msgstr "Saturaci√≥n"
 
 #: libexif/canon/mnote-canon-entry.c:286
 #, fuzzy
@@ -2405,7 +2405,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:328
 #, fuzzy
 msgid " / Metering mode : "
-msgstr "Modo de mÈtrica"
+msgstr "Modo de m√©trica"
 
 #: libexif/canon/mnote-canon-entry.c:331
 msgid "Evaluative"
@@ -2450,7 +2450,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:368
 #, fuzzy
 msgid " / Exposure mode : "
-msgstr "Modo de exposiciÛn"
+msgstr "Modo de exposici√≥n"
 
 #: libexif/canon/mnote-canon-entry.c:371
 msgid "Easy shooting"
@@ -2511,7 +2511,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:420
 #, fuzzy
 msgid " / Focus mode2 : "
-msgstr "Modo de exposiciÛn"
+msgstr "Modo de exposici√≥n"
 
 #: libexif/canon/mnote-canon-entry.c:456
 #, fuzzy
@@ -2562,12 +2562,12 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:493
 #, fuzzy
 msgid "Right"
-msgstr "Luz de dÌa"
+msgstr "Luz de d√≠a"
 
 #: libexif/canon/mnote-canon-entry.c:495
 #, fuzzy
 msgid "Center"
-msgstr "CentÌmetro"
+msgstr "Cent√≠metro"
 
 #: libexif/canon/mnote-canon-entry.c:497
 msgid "Left"
@@ -2596,7 +2596,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:37
 #, fuzzy
 msgid "Firmware Version"
-msgstr "VersiÛn Exif"
+msgstr "Versi√≥n Exif"
 
 #: libexif/olympus/mnote-olympus-tag.c:38
 #: libexif/olympus/mnote-olympus-tag.c:53
@@ -2628,7 +2628,7 @@ msgstr "Longitud de la imagen"
 #: libexif/olympus/mnote-olympus-tag.c:43 libexif/pentax/mnote-pentax-tag.c:36
 #, fuzzy
 msgid "Focus Mode"
-msgstr "Modo de exposiciÛn"
+msgstr "Modo de exposici√≥n"
 
 #: libexif/olympus/mnote-olympus-tag.c:44
 #, fuzzy
@@ -2659,7 +2659,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:51
 #, fuzzy
 msgid "Exposurediff ?"
-msgstr "Modo de exposiciÛn"
+msgstr "Modo de exposici√≥n"
 
 #: libexif/olympus/mnote-olympus-tag.c:52
 msgid "Flashcompensation ?"
@@ -2698,12 +2698,12 @@ msgstr "Balance de blanco manual"
 #: libexif/olympus/mnote-olympus-tag.c:109
 #, fuzzy
 msgid "Digital Zoom"
-msgstr "RelaciÛn de zoom digital"
+msgstr "Relaci√≥n de zoom digital"
 
 #: libexif/olympus/mnote-olympus-tag.c:65
 #, fuzzy
 msgid "Flash used"
-msgstr "El flash disparÛ."
+msgstr "El flash dispar√≥."
 
 #: libexif/olympus/mnote-olympus-tag.c:66
 msgid "AF Focus position"
@@ -2712,7 +2712,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:67
 #, fuzzy
 msgid "Bracketing"
-msgstr "acciÛn"
+msgstr "acci√≥n"
 
 #: libexif/olympus/mnote-olympus-tag.c:70
 #, fuzzy
@@ -2737,7 +2737,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:76
 #, fuzzy
 msgid "Noisereduction"
-msgstr "El flash disparÛ, modo de reducciÛn de ojos rojos."
+msgstr "El flash dispar√≥, modo de reducci√≥n de ojos rojos."
 
 #: libexif/olympus/mnote-olympus-tag.c:84
 msgid "Total number of pictures taken"
@@ -2763,12 +2763,12 @@ msgstr "Sensibilidad espectral"
 #: libexif/olympus/mnote-olympus-tag.c:99
 #, fuzzy
 msgid "Focus"
-msgstr "Modo de exposiciÛn"
+msgstr "Modo de exposici√≥n"
 
 #: libexif/olympus/mnote-olympus-tag.c:102
 #, fuzzy
 msgid "Converter"
-msgstr "CentÌmetro"
+msgstr "Cent√≠metro"
 
 #: libexif/olympus/mnote-olympus-tag.c:105
 msgid "Speed/Sequence/Panorama direction"
@@ -2800,7 +2800,7 @@ msgstr "Contraste"
 #: libexif/olympus/mnote-olympus-tag.c:121
 #, fuzzy
 msgid "Manual Focus"
-msgstr "ExposiciÛn manual"
+msgstr "Exposici√≥n manual"
 
 #: libexif/olympus/mnote-olympus-entry.c:75
 msgid "AF non D Lens"
@@ -2821,7 +2821,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-entry.c:82
 #, fuzzy
 msgid "Flash did not fire"
-msgstr "El flash no disparÛ."
+msgstr "El flash no dispar√≥."
 
 #: libexif/olympus/mnote-olympus-entry.c:83
 msgid "Flash unit unknown"
@@ -2834,7 +2834,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-entry.c:85
 #, fuzzy
 msgid "Flash is on Camera"
-msgstr "EnergÌa del flash"
+msgstr "Energ√≠a del flash"
 
 #: libexif/olympus/mnote-olympus-entry.c:88
 msgid "VGA Basic"
@@ -2974,7 +2974,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-entry.c:143
 #, fuzzy
 msgid "Red-eye reduction"
-msgstr "El flash disparÛ, modo de reducciÛn de ojos rojos."
+msgstr "El flash dispar√≥, modo de reducci√≥n de ojos rojos."
 
 #: libexif/olympus/mnote-olympus-entry.c:144
 msgid "Fill"
@@ -3066,12 +3066,12 @@ msgstr "%i bytes de datos desconocidos"
 #: libexif/pentax/mnote-pentax-tag.c:34
 #, fuzzy
 msgid "Capture Mode"
-msgstr "Modo de exposiciÛn"
+msgstr "Modo de exposici√≥n"
 
 #: libexif/pentax/mnote-pentax-tag.c:35
 #, fuzzy
 msgid "Quality Level"
-msgstr "Nivel de la baterÌa"
+msgstr "Nivel de la bater√≠a"
 
 #: libexif/pentax/mnote-pentax-tag.c:43
 msgid "Zoom"
@@ -3093,7 +3093,7 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-tag.c:60
 #, fuzzy
 msgid "DaylightSavings"
-msgstr "Luz de dÌa"
+msgstr "Luz de d√≠a"
 
 #: libexif/pentax/mnote-pentax-entry.c:66
 #, fuzzy
@@ -3107,7 +3107,7 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-entry.c:71
 #, fuzzy
 msgid "Better"
-msgstr "CentÌmetro"
+msgstr "Cent√≠metro"
 
 #: libexif/pentax/mnote-pentax-entry.c:72
 msgid "Best"
@@ -3178,7 +3178,7 @@ msgstr ""
 #~ msgstr "paisaje"
 
 #~ msgid "yes"
-#~ msgstr "sÌ"
+#~ msgstr "s√≠"
 
 #, fuzzy
 #~ msgid "Unknown 1"

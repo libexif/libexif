@@ -52,6 +52,11 @@ AC_CHECK_LIB([m],[sqrt],[MATHLIBS="-lm"],AC_MSG_ERROR([
 AC_SUBST([MATHLIBS])
 
 
+# doc support
+GP_CHECK_DOC_DIR
+GP_CHECK_DOXYGEN
+
+
 # ---------------------------------------------------------------------------
 # i18n support
 # ---------------------------------------------------------------------------
@@ -102,6 +107,8 @@ AC_CONFIG_FILES([
   test/Makefile
   test/nls/Makefile
   m4m/Makefile
+  doc/Makefile
+  doc/Doxyfile
   libexif/libexif.pc
 ])
 AC_OUTPUT
