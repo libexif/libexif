@@ -12,7 +12,7 @@ $(DOXYGEN_OUTPUT_DIR).stamp: Doxyfile $(top_builddir)/libexif/libexif.la
 	echo > $@
 
 $(HTML_APIDOC_DIR).tar.gz: $(DOXYGEN_OUTPUT_DIR).stamp
-	(cd $(DOXYGEN_OUTPUT_DIR) && $(TAR) chof - $(HTML_APIDOC_DIR) | GZIP=--best gzip -c) > $@
+	(cd $(DOXYGEN_OUTPUT_DIR) && $(AMTAR) chof - $(HTML_APIDOC_DIR) | GZIP=--best gzip -c) > $@
 
 DOC_APIDOC_HTML = apidocs.html
 
