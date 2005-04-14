@@ -90,7 +90,9 @@ dnl
 AC_REQUIRE([GP_CONFIG_MSG])dnl
 AC_REQUIRE([GP_PKG_CONFIG])dnl
 AC_REQUIRE([_GP_CHECK_LIBRARY_SOEXT])dnl
-dnl
+dnl Use _CFLAGS and _LIBS given to configure.
+dnl This makes it possible to set these vars in a configure script
+dnl and AC_CONFIG_SUBDIRS this configure.
 AC_ARG_VAR([$1][_CFLAGS], [CFLAGS for compiling with ][$2])dnl
 AC_ARG_VAR([$1][_LIBS],   [LIBS to add for linking against ][$2])dnl
 dnl
@@ -109,10 +111,11 @@ if test "x${[$1][_LIBS]}" = "x" && test "x${[$1][_CFLAGS]}" = "x"; then
 	AC_MSG_RESULT([${try_][$1][}])
 	m4_popdef([gp_lib_arg])dnl
 	if test "x${[try_][$1]}" = "xautodetect"; then
+		dnl we need that line break after the PKG_CHECK_MODULES
 		m4_ifval([$3],
 			[PKG_CHECK_MODULES([$1],[$2][ $3],[have_][$1][=yes])],
 			[PKG_CHECK_MODULES([$1],[$2],     [have_][$1][=yes])]
-		)dnl
+		)
 		if test "x${[have_][$1]}" = "xno"; then
 			ifs="$IFS"
 			IFS=":" # FIXME: for W32 and OS/2 we need ";" here
@@ -197,16 +200,15 @@ fi
 ])dnl
 dnl
 dnl Run our own test link
-dnl    Does not work for *.la libs, so we deactivated it.
+dnl    Does not work for libraries which be built after configure time,
+dnl    so we deactivate it.
 dnl
 dnl m4_ifval([$5],[dnl
 dnl if test "x${[have_][$1]}" = "xyes"; then
-dnl AC_MSG_CHECKING([whether ][$2][ test link succeeds])
-dnl LDFLAGS_save="$LDFLAGS"
-dnl LDFLAGS="${[$1]_LIBS}"
+dnl LIBS_save="$LIBSS"
+dnl LIBS="${[$1]_LIBS}"
 dnl AC_TRY_LINK_FUNC([$5],[],[have_][$1][=no])
-dnl LDFLAGS="$LDFLAGS_save"
-dnl AC_MSG_RESULT([${[have_][$1]}])
+dnl LIBS="$LIBS_save"
 dnl fi
 dnl ])dnl
 dnl
