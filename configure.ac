@@ -9,6 +9,11 @@ GP_CONFIG_MSG([Build])
 GP_CONFIG_MSG([Source code location],[${srcdir}])
 
 dnl ---------------------------------------------------------------------------
+dnl Advanced information about versioning:
+dnl   * "Writing shared libraries" by Mike Hearn
+dnl         http://navi.cx/~mike/writing-shared-libraries.html
+dnl   * libtool.info chapter "Versioning"
+dnl ---------------------------------------------------------------------------
 dnl Versioning:
 dnl  - AGE (Micro):      Increment if any interfaces have been added; set to 0
 dnl		         if any interfaces have been removed. Removal has 
