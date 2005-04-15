@@ -109,6 +109,15 @@ init_vars() {
     #        But the cleaning should also work recursively, but that is difficult
     #        with the current structure of the script.
     AG_SUBDIRS="$(for k in $(sed -n 's/^[[:space:]]*AC_CONFIG_SUBDIRS(\[\{0,1\}\([^])]*\).*/\1/p' "$CONFIGURE_AC"); do echo "${dir}/${k}"; done)"
+    AG_LIBLTDL_DIR="$(sed -n 's/^[[:space:]]*AC_LIBLTDL_\(INSTALLABLE\|CONVENIENCE\)(\[\{0,1\}\([^])]*\).*/\2/p' < "$CONFIGURE_AC")"
+    if test "x$AG_LIBLTDL_DIR" = "x"; then
+        tmp="$(sed -n 's/^[[:space:]]*\(AC_LIBLTDL_\)\(INSTALLABLE\|CONVENIENCE\)(\[\{0,1\}\([^])]*\).*/\1/p' < "$CONFIGURE_AC")"
+	if test "x$tmp" = "xAC_LIBLTDL_"; then
+            AG_LIBLTDL_DIR="libltdl"
+	else
+	    AG_LIBLTDL_DIR=""
+	fi
+    fi
     AG_AUX="$(sed -n 's/^AC_CONFIG_AUX_DIR(\[\{0,1\}\([^])]*\).*/\1/p' < "$CONFIGURE_AC")"
     if test "x$AG_AUX" = "x"; then
 	AG_AUX="."
@@ -133,6 +142,26 @@ init_vars() {
     done
     AG_GEN_ACAM="aclocal.m4 configure $AG_AUX/config.guess $AG_AUX/config.sub $AG_AUX/compile"
     AG_GEN_RECONF="$AG_AUX/install-sh $AG_AUX/missing $AG_AUX/depcomp"
+    AG_GEN_LIBTOOL="$AG_AUX/ltmain.sh libtool"
+    while read file; do
+	AG_GEN_LIBTOOL="${AG_GEN_LIBTOOL} ${AG_LIBLTDL_DIR}/${file}"
+    done <<EOF
+aclocal.m4
+config.guess
+config-h.in
+config.sub
+configure
+configure.ac
+COPYING.LIB
+install-sh
+ltdl.c
+ltdl.h
+ltmain.sh
+Makefile.am
+Makefile.in
+missing
+README
+EOF
     AG_GEN_GETTEXT="$AG_AUX/mkinstalldirs $AG_AUX/config.rpath ABOUT-NLS"
     while read file; do
 	AG_GEN_GETTEXT="${AG_GEN_GETTEXT} ${file}"
@@ -205,10 +234,9 @@ po/remove-potcdate.sin
 po/stamp-po
 EOF
     AG_GEN_CONF="config.status config.log"
-    AG_GEN_LIBTOOL="$AG_AUX/ltmain.sh libtool"
     AG_GEN_FILES="$AG_GEN_ACAM $AG_GEN_RECONF $AG_GEN_GETTEXT"
     AG_GEN_FILES="$AG_GEN_FILES $AG_GEN_CONFIG_H $AG_GEN_CONF $AG_GEN_LIBTOOL"
-    AG_GEN_DIRS="autom4te.cache"
+    AG_GEN_DIRS="autom4te.cache ${AG_LIBLTDL_DIR}/autom4te.cache ${AG_LIBLTDL_DIR}"
     echo " done."
 
     if "$debug"; then set | grep '^AG_'; fi
@@ -265,6 +293,17 @@ init() {
     echo "$self:init: Entering directory \`${dir}'"
 (
 if cd "${dir}"; then
+    if test "x$AG_LIBLTDL_DIR" != "x"; then
+	# We have to run libtoolize --ltdl ourselves because
+	#   - autoreconf doesn't run it at all
+	echo "Running <<" ${LIBTOOLIZE-"libtoolize"} --ltdl ">>"
+	${LIBTOOLIZE-"libtoolize"} --ltdl
+	# And we have to clean up the generated files after libtoolize because
+	#   - we still want symlinks for the files
+	#   - but we want to (implicitly) AC_CONFIG_SUBDIR and that writes to
+	#     these files.
+	(cd "${AG_LIBLTDL_DIR}" && rm -f aclocal.m4 config.guess config.sub configure install-sh ltmain.sh Makefile.in missing)
+    fi
     echo "Running <<" autoreconf --install --symlink ${AUTORECONF_OPTS} ">>"
     if autoreconf --install --symlink ${AUTORECONF_OPTS}; then
 	:; else
