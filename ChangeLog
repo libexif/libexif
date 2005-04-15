@@ -1,3 +1,10 @@
+2005-04-15  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Submitted by Hongli Lai <h.lai@chello.nl>:
+
+	* configure.ac: CURRENT needs only to be increased on changes or 
+	  removals, not additions.
+
 2005-03-30  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c: Convert some DEBUG messages to CORRUPT_DATA.

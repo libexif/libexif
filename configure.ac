@@ -15,8 +15,7 @@ dnl		         if any interfaces have been removed. Removal has
 dnl                      precedence over adding, so set to 0 if both happened.
 dnl  - REVISION (Minor): Increment any time the source changes; set to 
 dnl			 0 if you incremented CURRENT.
-dnl  - CURRENT (Major):  Increment if the interface has additions, changes,
-dnl                      removals.
+dnl  - CURRENT (Major):  Increment if the interface has changes or removals.
 dnl ---------------------------------------------------------------------------
 LIBEXIF_AGE=0
 LIBEXIF_REVISION=0
