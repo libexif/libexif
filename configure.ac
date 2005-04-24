@@ -49,10 +49,28 @@ dnl Whether -lm is required for our math functions
 dnl ---------------------------------------------------------------------------
 
 # we need sqrt and pow, but checking for sqrt should be sufficient
-AC_CHECK_FUNC([sqrt],,[
-AC_CHECK_LIB([m],[sqrt],[MATHLIBS="-lm"],AC_MSG_ERROR([
+AC_ARG_VAR([MATHLIBS],[The libraries required for mathematical functions, e.g. -lm])
+if test "x$MATHLIBS" = "x"; then
+	# We must not compile with -Wall -Werror here:
+	# char *sqrt() conflicts with double sin(const double xx) in any case.
+	CFLAGS_save="$CPPFLAGS"
+	CPPFLAGS_save="$CPPFLAGS"
+	CPPFLAGS=""
+	CFLAGS=""
+	AC_CHECK_FUNC([sqrt],[
+		MATHLIBS=""
+	],[
+		AC_CHECK_LIB([m],[sqrt],[
+			MATHLIBS="-lm"
+		],[
+			AC_MSG_ERROR([
 *** Could not find sqrt() function
-]))])
+])
+		])
+	])
+	CFLAGS="$CFLAGS_save"
+	CPPFLAGS="$CPPFLAGS_save"
+fi
 AC_SUBST([MATHLIBS])
 
 
