@@ -582,7 +582,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	/* Sort the directory according to TIFF specification */
 	qsort (*d + 6 + offset - (ifd->count + n_ptr + n_thumb) * 12,
 			(ifd->count + n_ptr + n_thumb), 12,
-			data->priv->order == EXIF_BYTE_ORDER_INTEL ? cmp_func_intel : cmp_func_motorola);
+			(data->priv->order == EXIF_BYTE_ORDER_INTEL) ? cmp_func_intel : cmp_func_motorola);
 
 	/* Correctly terminate the directory */
 	if (i == EXIF_IFD_0 && (data->ifd[EXIF_IFD_1]->count ||
