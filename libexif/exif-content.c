@@ -26,7 +26,9 @@
 #include <stdio.h>
 #include <string.h>
 
-static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
+/* unused constant
+ * static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
+ */
 
 struct _ExifContentPrivate
 {
