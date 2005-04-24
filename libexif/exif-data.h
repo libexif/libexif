@@ -80,6 +80,17 @@ void          exif_data_foreach_content (ExifData *data,
 					 ExifDataForeachContentFunc func,
 					 void *user_data);
 
+typedef enum {
+	EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS = 1 << 0,
+	EXIF_DATA_OPTION_FIX_INVALID_FORMAT  = 1 << 1
+} ExifDataOption;
+
+const char *exif_data_option_get_name        (ExifDataOption);
+const char *exif_data_option_get_description (ExifDataOption);
+
+void exif_data_set_option   (ExifData *, ExifDataOption);
+void exif_data_unset_option (ExifData *, ExifDataOption);
+
 /* For debugging purposes and error reporting */
 void exif_data_dump (ExifData *data);
 void exif_data_log  (ExifData *data, ExifLog *log);

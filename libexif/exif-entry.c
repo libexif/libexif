@@ -261,18 +261,15 @@ exif_entry_fix (ExifEntry *e)
 			memcpy(e->data, "\0\0\0\0\0\0\0\0", 8);
 		}
 
-		/* Some cameras fill the tag with '\0' or ' '. */
+		/*
+		 * Some cameras fill the tag with '\0' or ' '. There is nothing
+		 * wrong about it.
+		 */
 		for (i = 0; i < e->size &&
 			    (!e->data[i] || (e->data[i] == ' ')); i++);
-		if (i && (i == e->size)) {
+		if (i && (i == e->size))
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-				"Tag 'UserComment' contained unnecessary "
-				"data which has been removed.");
-			exif_mem_free (e->priv->mem, e->data);
-			e->data = NULL;
-			e->size = 0;
-			e->components = 0;
-		}
+				"Tag 'UserComment' is empty. This has not been changed.");
 
 		/* There need to be at least 8 bytes. */
 		if (e->size < 8) {

@@ -66,6 +66,8 @@ struct _ExifDataPrivate
 
 	/* Temporarily used while loading data */
 	unsigned int offset_mnote;
+
+	ExifDataOption options;
 };
 
 static void *
@@ -124,6 +126,10 @@ exif_data_new_mem (ExifMem *mem)
 		}
 		data->ifd[i]->parent = data;
 	}
+
+	/* Standard options */
+	exif_data_set_option (data, EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS);
+	exif_data_set_option (data, EXIF_DATA_OPTION_FIX_INVALID_FORMAT);
 
 	return (data);
 }
@@ -187,7 +193,8 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 		data->priv->offset_mnote = doff;
 	}
 
-	exif_entry_fix (entry);
+	if (data->priv->options & EXIF_DATA_OPTION_FIX_INVALID_FORMAT)
+		exif_entry_fix (entry);
 }
 
 static void
@@ -360,13 +367,21 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 		default:
 
 			/*
-			 * If we don't know the tag, chances are high
-			 * that the EXIF data does not follow the standard.
+			 * If we don't know the tag, don't fail. It could be that new 
+			 * versions of the standard have defined additional tags. 0 is 
+			 * certainly not a valid tag.
 			 */
 			if (!exif_tag_get_name (tag)) {
+				if (!tag) {
+					exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+							"Invalid tag 0x0000. Ignoring this entry.");
+					break;
+				}
 				exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-				  "Unknown tag %x (entry %i)", tag, i);
-				return;
+				  "Unknown tag %x (entry %i). Please report this tag "
+					"to <libexif-devel@lists.sourceforge.net>.", tag, i);
+				if (data->priv->options & EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS)
+					break;
 			}
 			entry = exif_entry_new_mem (data->priv->mem);
 			exif_data_load_data_entry (data, entry, d, ds,
@@ -1036,4 +1051,53 @@ exif_data_get_log (ExifData *data)
 {
 	if (!data || !data->priv) return NULL;
 	return data->priv->log;
+}
+
+typedef struct {
+	ExifDataOption option;
+	const char *name;
+	const char *description
+} exif_data_option[] = {
+	{EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS, N_("Ignore unknown tags"),
+		N_("Ignore unknown tags when loading EXIF data.")},
+	{EXIF_DATA_OPTION_FIX_INVALID_FORMAT, N_("Fix invalid format"),
+		N_("Automatically fix the format of entries "
+				"that are not in the correct format.")},
+	{0, NULL, NULL}
+};
+
+const char *
+exif_data_option_get_name (ExifDataOption o)
+{
+	unsigned int i;
+
+	for (i = 0; exif_data_option[i].name; i++)
+		if (exif_data_option[i].option == o) break;
+	return _(exif_data_option[i].name);
+}
+
+const char *
+exif_data_option_get_description (ExifDataOption o)
+{
+	unsigned int i;
+
+	for (i = 0; exif_data_option[i].description; i++)
+		if (exif_data_option[i].option == o) break;
+	return _(exif_data_option[i].description);
+}
+
+void
+exif_data_set_option (ExifData *d, ExifDataOption o)
+{
+	if (!d) return;
+
+	d->priv->options |= o;
+}
+
+void
+exif_data_unset_option (ExifData *d, ExifDataOption o)
+{
+	if (!d) return;
+
+	d->priv->options &= ~o;
 }

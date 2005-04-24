@@ -596,6 +596,10 @@ static struct {
 	 N_("This tag indicates an identifier assigned uniquely to "
 	    "each image. It is recorded as an ASCII string equivalent "
 	    "to hexadecimal notation and 128-bit fixed length.")},
+	{EXIF_TAG_GAMMA, "Gamma", N_("Gamma"),
+	 N_("Indicates the value of coefficient gamma.")},
+	{EXIF_TAG_UNKNOWN_C4A5, "UnknownC4A5", N_("Unknown"),
+	 N_("Unknown (related to Epson's PRINT Image Matching technology)")},
 	{0, NULL, NULL, NULL}
 };
 

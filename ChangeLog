@@ -1,3 +1,10 @@
+2005-04-24  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* exif-data.[c,h] (exif_data_option_get_[name,description]),
+	(exif_data_[set,unset]_option): New
+	* exif-tag.[c,h]: EXIF_TAG_GAMMA: New.
+	* exif-entry.c: (exif_entry_fix) Accept empty entries.
+
 2005-04-15  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Submitted by Hongli Lai <h.lai@chello.nl>:

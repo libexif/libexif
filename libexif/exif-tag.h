@@ -133,7 +133,9 @@ typedef enum {
 	EXIF_TAG_SHARPNESS			= 0xa40a,
 	EXIF_TAG_DEVICE_SETTING_DESCRIPTION	= 0xa40b,
 	EXIF_TAG_SUBJECT_DISTANCE_RANGE		= 0xa40c,
-	EXIF_TAG_IMAGE_UNIQUE_ID		= 0xa420
+	EXIF_TAG_IMAGE_UNIQUE_ID		= 0xa420,
+	EXIF_TAG_GAMMA = 0xa500,
+	EXIF_TAG_UNKNOWN_C4A5 = 0xc4a5
 } ExifTag;
 
 ExifTag         exif_tag_from_name       (const char *);
