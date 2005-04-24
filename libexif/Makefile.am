@@ -29,6 +29,15 @@ libexif_la_LIBADD =			\
 	olympus/libmnote-olympus.la	\
 	pentax/libmnote-pentax.la
 
+canon/libmnote-canon.la:
+	cd canon && $(MAKE) libmnote-canon.la
+	
+olympus/libmnote-olympus.la:
+	cd olympus && $(MAKE) libmnote-olympus.la
+	
+pentax/libmnote-pentax.la:
+	cd pentax && $(MAKE) libmnote-pentax.la
+
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = 	\
 	exif-byte-order.h	\
