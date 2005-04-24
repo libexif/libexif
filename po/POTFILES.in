@@ -9,3 +9,4 @@ libexif/olympus/mnote-olympus-entry.c
 libexif/pentax/mnote-pentax-tag.c
 libexif/pentax/mnote-pentax-entry.c
 test/nls/test-nls.c
+test/nls/test-codeset.c
