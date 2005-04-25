@@ -1053,10 +1053,10 @@ exif_data_get_log (ExifData *data)
 	return data->priv->log;
 }
 
-typedef struct {
+static struct {
 	ExifDataOption option;
 	const char *name;
-	const char *description
+	const char *description;
 } exif_data_option[] = {
 	{EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS, N_("Ignore unknown tags"),
 		N_("Ignore unknown tags when loading EXIF data.")},
