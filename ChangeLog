@@ -1,5 +1,9 @@
 2005-04-25  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-data.c (exif_entry_fix): '\0...' as USER_COMMENT is ok, too.
+
+2005-04-25  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-data.c: Make it compile again.
 
 2005-04-24  Lutz Mueller <lutz@users.sourceforge.net>
