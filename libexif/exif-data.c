@@ -368,15 +368,10 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 
 			/*
 			 * If we don't know the tag, don't fail. It could be that new 
-			 * versions of the standard have defined additional tags. 0 is 
-			 * certainly not a valid tag.
+			 * versions of the standard have defined additional tags. Note that
+			 * 0 is a valid tag in the GPS IFD.
 			 */
 			if (!exif_tag_get_name (tag)) {
-				if (!tag) {
-					exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-							"Invalid tag 0x0000. Ignoring this entry.");
-					break;
-				}
 				exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 				  "Unknown tag %x (entry %i). Please report this tag "
 					"to <libexif-devel@lists.sourceforge.net>.", tag, i);

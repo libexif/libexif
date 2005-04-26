@@ -1,3 +1,7 @@
+2005-04-26  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-tag.[c,h] (exif_tag_[name,title,description]_in_ifd): New.
+
 2005-04-25  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c (exif_entry_fix): '\0...' as USER_COMMENT is ok, too.

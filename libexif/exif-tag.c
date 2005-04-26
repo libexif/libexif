@@ -30,7 +30,8 @@ typedef enum {
 	ESL_MANDATORY    = 1, /* Mandatory               */
 	ESL_CMANDATORY   = 2, /* Conditionally mandatory */
 	ESL_OPTIONAL     = 3, /* Optional                */
-	ESL_NOT_RECORDED = 4  /* Not recorded            */
+	ESL_COPTIONAL    = 5, /* Conditionally optional  */
+	ESL_NOT_RECORDED = 6  /* Not recorded            */
 } ExifSL;                     /* Exif Support Level      */
 
 static struct {
@@ -38,7 +39,7 @@ static struct {
 	const char *name;
 	const char *title;
 	const char *description;
-	ExifSL esl_0[4], esl_1[4], esl_exif[4], esl_gps[4];
+	ExifSL esl[EXIF_IFD_COUNT];
 } ExifTagTable[] = {
 	{EXIF_TAG_NEW_SUBFILE_TYPE, "NewSubfileType",
 	 "New Subfile Type", N_("A general indication of the kind of data "
@@ -49,9 +50,13 @@ static struct {
 	    "Use \"R98\" for stating ExifR98 Rules. Four bytes used "
 	    "including the termination code (NULL). see the separate "
 	    "volume of Recommended Exif Interoperability Rules (ExifR98) "
-	    "for other tags used for ExifR98.")},
+	    "for other tags used for ExifR98."),
+	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
+	  ESL_NOT_RECORDED, ESL_COPTIONAL}},
 	{EXIF_TAG_INTEROPERABILITY_VERSION, "InteroperabilityVersion",
-	 "InteroperabilityVersion", ""},
+	 "InteroperabilityVersion", "",
+	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
+	  ESL_NOT_RECORDED, ESL_OPTIONAL}},
 	{EXIF_TAG_IMAGE_WIDTH, "ImageWidth", N_("Image Width"),
 	 N_("The number of columns of image data, equal to the number of "
 	    "pixels per row. In JPEG compressed data a JPEG marker is "
@@ -270,7 +275,7 @@ static struct {
 	 N_("The F number.")},
 	{EXIF_TAG_IPTC_NAA, "IPTC/NAA", "IPTC/NAA", ""},
 	{EXIF_TAG_IMAGE_RESOURCES, "ImageResources", N_("Image Resources Block"), ""},
-	{EXIF_TAG_EXIF_IFD_POINTER, "ExifIFDPointer", "ExifIFDPointer",
+	{EXIF_TAG_EXIF_IFD_POINTER, "ExifIfdPointer", "ExifIFDPointer",
 	 N_("A pointer to the Exif IFD. Interoperability, Exif IFD has the "
 	    "same structure as that of the IFD specified in TIFF. "
 	    "ordinarily, however, it does not contain image data as in "
@@ -290,36 +295,59 @@ static struct {
 	 N_("A pointer to the GPS Info IFD. The "
 	    "Interoperability structure of the GPS Info IFD, like that of "
 	    "Exif IFD, has no image data.")},
-#if 0
-	{EXIF_TAG_GPS_VERSION_ID, "GPSVersionID", "",
+	{EXIF_TAG_GPS_VERSION_ID, "GPSVersionID", N_("GPS tag version"),
 	 N_("Indicates the version of <GPSInfoIFD>. The version is given "
 	    "as 2.0.0.0. This tag is mandatory when <GPSInfo> tag is "
 	    "present. (Note: The <GPSVersionID tag is given in bytes, "
 	    "unlike the <ExifVersion> tag. When the version is "
-	    "2.0.0.0, the tag value is 02000000.H).")},
-	{EXIF_TAG_GPS_LATITUDE_REF, "GPSLatitudeRef", ""
+	    "2.0.0.0, the tag value is 02000000.H)."),
+	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
+	  ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	{EXIF_TAG_GPS_LATITUDE_REF, "GPSLatitudeRef", N_("North or South Latitude"),
 	 N_("Indicates whether the latitude is north or south latitude. The "
 	    "ASCII value 'N' indicates north latitude, and 'S' is south "
-	    "latitude.")},
-	{EXIF_TAG_GPS_LATITUDE, "GPSLatitude", ""
+	    "latitude."),
+	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
+	  ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	{EXIF_TAG_GPS_LATITUDE, "GPSLatitude", N_("Latitude"),
 	 N_("Indicates the latitude. The latitude is expressed as three "
 	    "RATIONAL values giving the degrees, minutes, and seconds, "
 	    "respectively. When degrees, minutes and seconds are expressed, "
 	    "the format is dd/1,mm/1,ss/1. When degrees and minutes are used "
 	    "and, for example, fractions of minutes are given up to two "
-	    "two decimal places, the format is dd/1,mmmm/100,0/1.")},
-	{EXIF_TAG_GPS_LONGITUDE_REF, "GPSLongitudeRef", ""
+	    "two decimal places, the format is dd/1,mmmm/100,0/1."),
+	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
+	  ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	{EXIF_TAG_GPS_LONGITUDE_REF, "GPSLongitudeRef", N_("East or West Longitude"),
 	 N_("Indicates whether the longitude is east or west longitude. "
 	    "ASCII 'E' indicates east longitude, and 'W' is west "
-	    "longitude.")},
-	{EXIF_TAG_GPS_LONGITUDE, "GPSLongitude", ""
+	    "longitude."),
+	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
+	  ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	{EXIF_TAG_GPS_LONGITUDE, "GPSLongitude", N_("Longitude"),
 	 N_("Indicates the longitude. The longitude is expressed as three "
 	    "RATIONAL values giving the degrees, minutes, and seconds, "
 	    "respectively. When degrees, minutes and seconds are expressed, "
 	    "the format is ddd/1,mm/1,ss/1. When degrees and minutes are "
 	    "used and, for example, fractions of minutes are given up to "
-	    "two decimal places, the format is ddd/1,mmmm/100,0/1.")}, 
-#endif
+	    "two decimal places, the format is ddd/1,mmmm/100,0/1."),
+	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
+	  ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	{EXIF_TAG_GPS_ALTITUDE_REF, "GPSAltitudeRef", N_("Altitude reference"),
+	 N_("Indicates the altitude used as the reference altitude. If the "
+	    "reference is sea level and the altitude is above sea level, 0 "
+			"is given. If the altitude is below sea level, a value of 1 is given "
+			"and the altitude is indicated as an absolute value in the "
+			"GSPAltitude tag. The reference unit is meters. Note that this tag "
+			"is BYTE type, unlike other reference tags."),
+	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
+		ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	{EXIF_TAG_GPS_ALTITUDE, "GPSAltitude", N_("Altitude"),
+	 N_("Indicates the altitude based on the reference in GPSAltitudeRef. "
+			"Altitude is expressed as one RATIONAL value. The reference unit "
+			"is meters."),
+	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
+		ESL_OPTIONAL, ESL_NOT_RECORDED}},
 	{EXIF_TAG_ISO_SPEED_RATINGS, "ISOSpeedRatings",
 	 N_("ISO Speed Ratings"),
 	 N_("Indicates the ISO Speed and ISO Latitude of the camera or "
@@ -488,7 +516,9 @@ static struct {
 	    "the same as TIFF defined IFD structure "
 	    "but does not contain the "
 	    "image data characteristically compared with normal TIFF "
-	    "IFD.")},
+	    "IFD."),
+	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
+		ESL_NOT_RECORDED, ESL_OPTIONAL}},
 	{EXIF_TAG_FLASH_ENERGY, "FlashEnergy", N_("Flash Energy"),
 	 N_("Indicates the strobe energy at the time the image is "
 	    "captured, as measured in Beam Candle Power Seconds (BCPS).")},
@@ -627,19 +657,19 @@ exif_tag_table_count (void)
 }
 
 const char *
-exif_tag_get_name (ExifTag tag)
+exif_tag_get_name_in_ifd (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;
 
+	if (ifd >= EXIF_IFD_COUNT) return NULL;
 	for (i = 0; ExifTagTable[i].name; i++)
-		if (ExifTagTable[i].tag == tag)
-			break;
-
+		if ((ExifTagTable[i].tag == tag) &&
+		    (ExifTagTable[i].esl[ifd] != ESL_NOT_RECORDED)) break;
 	return ExifTagTable[i].name;
 }
 
 const char *
-exif_tag_get_title (ExifTag tag)
+exif_tag_get_title_in_ifd (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;
 
@@ -647,22 +677,59 @@ exif_tag_get_title (ExifTag tag)
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
+	if (ifd >= EXIF_IFD_COUNT) return NULL;
 	for (i = 0; ExifTagTable[i].title; i++)
-		if (ExifTagTable[i].tag == tag) break;
+		if ((ExifTagTable[i].tag == tag) &&
+		    (ExifTagTable[i].esl[ifd] != ESL_NOT_RECORDED)) break;
 	return _(ExifTagTable[i].title);
 }
 
 const char *
-exif_tag_get_description (ExifTag tag)
+exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;
 
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
+	if (ifd >= EXIF_IFD_COUNT) return NULL;
 	for (i = 0; ExifTagTable[i].description; i++)
-		if (ExifTagTable[i].tag == tag) break;
+		if ((ExifTagTable[i].tag == tag) &&
+		    (ExifTagTable[i].esl[ifd] != ESL_NOT_RECORDED)) break;
 	return _(ExifTagTable[i].description);
+}
+
+const char *
+exif_tag_get_name (ExifTag tag)
+{
+	return
+		exif_tag_get_name_in_ifd (tag, EXIF_IFD_0) ? :
+		exif_tag_get_name_in_ifd (tag, EXIF_IFD_1) ? :
+		exif_tag_get_name_in_ifd (tag, EXIF_IFD_EXIF) ? :
+		exif_tag_get_name_in_ifd (tag, EXIF_IFD_INTEROPERABILITY) ? :
+		exif_tag_get_name_in_ifd (tag, EXIF_IFD_GPS);
+}
+
+const char *
+exif_tag_get_title (ExifTag tag)
+{
+	return
+		exif_tag_get_title_in_ifd (tag, EXIF_IFD_0) ? :
+		exif_tag_get_title_in_ifd (tag, EXIF_IFD_1) ? :
+		exif_tag_get_title_in_ifd (tag, EXIF_IFD_EXIF) ? :
+		exif_tag_get_title_in_ifd (tag, EXIF_IFD_INTEROPERABILITY) ? :
+		exif_tag_get_title_in_ifd (tag, EXIF_IFD_GPS);
+}
+
+const char *
+exif_tag_get_description (ExifTag tag)
+{
+	return
+		exif_tag_get_description_in_ifd (tag, EXIF_IFD_0) ? :
+		exif_tag_get_description_in_ifd (tag, EXIF_IFD_1) ? :
+		exif_tag_get_description_in_ifd (tag, EXIF_IFD_EXIF) ? :
+		exif_tag_get_description_in_ifd (tag, EXIF_IFD_INTEROPERABILITY) ? :
+		exif_tag_get_description_in_ifd (tag, EXIF_IFD_GPS);
 }
 
 ExifTag 
