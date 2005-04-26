@@ -256,25 +256,10 @@ exif_entry_fix (ExifEntry *e)
 			e->format = EXIF_FORMAT_UNDEFINED;
 		}
 
-		/* If the tag is all empty, there's nothing to do. */
-		for (i = 0; (i < e->size) && !e->data[i]; i++);
-		if (i && (i == e->size) && (i >= 8)) break;
-
 		/* Some packages like Canon ZoomBrowser EX 4.5 store
 		   only one zero byte followed by 7 bytes of rubbish */
 		if ((e->size >= 8) && (e->data[0] == 0)) {
 			memcpy(e->data, "\0\0\0\0\0\0\0\0", 8);
-		}
-
-		/* Some cameras fill the tag with ' '. This is wrong. */
-		for (i = 0; (i < e->size) && (e->data[i] == ' '); i++);
-		if (i && (i == e->size)) {
-			exif_entry_log (e, EXIF_LOG_CODE_DEBUG, 
-					"The value of 'UserComment' is against specification. The value "
-					"has been reset.");
-			exif_mem_free (e->priv->mem, e->data);
-			e->data = NULL;
-			e->size = 0;
 		}
 
 		/* There need to be at least 8 bytes. */
@@ -303,9 +288,11 @@ exif_entry_fix (ExifEntry *e)
 		 * afterwards, let's assume ASCII and claim the 8 first
 		 * bytes for the format specifyer.
 		 */
-		if (e->size >= 8) {
+		for (i = 0; (i < e->size) && !e->data[i]; i++);
+		if (!i) for ( ; (i < e->size) && (e->data[i] = ' '); i++);
+		if ((i >= 8) && (i < e->size)) {
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-				"Tag 'UserComment' did not start with "
+				"Tag 'UserComment' is not empty but does not start with "
 				"format identifyer. This has been fixed.");
 			memcpy (e->data, "ASCII\0\0\0", 8);
 		}
