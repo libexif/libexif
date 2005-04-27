@@ -1,3 +1,9 @@
+2005-04-27  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* configure.ac: AGE = 1
+	* libexif/exif-entry.c (exif_entry_fix): Add a break to avoid unnecessary
+	checks.
+
 2005-04-26  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-entry.c (exif_entry_fix): Leave ' ' untouched, too.

@@ -295,9 +295,13 @@ exif_entry_fix (ExifEntry *e)
 				"Tag 'UserComment' is not empty but does not start with "
 				"format identifyer. This has been fixed.");
 			memcpy (e->data, "ASCII\0\0\0", 8);
+			break;
 		}
 
-		/* First 8 bytes need to follow the specification. */
+		/* 
+		 * First 8 bytes need to follow the specification. If they don't, 
+		 * assume ASCII.
+		 */
 		if (memcmp (e->data, "ASCII\0\0\0"     , 8) &&
 		    memcmp (e->data, "UNICODE\0"       , 8) &&
 		    memcmp (e->data, "JIS\0\0\0\0\0"   , 8) &&

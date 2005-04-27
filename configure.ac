@@ -37,7 +37,7 @@ dnl  - REVISION (Minor): Increment any time the source changes; set to
 dnl			 0 if you incremented CURRENT.
 dnl  - CURRENT (Major):  Increment if the interface has changes or removals.
 dnl ---------------------------------------------------------------------------
-LIBEXIF_AGE=0
+LIBEXIF_AGE=1
 LIBEXIF_REVISION=0
 LIBEXIF_CURRENT=12
 AC_SUBST([LIBEXIF_AGE])
