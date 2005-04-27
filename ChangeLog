@@ -1,5 +1,10 @@
 2005-04-27  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-entry.h
+	* libexif/exif-content.h: New convenience functions/macros.
+
+2005-04-27  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* configure.ac: AGE = 1
 	* libexif/exif-entry.c (exif_entry_fix): Add a break to avoid unnecessary
 	checks.

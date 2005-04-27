@@ -62,6 +62,8 @@ const char *exif_entry_get_value (ExifEntry *entry, char *val,
 
 void        exif_entry_dump      (ExifEntry *entry, unsigned int indent);
 
+#define exif_entry_get_ifd(e) ((e)?exif_content_get_ifd((e)->parent):EXIF_IFD_COUNT)
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
