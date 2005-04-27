@@ -370,6 +370,17 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			 * 0 is a valid tag in the GPS IFD.
 			 */
 			if (!exif_tag_get_name_in_ifd (tag, ifd)) {
+
+				/*
+				 * Special case: Tag and format 0. That's against specification.
+				 * At least up to 2.2. But Photoshop writes it anyways.
+				 */
+				if (!memcmp (d + offset + 12 * i, "\0\0\0\0", 4)) {
+					exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+						"Skipping empty entry at position %i in '%s'.", i, 
+						exif_ifd_get_name (ifd));
+					break;
+				}
 				exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 				  "Unknown tag 0x%04x (entry %i in '%s'). Please report this tag "
 					"to <libexif-devel@lists.sourceforge.net>.", tag, i,

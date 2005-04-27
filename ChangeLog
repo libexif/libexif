@@ -1,5 +1,9 @@
 2005-04-27  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-data.c (exif_data_load_data_content): Add a special case.
+
+2005-04-27  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-data.c (exif_data_load_data_content): Better check for 
 	validity of tags.
 
