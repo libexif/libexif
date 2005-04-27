@@ -280,7 +280,7 @@ exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 
 #undef CHECK_REC
 #define CHECK_REC(i) 					\
-if (data->ifd[(i)] == ifd) {				\
+if ((i) == ifd) {				\
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, \
 		"ExifData", "Recursive entry in IFD "	\
 		"'%s' detected. Skipping...",		\
@@ -297,7 +297,7 @@ if (data->ifd[(i)]->count) {				\
 }
 
 static void
-exif_data_load_data_content (ExifData *data, ExifContent *ifd,
+exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			     const unsigned char *d,
 			     unsigned int ds, unsigned int offset)
 {
@@ -308,6 +308,7 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 	ExifTag tag;
 
 	if (!data || !data->priv) return;
+	if ((ifd < 0) || (ifd >= EXIF_IFD_COUNT)) return;
 
 	/* Read the number of entries */
 	if (offset >= ds - 1) return;
@@ -333,18 +334,15 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 			switch (tag) {
 			case EXIF_TAG_EXIF_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_EXIF);
-				exif_data_load_data_content (data,
-					data->ifd[EXIF_IFD_EXIF], d, ds, o);
+				exif_data_load_data_content (data, EXIF_IFD_EXIF, d, ds, o);
 				break;
 			case EXIF_TAG_GPS_INFO_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_GPS);
-				exif_data_load_data_content (data,
-					data->ifd[EXIF_IFD_GPS], d, ds, o);
+				exif_data_load_data_content (data, EXIF_IFD_GPS, d, ds, o);
 				break;
 			case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_INTEROPERABILITY);
-				exif_data_load_data_content (data,
-					data->ifd[EXIF_IFD_INTEROPERABILITY], d, ds, o);
+				exif_data_load_data_content (data, EXIF_IFD_INTEROPERABILITY, d, ds, o);
 				break;
 			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
 				thumbnail_offset = o;
@@ -371,17 +369,18 @@ exif_data_load_data_content (ExifData *data, ExifContent *ifd,
 			 * versions of the standard have defined additional tags. Note that
 			 * 0 is a valid tag in the GPS IFD.
 			 */
-			if (!exif_tag_get_name (tag)) {
+			if (!exif_tag_get_name_in_ifd (tag, ifd)) {
 				exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-				  "Unknown tag %x (entry %i). Please report this tag "
-					"to <libexif-devel@lists.sourceforge.net>.", tag, i);
+				  "Unknown tag 0x%04x (entry %i in '%s'). Please report this tag "
+					"to <libexif-devel@lists.sourceforge.net>.", tag, i,
+					exif_ifd_get_name (ifd));
 				if (data->priv->options & EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS)
 					break;
 			}
 			entry = exif_entry_new_mem (data->priv->mem);
 			exif_data_load_data_entry (data, entry, d, ds,
 						   offset + 12 * i);
-			exif_content_add_entry (ifd, entry);
+			exif_content_add_entry (data->ifd[ifd], entry);
 			exif_entry_unref (entry);
 			break;
 		}
@@ -771,8 +770,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		  "IFD 0 at %i.", (int) offset);
 
 	/* Parse the actual exif data (usually offset 14 from start) */
-	exif_data_load_data_content (data, data->ifd[EXIF_IFD_0], d + 6,
-				     ds - 6, offset);
+	exif_data_load_data_content (data, EXIF_IFD_0, d + 6, ds - 6, offset);
 
 	/* IFD 1 offset */
 	if (offset + 6 + 2 > ds) {
@@ -794,8 +792,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			return;
 		}
 
-		exif_data_load_data_content (data, data->ifd[EXIF_IFD_1], d + 6,
-					     ds - 6, offset);
+		exif_data_load_data_content (data, EXIF_IFD_1, d + 6, ds - 6, offset);
 	}
 
 	/*
