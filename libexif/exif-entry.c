@@ -289,7 +289,7 @@ exif_entry_fix (ExifEntry *e)
 		 * bytes for the format specifyer.
 		 */
 		for (i = 0; (i < e->size) && !e->data[i]; i++);
-		if (!i) for ( ; (i < e->size) && (e->data[i] = ' '); i++);
+		if (!i) for ( ; (i < e->size) && (e->data[i] == ' '); i++);
 		if ((i >= 8) && (i < e->size)) {
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
 				"Tag 'UserComment' is not empty but does not start with "

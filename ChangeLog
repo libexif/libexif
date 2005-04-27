@@ -1,5 +1,9 @@
 2005-04-27  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* libexif/exif-entry.c (exif_entry_fix): Some day, we'll get this right.
+
+2005-04-27  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-entry.h
 	* libexif/exif-content.h: New convenience functions/macros.
 
