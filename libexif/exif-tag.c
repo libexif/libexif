@@ -30,6 +30,7 @@ typedef enum {
 	ESL_MANDATORY    = 1, /* Mandatory               */
 	ESL_CMANDATORY   = 2, /* Conditionally mandatory */
 	ESL_OPTIONAL     = 3, /* Optional                */
+	/* 4 left out intentionally because we felt like it */
 	ESL_COPTIONAL    = 5, /* Conditionally optional  */
 	ESL_NOT_RECORDED = 6  /* Not recorded            */
 } ExifSL;                     /* Exif Support Level      */
