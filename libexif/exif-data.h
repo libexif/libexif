@@ -28,6 +28,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 #include <libexif/exif-byte-order.h>
+#include <libexif/exif-data-type.h>
 #include <libexif/exif-ifd.h>
 #include <libexif/exif-log.h>
 #include <libexif/exif-tag.h>
@@ -74,6 +75,7 @@ ExifByteOrder exif_data_get_byte_order  (ExifData *data);
 void          exif_data_set_byte_order  (ExifData *data, ExifByteOrder order);
 
 ExifMnoteData *exif_data_get_mnote_data (ExifData *);
+void           exif_data_fix (ExifData *);
 
 typedef void (* ExifDataForeachContentFunc) (ExifContent *, void *user_data);
 void          exif_data_foreach_content (ExifData *data,
@@ -82,14 +84,16 @@ void          exif_data_foreach_content (ExifData *data,
 
 typedef enum {
 	EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS = 1 << 0,
-	EXIF_DATA_OPTION_FIX_INVALID_FORMAT  = 1 << 1
+	EXIF_DATA_OPTION_FOLLOW_SPECIFICATION = 1 << 1
 } ExifDataOption;
 
 const char *exif_data_option_get_name        (ExifDataOption);
 const char *exif_data_option_get_description (ExifDataOption);
+void        exif_data_set_option             (ExifData *, ExifDataOption);
+void        exif_data_unset_option           (ExifData *, ExifDataOption);
 
-void exif_data_set_option   (ExifData *, ExifDataOption);
-void exif_data_unset_option (ExifData *, ExifDataOption);
+void         exif_data_set_data_type (ExifData *, ExifDataType);
+ExifDataType exif_data_get_data_type (ExifData *);
 
 /* For debugging purposes and error reporting */
 void exif_data_dump (ExifData *data);

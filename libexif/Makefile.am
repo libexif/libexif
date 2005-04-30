@@ -43,6 +43,7 @@ libexifinclude_HEADERS = 	\
 	exif-byte-order.h	\
 	exif-content.h		\
 	exif-data.h		\
+	exif-data-type.h \
 	exif-entry.h		\
 	exif-format.h		\
 	exif-ifd.h		\

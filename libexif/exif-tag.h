@@ -26,6 +26,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 #include <libexif/exif-ifd.h>
+#include <libexif/exif-data-type.h>
 
 typedef enum {
 	EXIF_TAG_INTEROPERABILITY_INDEX		= 0x0001,
@@ -173,11 +174,19 @@ typedef enum {
 #define EXIF_TAG_GPS_DATE_STAMP         0x001d
 #define EXIF_TAG_GPS_DIFFERENTIAL       0x001e
 
+typedef enum {
+	EXIF_SUPPORT_LEVEL_UNKNOWN = 0,
+	EXIF_SUPPORT_LEVEL_NOT_RECORDED,
+	EXIF_SUPPORT_LEVEL_MANDATORY,
+	EXIF_SUPPORT_LEVEL_OPTIONAL
+} ExifSupportLevel;
 
-ExifTag         exif_tag_from_name              (const char *);
-const char     *exif_tag_get_name_in_ifd        (ExifTag, ExifIfd);
-const char     *exif_tag_get_title_in_ifd       (ExifTag, ExifIfd);
-const char     *exif_tag_get_description_in_ifd (ExifTag, ExifIfd);
+ExifTag          exif_tag_from_name                (const char *);
+const char      *exif_tag_get_name_in_ifd          (ExifTag, ExifIfd);
+const char      *exif_tag_get_title_in_ifd         (ExifTag, ExifIfd);
+const char      *exif_tag_get_description_in_ifd   (ExifTag, ExifIfd);
+ExifSupportLevel exif_tag_get_support_level_in_ifd (ExifTag, ExifIfd,
+                                                    ExifDataType);
 
 /* Don't use these functions. They are here for compatibility only. */
 const char     *exif_tag_get_name        (ExifTag tag);

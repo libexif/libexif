@@ -223,3 +223,56 @@ exif_content_get_ifd (ExifContent *c)
 		((c)->parent->ifd[EXIF_IFD_INTEROPERABILITY] == (c)) ? EXIF_IFD_INTEROPERABILITY :
 		EXIF_IFD_COUNT;
 }
+
+static void
+fix_func (ExifEntry *e, void *data)
+{
+	exif_entry_fix (e);
+}
+
+void
+exif_content_fix (ExifContent *c)
+{
+	ExifIfd ifd = exif_content_get_ifd (c);
+	ExifDataType dt;
+	ExifTag t;
+	ExifEntry *e;
+
+	if (!c) return;
+
+	dt = exif_data_get_data_type (c->parent);
+
+	/* First of all, fix all existing entries. */
+	exif_content_foreach_entry (c, fix_func, NULL);
+
+	/*
+	 * Then check for existing tags that are not allowed and for
+	 * non-existing mandatory tags.
+	 */
+	for (t = 0; t <= 0xffff; t++) {
+		switch (exif_tag_get_support_level_in_ifd (t, ifd, dt)) {
+		case EXIF_SUPPORT_LEVEL_MANDATORY:
+			if (exif_content_get_entry (c, t)) break;
+			exif_log (c->priv->log, EXIF_LOG_CODE_DEBUG, "exif-content",
+					"Tag '%s' is mandatory in IFD '%s' and has therefore been added.",
+					exif_tag_get_name_in_ifd (t, ifd), exif_ifd_get_name (ifd));
+			e = exif_entry_new ();
+			exif_content_add_entry (c, e);
+			exif_entry_initialize (e, t);
+			exif_entry_unref (e);
+			break;
+		case EXIF_SUPPORT_LEVEL_NOT_RECORDED:
+			e = exif_content_get_entry (c, t);
+			if (!e) break;
+			exif_log (c->priv->log, EXIF_LOG_CODE_DEBUG, "exif-content",
+					"Tag '%s' is not recoreded in IFD '%s' and has therefore been "
+					"removed.", exif_tag_get_name_in_ifd (t, ifd),
+					exif_ifd_get_name (ifd));
+			exif_content_remove_entry (c, e);
+			break;
+		case EXIF_SUPPORT_LEVEL_OPTIONAL:
+		default:
+			break;
+		}
+	}
+}

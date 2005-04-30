@@ -68,6 +68,7 @@ struct _ExifDataPrivate
 	unsigned int offset_mnote;
 
 	ExifDataOption options;
+	ExifDataType data_type;
 };
 
 static void *
@@ -127,9 +128,12 @@ exif_data_new_mem (ExifMem *mem)
 		data->ifd[i]->parent = data;
 	}
 
-	/* Standard options */
+	/* Default options */
 	exif_data_set_option (data, EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS);
-	exif_data_set_option (data, EXIF_DATA_OPTION_FIX_INVALID_FORMAT);
+	exif_data_set_option (data, EXIF_DATA_OPTION_FOLLOW_SPECIFICATION);
+
+	/* Default data type: none */
+	exif_data_set_data_type (data, EXIF_DATA_TYPE_COUNT);
 
 	return (data);
 }
@@ -192,9 +196,6 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 			  entry->data[6]);
 		data->priv->offset_mnote = doff;
 	}
-
-	if (data->priv->options & EXIF_DATA_OPTION_FIX_INVALID_FORMAT)
-		exif_entry_fix (entry);
 }
 
 static void
@@ -837,6 +838,9 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 					    data->priv->offset_mnote);
 		exif_mnote_data_load (data->priv->md, d, ds);
 	}
+
+	if (data->priv->options & EXIF_DATA_OPTION_FOLLOW_SPECIFICATION)
+		exif_data_fix (data);
 }
 
 void
@@ -1063,9 +1067,9 @@ static struct {
 } exif_data_option[] = {
 	{EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS, N_("Ignore unknown tags"),
 		N_("Ignore unknown tags when loading EXIF data.")},
-	{EXIF_DATA_OPTION_FIX_INVALID_FORMAT, N_("Fix invalid format"),
-		N_("Automatically fix the format of entries "
-				"that are not in the correct format.")},
+	{EXIF_DATA_OPTION_FOLLOW_SPECIFICATION, N_("Follow specification"),
+		N_("Add, correct and remove entries to get EXIF data that follows "
+				"the specification.")},
 	{0, NULL, NULL}
 };
 
@@ -1103,4 +1107,30 @@ exif_data_unset_option (ExifData *d, ExifDataOption o)
 	if (!d) return;
 
 	d->priv->options &= ~o;
+}
+
+static void
+fix_func (ExifContent *c, void *data)
+{
+	exif_content_fix (c);
+}
+
+void
+exif_data_fix (ExifData *d)
+{
+	exif_data_foreach_content (d, fix_func, NULL);
+}
+
+void
+exif_data_set_data_type (ExifData *d, ExifDataType dt)
+{
+	if (!d || !d->priv) return;
+
+	d->priv->data_type = dt;
+}
+
+ExifDataType
+exif_data_get_data_type (ExifData *d)
+{
+	return (d && d->priv) ? d->priv->data_type : EXIF_DATA_TYPE_COUNT;
 }

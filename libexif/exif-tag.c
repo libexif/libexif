@@ -26,21 +26,24 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef enum {
-	ESL_MANDATORY    = 1, /* Mandatory               */
-	ESL_CMANDATORY   = 2, /* Conditionally mandatory */
-	ESL_OPTIONAL     = 3, /* Optional                */
-	/* 4 left out intentionally because we felt like it */
-	ESL_COPTIONAL    = 5, /* Conditionally optional  */
-	ESL_NOT_RECORDED = 6  /* Not recorded            */
-} ExifSL;                     /* Exif Support Level      */
+#define ESL_NNNN { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED }
+#define ESL_OOOO { EXIF_SUPPORT_LEVEL_OPTIONAL, EXIF_SUPPORT_LEVEL_OPTIONAL, EXIF_SUPPORT_LEVEL_OPTIONAL, EXIF_SUPPORT_LEVEL_OPTIONAL }
+#define ESL_MMMN { EXIF_SUPPORT_LEVEL_MANDATORY, EXIF_SUPPORT_LEVEL_MANDATORY, EXIF_SUPPORT_LEVEL_MANDATORY, EXIF_SUPPORT_LEVEL_NOT_RECORDED }
+#define ESL_MMMM { EXIF_SUPPORT_LEVEL_MANDATORY, EXIF_SUPPORT_LEVEL_MANDATORY, EXIF_SUPPORT_LEVEL_MANDATORY, EXIF_SUPPORT_LEVEL_MANDATORY }
+#define ESL_OMON { EXIF_SUPPORT_LEVEL_OPTIONAL, EXIF_SUPPORT_LEVEL_MANDATORY, EXIF_SUPPORT_LEVEL_OPTIONAL, EXIF_SUPPORT_LEVEL_NOT_RECORDED }
+#define ESL_NNOO { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_OPTIONAL, EXIF_SUPPORT_LEVEL_OPTIONAL }
+#define ESL_NNMN { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_MANDATORY, EXIF_SUPPORT_LEVEL_NOT_RECORDED }
+#define ESL_NNMM { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_MANDATORY, EXIF_SUPPORT_LEVEL_MANDATORY }
+#define ESL_NNNM { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_MANDATORY }
+#define ESL_NNNO { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_OPTIONAL }
+#define ESL_GPS { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN }
 
 static struct {
 	ExifTag tag;
 	const char *name;
 	const char *title;
 	const char *description;
-	ExifSL esl[EXIF_IFD_COUNT];
+	ExifSupportLevel esl[EXIF_IFD_COUNT][4];
 } ExifTagTable[] = {
 	{EXIF_TAG_NEW_SUBFILE_TYPE, "NewSubfileType",
 	 "New Subfile Type", N_("A general indication of the kind of data "
@@ -52,38 +55,36 @@ static struct {
 	    "including the termination code (NULL). see the separate "
 	    "volume of Recommended Exif Interoperability Rules (ExifR98) "
 	    "for other tags used for ExifR98."),
-	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
-	  ESL_NOT_RECORDED, ESL_COPTIONAL}},
+	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_OOOO } },
 	{EXIF_TAG_INTEROPERABILITY_VERSION, "InteroperabilityVersion",
 	 "InteroperabilityVersion", "",
-	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
-	  ESL_NOT_RECORDED, ESL_OPTIONAL}},
+	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_OOOO } },
 	{EXIF_TAG_IMAGE_WIDTH, "ImageWidth", N_("Image Width"),
 	 N_("The number of columns of image data, equal to the number of "
 	    "pixels per row. In JPEG compressed data a JPEG marker is "
 	    "used instead of this tag."),
-	 {ESL_MANDATORY, ESL_MANDATORY, ESL_MANDATORY, ESL_NOT_RECORDED}},
+	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_IMAGE_LENGTH, "ImageLength", N_("Image Length"),
 	 N_("The number of rows of image data. In JPEG compressed data a "
 	    "JPEG marker is used instead of this tag."), 
-	 {ESL_MANDATORY, ESL_MANDATORY, ESL_MANDATORY, ESL_NOT_RECORDED}},
+	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_BITS_PER_SAMPLE, "BitsPerSample", N_("Bits per Sample"),
 	 N_("The number of bits per image component. In this standard each "
 	    "component of the image is 8 bits, so the value for this "
 	    "tag is 9. See also <SamplesPerPixel>. In JPEG compressed data "
 	    "a JPEG marker is used instead of this tag."),
-	 {ESL_MANDATORY, ESL_MANDATORY, ESL_MANDATORY, ESL_NOT_RECORDED}},
+	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_COMPRESSION, "Compression", N_("Compression"),
 	 N_("The compression scheme used for the image data. When a "
 	    "primary image is JPEG compressed, this designation is "
 	    "not necessary and is omitted. When thumbnails use JPEG "
 	    "compression, this tag value is set to 6."),
-	 {ESL_MANDATORY, ESL_MANDATORY, ESL_MANDATORY, ESL_NOT_RECORDED}},
+	 { ESL_MMMN, ESL_MMMM, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_PHOTOMETRIC_INTERPRETATION, "PhotometricInterpretation",
 	 N_("Photometric Interpretation"),
 	 N_("The pixel composition. In JPEG compressed data a JPEG "
 	    "marker is used instead of this tag."),
-	 {ESL_MANDATORY, ESL_MANDATORY, ESL_MANDATORY, ESL_NOT_RECORDED}},
+	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FILL_ORDER, "FillOrder", N_("Fill Order"), ""},
 	{EXIF_TAG_DOCUMENT_NAME, "DocumentName", N_("Document Name"), ""},
 	{EXIF_TAG_IMAGE_DESCRIPTION, "ImageDescription",
@@ -93,92 +94,105 @@ static struct {
 	    "the like. Two-bytes character codes cannot be used. "
 	    "When a 2-bytes code is necessary, the Exif Private tag "
 	    "<UserComment> is to be used."),
-	 {ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY}},
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_MAKE, "Make", N_("Manufacturer"),
 	 N_("The manufacturer of the recording "
 	    "equipment. This is the manufacturer of the DSC, scanner, "
 	    "video digitizer or other equipment that generated the "
 	    "image. When the field is left blank, it is treated as "
 	    "unknown."),
-	 {ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY}},
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN }},
 	{EXIF_TAG_MODEL, "Model", N_("Model"),
 	 N_("The model name or model number of the equipment. This is the "
 	    "model name or number of the DSC, scanner, video digitizer "
 	    "or other equipment that generated the image. When the field "
 	    "is left blank, it is treated as unknown."),
-	 {ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY}},
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_STRIP_OFFSETS, "StripOffsets", N_("Strip Offsets"),
 	 N_("For each strip, the byte offset of that strip. It is "
 	    "recommended that this be selected so the number of strip "
 	    "bytes does not exceed 64 Kbytes. With JPEG compressed "
 	    "data this designation is not needed and is omitted. See also "
 	    "<RowsPerStrip> and <StripByteCounts>."),
-	 {ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY}},
+	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_ORIENTATION, "Orientation", N_("Orientation"),
 	 N_("The image orientation viewed in terms of rows and columns."),
-	 {ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY, ESL_CMANDATORY}},
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SAMPLES_PER_PIXEL, "SamplesPerPixel",
 	 N_("Samples per Pixel"),
 	 N_("The number of components per pixel. Since this standard applies "
 	    "to RGB and YCbCr images, the value set for this tag is 3. "
 	    "In JPEG compressed data a JPEG marker is used instead of this "
-	    "tag.")},
+	    "tag."), 
+	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_ROWS_PER_STRIP, "RowsPerStrip", N_("Rows per Strip"),
 	 N_("The number of rows per strip. This is the number of rows "
 	    "in the image of one strip when an image is divided into "
 	    "strips. With JPEG compressed data this designation is not "
 	    "needed and is omitted. See also <RowsPerStrip> and "
-	    "<StripByteCounts>.")},
+	    "<StripByteCounts>."),
+	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_STRIP_BYTE_COUNTS, "StripByteCounts", N_("Strip Byte Count"),
 	 N_("The total number of bytes in each strip. With JPEG compressed "
-	    "data this designation is not needed and is omitted.")},
+	    "data this designation is not needed and is omitted."),
+	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_X_RESOLUTION, "XResolution", N_("x-Resolution"),
 	 N_("The number of pixels per <ResolutionUnit> in the <ImageWidth> "
 	    "direction. When the image resolution is unknown, 72 [dpi] "
-	    "is designated.")},
+	    "is designated."),
+	 { ESL_MMMM, ESL_MMMM, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_Y_RESOLUTION, "YResolution", N_("y-Resolution"),
 	 N_("The number of pixels per <ResolutionUnit> in the <ImageLength> "
-	    "direction. The same value as <XResolution> is designated.")},
+	    "direction. The same value as <XResolution> is designated."),
+	 { ESL_MMMM, ESL_MMMM, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_PLANAR_CONFIGURATION, "PlanarConfiguration",
 	 N_("Planar Configuration"),
 	 N_("Indicates whether pixel components are recorded in a chunky "
 	    "or planar format. In JPEG compressed files a JPEG marker "
 	    "is used instead of this tag. If this field does not exist, "
-	    "the TIFF default of 1 (chunky) is assumed.")},
+	    "the TIFF default of 1 (chunky) is assumed."),
+	 { ESL_OMON, ESL_OMON, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_RESOLUTION_UNIT, "ResolutionUnit", N_("Resolution Unit"),
 	 N_("The unit for measuring <XResolution> and <YResolution>. The same "
 	    "unit is used for both <XResolution> and <YResolution>. If "
-	    "the image resolution is unknown, 2 (inches) is designated.")},
+	    "the image resolution is unknown, 2 (inches) is designated."),
+	 { ESL_MMMM, ESL_MMMM, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_TRANSFER_FUNCTION, "TransferFunction",
 	 N_("Transfer Function"),
 	 N_("A transfer function for the image, described in tabular style. "
 	    "Normally this tag is not necessary, since color space is "
-	    "specified in the color space information tag (<ColorSpace>).")},
+	    "specified in the color space information tag (<ColorSpace>)."),
+	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SOFTWARE, "Software", N_("Software"),
 	 N_("This tag records the name and version of the software or "
 	    "firmware of the camera or image input device used to "
 	    "generate the image. The detailed format is not specified, but "
 	    "it is recommended that the example shown below be "
 	    "followed. When the field is left blank, it is treated as "
-	    "unknown.")},
+	    "unknown."),
+	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_DATE_TIME, "DateTime", N_("Date and Time"),
 	 N_("The date and time of image creation. In this standard "
-	    "(EXIF-2.1) it is the date and time the file was changed.")},
+	    "(EXIF-2.1) it is the date and time the file was changed."),
+	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_ARTIST, "Artist", N_("Artist"),
 	 N_("This tag records the name of the camera owner, photographer or "
 	    "image creator. The detailed format is not specified, but it is "
 	    "recommended that the information be written as in the example "
 	    "below for ease of Interoperability. When the field is "
-	    "left blank, it is treated as unknown.")},
+	    "left blank, it is treated as unknown."),
+	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_WHITE_POINT, "WhitePoint", N_("White Point"),
 	 N_("The chromaticity of the white point of the image. Normally "
 	    "this tag is not necessary, since color space is specified "
-	    "in the colorspace information tag (<ColorSpace>).")},
+	    "in the colorspace information tag (<ColorSpace>)."),
+	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_PRIMARY_CHROMATICITIES, "PrimaryChromaticities",
 	 N_("Primary Chromaticities"),
 	 N_("The chromaticity of the three primary colors of the image. "
 	    "Normally this tag is not necessary, since colorspace is "
-	    "specified in the colorspace information tag (<ColorSpace>).")},
+	    "specified in the colorspace information tag (<ColorSpace>)."),
+	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_TRANSFER_RANGE, "TransferRange", N_("Transfer Range"), ""},
 	{EXIF_TAG_SUB_IFDS, "SubIFDs", "SubIFD Offsets", N_("Defined by Adobe Corporation "
 	    "to enable TIFF Trees within a TIFF file.")},
@@ -187,7 +201,8 @@ static struct {
 	 N_("JPEG Interchange Format"),
 	 N_("The offset to the start byte (SOI) of JPEG compressed "
 	    "thumbnail data. This is not used for primary image "
-	    "JPEG data.")},
+	    "JPEG data."),
+	 { ESL_NNNN, ESL_NNNM, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH,
 	 "JPEGInterchangeFormatLength", N_("JPEG Interchange Format Length"),
 	 N_("The number of bytes of JPEG compressed thumbnail data. This "
@@ -196,7 +211,8 @@ static struct {
 	    "bitstream from SOI to EOI. Appn and COM markers should "
 	    "not be recorded. Compressed thumbnails must be recorded in no "
 	    "more than 64 Kbytes, including all other data to be "
-	    "recorded in APP1.")},
+	    "recorded in APP1."),
+	 { ESL_NNNN, ESL_NNNM, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_YCBCR_COEFFICIENTS, "YCbCrCoefficients",
 	 N_("YCbCr Coefficients"),
 	 N_("The matrix coefficients for transformation from RGB to YCbCr "
@@ -205,12 +221,14 @@ static struct {
 	    "as the default. The color space is declared in a "
 	    "color space information tag, with the default being the value "
 	    "that gives the optimal image characteristics "
-	    "Interoperability this condition.")},
+	    "Interoperability this condition."),
+	 { ESL_NNOO, ESL_NNOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_YCBCR_SUB_SAMPLING, "YCbCrSubSampling",
 	 N_("YCbCr Sub-Sampling"),
 	 N_("The sampling ratio of chrominance components in relation to the "
 	    "luminance component. In JPEG compressed data a JPEG marker "
-	    "is used instead of this tag.")},
+	    "is used instead of this tag."),
+	 { ESL_NNMN, ESL_NNMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_YCBCR_POSITIONING, "YCbCrPositioning",
 	 N_("YCbCr Positioning"),
 	 N_("The position of chrominance components in relation to the "
@@ -225,7 +243,8 @@ static struct {
 	    "does not have the capability of supporting both kinds of "
 	    "<YCbCrPositioning>, it shall follow the TIFF default regardless "
 	    "of the value in this field. It is preferable that readers "
-	    "be able to support both centered and co-sited positioning.")},
+	    "be able to support both centered and co-sited positioning."),
+	 { ESL_NNMM, ESL_NNOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_REFERENCE_BLACK_WHITE, "ReferenceBlackWhite",
 	 N_("Reference Black/White"),
 	 N_("The reference black point value and reference white point "
@@ -233,7 +252,8 @@ static struct {
 	    "below are given as defaults here. The color space is declared "
 	    "in a color space information tag, with the default "
 	    "being the value that gives the optimal image characteristics "
-	    "Interoperability these conditions.")},
+	    "Interoperability these conditions."),
+	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_XML_PACKET, "XMLPacket", N_("XML Packet"), N_("XMP Metadata")},
 	{EXIF_TAG_RELATED_IMAGE_FILE_FORMAT, "RelatedImageFileFormat",
 	 "RelatedImageFileFormat", ""},
@@ -269,47 +289,50 @@ static struct {
 	    "the photographer copyright part consists of one space followed "
 	    "by a terminating NULL code, then the editor copyright is given "
 	    "(see example 3). When the field is left blank, it is treated "
-	    "as unknown.")},
+	    "as unknown."),
+	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_EXPOSURE_TIME, "ExposureTime", N_("Exposure Time"),
-	 N_("Exposure time, given in seconds (sec).")},
+	 N_("Exposure time, given in seconds (sec)."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FNUMBER, "FNumber", N_("FNumber"),
-	 N_("The F number.")},
+	 N_("The F number."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_IPTC_NAA, "IPTC/NAA", "IPTC/NAA", ""},
 	{EXIF_TAG_IMAGE_RESOURCES, "ImageResources", N_("Image Resources Block"), ""},
 	{EXIF_TAG_EXIF_IFD_POINTER, "ExifIfdPointer", "ExifIFDPointer",
 	 N_("A pointer to the Exif IFD. Interoperability, Exif IFD has the "
 	    "same structure as that of the IFD specified in TIFF. "
 	    "ordinarily, however, it does not contain image data as in "
-	    "the case of TIFF.")},
+	    "the case of TIFF."),
+	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_INTER_COLOR_PROFILE, "InterColorProfile",
 	 "InterColorProfile", ""},
 	{EXIF_TAG_EXPOSURE_PROGRAM, "ExposureProgram", "ExposureProgram",
 	 N_("The class of the program used by the camera to set exposure "
-	    "when the picture is taken.")},
+	    "when the picture is taken."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SPECTRAL_SENSITIVITY, "SpectralSensitivity",
 	 N_("Spectral Sensitivity"),
 	 N_("Indicates the spectral sensitivity of each channel of the "
 	    "camera used. The tag value is an ASCII string compatible "
-	    "with the standard developed by the ASTM Technical committee.")},
+	    "with the standard developed by the ASTM Technical committee."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_GPS_INFO_IFD_POINTER, "GPSInfoIFDPointer", 
 	 "GPSInfoIFDPointer",
 	 N_("A pointer to the GPS Info IFD. The "
 	    "Interoperability structure of the GPS Info IFD, like that of "
-	    "Exif IFD, has no image data.")},
+	    "Exif IFD, has no image data."),
+	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_GPS_VERSION_ID, "GPSVersionID", N_("GPS tag version"),
 	 N_("Indicates the version of <GPSInfoIFD>. The version is given "
 	    "as 2.0.0.0. This tag is mandatory when <GPSInfo> tag is "
 	    "present. (Note: The <GPSVersionID tag is given in bytes, "
 	    "unlike the <ExifVersion> tag. When the version is "
-	    "2.0.0.0, the tag value is 02000000.H)."),
-	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
-	  ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	    "2.0.0.0, the tag value is 02000000.H)."), ESL_GPS},
 	{EXIF_TAG_GPS_LATITUDE_REF, "GPSLatitudeRef", N_("North or South Latitude"),
 	 N_("Indicates whether the latitude is north or south latitude. The "
 	    "ASCII value 'N' indicates north latitude, and 'S' is south "
-	    "latitude."),
-	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
-	  ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	    "latitude."), ESL_GPS},
 	{EXIF_TAG_GPS_LATITUDE, "GPSLatitude", N_("Latitude"),
 	 N_("Indicates the latitude. The latitude is expressed as three "
 	    "RATIONAL values giving the degrees, minutes, and seconds, "
@@ -317,14 +340,11 @@ static struct {
 	    "the format is dd/1,mm/1,ss/1. When degrees and minutes are used "
 	    "and, for example, fractions of minutes are given up to two "
 	    "two decimal places, the format is dd/1,mmmm/100,0/1."),
-	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
-	  ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	 ESL_GPS},
 	{EXIF_TAG_GPS_LONGITUDE_REF, "GPSLongitudeRef", N_("East or West Longitude"),
 	 N_("Indicates whether the longitude is east or west longitude. "
 	    "ASCII 'E' indicates east longitude, and 'W' is west "
-	    "longitude."),
-	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
-	  ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	    "longitude."), ESL_GPS},
 	{EXIF_TAG_GPS_LONGITUDE, "GPSLongitude", N_("Longitude"),
 	 N_("Indicates the longitude. The longitude is expressed as three "
 	    "RATIONAL values giving the degrees, minutes, and seconds, "
@@ -332,42 +352,42 @@ static struct {
 	    "the format is ddd/1,mm/1,ss/1. When degrees and minutes are "
 	    "used and, for example, fractions of minutes are given up to "
 	    "two decimal places, the format is ddd/1,mmmm/100,0/1."),
-	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
-	  ESL_OPTIONAL, ESL_NOT_RECORDED}},
+	 ESL_GPS},
 	{EXIF_TAG_GPS_ALTITUDE_REF, "GPSAltitudeRef", N_("Altitude reference"),
 	 N_("Indicates the altitude used as the reference altitude. If the "
 	    "reference is sea level and the altitude is above sea level, 0 "
 			"is given. If the altitude is below sea level, a value of 1 is given "
 			"and the altitude is indicated as an absolute value in the "
 			"GSPAltitude tag. The reference unit is meters. Note that this tag "
-			"is BYTE type, unlike other reference tags."),
-	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
-		ESL_OPTIONAL, ESL_NOT_RECORDED}},
+			"is BYTE type, unlike other reference tags."), ESL_GPS},
 	{EXIF_TAG_GPS_ALTITUDE, "GPSAltitude", N_("Altitude"),
 	 N_("Indicates the altitude based on the reference in GPSAltitudeRef. "
 			"Altitude is expressed as one RATIONAL value. The reference unit "
-			"is meters."),
-	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
-		ESL_OPTIONAL, ESL_NOT_RECORDED}},
+			"is meters."), ESL_GPS},
 	{EXIF_TAG_ISO_SPEED_RATINGS, "ISOSpeedRatings",
 	 N_("ISO Speed Ratings"),
 	 N_("Indicates the ISO Speed and ISO Latitude of the camera or "
-	    "input device as specified in ISO 12232.")},
+	    "input device as specified in ISO 12232."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_OECF, "OECF", "OECF",
 	 N_("Indicates the Opto-Electoric Conversion Function (OECF) "
 	    "specified in ISO 14524. <OECF> is the relationship between "
-	    "the camera optical input and the image values.")},
+	    "the camera optical input and the image values."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_EXIF_VERSION, "ExifVersion", N_("Exif Version"),
 	 N_("The version of this standard supported. Nonexistence of this "
-	    "field is taken to mean nonconformance to the standard.")},
+	    "field is taken to mean nonconformance to the standard."),
+	 { ESL_NNNN, ESL_NNNN, ESL_MMMM, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_DATE_TIME_ORIGINAL, "DateTimeOriginal",
 	 N_("Date and Time (original)"),
 	 N_("The date and time when the original image data was generated. "
 	    "For a digital still camera "
-	    "the date and time the picture was taken are recorded.")},
+	    "the date and time the picture was taken are recorded."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_DATE_TIME_DIGITIZED, "DateTimeDigitized",
 	 N_("Date and Time (digitized)"),
-	 N_("The date and time when the image was stored as digital data. ")},
+	 N_("The date and time when the image was stored as digital data. "),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_COMPONENTS_CONFIGURATION, "ComponentsConfiguration",
 	 "ComponentsConfiguration",
 	 N_("Information specific to compressed data. The channels of "
@@ -377,44 +397,56 @@ static struct {
 	    "However, since <PhotometricInterpretation> can only "
 	    "express the order of Y, Cb and Cr, this tag is provided "
 	    "for cases when compressed data uses components other than "
-	    "Y, Cb, and Cr and to enable support of other sequences.")},
+	    "Y, Cb, and Cr and to enable support of other sequences."),
+	 { ESL_NNNN, ESL_NNNN, ESL_NNNM, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_COMPRESSED_BITS_PER_PIXEL, "CompressedBitsPerPixel",
 	 N_("Compressed Bits per Pixel"),
 	 N_("Information specific to compressed data. The compression mode "
 	    "used for a compressed image is indicated in unit bits "
-	    "per pixel.")},
+	    "per pixel."),
+	 { ESL_NNNN, ESL_NNNN, ESL_NNNO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SHUTTER_SPEED_VALUE, "ShutterSpeedValue", N_("Shutter speed"),
 	 N_("Shutter speed. The unit is the APEX (Additive System of "
-	    "Photographic Exposure) setting (see Appendix C).")},
+	    "Photographic Exposure) setting (see Appendix C)."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_APERTURE_VALUE, "ApertureValue", N_("Aperture"),
-	 N_("The lens aperture. The unit is the APEX value.")},
+	 N_("The lens aperture. The unit is the APEX value."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_BRIGHTNESS_VALUE, "BrightnessValue", N_("Brightness"),
 	 N_("The value of brightness. The unit is the APEX value. "
-	    "Ordinarily it is given in the range of -99.99 to 99.99.")},
+	    "Ordinarily it is given in the range of -99.99 to 99.99."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_EXPOSURE_BIAS_VALUE, "ExposureBiasValue",
 	 N_("Exposure Bias"),
 	 N_("The exposure bias. The units is the APEX value. Ordinarily "
-	    "it is given in the range of -99.99 to 99.99.")},
+	    "it is given in the range of -99.99 to 99.99."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_MAX_APERTURE_VALUE, "MaxApertureValue", "MaxApertureValue",
 	 N_("The smallest F number of the lens. The unit is the APEX value. "
 	    "Ordinarily it is given in the range of 00.00 to 99.99, "
-	    "but it is not limited to this range.")},
+	    "but it is not limited to this range."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SUBJECT_DISTANCE, "SubjectDistance",
 	 N_("Subject Distance"),
-	 N_("The distance to the subject, given in meters.")},
+	 N_("The distance to the subject, given in meters."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_METERING_MODE, "MeteringMode", N_("Metering Mode"),
-	 N_("The metering mode.")},
+	 N_("The metering mode."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_LIGHT_SOURCE, "LightSource", N_("Light Source"),
-	 N_("The kind of light source.")},
+	 N_("The kind of light source."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FLASH, "Flash", N_("Flash"),
 	 N_("This tag is recorded when an image is taken using a strobe "
 	    "light (flash).")},
 	{EXIF_TAG_FOCAL_LENGTH, "FocalLength", N_("Focal Length"),
 	 N_("The actual focal length of the lens, in mm. Conversion is not "
-	    "made to the focal length of a 35 mm film camera.")},
+	    "made to the focal length of a 35 mm film camera."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_MAKER_NOTE, "MakerNote", N_("Maker Note"),
 	 N_("A tag for manufacturers of Exif writers to record any desired "
-	    "information. The contents are up to the manufacturer.")},
+	    "information. The contents are up to the manufacturer."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_USER_COMMENT, "UserComment", N_("User Comment"),
 	 N_("A tag for Exif users to write keywords or comments on the image "
 	    "besides those in <ImageDescription>, and without the "
@@ -438,20 +470,25 @@ static struct {
 	    "do not use the <UserComment> tag (see Table 7). "
 	    "When a <UserComment> area is set aside, it is recommended that "
 	    "the ID code be ASCII and that the following user comment "
-	    "part be filled with blank characters [20.H].")},
+	    "part be filled with blank characters [20.H]."),
+			{ ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SUB_SEC_TIME, "SubsecTime", "SubsecTime",
 	 N_("A tag used to record fractions of seconds for the "
-	    "<DateTime> tag.")},
+	    "<DateTime> tag."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SUB_SEC_TIME_ORIGINAL, "SubSecTimeOriginal",
 	 "SubSecTimeOriginal",
 	 N_("A tag used to record fractions of seconds for the "
-	    "<DateTimeOriginal> tag.")},
+	    "<DateTimeOriginal> tag."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SUB_SEC_TIME_DIGITIZED, "SubSecTimeDigitized",
 	 "SubSecTimeDigitized",
 	 N_("A tag used to record fractions of seconds for the "
-	    "<DateTimeDigitized> tag.")},
+	    "<DateTimeDigitized> tag."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FLASH_PIX_VERSION, "FlashPixVersion", "FlashPixVersion",
-	 N_("The FlashPix format version supported by a FPXR file.")},
+	 N_("The FlashPix format version supported by a FPXR file."),
+	 { ESL_NNNN, ESL_NNNN, ESL_MMMM, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_COLOR_SPACE, "ColorSpace", N_("Color Space"),
 	 N_("The color space information tag is always "
 	    "recorded as the color space specifier. Normally sRGB (=1) "
@@ -459,14 +496,16 @@ static struct {
 	    "conditions and environment. If a color space other than "
 	    "sRGB is used, Uncalibrated (=FFFF.H) is set. Image data "
 	    "recorded as Uncalibrated can be treated as sRGB when it is "
-	    "converted to FlashPix. On sRGB see Appendix E.")},
+	    "converted to FlashPix. On sRGB see Appendix E."),
+	 { ESL_NNNN, ESL_NNNN, ESL_MMMM, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_PIXEL_X_DIMENSION, "PixelXDimension", "PixelXDimension",
 	 N_("Information specific to compressed data. When a "
 	    "compressed file is recorded, the valid width of the "
 	    "meaningful image must be recorded in this tag, whether or "
 	    "not there is padding data or a restart marker. This tag "
 	    "should not exist in an uncompressed file. For details see "
-	    "section 2.8.1 and Appendix F.")},
+	    "section 2.8.1 and Appendix F."),
+	 { ESL_NNNN, ESL_NNNN, ESL_NNNM, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_PIXEL_Y_DIMENSION, "PixelYDimension", "PixelYDimension",
 	 N_("Information specific to compressed data. When a compressed "
 	    "file is recorded, the valid height of the meaningful image "
@@ -475,7 +514,8 @@ static struct {
 	    "uncompressed file. For details see section 2.8.1 and Appendix "
 	    "F. Since data padding is unnecessary in the vertical direction, "
 	    "the number of lines recorded in this valid image height tag "
-	    "will in fact be the same as that recorded in the SOF.")},
+	    "will in fact be the same as that recorded in the SOF."),
+	 { ESL_NNNN, ESL_NNNN, ESL_NNNM, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_RELATED_SOUND_FILE, "RelatedSoundFile",
 	 "RelatedSoundFile",
 	 N_("This tag is used to record the name of an audio file related "
@@ -507,7 +547,8 @@ static struct {
 	    "information is an ASCII character string, it is terminated by "
 	    "NULL. When this tag is used to map audio files, the relation "
 	    "of the audio file to image data must also be indicated on the "
-	    "audio file end.")},
+	    "audio file end."),
+			{ ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_INTEROPERABILITY_IFD_POINTER, "InteroperabilityIFDPointer",
 	 "InteroperabilityIFDPointer",
 	 N_("Interoperability IFD is composed of tags which stores the "
@@ -518,8 +559,7 @@ static struct {
 	    "but does not contain the "
 	    "image data characteristically compared with normal TIFF "
 	    "IFD."),
-	 {ESL_NOT_RECORDED, ESL_NOT_RECORDED, ESL_NOT_RECORDED,
-		ESL_NOT_RECORDED, ESL_OPTIONAL}},
+	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FLASH_ENERGY, "FlashEnergy", N_("Flash Energy"),
 	 N_("Indicates the strobe energy at the time the image is "
 	    "captured, as measured in Beam Candle Power Seconds (BCPS).")},
@@ -657,6 +697,12 @@ exif_tag_table_count (void)
 	return sizeof (ExifTagTable) / sizeof (ExifTagTable[0]);
 }
 
+#define RECORDED \
+((ExifTagTable[i].esl[ifd][EXIF_DATA_TYPE_UNCOMPRESSED_CHUNKY] != EXIF_SUPPORT_LEVEL_NOT_RECORDED) || \
+ (ExifTagTable[i].esl[ifd][EXIF_DATA_TYPE_UNCOMPRESSED_PLANAR] != EXIF_SUPPORT_LEVEL_NOT_RECORDED) || \
+ (ExifTagTable[i].esl[ifd][EXIF_DATA_TYPE_UNCOMPRESSED_YCC] != EXIF_SUPPORT_LEVEL_NOT_RECORDED) || \
+ (ExifTagTable[i].esl[ifd][EXIF_DATA_TYPE_COMPRESSED] != EXIF_SUPPORT_LEVEL_NOT_RECORDED))
+
 const char *
 exif_tag_get_name_in_ifd (ExifTag tag, ExifIfd ifd)
 {
@@ -664,8 +710,7 @@ exif_tag_get_name_in_ifd (ExifTag tag, ExifIfd ifd)
 
 	if (ifd >= EXIF_IFD_COUNT) return NULL;
 	for (i = 0; ExifTagTable[i].name; i++)
-		if ((ExifTagTable[i].tag == tag) &&
-		    (ExifTagTable[i].esl[ifd] != ESL_NOT_RECORDED)) break;
+		if ((ExifTagTable[i].tag == tag) && RECORDED) break;
 	return ExifTagTable[i].name;
 }
 
@@ -680,8 +725,7 @@ exif_tag_get_title_in_ifd (ExifTag tag, ExifIfd ifd)
 
 	if (ifd >= EXIF_IFD_COUNT) return NULL;
 	for (i = 0; ExifTagTable[i].title; i++)
-		if ((ExifTagTable[i].tag == tag) &&
-		    (ExifTagTable[i].esl[ifd] != ESL_NOT_RECORDED)) break;
+		if ((ExifTagTable[i].tag == tag) && RECORDED) break;
 	return _(ExifTagTable[i].title);
 }
 
@@ -695,8 +739,7 @@ exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 
 	if (ifd >= EXIF_IFD_COUNT) return NULL;
 	for (i = 0; ExifTagTable[i].description; i++)
-		if ((ExifTagTable[i].tag == tag) &&
-		    (ExifTagTable[i].esl[ifd] != ESL_NOT_RECORDED)) break;
+		if ((ExifTagTable[i].tag == tag) && RECORDED) break;
 	return _(ExifTagTable[i].description);
 }
 
@@ -743,4 +786,19 @@ exif_tag_from_name (const char *name)
 	for (i = 0; ExifTagTable[i].name; i++)
 		if (!strcmp (ExifTagTable[i].name, name)) break;
 	return ExifTagTable[i].tag;
+}
+
+ExifSupportLevel
+exif_tag_get_support_level_in_ifd (ExifTag tag, ExifIfd ifd, ExifDataType t)
+{
+	unsigned int i;
+
+	if (ifd >= EXIF_IFD_COUNT) return EXIF_SUPPORT_LEVEL_UNKNOWN;
+	if (t >= EXIF_DATA_TYPE_COUNT) return EXIF_SUPPORT_LEVEL_UNKNOWN;
+
+	for (i = 0; ExifTagTable[i].description; i++)
+		if ((ExifTagTable[i].tag == tag) &&
+				(ExifTagTable[i].esl[ifd][t] != EXIF_SUPPORT_LEVEL_NOT_RECORDED))
+			return ExifTagTable[i].esl[ifd][t];
+	return EXIF_SUPPORT_LEVEL_NOT_RECORDED;
 }

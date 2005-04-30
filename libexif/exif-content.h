@@ -52,9 +52,10 @@ void         exif_content_ref     (ExifContent *content);
 void         exif_content_unref   (ExifContent *content);
 void         exif_content_free    (ExifContent *content);
 
-void         exif_content_add_entry     (ExifContent *content, ExifEntry *e);
-void         exif_content_remove_entry  (ExifContent *content, ExifEntry *e);
-ExifEntry   *exif_content_get_entry     (ExifContent *content, ExifTag tag);
+void         exif_content_add_entry    (ExifContent *, ExifEntry *);
+void         exif_content_remove_entry (ExifContent *, ExifEntry *);
+ExifEntry   *exif_content_get_entry    (ExifContent *, ExifTag);
+void         exif_content_fix          (ExifContent *);
 
 typedef void (* ExifContentForeachEntryFunc) (ExifEntry *, void *user_data);
 void         exif_content_foreach_entry (ExifContent *content,
