@@ -1,5 +1,10 @@
 2005-04-30  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* test/test-mem.c: Show how to create EXIF data.
+	* README: New section USAGE.
+
+2005-04-30  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-data-type.h: New
 	* libexif/*: Lots of changes to make it possible to validate data against
 	the specification.

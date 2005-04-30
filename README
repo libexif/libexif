@@ -27,6 +27,16 @@ libexif can only handle some maker notes, and even those not very well. More
 work needs to be done. Note that libmnote has been merged with libexif - it
 is no longer needed.
 
+USAGE
+-----
+
+Until someone writes some documentation, you need to refer to the header 
+files. The short test-program test/test-mem illustrates how to create valid
+EXIF data from scratch, how to save EXIF data and how to load EXIF data 
+from data in memory. Don't hesitate to contact us 
+(<libexif-devel@lists.sourceforge.net>) if you've got any questions
+on how to use libexif.
+
 FRONTENDS
 ---------
 
@@ -49,12 +59,6 @@ LIBRARIES
 
 I know of the following libraries that use or have been inspired by libexif:
  - pel: PHP-Code (http://pel.sourceforge.net)
-
-TODO
-----
-
-We should probably support the generation of an empty EXIF structure with all
-mandatory tags. First ideas are in exif-tag.c. This has not yet been finished.
 
 AUTHORS
 -------

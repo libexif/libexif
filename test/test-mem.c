@@ -39,24 +39,10 @@ main (int argc, char **argv)
 
 	printf ("Creating EXIF data...\n");
 	ed = exif_data_new ();
+	exif_data_set_data_type (ed, EXIF_DATA_TYPE_UNCOMPRESSED_CHUNKY);
 
-	printf ("Creating EXIF entry...\n");
-	e = exif_entry_new ();
-	exif_content_add_entry (ed->ifd[EXIF_IFD_0], e);
-	exif_entry_initialize (e, EXIF_TAG_EXIF_VERSION);
-	exif_entry_unref (e);
-
-	printf ("Creating another EXIF entry...\n");
-	e = exif_entry_new ();
-	exif_content_add_entry (ed->ifd[EXIF_IFD_0], e);
-	exif_entry_initialize (e, EXIF_TAG_DATE_TIME);
-	exif_entry_unref (e);
-
-	printf ("Creating an EXIF entry in the EXIF IFD...\n");
-	e = exif_entry_new ();
-	exif_content_add_entry (ed->ifd[EXIF_IFD_EXIF], e);
-	exif_entry_initialize (e, EXIF_TAG_FLASH_PIX_VERSION);
-	exif_entry_unref (e);
+	printf ("Fill EXIF data with all necessary entries to follow specs...\n");
+	exif_data_fix (ed);
 
 	exif_data_dump (ed);
 
