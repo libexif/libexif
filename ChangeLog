@@ -1,3 +1,8 @@
+2005-05-01  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-data.c (exif_data_fix): Don't create EXIF_IFD_1 if no 
+	thumbnail data is available.
+
 2005-04-30  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* test/test-mem.c: Show how to create EXIF data.

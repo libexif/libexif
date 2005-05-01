@@ -1112,7 +1112,21 @@ exif_data_unset_option (ExifData *d, ExifDataOption o)
 static void
 fix_func (ExifContent *c, void *data)
 {
-	exif_content_fix (c);
+	switch (exif_content_get_ifd (c)) {
+	case EXIF_IFD_1:
+		if (c->parent->data)
+			exif_content_fix (c);
+		else {
+			exif_log (c->parent->priv->log, EXIF_LOG_CODE_DEBUG, "exif-data",
+					"No thumbnail but entries on thumbnail. These entries have been "
+					"removed.");
+			while (c->count)
+				exif_content_remove_entry (c, c->entries[c->count - 1]);
+		}
+		break;
+	default:
+		exif_content_fix (c);
+	}
 }
 
 void
