@@ -720,7 +720,12 @@ exif_tag_get_title_in_ifd (ExifTag tag, ExifIfd ifd)
 	unsigned int i;
 
 	/* FIXME: This belongs to somewhere else. */
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	/* libexif should use the default system locale.
+	 * If an application specifically requires UTF-8, then we
+	 * must give the application a way to tell libexif that.
+	 * 
+	 * bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	 */
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
 	if (ifd >= EXIF_IFD_COUNT) return NULL;
@@ -734,7 +739,12 @@ exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;
 
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	/* libexif should use the default system locale.
+	 * If an application specifically requires UTF-8, then we
+	 * must give the application a way to tell libexif that.
+	 * 
+	 * bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	 */
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
 	if (ifd >= EXIF_IFD_COUNT) return NULL;
@@ -743,38 +753,54 @@ exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 	return _(ExifTagTable[i].description);
 }
 
+
+/**********************************************************************
+ * convenience functions
+ **********************************************************************/
+
+/* generic part: iterate through IFD list and return first result */
+typedef const char * (*get_stuff_func) (ExifTag tag, ExifIfd ifd);
+
+static const char *
+exif_tag_get_stuff (ExifTag tag, get_stuff_func func)
+{
+	const static ExifIfd ifds[5] = {
+		EXIF_IFD_0,
+		EXIF_IFD_1,
+		EXIF_IFD_EXIF,
+		EXIF_IFD_INTEROPERABILITY,
+		EXIF_IFD_GPS
+	};
+	int i;
+	for (i=0; i<5; i++) {
+		const char *result = func(tag, ifds[i]);
+		if (result != NULL) {
+			return result;
+		}
+	}
+	return (const char *) NULL;
+}
+
+/* explicit functions */
 const char *
 exif_tag_get_name (ExifTag tag)
 {
-	return
-		exif_tag_get_name_in_ifd (tag, EXIF_IFD_0) ? :
-		exif_tag_get_name_in_ifd (tag, EXIF_IFD_1) ? :
-		exif_tag_get_name_in_ifd (tag, EXIF_IFD_EXIF) ? :
-		exif_tag_get_name_in_ifd (tag, EXIF_IFD_INTEROPERABILITY) ? :
-		exif_tag_get_name_in_ifd (tag, EXIF_IFD_GPS);
+	return exif_tag_get_stuff(tag, exif_tag_get_name_in_ifd);
 }
 
 const char *
 exif_tag_get_title (ExifTag tag)
 {
-	return
-		exif_tag_get_title_in_ifd (tag, EXIF_IFD_0) ? :
-		exif_tag_get_title_in_ifd (tag, EXIF_IFD_1) ? :
-		exif_tag_get_title_in_ifd (tag, EXIF_IFD_EXIF) ? :
-		exif_tag_get_title_in_ifd (tag, EXIF_IFD_INTEROPERABILITY) ? :
-		exif_tag_get_title_in_ifd (tag, EXIF_IFD_GPS);
+	return exif_tag_get_stuff(tag, exif_tag_get_title_in_ifd);
 }
 
 const char *
 exif_tag_get_description (ExifTag tag)
 {
-	return
-		exif_tag_get_description_in_ifd (tag, EXIF_IFD_0) ? :
-		exif_tag_get_description_in_ifd (tag, EXIF_IFD_1) ? :
-		exif_tag_get_description_in_ifd (tag, EXIF_IFD_EXIF) ? :
-		exif_tag_get_description_in_ifd (tag, EXIF_IFD_INTEROPERABILITY) ? :
-		exif_tag_get_description_in_ifd (tag, EXIF_IFD_GPS);
+	return exif_tag_get_stuff (tag, exif_tag_get_description_in_ifd);
 }
+
+
 
 ExifTag 
 exif_tag_from_name (const char *name)

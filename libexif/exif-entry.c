@@ -560,7 +560,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	};
 
 	/* FIXME: This belongs to somewhere else. */
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	/* libexif should use the default system locale.
+	 * If an application specifically requires UTF-8, then we
+	 * must give the application a way to tell libexif that.
+	 * 
+	 * bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	 */
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
 	/* We need the byte order */
