@@ -91,7 +91,7 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		if (!*buf) return;
 
 		/* Write the header and the number of entries. */
-		strcpy (*buf, "OLYMP");
+		strcpy ((char *)*buf, "OLYMP");
 		o2 += 2;
 		datao = n->offset;
 		break;
@@ -105,7 +105,7 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		if (!*buf) return;
 
 		/* Write the header and the number of entries. */
-		strcpy (*buf, "Nikon");
+		strcpy ((char *)*buf, "Nikon");
 		(*buf)[6] = n->version;
 		o2 += 2; *buf_size += 2;
 		if (n->version == 2) {
@@ -226,9 +226,9 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 			 */
 			datao = o2;
 			if (o2 >= buf_size) return;
-			if (!strncmp (&buf[o2], "II", 2))
+			if (!strncmp ((char *)&buf[o2], "II", 2))
 				n->order = EXIF_BYTE_ORDER_INTEL;
-			else if (!strncmp (&buf[o2], "MM", 2))
+			else if (!strncmp ((char *)&buf[o2], "MM", 2))
 				n->order = EXIF_BYTE_ORDER_MOTOROLA;
 			else {
 				exif_log (en->log, EXIF_LOG_CODE_DEBUG,

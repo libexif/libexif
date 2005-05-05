@@ -673,7 +673,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		 * Some cameras store a string like "   " here. Ignore it.
 		 */
 		if (e->size && e->data &&
-		    (strspn (e->data, " ") != strlen ((char *) e->data)))
+		    (strspn ((char *)e->data, " ") != strlen ((char *) e->data)))
 			strncpy (val, (char *) e->data, MIN (maxlen, e->size));
 		else
 			strncpy (val, _("[None]"), maxlen);
@@ -685,8 +685,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		ts = e->data + e->size - t;
 		strncat (val, " - ", maxlen - strlen (val));
 		if (e->size && e->data && (ts > 0) &&
-		    (strspn (t, " ") != ts))
-			strncat (val, t, MIN (maxlen - strlen (val), ts));
+		    (strspn ((char *)t, " ") != ts))
+			strncat (val, (char *)t, MIN (maxlen - strlen (val), ts));
 		else
 			strncat (val, _("[None]"), maxlen - strlen (val));
 		strncat (val, " ", maxlen - strlen (val));
@@ -725,14 +725,14 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		entry = exif_content_get_entry (
 			e->parent->parent->ifd[EXIF_IFD_0], EXIF_TAG_MAKE);
 		if (entry && entry->data &&
-		    !strncmp (entry->data, "Minolta", 7)) {
+		    !strncmp ((char *)entry->data, "Minolta", 7)) {
 			entry = exif_content_get_entry (
 					e->parent->parent->ifd[EXIF_IFD_0],
 					EXIF_TAG_MODEL);
 			if (entry && entry->data) {
-				if (!strncmp (entry->data, "DiMAGE 7", 8))
+				if (!strncmp ((char *)entry->data, "DiMAGE 7", 8))
 					d = 3.9;
-				else if (!strncmp (entry->data, "DiMAGE 5", 8))
+				else if (!strncmp ((char *)entry->data, "DiMAGE 5", 8))
 					d = 4.9;
 			}
 		}
@@ -1291,7 +1291,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
 		if (!e->data) break;
-		strncpy (e->data, _("[None]"), e->size);
+		strncpy ((char *)e->data, _("[None]"), e->size);
 		break;
 	case EXIF_TAG_COPYRIGHT:
 		e->components = (strlen (_("[None]")) + 1) * 2;
@@ -1299,8 +1299,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
 		if (!e->data) break;
-		strcpy (e->data + 0, _("[None]"));
-		strcpy (e->data + strlen (_("[None]")) + 1, _("[None]"));
+		strcpy (((char *)e->data) + 0, _("[None]"));
+		strcpy (((char *)e->data) + strlen (_("[None]")) + 1, _("[None]"));
 		break;
 
 	/* UNDEFINED, no components, no default */

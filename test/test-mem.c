@@ -31,7 +31,7 @@ int
 main (int argc, char **argv)
 {
 	ExifData *ed;
-	ExifEntry *e;
+	/* ExifEntry *e; */
 	unsigned char *eb, size[2];
 	unsigned int ebs;
 	ExifLoader *loader;

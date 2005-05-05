@@ -428,17 +428,17 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_OLYMPUS_TAG_VERSION:
 		CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
 		CC2 (entry->components, 5, 8, v, maxlen);
-		strncpy (v, entry->data, MIN (maxlen, entry->size));
+		strncpy (v, (char *)entry->data, MIN (maxlen, entry->size));
 		break;
 	case MNOTE_OLYMPUS_TAG_INFO:
 		CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
 		CC2 (entry->components, 52, 53, v, maxlen);
-		strncpy (v, entry->data, MIN (maxlen, entry->size));
+		strncpy (v, (char *)entry->data, MIN (maxlen, entry->size));
 		break;
 	case MNOTE_OLYMPUS_TAG_ID:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, v, maxlen);
 		CC (entry->components, 32, v, maxlen);
-		strncpy (v, entry->data, MIN (maxlen, entry->size));
+		strncpy (v, (char *)entry->data, MIN (maxlen, entry->size));
 		break;
 	case MNOTE_OLYMPUS_TAG_UNKNOWN_4:
 		CF (entry->format, EXIF_FORMAT_LONG, v, maxlen);
@@ -512,7 +512,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	default:
 		switch (entry->format) {
 		case EXIF_FORMAT_ASCII:
-			strncpy (v, entry->data,
+			strncpy (v, (char *)entry->data,
 				 MIN (maxlen, entry->components));
 			break;
 		case EXIF_FORMAT_SHORT:
