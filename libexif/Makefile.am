@@ -6,7 +6,9 @@ lib_LTLIBRARIES = libexif.la
 # or shared libraries for Tru64 or AIX (according to the autobook
 # chapter on "Portable Library Design"). It doesn't seem to hurt
 # elsewhere, so we can leave it in.
-libexif_la_LDFLAGS = -no-undefined -version-info @LIBEXIF_VERSION_INFO@
+libexif_la_LDFLAGS = \
+	-export-symbols $(srcdir)/libexif.sym \
+	-no-undefined -version-info @LIBEXIF_VERSION_INFO@
 libexif_la_SOURCES =		\
 	exif-byte-order.c	\
 	exif-content.c		\
@@ -57,7 +59,7 @@ libexifinclude_HEADERS = 	\
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libexif.pc
-EXTRA_DIST = libexif.pc.in
+EXTRA_DIST = libexif.pc.in libexif.sym
 
 DISTCLEANFILES = _stdint.h
 
