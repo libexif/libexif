@@ -36,7 +36,7 @@ $(DOXYGEN_UPLOAD): $(DOXYGEN_STAMPS)
 	find $(DOXYGEN_OUTPUT_DIR) \( -type d -exec chmod a+rx,go-w,g+s {} \; \) \
 		-or \( -type f -exec chmod a+r {} \; \)
 	rsync -avz --progress $(DOXYGEN_OUTPUT_DIR)/libexif-api.html/ sf:/home/users/h/hu/hun/libexif/htdocs/api/
-	ssh "sf" "find /home/groups/g/gp/libexif/htdocs/api \( -type d -exec chgrp libexif {} \; -exec chmod g+rwxs,a+rx {} \; \) -or \( -type f -exec chgrp libexif {} \; -exec chmod g+rw {} \; \( -name '*.html' -or -name '*.png' -or -name '*.php' -or -name '*.jpg' -or -name '*.css' \) -exec chmod a+r {} \; \)"
+	ssh "sf" "find /home/groups/l/li/libexif/htdocs/api \( -type d -exec chgrp libexif {} \; -exec chmod g+rwxs,a+rx {} \; \) -or \( -type f -exec chgrp libexif {} \; -exec chmod g+rw {} \; \( -name '*.html' -or -name '*.png' -or -name '*.php' -or -name '*.jpg' -or -name '*.css' -name '*.dot' -name '*.map' \) -exec chmod a+r {} \; \)"
 
 endif
 
