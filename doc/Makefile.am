@@ -6,6 +6,7 @@ if HAVE_DOXYGEN
 
 DOXYGEN_FILES =
 DOXYGEN_STAMPS = $(DOXYGEN_OUTPUT_DIR).stamp
+DOXYGEN_UPLOAD = $(DOXYGEN_OUTPUT_DIR).uploaded
 
 # FIXME: Depending on the source files would be sufficient...
 $(DOXYGEN_OUTPUT_DIR).stamp: Doxyfile $(top_builddir)/libexif/libexif.la
@@ -31,6 +32,12 @@ uninstall-apidocs:
 clean-apidocs:
 	rm -rf $(DOXYGEN_OUTPUT_DIR)
 
+$(DOXYGEN_UPLOAD): $(DOXYGEN_STAMPS)
+	find $(DOXYGEN_OUTPUT_DIR) \( -type d -exec chmod a+rx,go-w,g+s {} \; \) \
+		-or \( -type f -exec chmod a+r {} \; \)
+	rsync -avz --progress $(DOXYGEN_OUTPUT_DIR)/libexif-api.html/ sf:/home/users/h/hu/hun/libexif/htdocs/api/
+	ssh "sf" "find /home/groups/g/gp/libexif/htdocs/api \( -type d -exec chgrp libexif {} \; -exec chmod g+rwxs,a+rx {} \; \) -or \( -type f -exec chgrp libexif {} \; -exec chmod g+rw {} \; \( -name '*.html' -or -name '*.png' -or -name '*.php' -or -name '*.jpg' -or -name '*.css' \) -exec chmod a+r {} \; \)"
+
 endif
 
 
@@ -49,6 +56,8 @@ install-data-local: install-apidocs
 uninstall-local: uninstall-apidocs
 
 clean-local: clean-apidocs
+
+upload: $(DOXYGEN_UPLOAD)
 
 CLEANFILES = $(DOXYGEN_FILES) $(DOXYGEN_STAMPS)
 
