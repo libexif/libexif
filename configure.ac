@@ -146,6 +146,7 @@ AC_CONFIG_FILES([
   m4m/Makefile
   doc/Makefile
   doc/Doxyfile
+  doc/Doxyfile-internals
   libexif/libexif.pc
 ])
 AC_OUTPUT
