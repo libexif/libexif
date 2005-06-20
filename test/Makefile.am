@@ -1,6 +1,16 @@
 SUBDIRS = nls
 
-TESTS = test-mem test-mnote test-value
+# Notes about tests:
+#  - Add "small" tests and stuff here.
+#  - Add "big"   tests and stuff to explicitly test for (fixed) bugs
+#    to libexif-testsuite:
+#    * We don't want to force people to download dozens of test images
+#      just for one small library.
+#    * Proper testing is done with the "exif" program in libexif-testsuite.
+#      And this is just the lib - we don't have the program available
+#      here yet.
+
+TESTS = test-mem test-value
 
 check_PROGRAMS = test-mem test-mnote test-value
 
