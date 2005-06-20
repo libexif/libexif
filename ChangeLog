@@ -1,3 +1,7 @@
+2005-06-19  Hubert Figuiere  <hfiguiere@teaser.fr>
+
+	* test/Makefile.am (check_PROGRAMS): added check for make check
+
 2005-05-01  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c (exif_data_fix): Don't create EXIF_IFD_1 if no 
