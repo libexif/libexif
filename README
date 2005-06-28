@@ -80,3 +80,5 @@ information about EXIF.
  - http://www.jeida.or.jp: Can't remember any more. Site is down as of
    2002/12/31.
  - http://www.exif.org: information about the EXIF standard.
+ - http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/index.html: Looks
+   like libexif in Perl. Seems to support a lot of MakerNotes.
