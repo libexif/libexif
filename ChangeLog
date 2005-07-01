@@ -1,3 +1,7 @@
+2005-07-02  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-data.c: Prevent infinite recursions (#1196787).
+
 2005-06-19  Hubert Figuiere  <hfiguiere@teaser.fr>
 
 	* test/Makefile.am (check_PROGRAMS): added check for make check

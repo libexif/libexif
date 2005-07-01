@@ -1,6 +1,6 @@
 New in CVS HEAD since 0.6.12 (2005-03-13):
 
-  * Bug fixes: #803191, #1051994, #1054321, #1054323
+  * Bug fixes: #803191, #1051994, #1054321, #1054323, #1196787
   
   * For pkg-config users, force usage of #include <libexif/exif-*.h>
     (disable #include <exif-.h>)

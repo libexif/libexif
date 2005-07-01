@@ -300,7 +300,7 @@ if (data->ifd[(i)]->count) {				\
 static void
 exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			     const unsigned char *d,
-			     unsigned int ds, unsigned int offset)
+			     unsigned int ds, unsigned int offset, unsigned int l)
 {
 	ExifLong o, thumbnail_offset = 0, thumbnail_length = 0;
 	ExifShort n;
@@ -310,6 +310,12 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 
 	if (!data || !data->priv) return;
 	if ((ifd < 0) || (ifd >= EXIF_IFD_COUNT)) return;
+
+	if (l > 150) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
+				"Deep recursion detected!");
+		return;
+	}
 
 	/* Read the number of entries */
 	if (offset >= ds - 1) return;
@@ -335,15 +341,15 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			switch (tag) {
 			case EXIF_TAG_EXIF_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_EXIF);
-				exif_data_load_data_content (data, EXIF_IFD_EXIF, d, ds, o);
+				exif_data_load_data_content (data, EXIF_IFD_EXIF, d, ds, o, l + 1);
 				break;
 			case EXIF_TAG_GPS_INFO_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_GPS);
-				exif_data_load_data_content (data, EXIF_IFD_GPS, d, ds, o);
+				exif_data_load_data_content (data, EXIF_IFD_GPS, d, ds, o, l + 1);
 				break;
 			case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_INTEROPERABILITY);
-				exif_data_load_data_content (data, EXIF_IFD_INTEROPERABILITY, d, ds, o);
+				exif_data_load_data_content (data, EXIF_IFD_INTEROPERABILITY, d, ds, o, l + 1);
 				break;
 			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
 				thumbnail_offset = o;
@@ -782,7 +788,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		  "IFD 0 at %i.", (int) offset);
 
 	/* Parse the actual exif data (usually offset 14 from start) */
-	exif_data_load_data_content (data, EXIF_IFD_0, d + 6, ds - 6, offset);
+	exif_data_load_data_content (data, EXIF_IFD_0, d + 6, ds - 6, offset, 0);
 
 	/* IFD 1 offset */
 	if (offset + 6 + 2 > ds) {
@@ -804,7 +810,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			return;
 		}
 
-		exif_data_load_data_content (data, EXIF_IFD_1, d + 6, ds - 6, offset);
+		exif_data_load_data_content (data, EXIF_IFD_1, d + 6, ds - 6, offset, 0);
 	}
 
 	/*
