@@ -76,12 +76,126 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, char *val, unsigned i
     int i;
     unsigned char *data = entry->data;
 
+
+#define UNDEFINED 0xFF
+    
+static struct  {
+  int tag;
+  int subtag;
+  char* value;
+} entries [] = {
+  {1,1,N_("Macro")},
+  {1,2,N_("Normal")},
+  {1,UNDEFINED,N_("%i???")},
+  {4,0,N_("Flash not fired")},
+  {4,1,N_("auto")},
+  {4,2,N_("on")},
+  {4,3,N_("red eyes reduction")},
+  {4,4,N_("slow synchro")},
+  {4,5,N_("auto + red yes reduction")},
+  {4,6,N_("on + red eyes reduction")},
+  {4,16,N_("external")},
+  {4,UNDEFINED,N_("%i???")},
+  {5,0,N_("single or timer")},
+  {5,1,N_("continuous")},
+  {5,UNDEFINED,N_("%i???")},
+  {7,0,N_("One-Shot")},
+  {7,1,N_("AI Servo")},
+  {7,2,N_("AI Focus")},
+  {7,3,N_("MF")},
+  {7,4,N_("Single")},
+  {7,5,N_("Continuous")},
+  {7,6,N_("MF")},
+  {7,UNDEFINED,N_("%i???")},
+  {10,0,N_("Large")},
+  {10,1,N_("Medium")},
+  {10,2,N_("Small")},
+  {10,UNDEFINED,N_("%i???")},
+  {11,0,N_("Full Auto")},
+  {11,1,N_("Manual")},
+  {11,2,N_("Landscape")},
+  {11,3,N_("Fast Shutter")},
+  {11,4,N_("Slow Shutter")},
+  {11,5,N_("Night")},
+  {11,6,N_("Black & White")},
+  {11,7,N_("Sepia")},
+  {11,8,N_("Portrait")},
+  {11,9,N_("Sports")},
+  {11,10,N_("Macro / Close-Up")},
+  {11,11,N_("Pan Focus")},
+  {11,UNDEFINED,N_("%i???")},
+  {13,0xffff,N_("Low")},
+  {13,0x0000,N_("Normal")},
+  {13,0x0001,N_("High")},
+  {13,UNDEFINED,N_("%i???")},
+  {14,0xffff,N_("Low")},
+  {14,0x0000,N_("Normal")},
+  {14,0x0001,N_("High")},
+  {14,UNDEFINED,N_("%i???")},
+  {15,0xffff,N_("Low")},
+  {15,0x0000,N_("Normal")},
+  {15,0x0001,N_("High")},
+  {15,UNDEFINED,N_("%i???")},
+  {16,15,N_("auto")},
+  {16,16,N_("50")},
+  {16,17,N_("100")},
+  {16,18,N_("200")},
+  {16,19,N_("400")},
+  {16,UNDEFINED,N_("%i???")},
+  {17,3,N_("Evaluative")},
+  {17,4,N_("Partial")},
+  {17,5,N_("Center-weighted")},
+  {17,UNDEFINED,N_("%i???")},
+  {19,0x3000,N_("none (MF)")},
+  {19,0x3001,N_("auto-selected")},
+  {19,0x3002,N_("right")},
+  {19,0x3003,N_("center")},
+  {19,0x3004,N_("left")},
+  {19,UNDEFINED,N_("%i???")},
+  {20,0,N_("Easy shooting")},
+  {20,1,N_("Program")},
+  {20,2,N_("Tv-priority")},
+  {20,3,N_("Av-priority")},
+  {20,4,N_("Manual")},
+  {20,5,N_("A-DEP")},
+  {20,UNDEFINED,N_("%i???")},
+  {32,0,N_("Single")},
+  {32,1,N_("Continuous")},
+  {32,UNDEFINED,N_("%i???")},
+  
+  {0,0,NULL}
+};
+
+static struct {
+  int index;
+  char* value;
+}  headings[] =  {
+  {1,N_("Macro mode")},
+  {4,N_(" / Flash mode : ")},
+  {5,N_(" / Continuous drive mode : ")},
+  {7,N_(" / Focus mode : ")},
+  {10,N_(" / Image size : ")},
+  {11,N_(" / Easy shooting mode : ")},
+  {13,N_(" / Contrast : ")},
+  {14,N_(" / Saturation : ")},
+  {15,N_(" / Sharpness : ")},
+  {16,N_(" / ISO : ")},
+  {17,N_(" / Metering mode : ")},
+  {19,N_(" / AF point selected : ")},
+  {20,N_(" / Exposure mode : ")},
+  {32,N_(" / Focus mode2 : ")},
+
+  {0,NULL}
+
+};
+
+
     if (!entry) return NULL;
 
     memset (val, 0, maxlen);
     maxlen--;
 
-	switch (entry->tag) {
+    switch (entry->tag) {
 	case MNOTE_CANON_TAG_SETTINGS_1:
 		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
 		n = exif_get_short (data, entry->order) / 2;
@@ -91,351 +205,66 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, char *val, unsigned i
 		    vs = exif_get_short (data, entry->order);
 		    data += 2;
 		    switch (i) {
-		    case 1:
-			strncpy (val, _("Macro mode : "), maxlen);
-			switch (vs) {
-			case 1:
-			    strncat (val, _("Macro"), maxlen - strlen(val));
-			    break;
-			case 2:
-			    strncat (val, _("Normal"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("%i???"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
 		    case 2:
-			if (vs) {
-				snprintf (buf, sizeof (buf),
-					_(" / Self Timer : %i (ms)"), vs*100);
-				strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 4:
-			strncat (val, _(" / Flash mode : "), maxlen - strlen(val));
-			switch (vs) {
-			case 0:
-			    strncat (val, _("Flash not fired"), maxlen - strlen(val));
-			    break;
-			case 1:
-			    strncat (val, _("auto"), maxlen - strlen(val));
-			    break;
-			case 2:
-			    strncat (val, _("on"), maxlen - strlen(val));
-			    break;
-			case 3:
-			    strncat (val, _("red eyes reduction"), maxlen - strlen(val));
-			    break;
-			case 4:
-			    strncat (val, _("slow synchro"), maxlen - strlen(val));
-			    break;
-			case 5:
-			    strncat (val, _("auto + red eyes reduction"), maxlen - strlen(val));
-			    break;
-			case 6:
-			    strncat (val, _("on + red eyes reduction"), maxlen - strlen(val));
-			    break;
-			case 16:
-			    strncat (val, _("external"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("%i???"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 5:
-			strncat (val, _(" / Continuous drive mode : "), maxlen - strlen(val));
-			switch (vs) {
-			case 0:
-			    strncat (val, _("single or timer"), maxlen - strlen(val));
-			    break;
-			case 1:
-			    strncat (val, _("continuous"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("%i???"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 7:
-			strncat (val, _(" / Focus mode : "), maxlen - strlen(val));
-			switch (vs) {
-			case 0:
-			    strncat (val, _("One-Shot"), maxlen - strlen(val));
-			    break;
-			case 1:
-			    strncat (val, _("AI Servo"), maxlen - strlen(val));
-			    break;
-			case 2:
-			    strncat (val, _("AI Focus"), maxlen - strlen(val));
-			    break;
-			case 3:
-			    strncat (val, _("MF"), maxlen - strlen(val));
-			    break;
-			case 4:
-			    strncat (val, _("Single"), maxlen - strlen(val));
-			    break;
-			case 5:
-			    strncat (val, _("Continuous"), maxlen - strlen(val));
-			    break;
-			case 6:
-			    strncat (val, _("MF"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("%i???"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 10:
-			strncat (val, _(" / Image size : "), maxlen - strlen(val));
-			switch (vs) {
-			case 0:
-			    strncat (val, _("Large"), maxlen - strlen(val));
-			    break;
-			case 1:
-			    strncat (val, _("Medium"), maxlen - strlen(val));
-			    break;
-			case 2:
-			    strncat (val, _("Small"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("%i???"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 11:
-			strncat (val, _(" / Easy shooting mode : "), maxlen - strlen(val));
-			switch (vs) {
-			case 0:
-			    strncat (val, _("Full Auto"), maxlen - strlen(val));
-			    break;
-			case 1:
-			    strncat (val, _("Manual"), maxlen - strlen(val));
-			    break;
-			case 2:
-			    strncat (val, _("Landscape"), maxlen - strlen(val));
-			    break;
-			case 3:
-			    strncat (val, _("Fast Shutter"), maxlen - strlen(val));
-			    break;
-			case 4:
-			    strncat (val, _("Slow Shutter"), maxlen - strlen(val));
-			    break;
-			case 5:
-			    strncat (val, _("Night"), maxlen - strlen(val));
-			    break;
-			case 6:
-			    strncat (val, _("Black & White"), maxlen - strlen(val));
-			    break;
-			case 7:
-			    strncat (val, _("Sepia"), maxlen - strlen(val));
-			    break;
-			case 8:
-			    strncat (val, _("Portrait"), maxlen - strlen(val));
-			    break;
-			case 9:
-			    strncat (val, _("Sports"), maxlen - strlen(val));
-			    break;
-			case 10:
-			    strncat (val, _("Macro / Close-Up"), maxlen - strlen(val));
-			    break;
-			case 11:
-			    strncat (val, _("Pan Focus"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("%i???"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 13:
-			strncat (val, _(" / Contrast : "), maxlen - strlen(val));
-			switch (vs) {
-			case 0xffff:
-			    strncat (val, _("Low"), maxlen - strlen(val));
-			    break;
-			case 0x0000:
-			    strncat (val, _("Normal"), maxlen - strlen(val));
-			    break;
-			case 0x0001:
-			    strncat (val, _("High"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("%i???"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 14:
-			strncat (val, _(" / Saturation : "), maxlen - strlen(val));
-			switch (vs) {
-			case 0xffff:
-			    strncat (val, _("Low"), maxlen - strlen(val));
-			    break;
-			case 0x0000:
-			    strncat (val, _("Normal"), maxlen - strlen(val));
-			    break;
-			case 0x0001:
-			    strncat (val, _("High"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("%i???"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 15:
-			strncat (val, _(" / Sharpness : "), maxlen - strlen(val));
-			switch (vs) {
-			case 0xffff:
-			    strncat (val, _("Low"), maxlen - strlen(val));
-			    break;
-			case 0x0000:
-			    strncat (val, _("Normal"), maxlen - strlen(val));
-			    break;
-			case 0x0001:
-			    strncat (val, _("High"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("%i???"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 16:
-			if (vs) {
-			    strncat (val, _(" / ISO : "), maxlen - strlen(val));
-			    switch (vs) {
-			    case 15:
-				strncat (val, _("auto"), maxlen - strlen(val));
-				break;
-			    case 16:
-				strncat (val, _("50"), maxlen - strlen(val));
-				break;
-			    case 17:
-				strncat (val, _("100"), maxlen - strlen(val));
-				break;
-			    case 18:
-				strncat (val, _("200"), maxlen - strlen(val));
-				break;
-			    case 19:
-				strncat (val, _("400"), maxlen - strlen(val));
-				break;
-			    default:
-				snprintf (buf, sizeof (buf), _("%i???"), vs);
-				strncat (val, buf, maxlen - strlen(val));
+			    if (vs) {
+				    snprintf (buf, sizeof (buf),
+					    _(" / Self Timer : %i (ms)"), vs*100);
+				    strncat (val, buf, maxlen - strlen(val));
 			    }
 			    break;
-			}
-		    case 17:
-			strncat (val, _(" / Metering mode : "), maxlen - strlen(val));
-			switch (vs) {
-			case 3:
-			    strncat (val, _("Evaluative"), maxlen - strlen(val));
-			    break;
-			case 4:
-			    strncat (val, _("Partial"), maxlen - strlen(val));
-			    break;
-			case 5:
-			    strncat (val, _("Center-weighted"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("%i???"), vs);
+		    case 23:
+			    snprintf (buf, sizeof (buf), _(" / long focal length of lens (in focal units) : %u"), vs);
 			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 19:
-			strncat (val, _(" / AF point selected : "), maxlen - strlen(val));
-			switch (vs) {
-			case 0x3000:
-			    strncat (val, _("none (MF)"), maxlen - strlen(val));
 			    break;
-			case 0x3001:
-			    strncat (val, _("auto-selected"), maxlen - strlen(val));
-			    break;
-			case 0x3002:
-			    strncat (val, _("right"), maxlen - strlen(val));
-			    break;
-			case 0x3003:
-			    strncat (val, _("center"), maxlen - strlen(val));
-			    break;
-			case 0x3004:
-			    strncat (val, _("left"), maxlen - strlen(val));
-			    break;
-			default:
-			    snprintf (buf, sizeof (buf), _("0x%x???"), vs);
+		    case 24:
+			    snprintf (buf, sizeof (buf), _(" / short focal length of lens (in focal units) : %u"), vs);
 			    strncat (val, buf, maxlen - strlen(val));
-			}
-			break;
-		    case 20:
-				strncat (val, _(" / Exposure mode : "), maxlen - strlen(val));
-				switch (vs) {
-           		case 0:
-					strncat (val, _("Easy shooting"), maxlen - strlen(val));
-                    break;
-                case 1:
-					strncat (val, _("Program"), maxlen - strlen(val));
-					break;
-				case 2:
-					strncat (val, _("Tv-priority"), maxlen - strlen(val));
-					break;
-				case 3:
-					strncat (val, _("Av-priority"), maxlen - strlen(val));
-					break;
-				case 4:
-					strncat (val, _("Manual"), maxlen - strlen(val));
-					break;
-				case 5:
-					strncat (val, _("A-DEP"), maxlen - strlen(val));
-					break;
-				default:
-					snprintf (buf, sizeof (buf), _("%i???"), vs);
-					strncat (val, buf, maxlen - strlen(val));
-                }
-				break;
-			case 23:
-				snprintf (buf, sizeof (buf), _(" / long focal length of lens (in focal units) : %u"), vs);
-				strncat (val, buf, maxlen - strlen(val));
-				break;
-			case 24:
-				snprintf (buf, sizeof (buf), _(" / short focal length of lens (in focal units) : %u"), vs);
-				strncat (val, buf, maxlen - strlen(val));
-				break;
-			case 25:
-				snprintf (buf, sizeof (buf), _(" / focal units per mm : %u"), vs);
-				strncat (val, buf, maxlen - strlen(val));
-				break;
-			case 29:
-				strncat (val, _(" / Flash details : "), maxlen - strlen(val));
-				if ((vs>>14)&1)
-					strncat (val, _("External E-TTL"), maxlen - strlen(val));
-				if ((vs>>13)&1)
-					strncat (val, _("Internal flash"), maxlen - strlen(val));
-				if ((vs>>11)&1)
-					strncat (val, _("FP sync used"), maxlen - strlen(val));
-				if ((vs>>4)&1)
-					strncat (val, _("FP sync enabled"), maxlen - strlen(val));
+			    break;
+		    case 25:
+			    snprintf (buf, sizeof (buf), _(" / focal units per mm : %u"), vs);
+			    strncat (val, buf, maxlen - strlen(val));
+			    break;
+		    case 29:
+			    strncat (val, _(" / Flash details : "), maxlen - strlen(val));
+			    if ((vs>>14)&1)
+				    strncat (val, _("External E-TTL"), maxlen - strlen(val));
+			    if ((vs>>13)&1)
+				    strncat (val, _("Internal flash"), maxlen - strlen(val));
+			    if ((vs>>11)&1)
+				    strncat (val, _("FP sync used"), maxlen - strlen(val));
+			    if ((vs>>4)&1)
+				    strncat (val, _("FP sync enabled"), maxlen - strlen(val));
 #ifdef DEBUG
-				printf ("Value29=0x%08x\n", vs);
+			    printf ("Value29=0x%08x\n", vs);
 #endif
-				break;
-			case 32:
-				strncat (val, _(" / Focus mode2 : "), maxlen - strlen(val));
-				switch (vs) {
-				case 0:
-					strncat (val, _("Single"), maxlen - strlen(val));
-					break;
-				case 1:
-					strncat (val, _("Continuous"), maxlen - strlen(val));
-					break;
-				default:
-					snprintf (buf, sizeof (buf), _("%i???"), vs);
-					strncat (val, buf, maxlen - strlen(val));
+			    break;
+		    default:
+			{
+			int index;
+			int  found = 0;
+			for (index=0; entries[index].tag <= i && entries[index].value && vs && !found; i++) {
+				if (entries[index].tag == i) {
+				  	int a=0;
+					for (a=0; headings[a].index != i; a++);
+				 	strncat (val, headings[a].value, maxlen - strlen(val)); 
+
+					if (entries[index].subtag == vs) {
+						strncat(val,entries[index].value, maxlen - strlen(val));
+						found = 1;
+					}
+					if (entries[index].subtag == UNDEFINED) {
+						snprintf (buf, sizeof (buf), entries[index].value, vs);
+						strncat (val, buf, maxlen - strlen(val)); 
+						found = 1;
+
+					}
 				}
-				break;
-#ifdef DEBUG
-			default:
-                        	printf ("Value%d=%d\n", i, vs);
-#endif
 			}
-		}
+			if (!found)
+			    printf ("Value%d=%d\n", i, vs);
+		    	}
+		    }
+		} // for
 
                 break;
 
@@ -585,6 +414,5 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, char *val, unsigned i
 #endif
 		break;
         }
-
         return val;
 }
