@@ -113,7 +113,10 @@ exif_data_new_mem (ExifMem *mem)
 	data = exif_mem_alloc (mem, sizeof (ExifData));
 	if (!data) return (NULL);
 	data->priv = exif_mem_alloc (mem, sizeof (ExifDataPrivate));
-	if (!data->priv) { exif_mem_free (mem, data); return (NULL); }
+	if (!data->priv) { 
+	  	exif_mem_free (mem, data); 
+		return (NULL); 
+	}
 	data->priv->ref_count = 1;
 
 	data->priv->mem = mem;
@@ -300,7 +303,7 @@ if (data->ifd[(i)]->count) {				\
 static void
 exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			     const unsigned char *d,
-			     unsigned int ds, unsigned int offset, unsigned int l)
+			     unsigned int ds, unsigned int offset, unsigned int recursion_depth)
 {
 	ExifLong o, thumbnail_offset = 0, thumbnail_length = 0;
 	ExifShort n;
@@ -311,7 +314,7 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 	if (!data || !data->priv) return;
 	if ((ifd < 0) || (ifd >= EXIF_IFD_COUNT)) return;
 
-	if (l > 150) {
+	if (recursion_depth > 150) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
 				"Deep recursion detected!");
 		return;
@@ -341,15 +344,15 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			switch (tag) {
 			case EXIF_TAG_EXIF_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_EXIF);
-				exif_data_load_data_content (data, EXIF_IFD_EXIF, d, ds, o, l + 1);
+				exif_data_load_data_content (data, EXIF_IFD_EXIF, d, ds, o, recursion_depth + 1);
 				break;
 			case EXIF_TAG_GPS_INFO_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_GPS);
-				exif_data_load_data_content (data, EXIF_IFD_GPS, d, ds, o, l + 1);
+				exif_data_load_data_content (data, EXIF_IFD_GPS, d, ds, o, recursion_depth + 1);
 				break;
 			case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_INTEROPERABILITY);
-				exif_data_load_data_content (data, EXIF_IFD_INTEROPERABILITY, d, ds, o, l + 1);
+				exif_data_load_data_content (data, EXIF_IFD_INTEROPERABILITY, d, ds, o, recursion_depth + 1);
 				break;
 			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
 				thumbnail_offset = o;
