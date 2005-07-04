@@ -71,6 +71,16 @@ exif_mnote_data_olympus_get_value (ExifMnoteData *d, unsigned int i, char *val, 
 	return mnote_olympus_entry_get_value (&n->entries[i], val, maxlen);
 }
 
+
+
+
+/** 
+ * @brief save the MnoteData from ne to buf
+ * 
+ * @param ne extract the data from this structure 
+ * @param *buf write the mnoteData to this buffer (buffer will be allocated)
+ * @param buf_size the size of the buffer
+ */
 static void
 exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		unsigned char **buf, unsigned int *buf_size)
@@ -86,7 +96,7 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	 */
 	*buf_size = 6 + 2 + 2 + n->count * 12;
 	switch (n->version) {
-	case 0: /* Olympus */
+	case olympus: 
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
 		if (!*buf) return;
 
@@ -95,11 +105,13 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		o2 += 2;
 		datao = n->offset;
 		break;
-	case 1: /* Nikon v1 */
+	case nikonV1: 
 		base = MNOTE_NIKON1_TAG_BASE;
+
+		/* subtract the size here, so the increment in the next case will not harm us */
 		*buf_size -= 8;
 		/* Fall through */
-	case 2: /* Nikon v2 */
+	case nikonV2: 
 		*buf_size += 8;
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
 		if (!*buf) return;
@@ -108,7 +120,7 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		strcpy ((char *)*buf, "Nikon");
 		(*buf)[6] = n->version;
 		o2 += 2; *buf_size += 2;
-		if (n->version == 2) {
+		if (n->version == nikonV2) {
 			exif_set_short (*buf + 10, n->order, (ExifShort) (
 				(n->order == EXIF_BYTE_ORDER_INTEL) ?
 				('I' << 8) | 'I' :
