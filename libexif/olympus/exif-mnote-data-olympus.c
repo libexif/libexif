@@ -95,6 +95,7 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	 * Allocate enough memory for all entries and the number of entries.
 	 */
 	*buf_size = 6 + 2 + 2 + n->count * 12;
+	o2 += 2;
 	switch (n->version) {
 	case olympus: 
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
@@ -102,7 +103,6 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 
 		/* Write the header and the number of entries. */
 		strcpy ((char *)*buf, "OLYMP");
-		o2 += 2;
 		datao = n->offset;
 		break;
 	case nikonV1: 
@@ -119,7 +119,8 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		/* Write the header and the number of entries. */
 		strcpy ((char *)*buf, "Nikon");
 		(*buf)[6] = n->version;
-		o2 += 2; *buf_size += 2;
+
+		*buf_size += 2;
 		if (n->version == nikonV2) {
 			exif_set_short (*buf + 10, n->order, (ExifShort) (
 				(n->order == EXIF_BYTE_ORDER_INTEL) ?
@@ -131,6 +132,9 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		}
 		datao = -10;
 		break;
+
+	default:
+		return;
 	}
 
 	exif_set_short (*buf + o2, n->order, (ExifShort) n->count);
@@ -202,7 +206,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 			"Parsing Olympus maker note...");
 
 		/* The number of entries is at position 8. */
-		n->version = 0;
+		n->version = olympus;
 		o2 += 8;
 
 	} else if (!memcmp (buf + o2, "Nikon", 6)) {
@@ -211,8 +215,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 			"Parsing Nikon maker note (0x%02x, %02x, %02x, "
 			"%02x, %02x, %02x, %02x, %02x)...",
 			buf[o2 + 0], buf[o2 + 1], buf[o2 + 2], buf[o2 + 3], 
-			buf[o2 + 4], buf[o2 + 5], buf[o2 + 6], buf[o2 + 7]); 
-
+			buf[o2 + 4], buf[o2 + 5], buf[o2 + 6], buf[o2 + 7]);
 		/* The first byte is the version. */
 		if (o2 >= buf_size) return;
 		n->version = buf[o2];
@@ -222,12 +225,12 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		o2 += 1;
 
 		switch (n->version) {
-		case 1:
+		case nikonV1:
 
 			base = MNOTE_NIKON1_TAG_BASE;
 			break;
 
-		case 2:
+		case nikonV2:
 
 			/* Skip 2 unknown bytes (00 00). */
 			o2 += 2;
@@ -266,7 +269,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 			return;
 		}
 	} else if (!memcmp (buf + o2, "\0\x1b", 2)) {
-		n->version = 2;
+		n->version = nikonV2;
 	} else {
 		return;
 	}
