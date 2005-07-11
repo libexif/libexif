@@ -1,7 +1,8 @@
 # LIBEXIF PO FILE
-# Copyright © 2002 Free Software Foundation, Inc.
-# This file is distributed under the same license as the PACKAGE package.
-# Arnaud Launay <asl@launay.org>, 2002.
+# Copyright: 
+#   Free Software Foundation, Inc., 2002
+#   Arnaud Launay <asl@launay.org>, 2002
+# This file is distributed under the same license as the libexif package.
 #
 msgid ""
 msgstr ""

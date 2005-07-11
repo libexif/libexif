@@ -1,6 +1,8 @@
 # libexif Spanish Translation.
-# Copyright © 2002 Free Software Foundation, Inc.
-# Fabian Mandelbaum <fabman@mandrakesoft.com>, 2002.
+# Copyright:
+#   Free Software Foundation, Inc., 2002
+#   Fabian Mandelbaum <fabman@mandrakesoft.com>, 2002
+# This file is distributed under the same license as the libexif package.
 #
 msgid ""
 msgstr ""

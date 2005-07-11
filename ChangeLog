@@ -1,3 +1,10 @@
+2005-07-11  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-loader.c:
+	* po/de.po:
+	* po/fr.po:
+	* po/es.po: Added license.
+
 2005-07-02  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/exif-data.c: Prevent infinite recursions (#1196787).
