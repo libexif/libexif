@@ -5,7 +5,7 @@
 if HAVE_DOXYGEN
 
 DOXYGEN_FILES =
-DOXYGEN_STAMPS = $(HTML_APIDOC_DIR).stamp    $(HTML_APIDOC_INTERNALS_DIR).stamp
+DOXYGEN_STAMPS = $(HTML_APIDOC_DIR).stamp    $(HTML_APIDOC_INTERNALS_DIR).stamp $(DOXYGEN_OUTPUT_DIR).stamp
 DOXYGEN_UPLOAD = $(HTML_APIDOC_DIR).uploaded $(HTML_APIDOC_INTERNALS_DIR).uploaded
 
 # FIXME: Depending on the source files would be sufficient...
@@ -15,6 +15,10 @@ $(HTML_APIDOC_DIR).stamp: Doxyfile $(top_builddir)/libexif/libexif.la
 
 # FIXME: Depending on the source files would be sufficient...
 $(HTML_APIDOC_INTERNALS_DIR).stamp: Doxyfile-internals $(top_builddir)/libexif/libexif.la
+	doxygen $<
+	echo > $@
+
+$(DOXYGEN_OUTPUT_DIR).stamp: Doxyfile $(top_builddir)/libexif/libexif.la
 	doxygen $<
 	echo > $@
 
@@ -48,6 +52,7 @@ uninstall-apidocs:
 
 clean-apidocs:
 	rm -rf $(DOXYGEN_OUTPUT_DIR)
+	rm -f $(HTML_APIDOC_DIR).tar.gz
 
 $(DOXYGEN_UPLOAD): $(DOXYGEN_STAMPS)
 	find $(DOXYGEN_OUTPUT_DIR) \( -type d -exec chmod a+rx,go-w,g+s {} \; \) \
