@@ -80,10 +80,12 @@ exif_loader_alloc (ExifLoader *l, unsigned int i)
 {
 	void *d;
 
-	if (!l || !i) return NULL;
+	if (!l || !i) 
+		return NULL;
 
 	d = exif_mem_alloc (l->mem, i);
-	if (d) return d;
+	if (d) 
+		return d;
 
 	EXIF_LOG_NO_MEMORY (l->log, "ExifLog", i);
 	return NULL;
@@ -99,7 +101,8 @@ exif_loader_write_file (ExifLoader *l, const char *path)
 	int size;
 	unsigned char data[1024];
 
-	if (!l) return;
+	if (!l) 
+		return;
 
 	f = fopen (path, "rb");
 	if (!f) {
@@ -109,8 +112,10 @@ exif_loader_write_file (ExifLoader *l, const char *path)
 	}
 	while (1) {
 		size = fread (data, 1, sizeof (data), f);
-		if (size <= 0) break;
-		if (!exif_loader_write (l, data, size)) break;
+		if (size <= 0) 
+			break;
+		if (!exif_loader_write (l, data, size)) 
+			break;
 	}
 	fclose (f);
 }
@@ -118,11 +123,14 @@ exif_loader_write_file (ExifLoader *l, const char *path)
 static unsigned int
 exif_loader_copy (ExifLoader *eld, unsigned char *buf, unsigned int len)
 {
-	if (!eld || (len && !buf) || (eld->bytes_read >= eld->size)) return 0;
+	if (!eld || (len && !buf) || (eld->bytes_read >= eld->size)) 
+		return 0;
 
 	/* If needed, allocate the buffer. */
-	if (!eld->buf) eld->buf = exif_loader_alloc (eld, eld->size);
-	if (!eld->buf) return 0;
+	if (!eld->buf) 
+		eld->buf = exif_loader_alloc (eld, eld->size);
+	if (!eld->buf) 
+		return 0;
 
 	/* Copy memory */
 	len = MIN (len, eld->size - eld->bytes_read);
@@ -137,13 +145,17 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 {
 	unsigned int i;
 
-	if (!eld || (len && !buf)) return 0;
+	if (!eld || (len && !buf)) 
+		return 0;
 
 	switch (eld->state) {
 	case EL_EXIF_FOUND:
 		return exif_loader_copy (eld, buf, len);
 	case EL_SKIP_BYTES:
-		if (eld->size > len) { eld->size -= len; return 1; }
+		if (eld->size > len) { 
+			eld->size -= len; 
+			return 1; 
+		}
 		len -= eld->size;
 		buf += eld->size;
 		eld->size = 0;
@@ -172,7 +184,8 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 	if (i) {
 		memcpy (&eld->b[eld->b_len], buf, i);
 		eld->b_len += i;
-		if (eld->b_len < sizeof (eld->b)) return 1;
+		if (eld->b_len < sizeof (eld->b)) 
+			return 1;
 		buf += i;
 		len -= i;
 	}
@@ -203,11 +216,13 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 		switch (eld->state) {
 		case EL_EXIF_FOUND:
 			if (!exif_loader_copy (eld, eld->b + i,
-					sizeof (eld->b) - i)) return 0;
+					sizeof (eld->b) - i)) 
+				return 0;
 			return exif_loader_copy (eld, buf, len);
 		case EL_SKIP_BYTES:
 			eld->size--;
-			if (!eld->size) eld->state = EL_READ;
+			if (!eld->size) 
+				eld->state = EL_READ;
 			break;
 
 		case EL_READ_SIZE_BYTE_24:
@@ -294,10 +309,12 @@ exif_loader_new_mem (ExifMem *mem)
 {
 	ExifLoader *loader;
 
-	if (!mem) return NULL;
+	if (!mem) 
+		return NULL;
 	
 	loader = exif_mem_alloc (mem, sizeof (ExifLoader));
-	if (!loader) return NULL;
+	if (!loader) 
+		return NULL;
 	loader->ref_count = 1;
 
 	loader->mem = mem;
@@ -309,7 +326,8 @@ exif_loader_new_mem (ExifMem *mem)
 void
 exif_loader_ref (ExifLoader *loader)
 {
-	if (loader) loader->ref_count++;
+	if (loader) 
+		loader->ref_count++;
 }
 
 static void
@@ -317,7 +335,8 @@ exif_loader_free (ExifLoader *loader)
 {
 	ExifMem *mem;
 
-	if (!loader) return;
+	if (!loader) 
+		return;
 
 	mem = loader->mem;
 	exif_loader_reset (loader);
@@ -328,7 +347,8 @@ exif_loader_free (ExifLoader *loader)
 void
 exif_loader_unref (ExifLoader *loader)
 {
-	if (!loader) return;
+	if (!loader) 
+		return;
 	if (!--loader->ref_count)
 		exif_loader_free (loader);
 }
@@ -336,7 +356,8 @@ exif_loader_unref (ExifLoader *loader)
 void
 exif_loader_reset (ExifLoader *loader)
 {
-	if (!loader) return;
+	if (!loader) 
+		return;
 	exif_mem_free (loader->mem, loader->buf); loader->buf = NULL;
 	loader->size = 0;
 	loader->bytes_read = 0;
@@ -350,7 +371,8 @@ exif_loader_get_data (ExifLoader *loader)
 {
 	ExifData *ed;
 
-	if (!loader) return NULL;
+	if (!loader) 
+		return NULL;
 
 	ed = exif_data_new_mem (loader->mem);
 	exif_data_log (ed, loader->log);
@@ -362,7 +384,8 @@ exif_loader_get_data (ExifLoader *loader)
 void
 exif_loader_log (ExifLoader *loader, ExifLog *log)
 {
-	if (!loader) return;
+	if (!loader) 
+		return;
 	exif_log_unref (loader->log);
 	loader->log = log;
 	exif_log_ref (log);

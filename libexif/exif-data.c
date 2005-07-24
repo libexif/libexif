@@ -76,10 +76,12 @@ exif_data_alloc (ExifData *data, unsigned int i)
 {
 	void *d;
 
-	if (!data || !i) return NULL;
+	if (!data || !i) 
+		return NULL;
 
 	d = exif_mem_alloc (data->priv->mem, i);
-	if (d) return d;
+	if (d) 
+		return d;
 
 	EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", i);
 	return NULL;
@@ -108,10 +110,12 @@ exif_data_new_mem (ExifMem *mem)
 	ExifData *data;
 	unsigned int i;
 
-	if (!mem) return NULL;
+	if (!mem) 
+		return NULL;
 
 	data = exif_mem_alloc (mem, sizeof (ExifData));
-	if (!data) return (NULL);
+	if (!data) 
+		return (NULL);
 	data->priv = exif_mem_alloc (mem, sizeof (ExifDataPrivate));
 	if (!data->priv) { 
 	  	exif_mem_free (mem, data); 
@@ -191,12 +195,12 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	/* If this is the MakerNote, remember the offset */
 	if (entry->tag == EXIF_TAG_MAKER_NOTE) {
 		if (entry->size > 6) exif_log (data->priv->log,
-			  EXIF_LOG_CODE_DEBUG, "ExifData",
-		          "MakerNote found (%02x %02x %02x %02x "
-			  "%02x %02x %02x...).",
-			  entry->data[0], entry->data[1], entry->data[2],
-			  entry->data[3], entry->data[4], entry->data[5],
-			  entry->data[6]);
+					       EXIF_LOG_CODE_DEBUG, "ExifData",
+					       "MakerNote found (%02x %02x %02x %02x "
+					       "%02x %02x %02x...).",
+					       entry->data[0], entry->data[1], entry->data[2],
+					       entry->data[3], entry->data[4], entry->data[5],
+					       entry->data[6]);
 		data->priv->offset_mnote = doff;
 	}
 }
@@ -208,7 +212,8 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 {
 	unsigned int doff, s;
 
-	if (!data || !data->priv) return;
+	if (!data || !data->priv) 
+		return;
 
 	/*
 	 * Each entry is 12 bytes long. The memory for the entry has
@@ -248,21 +253,24 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 		 * the offset must be an even number. If we need to introduce
 		 * a padding byte, we set it to 0.
 		 */
-		if (s & 1) (*ds)++;
+		if (s & 1) 
+			(*ds)++;
 		*d = exif_mem_realloc (data->priv->mem, *d, *ds);
 		if (!*d) {
 			EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
 		  	return;
 		}
 		exif_set_long (*d + 6 + offset + 8, data->priv->order, doff);
-		if (s & 1) *(*d + *ds - 1) = '\0';
+		if (s & 1) 
+			*(*d + *ds - 1) = '\0';
 
 	} else
 		doff = offset + 8;
 
 	/* Write the data. Fill unneeded bytes with 0. */
 	memcpy (*d + 6 + doff, e->data, s);
-	if (s < 4) memset (*d + 6 + doff + s, 0, (4 - s));
+	if (s < 4) 
+		memset (*d + 6 + doff + s, 0, (4 - s));
 }
 
 static void
@@ -275,10 +283,12 @@ exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 			  (int) ds, (int) offset, (int) size);
 		return;
 	}
-	if (data->data) exif_mem_free (data->priv->mem, data->data);
+	if (data->data) 
+		exif_mem_free (data->priv->mem, data->data);
 	data->size = size;
 	data->data = exif_data_alloc (data, data->size);
-	if (!data->data) return;
+	if (!data->data) 
+		return;
 	memcpy (data->data, d + offset, data->size);
 }
 
@@ -311,24 +321,28 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 	unsigned int i;
 	ExifTag tag;
 
-	if (!data || !data->priv) return;
-	if ((ifd < 0) || (ifd >= EXIF_IFD_COUNT)) return;
+	if (!data || !data->priv) 
+		return;
+	if ((ifd < 0) || (ifd >= EXIF_IFD_COUNT)) 
+		return;
 
 	if (recursion_depth > 150) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
-				"Deep recursion detected!");
+			  "Deep recursion detected!");
 		return;
 	}
 
 	/* Read the number of entries */
-	if (offset >= ds - 1) return;
+	if (offset >= ds - 1) 
+		return;
 	n = exif_get_short (d + offset, data->priv->order);
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 	          "Loading %i entries...", n);
 	offset += 2;
 
 	/* Check if we have enough data. */
-	if (offset + 12 * n > ds) n = (ds - offset) / 12;
+	if (offset + 12 * n > ds) 
+		n = (ds - offset) / 12;
 
 	for (i = 0; i < n; i++) {
 
@@ -358,15 +372,15 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 				thumbnail_offset = o;
 				if (thumbnail_offset && thumbnail_length)
 					exif_data_load_data_thumbnail (data, d,
-						ds, thumbnail_offset,
-						thumbnail_length);
+								       ds, thumbnail_offset,
+								       thumbnail_length);
 				break;
 			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH:
 				thumbnail_length = o;
 				if (thumbnail_offset && thumbnail_length)
 					exif_data_load_data_thumbnail (data, d,
-						ds, thumbnail_offset,
-						thumbnail_length);
+								       ds, thumbnail_offset,
+								       thumbnail_length);
 				break;
 			default:
 				return;
@@ -387,14 +401,14 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 				 */
 				if (!memcmp (d + offset + 12 * i, "\0\0\0\0", 4)) {
 					exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-						"Skipping empty entry at position %i in '%s'.", i, 
-						exif_ifd_get_name (ifd));
+						  "Skipping empty entry at position %i in '%s'.", i, 
+						  exif_ifd_get_name (ifd));
 					break;
 				}
 				exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-				  "Unknown tag 0x%04x (entry %i in '%s'). Please report this tag "
-					"to <libexif-devel@lists.sourceforge.net>.", tag, i,
-					exif_ifd_get_name (ifd));
+					  "Unknown tag 0x%04x (entry %i in '%s'). Please report this tag "
+					  "to <libexif-devel@lists.sourceforge.net>.", tag, i,
+					  exif_ifd_get_name (ifd));
 				if (data->priv->options & EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS)
 					break;
 			}
@@ -421,14 +435,14 @@ static int
 cmp_func_intel (const void *elem1, const void *elem2)
 {
 	return cmp_func ((const unsigned char *) elem1,
-			(const unsigned char *) elem2, EXIF_BYTE_ORDER_INTEL);
+			 (const unsigned char *) elem2, EXIF_BYTE_ORDER_INTEL);
 }
 
 static int
 cmp_func_motorola (const void *elem1, const void *elem2)
 {
 	return cmp_func ((const unsigned char *) elem1,
-			(const unsigned char *) elem2, EXIF_BYTE_ORDER_MOTOROLA);
+			 (const unsigned char *) elem2, EXIF_BYTE_ORDER_MOTOROLA);
 }
 
 static void
@@ -439,7 +453,8 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	unsigned int j, n_ptr = 0, n_thumb = 0;
 	ExifIfd i;
 
-	if (!data || !data->priv || !ifd || !d || !ds) return;
+	if (!data || !data->priv || !ifd || !d || !ds) 
+		return;
 
 	for (i = 0; i < EXIF_IFD_COUNT; i++)
 		if (ifd == data->ifd[i])
@@ -523,7 +538,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 					*ds - 6);
 			exif_data_save_data_content (data,
-				data->ifd[EXIF_IFD_EXIF], d, ds, *ds - 6);
+						     data->ifd[EXIF_IFD_EXIF], d, ds, *ds - 6);
 			offset += 12;
 		}
 
@@ -538,7 +553,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 					*ds - 6);
 			exif_data_save_data_content (data,
-				data->ifd[EXIF_IFD_GPS], d, ds, *ds - 6);
+						     data->ifd[EXIF_IFD_GPS], d, ds, *ds - 6);
 			offset += 12;
 		}
 
@@ -559,8 +574,8 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 					*ds - 6);
 			exif_data_save_data_content (data,
-				data->ifd[EXIF_IFD_INTEROPERABILITY], d, ds,
-				*ds - 6);
+						     data->ifd[EXIF_IFD_INTEROPERABILITY], d, ds,
+						     *ds - 6);
 			offset += 12;
 		}
 
@@ -594,7 +609,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 
 			/* EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH */
 			exif_set_short (*d + 6 + offset + 0, data->priv->order,
-				EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH);
+					EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH);
 			exif_set_short (*d + 6 + offset + 2, data->priv->order,
 					EXIF_FORMAT_LONG);
 			exif_set_long  (*d + 6 + offset + 4, data->priv->order,
@@ -611,12 +626,12 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 
 	/* Sort the directory according to TIFF specification */
 	qsort (*d + 6 + offset - (ifd->count + n_ptr + n_thumb) * 12,
-			(ifd->count + n_ptr + n_thumb), 12,
-			(data->priv->order == EXIF_BYTE_ORDER_INTEL) ? cmp_func_intel : cmp_func_motorola);
+	       (ifd->count + n_ptr + n_thumb), 12,
+	       (data->priv->order == EXIF_BYTE_ORDER_INTEL) ? cmp_func_intel : cmp_func_motorola);
 
 	/* Correctly terminate the directory */
 	if (i == EXIF_IFD_0 && (data->ifd[EXIF_IFD_1]->count ||
-					     data->size)) {
+				data->size)) {
 
 		/*
 		 * We are saving IFD 0. Tell where IFD 1 starts and save
@@ -642,10 +657,12 @@ exif_data_get_type_maker_note (ExifData *d)
 	ExifEntry *e, *em;
 	char value[1024];
 
-	if (!d) return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
+	if (!d) 
+		return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
 	
 	e = exif_data_get_entry (d, EXIF_TAG_MAKER_NOTE);
-        if (!e) return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
+        if (!e) 
+		return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
 
 	/* Olympus & Nikon */
 	if ((e->size >= 5) && (!memcmp (e->data, "OLYMP", 5) ||
@@ -653,7 +670,8 @@ exif_data_get_type_maker_note (ExifData *d)
 		return EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS;
 
 	em = exif_data_get_entry (d, EXIF_TAG_MAKE);
-	if (!em) return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
+	if (!em) 
+		return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
 
 	/* Canon */
 	if (!strcmp (exif_entry_get_value (em, value, sizeof (value)), "Canon"))
@@ -662,8 +680,8 @@ exif_data_get_type_maker_note (ExifData *d)
 	/* Pentax & some variant of Nikon */
 	if ((e->size >= 2) && (e->data[0] == 0x00) && (e->data[1] == 0x1b)) {
 		if (!strncasecmp (
-			exif_entry_get_value (em, value, sizeof(value)),
-					      "Nikon", 5))
+			    exif_entry_get_value (em, value, sizeof(value)),
+			    "Nikon", 5))
 			return EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS;
 		else
 			return EXIF_DATA_TYPE_MAKER_NOTE_PENTAX;
@@ -686,7 +704,8 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	const unsigned char *d = d_orig;
 	unsigned int ds = ds_orig, len;
 
-	if (!data || !data->priv || !d || !ds) return;
+	if (!data || !data->priv || !d || !ds) 
+		return;
 
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 		  "Parsing %i byte(s) EXIF data...\n", ds);
@@ -761,7 +780,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	}
 	if (memcmp (d, ExifHeader, 6)) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
-				"ExifData", _("EXIF header not found."));
+			  "ExifData", _("EXIF header not found."));
 		return;
 	}
 
@@ -777,7 +796,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		data->priv->order = EXIF_BYTE_ORDER_MOTOROLA;
 	else {
 		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
-				"ExifData", _("Unknown encoding."));
+			  "ExifData", _("Unknown encoding."));
 		return;
 	}
 
@@ -861,7 +880,8 @@ exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 	/* Header */
 	*ds = 14;
 	*d = exif_data_alloc (data, *ds);
-	if (!*d) return;
+	if (!*d) 
+		return;
 	memcpy (*d, ExifHeader, 6);
 
 	/* Order (offset 6) */
@@ -917,10 +937,12 @@ exif_data_ref (ExifData *data)
 void
 exif_data_unref (ExifData *data)
 {
-	if (!data) return;
+	if (!data) 
+		return;
 
 	data->priv->ref_count--;
-	if (!data->priv->ref_count) exif_data_free (data);
+	if (!data->priv->ref_count) 
+		exif_data_free (data);
 }
 
 void
@@ -929,7 +951,8 @@ exif_data_free (ExifData *data)
 	unsigned int i;
 	ExifMem *mem = (data && data->priv) ? data->priv->mem : NULL;
 
-	if (!data) return;
+	if (!data) 
+		return;
 
 	for (i = 0; i < EXIF_IFD_COUNT; i++) {
 		if (data->ifd[i]) {
@@ -1051,7 +1074,8 @@ exif_data_log (ExifData *data, ExifLog *log)
 {
 	unsigned int i;
 
-	if (!data || !data->priv) return;
+	if (!data || !data->priv) 
+		return;
 	exif_log_unref (data->priv->log);
 	data->priv->log = log;
 	exif_log_ref (log);
@@ -1065,7 +1089,8 @@ ExifLog *exif_data_get_log (ExifData *);
 ExifLog *
 exif_data_get_log (ExifData *data)
 {
-	if (!data || !data->priv) return NULL;
+	if (!data || !data->priv) 
+		return NULL;
 	return data->priv->log;
 }
 
@@ -1075,10 +1100,10 @@ static struct {
 	const char *description;
 } exif_data_option[] = {
 	{EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS, N_("Ignore unknown tags"),
-		N_("Ignore unknown tags when loading EXIF data.")},
+	 N_("Ignore unknown tags when loading EXIF data.")},
 	{EXIF_DATA_OPTION_FOLLOW_SPECIFICATION, N_("Follow specification"),
-		N_("Add, correct and remove entries to get EXIF data that follows "
-				"the specification.")},
+	 N_("Add, correct and remove entries to get EXIF data that follows "
+	    "the specification.")},
 	{0, NULL, NULL}
 };
 
@@ -1088,7 +1113,8 @@ exif_data_option_get_name (ExifDataOption o)
 	unsigned int i;
 
 	for (i = 0; exif_data_option[i].name; i++)
-		if (exif_data_option[i].option == o) break;
+		if (exif_data_option[i].option == o) 
+			break;
 	return _(exif_data_option[i].name);
 }
 
@@ -1098,14 +1124,16 @@ exif_data_option_get_description (ExifDataOption o)
 	unsigned int i;
 
 	for (i = 0; exif_data_option[i].description; i++)
-		if (exif_data_option[i].option == o) break;
+		if (exif_data_option[i].option == o) 
+			break;
 	return _(exif_data_option[i].description);
 }
 
 void
 exif_data_set_option (ExifData *d, ExifDataOption o)
 {
-	if (!d) return;
+	if (!d) 
+		return;
 
 	d->priv->options |= o;
 }
@@ -1113,7 +1141,8 @@ exif_data_set_option (ExifData *d, ExifDataOption o)
 void
 exif_data_unset_option (ExifData *d, ExifDataOption o)
 {
-	if (!d) return;
+	if (!d) 
+		return;
 
 	d->priv->options &= ~o;
 }
@@ -1127,8 +1156,8 @@ fix_func (ExifContent *c, void *data)
 			exif_content_fix (c);
 		else {
 			exif_log (c->parent->priv->log, EXIF_LOG_CODE_DEBUG, "exif-data",
-					"No thumbnail but entries on thumbnail. These entries have been "
-					"removed.");
+				  "No thumbnail but entries on thumbnail. These entries have been "
+				  "removed.");
 			while (c->count)
 				exif_content_remove_entry (c, c->entries[c->count - 1]);
 		}
@@ -1147,7 +1176,8 @@ exif_data_fix (ExifData *d)
 void
 exif_data_set_data_type (ExifData *d, ExifDataType dt)
 {
-	if (!d || !d->priv) return;
+	if (!d || !d->priv) 
+		return;
 
 	d->priv->data_type = dt;
 }
