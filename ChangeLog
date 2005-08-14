@@ -1,3 +1,8 @@
+2005-08-14  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-entry.c: Added value 2 of EXIF_TAG_COLOR_SPACE
+	  patch #1253625 by Ross Burton - burtonini
+
 2005-07-18  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* doc/Makefile.am: Make distcheck work again.

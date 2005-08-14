@@ -526,6 +526,7 @@ static struct {
       {0, {NULL}}}},
   { EXIF_TAG_COLOR_SPACE,
     { {1, {N_("sRGB"), NULL}},
+      {2, {N_("Adobe RGB"), NULL}},
       {0xffff, {N_("Uncalibrated"), NULL}}}},
   {0, }
 };
