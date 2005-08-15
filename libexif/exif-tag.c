@@ -71,7 +71,7 @@ static struct {
 	{EXIF_TAG_BITS_PER_SAMPLE, "BitsPerSample", N_("Bits per Sample"),
 	 N_("The number of bits per image component. In this standard each "
 	    "component of the image is 8 bits, so the value for this "
-	    "tag is 9. See also <SamplesPerPixel>. In JPEG compressed data "
+	    "tag is 8. See also <SamplesPerPixel>. In JPEG compressed data "
 	    "a JPEG marker is used instead of this tag."),
 	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_COMPRESSION, "Compression", N_("Compression"),
@@ -129,7 +129,7 @@ static struct {
 	 N_("The number of rows per strip. This is the number of rows "
 	    "in the image of one strip when an image is divided into "
 	    "strips. With JPEG compressed data this designation is not "
-	    "needed and is omitted. See also <RowsPerStrip> and "
+	    "needed and is omitted. See also <StripOffsets> and "
 	    "<StripByteCounts>."),
 	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_STRIP_BYTE_COUNTS, "StripByteCounts", N_("Strip Byte Count"),
@@ -315,7 +315,7 @@ static struct {
 	 N_("Spectral Sensitivity"),
 	 N_("Indicates the spectral sensitivity of each channel of the "
 	    "camera used. The tag value is an ASCII string compatible "
-	    "with the standard developed by the ASTM Technical committee."),
+	    "with the standard developed by the ASTM Technical Committee."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_GPS_INFO_IFD_POINTER, "GPSInfoIFDPointer", 
 	 "GPSInfoIFDPointer",
@@ -326,7 +326,7 @@ static struct {
 	{EXIF_TAG_GPS_VERSION_ID, "GPSVersionID", N_("GPS tag version"),
 	 N_("Indicates the version of <GPSInfoIFD>. The version is given "
 	    "as 2.0.0.0. This tag is mandatory when <GPSInfo> tag is "
-	    "present. (Note: The <GPSVersionID tag is given in bytes, "
+	    "present. (Note: The <GPSVersionID> tag is given in bytes, "
 	    "unlike the <ExifVersion> tag. When the version is "
 	    "2.0.0.0, the tag value is 02000000.H)."), ESL_GPS},
 	{EXIF_TAG_GPS_LATITUDE_REF, "GPSLatitudeRef", N_("North or South Latitude"),
@@ -339,7 +339,7 @@ static struct {
 	    "respectively. When degrees, minutes and seconds are expressed, "
 	    "the format is dd/1,mm/1,ss/1. When degrees and minutes are used "
 	    "and, for example, fractions of minutes are given up to two "
-	    "two decimal places, the format is dd/1,mmmm/100,0/1."),
+	    "decimal places, the format is dd/1,mmmm/100,0/1."),
 	 ESL_GPS},
 	{EXIF_TAG_GPS_LONGITUDE_REF, "GPSLongitudeRef", N_("East or West Longitude"),
 	 N_("Indicates whether the longitude is east or west longitude. "

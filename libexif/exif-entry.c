@@ -199,9 +199,9 @@ exif_entry_fix (ExifEntry *e)
 				exif_format_get_size (e->format);
 			e->data = exif_entry_realloc (e, e->data, e->size);
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-				"Tag '%s' was of format '%s' (which is "
+				_("Tag '%s' was of format '%s' (which is "
 				"against specification) and has been "
-				"changed to format '%s'.",
+				"changed to format '%s'."),
 				exif_tag_get_name (e->tag), 
 				exif_format_get_name (EXIF_FORMAT_LONG),
 				exif_format_get_name (EXIF_FORMAT_SHORT));
@@ -233,9 +233,9 @@ exif_entry_fix (ExifEntry *e)
 			}
 			e->format = EXIF_FORMAT_RATIONAL;
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-				"Tag '%s' was of format '%s' (which is "
+				_("Tag '%s' was of format '%s' (which is "
 				"against specification) and has been "
-				"changed to format '%s'.",
+				"changed to format '%s'."),
 				exif_tag_get_name (e->tag),
 				exif_format_get_name (EXIF_FORMAT_SRATIONAL),
 				exif_format_get_name (EXIF_FORMAT_RATIONAL));
@@ -250,8 +250,8 @@ exif_entry_fix (ExifEntry *e)
 		/* Format needs to be UNDEFINED. */
 		if (e->format != EXIF_FORMAT_UNDEFINED) {
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-				"Tag 'UserComment' had invalid format '%s'. "
-				"Format has been set to 'undefined'.",
+				_("Tag 'UserComment' had invalid format '%s'. "
+				"Format has been set to 'undefined'."),
 				exif_format_get_name (e->format));
 			e->format = EXIF_FORMAT_UNDEFINED;
 		}
@@ -277,9 +277,9 @@ exif_entry_fix (ExifEntry *e)
 			e->size += 8;
 			e->components += 8;
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-				"Tag 'UserComment' has been expanded to at "
+				_("Tag 'UserComment' has been expanded to at "
 				"least 8 bytes in order to follow the "
-				"specification.");
+				"specification."));
 			break;
 		}
 
@@ -319,8 +319,8 @@ exif_entry_fix (ExifEntry *e)
 			e->size += 8;
 			e->components += 8;
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-				"Tag 'UserComment' did not start with "
-				"format identifyer. This has been fixed.");
+				_("Tag 'UserComment' did not start with "
+				"format identifier. This has been fixed."));
 			break;
 		}
 
@@ -475,7 +475,7 @@ static struct {
       {4, {N_("Shutter priority"),N_("Shutter"), NULL}},
       {5, {N_("Creative program (biased toward depth of field)"),
 	   N_("Creative"), NULL}},
-      {6, {N_("Creative program (biased toward fast shutter speed"),
+      {6, {N_("Creative program (biased toward fast shutter speed)"),
 	   N_("Action"), NULL}},
       {7, {N_("Portrait mode (for closeup photos with the background out "
 	      "of focus)"), N_("Portrait"), NULL}},
@@ -632,11 +632,11 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		 * Print as much as possible.
 		 */
 		exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-			"Tag UserComment does not comply "
-			"with standard but contains data.");
+			_("Tag UserComment does not comply "
+			"with standard but contains data."));
 		for (; (i < e->size)  && (strlen (val) < maxlen - 1); i++) {
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-				"Byte at position %i: 0x%02x", i, e->data[i]);
+				_("Byte at position %i: 0x%02x"), i, e->data[i]);
 			val[strlen (val)] =
 				isprint (e->data[i]) ? e->data[i] : '.';
 		}
@@ -896,7 +896,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		/* Search the tag */
 		for (i = 0; list2[i].tag && (list2[i].tag != e->tag); i++);
 		if (!list2[i].tag) {
-			strncpy (val, "Internal error.", maxlen - 1);
+			strncpy (val, _("Internal error."), maxlen - 1);
 			break;
 		}
 
@@ -904,8 +904,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		for (j = 0; list2[i].elem[j].values &&
 			    (list2[i].elem[j].index < v_short); j++);
 		if (list2[i].elem[j].index != v_short) {
-			snprintf (val, maxlen, "Internal error (unknown "
-				  "value %i).", v_short);
+			snprintf (val, maxlen, _("Internal error (unknown "
+				  "value %i)."), v_short);
 			break;
 		}
 
@@ -940,7 +940,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		/* Search the tag */
 		for (i = 0; list[i].tag && (list[i].tag != e->tag); i++);
 		if (!list[i].tag) {
-			strncpy (val, "Internal error.", maxlen - 1);
+			strncpy (val, _("Internal error."), maxlen - 1);
 			break;
 		}
 

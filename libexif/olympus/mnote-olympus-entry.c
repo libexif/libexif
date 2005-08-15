@@ -248,7 +248,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		vr = exif_get_rational (entry->data+8, entry->order);
 		b = (double)vr.numerator / vr.denominator;
 		//printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);
-		snprintf (v, maxlen, "Red Correction %f, Blue Correction %f", r,b);
+		snprintf (v, maxlen, _("Red Correction %f, Blue Correction %f"), r,b);
 		break;
 	case MNOTE_NIKON_TAG_MANUALFOCUSDISTANCE:
 		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
@@ -256,7 +256,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		vr = exif_get_rational (entry->data, entry->order);
 		if (vr.numerator) {
 			r = (double)vr.numerator / vr.denominator;
-			snprintf (v, maxlen, "%2.2f meters", r);
+			snprintf (v, maxlen, _("%2.2f meters"), r);
 		} else {
 			strncpy (v, _("No manual focus selection"), maxlen);
 		}
@@ -273,12 +273,12 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, v, maxlen);
 		CC (entry->components, 4, v, maxlen);
 		switch (  *( entry->data+1)  ) {
-		  	case  0: strncpy (v, "AF Position: Center", maxlen); break;
-		  	case  1: strncpy (v, "AF Position: Top", maxlen); break;
-		  	case  2: strncpy (v, "AF Position: Bottom", maxlen); break;
-		  	case  3: strncpy (v, "AF Position: Left", maxlen); break;
-		  	case  4: strncpy (v, "AF Position: Right", maxlen); break;
-		  	default: strncpy (v, "Unknown AF Position", maxlen);
+		  	case  0: strncpy (v, _("AF Position: Center"), maxlen); break;
+		  	case  1: strncpy (v, _("AF Position: Top"), maxlen); break;
+		  	case  2: strncpy (v, _("AF Position: Bottom"), maxlen); break;
+		  	case  3: strncpy (v, _("AF Position: Left"), maxlen); break;
+		  	case  4: strncpy (v, _("AF Position: Right"), maxlen); break;
+		  	default: strncpy (v, _("Unknown AF Position"), maxlen);
 		}     
 		break;
 	case MNOTE_OLYMPUS_TAG_DIGIZOOM:
@@ -311,7 +311,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		/* search the tag */
 		for (i = 0; (items[i].tag && items[i].tag != entry->tag); i++);
 		if (!items[i].tag) {
-		  	strncpy (v, "Internal error", maxlen);
+		  	strncpy (v, _("Internal error"), maxlen);
 		  	break;
 		}
 		CF (entry->format, items[i].fmt, v, maxlen);
@@ -332,7 +332,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		for (j = 0; items[i].elem[j].string &&
 			    (items[i].elem[j].index < vs); j++);
 		if (items[i].elem[j].index != vs) {
-			snprintf (v, maxlen, "Unknown value %hi", vs);
+			snprintf (v, maxlen, _("Unknown value %hi"), vs);
 			break;
 		}
 		strncpy (v, items[i].elem[j].string, maxlen);

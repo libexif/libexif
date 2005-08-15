@@ -1,3 +1,7 @@
+2005-08-15  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Patch by Jakub Bogusz <qboosh@pld-linux.org>, related to translation.
+
 2005-08-14  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-entry.c: Added value 2 of EXIF_TAG_COLOR_SPACE
