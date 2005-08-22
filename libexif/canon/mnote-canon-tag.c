@@ -42,6 +42,19 @@ static struct {
 	{0, NULL, NULL, NULL}
 };
 
+static struct {
+	MnoteCanonTag tag;
+	unsigned int subtag;
+	const char *name;
+} table_sub[] = {
+	{MNOTE_CANON_TAG_SETTINGS_2,  7, N_("White balance")},
+	{MNOTE_CANON_TAG_SETTINGS_2,  9, N_("Sequence number")},
+	{MNOTE_CANON_TAG_SETTINGS_2, 14, N_("AF point used")},
+	{MNOTE_CANON_TAG_SETTINGS_2, 15, N_("Flash bias")},
+	{MNOTE_CANON_TAG_SETTINGS_2, 19, N_("Subject distance")},
+	{0, 0, NULL}
+};
+
 const char *
 mnote_canon_tag_get_name (MnoteCanonTag t)
 {
@@ -53,6 +66,16 @@ mnote_canon_tag_get_name (MnoteCanonTag t)
 }
 
 const char *
+mnote_canon_tag_get_name_sub (MnoteCanonTag t, unsigned int s)
+{
+	unsigned int i;
+	for (i = 0; i < sizeof (table_sub) / sizeof (table_sub[0]); i++)
+		if ((table_sub[i].tag == t) && (table_sub[i].subtag == s))
+			return _(table_sub[i].name);
+	return mnote_canon_tag_get_name (t);
+}
+
+const char *
 mnote_canon_tag_get_title (MnoteCanonTag t)
 {
 	unsigned int i;
@@ -61,6 +84,16 @@ mnote_canon_tag_get_title (MnoteCanonTag t)
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
 		if (table[i].tag == t) return (_(table[i].title));
 	return NULL;
+}
+
+const char *
+mnote_canon_tag_get_title_sub (MnoteCanonTag t, unsigned int s)
+{
+	unsigned int i;
+	for (i = 0; i < sizeof (table_sub) / sizeof (table_sub[0]); i++)
+		if ((table_sub[i].tag == t) && (table_sub[i].subtag == s))
+			return _(table_sub[i].name);
+	return mnote_canon_tag_get_title (t);
 }
 
 const char *

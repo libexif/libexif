@@ -60,14 +60,33 @@ exif_mnote_data_canon_free (ExifMnoteData *n)
 	exif_mnote_data_canon_clear ((ExifMnoteDataCanon *) n);
 }
 
+static void
+exif_mnote_data_canon_get_tags (ExifMnoteDataCanon *dc, unsigned int n,
+		unsigned int *m, unsigned int *s)
+{
+	unsigned int from = 0, to;
+
+	if (!dc || !m) return;
+	for (*m = 1; *m < dc->count; (*m)++) {
+		to = from + mnote_canon_entry_count_values (&dc->entries[*m]);
+		if (to > n) {
+			if (s) *s = n - from;
+			break;
+		}
+		from = to;
+	}
+}
+
 static char *
 exif_mnote_data_canon_get_value (ExifMnoteData *note, unsigned int n, char *val, unsigned int maxlen)
 {
-	ExifMnoteDataCanon *cnote = (ExifMnoteDataCanon *) note;
+	ExifMnoteDataCanon *dc = (ExifMnoteDataCanon *) note;
+	unsigned int m, s;
 
-	if (!note) return NULL;
-	if (cnote->count <= n) return NULL;
-	return mnote_canon_entry_get_value (&cnote->entries[n], val, maxlen);
+	if (!dc) return NULL;
+	exif_mnote_data_canon_get_tags (dc, n, &m, &s);
+	if (m >= dc->count) return NULL;
+	return mnote_canon_entry_get_value (&dc->entries[m], s, val, maxlen);
 }
 
 static void
@@ -176,80 +195,93 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 
 	/* Parse the entries */
 	for (i = 0; i < c; i++) {
-	    o = 6 + 2 + n->offset + 12 * i;
-	    if (o + 8 > buf_size) return;
+		o = 6 + 2 + n->offset + 12 * i;
+	  if (o + 8 > buf_size) return;
 
-	    n->count = i + 1;
-	    n->entries = exif_mem_realloc (ne->mem, n->entries,
-					   sizeof (MnoteCanonEntry) * (i+1));
-	    memset (&n->entries[i], 0, sizeof (MnoteCanonEntry));
-	    n->entries[i].tag        = exif_get_short (buf + o, n->order);
-	    n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
-	    n->entries[i].components = exif_get_long (buf + o + 4, n->order);
-	    n->entries[i].order      = n->order;
+		n->count = i + 1;
+		n->entries = exif_mem_realloc (ne->mem, n->entries,
+				sizeof (MnoteCanonEntry) * (i+1));
+		memset (&n->entries[i], 0, sizeof (MnoteCanonEntry));
+	  n->entries[i].tag        = exif_get_short (buf + o, n->order);
+	  n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
+	  n->entries[i].components = exif_get_long (buf + o + 4, n->order);
+	  n->entries[i].order      = n->order;
 
-	    /*
-	     * Size? If bigger than 4 bytes, the actual data is not
-	     * in the entry but somewhere else (offset).
-	     */
-	    s = exif_format_get_size (n->entries[i].format) *
-		    		      n->entries[i].components;
-	    if (!s) return;
-	    o += 8;
-	    if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
-	    if (o + s > buf_size) return;
-	    
-	    /* Sanity check */
-	    n->entries[i].data = exif_mem_alloc (ne->mem, sizeof (char) * s);
-	    if (!n->entries[i].data) return;
-	    n->entries[i].size = s;
-	    memcpy (n->entries[i].data, buf + o, s);
+	  /*
+	   * Size? If bigger than 4 bytes, the actual data is not
+	   * in the entry but somewhere else (offset).
+	   */
+	  s = exif_format_get_size (n->entries[i].format) * n->entries[i].components;
+		if (!s) return;
+		o += 8;
+		if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
+		if (o + s > buf_size) return;
+
+		/* Sanity check */
+		n->entries[i].data = exif_mem_alloc (ne->mem, sizeof (char) * s);
+		if (!n->entries[i].data) return;
+		n->entries[i].size = s;
+		memcpy (n->entries[i].data, buf + o, s);
 	}
 }
 
 static unsigned int
 exif_mnote_data_canon_count (ExifMnoteData *n)
 {
-	return n ? ((ExifMnoteDataCanon *) n)->count : 0;
+	ExifMnoteDataCanon *dc = (ExifMnoteDataCanon *) n;
+	unsigned int i, c;
+
+	for (i = c = 0; dc && (i < dc->count); i++)
+		c += mnote_canon_entry_count_values (&dc->entries[i]);
+	return c;
 }
 
 static unsigned int
-exif_mnote_data_canon_get_id (ExifMnoteData *d, unsigned int n)
+exif_mnote_data_canon_get_id (ExifMnoteData *d, unsigned int i)
 {
-	ExifMnoteDataCanon *note = (ExifMnoteDataCanon *) d;
+	ExifMnoteDataCanon *dc = (ExifMnoteDataCanon *) d;
+	unsigned int m;
 
-	if (!note) return 0;
-	if (note->count <= n) return 0;
-	return note->entries[n].tag;
+	if (!dc) return 0;
+	exif_mnote_data_canon_get_tags (dc, i, &m, NULL);
+	if (m >= dc->count) return 0;
+	return dc->entries[m].tag;
 }
 
 static const char *
 exif_mnote_data_canon_get_name (ExifMnoteData *note, unsigned int i)
 {
-	ExifMnoteDataCanon *cnote = (ExifMnoteDataCanon *) note;
+	ExifMnoteDataCanon *dc = (ExifMnoteDataCanon *) note;
+	unsigned int m, s;
 
-	if (!note) return NULL;
-	if (i >= cnote->count) return NULL;
-	return mnote_canon_tag_get_name (cnote->entries[i].tag);
+	if (!dc) return NULL;
+	exif_mnote_data_canon_get_tags (dc, i, &m, &s);
+	if (m >= dc->count) return NULL;
+	return mnote_canon_tag_get_name_sub (dc->entries[m].tag, s);
 }
 
 static const char *
 exif_mnote_data_canon_get_title (ExifMnoteData *note, unsigned int i)
 {
-	ExifMnoteDataCanon *cnote = (ExifMnoteDataCanon *) note;
+	ExifMnoteDataCanon *dc = (ExifMnoteDataCanon *) note;
+	unsigned int m, s;
 
-	if (!note) return NULL;
-	if (i >= cnote->count) return NULL;
-	return mnote_canon_tag_get_title (cnote->entries[i].tag);
+	if (!dc) return NULL;
+	exif_mnote_data_canon_get_tags (dc, i, &m, &s);
+	if (m >= dc->count) return NULL;
+	return mnote_canon_tag_get_title_sub (dc->entries[m].tag, s);
 }
 
 static const char *
 exif_mnote_data_canon_get_description (ExifMnoteData *note, unsigned int i)
 {
-	ExifMnoteDataCanon *cnote = (ExifMnoteDataCanon *) note;
-	if (!note) return NULL;
-	if (i >= cnote->count) return NULL;
-	return mnote_canon_tag_get_description (cnote->entries[i].tag);
+	ExifMnoteDataCanon *dc = (ExifMnoteDataCanon *) note;
+	unsigned int m;
+
+	if (!dc) return NULL;
+	exif_mnote_data_canon_get_tags (dc, i, &m, NULL);
+	if (m >= dc->count) return NULL;
+	return mnote_canon_tag_get_description (dc->entries[m].tag);
 }
 
 ExifMnoteData *

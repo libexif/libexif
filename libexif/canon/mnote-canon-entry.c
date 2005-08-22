@@ -67,286 +67,256 @@
 	}                                                               \
 }
 
-char *
-mnote_canon_entry_get_value (const MnoteCanonEntry *entry, char *val, unsigned int maxlen)
-{
-    char buf[128];
-    ExifLong vl;
-    ExifShort vs, n;
-    int i;
-    unsigned char *data = entry->data;
-
-
 #define UNDEFINED 0xFF
     
 static struct  {
-  int tag;
-  int subtag;
-  char* value;
+  unsigned int tag;
+  unsigned int subtag;
+  char *value;
 } entries [] = {
-  {1,1,N_("Macro")},
-  {1,2,N_("Normal")},
-  {1,UNDEFINED,N_("%i???")},
-  {4,0,N_("Flash not fired")},
-  {4,1,N_("auto")},
-  {4,2,N_("on")},
-  {4,3,N_("red eyes reduction")},
-  {4,4,N_("slow synchro")},
-  {4,5,N_("auto + red yes reduction")},
-  {4,6,N_("on + red eyes reduction")},
-  {4,16,N_("external")},
-  {4,UNDEFINED,N_("%i???")},
-  {5,0,N_("single or timer")},
-  {5,1,N_("continuous")},
-  {5,UNDEFINED,N_("%i???")},
-  {7,0,N_("One-Shot")},
-  {7,1,N_("AI Servo")},
-  {7,2,N_("AI Focus")},
-  {7,3,N_("MF")},
-  {7,4,N_("Single")},
-  {7,5,N_("Continuous")},
-  {7,6,N_("MF")},
-  {7,UNDEFINED,N_("%i???")},
-  {10,0,N_("Large")},
-  {10,1,N_("Medium")},
-  {10,2,N_("Small")},
-  {10,UNDEFINED,N_("%i???")},
-  {11,0,N_("Full Auto")},
-  {11,1,N_("Manual")},
-  {11,2,N_("Landscape")},
-  {11,3,N_("Fast Shutter")},
-  {11,4,N_("Slow Shutter")},
-  {11,5,N_("Night")},
-  {11,6,N_("Black & White")},
-  {11,7,N_("Sepia")},
-  {11,8,N_("Portrait")},
-  {11,9,N_("Sports")},
-  {11,10,N_("Macro / Close-Up")},
-  {11,11,N_("Pan Focus")},
-  {11,UNDEFINED,N_("%i???")},
-  {13,0xffff,N_("Low")},
-  {13,0x0000,N_("Normal")},
-  {13,0x0001,N_("High")},
-  {13,UNDEFINED,N_("%i???")},
-  {14,0xffff,N_("Low")},
-  {14,0x0000,N_("Normal")},
-  {14,0x0001,N_("High")},
-  {14,UNDEFINED,N_("%i???")},
-  {15,0xffff,N_("Low")},
-  {15,0x0000,N_("Normal")},
-  {15,0x0001,N_("High")},
-  {15,UNDEFINED,N_("%i???")},
-  {16,15,N_("auto")},
-  {16,16,N_("50")},
-  {16,17,N_("100")},
-  {16,18,N_("200")},
-  {16,19,N_("400")},
-  {16,UNDEFINED,N_("%i???")},
-  {17,3,N_("Evaluative")},
-  {17,4,N_("Partial")},
-  {17,5,N_("Center-weighted")},
-  {17,UNDEFINED,N_("%i???")},
-  {19,0x3000,N_("none (MF)")},
-  {19,0x3001,N_("auto-selected")},
-  {19,0x3002,N_("right")},
-  {19,0x3003,N_("center")},
-  {19,0x3004,N_("left")},
-  {19,UNDEFINED,N_("%i???")},
-  {20,0,N_("Easy shooting")},
-  {20,1,N_("Program")},
-  {20,2,N_("Tv-priority")},
-  {20,3,N_("Av-priority")},
-  {20,4,N_("Manual")},
-  {20,5,N_("A-DEP")},
-  {20,UNDEFINED,N_("%i???")},
-  {32,0,N_("Single")},
-  {32,1,N_("Continuous")},
-  {32,UNDEFINED,N_("%i???")},
-  
-  {0,0,NULL}
+  { 1,  1, N_("Macro")},
+  { 1,  2, N_("Normal")},
+  { 4,  0, N_("Flash not fired")},
+  { 4,  1, N_("auto")},
+  { 4,  2, N_("on")},
+  { 4,  3, N_("red eyes reduction")},
+  { 4,  4, N_("slow synchro")},
+  { 4,  5, N_("auto + red yes reduction")},
+  { 4,  6, N_("on + red eyes reduction")},
+  { 4, 16, N_("external")},
+  { 5,  0, N_("single or timer")},
+  { 5,  1, N_("continuous")},
+  { 7,  0, N_("One-Shot")},
+  { 7,  1, N_("AI Servo")},
+  { 7,  2, N_("AI Focus")},
+  { 7,  3, N_("MF")},
+  { 7,  4, N_("Single")},
+  { 7,  5, N_("Continuous")},
+  { 7,  6, N_("MF")},
+  {10,  0, N_("Large")},
+  {10,  1, N_("Medium")},
+  {10,  2, N_("Small")},
+  {11,  0, N_("Full Auto")},
+  {11,  1, N_("Manual")},
+  {11,  2, N_("Landscape")},
+  {11,  3, N_("Fast Shutter")},
+  {11,  4, N_("Slow Shutter")},
+  {11,  5, N_("Night")},
+  {11,  6, N_("Black & White")},
+  {11,  7, N_("Sepia")},
+  {11,  8, N_("Portrait")},
+  {11,  9, N_("Sports")},
+  {11, 10, N_("Macro / Close-Up")},
+  {11, 11, N_("Pan Focus")},
+  {13, 0xffff, N_("Low")},
+  {13, 0x0000, N_("Normal")},
+  {13, 0x0001, N_("High")},
+  {14, 0xffff, N_("Low")},
+  {14, 0x0000, N_("Normal")},
+  {14, 0x0001, N_("High")},
+  {15, 0xffff, N_("Low")},
+  {15, 0x0000, N_("Normal")},
+  {15, 0x0001, N_("High")},
+  {16, 15, N_("auto")},
+  {16, 16, N_("50")},
+  {16, 17, N_("100")},
+  {16, 18, N_("200")},
+  {16, 19, N_("400")},
+  {17,  3, N_("Evaluative")},
+  {17,  4, N_("Partial")},
+  {17,  5, N_("Center-weighted")},
+  {19, 0x3000, N_("none (MF)")},
+  {19, 0x3001, N_("auto-selected")},
+  {19, 0x3002, N_("right")},
+  {19, 0x3003, N_("center")},
+  {19, 0x3004, N_("left")},
+  {20,  0, N_("Easy shooting")},
+  {20,  1, N_("Program")},
+  {20,  2, N_("Tv-priority")},
+  {20,  3, N_("Av-priority")},
+  {20,  4, N_("Manual")},
+  {20,  5, N_("A-DEP")},
+  {32,  0, N_("Single")},
+  {32,  1, N_("Continuous")},
+  { 0,  0, NULL}
 };
 
 static struct {
-  int index;
-  char* value;
+  unsigned int tag;
+  char *value;
 }  headings[] =  {
-  {1,N_("Macro mode")},
-  {4,N_(" / Flash mode : ")},
-  {5,N_(" / Continuous drive mode : ")},
-  {7,N_(" / Focus mode : ")},
-  {10,N_(" / Image size : ")},
-  {11,N_(" / Easy shooting mode : ")},
-  {13,N_(" / Contrast : ")},
-  {14,N_(" / Saturation : ")},
-  {15,N_(" / Sharpness : ")},
-  {16,N_(" / ISO : ")},
-  {17,N_(" / Metering mode : ")},
-  {19,N_(" / AF point selected : ")},
-  {20,N_(" / Exposure mode : ")},
-  {32,N_(" / Focus mode2 : ")},
-
-  {0,NULL}
-
+  { 1, N_("Macro mode")},
+  { 4, N_(" / Flash mode : ")},
+  { 5, N_(" / Continuous drive mode : ")},
+  { 7, N_(" / Focus mode : ")},
+  {10, N_(" / Image size : ")},
+  {11, N_(" / Easy shooting mode : ")},
+  {13, N_(" / Contrast : ")},
+  {14, N_(" / Saturation : ")},
+  {15, N_(" / Sharpness : ")},
+  {16, N_(" / ISO : ")},
+  {17, N_(" / Metering mode : ")},
+  {19, N_(" / AF point selected : ")},
+  {20, N_(" / Exposure mode : ")},
+  {32, N_(" / Focus mode2 : ")},
+  { 0, NULL}
 };
 
+unsigned int
+mnote_canon_entry_count_values (const MnoteCanonEntry *entry)
+{
+	if (!entry) return 0;
 
-    if (!entry) return NULL;
+	switch (entry->tag) {
+	case MNOTE_CANON_TAG_SETTINGS_1:
+	case MNOTE_CANON_TAG_SETTINGS_2:
+	case MNOTE_CANON_TAG_CUSTOM_FUNCS:
+		if (entry->format != EXIF_FORMAT_SHORT) return 0;
+		return exif_get_short (entry->data, entry->order) / 2;
+	default:
+		return 1;
+	}
+}
 
-    memset (val, 0, maxlen);
-    maxlen--;
+char *
+mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char *val, unsigned int maxlen)
+{
+	char buf[128];
+	ExifLong vl;
+	ExifShort vs, n;
+	unsigned int i, j, k;
+	unsigned char *data = entry->data;
 
-    switch (entry->tag) {
+	if (!entry) return NULL;
+
+	memset (val, 0, maxlen);
+	maxlen--;
+
+	switch (entry->tag) {
 	case MNOTE_CANON_TAG_SETTINGS_1:
 		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
 		n = exif_get_short (data, entry->order) / 2;
-		data += 2;
+		if (t >= n) return NULL;
 		CC (entry->components, n, val, maxlen);
-		for (i = 1; i < n; i++) {
-		    vs = exif_get_short (data, entry->order);
-		    data += 2;
-		    switch (i) {
-		    case 2:
-			    if (vs) {
-				    snprintf (buf, sizeof (buf),
-					    _(" / Self Timer : %i (ms)"), vs*100);
-				    strncat (val, buf, maxlen - strlen(val));
-			    }
-			    break;
-		    case 23:
-			    snprintf (buf, sizeof (buf), _(" / long focal length of lens (in focal units) : %u"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			    break;
-		    case 24:
-			    snprintf (buf, sizeof (buf), _(" / short focal length of lens (in focal units) : %u"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			    break;
-		    case 25:
-			    snprintf (buf, sizeof (buf), _(" / focal units per mm : %u"), vs);
-			    strncat (val, buf, maxlen - strlen(val));
-			    break;
-		    case 29:
-			    strncat (val, _(" / Flash details : "), maxlen - strlen(val));
-			    if ((vs>>14)&1)
-				    strncat (val, _("External E-TTL"), maxlen - strlen(val));
-			    if ((vs>>13)&1)
-				    strncat (val, _("Internal flash"), maxlen - strlen(val));
-			    if ((vs>>11)&1)
-				    strncat (val, _("FP sync used"), maxlen - strlen(val));
-			    if ((vs>>4)&1)
-				    strncat (val, _("FP sync enabled"), maxlen - strlen(val));
-#ifdef DEBUG
-			    printf ("Value29=0x%08x\n", vs);
-#endif
-			    break;
-		    default:
-			{
-			int index;
-			int  found = 0;
-			for (index=0; entries[index].tag <= i && entries[index].value && vs && !found; i++) {
-				if (entries[index].tag == i) {
-				  	int a=0;
-					for (a=0; headings[a].index != i; a++);
-				 	strncat (val, headings[a].value, maxlen - strlen(val)); 
-
-					if (entries[index].subtag == vs) {
-						strncat(val,entries[index].value, maxlen - strlen(val));
-						found = 1;
-					}
-					if (entries[index].subtag == UNDEFINED) {
-						snprintf (buf, sizeof (buf), entries[index].value, vs);
-						strncat (val, buf, maxlen - strlen(val)); 
-						found = 1;
-
-					}
-				}
+		vs = exif_get_short (entry->data + 2 + t * 2, entry->order);
+		switch (t) {
+		case 0:
+			break;
+		case 2:
+			if (vs) {
+				snprintf (buf, sizeof (buf), _(" / Self Timer : %i (ms)"), vs*100);
+				strncat (val, buf, maxlen - strlen(val));
 			}
-			if (!found)
-			    printf ("Value%d=%d\n", i, vs);
-		    	}
-		    }
-		} // for
+			break;
+		case 23:
+			snprintf (buf, sizeof (buf), _(" / long focal length of lens (in focal units) : %u"), vs);
+			strncat (val, buf, maxlen - strlen(val));
+			break;
+		case 24:
+			snprintf (buf, sizeof (buf), _(" / short focal length of lens (in focal units) : %u"), vs);
+			strncat (val, buf, maxlen - strlen(val));
+			break;
+		case 25:
+			snprintf (buf, sizeof (buf), _(" / focal units per mm : %u"), vs);
+			strncat (val, buf, maxlen - strlen(val));
+			break;
+		case 29:
+			strncat (val, _(" / Flash details : "), maxlen - strlen(val));
+			if ((vs>>14)&1)
+				strncat (val, _("External E-TTL"), maxlen - strlen(val));
+			if ((vs>>13)&1)
+				strncat (val, _("Internal flash"), maxlen - strlen(val));
+			if ((vs>>11)&1)
+				strncat (val, _("FP sync used"), maxlen - strlen(val));
+			if ((vs>>4)&1)
+				strncat (val, _("FP sync enabled"), maxlen - strlen(val));
+			break;
+		default:
 
-                break;
+			/* Title of tag */
+			for (k = 0; (headings[k].tag != t) && headings[k].tag; k++);
+			strncat (val,
+					headings[k].value ? headings[k].value : _(" / Unknown : "),
+					maxlen - strlen (val));
+
+			/* Value of tag */
+			for (j = 0; entries[j].tag && ((entries[j].tag < t) ||
+						((entries[j].tag == i) && entries[j].subtag <= vs)); j++)
+				if ((entries[j].tag == i) && (entries[j].subtag == vs)) break;
+			if ((entries[j].tag != i) || (entries[j].subtag != vs)) break;
+
+			if (entries[j].subtag == vs)
+				strncat (val, entries[j]. value, maxlen - strlen (val));
+			else {
+				snprintf (buf, sizeof (buf), entries[j].value, vs);
+				strncat (val, buf, maxlen - strlen (val)); 
+			}
+		}
+		break;
 
 	case MNOTE_CANON_TAG_SETTINGS_2:
 		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		n = exif_get_short (data, entry->order)/2;
-		data += 2;
+		n = exif_get_short (data, entry->order) / 2;
+		if (t >= n) return NULL;
 		CC (entry->components, n, val, maxlen);
-#ifdef DEBUG
-		printf ("Setting2 size %d %d\n",n,entry->size);
-#endif
-		for (i=1;i<n;i++)
-		{
-			vs = exif_get_short (data, entry->order);
-			data+=2;
-			switch(i) {
-			case 7:
-				strncpy (val, _("White balance : "), maxlen - strlen(val));
-				switch (vs) {
-				case 0:
-					strncat (val, _("Auto"), maxlen - strlen(val));
-					break;
-				case 1:
-					strncat (val, _("Sunny"), maxlen - strlen(val));
-					break;
-				case 2:
-					strncat (val, _("Cloudy"), maxlen - strlen(val));
-					break;
-				case 3:
-					strncat (val, _("Tungsten"), maxlen - strlen(val));
-					break;
-				case 4:
-					strncat (val, _("Flourescent"), maxlen - strlen(val));
-					break;
-				case 5:
-					strncat (val, _("Flash"), maxlen - strlen(val));
-					break;
-				case 6:
-					strncat (val, _("Custom"), maxlen - strlen(val));
-					break;
-				default:
-					snprintf (buf, sizeof (buf), _("%i???"), vs);
-					strncat (val, buf, maxlen - strlen(val));
-				}
+		vs = exif_get_short (entry->data + 2 + t * 2, entry->order);
+		switch (t) {
+		case 7:
+			switch (vs) {
+			case 0:
+				strncpy (val, _("Auto"), maxlen - strlen (val));
 				break;
-			case 9:
-				snprintf (buf, sizeof (buf), _(" / Sequence number : %u"), vs);
-				strncat (val, buf, maxlen - strlen(val));
+			case 1:
+				strncpy (val, _("Sunny"), maxlen - strlen (val));
 				break;
-			case 14:
-				if (vs>>12)
-				{
-					strncat (val, _(" / AF point used : "), maxlen - strlen(val));
-					if (vs&1)
-						strncat (val, _("Right"), maxlen - strlen(val));
-					if ((vs>>1)&1)
-						strncat (val, _("Center"), maxlen - strlen(val));
-					if ((vs>>2)&1)
-						strncat (val, _("Left"), maxlen - strlen(val));
-					snprintf (buf, sizeof (buf), _(" (%u available focus point)"), vs>>12);
-					strncat (val, buf, maxlen - strlen(val));
-				}
-#ifdef DEBUG
-					printf ("0x%08x\n", vs);
-#endif
+			case 2:
+				strncpy (val, _("Cloudy"), maxlen - strlen (val));
 				break;
-			case 15:
-				snprintf (buf, sizeof (buf), _(" / Flash bias : %.2f EV"), vs/32.0);
-				strncat (val, buf, maxlen - strlen(val));
-
+			case 3:
+				strncpy (val, _("Tungsten"), maxlen - strlen (val));
 				break;
-			case 19:
-				snprintf (buf, sizeof (buf), _(" / Subject Distance (mm) : %u"), vs);
-				strncat (val, buf, maxlen - strlen(val));
+			case 4:
+				strncpy (val, _("Flourescent"), maxlen - strlen (val));
 				break;
-#ifdef DEBUG
+			case 5:
+				strncpy (val, _("Flash"), maxlen - strlen (val));
+				break;
+			case 6:
+				strncpy (val, _("Custom"), maxlen - strlen (val));
+				break;
 			default:
-				printf ("Value%d=%d\n", i, vs);
-#endif
+				snprintf (buf, sizeof (buf), "%i", vs);
+				strncpy (val, buf, maxlen - strlen (val));
 			}
+			break;
+		case 9:
+			snprintf (buf, sizeof (buf), "%u", vs);
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
+		case 14:
+			if (vs >> 12) {
+				if (vs & 1)
+					strncpy (val, _("Right"), maxlen - strlen (val));
+				if ((vs >> 1) & 1)
+					strncpy (val, _("Center"), maxlen - strlen (val));
+				if ((vs >> 2) & 1)
+					strncpy (val, _("Left"), maxlen - strlen (val));
+				if (vs >> 12 == 1)
+					snprintf (buf, sizeof (buf), _(" (1 available focus point)"));
+				else
+					snprintf (buf, sizeof (buf), _(" (%u available focus point)"), vs >> 12);
+				strncat (val, buf, maxlen - strlen (val));
+			}
+			break;
+		case 15:
+			snprintf (buf, sizeof (buf), _("%.2f EV"), vs / 32.);
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
+		case 19:
+			snprintf (buf, sizeof (buf), _("%u mm"), vs);
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
 		}
-
 		break;
 
 	case MNOTE_CANON_TAG_IMAGE_TYPE:
@@ -380,19 +350,12 @@ static struct {
 
 	case MNOTE_CANON_TAG_CUSTOM_FUNCS:
 		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		n = exif_get_short (data, entry->order)/2;
-		data+=2;
+		n = exif_get_short (data, entry->order) / 2;
+		if (t >= n) return NULL;
 		CC (entry->components, n, val, maxlen);
-#ifdef DEBUG
-		printf ("Custom Function size %d %d\n",n,entry->size);
-#endif
-		for (i=1;i<n;i++)
-		{
-			vs = exif_get_short (data, entry->order);
-			data += 2;
-			snprintf (buf, sizeof(buf), _("C.F%d : %u"), i, vs);
-			strncat (val, buf, maxlen - strlen(val));
-		}
+		vs = exif_get_short (data + 2 + 2 * t, entry->order);
+		snprintf (buf, sizeof (buf), "%u", vs);
+		strncat (val, buf, maxlen - strlen (val));
 		break;
 
 	default:
@@ -413,6 +376,6 @@ static struct {
 		    strncpy (val, data, MIN (entry->size, maxlen));
 #endif
 		break;
-        }
-        return val;
+	}
+	return val;
 }

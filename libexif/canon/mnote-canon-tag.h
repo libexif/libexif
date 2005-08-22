@@ -41,9 +41,11 @@ enum _MnoteCanonTag {
 };
 typedef enum _MnoteCanonTag MnoteCanonTag;
 
-const char *mnote_canon_tag_get_name        (MnoteCanonTag tag);
-const char *mnote_canon_tag_get_title       (MnoteCanonTag tag);
-const char *mnote_canon_tag_get_description (MnoteCanonTag tag);
+const char *mnote_canon_tag_get_name        (MnoteCanonTag);
+const char *mnote_canon_tag_get_name_sub    (MnoteCanonTag, unsigned int);
+const char *mnote_canon_tag_get_title       (MnoteCanonTag);
+const char *mnote_canon_tag_get_title_sub   (MnoteCanonTag, unsigned int);
+const char *mnote_canon_tag_get_description (MnoteCanonTag);
 
 #ifdef __cplusplus
 }

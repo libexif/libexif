@@ -38,6 +38,7 @@ struct _MnoteCanonEntry {
 	ExifByteOrder order;
 };
 
-char *mnote_canon_entry_get_value (const MnoteCanonEntry *entry, char *val, unsigned int maxlen);
+unsigned int mnote_canon_entry_count_values (const MnoteCanonEntry *);
+char        *mnote_canon_entry_get_value    (const MnoteCanonEntry *, unsigned int t, char *val, unsigned int maxlen);
 
 #endif /* __MNOTE_CANON_ENTRY_H__ */

@@ -1,3 +1,8 @@
+2005-08-23  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Some work on canon maker notes. Entries that contain several different
+	values now expand to different entries.
+
 2005-08-15  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Patch by Jakub Bogusz <qboosh@pld-linux.org>, related to translation.
