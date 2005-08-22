@@ -70,13 +70,13 @@
 #define UNDEFINED 0xFF
     
 static struct  {
-  unsigned int tag;
   unsigned int subtag;
-  char *value;
+  ExifShort value;
+  char *name;
 } entries [] = {
-  { 1,  1, N_("Macro")},
-  { 1,  2, N_("Normal")},
-  { 4,  0, N_("Flash not fired")},
+  { 1,  1, N_("macro")},
+  { 1,  2, N_("normal")},
+  { 4,  0, N_("flash did not fire")},
   { 4,  1, N_("auto")},
   { 4,  2, N_("on")},
   { 4,  3, N_("red eyes reduction")},
@@ -86,80 +86,59 @@ static struct  {
   { 4, 16, N_("external")},
   { 5,  0, N_("single or timer")},
   { 5,  1, N_("continuous")},
-  { 7,  0, N_("One-Shot")},
+  { 7,  0, N_("one-Shot")},
   { 7,  1, N_("AI Servo")},
   { 7,  2, N_("AI Focus")},
   { 7,  3, N_("MF")},
   { 7,  4, N_("Single")},
   { 7,  5, N_("Continuous")},
   { 7,  6, N_("MF")},
-  {10,  0, N_("Large")},
-  {10,  1, N_("Medium")},
-  {10,  2, N_("Small")},
+  {10,  0, N_("large")},
+  {10,  1, N_("medium")},
+  {10,  2, N_("small")},
   {11,  0, N_("Full Auto")},
-  {11,  1, N_("Manual")},
-  {11,  2, N_("Landscape")},
-  {11,  3, N_("Fast Shutter")},
-  {11,  4, N_("Slow Shutter")},
-  {11,  5, N_("Night")},
+  {11,  1, N_("manual")},
+  {11,  2, N_("landscape")},
+  {11,  3, N_("fast shutter")},
+  {11,  4, N_("slow shutter")},
+  {11,  5, N_("night")},
   {11,  6, N_("Black & White")},
   {11,  7, N_("Sepia")},
   {11,  8, N_("Portrait")},
   {11,  9, N_("Sports")},
   {11, 10, N_("Macro / Close-Up")},
   {11, 11, N_("Pan Focus")},
-  {13, 0xffff, N_("Low")},
-  {13, 0x0000, N_("Normal")},
-  {13, 0x0001, N_("High")},
-  {14, 0xffff, N_("Low")},
-  {14, 0x0000, N_("Normal")},
-  {14, 0x0001, N_("High")},
-  {15, 0xffff, N_("Low")},
-  {15, 0x0000, N_("Normal")},
-  {15, 0x0001, N_("High")},
+  {13, 0xffff, N_("low")},
+  {13, 0x0000, N_("normal")},
+  {13, 0x0001, N_("high")},
+  {14, 0xffff, N_("low")},
+  {14, 0x0000, N_("normal")},
+  {14, 0x0001, N_("high")},
+  {15, 0xffff, N_("low")},
+  {15, 0x0000, N_("normal")},
+  {15, 0x0001, N_("high")},
   {16, 15, N_("auto")},
   {16, 16, N_("50")},
   {16, 17, N_("100")},
   {16, 18, N_("200")},
   {16, 19, N_("400")},
-  {17,  3, N_("Evaluative")},
-  {17,  4, N_("Partial")},
-  {17,  5, N_("Center-weighted")},
+  {17,  3, N_("evaluative")},
+  {17,  4, N_("partial")},
+  {17,  5, N_("center-weighted")},
   {19, 0x3000, N_("none (MF)")},
   {19, 0x3001, N_("auto-selected")},
   {19, 0x3002, N_("right")},
   {19, 0x3003, N_("center")},
   {19, 0x3004, N_("left")},
-  {20,  0, N_("Easy shooting")},
-  {20,  1, N_("Program")},
+  {20,  0, N_("easy shooting")},
+  {20,  1, N_("program")},
   {20,  2, N_("Tv-priority")},
   {20,  3, N_("Av-priority")},
   {20,  4, N_("Manual")},
   {20,  5, N_("A-DEP")},
-  {32,  0, N_("Single")},
-  {32,  1, N_("Continuous")},
+  {32,  0, N_("single")},
+  {32,  1, N_("continuous")},
   { 0,  0, NULL}
-};
-
-static struct {
-  unsigned int tag;
-  char *value;
-}  headings[] =  {
-  { 1, N_("Macro mode")},
-  { 4, N_(" / Flash mode : ")},
-  { 5, N_(" / Continuous drive mode : ")},
-  { 7, N_(" / Focus mode : ")},
-  {10, N_(" / Image size : ")},
-  {11, N_(" / Easy shooting mode : ")},
-  {13, N_(" / Contrast : ")},
-  {14, N_(" / Saturation : ")},
-  {15, N_(" / Sharpness : ")},
-  {16, N_(" / ISO : ")},
-  {17, N_(" / Metering mode : ")},
-  {19, N_(" / AF point selected : ")},
-  {20, N_(" / Exposure mode : ")},
-  {32, N_(" / Focus mode2 : ")},
-  { 0, NULL}
 };
 
 unsigned int
@@ -184,7 +163,7 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 	char buf[128];
 	ExifLong vl;
 	ExifShort vs, n;
-	unsigned int i, j, k;
+	unsigned int j;
 	unsigned char *data = entry->data;
 
 	if (!entry) return NULL;
@@ -203,53 +182,40 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		case 0:
 			break;
 		case 2:
-			if (vs) {
-				snprintf (buf, sizeof (buf), _(" / Self Timer : %i (ms)"), vs*100);
-				strncat (val, buf, maxlen - strlen(val));
-			}
+			if (!vs) break;
+			snprintf (buf, sizeof (buf), _("%i (ms)"), vs * 100);
+			strncpy (val, buf, maxlen - strlen (val));
 			break;
 		case 23:
-			snprintf (buf, sizeof (buf), _(" / long focal length of lens (in focal units) : %u"), vs);
-			strncat (val, buf, maxlen - strlen(val));
-			break;
 		case 24:
-			snprintf (buf, sizeof (buf), _(" / short focal length of lens (in focal units) : %u"), vs);
-			strncat (val, buf, maxlen - strlen(val));
+			snprintf (buf, sizeof (buf), "%u", vs);
+			strncpy (val, buf, maxlen - strlen (val));
 			break;
 		case 25:
-			snprintf (buf, sizeof (buf), _(" / focal units per mm : %u"), vs);
-			strncat (val, buf, maxlen - strlen(val));
+			snprintf (buf, sizeof (buf), _("%u mm"), vs);
+			strncpy (val, buf, maxlen - strlen(val));
 			break;
 		case 29:
-			strncat (val, _(" / Flash details : "), maxlen - strlen(val));
-			if ((vs>>14)&1)
-				strncat (val, _("External E-TTL"), maxlen - strlen(val));
-			if ((vs>>13)&1)
-				strncat (val, _("Internal flash"), maxlen - strlen(val));
-			if ((vs>>11)&1)
-				strncat (val, _("FP sync used"), maxlen - strlen(val));
-			if ((vs>>4)&1)
-				strncat (val, _("FP sync enabled"), maxlen - strlen(val));
+			if ((vs >> 14) & 1)
+				strncpy (val, _("External E-TTL"), maxlen - strlen (val));
+			if ((vs >> 13) & 1)
+				strncpy (val, _("Internal flash"), maxlen - strlen (val));
+			if ((vs >> 11) & 1)
+				strncpy (val, _("FP sync used"), maxlen - strlen (val));
+			if ((vs >> 4) & 1)
+				strncpy (val, _("FP sync enabled"), maxlen - strlen (val));
 			break;
+
 		default:
-
-			/* Title of tag */
-			for (k = 0; (headings[k].tag != t) && headings[k].tag; k++);
-			strncat (val,
-					headings[k].value ? headings[k].value : _(" / Unknown : "),
-					maxlen - strlen (val));
-
-			/* Value of tag */
-			for (j = 0; entries[j].tag && ((entries[j].tag < t) ||
-						((entries[j].tag == i) && entries[j].subtag <= vs)); j++)
-				if ((entries[j].tag == i) && (entries[j].subtag == vs)) break;
-			if ((entries[j].tag != i) || (entries[j].subtag != vs)) break;
-
-			if (entries[j].subtag == vs)
-				strncat (val, entries[j]. value, maxlen - strlen (val));
+			for (j = 0; entries[j].name && ((entries[j].subtag < t) ||
+						((entries[j].subtag == t) && entries[j].value <= vs)); j++)
+				if ((entries[j].subtag == t) && (entries[j].value == vs)) break;
+			if ((entries[j].subtag == t) &&
+					(entries[j].value == vs) && entries[j].name)
+				strncpy (val, entries[j]. name, maxlen - strlen (val));
 			else {
-				snprintf (buf, sizeof (buf), entries[j].value, vs);
-				strncat (val, buf, maxlen - strlen (val)); 
+				snprintf (buf, sizeof (buf), "0x%04x", vs);
+				strncpy (val, buf, maxlen - strlen (val));
 			}
 		}
 		break;
@@ -296,15 +262,15 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		case 14:
 			if (vs >> 12) {
 				if (vs & 1)
-					strncpy (val, _("Right"), maxlen - strlen (val));
+					strncpy (val, _("right"), maxlen - strlen (val));
 				if ((vs >> 1) & 1)
-					strncpy (val, _("Center"), maxlen - strlen (val));
+					strncpy (val, _("center"), maxlen - strlen (val));
 				if ((vs >> 2) & 1)
-					strncpy (val, _("Left"), maxlen - strlen (val));
+					strncpy (val, _("left"), maxlen - strlen (val));
 				if (vs >> 12 == 1)
 					snprintf (buf, sizeof (buf), _(" (1 available focus point)"));
 				else
-					snprintf (buf, sizeof (buf), _(" (%u available focus point)"), vs >> 12);
+					snprintf (buf, sizeof (buf), _(" (%u available focus points)"), vs >> 12);
 				strncat (val, buf, maxlen - strlen (val));
 			}
 			break;
@@ -314,6 +280,10 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 			break;
 		case 19:
 			snprintf (buf, sizeof (buf), _("%u mm"), vs);
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
+		default:
+			snprintf (buf, sizeof (buf), "0x%04x", vs);
 			strncpy (val, buf, maxlen - strlen (val));
 			break;
 		}
