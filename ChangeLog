@@ -1,3 +1,9 @@
+2005-08-27  Jan Patera <patera@users.sourceforge.net>
+
+	* Canon mnote: Both parts of Settings had indices shifted by 1.
+	  entries[] must have secondary sorting by value which is unsigned.
+	  Wrong # of items in Settings: reading beyond allocated memory, crashes.
+
 2005-08-23  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Some work on canon maker notes. Entries that contain several different
