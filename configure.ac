@@ -68,7 +68,7 @@ AC_ARG_VAR([MATHLIBS],[The libraries required for mathematical functions, e.g. -
 if test "x$MATHLIBS" = "x"; then
 	# We must not compile with -Wall -Werror here:
 	# char *sqrt() conflicts with double sin(const double xx) in any case.
-	CFLAGS_save="$CPPFLAGS"
+	CFLAGS_save="$CFLAGS"
 	CPPFLAGS_save="$CPPFLAGS"
 	CPPFLAGS=""
 	CFLAGS=""
