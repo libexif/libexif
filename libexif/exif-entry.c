@@ -682,14 +682,15 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		strncat (val, _("(Photographer)"), maxlen - strlen (val));
 
 		/* Second part: Editor. */
-		t = e->data + strlen ((char *) e->data) + 1;
-		ts = e->data + e->size - t;
 		strncat (val, " - ", maxlen - strlen (val));
-		if (e->size && e->data && (ts > 0) &&
-		    (strspn ((char *)t, " ") != ts))
+		if (e->size && e->data) {
+		    t = e->data + strlen ((char *) e->data) + 1;
+		    ts = e->data + e->size - t;
+		    if ((ts > 0) && (strspn ((char *)t, " ") != ts))
 			strncat (val, (char *)t, MIN (maxlen - strlen (val), ts));
-		else
+		} else {
 			strncat (val, _("[None]"), maxlen - strlen (val));
+		}
 		strncat (val, " ", maxlen - strlen (val));
 		strncat (val, _("(Editor)"), maxlen - strlen (val));
 
