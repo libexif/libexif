@@ -340,16 +340,17 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		}
 		break;
 
-	case MNOTE_CANON_TAG_IMAGE_TYPE:
 	case MNOTE_CANON_TAG_OWNER:
-		CF (entry->format, EXIF_FORMAT_ASCII, val, maxlen);
 		CC (entry->components, 32, val, maxlen);
+		/* Fall through; ImageType can have many sizes */
+	case MNOTE_CANON_TAG_IMAGE_TYPE:
+		CF (entry->format, EXIF_FORMAT_ASCII, val, maxlen);
 		strncpy (val, (char *)data, MIN (entry->size, maxlen));
 		break;
 
 	case MNOTE_CANON_TAG_FIRMWARE:
 		CF (entry->format, EXIF_FORMAT_ASCII, val, maxlen);
-		CC2 (entry->components, 24, 32, val, maxlen);
+/*		CC2 (entry->components, 24, 32, val, maxlen); Can also be 22 */
 		strncpy (val, (char *)data, MIN (entry->size, maxlen));
 		break;
 

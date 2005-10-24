@@ -1,3 +1,8 @@
+2005-10-24  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/Canon/mnote-canon-entry.c: Don't check size of MNOTE_CANON_TAG_OWNER
+	  and MNOTE_CANON_TAG_FIRMWARE - there can be many different values.
+
 2005-08-27  Jan Patera <patera@users.sourceforge.net>
 
 	* Canon mnote: Both parts of Settings had indices shifted by 1.
