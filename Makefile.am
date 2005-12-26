@@ -1,6 +1,10 @@
-SUBDIRS = m4m po libexif test doc
+SUBDIRS = m4m po libexif test doc binary
 
-EXTRA_DIST = @PACKAGE_TARNAME@.spec autogen.sh
+if SHIP_BINARIES
+README_W32_XDIST = README-Win32.txt
+endif
+
+EXTRA_DIST = @PACKAGE_TARNAME@.spec autogen.sh $(README_W32_XDIST)
 
 ACLOCAL_AMFLAGS = -I m4m
 
@@ -30,7 +34,7 @@ $(srcdir)/ChangeLog.cvs:
 		usermap=""; \
 	fi; \
 	(cd "$(srcdir)" && cvs2cl $${usermap} -f "ChangeLog.cvs")
-	
+
 .PHONY: cvs-tag-release
 cvs-tag-release:
 	@tag="$$(echo "$(PACKAGE_TARNAME)-$(PACKAGE_VERSION)-release" | sed 's|\.|_|g')"; \

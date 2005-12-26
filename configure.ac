@@ -2,7 +2,7 @@ AC_PREREQ(2.59)
 AC_INIT([EXIF library],[0.6.13],[libexif-devel@lists.sourceforge.net],[libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
-AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2])
+AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2 dist-zip])
 
 if test ! -d "$srcdir/m4m"; then
 AC_MSG_ERROR([
@@ -57,6 +57,22 @@ GP_CONFIG_MSG([Compiler],[${CC}])
 dnl Create a stdint.h-like file containing size-specific integer definitions
 dnl that will always be available
 AX_NEED_STDINT_H([libexif/_stdint.h])
+
+
+dnl ------------------------------------------------------------------------
+dnl Whether we're supposed to ship binaries in the tarball
+dnl ------------------------------------------------------------------------
+
+ship_binaries=false
+AC_ARG_ENABLE([ship-binaries],
+[AS_HELP_STRING([--enable-ship-binaries],
+[Whether to ship binaries in the tarball [default=no]])],[
+	if test x$enableval = xyes; then
+		ship_binaries=true
+	fi
+])
+AM_CONDITIONAL([SHIP_BINARIES],[$ship_binaries])
+GP_CONFIG_MSG([Ship binaries in tarball],[$ship_binaries])
 
 
 dnl ---------------------------------------------------------------------------
@@ -148,6 +164,7 @@ AC_CONFIG_FILES([
   doc/Doxyfile
   doc/Doxyfile-internals
   libexif/libexif.pc
+  binary/Makefile
 ])
 AC_OUTPUT
 
