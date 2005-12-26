@@ -14,6 +14,11 @@ TESTS = test-mem test-value
 
 check_PROGRAMS = test-mem test-mnote test-value
 
+test_mem_SOURCES = test_mem.c
 test_mem_LDADD   = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
+
+test_mnote_SOURCES = test_mnote.c
 test_mnote_LDADD = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
+
+test_value_SOURCES = test_value.c
 test_value_LDADD = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
