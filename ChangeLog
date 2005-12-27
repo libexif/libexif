@@ -1,5 +1,10 @@
 2005-12-27  Lutz Mueller <lutz@topfrose.de>
 
+	* NEWS
+	* configure.ac: We're now working on version 0.6.14.
+
+2005-12-27  Lutz Mueller <lutz@topfrose.de>
+
 	* test/Makefile.am: Remove the SOURCES variables - they are not necessary.
 
 2005-10-24  Jan Patera <patera@users.sourceforge.net>

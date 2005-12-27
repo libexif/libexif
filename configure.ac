@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([EXIF library],[0.6.13],[libexif-devel@lists.sourceforge.net],[libexif])
+AC_INIT([EXIF library],[0.6.14],[libexif-devel@lists.sourceforge.net],[libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2 dist-zip])
