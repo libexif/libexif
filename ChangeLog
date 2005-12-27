@@ -1,3 +1,7 @@
+2005-12-27  Lutz Mueller <lutz@topfrose.de>
+
+	* test/Makefile.am: Remove the SOURCES variables - they are not necessary.
+
 2005-10-24  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/Canon/mnote-canon-entry.c: Don't check size of MNOTE_CANON_TAG_OWNER
