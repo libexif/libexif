@@ -1,3 +1,8 @@
+2006-01-02  Hubert Figuiere  <hub@figuiere.net>
+
+	* libexif/Makefile.am (libexif_la_DEPENDENCIES): depends
+	on the .sym file. Need to relink if modified.
+
 2005-12-27  Lutz Mueller <lutz@topfrose.de>
 
 	* NEWS
