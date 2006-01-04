@@ -28,6 +28,7 @@ dnl Advanced information about versioning:
 dnl   * "Writing shared libraries" by Mike Hearn
 dnl         http://navi.cx/~mike/writing-shared-libraries.html
 dnl   * libtool.info chapter "Versioning"
+dnl   * libtool.info chapter "Updating library version information"
 dnl ---------------------------------------------------------------------------
 dnl Versioning:
 dnl  - CURRENT (Major):  Increment if the interface has changes. AGE is always
@@ -50,7 +51,8 @@ LIBEXIF_CURRENT=12
 AC_SUBST([LIBEXIF_AGE])
 AC_SUBST([LIBEXIF_REVISION])
 AC_SUBST([LIBEXIF_CURRENT])
-LIBEXIF_VERSION_INFO=$LIBEXIF_CURRENT:$LIBEXIF_REVISION:$LIBEXIF_AGE
+AC_SUBST([LIBEXIF_CURRENT_MIN],[`expr $LIBEXIF_CURRENT - $LIBEXIF_AGE`])
+LIBEXIF_VERSION_INFO="$LIBEXIF_CURRENT:$LIBEXIF_REVISION:$LIBEXIF_AGE"
 AC_SUBST([LIBEXIF_VERSION_INFO])
 
 AC_PROG_CC
@@ -120,8 +122,8 @@ GP_CHECK_DOXYGEN
 # ---------------------------------------------------------------------------
 # i18n support
 # ---------------------------------------------------------------------------
-GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT}],
-                [Lutz Müller and others])
+GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT_MIN}],
+                [Lutz Mueller and others])
 ALL_LINGUAS="de es fr pl"
 AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT([external])
