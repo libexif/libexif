@@ -78,7 +78,7 @@ static struct  {
   { 3,  2, N_("on")},
   { 3,  3, N_("red eyes reduction")},
   { 3,  4, N_("slow synchro")},
-  { 3,  5, N_("auto + red yes reduction")},
+  { 3,  5, N_("auto + red eyes reduction")},
   { 3,  6, N_("on + red eyes reduction")},
   { 3, 16, N_("external")},
   { 4,  0, N_("single or timer")},
