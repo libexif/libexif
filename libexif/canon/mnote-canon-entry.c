@@ -318,10 +318,7 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 					strncpy (val, _("center"), maxlen - strlen (val));
 				if ((vs >> 2) & 1)
 					strncpy (val, _("left"), maxlen - strlen (val));
-				if (vs >> 12 == 1)
-					snprintf (buf, sizeof (buf), _(" (1 available focus point)"));
-				else
-					snprintf (buf, sizeof (buf), _(" (%u available focus points)"), vs >> 12);
+				snprintf (buf, sizeof (buf), ngettext(" (1 available focus point)"," (%u available focus points)",(vs>>12)), (vs>>12));
 				strncat (val, buf, maxlen - strlen (val));
 			}
 			break;
