@@ -5,20 +5,21 @@
 #   Free Software Foundation, Inc., 2002
 # This file is distributed under the same license as the libexif package.
 #   Lutz Mueller <lutz@users.sourceforge.net>, 2002.
-#   Marcus Meissner <marcus@jet.franken.de>, 2004, 2005.
+#   Marcus Meissner <marcus@jet.franken.de>, 2004, 2005, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
-"Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2005-09-13 08:15+0200\n"
-"PO-Revision-Date: 2005-09-18 19:25+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-01-13 08:51+0100\n"
+"PO-Revision-Date: 2006-01-13 08:54+0100\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10\n"
+"X-Generator: KBabel 1.10.2\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 
 #: libexif/canon/mnote-canon-entry.c:39
 #: libexif/olympus/mnote-olympus-entry.c:37
@@ -71,7 +72,7 @@ msgid "slow synchro"
 msgstr "Langsame Synchronisation"
 
 #: libexif/canon/mnote-canon-entry.c:81
-msgid "auto + red yes reduction"
+msgid "auto + red eyes reduction"
 msgstr "automatisch + rote Augen Reduktion"
 
 #: libexif/canon/mnote-canon-entry.c:82
@@ -90,13 +91,13 @@ msgstr "einzeln oder mit Timer"
 msgid "continuous"
 msgstr "dauerhaft"
 
-#: libexif/canon/mnote-canon-entry.c:86
 # focuses just one time (when half pressing shutter)
+#: libexif/canon/mnote-canon-entry.c:86
 msgid "one-Shot"
 msgstr "Einzel Fokus"
 
-#: libexif/canon/mnote-canon-entry.c:87
 # continuous auto refocus while half-pressing shutter.
+#: libexif/canon/mnote-canon-entry.c:87
 msgid "AI Servo"
 msgstr "Al Servo"
 
@@ -474,7 +475,7 @@ msgstr "einzeln"
 msgid "%i (ms)"
 msgstr "%i (ms)"
 
-#: libexif/canon/mnote-canon-entry.c:246 libexif/canon/mnote-canon-entry.c:333
+#: libexif/canon/mnote-canon-entry.c:246 libexif/canon/mnote-canon-entry.c:330
 #, c-format
 msgid "%u mm"
 msgstr "%u mm"
@@ -533,17 +534,14 @@ msgstr "Blitz"
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
-#: libexif/canon/mnote-canon-entry.c:322
+#: libexif/canon/mnote-canon-entry.c:321
 #, c-format
 msgid " (1 available focus point)"
-msgstr " (1 vorhandener Fokuspunkt)"
+msgid_plural " (%u available focus points)"
+msgstr[0] " (1 vorhandener Fokuspunkt)"
+msgstr[1] " (%u vorhandene Fokuspunkte)"
 
-#: libexif/canon/mnote-canon-entry.c:324
-#, c-format
-msgid " (%u available focus points)"
-msgstr " (%u vorhandene Fokuspunkte)"
-
-#: libexif/canon/mnote-canon-entry.c:329
+#: libexif/canon/mnote-canon-entry.c:326
 #, c-format
 msgid "%.2f EV"
 msgstr "%.2f EV"
@@ -598,8 +596,8 @@ msgstr "Qualität"
 msgid "Flash mode"
 msgstr "Blitzmodus"
 
-#: libexif/canon/mnote-canon-tag.c:54
 #
+#: libexif/canon/mnote-canon-tag.c:54
 msgid "Continuous drive mode"
 msgstr "Serienbild Modus"
 
@@ -769,18 +767,22 @@ msgid ""
 "Tag 'UserComment' had invalid format '%s'. Format has been set to "
 "'undefined'."
 msgstr ""
-"Der Tag \"UserComment\" hatte das ungültige Format »%s«. Das Format "
-"wurde auf \"undefiniert\" geändert."
+"Der Tag \"UserComment\" hatte das ungültige Format »%s«. Das Format wurde "
+"auf \"undefiniert\" geändert."
 
 #: libexif/exif-entry.c:280
 msgid ""
 "Tag 'UserComment' has been expanded to at least 8 bytes in order to follow "
 "the specification."
-msgstr "Der Tag \"UserComment\" wurde auf 8 Byte Mindestlänge expandiert, um der Spezifikation zu folgen."
+msgstr ""
+"Der Tag \"UserComment\" wurde auf 8 Byte Mindestlänge expandiert, um der "
+"Spezifikation zu folgen."
 
 #: libexif/exif-entry.c:322
 msgid "Tag 'UserComment' did not start with format identifier. This has been fixed."
-msgstr "Der Tag \"UserComment\" begann nicht mit einem Formattyp. Dieser Fehler wurde behoben."
+msgstr ""
+"Der Tag \"UserComment\" begann nicht mit einem Formattyp. Dieser Fehler "
+"wurde behoben."
 
 #: libexif/exif-entry.c:360
 #, c-format
@@ -1364,9 +1366,9 @@ msgstr "FlashPix Version 1.01"
 msgid "Unknown FlashPix Version"
 msgstr "Unbekannte FlashPix Version"
 
-#: libexif/exif-entry.c:680 libexif/exif-entry.c:692 libexif/exif-entry.c:1290
-#: libexif/exif-entry.c:1295 libexif/exif-entry.c:1298
-#: libexif/exif-entry.c:1303 libexif/exif-entry.c:1304
+#: libexif/exif-entry.c:680 libexif/exif-entry.c:692 libexif/exif-entry.c:1291
+#: libexif/exif-entry.c:1296 libexif/exif-entry.c:1299
+#: libexif/exif-entry.c:1304 libexif/exif-entry.c:1305
 msgid "[None]"
 msgstr "[Keins]"
 
@@ -1374,99 +1376,99 @@ msgstr "[Keins]"
 msgid "(Photographer)"
 msgstr "(Photograph)"
 
-#: libexif/exif-entry.c:694
+#: libexif/exif-entry.c:695
 msgid "(Editor)"
 msgstr "(Editor)"
 
-#: libexif/exif-entry.c:741
+#: libexif/exif-entry.c:742
 #, c-format
 msgid " (35 equivalent: %d mm)"
 msgstr " (35 äquivalent: %d mm)"
 
-#: libexif/exif-entry.c:765
+#: libexif/exif-entry.c:766
 #, c-format
 msgid "1/%d"
 msgstr "1/%d"
 
-#: libexif/exif-entry.c:768
+#: libexif/exif-entry.c:769
 #, c-format
 msgid "%d"
 msgstr "%d"
 
-#: libexif/exif-entry.c:769 libexif/exif-entry.c:770 libexif/exif-entry.c:779
-#: libexif/exif-entry.c:780
+#: libexif/exif-entry.c:770 libexif/exif-entry.c:771 libexif/exif-entry.c:780
+#: libexif/exif-entry.c:781
 msgid " sec."
 msgstr "sek."
 
-#: libexif/exif-entry.c:799
+#: libexif/exif-entry.c:800
 msgid "DSC"
 msgstr "DSC"
 
-#: libexif/exif-entry.c:808
+#: libexif/exif-entry.c:809
 msgid "-"
 msgstr "-"
 
-#: libexif/exif-entry.c:809
+#: libexif/exif-entry.c:810
 msgid "Y"
 msgstr "Y"
 
-#: libexif/exif-entry.c:810
+#: libexif/exif-entry.c:811
 msgid "Cb"
 msgstr "Cb"
 
-#: libexif/exif-entry.c:811
+#: libexif/exif-entry.c:812
 msgid "Cr"
 msgstr "Cr"
 
-#: libexif/exif-entry.c:812
+#: libexif/exif-entry.c:813
 msgid "R"
 msgstr "R"
 
-#: libexif/exif-entry.c:813
+#: libexif/exif-entry.c:814
 msgid "G"
 msgstr "G"
 
-#: libexif/exif-entry.c:814
+#: libexif/exif-entry.c:815
 msgid "B"
 msgstr "B"
 
-#: libexif/exif-entry.c:815
+#: libexif/exif-entry.c:816
 msgid "reserved"
 msgstr "reserviert"
 
-#: libexif/exif-entry.c:839
+#: libexif/exif-entry.c:840
 msgid "YCbCr4:2:2"
 msgstr "YCbCr4:2:2"
 
-#: libexif/exif-entry.c:841
+#: libexif/exif-entry.c:842
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:847
+#: libexif/exif-entry.c:848
 #, c-format
 msgid "%i bytes unknown data"
 msgstr "%i Byte(s) unbekannte Daten"
 
-#: libexif/exif-entry.c:863
+#: libexif/exif-entry.c:864
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
 msgstr "Innerhalb einer Entfernung %i von (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:872
+#: libexif/exif-entry.c:873
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
 msgstr "Innerhalb eines Rechtecks (Breite %i, Höhe %i) um (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:878
+#: libexif/exif-entry.c:879
 #, c-format
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Unerwartete Nummer von Komponenten (%li, erwartete 2, 3 oder 4)."
 
-#: libexif/exif-entry.c:899 libexif/exif-entry.c:943
+#: libexif/exif-entry.c:900 libexif/exif-entry.c:944
 msgid "Internal error."
 msgstr "Interner Fehler."
 
-#: libexif/exif-entry.c:907
+#: libexif/exif-entry.c:908
 #, c-format
 msgid "Internal error (unknown value %i)."
 msgstr "Interner Fehler (unbekannter Wert %i)."
@@ -1877,7 +1879,9 @@ msgid ""
 "The chromaticity of the white point of the image. Normally this tag is not "
 "necessary, since color space is specified in the colorspace information tag "
 "(<ColorSpace>)."
-msgstr "Die Chromazität des Weißpunktes des Bildes. Normalerweise ist dieser Tag nicht nötig, da der Farbraum im <ColorSpace> Tag spezifiziert wird."
+msgstr ""
+"Die Chromazität des Weißpunktes des Bildes. Normalerweise ist dieser Tag "
+"nicht nötig, da der Farbraum im <ColorSpace> Tag spezifiziert wird."
 
 #: libexif/exif-tag.c:191
 msgid "Primary Chromaticities"
@@ -1888,7 +1892,10 @@ msgid ""
 "The chromaticity of the three primary colors of the image. Normally this tag "
 "is not necessary, since colorspace is specified in the colorspace "
 "information tag (<ColorSpace>)."
-msgstr "Die Chromazität der drei primären Farben des Bildes. Normalerweise ist dieser Tag nicht notwendig, da der Farbraum bereits im Farbraum Informationstag <ColorSpace> angeben wurde."
+msgstr ""
+"Die Chromazität der drei primären Farben des Bildes. Normalerweise ist "
+"dieser Tag nicht notwendig, da der Farbraum bereits im Farbraum "
+"Informationstag <ColorSpace> angeben wurde."
 
 #: libexif/exif-tag.c:196
 msgid "Transfer Range"
@@ -1896,7 +1903,9 @@ msgstr "Transfer Range"
 
 #: libexif/exif-tag.c:197
 msgid "Defined by Adobe Corporation to enable TIFF Trees within a TIFF file."
-msgstr "Definiert von der Adobe Corporation um TIFF Bäume innerhalb von TIFF Dateien zu erlauben."
+msgstr ""
+"Definiert von der Adobe Corporation um TIFF Bäume innerhalb von TIFF Dateien "
+"zu erlauben."
 
 #: libexif/exif-tag.c:201
 msgid "JPEG Interchange Format"
@@ -1955,7 +1964,10 @@ msgstr "YCbCr Sub Sampling"
 msgid ""
 "The sampling ratio of chrominance components in relation to the luminance "
 "component. In JPEG compressed data a JPEG marker is used instead of this tag."
-msgstr "Die Samplingrate der Chrominanz Komponenten in Bezug zu den Helligkeits Komponenten. In JPEG Datenströmen wird ein JPEG Marker anstelle dieses Tags verwendet."
+msgstr ""
+"Die Samplingrate der Chrominanz Komponenten in Bezug zu den Helligkeits "
+"Komponenten. In JPEG Datenströmen wird ein JPEG Marker anstelle dieses Tags "
+"verwendet."
 
 #: libexif/exif-tag.c:233
 msgid "YCbCr Positioning"
@@ -2041,7 +2053,20 @@ msgid ""
 "is given, the photographer copyright part consists of one space followed by "
 "a terminating NULL code, then the editor copyright is given (see example 3). "
 "When the field is left blank, it is treated as unknown."
-msgstr "Copyright Information. In diesem Standard wird dieser Tag dafür benutzt um sowohl das Copyright des Photographen als auch des Editors anzugeben. Es beinhaltet die Copyright Notiz der Person oder der Organisation die Rechte an dem Bild einfordert. Die interoperable Copyrightnotiz sollte in diesen Tag geschrieben werden; z.B., \"Copyright Claudia Mustermann, 200x. All rights reserved.\" In diesem Standard enthält dieses Feld sowohl Copyright des Photographen als auch des Editors in getrennten Statements. Wenn die Photographen und Editor Copyrights unterschiedlich sind, sollten sie in der Reihenfolge: Photograph, Editor, separiert durch NULL, aufgelistet werden. Terminiert wird die Liste durch einen weiteren NULL Code. Wenn nur ein Editor Copyright vorhanden ist, ist das Photographencopyright ein einzelnes Leerzeichen gefolgt durch die trennende NULL, dann folgt das Editor Copyright. Wenn das Feld leer ist, wird es als unbekannte gewertet."
+msgstr ""
+"Copyright Information. In diesem Standard wird dieser Tag dafür benutzt um "
+"sowohl das Copyright des Photographen als auch des Editors anzugeben. Es "
+"beinhaltet die Copyright Notiz der Person oder der Organisation die Rechte "
+"an dem Bild einfordert. Die interoperable Copyrightnotiz sollte in diesen "
+"Tag geschrieben werden; z.B., \"Copyright Claudia Mustermann, 200x. All "
+"rights reserved.\" In diesem Standard enthält dieses Feld sowohl Copyright "
+"des Photographen als auch des Editors in getrennten Statements. Wenn die "
+"Photographen und Editor Copyrights unterschiedlich sind, sollten sie in der "
+"Reihenfolge: Photograph, Editor, separiert durch NULL, aufgelistet werden. "
+"Terminiert wird die Liste durch einen weiteren NULL Code. Wenn nur ein "
+"Editor Copyright vorhanden ist, ist das Photographencopyright ein einzelnes "
+"Leerzeichen gefolgt durch die trennende NULL, dann folgt das Editor "
+"Copyright. Wenn das Feld leer ist, wird es als unbekannte gewertet."
 
 #: libexif/exif-tag.c:294
 msgid "Exposure Time"
@@ -2090,13 +2115,18 @@ msgid ""
 "Indicates the spectral sensitivity of each channel of the camera used. The "
 "tag value is an ASCII string compatible with the standard developed by the "
 "ASTM Technical Committee."
-msgstr "Gibt die spektrale Empfindlichkeit jedes Kanals der Kamera an. Der Tag Wert ist ein ASCII String kompatibel mit dem Standard der vom ASTM Technical Committee entwickelt wurde."
+msgstr ""
+"Gibt die spektrale Empfindlichkeit jedes Kanals der Kamera an. Der Tag Wert "
+"ist ein ASCII String kompatibel mit dem Standard der vom ASTM Technical "
+"Committee entwickelt wurde."
 
 #: libexif/exif-tag.c:322
 msgid ""
 "A pointer to the GPS Info IFD. The Interoperability structure of the GPS "
 "Info IFD, like that of Exif IFD, has no image data."
-msgstr "Ein Zeiger auf das GPS Info IFD. Die Interoperabilitätsstruktur des GPS Info IFD hat, genau wie das Exif IFD, keine Bilddaten."
+msgstr ""
+"Ein Zeiger auf das GPS Info IFD. Die Interoperabilitätsstruktur des GPS Info "
+"IFD hat, genau wie das Exif IFD, keine Bilddaten."
 
 #: libexif/exif-tag.c:326
 msgid "GPS tag version"
@@ -2108,7 +2138,12 @@ msgid ""
 "tag is mandatory when <GPSInfo> tag is present. (Note: The <GPSVersionID> "
 "tag is given in bytes, unlike the <ExifVersion> tag. When the version is "
 "2.0.0.0, the tag value is 02000000.H)."
-msgstr "Gibt die Version des <GPSInfoID> Tags an. Die Version ist spezifiziert als 2.0.0.0. Dieser Tag ist zwingend erforderlich wenn ein <GPSInfo> Tag vorhanden ist. (Merke: Der <GPSVersionID> Tag ist in Bytes spezifiziert, im Unterschied zum <ExifVersion> Tag. Wenn die Version 2.0.0.0 ist ist der Tag Wert 02000000 H)."
+msgstr ""
+"Gibt die Version des <GPSInfoID> Tags an. Die Version ist spezifiziert als "
+"2.0.0.0. Dieser Tag ist zwingend erforderlich wenn ein <GPSInfo> Tag "
+"vorhanden ist. (Merke: Der <GPSVersionID> Tag ist in Bytes spezifiziert, im "
+"Unterschied zum <ExifVersion> Tag. Wenn die Version 2.0.0.0 ist ist der Tag "
+"Wert 02000000 H)."
 
 #: libexif/exif-tag.c:332
 msgid "North or South Latitude"
@@ -2118,7 +2153,10 @@ msgstr "Nördlicher oder südlicher Breitengrad"
 msgid ""
 "Indicates whether the latitude is north or south latitude. The ASCII value "
 "'N' indicates north latitude, and 'S' is south latitude."
-msgstr "Gibt an, ob die Breite in nördlicher oder südlicher Breite angegeben ist. Der ASCII Wert \"N\" gibt nördliche Breite an, der Wert \"S\" ist südliche Breite."
+msgstr ""
+"Gibt an, ob die Breite in nördlicher oder südlicher Breite angegeben ist. "
+"Der ASCII Wert \"N\" gibt nördliche Breite an, der Wert \"S\" ist südliche "
+"Breite."
 
 #: libexif/exif-tag.c:336
 msgid "Latitude"
@@ -2131,7 +2169,12 @@ msgid ""
 "minutes and seconds are expressed, the format is dd/1,mm/1,ss/1. When "
 "degrees and minutes are used and, for example, fractions of minutes are "
 "given up to two decimal places, the format is dd/1,mmmm/100,0/1."
-msgstr "Enthält den Breitengrad. Der Breitengrad wird durch drei RATIONAL Werte angegeben, den Grad, die Minuten und die Sekunden. Wenn Grad, Minuten und Sekunden angegeben werden, ist das Format dd/1, mm/1, ss/1. Wenn Grade und Minuten benutzt werden und, z.B., Minutenteil auf 2 Stellen Genauigkeit, dann ist das Format, dd/1, mmmm/100, 0/1."
+msgstr ""
+"Enthält den Breitengrad. Der Breitengrad wird durch drei RATIONAL Werte "
+"angegeben, den Grad, die Minuten und die Sekunden. Wenn Grad, Minuten und "
+"Sekunden angegeben werden, ist das Format dd/1, mm/1, ss/1. Wenn Grade und "
+"Minuten benutzt werden und, z.B., Minutenteil auf 2 Stellen Genauigkeit, "
+"dann ist das Format, dd/1, mmmm/100, 0/1."
 
 #: libexif/exif-tag.c:344
 msgid "East or West Longitude"
@@ -2141,7 +2184,9 @@ msgstr "Östliche oder Westliche Länge"
 msgid ""
 "Indicates whether the longitude is east or west longitude. ASCII 'E' "
 "indicates east longitude, and 'W' is west longitude."
-msgstr "Gibt an, ob die Länge östliche oder westliche Länge ist. ASCII 'E' steht für östliche Länge und 'W' für westliche."
+msgstr ""
+"Gibt an, ob die Länge östliche oder westliche Länge ist. ASCII 'E' steht für "
+"östliche Länge und 'W' für westliche."
 
 #: libexif/exif-tag.c:348
 msgid "Longitude"
@@ -2154,7 +2199,12 @@ msgid ""
 "minutes and seconds are expressed, the format is ddd/1,mm/1,ss/1. When "
 "degrees and minutes are used and, for example, fractions of minutes are "
 "given up to two decimal places, the format is ddd/1,mmmm/100,0/1."
-msgstr "Enthält den Längengrad. Der Längengrad wird durch drei RATIONAL Werte angegeben, den Grad, die Minuten und die Sekunden. Wenn Grad, Minuten und Sekunden angegeben werden, ist das Format dd/1, mm/1, ss/1. Wenn Grade und Minuten benutzt werden und, z.B., Minutenteil auf 2 Stellen Genauigkeit, dann ist das Format, dd/1, mmmm/100, 0/1."
+msgstr ""
+"Enthält den Längengrad. Der Längengrad wird durch drei RATIONAL Werte "
+"angegeben, den Grad, die Minuten und die Sekunden. Wenn Grad, Minuten und "
+"Sekunden angegeben werden, ist das Format dd/1, mm/1, ss/1. Wenn Grade und "
+"Minuten benutzt werden und, z.B., Minutenteil auf 2 Stellen Genauigkeit, "
+"dann ist das Format, dd/1, mmmm/100, 0/1."
 
 #: libexif/exif-tag.c:356
 msgid "Altitude reference"
@@ -2167,7 +2217,12 @@ msgid ""
 "is below sea level, a value of 1 is given and the altitude is indicated as "
 "an absolute value in the GSPAltitude tag. The reference unit is meters. Note "
 "that this tag is BYTE type, unlike other reference tags."
-msgstr "Gibt die Referenzhöhe an. Wenn die Referenz der Meeresspiegel ist, und die Höhe ist über dem Meeresspiegel, dann ist dieser Wert 0. Wenn sie unter dem Meeresspiegel ist, dann ist hier ein Wert von 1 und die Höhe ist als absolut Wert im <GPSAltitudeTag> angegeben. Die verwendete Einheit ist Meter. Beachten sie, das dieses Tag den Typ BYTE hat."
+msgstr ""
+"Gibt die Referenzhöhe an. Wenn die Referenz der Meeresspiegel ist, und die "
+"Höhe ist über dem Meeresspiegel, dann ist dieser Wert 0. Wenn sie unter dem "
+"Meeresspiegel ist, dann ist hier ein Wert von 1 und die Höhe ist als absolut "
+"Wert im <GPSAltitudeTag> angegeben. Die verwendete Einheit ist Meter. "
+"Beachten sie, das dieses Tag den Typ BYTE hat."
 
 #: libexif/exif-tag.c:363
 msgid "Altitude"
@@ -2177,7 +2232,9 @@ msgstr "Höhe"
 msgid ""
 "Indicates the altitude based on the reference in GPSAltitudeRef. Altitude is "
 "expressed as one RATIONAL value. The reference unit is meters."
-msgstr "Gibt die Höhe über der Referenz Höhe an in <GPSAltitudeRef> an. Höhe ist ein RATIONAL Wert. Die Referenzeinheit ist Meter."
+msgstr ""
+"Gibt die Höhe über der Referenz Höhe an in <GPSAltitudeRef> an. Höhe ist ein "
+"RATIONAL Wert. Die Referenzeinheit ist Meter."
 
 #: libexif/exif-tag.c:368
 msgid "ISO Speed Ratings"
@@ -2187,14 +2244,19 @@ msgstr "ISO Geschwindigkeitsangabe"
 msgid ""
 "Indicates the ISO Speed and ISO Latitude of the camera or input device as "
 "specified in ISO 12232."
-msgstr "Gibt die ISO Geschwindigkeit und Breite der Kamera bzw. des Eingabegeräts an, wie in ISO 12232 spezifiziert."
+msgstr ""
+"Gibt die ISO Geschwindigkeit und Breite der Kamera bzw. des Eingabegeräts "
+"an, wie in ISO 12232 spezifiziert."
 
 #: libexif/exif-tag.c:373
 msgid ""
 "Indicates the Opto-Electoric Conversion Function (OECF) specified in ISO "
 "14524. <OECF> is the relationship between the camera optical input and the "
 "image values."
-msgstr "Gibt die Opto Elektronische Konvertierungsfunktion (OECF) an, die in ISO 14524 spezifiziert ist. <OECF> ist der Zusammenhang zwischen dem optischen Input und den Bildwerten."
+msgstr ""
+"Gibt die Opto Elektronische Konvertierungsfunktion (OECF) an, die in ISO "
+"14524 spezifiziert ist. <OECF> ist der Zusammenhang zwischen dem optischen "
+"Input und den Bildwerten."
 
 #: libexif/exif-tag.c:377
 msgid "Exif Version"
@@ -2204,7 +2266,9 @@ msgstr "Exif Version"
 msgid ""
 "The version of this standard supported. Nonexistence of this field is taken "
 "to mean nonconformance to the standard."
-msgstr "Die Version des Exif Standards die unterstützt wird. Wenn dieses Feld nicht vorhanden ist wird angenommen, das der Standard nicht beachtet wird."
+msgstr ""
+"Die Version des Exif Standards die unterstützt wird. Wenn dieses Feld nicht "
+"vorhanden ist wird angenommen, das der Standard nicht beachtet wird."
 
 #: libexif/exif-tag.c:382
 msgid "Date and Time (original)"
@@ -2214,7 +2278,9 @@ msgstr "Datum und Uhrzeit (original)"
 msgid ""
 "The date and time when the original image data was generated. For a digital "
 "still camera the date and time the picture was taken are recorded."
-msgstr "Das Datum und die Zeit zu der das Bild generiert wurde. Für eine Digitalkamera ist das der Zeitpunkt an dem das Bild geschossen wurde."
+msgstr ""
+"Das Datum und die Zeit zu der das Bild generiert wurde. Für eine "
+"Digitalkamera ist das der Zeitpunkt an dem das Bild geschossen wurde."
 
 #: libexif/exif-tag.c:388
 msgid "Date and Time (digitized)"
@@ -2232,7 +2298,14 @@ msgid ""
 "However, since <PhotometricInterpretation> can only express the order of Y, "
 "Cb and Cr, this tag is provided for cases when compressed data uses "
 "components other than Y, Cb, and Cr and to enable support of other sequences."
-msgstr "Zu den komprimierten Daten gehörende Informationen. Die Kanäle jeder Komponente sind in der Reihenfolge erster bis vierter sortiert. Für unkomprimierte Daten ist das Datenlayout im <PhotometricInterpretation> Tag spezifiziert. Da aber <PhotometricInterpretation> nur die Reihenfolge von Y, Cb und Cr angeben kann wird dieser Tag dann benutzt, wenn die komprimierten Daten andere Komponenten als Y, Cb und Cr benutzen, oder um die Unterstützung anderer Sequenzen zu erlauben."
+msgstr ""
+"Zu den komprimierten Daten gehörende Informationen. Die Kanäle jeder "
+"Komponente sind in der Reihenfolge erster bis vierter sortiert. Für "
+"unkomprimierte Daten ist das Datenlayout im <PhotometricInterpretation> Tag "
+"spezifiziert. Da aber <PhotometricInterpretation> nur die Reihenfolge von Y, "
+"Cb und Cr angeben kann wird dieser Tag dann benutzt, wenn die komprimierten "
+"Daten andere Komponenten als Y, Cb und Cr benutzen, oder um die "
+"Unterstützung anderer Sequenzen zu erlauben."
 
 #: libexif/exif-tag.c:403
 msgid "Compressed Bits per Pixel"
@@ -2242,7 +2315,10 @@ msgstr "Komprimierte Bits per Pixel"
 msgid ""
 "Information specific to compressed data. The compression mode used for a "
 "compressed image is indicated in unit bits per pixel."
-msgstr "Zu den komprimierten Daten gehörige Informationen. Der Kompressionsmodus der für ein komprimiertes Bild verwendet wird ist hier in Teilbits per Pixel angegeben."
+msgstr ""
+"Zu den komprimierten Daten gehörige Informationen. Der Kompressionsmodus der "
+"für ein komprimiertes Bild verwendet wird ist hier in Teilbits per Pixel "
+"angegeben."
 
 #: libexif/exif-tag.c:408
 msgid "Shutter speed"
@@ -2252,7 +2328,9 @@ msgstr "Verschlusszeit"
 msgid ""
 "Shutter speed. The unit is the APEX (Additive System of Photographic "
 "Exposure) setting (see Appendix C)."
-msgstr "Verschlusszeit. Die Einheit ist die APEX (Additive System of Photographic Exposure) Einstellung (siehe Anhang C)."
+msgstr ""
+"Verschlusszeit. Die Einheit ist die APEX (Additive System of Photographic "
+"Exposure) Einstellung (siehe Anhang C)."
 
 #: libexif/exif-tag.c:413
 msgid "The lens aperture. The unit is the APEX value."
@@ -2266,7 +2344,9 @@ msgstr "Helligkeit"
 msgid ""
 "The value of brightness. The unit is the APEX value. Ordinarily it is given "
 "in the range of -99.99 to 99.99."
-msgstr "Die Helligkeit. Die Einheit ist der APEX Wert. Normalerweise ist dieser Wert zwischen -99.99 und 99.99."
+msgstr ""
+"Die Helligkeit. Die Einheit ist der APEX Wert. Normalerweise ist dieser Wert "
+"zwischen -99.99 und 99.99."
 
 #: libexif/exif-tag.c:420
 msgid "Exposure Bias"
@@ -2276,13 +2356,18 @@ msgstr "Belichtungsabweichung"
 msgid ""
 "The exposure bias. The units is the APEX value. Ordinarily it is given in "
 "the range of -99.99 to 99.99."
-msgstr "Die Belichtungsabweichung. Die Einheit ist der APEX Wert. Normalerweise wird diese innerhalb des Bereiches -99.99 bis 99.99 spezifiziert."
+msgstr ""
+"Die Belichtungsabweichung. Die Einheit ist der APEX Wert. Normalerweise wird "
+"diese innerhalb des Bereiches -99.99 bis 99.99 spezifiziert."
 
 #: libexif/exif-tag.c:425
 msgid ""
 "The smallest F number of the lens. The unit is the APEX value. Ordinarily it "
 "is given in the range of 00.00 to 99.99, but it is not limited to this range."
-msgstr "Die kleinste F Nummer der Linse. Die Einheit ist der APEX Wert. Normalerweise wird es im Bereich von 00.00 bis 99.99 angegeben, ist aber nicht limitiert auf diesen Bereich."
+msgstr ""
+"Die kleinste F Nummer der Linse. Die Einheit ist der APEX Wert. "
+"Normalerweise wird es im Bereich von 00.00 bis 99.99 angegeben, ist aber "
+"nicht limitiert auf diesen Bereich."
 
 #: libexif/exif-tag.c:430
 msgid "Subject Distance"
@@ -2322,7 +2407,9 @@ msgstr "Brennweite"
 msgid ""
 "The actual focal length of the lens, in mm. Conversion is not made to the "
 "focal length of a 35 mm film camera."
-msgstr "Die wirkliche Brennweite der Linse, in mm. Es wird nicht auf das 35mm Filmkamera Äquivalent konvertiert."
+msgstr ""
+"Die wirkliche Brennweite der Linse, in mm. Es wird nicht auf das 35mm "
+"Filmkamera Äquivalent konvertiert."
 
 #: libexif/exif-tag.c:446
 msgid "Maker Note"
@@ -2332,7 +2419,9 @@ msgstr "Anmerkungen des Herstellers"
 msgid ""
 "A tag for manufacturers of Exif writers to record any desired information. "
 "The contents are up to the manufacturer."
-msgstr "Ein Tag für die Hersteller von Exif Schreibern um variable Informationen abzuspeichern. Der Inhalt ist vom Hersteller abhängig."
+msgstr ""
+"Ein Tag für die Hersteller von Exif Schreibern um variable Informationen "
+"abzuspeichern. Der Inhalt ist vom Hersteller abhängig."
 
 #: libexif/exif-tag.c:450
 msgid "User Comment"
@@ -2358,19 +2447,43 @@ msgid ""
 "tag (see Table 7). When a <UserComment> area is set aside, it is recommended "
 "that the ID code be ASCII and that the following user comment part be filled "
 "with blank characters [20.H]."
-msgstr "Ein Tag für Exif Benutzer um spezielle Stichworte oder Kommentare über das Bild zu notieren unabhängig von denen im <ImageDescription> Tag und ohne dessen Encoding Limitierung. Das Encoding im <UserComment> Tag wird durch einen ID Code in einem fixen 8-Byte Bereich am Beginn des Datenbereichs identifiziert. Der unbenutzte Teil dieses Bereiches wird mit Nullen aufgefüllt (00h). ID Codes werden durch Registration vergeben. Die Angaben und Referenzen sind in Tabelle 6 spezifiziert. Der Wert von CountN wird ermittelt anhand der 8 Byte im Character Code Bereich und der Anzahl an Bytes im User Kommentar Bereich. Da der TYPE nicht ASCII ist ist eine NULL Terminierung nicht nötig (siehe Abbildung 9). Der ID Code des <UserComment> Bereichs kann ein \"Defined Code\" wie z.B. JIS oder ASCII sein, oder kann \"Undefined\" sein. Der \"Undefined\" Name ist undefinierter Text und der ID Code ist mit 8 Bytes NULL (00h) gefüllt. Ein Exif Leser der dieses Feld ausliest muss eine Funktion zum Ermitteln dieses Codes besitzen. Diese Funktion wird nicht verlangt in Lesern, die das Feld nicht benutzen (siehe Tabelle 7). Wenn ein <UserComment> Bereich angelegt wurde, ist der empfohlene ID Code ASCII und der folgende User Kommentar Bereich ist mit Leerzeichen aufgefüllt (20h)."
+msgstr ""
+"Ein Tag für Exif Benutzer um spezielle Stichworte oder Kommentare über das "
+"Bild zu notieren unabhängig von denen im <ImageDescription> Tag und ohne "
+"dessen Encoding Limitierung. Das Encoding im <UserComment> Tag wird durch "
+"einen ID Code in einem fixen 8-Byte Bereich am Beginn des Datenbereichs "
+"identifiziert. Der unbenutzte Teil dieses Bereiches wird mit Nullen "
+"aufgefüllt (00h). ID Codes werden durch Registration vergeben. Die Angaben "
+"und Referenzen sind in Tabelle 6 spezifiziert. Der Wert von CountN wird "
+"ermittelt anhand der 8 Byte im Character Code Bereich und der Anzahl an "
+"Bytes im User Kommentar Bereich. Da der TYPE nicht ASCII ist ist eine NULL "
+"Terminierung nicht nötig (siehe Abbildung 9). Der ID Code des <UserComment> "
+"Bereichs kann ein \"Defined Code\" wie z.B. JIS oder ASCII sein, oder kann "
+"\"Undefined\" sein. Der \"Undefined\" Name ist undefinierter Text und der ID "
+"Code ist mit 8 Bytes NULL (00h) gefüllt. Ein Exif Leser der dieses Feld "
+"ausliest muss eine Funktion zum Ermitteln dieses Codes besitzen. Diese "
+"Funktion wird nicht verlangt in Lesern, die das Feld nicht benutzen (siehe "
+"Tabelle 7). Wenn ein <UserComment> Bereich angelegt wurde, ist der "
+"empfohlene ID Code ASCII und der folgende User Kommentar Bereich ist mit "
+"Leerzeichen aufgefüllt (20h)."
 
 #: libexif/exif-tag.c:476
 msgid "A tag used to record fractions of seconds for the <DateTime> tag."
-msgstr "Der Tag wird benutzt um Sekundenbruchteile für den <DateTime> Tag zu erfassen."
+msgstr ""
+"Der Tag wird benutzt um Sekundenbruchteile für den <DateTime> Tag zu "
+"erfassen."
 
 #: libexif/exif-tag.c:481
 msgid "A tag used to record fractions of seconds for the <DateTimeOriginal> tag."
-msgstr "Der Tag wird benutzt um Sekundenbruchteile für den <DateTimeOriginal> Tag zu erfassen."
+msgstr ""
+"Der Tag wird benutzt um Sekundenbruchteile für den <DateTimeOriginal> Tag zu "
+"erfassen."
 
 #: libexif/exif-tag.c:486
 msgid "A tag used to record fractions of seconds for the <DateTimeDigitized> tag."
-msgstr "Der Tag wird benutzt um Sekundenbruchteile für den <DateTimeDigitized> Tag zu erfassen."
+msgstr ""
+"Der Tag wird benutzt um Sekundenbruchteile für den <DateTimeDigitized> Tag "
+"zu erfassen."
 
 #: libexif/exif-tag.c:490
 msgid "The FlashPix format version supported by a FPXR file."
@@ -2387,7 +2500,13 @@ msgid ""
 "PC monitor conditions and environment. If a color space other than sRGB is "
 "used, Uncalibrated (=FFFF.H) is set. Image data recorded as Uncalibrated can "
 "be treated as sRGB when it is converted to FlashPix. On sRGB see Appendix E."
-msgstr "Der Farbrauminformationstag ist immer als FarbraumSpezifikator. Normalerweise wird sRGB (=1) benutzt um den Farbraum an PC Monitor Bedingungen anzupassen. Wenn ein anderer Farbraum als sRGB benutzt wird, ist der werd \"unkalibriert\" (=FFFFH) gesetzt. Bilddaten die als unkalibriert aufgezeichnet wurden kõnnen als sRGB betrachtet werden wenn sie in FlashPix konvertiert werden. Bzgl. sRGB beachten sie bitte Anhang E."
+msgstr ""
+"Der Farbrauminformationstag ist immer als FarbraumSpezifikator. "
+"Normalerweise wird sRGB (=1) benutzt um den Farbraum an PC Monitor "
+"Bedingungen anzupassen. Wenn ein anderer Farbraum als sRGB benutzt wird, ist "
+"der werd \"unkalibriert\" (=FFFFH) gesetzt. Bilddaten die als unkalibriert "
+"aufgezeichnet wurden kõnnen als sRGB betrachtet werden wenn sie in FlashPix "
+"konvertiert werden. Bzgl. sRGB beachten sie bitte Anhang E."
 
 #: libexif/exif-tag.c:502
 msgid ""
@@ -2396,7 +2515,13 @@ msgid ""
 "whether or not there is padding data or a restart marker. This tag should "
 "not exist in an uncompressed file. For details see section 2.8.1 and "
 "Appendix F."
-msgstr "Informationen spezifisch zu den komprimierten Daten. Wenn eine komprimiertes Datei aufgezeichnet wird muss die Breite des sinnvollen Bildausschnitts in diesem Tag aufgezeichnet werden, egal ob Padding Daten oder ein Restart Marker vorhanden sind. Dieser Tag sollte nicht in einer unkomprimierten Datei existieren. Für mehr Details sehen sie bitten in Sektion 2.8.1 and Anhang F."
+msgstr ""
+"Informationen spezifisch zu den komprimierten Daten. Wenn eine komprimiertes "
+"Datei aufgezeichnet wird muss die Breite des sinnvollen Bildausschnitts in "
+"diesem Tag aufgezeichnet werden, egal ob Padding Daten oder ein Restart "
+"Marker vorhanden sind. Dieser Tag sollte nicht in einer unkomprimierten "
+"Datei existieren. Für mehr Details sehen sie bitten in Sektion 2.8.1 and "
+"Anhang F."
 
 #: libexif/exif-tag.c:510
 msgid ""
@@ -2407,7 +2532,14 @@ msgid ""
 "Appendix F. Since data padding is unnecessary in the vertical direction, the "
 "number of lines recorded in this valid image height tag will in fact be the "
 "same as that recorded in the SOF."
-msgstr "Informationen spezifisch zu den komprimierten Daten. Wenn eine komprimiertes Datei aufgezeichnet wird muss die Höhe des sinnvollen Bildausschnitts in diesem Tag aufgezeichnet werden, egal ob Padding Daten oder ein Restart Marker vorhanden sind. Dieser Tag sollte nicht in einer unkomprimierten Datei existieren. Für mehr Details sehen sie bitten in Sektion 2.8.1 and Anhang F. Da Padding in der Vertikalen nicht nötig ist, ist die Anzahl an Zeilen in diesem Tag die gleiche wie die im JPEG SOF Marker."
+msgstr ""
+"Informationen spezifisch zu den komprimierten Daten. Wenn eine komprimiertes "
+"Datei aufgezeichnet wird muss die Höhe des sinnvollen Bildausschnitts in "
+"diesem Tag aufgezeichnet werden, egal ob Padding Daten oder ein Restart "
+"Marker vorhanden sind. Dieser Tag sollte nicht in einer unkomprimierten "
+"Datei existieren. Für mehr Details sehen sie bitten in Sektion 2.8.1 and "
+"Anhang F. Da Padding in der Vertikalen nicht nötig ist, ist die Anzahl an "
+"Zeilen in diesem Tag die gleiche wie die im JPEG SOF Marker."
 
 #: libexif/exif-tag.c:521
 msgid ""
@@ -2434,7 +2566,12 @@ msgid ""
 "is an ASCII character string, it is terminated by NULL. When this tag is "
 "used to map audio files, the relation of the audio file to image data must "
 "also be indicated on the audio file end."
-msgstr "Dieser Tag wird dazu benutzt, um den Namen einer Audiodatei zu speichern, die zu den Bilddaten gehört. Die einzige Information hier ist der Exif Audiodateiname und die Extension (ein ASCII String mit 8 Zeichen, \".\" und 3 Zeichen). Der Pfad ist nicht enthalten. Dieser String wird durch NULL (00h) terminiert."
+msgstr ""
+"Dieser Tag wird dazu benutzt, um den Namen einer Audiodatei zu speichern, "
+"die zu den Bilddaten gehört. Die einzige Information hier ist der Exif "
+"Audiodateiname und die Extension (ein ASCII String mit 8 Zeichen, \".\" und "
+"3 Zeichen). Der Pfad ist nicht enthalten. Dieser String wird durch NULL "
+"(00h) terminiert."
 
 #: libexif/exif-tag.c:554
 msgid ""
@@ -2443,7 +2580,11 @@ msgid ""
 "IFD. The Interoperability structure of Interoperability IFD is the same as "
 "TIFF defined IFD structure but does not contain the image data "
 "characteristically compared with normal TIFF IFD."
-msgstr "Das Interoperabilitäts IFD besteht aus Tags die Informationen enthalten, die die Interoperabilität sicherstellen. Die Interoperabilitätsstruktur des Interoperabilitäts IFD ist das gleich wie in der TIFF IFD Struktur, enthält aber keine Bildcharakteristiken wie das normale TIFF IFD."
+msgstr ""
+"Das Interoperabilitäts IFD besteht aus Tags die Informationen enthalten, die "
+"die Interoperabilität sicherstellen. Die Interoperabilitätsstruktur des "
+"Interoperabilitäts IFD ist das gleich wie in der TIFF IFD Struktur, enthält "
+"aber keine Bildcharakteristiken wie das normale TIFF IFD."
 
 #: libexif/exif-tag.c:563
 msgid "Flash Energy"
@@ -2453,7 +2594,9 @@ msgstr "Energie des Blitzes"
 msgid ""
 "Indicates the strobe energy at the time the image is captured, as measured "
 "in Beam Candle Power Seconds (BCPS)."
-msgstr "Gibt die Energie des Blitzes zum Zeitpunkt der Aufnahme an, in Beam Candle Power Seconds (BCPS)."
+msgstr ""
+"Gibt die Energie des Blitzes zum Zeitpunkt der Aufnahme an, in Beam Candle "
+"Power Seconds (BCPS)."
 
 #: libexif/exif-tag.c:567
 msgid "Spatial Frequency Response"
@@ -2474,7 +2617,9 @@ msgstr "Fokusebene x-Auflösung"
 msgid ""
 "Indicates the number of pixels in the image width (X) direction per "
 "<FocalPlaneResolutionUnit> on the camera focal plane."
-msgstr "Gibt die Anzahl an Pixeln in der Breite (X Ebene) pro <FocalPlaneResolutionUnit> in der Fokusebene an."
+msgstr ""
+"Gibt die Anzahl an Pixeln in der Breite (X Ebene) pro "
+"<FocalPlaneResolutionUnit> in der Fokusebene an."
 
 #: libexif/exif-tag.c:577
 msgid "Focal Plane y-Resolution"
@@ -2484,7 +2629,9 @@ msgstr "Fokusebene y-Auflösung"
 msgid ""
 "Indicates the number of pixels in the image height (V) direction per "
 "<FocalPlaneResolutionUnit> on the camera focal plane."
-msgstr "Gibt die Anzahl an Pixeln in der Höhe (Y Ebene) pro <FocalPlaneResolutionUnit> in der Fokusebene an."
+msgstr ""
+"Gibt die Anzahl an Pixeln in der Höhe (Y Ebene) pro "
+"<FocalPlaneResolutionUnit> in der Fokusebene an."
 
 #: libexif/exif-tag.c:581
 msgid "Focal Plane Resolution Unit"
@@ -2494,7 +2641,9 @@ msgstr "Einheit der Angaben der Fokusebene"
 msgid ""
 "Indicates the unit for measuring <FocalPlaneXResolution> and "
 "<FocalPlaneYResolution>. This value is the same as the <ResolutionUnit>."
-msgstr "Gibt die Einheit für die Messung der <FocalPlaneXResolution> und der <FocalPlaneYResolution> an. Der Wert ist der gleiche wie <ResolutionUnit>."
+msgstr ""
+"Gibt die Einheit für die Messung der <FocalPlaneXResolution> und der "
+"<FocalPlaneYResolution> an. Der Wert ist der gleiche wie <ResolutionUnit>."
 
 #: libexif/exif-tag.c:586
 msgid "Subject Location"
@@ -2506,7 +2655,11 @@ msgid ""
 "tag represents the pixel at the center of the main subject relative to the "
 "left edge, prior to rotation processing as per the <Rotation> tag. The first "
 "value indicates the X column number and second indicates the Y row number."
-msgstr "Gibt den Ort des Hauptmotivs in der Szene an. Der Wert dieses Tags repräsentiert den Pixel im Zentrum des Hauptmotivs relativ zur linken Bildkante, vor der Rotation (siehe <Rotation> Tag). Der erste Wert gibt die X, der zweite die Y Koordinate an."
+msgstr ""
+"Gibt den Ort des Hauptmotivs in der Szene an. Der Wert dieses Tags "
+"repräsentiert den Pixel im Zentrum des Hauptmotivs relativ zur linken "
+"Bildkante, vor der Rotation (siehe <Rotation> Tag). Der erste Wert gibt die "
+"X, der zweite die Y Koordinate an."
 
 #: libexif/exif-tag.c:593
 msgid "Exposure index"
@@ -2516,7 +2669,9 @@ msgstr "Belichtungsindex"
 msgid ""
 "Indicates the exposure index selected on the camera or input device at the "
 "time the image is captured."
-msgstr "Gibt den Belichtungsindex an, der in der Kamera oder im Eingabegerät während der Aufnahme selektiert ist."
+msgstr ""
+"Gibt den Belichtungsindex an, der in der Kamera oder im Eingabegerät während "
+"der Aufnahme selektiert ist."
 
 #: libexif/exif-tag.c:596
 msgid "Sensing Method"
@@ -2534,7 +2689,9 @@ msgstr "Dateiquelle"
 msgid ""
 "Indicates the image source. If a DSC recorded the image, this tag value of "
 "this tag always be set to 3, indicating that the image was recorded on a DSC."
-msgstr "Gibt die Quelle des Bildes an. Wenn das Bild durch eine Digitalkamera aufgenommen wurde, ist der Wert 3."
+msgstr ""
+"Gibt die Quelle des Bildes an. Wenn das Bild durch eine Digitalkamera "
+"aufgenommen wurde, ist der Wert 3."
 
 #: libexif/exif-tag.c:603
 msgid "Scene Type"
@@ -2544,7 +2701,10 @@ msgstr "Szenentyp"
 msgid ""
 "Indicates the type of scene. If a DSC recorded the image, this tag value "
 "must always be set to 1, indicating that the image was directly photographed."
-msgstr "Gibt den Typ der Szene an. Wenn eine Digitalkamera die Szene aufgenommen hat, muß diese Zahl immer auf 1 gesetzt werden, um anzugeben, das die Szene direkt photographiert wurde."
+msgstr ""
+"Gibt den Typ der Szene an. Wenn eine Digitalkamera die Szene aufgenommen "
+"hat, muß diese Zahl immer auf 1 gesetzt werden, um anzugeben, das die Szene "
+"direkt photographiert wurde."
 
 #: libexif/exif-tag.c:612
 msgid "Subject Area"
@@ -2580,7 +2740,10 @@ msgid ""
 "This tag indicates the exposure mode set when the image was shot. In auto-"
 "bracketing mode, the camera shoots a series of frames of the same scene at "
 "different exposure settings."
-msgstr "Dieser Tag gibt den Belichtungsmodus bei der Aufnahme des Bildes an. In \"autobracketing\" Modus nimmt die Kamera mehrere Bilder derselben Szene mit verschiedenen Belichtungseinstellungen auf."
+msgstr ""
+"Dieser Tag gibt den Belichtungsmodus bei der Aufnahme des Bildes an. In "
+"\"autobracketing\" Modus nimmt die Kamera mehrere Bilder derselben Szene mit "
+"verschiedenen Belichtungseinstellungen auf."
 
 #: libexif/exif-tag.c:625 libexif/pentax/mnote-pentax-tag.c:40
 msgid "White Balance"
@@ -2599,7 +2762,9 @@ msgid ""
 "This tag indicates the digital zoom ratio when the image was shot. If the "
 "numerator of the recorded value is 0, this indicates that digital zoom was "
 "not used."
-msgstr "Dieser Tag gibt die digitale Zoomrate bei der Aufnahme des Bildes an. Wenn der Divisor 0 ist, wurde kein Digitalzoom benutzt."
+msgstr ""
+"Dieser Tag gibt die digitale Zoomrate bei der Aufnahme des Bildes an. Wenn "
+"der Divisor 0 ist, wurde kein Digitalzoom benutzt."
 
 #: libexif/exif-tag.c:634
 msgid "Focal Length In 35mm Film"
@@ -2610,7 +2775,10 @@ msgid ""
 "This tag indicates the equivalent focal length assuming a 35mm film camera, "
 "in mm. A value of 0 means the focal length is unknown. Note that this tag "
 "differs from the FocalLength tag."
-msgstr "Dieser Tag gibt die äquivalente Brennweite bei angenommener 35mm Filmkamera an. Der Wert 0 bedeutet das die Brennweite unbekannt ist. Dieser Tag unterscheidet sich vom <FocalLength> Tag."
+msgstr ""
+"Dieser Tag gibt die äquivalente Brennweite bei angenommener 35mm Filmkamera "
+"an. Der Wert 0 bedeutet das die Brennweite unbekannt ist. Dieser Tag "
+"unterscheidet sich vom <FocalLength> Tag."
 
 #: libexif/exif-tag.c:640
 msgid "Scene Capture Type"
@@ -2621,7 +2789,10 @@ msgid ""
 "This tag indicates the type of scene that was shot. It can also be used to "
 "record the mode in which the image was shot. Note that this differs from the "
 "scene type (SceneType) tag."
-msgstr "Dieser Tag gibt an welche Art von Szene aufgenommen wurde. Er kann auch zum Angeben des Aufnahmemodus verwendet werden. Beachten sie, das sich dieser Typ vom Szenentyp (<SceneType>) Tag unterscheidet."
+msgstr ""
+"Dieser Tag gibt an welche Art von Szene aufgenommen wurde. Er kann auch zum "
+"Angeben des Aufnahmemodus verwendet werden. Beachten sie, das sich dieser "
+"Typ vom Szenentyp (<SceneType>) Tag unterscheidet."
 
 #: libexif/exif-tag.c:645
 msgid "Gain Control"
@@ -2635,19 +2806,25 @@ msgstr ""
 msgid ""
 "This tag indicates the direction of contrast processing applied by the "
 "camera when the image was shot."
-msgstr "Dieser Tag gibt die Richtung der Kontrastbearbeitung an, die bei der Aufnahme des Bildes angewandt wurde."
+msgstr ""
+"Dieser Tag gibt die Richtung der Kontrastbearbeitung an, die bei der "
+"Aufnahme des Bildes angewandt wurde."
 
 #: libexif/exif-tag.c:652
 msgid ""
 "This tag indicates the direction of saturation processing applied by the "
 "camera when the image was shot."
-msgstr "Dieser Tag gibt die Richtung der Sättigungsbearbeitung an, die bei der Aufnahme des Bildes angewandt wurde."
+msgstr ""
+"Dieser Tag gibt die Richtung der Sättigungsbearbeitung an, die bei der "
+"Aufnahme des Bildes angewandt wurde."
 
 #: libexif/exif-tag.c:655
 msgid ""
 "This tag indicates the direction of sharpness processing applied by the "
 "camera when the image was shot."
-msgstr "Dieser Tag gibt die Richtung der Schärfeberarbeitung bei der Aufnahme des Bildes an."
+msgstr ""
+"Dieser Tag gibt die Richtung der Schärfeberarbeitung bei der Aufnahme des "
+"Bildes an."
 
 #: libexif/exif-tag.c:658
 msgid "Device Setting Description"
@@ -2658,7 +2835,10 @@ msgid ""
 "This tag indicates information on the picture-taking conditions of a "
 "particular camera model. The tag is used only to indicate the picture-taking "
 "conditions in the reader."
-msgstr "Dieser Tag enthält Informationen über die Bildaufnahme Bedingungen eines bestimmten Kameramodells. Dieser Tag wird nur zur Angabe der Bedingungen im Leser benutzt."
+msgstr ""
+"Dieser Tag enthält Informationen über die Bildaufnahme Bedingungen eines "
+"bestimmten Kameramodells. Dieser Tag wird nur zur Angabe der Bedingungen im "
+"Leser benutzt."
 
 #: libexif/exif-tag.c:664
 msgid "Subject Distance Range"
@@ -2677,7 +2857,9 @@ msgid ""
 "This tag indicates an identifier assigned uniquely to each image. It is "
 "recorded as an ASCII string equivalent to hexadecimal notation and 128-bit "
 "fixed length."
-msgstr "Dieser Tag gibt einen eindeutigen Bild Identifier an. Er wird als ASCII String in hexadezimal Notation aufgezeichnet und hat 128 Bit Länge."
+msgstr ""
+"Dieser Tag gibt einen eindeutigen Bild Identifier an. Er wird als ASCII "
+"String in hexadezimal Notation aufgezeichnet und hat 128 Bit Länge."
 
 #: libexif/exif-tag.c:670
 msgid "Gamma"
