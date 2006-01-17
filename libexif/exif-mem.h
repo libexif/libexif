@@ -1,3 +1,7 @@
+/*! \file exif-mem.h
+ *  \brief Define the ExifMem data type and the associated functions.
+ *  ExifMem defined the memory management functions used my the ExifLoader.
+ */
 /* exif-mem.h
  *
  * Copyright © 2003 Lutz Müller <lutz@users.sourceforge.net>
@@ -27,24 +31,49 @@
 extern "C" {
 #endif /* __cplusplus */
 
-/* Should work like calloc: Needs to return initialized memory. */
-typedef void * (* ExifMemAllocFunc)   (ExifLong);
+/*! Should work like calloc()
+ *  \param[in] s the size of the block to allocate.
+ *  \returns the allocated memory and initialized. 
+ */
+typedef void * (* ExifMemAllocFunc)   (ExifLong s);
 
-typedef void * (* ExifMemReallocFunc) (void *, ExifLong);
-typedef void   (* ExifMemFreeFunc)    (void *);
+/*! Should work like realloc()
+ * \param[in] p the pointer to reallocate
+ * \param[in] s the size of the reallocated block
+ * \returns allocated memory 
+ */
+typedef void * (* ExifMemReallocFunc) (void *p, ExifLong s);
+/*! Free method for ExifMem
+ * \param[in] p the pointer to free
+ * \returns the freed pointer
+ */
+typedef void   (* ExifMemFreeFunc)    (void *p);
 
+/*! ExifMem define a memory allocator */
 typedef struct _ExifMem ExifMem;
 
-ExifMem *exif_mem_new   (ExifMemAllocFunc, ExifMemReallocFunc,
-			 ExifMemFreeFunc);
+/*! Create a new ExifMem
+ * \param[in] a the allocator function
+ * \param[in] r the reallocator function
+ * \param[in] f the free function
+ */
+ExifMem *exif_mem_new   (ExifMemAllocFunc a, ExifMemReallocFunc r,
+			 ExifMemFreeFunc f);
+/*! Refcount an ExifMem
+ */
 void     exif_mem_ref   (ExifMem *);
+/*! Unrefcount an ExifMem
+ * If the refcount reaches 0, the ExifMem is freed
+ */
 void     exif_mem_unref (ExifMem *);
 
-void *exif_mem_alloc   (ExifMem *, ExifLong);
-void *exif_mem_realloc (ExifMem *, void *, ExifLong);
-void  exif_mem_free    (ExifMem *, void *);
+void *exif_mem_alloc   (ExifMem *m, ExifLong s);
+void *exif_mem_realloc (ExifMem *m, void *p, ExifLong s);
+void  exif_mem_free    (ExifMem *m, void *p);
 
-/* For your convenience */
+/*! The default ExifMem for your convenience
+ * \returns return the default ExifMem
+ */
 ExifMem *exif_mem_new_default (void);
 
 #ifdef __cplusplus

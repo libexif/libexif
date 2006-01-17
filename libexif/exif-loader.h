@@ -1,5 +1,7 @@
-/* exif-loader.h
- *
+/*! \file exif-loader.h
+ * \brief Defines the ExifLoader type
+ */
+/*
  * Copyright © 2003 Lutz Müller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
@@ -32,20 +34,47 @@ extern "C" {
 
 typedef struct _ExifLoader ExifLoader;
 
+/*! Allocate a new ExifLoader
+ *  \returns the allocated ExifLoader
+ */
 ExifLoader *exif_loader_new     (void);
+/*! Allocate a new ExifLoader using an ExifMem
+ *  \param[in] m the ExifMem
+ *  \returns the allocated ExifLoader
+ */
 ExifLoader *exif_loader_new_mem (ExifMem *);
+/*! Increase the refcount of the ExifLoader
+ *  \param[in] l the ExifLoader to increase the refcount of.
+ */
 void        exif_loader_ref     (ExifLoader *);
+/*! Decrease the refcount of the ExifLoader
+ *  \param[in] l the ExifLoader to decrease the refcount of.
+ *  If the refcount reaches 0, the ExifLoader is freeed.
+ */
 void        exif_loader_unref   (ExifLoader *);
 
+/*! Write a file to the ExifLoader
+ * \param[in] l the loader
+ * \param[in] fname the path to the file to read
+ */
 void        exif_loader_write_file (ExifLoader *, const char *fname);
 
-/*
- * Returns 1 while EXIF data is read (or while there is still 
- * hope that there will be EXIF data later on), 0 otherwise.
+/*! Write a buffer to the ExifLoader
+ * \param[in] l the loader to write too
+ * \param[in] b the buffer to read from
+ * \param[in] s the size of the buffer
+ * \returns 1 while EXIF data is read (or while there is still hope that there will be EXIF data later on), 0 otherwise.
  */
-unsigned char exif_loader_write (ExifLoader *, unsigned char *, unsigned int);
+unsigned char exif_loader_write (ExifLoader *l, unsigned char *b, unsigned int s);
 
+/*! Reset the ExifLoader
+ * \param[in] l the loader
+ */
 void          exif_loader_reset (ExifLoader *);
+/*! Get an ExifData out of an ExifLoader
+ * \param[in] l the loader
+ * \returns and allocated ExifData
+ */
 ExifData     *exif_loader_get_data (ExifLoader *);
 
 void exif_loader_log (ExifLoader *, ExifLog *);
