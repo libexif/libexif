@@ -155,7 +155,7 @@ exif_data_new_from_data (const unsigned char *data, unsigned int size)
 	return (edata);
 }
 
-static void
+static int
 exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 			   const unsigned char *d,
 			   unsigned int size, unsigned int offset)
@@ -176,7 +176,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	 */
 	s = exif_format_get_size (entry->format) * entry->components;
 	if (!s)
-		return;
+		return 0;
 	if (s > 4)
 		doff = exif_get_long (d + offset + 8, data->priv->order);
 	else
@@ -184,7 +184,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 
 	/* Sanity check */
 	if (size < doff + s)
-		return;
+		return 0;
 
 	entry->data = exif_data_alloc (data, s);
 	if (entry->data) {
@@ -203,6 +203,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 					       entry->data[6]);
 		data->priv->offset_mnote = doff;
 	}
+	return 1;
 }
 
 static void
@@ -413,9 +414,9 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 					break;
 			}
 			entry = exif_entry_new_mem (data->priv->mem);
-			exif_data_load_data_entry (data, entry, d, ds,
-						   offset + 12 * i);
-			exif_content_add_entry (data->ifd[ifd], entry);
+			if (exif_data_load_data_entry (data, entry, d, ds,
+						   offset + 12 * i))
+				exif_content_add_entry (data->ifd[ifd], entry);
 			exif_entry_unref (entry);
 			break;
 		}
