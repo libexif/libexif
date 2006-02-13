@@ -293,7 +293,7 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 				strncpy (val, _("Tungsten"), maxlen - strlen (val));
 				break;
 			case 4:
-				strncpy (val, _("Flourescent"), maxlen - strlen (val));
+				strncpy (val, _("Fluorescent"), maxlen - strlen (val));
 				break;
 			case 5:
 				strncpy (val, _("Flash"), maxlen - strlen (val));

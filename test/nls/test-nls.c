@@ -14,6 +14,7 @@ struct _testcase {
 
 typedef struct _testcase testcase;
 
+/* Translators: Just ignore the stuff in the test subdirectory. */
 static testcase testcases[] = {
   { "de_DE.UTF-8", 
     N_("[DO_NOT_TRANSLATE_THIS_MARKER]"), 

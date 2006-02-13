@@ -488,12 +488,12 @@ static struct {
       {0x0005, {N_("Strobe return light not detected."), N_("W/o strobe"),
 		NULL}},
       {0x0007, {N_("Strobe return light detected."), N_("W. strobe"), NULL}},
-      {0x0009, {N_("Flash fired, compulsatory flash mode"), NULL}},
-      {0x000d, {N_("Flash fired, compulsatory flash mode, return light "
+      {0x0009, {N_("Flash fired, compulsory flash mode"), NULL}},
+      {0x000d, {N_("Flash fired, compulsory flash mode, return light "
 		   "not detected."), NULL}},
-      {0x000f, {N_("Flash fired, compulsatory flash mode, return light "
+      {0x000f, {N_("Flash fired, compulsory flash mode, return light "
 		   "detected."), NULL}},
-      {0x0010, {N_("Flash did not fire, compulsatory flash mode."), NULL}},
+      {0x0010, {N_("Flash did not fire, compulsory flash mode."), NULL}},
       {0x0018, {N_("Flash did not fire, auto mode."), NULL}},
       {0x0019, {N_("Flash fired, auto mode."), NULL}},
       {0x001d, {N_("Flash fired, auto mode, return light not detected."),

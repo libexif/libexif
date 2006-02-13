@@ -1,3 +1,11 @@
+2006-02-13  Lutz Mueller <lutz@topfrose.de>
+
+	* libexif/canon/mnote-canon-entry.c: Fix typo.
+	* libexif/exif-entry.c: s/compulsatory/compulsory
+	* libexif/exif-tag.c: Fix typo.
+	* libexif/olympus/mnote-olympus-entry.c: Fix typo.
+	* test/nls/test-nls.c: Add translators' comment.
+
 2006-01-19  Marcus Meissner  <marcus@jet.franken.de>
 
 	* libexif/exif-data.c: Let exif_data_load_data_entry() signal failure

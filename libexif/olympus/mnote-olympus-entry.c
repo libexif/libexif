@@ -116,7 +116,7 @@ static struct {
     { {0, N_("Auto")},
       {1, N_("Preset")},
       {2, N_("Daylight")},
-      {3, N_("Incandescense")},
+      {3, N_("Incandescence")},
       {4, N_("Fluorescence")},
       {5, N_("Cloudy")},
       {6, N_("SpeedLight")},

@@ -588,7 +588,7 @@ static struct {
 	    "value of this tag represents the pixel at the center of the "
 	    "main subject relative to the left edge, prior to rotation "
 	    "processing as per the <Rotation> tag. The first value "
-	    "indicates the X column number and second indicates "
+	    "indicates the X column number and the second indicates "
 	    "the Y row number.")},
 	{EXIF_TAG_EXPOSURE_INDEX, "ExposureIndex", N_("Exposure index"),
 	 N_("Indicates the exposure index selected on the camera or "
@@ -598,7 +598,7 @@ static struct {
 	    "device.")},
 	{EXIF_TAG_FILE_SOURCE, "FileSource", N_("File Source"),
 	 N_("Indicates the image source. If a DSC recorded the image, "
-	    "this tag value of this tag always be set to 3, indicating "
+	    "the tag value of this tag always be set to 3, indicating "
 	    "that the image was recorded on a DSC.")},
 	{EXIF_TAG_SCENE_TYPE, "SceneType", N_("Scene Type"),
 	 N_("Indicates the type of scene. If a DSC recorded the image, "
