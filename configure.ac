@@ -124,7 +124,7 @@ GP_CHECK_DOXYGEN
 # ---------------------------------------------------------------------------
 GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT_MIN}],
                 [Lutz Mueller and others])
-ALL_LINGUAS="de es fr pl ru"
+ALL_LINGUAS="de es fr pl ru vi"
 AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT([external])
 AM_PO_SUBDIRS()
