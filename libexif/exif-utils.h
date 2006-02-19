@@ -33,7 +33,8 @@ extern "C" {
 /* If these definitions don't work for you, please let us fix the 
  * macro generating _stdint.h */
 	
-typedef char		ExifByte;          /* 1 byte  */
+typedef unsigned char	ExifByte;          /* 1 byte  */
+typedef signed char	ExifSByte;         /* 1 byte  */
 typedef char *		ExifAscii;
 typedef uint16_t	ExifShort;         /* 2 bytes */
 typedef int16_t         ExifSShort;        /* 2 bytes */
