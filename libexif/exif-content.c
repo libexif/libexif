@@ -122,7 +122,7 @@ exif_content_dump (ExifContent *content, unsigned int indent)
 	if (!content)
 		return;
 
-	printf ("%sDumping exif content (%i entries)...\n", buf,
+	printf ("%sDumping exif content (%u entries)...\n", buf,
 		content->count);
 	for (i = 0; i < content->count; i++)
 		exif_entry_dump (content->entries[i], indent + 1);

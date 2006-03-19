@@ -626,7 +626,7 @@ ProcessAperture(ImageInfoType *ImageInfo,
 	if (exif_find_record(ImageInfo->d, "FNumber") == NULL) {
 		/* Convert aperture to F-stop. */
 		fstop = pow(sqrt(2), ((double)rd.r.num)/((double)rd.r.denom));
-		sprintf(label, "f%.1g", fstop);
+		snprintf(label,32, "f%.1g", fstop);
 		rd.s = strdup(label);
 		exif_append_data(&ImageInfo->d,
 						 "FNumber",
@@ -673,7 +673,7 @@ ProcessCanonMakerNote(ImageInfoType *ImageInfo,
 		rec_type = ConvertAnyFormat2(OffsetPtr, ByteCount, format,
 									 ImageInfo->MotorolaOrder,
 									 &rd);
-		sprintf(label, "MakerNote%04x", tag);
+		snprintf(label, 32, "MakerNote%04x", tag);
 		exif_append_data(&ImageInfo->d,
 						 label,
 						 rec_type,
@@ -819,11 +819,10 @@ static int
 ProcessExifDir(ImageInfoType *ImageInfo, char *DirStart, char *OffsetBase, unsigned ExifLength, char *LastExifRefd)
 {
     int de;
-    int a;
     int NumDirEntries;
     exif_rec_data_t rd;
-	char rec_type;
-	char label[32];
+    char rec_type;
+    char label[32];
 
     NumDirEntries = Get16u(DirStart, ImageInfo->MotorolaOrder);
 
@@ -912,7 +911,7 @@ ProcessExifDir(ImageInfoType *ImageInfo, char *DirStart, char *OffsetBase, unsig
 			rec_type = ConvertAnyFormat2(ValuePtr, ByteCount, Format,
 										 ImageInfo->MotorolaOrder,
 										 &rd);
-			sprintf(label, "0x%04x", Tag);
+			snprintf(label, 32, "0x%04x", Tag);
 			exif_append_data(&ImageInfo->d,
 							 label,
 							 rec_type,
@@ -931,7 +930,6 @@ static int
 process_EXIF (ImageInfoType *ImageInfo, char *CharBuf, unsigned int length, char *LastExifRefd)
 {
 	int cc;
-	exif_rec_data_t rd;
 	LastExifRefd = CharBuf;
 
 	{   /* Check the EXIF header component */
@@ -1127,9 +1125,6 @@ ReadJpegFile(ImageInfoType *ImageInfo, Section_t *Sections,
 {
     FILE *infile;
     int ret;
-	char *tmp;
-	char **p_argv;
-	int p_argc;
 
     infile = fdopen(fd, "rb"); /* Unix ignores 'b', windows needs it. */
 
@@ -1163,7 +1158,6 @@ read_jpeg_exif(ImageInfoType *ImageInfo, int fd, int ReadAll)
 	int SectionsRead;
 	char *LastExifRefd=NULL;
 	int ret;
-	int thumbsize=0;
 
 	ret = ReadJpegFile(ImageInfo, Sections, &SectionsRead, fd, ReadAll, LastExifRefd); 
 #if 0
