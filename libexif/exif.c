@@ -721,95 +721,95 @@ ProcessMakerNote(ImageInfoType *ImageInfo,
 
 static struct ExifTag
 TagTable[] = {
-	{   0x0001, "InteroperabilityIndex"},
-	{   0x0002, "InteroperabilityVersion", ProcessVersion},
-	{	0x0100,	"ImageWidth"},
-	{	0x0101,	"ImageLength"},
-	{	0x0102,	"BitsPerSample"},
-	{	0x0103,	"Compression"},
-	{	0x0106,	"PhotometricInterpretation"},
-	{	0x010A,	"FillOrder"},
-	{	0x010D,	"DocumentName"},
-	{	0x010E,	"ImageDescription"},
-	{	0x010F,	"Make"},
-	{	0x0110,	"Model"},
-	{	0x0111,	"StripOffsets"},
-	{	0x0112,	"Orientation"},
-	{	0x0115,	"SamplesPerPixel"},
-	{	0x0116,	"RowsPerStrip"},
-	{	0x0117,	"StripByteCounts"},
-	{	0x011A,	"XResolution"},
-	{	0x011B,	"YResolution"},
-	{	0x011C,	"PlanarConfiguration"},
-	{	0x0128,	"ResolutionUnit"},
-	{	0x012D,	"TransferFunction"},
-	{	0x0131,	"Software"},
-	{	0x0132,	"DateTime"},
-	{	0x013B,	"Artist"},
-	{	0x013E,	"WhitePoint"},
-	{	0x013F,	"PrimaryChromaticities"},
-	{	0x0156,	"TransferRange"},
-	{	0x0200,	"JPEGProc"},
-	{	0x0201,	"JPEGInterchangeFormat"},
-	{	0x0202,	"JPEGInterchangeFormatLength"},
-	{	0x0211,	"YCbCrCoefficients"},
-	{	0x0212,	"YCbCrSubSampling"},
-	{	0x0213,	"YCbCrPositioning"},
-	{	0x0214,	"ReferenceBlackWhite"},
-	{   0x1000, "RelatedImageFileFormat"},
-	{   0x1001, "RelatedImageWidth"},
-	{   0x1002, "RelatedImageLength"},
-	{	0x828D,	"CFARepeatPatternDim"},
-	{	0x828E,	"CFAPattern"},
-	{	0x828F,	"BatteryLevel"},
-	{	0x8298,	"Copyright"},
-	{	0x829A,	"ExposureTime"},
-	{	0x829D,	"FNumber"},
-	{	0x83BB,	"IPTC/NAA"},
-	{	0x8769,	"ExifOffset"},
-	{	0x8773,	"InterColorProfile"},
-	{	0x8822,	"ExposureProgram"},
-	{	0x8824,	"SpectralSensitivity"},
-	{	0x8825,	"GPSInfo"},
-	{	0x8827,	"ISOSpeedRatings"},
-	{	0x8828,	"OECF"},
+	{   	0x0001, "InteroperabilityIndex", NULL},
+	{   	0x0002, "InteroperabilityVersion", ProcessVersion},
+	{	0x0100,	"ImageWidth", NULL},
+	{	0x0101,	"ImageLength", NULL},
+	{	0x0102,	"BitsPerSample", NULL},
+	{	0x0103,	"Compression", NULL},
+	{	0x0106,	"PhotometricInterpretation", NULL},
+	{	0x010A,	"FillOrder", NULL},
+	{	0x010D,	"DocumentName", NULL},
+	{	0x010E,	"ImageDescription", NULL},
+	{	0x010F,	"Make", NULL},
+	{	0x0110,	"Model", NULL},
+	{	0x0111,	"StripOffsets", NULL},
+	{	0x0112,	"Orientation", NULL},
+	{	0x0115,	"SamplesPerPixel", NULL},
+	{	0x0116,	"RowsPerStrip", NULL},
+	{	0x0117,	"StripByteCounts", NULL},
+	{	0x011A,	"XResolution", NULL},
+	{	0x011B,	"YResolution", NULL},
+	{	0x011C,	"PlanarConfiguration", NULL},
+	{	0x0128,	"ResolutionUnit", NULL},
+	{	0x012D,	"TransferFunction", NULL},
+	{	0x0131,	"Software", NULL},
+	{	0x0132,	"DateTime", NULL},
+	{	0x013B,	"Artist", NULL},
+	{	0x013E,	"WhitePoint", NULL},
+	{	0x013F,	"PrimaryChromaticities", NULL},
+	{	0x0156,	"TransferRange", NULL},
+	{	0x0200,	"JPEGProc", NULL},
+	{	0x0201,	"JPEGInterchangeFormat", NULL},
+	{	0x0202,	"JPEGInterchangeFormatLength", NULL},
+	{	0x0211,	"YCbCrCoefficients", NULL},
+	{	0x0212,	"YCbCrSubSampling", NULL},
+	{	0x0213,	"YCbCrPositioning", NULL},
+	{	0x0214,	"ReferenceBlackWhite", NULL},
+	{   	0x1000, "RelatedImageFileFormat", NULL},
+	{   	0x1001, "RelatedImageWidth", NULL},
+	{   	0x1002, "RelatedImageLength", NULL},
+	{	0x828D,	"CFARepeatPatternDim", NULL},
+	{	0x828E,	"CFAPattern", NULL},
+	{	0x828F,	"BatteryLevel", NULL},
+	{	0x8298,	"Copyright", NULL},
+	{	0x829A,	"ExposureTime", NULL},
+	{	0x829D,	"FNumber", NULL},
+	{	0x83BB,	"IPTC/NAA", NULL},
+	{	0x8769,	"ExifOffset", NULL},
+	{	0x8773,	"InterColorProfile", NULL},
+	{	0x8822,	"ExposureProgram", NULL},
+	{	0x8824,	"SpectralSensitivity", NULL},
+	{	0x8825,	"GPSInfo", NULL},
+	{	0x8827,	"ISOSpeedRatings", NULL},
+	{	0x8828,	"OECF", NULL},
 	{	0x9000,	"ExifVersion", ProcessVersion},
-	{	0x9003,	"DateTimeOriginal"},
-	{	0x9004,	"DateTimeDigitized"},
-	{	0x9101,	"ComponentsConfiguration"},
-	{	0x9102,	"CompressedBitsPerPixel"},
+	{	0x9003,	"DateTimeOriginal", NULL},
+	{	0x9004,	"DateTimeDigitized", NULL},
+	{	0x9101,	"ComponentsConfiguration", NULL},
+	{	0x9102,	"CompressedBitsPerPixel", NULL},
 	{	0x9201,	"ShutterSpeedValue", ProcessShutterSpeed},
 	{	0x9202,	"ApertureValue", ProcessAperture},
-	{	0x9203,	"BrightnessValue"},
-	{	0x9204,	"ExposureBiasValue"},
+	{	0x9203,	"BrightnessValue", NULL},
+	{	0x9204,	"ExposureBiasValue", NULL},
 	{	0x9205,	"MaxApertureValue", ProcessAperture},
-	{	0x9206,	"SubjectDistance"},
-	{	0x9207,	"MeteringMode"},
-	{	0x9208,	"LightSource"},
-	{	0x9209,	"Flash"},
-	{	0x920A,	"FocalLength"},
+	{	0x9206,	"SubjectDistance", NULL},
+	{	0x9207,	"MeteringMode", NULL},
+	{	0x9208,	"LightSource", NULL},
+	{	0x9209,	"Flash", NULL},
+	{	0x920A,	"FocalLength", NULL},
 	{	0x927C,	"MakerNote", ProcessMakerNote},
 	{	0x9286,	"UserComment", ProcessUserComment},
-	{	0x9290,	"SubSecTime"},
-	{	0x9291,	"SubSecTimeOriginal"},
-	{	0x9292,	"SubSecTimeDigitized"},
+	{	0x9290,	"SubSecTime", NULL},
+	{	0x9291,	"SubSecTimeOriginal", NULL},
+	{	0x9292,	"SubSecTimeDigitized", NULL},
 	{	0xA000,	"FlashPixVersion", ProcessVersion},
-	{	0xA001,	"ColorSpace"},
-	{	0xA002,	"ExifImageWidth"},
-	{	0xA003,	"ExifImageLength"},
-	{	0xA005,	"InteroperabilityOffset"},
-	{	0xA20B,	"FlashEnergy"},			        /* 0x920B in TIFF/EP */
-	{	0xA20C,	"SpatialFrequencyResponse"},	/* 0x920C    -  -    */
-	{	0xA20E,	"FocalPlaneXResolution"},    	/* 0x920E    -  -    */
-	{	0xA20F,	"FocalPlaneYResolution"},	    /* 0x920F    -  -    */
+	{	0xA001,	"ColorSpace", NULL},
+	{	0xA002,	"ExifImageWidth", NULL},
+	{	0xA003,	"ExifImageLength", NULL},
+	{	0xA005,	"InteroperabilityOffset", NULL},
+	{	0xA20B,	"FlashEnergy", NULL},			        /* 0x920B in TIFF/EP */
+	{	0xA20C,	"SpatialFrequencyResponse", NULL},	/* 0x920C    -  -    */
+	{	0xA20E,	"FocalPlaneXResolution", NULL},    	/* 0x920E    -  -    */
+	{	0xA20F,	"FocalPlaneYResolution", NULL},	    /* 0x920F    -  -    */
 	{	0xA210,	"FocalPlaneResolutionUnit", ProcessFocalPlaneUnits},
 	                                            /* 0x9210    -  -    */
-	{	0xA214,	"SubjectLocation"},		        /* 0x9214    -  -    */
-	{	0xA215,	"ExposureIndex"},		        /* 0x9215    -  -    */
-	{	0xA217,	"SensingMethod"},		        /* 0x9217    -  -    */
-	{	0xA300,	"FileSource"},
-	{	0xA301,	"SceneType"},
-	{        0, NULL}
+	{	0xA214,	"SubjectLocation", NULL},		        /* 0x9214    -  -    */
+	{	0xA215,	"ExposureIndex", NULL},		        /* 0x9215    -  -    */
+	{	0xA217,	"SensingMethod", NULL},		        /* 0x9217    -  -    */
+	{	0xA300,	"FileSource", NULL},
+	{	0xA301,	"SceneType", NULL},
+	{        0, NULL, NULL}
 } ;
 
 
@@ -911,7 +911,7 @@ ProcessExifDir(ImageInfoType *ImageInfo, char *DirStart, char *OffsetBase, unsig
 			rec_type = ConvertAnyFormat2(ValuePtr, ByteCount, Format,
 										 ImageInfo->MotorolaOrder,
 										 &rd);
-			snprintf(label, 32, "0x%04x", Tag);
+			snprintf(label, 32, "0x%04x", (unsigned int) Tag);
 			exif_append_data(&ImageInfo->d,
 							 label,
 							 rec_type,
@@ -975,13 +975,14 @@ scan_JPEG_header (ImageInfoType *ImageInfo, FILE *infile, Section_t *Sections, i
 
     a = fgetc(infile);
     if (a != 0xff || fgetc(infile) != M_SOI) {
-        return FALSE;
-    }
+      return FALSE;
+  }
 
     for(*SectionsRead=0;*SectionsRead < 19;) {
         int itemlen;
         int marker = 0;
-        int ll,lh, got;
+        int ll,lh;
+	size_t got;
         uchar *Data;
 
         for (a=0;a<7;a++) {
@@ -1007,7 +1008,7 @@ scan_JPEG_header (ImageInfoType *ImageInfo, FILE *infile, Section_t *Sections, i
 			return FALSE;
         }
 
-        Sections[*SectionsRead].Size = itemlen;
+        Sections[*SectionsRead].Size = (unsigned int) itemlen;
 
         Data = (uchar *)(*exif_malloc_fn)(itemlen+1); /* Add 1 to allow sticking a 0 at the end. */
         Sections[*SectionsRead].Data = Data;
@@ -1016,8 +1017,8 @@ scan_JPEG_header (ImageInfoType *ImageInfo, FILE *infile, Section_t *Sections, i
         Data[0] = (uchar)lh;
         Data[1] = (uchar)ll;
 
-        got = fread(Data+2, 1, itemlen-2, infile); /* Read the whole section. */
-        if (got != itemlen-2) {
+        got = fread(Data+2, 1, (size_t) itemlen-2, infile); /* Read the whole section. */
+        if ((int) got != itemlen-2) {
 			exif_error("reading from file");
 			return FALSE;
         }
@@ -1027,15 +1028,36 @@ scan_JPEG_header (ImageInfoType *ImageInfo, FILE *infile, Section_t *Sections, i
 		case M_SOS:   /* stop before hitting compressed data  */
 			/* If reading entire image is requested, read the rest of the data. */
 			if (ReadAll) {
-				int cp, ep, size;
+			  	signed long cp, ep;
+				unsigned int size;
 				/* Determine how much file is left. */
 				cp = ftell(infile);
-				fseek(infile, 0, SEEK_END);
+				if (cp == -1) {
+					exif_error ("ftell failed");
+					return FALSE;
+				}
+				if (fseek(infile, 0, SEEK_END) == -1) {
+				  	exif_error ("fseek failed");
+					return FALSE;
+				}
 				ep = ftell(infile);
-				fseek(infile, cp, SEEK_SET);
+				if (ep == -1) {
+ 					exif_error ("ftell failed");
+					return FALSE;
+				}
+				if (fseek(infile, cp, SEEK_SET) == -1) {
+					exif_error ("fseek failed");
+					return FALSE;
+				}
 
-				size = ep-cp;
-				Data = (uchar *)(*exif_malloc_fn)(size);
+				/* a very basic range check */
+				if (ep <= cp ) {
+					exif_error ("range check failed");
+					return FALSE;
+				}
+				
+				size = (unsigned int) (ep-cp);
+				Data = (uchar *)(*exif_malloc_fn)((int)size);
 				if (Data == NULL) {
 					exif_error("could not allocate data for entire image");
 					return FALSE;
@@ -1075,7 +1097,7 @@ scan_JPEG_header (ImageInfoType *ImageInfo, FILE *infile, Section_t *Sections, i
 			if (*SectionsRead <= 2) {
 				/* Seen files from some 'U-lead' software with Vivitar scanner
 				   that uses marker 31 later in the file (no clue what for!) */
-				process_EXIF(ImageInfo, (char *)Data, itemlen, LastExifRefd);
+				process_EXIF(ImageInfo, (char *)Data, (unsigned int) itemlen, LastExifRefd);
 			}
 			break;
 
