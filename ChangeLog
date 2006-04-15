@@ -1,3 +1,9 @@
+2006-04-15  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-loader.c: exif_loader_write() correctly skips APP2 marker
+	  with ICC profile because ImageMagick flips order of APP1 EXIF and
+	  APP2 ICC markers.
+
 2006-02-19  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-utils.h: ExifByte is now explicitly unsigned char,

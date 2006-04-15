@@ -33,6 +33,8 @@
 #define JPEG_MARKER_APP0 0xe0
 #undef JPEG_MARKER_APP1
 #define JPEG_MARKER_APP1 0xe1
+#undef JPEG_MARKER_APP2
+#define JPEG_MARKER_APP2 0xe2
 #undef JPEG_MARKER_APP13
 #define JPEG_MARKER_APP13 0xed
 #undef JPEG_MARKER_COM
@@ -265,6 +267,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 				eld->state = EL_READ_SIZE_BYTE_08;
 				break;
 			case JPEG_MARKER_APP0:
+			case JPEG_MARKER_APP2:
 			case JPEG_MARKER_APP13:
 			case JPEG_MARKER_COM:
 				eld->data_format = EL_DATA_FORMAT_JPEG;
