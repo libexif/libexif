@@ -1,3 +1,8 @@
+2006-05-05  Jan Patera <patera@users.sourceforge.net>
+	* libexif/exif-content.c: fixed bug #1471060: wasted space in 
+	  exif_content_add_entry() & exif_content_remove_entry(); also safe
+	  handling of failed realloc in exif_content_add_entry()
+
 2006-04-15  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/exif-loader.c: exif_loader_write() correctly skips APP2 marker
