@@ -131,6 +131,7 @@ exif_content_dump (ExifContent *content, unsigned int indent)
 void
 exif_content_add_entry (ExifContent *c, ExifEntry *entry)
 {
+	ExifEntry **entries;
 	if (!c || !c->priv || !entry || entry->parent) return;
 
 	/* One tag can only be added once to an IFD. */
@@ -142,13 +143,13 @@ exif_content_add_entry (ExifContent *c, ExifEntry *entry)
 		return;
 	}
 
+	entries = exif_mem_realloc (c->priv->mem,
+		c->entries, sizeof (ExifEntry*) * (c->count + 1));
+	if (!entries) return;
 	entry->parent = c;
-	c->entries = exif_mem_realloc (c->priv->mem,
-		c->entries, sizeof (ExifEntry) * (c->count + 1));
-	if (!c->entries) return;
-	c->entries[c->count] = entry;
+	entries[c->count++] = entry;
+	c->entries = entries;
 	exif_entry_ref (entry);
-	c->count++;
 }
 
 void
@@ -164,12 +165,12 @@ exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 
 	/* Remove the entry */
 	memmove (&c->entries[i], &c->entries[i + 1],
-		 sizeof (ExifEntry) * (c->count - i - 1));
+		 sizeof (ExifEntry*) * (c->count - i - 1));
 	c->count--;
 	e->parent = NULL;
 	exif_entry_unref (e);
 	c->entries = exif_mem_realloc (c->priv->mem, c->entries,
-					sizeof(ExifEntry) * c->count);
+					sizeof(ExifEntry*) * c->count);
 }
 
 ExifEntry *
