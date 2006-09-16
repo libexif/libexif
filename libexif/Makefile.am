@@ -24,7 +24,11 @@ libexif_la_SOURCES =		\
 	exif-tag.c		\
 	exif-utils.c		\
 	i18n.h
-libexif_la_DEPENDENCIES = $(srcdir)/libexif.sym
+libexif_la_DEPENDENCIES = \
+	$(srcdir)/libexif.sym \
+	canon/libmnote-canon.la		\
+	olympus/libmnote-olympus.la	\
+	pentax/libmnote-pentax.la
 libexif_la_LIBADD =			\
 	$(MATHLIBS)			\
 	$(LTLIBINTL)			\
