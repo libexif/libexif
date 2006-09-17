@@ -1,3 +1,9 @@
+2006-09-17  Lutz Mueller <lutz@users.sourceforge.net>
+
+  Patch by Jef Driesen <jefdriesen@hotmail.com>:
+
+  * libexif/canon/*: Improve support for canon maker notes.
+
 2006-05-05  Jan Patera <patera@users.sourceforge.net>
 	* libexif/exif-content.c: fixed bug #1471060: wasted space in 
 	  exif_content_add_entry() & exif_content_remove_entry(); also safe

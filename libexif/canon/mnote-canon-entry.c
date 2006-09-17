@@ -25,6 +25,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include <libexif/exif-format.h>
 #include <libexif/exif-utils.h>
@@ -66,73 +67,126 @@
 
 #define UNDEFINED 0xFF
     
-static struct  {
+static struct canon_entry_table_t {
   unsigned int subtag;
   ExifShort value;
   char *name;
-} entries [] = {
-  { 0,  1, N_("macro")},
-  { 0,  2, N_("normal")},
-  { 3,  0, N_("flash did not fire")},
-  { 3,  1, N_("auto")},
-  { 3,  2, N_("on")},
-  { 3,  3, N_("red eyes reduction")},
-  { 3,  4, N_("slow synchro")},
-  { 3,  5, N_("auto + red eyes reduction")},
-  { 3,  6, N_("on + red eyes reduction")},
-  { 3, 16, N_("external")},
-  { 4,  0, N_("single or timer")},
-  { 4,  1, N_("continuous")},
-  { 6,  0, N_("one-Shot")},
-  { 6,  1, N_("AI Servo")},
-  { 6,  2, N_("AI Focus")},
-  { 6,  3, N_("MF")},
+} entries_settings_1 [] = {
+  { 0,  1, N_("Macro")},
+  { 0,  2, N_("Normal")},
+  { 2,  1, N_("Economy")},
+  { 2,  2, N_("Normal")},  
+  { 2,  3, N_("Fine")},
+  { 2,  4, N_("RAW")},
+  { 2,  5, N_("Superfine")},
+  { 3,  0, N_("Off")},
+  { 3,  1, N_("Auto")},
+  { 3,  2, N_("On")},
+  { 3,  3, N_("Red-eye reduction")},
+  { 3,  4, N_("Slow synchro")},
+  { 3,  5, N_("Auto + Red-eye reduction")},
+  { 3,  6, N_("On + Red-eye reduction")},
+  { 3, 16, N_("External flash")},
+  { 4,  0, N_("Single")},
+  { 4,  1, N_("Continuous")},
+  { 4,  2, N_("Movie")},
+  { 4,  3, N_("Continuous, speed priority")},
+  { 4,  4, N_("Continuous, low")},
+  { 4,  5, N_("Continuous, high")},
+  { 6,  0, N_("One-shot AF")},
+  { 6,  1, N_("AI servo AF")},
+  { 6,  2, N_("AI focus AF")},
+  { 6,  3, N_("Manual focus")}, 
   { 6,  4, N_("Single")},
   { 6,  5, N_("Continuous")},
-  { 6,  6, N_("MF")},
-  { 9,  0, N_("large")},
-  { 9,  1, N_("medium")},
-  { 9,  2, N_("small")},
-  {10,  0, N_("full auto")},
-	{10,  1, N_("manual")},
-	{10,  2, N_("landscape")},
-	{10,  3, N_("fast shutter")},
-	{10,  4, N_("slow shutter")},
-	{10,  5, N_("night")},
-	{10,  6, N_("Black & White")},
+  { 6,  6, N_("Manual focus")},
+  { 6,  16, N_("Pan focus")},  
+  { 9,  0, N_("Large")},
+  { 9,  1, N_("Medium")},
+  { 9,  2, N_("Small")},
+  { 9,  5, N_("Medium 1")},
+  { 9,  6, N_("Medium 2")},
+  { 9,  7, N_("Medium 3")},  
+  {10,  0, N_("Full auto")},
+	{10,  1, N_("Manual")},
+	{10,  2, N_("Landscape")},
+	{10,  3, N_("Fast shutter")},
+	{10,  4, N_("Slow shutter")},
+	{10,  5, N_("Night")},
+	{10,  6, N_("Grayscale")},
 	{10,  7, N_("Sepia")},
 	{10,  8, N_("Portrait")},
 	{10,  9, N_("Sports")},
-	{10, 10, N_("Macro / Close-Up")},
-	{10, 11, N_("Pan Focus")},
-	{12, 0x0000, N_("normal")},
-	{12, 0x0001, N_("high")},
-	{12, 0xffff, N_("low")},
-	{13, 0x0000, N_("normal")},
-	{13, 0x0001, N_("high")},
-	{13, 0xffff, N_("low")},
-	{14, 0x0000, N_("normal")},
-	{14, 0x0001, N_("high")},
-	{14, 0xffff, N_("low")},
-	{15, 15, N_("auto")},
+	{10, 10, N_("Macro")},
+	{10, 11, N_("Black & white")},
+	{10, 12, N_("Pan focus")},
+	{10, 13, N_("Vivid")},
+	{10, 14, N_("Neutral")},
+	{10, 15, N_("Flash off")},
+	{10, 16, N_("Long shutter")},
+	{10, 17, N_("Super macro")},
+	{10, 18, N_("Foliage")},
+	{10, 19, N_("Indoor")},
+	{10, 20, N_("Fireworks")},
+	{10, 21, N_("Beach")},
+	{10, 22, N_("Underwater")},
+	{10, 23, N_("Snow")},
+	{10, 24, N_("Kids & pets")},
+	{10, 25, N_("Night snapshot")},
+	{10, 26, N_("Digital macro")},
+	{10, 27, N_("My colors")},
+	{10, 28, N_("Still image")},
+	{11, 0, N_("None")},
+	{11, 1, N_("2x")},
+	{11, 2, N_("4x")},
+	{11, 3, N_("Other")},
+	{12, 0x0000, N_("Normal")},
+	{12, 0x0001, N_("High")},
+	{12, 0xffff, N_("Low")},
+	{13, 0x0000, N_("Normal")},
+	{13, 0x0001, N_("High")},
+	{13, 0xffff, N_("Low")},
+	{14, 0x0000, N_("Normal")},
+	{14, 0x0001, N_("High")},
+	{14, 0xffff, N_("Low")},
+	{15, 14, N_("Auto high")},
+	{15, 15, N_("Auto")},
 	{15, 16, N_("50")},
 	{15, 17, N_("100")},
 	{15, 18, N_("200")},
 	{15, 19, N_("400")},
-	{16,  3, N_("evaluative")},
-	{16,  4, N_("partial")},
-	{16,  5, N_("center-weighted")},
-	{18, 0x3000, N_("none (manual focus)")},
-	{18, 0x3001, N_("auto-selected")},
-	{18, 0x3002, N_("right")},
-	{18, 0x3003, N_("center")},
-	{18, 0x3004, N_("left")},
-	{19,  0, N_("easy shooting")},
-	{19,  1, N_("program")},
+	{15, 20, N_("800")},
+	{16,  0, N_("Default")},
+	{16,  1, N_("Spot")},
+	{16,  2, N_("Average")},	
+	{16,  3, N_("Evaluative")},
+	{16,  4, N_("Partial")},
+	{16,  5, N_("Center-weighted average")},
+	{17,  0, N_("Manual")},
+	{17,  1, N_("Auto")},
+	{17,  2, N_("Not known")},
+	{17,  3, N_("Macro")},
+	{17,  4, N_("Very close")},
+	{17,  5, N_("Close")},
+	{17,  6, N_("Middle range")},
+	{17,  7, N_("Far range")},
+	{17,  8, N_("Pan focus")},
+	{17,  9, N_("Super macro")},
+	{17,  10, N_("Infinity")},
+	{18, 0x2005, N_("Manual AF point selection")},
+	{18, 0x3000, N_("None (MF)")},
+	{18, 0x3001, N_("Auto-selected")},
+	{18, 0x3002, N_("Right")},
+	{18, 0x3003, N_("Center")},
+	{18, 0x3004, N_("Left")},
+	{18, 0x4001, N_("Auto AF point selection")},
+	{19,  0, N_("Easy shooting")},
+	{19,  1, N_("Program")},
 	{19,  2, N_("Tv-priority")},
 	{19,  3, N_("Av-priority")},
-	{19,  4, N_("manual")},
+	{19,  4, N_("Manual")},
 	{19,  5, N_("A-DEP")},
+	{19,  6, N_("M-DEP")},
 	{21, 0x001, N_("Canon EF 50mm f/1.8")},
 	{21, 0x002, N_("Canon EF 28mm f/2.8")},
 	{21, 0x004, N_("Sigma UC Zoom 35-135mm f/4-5.6")},
@@ -184,10 +238,165 @@ static struct  {
 	{21, 0x229, N_("Canon EF 16-35mm f/2.8L")},
 	{21, 0x230, N_("Canon EF 24-70mm f/2.8L")},
 	{21, 0x231, N_("Canon EF 17-40mm f/4L")},
-  {31,  0, N_("single")},
-  {31,  1, N_("continuous")},
+	{28, 0, N_("Manual")},
+	{28, 1, N_("TTL")},
+	{28, 2, N_("A-TTL")},
+	{28, 3, N_("E-TTL")},
+	{28, 4, N_("FP sync enabled")},
+	{28, 7, N_("2nd-curtain sync used")},
+	{28, 11, N_("FP sync used")},
+	{28, 13, N_("Internal")},
+	{28, 14, N_("External")},
+  {31,  0, N_("Single")},
+  {31,  1, N_("Continuous")},
+	{32, 0, N_("Normal AE")},
+  	{32, 1, N_("Exposure compensation")},
+  	{32, 2, N_("AE lock")},
+  	{32, 3, N_("AE lock + Exposure compensation")},
+  	{32, 4, N_("No AE")},
+  	{33, 0, N_("Off")},
+  	{33, 1, N_("On")},
+  	{33, 2, N_("On, shot only")},
+  	{39, 0, N_("Off")},
+  	{39, 1, N_("Vivid")},
+  	{39, 2, N_("Neutral")},
+  	{39, 3, N_("Smooth")},
+  	{39, 4, N_("Sepia")},
+  	{39, 5, N_("Black & white")},
+  	{39, 6, N_("Custom")},
+  	{39, 100, N_("My color data")},
+  	{40, 0, N_("Off")},
+  	{40, 0x0500, N_("Full")},
+  	{40, 0x0502, N_("2/3")},
+  	{40, 0x0504, N_("1/3")},
   { 0,  0, NULL}
+},
+entries_focal_length [] = {
+	{0, 1, N_("Fixed")},
+	{0, 2, N_("Zoom")},
+	{0, 0, NULL}
+},
+entries_settings_2 [] = {
+  { 6,  0, N_("Auto")},
+  { 6,  1, N_("Sunny")},
+  { 6,  2, N_("Cloudy")},
+  { 6,  3, N_("Tungsten")},
+  { 6,  4, N_("Fluorescent")},
+  { 6,  5, N_("Flash")},
+  { 6,  6, N_("Custom")},
+  { 6,  7, N_("Black & white")},
+  { 6,  8, N_("Shade")},
+  { 6,  9, N_("Manual temperature (Kelvin)")},
+  { 6,  10, N_("PC set 1")},
+  { 6,  11, N_("PC set 2")},
+  { 6,  12, N_("PC set 3")},
+  { 6,  14, N_("Daylight fluorescent")},
+  { 6,  15, N_("Custom 1")},
+  { 6,  16, N_("Custom 2")},
+  { 6,  17, N_("Underwater")},
+  { 7,  0, N_("Off")},
+  { 7,  1, N_("Night scene")},
+  { 7,  2, N_("On")},
+  { 7,  3, N_("None")},
+  { 13,  0x3000, N_("None (MF)")},
+  { 13,  0x3001, N_("Right")},
+  { 13,  0x3002, N_("Center")},
+  { 13,  0x3003, N_("Center + Right")},
+  { 13,  0x3004, N_("Left")},
+  { 13,  0x3005, N_("Left + Right")},
+  { 13,  0x3006, N_("Left + Center")},
+  { 13,  0x3007, N_("All")},
+  { 15,  0, N_("Off")},
+  { 15,  1, N_("On (shot 1)")},
+  { 15,  2, N_("On (shot 2)")},
+  { 15,  3, N_("On (shot 3)")},
+  { 15,  0xffff, N_("On")},
+  { 25,  248, N_("EOS high-end")},
+  { 25,  250, N_("Compact")},
+  { 25,  252, N_("EOS mid-range")},
+  { 26,  0, N_("None")},
+  { 26,  1, N_("Rotate 90 CW")},
+  { 26,  2, N_("Rotate 180")},
+  { 26,  3, N_("Rotate 270 CW")},
+  { 26,  0xffff, N_("Rotated by software")},
+  { 27,  0, N_("Off")},
+  { 27,  1, N_("On")},  
+  	{32, 0, N_("Off")},
+  	{32, 0x0014, N_("1/3")},
+  	{32, 0x008c, N_("2/3")},
+  	{32, 0x07d0, N_("Full")},
+	{0, 0, NULL}
+},
+entries_panorama [] = {
+	{0, 0, N_("Left to right")},
+	{0, 1, N_("Right to left")},
+	{0, 2, N_("Bottom to top")},
+	{0, 3, N_("Top to bottom")},
+	{0, 4, N_("2x2 matrix (clockwise)")},
+	{0, 0, NULL}
 };
+
+static void
+canon_search_table_value (struct canon_entry_table_t table[],
+    unsigned int t, ExifShort vs, char *val, unsigned int maxlen)
+{
+	unsigned int j;
+
+	/* Search the table for the first matching subtag and value. */
+	for (j = 0; table[j].name && ((table[j].subtag < t) ||
+			((table[j].subtag == t) && table[j].value <= vs)); j++) {
+		if ((table[j].subtag == t) && (table[j].value == vs)) {
+			break;
+		}
+	}
+	if ((table[j].subtag == t) && (table[j].value == vs) && table[j].name) {
+    /* Matching subtag and value found. */
+		strncpy (val, table[j].name, maxlen - strlen (val));
+	} else {
+		/* No matching subtag and/or value found. */
+		snprintf (val, maxlen - strlen (val), "0x%04x", vs);
+	}
+}
+
+static void
+canon_search_table_bitfield (struct canon_entry_table_t table[],
+    unsigned int t, ExifShort vs, char *val, unsigned int maxlen)
+{
+	unsigned int j;
+
+	/* Search the table for the first matching subtag. */
+	for (j = 0; table[j].name && (table[j].subtag <= t); j++) {
+		if (table[j].subtag == t) {
+			break;
+		}
+	}
+	if ((table[j].subtag == t) && table[j].name) {
+		unsigned int i, bit, lastbit = 0;
+
+		/*
+     * Search the table for the last matching bit, because
+     * that one needs no additional comma appended.
+     */
+		for (i = j; table[i].name && (table[i].subtag == t); i++) {
+			bit = table[i].value;
+			if ((vs >> bit) & 1) {
+				lastbit = bit;
+			}
+		}
+		/* Search the table for all matching bits. */
+		for (i = j; table[i].name && (table[i].subtag == t); i++) {
+			bit = table[i].value;
+			if ((vs >> bit) & 1) {
+				strncat(val, table[i].name, maxlen - strlen (val));
+				if (bit != lastbit) 
+					strncat (val, N_(", "), maxlen - strlen (val));
+			}
+		}
+	} else {
+		/* No matching subtag found. */
+		snprintf (val, maxlen - strlen (val), "0x%04x", vs);
+	}
+}
 
 unsigned int
 mnote_canon_entry_count_values (const MnoteCanonEntry *entry)
@@ -197,6 +406,9 @@ mnote_canon_entry_count_values (const MnoteCanonEntry *entry)
 	if (!entry) return 0;
 
 	switch (entry->tag) {
+	case MNOTE_CANON_TAG_FOCAL_LENGTH:
+	case MNOTE_CANON_TAG_PANORAMA:
+		return entry->components;
 	case MNOTE_CANON_TAG_SETTINGS_1:
 	case MNOTE_CANON_TAG_SETTINGS_2:
 	case MNOTE_CANON_TAG_CUSTOM_FUNCS:
@@ -210,14 +422,36 @@ mnote_canon_entry_count_values (const MnoteCanonEntry *entry)
 	}
 }
 
+/*
+ * For reference, see Exif 2.1 specification (Appendix C), 
+ * or http://en.wikipedia.org/wiki/APEX_system
+ */
+static double
+apex_value_to_aperture (double x)
+{
+	return pow (2, x / 2.);
+}
+
+static double
+apex_value_to_shutter_speed(double x)
+{
+	return 1.0 / pow (2, x);
+}
+
+static double
+apex_value_to_iso_speed (double x)
+{
+	return 3.125 * pow (2, x);
+}
+
 char *
 mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char *val, unsigned int maxlen)
 {
 	char buf[128];
 	ExifLong vl;
 	ExifShort vs, n;
-	unsigned int j;
 	unsigned char *data = entry->data;
+	double d;
 
 	if (!entry) return NULL;
 
@@ -239,35 +473,47 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 			break;
 		case 22:
 		case 23:
+		case 24:
 			snprintf (buf, sizeof (buf), "%u", vs);
 			strncpy (val, buf, maxlen - strlen (val));
 			break;
-		case 24:
-			snprintf (buf, sizeof (buf), _("%u mm"), vs);
-			strncpy (val, buf, maxlen - strlen(val));
+		case 25:
+		case 26:
+			snprintf (buf, sizeof (buf), "%.2f", apex_value_to_aperture (vs / 32.0));
+			strncpy (val, buf, maxlen - strlen (val));
 			break;
 		case 28:
-			if ((vs >> 14) & 1)
-				strncpy (val, _("External E-TTL"), maxlen - strlen (val));
-			if ((vs >> 13) & 1)
-				strncpy (val, _("Internal flash"), maxlen - strlen (val));
-			if ((vs >> 11) & 1)
-				strncpy (val, _("FP sync used"), maxlen - strlen (val));
-			if ((vs >> 4) & 1)
-				strncpy (val, _("FP sync enabled"), maxlen - strlen (val));
+			canon_search_table_bitfield(entries_settings_1, t, vs, val, maxlen);
 			break;
-
+		case 34:
+			snprintf (buf, sizeof (buf), "%.2f", vs / 10.0);
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
+		case 35:
+		case 36:
+			snprintf (buf, sizeof (buf), "%u", vs);
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
 		default:
-			for (j = 0; entries[j].name && ((entries[j].subtag < t) ||
-						((entries[j].subtag == t) && entries[j].value <= vs)); j++)
-				if ((entries[j].subtag == t) && (entries[j].value == vs)) break;
-			if ((entries[j].subtag == t) &&
-					(entries[j].value == vs) && entries[j].name)
-				strncpy (val, entries[j]. name, maxlen - strlen (val));
-			else {
-				snprintf (buf, sizeof (buf), "0x%04x", vs);
-				strncpy (val, buf, maxlen - strlen (val));
-			}
+			canon_search_table_value (entries_settings_1, t, vs, val, maxlen);
+		}
+		break;
+
+	case MNOTE_CANON_TAG_FOCAL_LENGTH:
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		vs = exif_get_short (entry->data + t * 2, entry->order);
+		switch (t) {
+		case 1:
+			snprintf (buf, sizeof (buf), "%u", vs);
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
+		case 2:
+		case 3:
+			snprintf (buf, sizeof (buf), _("%.2f mm"), vs * 25.4 / 1000);
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
+		default:
+			canon_search_table_value (entries_focal_length, t, vs, val, maxlen);
 		}
 		break;
 
@@ -278,63 +524,59 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		CC (entry->components, n, val, maxlen);
 		vs = exif_get_short (entry->data + 2 + t * 2, entry->order);
 		switch (t) {
-		case 6:
-			switch (vs) {
-			case 0:
-				strncpy (val, _("Auto"), maxlen - strlen (val));
-				break;
-			case 1:
-				strncpy (val, _("Sunny"), maxlen - strlen (val));
-				break;
-			case 2:
-				strncpy (val, _("Cloudy"), maxlen - strlen (val));
-				break;
-			case 3:
-				strncpy (val, _("Tungsten"), maxlen - strlen (val));
-				break;
-			case 4:
-				strncpy (val, _("Fluorescent"), maxlen - strlen (val));
-				break;
-			case 5:
-				strncpy (val, _("Flash"), maxlen - strlen (val));
-				break;
-			case 6:
-				strncpy (val, _("Custom"), maxlen - strlen (val));
-				break;
-			default:
-				snprintf (buf, sizeof (buf), "%i", vs);
-				strncpy (val, buf, maxlen - strlen (val));
-			}
+		case 0:
+		case 1:
+			snprintf (buf, sizeof (buf), "%.0f", apex_value_to_iso_speed(vs / 32.0));
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
+		case 2:
+		case 5:
+		case 14:
+		case 16:
+			snprintf (buf, sizeof (buf), _("%.2f EV"), vs / 32.0);
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
+		case 3:
+		case 20:
+			snprintf (buf, sizeof (buf), "%.2f", apex_value_to_aperture (vs / 32.0));
+			strncpy (val, buf, maxlen - strlen (val));
+			break;
+		case 4:
+		case 21:
+			d = apex_value_to_shutter_speed(vs / 32.0);
+			if (d < 1)
+				snprintf (buf, sizeof (buf), _("1/%d"),(int)(1.0 / d));
+			else
+				snprintf (buf, sizeof (buf), _("%d"), (int) d);
+			strncpy (val, buf, maxlen - strlen (val));
 			break;
 		case 8:
 			snprintf (buf, sizeof (buf), "%u", vs);
 			strncpy (val, buf, maxlen - strlen (val));
 			break;
-		case 13:
-			if (vs >> 12) {
-				if (vs & 1)
-					strncpy (val, _("right"), maxlen - strlen (val));
-				if ((vs >> 1) & 1)
-					strncpy (val, _("center"), maxlen - strlen (val));
-				if ((vs >> 2) & 1)
-					strncpy (val, _("left"), maxlen - strlen (val));
-				snprintf (buf, sizeof (buf), ngettext(" (1 available focus point)"," (%u available focus points)",(vs>>12)), (vs>>12));
-				strncat (val, buf, maxlen - strlen (val));
-			}
-			break;
-		case 14:
-			snprintf (buf, sizeof (buf), _("%.2f EV"), vs / 32.);
+		case 12:
+			snprintf (buf, sizeof (buf), "%.2f", vs / 32.0);
 			strncpy (val, buf, maxlen - strlen (val));
 			break;
 		case 18:
+		case 19:
 			snprintf (buf, sizeof (buf), _("%u mm"), vs);
 			strncpy (val, buf, maxlen - strlen (val));
 			break;
-		default:
-			snprintf (buf, sizeof (buf), "0x%04x", vs);
+		case 28:
+			if (!vs) break;
+			snprintf (buf, sizeof (buf), _("%i (ms)"), vs * 100);
 			strncpy (val, buf, maxlen - strlen (val));
 			break;
+		default:
+			canon_search_table_value (entries_settings_2, t, vs, val, maxlen);
 		}
+		break;
+
+	case MNOTE_CANON_TAG_PANORAMA:
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
+		vs = exif_get_short (entry->data + t * 2, entry->order);
+		canon_search_table_value (entries_panorama, t, vs, val, maxlen);
 		break;
 
 	case MNOTE_CANON_TAG_OWNER:
