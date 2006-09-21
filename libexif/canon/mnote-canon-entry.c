@@ -351,10 +351,10 @@ canon_search_table_value (struct canon_entry_table_t table[],
 	}
 	if ((table[j].subtag == t) && (table[j].value == vs) && table[j].name) {
     /* Matching subtag and value found. */
-		strncpy (val, table[j].name, maxlen - strlen (val));
+		strncpy (val, table[j].name, maxlen);
 	} else {
 		/* No matching subtag and/or value found. */
-		snprintf (val, maxlen - strlen (val), "0x%04x", vs);
+		snprintf (val, maxlen, "0x%04x", vs);
 	}
 }
 
@@ -394,7 +394,7 @@ canon_search_table_bitfield (struct canon_entry_table_t table[],
 		}
 	} else {
 		/* No matching subtag found. */
-		snprintf (val, maxlen - strlen (val), "0x%04x", vs);
+		snprintf (val, maxlen, "0x%04x", vs);
 	}
 }
 
@@ -468,31 +468,26 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		switch (t) {
 		case 1:
 			if (!vs) break;
-			snprintf (buf, sizeof (buf), _("%i (ms)"), vs * 100);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, _("%i (ms)"), vs * 100);
 			break;
 		case 22:
 		case 23:
 		case 24:
-			snprintf (buf, sizeof (buf), "%u", vs);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, "%u", vs);
 			break;
 		case 25:
 		case 26:
-			snprintf (buf, sizeof (buf), "%.2f", apex_value_to_aperture (vs / 32.0));
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, "%.2f", apex_value_to_aperture (vs / 32.0));
 			break;
 		case 28:
 			canon_search_table_bitfield(entries_settings_1, t, vs, val, maxlen);
 			break;
 		case 34:
-			snprintf (buf, sizeof (buf), "%.2f", vs / 10.0);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, "%.2f", vs / 10.0);
 			break;
 		case 35:
 		case 36:
-			snprintf (buf, sizeof (buf), "%u", vs);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, "%u", vs);
 			break;
 		default:
 			canon_search_table_value (entries_settings_1, t, vs, val, maxlen);
@@ -504,13 +499,11 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		vs = exif_get_short (entry->data + t * 2, entry->order);
 		switch (t) {
 		case 1:
-			snprintf (buf, sizeof (buf), "%u", vs);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, "%u", vs);
 			break;
 		case 2:
 		case 3:
-			snprintf (buf, sizeof (buf), _("%.2f mm"), vs * 25.4 / 1000);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, _("%.2f mm"), vs * 25.4 / 1000);
 			break;
 		default:
 			canon_search_table_value (entries_focal_length, t, vs, val, maxlen);
@@ -526,47 +519,39 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		switch (t) {
 		case 0:
 		case 1:
-			snprintf (buf, sizeof (buf), "%.0f", apex_value_to_iso_speed(vs / 32.0));
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, "%.0f", apex_value_to_iso_speed(vs / 32.0));
 			break;
 		case 2:
 		case 5:
 		case 14:
 		case 16:
-			snprintf (buf, sizeof (buf), _("%.2f EV"), vs / 32.0);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, _("%.2f EV"), vs / 32.0);
 			break;
 		case 3:
 		case 20:
-			snprintf (buf, sizeof (buf), "%.2f", apex_value_to_aperture (vs / 32.0));
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, "%.2f", apex_value_to_aperture (vs / 32.0));
 			break;
 		case 4:
 		case 21:
 			d = apex_value_to_shutter_speed(vs / 32.0);
 			if (d < 1)
-				snprintf (buf, sizeof (buf), _("1/%d"),(int)(1.0 / d));
+				snprintf (val, maxlen, _("1/%d"),(int)(1.0 / d));
 			else
-				snprintf (buf, sizeof (buf), _("%d"), (int) d);
-			strncpy (val, buf, maxlen - strlen (val));
+				snprintf (val, maxlen, _("%d"), (int) d);
 			break;
 		case 8:
-			snprintf (buf, sizeof (buf), "%u", vs);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, "%u", vs);
 			break;
 		case 12:
-			snprintf (buf, sizeof (buf), "%.2f", vs / 32.0);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, "%.2f", vs / 32.0);
 			break;
 		case 18:
 		case 19:
-			snprintf (buf, sizeof (buf), _("%u mm"), vs);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, _("%u mm"), vs);
 			break;
 		case 28:
 			if (!vs) break;
-			snprintf (buf, sizeof (buf), _("%i (ms)"), vs * 100);
-			strncpy (val, buf, maxlen - strlen (val));
+			snprintf (val, maxlen, _("%i (ms)"), vs * 100);
 			break;
 		default:
 			canon_search_table_value (entries_settings_2, t, vs, val, maxlen);
