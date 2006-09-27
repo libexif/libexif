@@ -40,6 +40,9 @@
 #undef JPEG_MARKER_COM
 #define JPEG_MARKER_COM 0xfe
 
+#undef MAX
+#define MAX(a, b)  (((a) > (b)) ? (a) : (b))
+
 typedef enum {
 	EL_READ = 0,
 	EL_READ_SIZE_BYTE_24,
@@ -262,7 +265,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 		default:
 			switch (eld->b[i]) {
 			case JPEG_MARKER_APP1:
-				if (!memcmp (eld->b + i + 3, ExifHeader, min(sizeof (ExifHeader), max(0, sizeof (eld->b) - i - 3)))) {
+				if (!memcmp (eld->b + i + 3, ExifHeader, MIN(sizeof (ExifHeader), MAX(0, sizeof (eld->b) - i - 3)))) {
 					eld->data_format = EL_DATA_FORMAT_EXIF;
 				} else {
 					eld->data_format = EL_DATA_FORMAT_JPEG; /* Probably JFIF - keep searching for APP1 EXIF*/
