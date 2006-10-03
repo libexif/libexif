@@ -1,3 +1,8 @@
+2006-10-03  Marcus Meissner <marcus@jet.franken.de>
+
+	* libexif/olympus/*.[ch]: Added several Nikon Makernotes
+	  entries, extracted from exiftool.
+
 2006-09-17  Lutz Mueller <lutz@users.sourceforge.net>
 
   Patch by Jef Driesen <jefdriesen@hotmail.com>:
