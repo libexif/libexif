@@ -312,6 +312,12 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		  	case  2: strncpy (v, _("AF Position: Bottom"), maxlen); break;
 		  	case  3: strncpy (v, _("AF Position: Left"), maxlen); break;
 		  	case  4: strncpy (v, _("AF Position: Right"), maxlen); break;
+         case  5: strncpy (v, _("AF Position: Upper-left"), maxlen); break;
+		  	case  6: strncpy (v, _("AF Position: Upper-right"), maxlen); break;
+		  	case  7: strncpy (v, _("AF Position: Lower-left"), maxlen); break;
+		  	case  8: strncpy (v, _("AF Position: Lower-right"), maxlen); break;
+		  	case  9: strncpy (v, _("AF Position: Far Left"), maxlen); break;
+		  	case  10: strncpy (v, _("AF Position: Far Right"), maxlen); break;
 		  	default: strncpy (v, _("Unknown AF Position"), maxlen);
 		}     
 		break;
