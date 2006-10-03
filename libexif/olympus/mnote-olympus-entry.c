@@ -167,7 +167,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	char         buf[30];
 	ExifLong     vl;
 	ExifShort    vs = 0;
-	ExifRational vr;
+	ExifRational vr, vr2;
 	int          i, j;
 	double       r, b;
 
@@ -225,6 +225,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_NIKON_TAG_FLASHMODE:
 	case MNOTE_NIKON_TAG_IMAGEADJUSTMENT:
 	case MNOTE_NIKON_TAG_ADAPTER:
+	case MNOTE_NIKON_TAG_SATURATION:
                 CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
                 memcpy(v, entry->data, MIN (maxlen, entry->components));
                 break;
@@ -233,6 +234,31 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
                 CC (entry->components, 1, v, maxlen);
                 vl =  exif_get_long (entry->data, entry->order);
                 snprintf (v, maxlen, "%lu",  (long unsigned int) vl );
+                break;
+	case MNOTE_NIKON_TAG_EXPOSUREDIFF: {
+		unsigned char a,b,c,d;
+                CF (entry->format, EXIF_FORMAT_UNDEFINED, v, maxlen);
+                CC (entry->components, 4, v, maxlen);
+                vl =  exif_get_long (entry->data, entry->order);
+		a = (vl>>24)&0xff; b = (vl>>16)&0xff; c = (vl>>8)&0xff; d = (vl)&0xff;
+                snprintf (v, maxlen, "%.1f",  c?(float)a*((float)b/(float)c):0 );
+                break;
+	}
+	case MNOTE_NIKON_TAG_LENS_FSTOPS: {
+		unsigned char a,b,c,d;
+                CF (entry->format, EXIF_FORMAT_UNDEFINED, v, maxlen);
+                CC (entry->components, 4, v, maxlen);
+                vl =  exif_get_long (entry->data, entry->order);
+		a = (vl>>24)&0xff; b = (vl>>16)&0xff; c = (vl>>8)&0xff; d = (vl)&0xff;
+                snprintf (v, maxlen, "%.2f",  c?(float)a*((float)b/(float)c):0 );
+                break;
+	}
+	case MNOTE_NIKON_TAG_FLASHEXPCOMPENSATION:
+	case MNOTE_NIKON_TAG_FLASHEXPOSUREBRACKETVAL:
+                CF (entry->format, EXIF_FORMAT_UNDEFINED, v, maxlen);
+                CC (entry->components, 4, v, maxlen);
+                vl =  exif_get_long (entry->data, entry->order);
+                snprintf (v, maxlen, "%.1f",  ((long unsigned int) vl>>24)/6.0 );
                 break;
 	case MNOTE_NIKON_TAG_WHITEBALANCEFINE:
                 CF (entry->format, EXIF_FORMAT_SSHORT, v, maxlen);
@@ -269,6 +295,21 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		r = (double)vr.numerator / vr.denominator;
 		snprintf (v, maxlen, "%2.2f", r);
 		break;
+	case MNOTE_NIKON_TAG_SENSORPIXELSIZE:
+		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
+		CC (entry->components, 2, v, maxlen);
+		vr = exif_get_rational (entry->data, entry->order);
+		vr2 = exif_get_rational (entry->data+8, entry->order);
+		r = (double)vr.numerator / vr.denominator;
+		b = (double)vr2.numerator / vr2.denominator;
+		snprintf (v, maxlen, "%2.2f x %2.2f um", r, b);
+		break;
+	case MNOTE_NIKON_TAG_HUE:
+                CF (entry->format, EXIF_FORMAT_SSHORT, v, maxlen);
+                CC (entry->components, 1, v, maxlen);
+                vs = exif_get_short (entry->data, entry->order);
+                snprintf (v, maxlen, "%hd", vs);
+                break;
 	case MNOTE_NIKON_TAG_AFFOCUSPOSITION:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, v, maxlen);
 		CC (entry->components, 4, v, maxlen);
