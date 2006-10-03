@@ -21,6 +21,7 @@
 #include <config.h>
 
 #include <libexif/exif-loader.h>
+#include <libexif/exif-utils.h>
 #include <libexif/i18n.h>
 
 #include <stdlib.h>
@@ -39,9 +40,6 @@
 #define JPEG_MARKER_APP13 0xed
 #undef JPEG_MARKER_COM
 #define JPEG_MARKER_COM 0xfe
-
-#undef MAX
-#define MAX(a, b)  (((a) > (b)) ? (a) : (b))
 
 typedef enum {
 	EL_READ = 0,

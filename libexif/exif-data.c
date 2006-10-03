@@ -37,9 +37,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#undef MAX
-#define MAX(a, b)  (((a) > (b)) ? (a) : (b))
-
 #if defined(__WATCOMC__) || defined(_MSC_VER)
 #      define strncasecmp strnicmp
 #endif

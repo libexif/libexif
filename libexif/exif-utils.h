@@ -72,6 +72,9 @@ void exif_array_set_byte_order (ExifFormat, unsigned char *, unsigned int,
 #undef  MIN
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
 
+#undef  MAX
+#define MAX(a, b)  (((a) > (b)) ? (a) : (b))
+
 /* For compatibility with older versions */
 #define EXIF_TAG_SUBSEC_TIME EXIF_TAG_SUB_SEC_TIME
 
