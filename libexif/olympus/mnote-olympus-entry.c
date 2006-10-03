@@ -225,7 +225,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_NIKON_TAG_FLASHMODE:
 	case MNOTE_NIKON_TAG_IMAGEADJUSTMENT:
 	case MNOTE_NIKON_TAG_ADAPTER:
-	case MNOTE_NIKON_TAG_SATURATION:
+	case MNOTE_NIKON_TAG_SATURATION2:
                 CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
                 memcpy(v, entry->data, MIN (maxlen, entry->components));
                 break;
@@ -252,6 +252,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
                 vl =  exif_get_long (entry->data, entry->order);
                 snprintf (v, maxlen, "%.1f",  ((long unsigned int) vl>>24)/6.0 );
                 break;
+	case MNOTE_NIKON_TAG_SATURATION:
 	case MNOTE_NIKON_TAG_WHITEBALANCEFINE:
                 CF (entry->format, EXIF_FORMAT_SSHORT, v, maxlen);
                 CC (entry->components, 1, v, maxlen);
