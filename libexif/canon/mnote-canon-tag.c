@@ -122,7 +122,7 @@ mnote_canon_tag_get_name (MnoteCanonTag t)
 	unsigned int i;
 
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
-		if (table[i].tag == t) return (table[i].name); /* do not translate */
+		if (table[i].tag == t) return table[i].name; /* do not translate */
 	return NULL;
 }
 
@@ -132,7 +132,7 @@ mnote_canon_tag_get_name_sub (MnoteCanonTag t, unsigned int s)
 	unsigned int i;
 	for (i = 0; i < sizeof (table_sub) / sizeof (table_sub[0]); i++)
 		if ((table_sub[i].tag == t) && (table_sub[i].subtag == s))
-			return _(table_sub[i].name);
+			return table_sub[i].name;
 	return mnote_canon_tag_get_name (t);
 }
 
