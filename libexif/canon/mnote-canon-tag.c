@@ -122,7 +122,7 @@ mnote_canon_tag_get_name (MnoteCanonTag t)
 	unsigned int i;
 
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
-		if (table[i].tag == t) return (_(table[i].name));
+		if (table[i].tag == t) return (table[i].name); /* do not translate */
 	return NULL;
 }
 
