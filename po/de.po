@@ -1,5 +1,4 @@
 # translation of de.po to
-# translation of de.po to deutsch
 # German Translation
 # Copyright:
 #   Free Software Foundation, Inc., 2002
@@ -12,13 +11,13 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-16 13:49+0200\n"
-"PO-Revision-Date: 2006-01-13 08:54+0100\n"
-"Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
+"PO-Revision-Date: 2006-10-17 17:03+0200\n"
+"Last-Translator: \n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.2\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 
 #: libexif/canon/mnote-canon-entry.c:40
@@ -62,20 +61,19 @@ msgstr "Normal"
 
 #: libexif/canon/mnote-canon-entry.c:77
 msgid "Economy"
-msgstr ""
+msgstr "Sparmodus"
 
 #: libexif/canon/mnote-canon-entry.c:79
-#, fuzzy
 msgid "Fine"
-msgstr "Zoll"
+msgstr "Fein"
 
 #: libexif/canon/mnote-canon-entry.c:80
 msgid "RAW"
-msgstr ""
+msgstr "RAW"
 
 #: libexif/canon/mnote-canon-entry.c:81
 msgid "Superfine"
-msgstr ""
+msgstr "Superfein"
 
 #: libexif/canon/mnote-canon-entry.c:82 libexif/canon/mnote-canon-entry.c:257
 #: libexif/canon/mnote-canon-entry.c:260 libexif/canon/mnote-canon-entry.c:268
@@ -100,7 +98,7 @@ msgstr "Automatisch"
 #: libexif/canon/mnote-canon-entry.c:299 libexif/canon/mnote-canon-entry.c:313
 #: libexif/canon/mnote-canon-entry.c:323
 msgid "On"
-msgstr ""
+msgstr "An"
 
 #: libexif/canon/mnote-canon-entry.c:85
 #: libexif/olympus/mnote-olympus-entry.c:143
@@ -108,24 +106,20 @@ msgid "Red-eye reduction"
 msgstr "Rote-Augen Reduktion"
 
 #: libexif/canon/mnote-canon-entry.c:86
-#, fuzzy
 msgid "Slow synchro"
 msgstr "Langsame Synchronisation"
 
 #: libexif/canon/mnote-canon-entry.c:87
-#, fuzzy
 msgid "Auto + Red-eye reduction"
-msgstr "automatisch + rote Augen Reduktion"
+msgstr "Automatisch + rote Augen Reduktion"
 
 #: libexif/canon/mnote-canon-entry.c:88
-#, fuzzy
 msgid "On + Red-eye reduction"
-msgstr "Rote-Augen Reduktion"
+msgstr "An + Rote-Augen Reduktion"
 
 #: libexif/canon/mnote-canon-entry.c:89
-#, fuzzy
 msgid "External flash"
-msgstr "Eingebauter Blitz"
+msgstr "Externer Blitz"
 
 #: libexif/canon/mnote-canon-entry.c:90 libexif/canon/mnote-canon-entry.c:100
 #: libexif/canon/mnote-canon-entry.c:250
@@ -139,86 +133,71 @@ msgstr "Kontinuierlich"
 
 #: libexif/canon/mnote-canon-entry.c:92
 msgid "Movie"
-msgstr ""
+msgstr "Film"
 
 #
 #: libexif/canon/mnote-canon-entry.c:93
-#, fuzzy
 msgid "Continuous, speed priority"
-msgstr "Serienbild Modus"
+msgstr "Kontinuierlich, geschwindigkeitsoptimiert"
 
 #: libexif/canon/mnote-canon-entry.c:94
-#, fuzzy
 msgid "Continuous, low"
-msgstr "Kontinuierlich"
+msgstr "Kontinuierlich, niedrig"
 
 #: libexif/canon/mnote-canon-entry.c:95
-#, fuzzy
 msgid "Continuous, high"
-msgstr "Kontinuierlich"
+msgstr "Kontinuierlich, hoch"
 
 # focuses just one time (when half pressing shutter)
 #: libexif/canon/mnote-canon-entry.c:96
-#, fuzzy
 msgid "One-shot AF"
-msgstr "Einzel Fokus"
+msgstr "Einzel Autofokus"
 
 # continuous auto refocus while half-pressing shutter.
 #: libexif/canon/mnote-canon-entry.c:97
-#, fuzzy
 msgid "AI servo AF"
-msgstr "Al Servo"
+msgstr "Al Servo AF"
 
 #: libexif/canon/mnote-canon-entry.c:98
-#, fuzzy
 msgid "AI focus AF"
-msgstr "AI Focus"
+msgstr "AI Focus AF"
 
 #: libexif/canon/mnote-canon-entry.c:99 libexif/canon/mnote-canon-entry.c:102
-#, fuzzy
 msgid "Manual focus"
 msgstr "Manueller Fokus"
 
 #: libexif/canon/mnote-canon-entry.c:103 libexif/canon/mnote-canon-entry.c:122
 #: libexif/canon/mnote-canon-entry.c:173
-#, fuzzy
 msgid "Pan focus"
 msgstr "Pan Fokus"
 
 #: libexif/canon/mnote-canon-entry.c:104
-#, fuzzy
 msgid "Large"
 msgstr "Groß"
 
 #: libexif/canon/mnote-canon-entry.c:105
-#, fuzzy
 msgid "Medium"
 msgstr "Mittel"
 
 #: libexif/canon/mnote-canon-entry.c:106
-#, fuzzy
 msgid "Small"
 msgstr "Klein"
 
 #: libexif/canon/mnote-canon-entry.c:107
-#, fuzzy
 msgid "Medium 1"
-msgstr "Mittel"
+msgstr "Mittel 1"
 
 #: libexif/canon/mnote-canon-entry.c:108
-#, fuzzy
 msgid "Medium 2"
-msgstr "Mittel"
+msgstr "Mittel 2"
 
 #: libexif/canon/mnote-canon-entry.c:109
-#, fuzzy
 msgid "Medium 3"
-msgstr "Mittel"
+msgstr "Mittel 3"
 
 #: libexif/canon/mnote-canon-entry.c:110
-#, fuzzy
 msgid "Full auto"
-msgstr "vollautomatisch"
+msgstr "Vollautomatisch"
 
 #: libexif/canon/mnote-canon-entry.c:111 libexif/canon/mnote-canon-entry.c:165
 #: libexif/canon/mnote-canon-entry.c:187 libexif/canon/mnote-canon-entry.c:241
@@ -234,23 +213,20 @@ msgid "Landscape"
 msgstr "Landschaft"
 
 #: libexif/canon/mnote-canon-entry.c:113
-#, fuzzy
 msgid "Fast shutter"
-msgstr "kurze Belichtungszeit"
+msgstr "Kurze Belichtungszeit"
 
 #: libexif/canon/mnote-canon-entry.c:114 libexif/canon/mnote-canon-tag.c:97
-#, fuzzy
 msgid "Slow shutter"
-msgstr "lange Belichtungszeit"
+msgstr "Lange Belichtungszeit"
 
 #: libexif/canon/mnote-canon-entry.c:115
-#, fuzzy
 msgid "Night"
 msgstr "Nacht"
 
 #: libexif/canon/mnote-canon-entry.c:116
 msgid "Grayscale"
-msgstr ""
+msgstr "Graustufen"
 
 #: libexif/canon/mnote-canon-entry.c:117 libexif/canon/mnote-canon-entry.c:264
 #: libexif/pentax/mnote-pentax-entry.c:115
@@ -268,18 +244,16 @@ msgstr "Sport"
 
 #: libexif/canon/mnote-canon-entry.c:121 libexif/canon/mnote-canon-entry.c:265
 #: libexif/canon/mnote-canon-entry.c:287
-#, fuzzy
 msgid "Black & white"
 msgstr "Schwarz & Weiß"
 
 #: libexif/canon/mnote-canon-entry.c:123 libexif/canon/mnote-canon-entry.c:261
 msgid "Vivid"
-msgstr ""
+msgstr "Lebendig"
 
 #: libexif/canon/mnote-canon-entry.c:124 libexif/canon/mnote-canon-entry.c:262
-#, fuzzy
 msgid "Neutral"
-msgstr "extern"
+msgstr "Neutral"
 
 #: libexif/canon/mnote-canon-entry.c:125
 #: libexif/pentax/mnote-pentax-entry.c:80
@@ -287,62 +261,56 @@ msgid "Flash off"
 msgstr "Blitz aus"
 
 #: libexif/canon/mnote-canon-entry.c:126
-#, fuzzy
 msgid "Long shutter"
-msgstr "lange Belichtungszeit"
+msgstr "Lange Belichtungszeit"
 
 #: libexif/canon/mnote-canon-entry.c:127 libexif/canon/mnote-canon-entry.c:174
-#, fuzzy
 msgid "Super macro"
-msgstr "Makro"
+msgstr "Super Makro"
 
 #: libexif/canon/mnote-canon-entry.c:128
-#, fuzzy
 msgid "Foliage"
-msgstr "Groß"
+msgstr "Foliant"
 
 #: libexif/canon/mnote-canon-entry.c:129
 msgid "Indoor"
-msgstr ""
+msgstr "Innenraum"
 
 #: libexif/canon/mnote-canon-entry.c:130
 msgid "Fireworks"
-msgstr ""
+msgstr "Feuerwerk"
 
 #: libexif/canon/mnote-canon-entry.c:131
 msgid "Beach"
-msgstr ""
+msgstr "Strand"
 
 #: libexif/canon/mnote-canon-entry.c:132 libexif/canon/mnote-canon-entry.c:296
-#, fuzzy
 msgid "Underwater"
-msgstr "Gutes Wetter"
+msgstr "Unterwasser"
 
 #: libexif/canon/mnote-canon-entry.c:133
 msgid "Snow"
-msgstr ""
+msgstr "Schnee"
 
 #: libexif/canon/mnote-canon-entry.c:134
 msgid "Kids & pets"
-msgstr ""
+msgstr "Kinder & Tiere"
 
 #: libexif/canon/mnote-canon-entry.c:135
-#, fuzzy
 msgid "Night snapshot"
 msgstr "Nachtszene"
 
 #: libexif/canon/mnote-canon-entry.c:136
-#, fuzzy
 msgid "Digital macro"
-msgstr "Digital Zoom"
+msgstr "Digitalmakro"
 
 #: libexif/canon/mnote-canon-entry.c:137
 msgid "My colors"
-msgstr ""
+msgstr "Meine Farben"
 
 #: libexif/canon/mnote-canon-entry.c:138
 msgid "Still image"
-msgstr ""
+msgstr "Festes Bild"
 
 #: libexif/canon/mnote-canon-entry.c:139 libexif/canon/mnote-canon-entry.c:300
 #: libexif/canon/mnote-canon-entry.c:317
@@ -357,7 +325,7 @@ msgstr "2x"
 
 #: libexif/canon/mnote-canon-entry.c:141
 msgid "4x"
-msgstr ""
+msgstr "4x"
 
 #: libexif/canon/mnote-canon-entry.c:142 libexif/exif-entry.c:433
 #: libexif/exif-entry.c:461
@@ -379,9 +347,8 @@ msgid "Low"
 msgstr "Niedrig"
 
 #: libexif/canon/mnote-canon-entry.c:152
-#, fuzzy
 msgid "Auto high"
-msgstr "hoch"
+msgstr "Auto hoch"
 
 #: libexif/canon/mnote-canon-entry.c:154
 msgid "50"
@@ -404,13 +371,12 @@ msgid "400"
 msgstr "400"
 
 #: libexif/canon/mnote-canon-entry.c:158
-#, fuzzy
 msgid "800"
-msgstr "100"
+msgstr "800"
 
 #: libexif/canon/mnote-canon-entry.c:159
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #: libexif/canon/mnote-canon-entry.c:160 libexif/exif-entry.c:429
 msgid "Spot"
@@ -421,90 +387,74 @@ msgid "Average"
 msgstr "Durchschnitt"
 
 #: libexif/canon/mnote-canon-entry.c:162
-#, fuzzy
 msgid "Evaluative"
-msgstr "entfernungsgekoppelt"
+msgstr "Berechnend"
 
 #: libexif/canon/mnote-canon-entry.c:163 libexif/exif-entry.c:432
 msgid "Partial"
 msgstr "Partiell"
 
 #: libexif/canon/mnote-canon-entry.c:164
-#, fuzzy
 msgid "Center-weighted average"
 msgstr "Mittelpunkt gewichteter Durchschnitt"
 
 #: libexif/canon/mnote-canon-entry.c:167
-#, fuzzy
 msgid "Not known"
 msgstr "Unbekannt"
 
 #: libexif/canon/mnote-canon-entry.c:169
-#, fuzzy
 msgid "Very close"
-msgstr "nah"
+msgstr "Sehr nah"
 
 #: libexif/canon/mnote-canon-entry.c:170
-#, fuzzy
 msgid "Close"
-msgstr "nah"
+msgstr "Nah"
 
 #: libexif/canon/mnote-canon-entry.c:171
 msgid "Middle range"
-msgstr ""
+msgstr "Mittlerer Abstand"
 
 #: libexif/canon/mnote-canon-entry.c:172
-#, fuzzy
 msgid "Far range"
-msgstr "Transfer Range"
+msgstr "Weiter Abstand"
 
 #: libexif/canon/mnote-canon-entry.c:175
-#, fuzzy
 msgid "Infinity"
 msgstr "Unendlich"
 
 #: libexif/canon/mnote-canon-entry.c:176
-#, fuzzy
 msgid "Manual AF point selection"
-msgstr "AF Punkt Selektion"
+msgstr "Manuelle AF Punkt Selektion"
 
 #: libexif/canon/mnote-canon-entry.c:177 libexif/canon/mnote-canon-entry.c:301
-#, fuzzy
 msgid "None (MF)"
-msgstr "Keine"
+msgstr "Keine (MF)"
 
 #: libexif/canon/mnote-canon-entry.c:178
-#, fuzzy
 msgid "Auto-selected"
-msgstr "automatisch selektiert"
+msgstr "Automatisch selektiert"
 
 #: libexif/canon/mnote-canon-entry.c:179 libexif/canon/mnote-canon-entry.c:302
-#, fuzzy
 msgid "Right"
-msgstr "Nacht"
+msgstr "Rechts"
 
 #: libexif/canon/mnote-canon-entry.c:180 libexif/canon/mnote-canon-entry.c:303
-#, fuzzy
 msgid "Center"
-msgstr "mittig"
+msgstr "Mittig"
 
 #: libexif/canon/mnote-canon-entry.c:181 libexif/canon/mnote-canon-entry.c:305
-#, fuzzy
 msgid "Left"
-msgstr "links"
+msgstr "Links"
 
 #: libexif/canon/mnote-canon-entry.c:182
-#, fuzzy
 msgid "Auto AF point selection"
-msgstr "AF Punkt Selektion"
+msgstr "Automatische AF Punkt Selektion"
 
 #: libexif/canon/mnote-canon-entry.c:183
-#, fuzzy
 msgid "Easy shooting"
-msgstr "einfaches Fotografieren"
+msgstr "Einfaches Fotografieren"
 
 #: libexif/canon/mnote-canon-entry.c:184
-#, fuzzy
 msgid "Program"
 msgstr "Programm"
 
@@ -521,9 +471,8 @@ msgid "A-DEP"
 msgstr "A-DEP"
 
 #: libexif/canon/mnote-canon-entry.c:189
-#, fuzzy
 msgid "M-DEP"
-msgstr "A-DEP"
+msgstr "M-DEP"
 
 #: libexif/canon/mnote-canon-entry.c:190
 msgid "Canon EF 50mm f/1.8"
@@ -731,68 +680,63 @@ msgstr "Canon EF 17-40mm f/4L"
 
 #: libexif/canon/mnote-canon-entry.c:242
 msgid "TTL"
-msgstr ""
+msgstr "TTL"
 
 #: libexif/canon/mnote-canon-entry.c:243
 msgid "A-TTL"
-msgstr ""
+msgstr "A-TTL"
 
 #: libexif/canon/mnote-canon-entry.c:244
 msgid "E-TTL"
-msgstr ""
+msgstr "E-TTL"
 
 #: libexif/canon/mnote-canon-entry.c:245
 msgid "FP sync enabled"
 msgstr "FP sync angeschaltet"
 
 #: libexif/canon/mnote-canon-entry.c:246
-#, fuzzy
 msgid "2nd-curtain sync used"
-msgstr "FP sync benutzt"
+msgstr "2ter Vorhang Synchronisation benutzt"
 
 #: libexif/canon/mnote-canon-entry.c:247
 msgid "FP sync used"
 msgstr "FP sync benutzt"
 
 #: libexif/canon/mnote-canon-entry.c:248
-#, fuzzy
 msgid "Internal"
-msgstr "Intel"
+msgstr "Intern"
 
 #: libexif/canon/mnote-canon-entry.c:249
-#, fuzzy
 msgid "External"
-msgstr "extern"
+msgstr "Extern"
 
 #: libexif/canon/mnote-canon-entry.c:252
-#, fuzzy
 msgid "Normal AE"
-msgstr "Normal"
+msgstr "Normal AE"
 
 #: libexif/canon/mnote-canon-entry.c:253 libexif/canon/mnote-canon-tag.c:95
-#, fuzzy
 msgid "Exposure compensation"
-msgstr "Blitzkompensation ?"
+msgstr "Belichtungskompensation"
 
 #: libexif/canon/mnote-canon-entry.c:254
 msgid "AE lock"
-msgstr ""
+msgstr "AE Lock"
 
 #: libexif/canon/mnote-canon-entry.c:255
 msgid "AE lock + Exposure compensation"
-msgstr ""
+msgstr "AE Lock + Belichtungskompensation"
 
 #: libexif/canon/mnote-canon-entry.c:256
 msgid "No AE"
-msgstr ""
+msgstr "Kein AE"
 
 #: libexif/canon/mnote-canon-entry.c:259
 msgid "On, shot only"
-msgstr ""
+msgstr "An, 1 Aufnahme"
 
 #: libexif/canon/mnote-canon-entry.c:263
 msgid "Smooth"
-msgstr ""
+msgstr "Weich"
 
 #: libexif/canon/mnote-canon-entry.c:266 libexif/canon/mnote-canon-entry.c:286
 #: libexif/pentax/mnote-pentax-entry.c:74
@@ -801,7 +745,7 @@ msgstr "Benutzerdefiniert"
 
 #: libexif/canon/mnote-canon-entry.c:267
 msgid "My color data"
-msgstr ""
+msgstr "Meine Farbdaten"
 
 #: libexif/canon/mnote-canon-entry.c:269 libexif/canon/mnote-canon-entry.c:327
 #: libexif/pentax/mnote-pentax-entry.c:113
@@ -810,15 +754,15 @@ msgstr "Voll"
 
 #: libexif/canon/mnote-canon-entry.c:270 libexif/canon/mnote-canon-entry.c:326
 msgid "2/3"
-msgstr ""
+msgstr "2/3"
 
 #: libexif/canon/mnote-canon-entry.c:271 libexif/canon/mnote-canon-entry.c:325
 msgid "1/3"
-msgstr ""
+msgstr "1/3"
 
 #: libexif/canon/mnote-canon-entry.c:275
 msgid "Fixed"
-msgstr ""
+msgstr "Fest"
 
 #: libexif/canon/mnote-canon-entry.c:276 libexif/pentax/mnote-pentax-tag.c:43
 msgid "Zoom"
@@ -855,123 +799,115 @@ msgstr "Schatten"
 
 #: libexif/canon/mnote-canon-entry.c:289
 msgid "Manual temperature (Kelvin)"
-msgstr ""
+msgstr "Manuelle Temperatur (Kelvin)"
 
 #: libexif/canon/mnote-canon-entry.c:290
 msgid "PC set 1"
-msgstr ""
+msgstr "PC Set 1"
 
 #: libexif/canon/mnote-canon-entry.c:291
 msgid "PC set 2"
-msgstr ""
+msgstr "PC Set 2"
 
 #: libexif/canon/mnote-canon-entry.c:292
 msgid "PC set 3"
-msgstr ""
+msgstr "PC Set 3"
 
 #: libexif/canon/mnote-canon-entry.c:293 libexif/exif-entry.c:450
 msgid "Daylight fluorescent"
 msgstr "Tageslicht Leuchtstoff"
 
 #: libexif/canon/mnote-canon-entry.c:294
-#, fuzzy
 msgid "Custom 1"
-msgstr "Benutzerdefiniert"
+msgstr "Benutzerdefiniert 1"
 
 #: libexif/canon/mnote-canon-entry.c:295
-#, fuzzy
 msgid "Custom 2"
-msgstr "Benutzerdefiniert"
+msgstr "Benutzerdefiniert 2"
 
 #: libexif/canon/mnote-canon-entry.c:298 libexif/exif-entry.c:407
 msgid "Night scene"
 msgstr "Nachtszene"
 
 #: libexif/canon/mnote-canon-entry.c:304
-#, fuzzy
 msgid "Center + Right"
-msgstr "Mittelpunkt gewichtet"
+msgstr "Mitte + Rechts"
 
 #: libexif/canon/mnote-canon-entry.c:306
-#, fuzzy
 msgid "Left + Right"
-msgstr "links nach rechts"
+msgstr "Links + Rechts"
 
 #: libexif/canon/mnote-canon-entry.c:307
 msgid "Left + Center"
-msgstr ""
+msgstr "Links + Mitte"
 
 #: libexif/canon/mnote-canon-entry.c:308
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 #: libexif/canon/mnote-canon-entry.c:310
 msgid "On (shot 1)"
-msgstr ""
+msgstr "An (Aufnahme 1)"
 
 #: libexif/canon/mnote-canon-entry.c:311
 msgid "On (shot 2)"
-msgstr ""
+msgstr "An (Aufnahme 2)"
 
 #: libexif/canon/mnote-canon-entry.c:312
 msgid "On (shot 3)"
-msgstr ""
+msgstr "An (Aufnahme 3)"
 
 #: libexif/canon/mnote-canon-entry.c:314
 msgid "EOS high-end"
-msgstr ""
+msgstr "EOS high-end"
 
 #: libexif/canon/mnote-canon-entry.c:315
 msgid "Compact"
-msgstr ""
+msgstr "Kompakt"
 
 #: libexif/canon/mnote-canon-entry.c:316
 msgid "EOS mid-range"
-msgstr ""
+msgstr "EOS Mittelklasse"
 
 #: libexif/canon/mnote-canon-entry.c:318
 msgid "Rotate 90 CW"
-msgstr ""
+msgstr "90º im Uhrzeigersinn rotieren"
 
 #: libexif/canon/mnote-canon-entry.c:319
 msgid "Rotate 180"
-msgstr ""
+msgstr "180º rotieren"
 
 #: libexif/canon/mnote-canon-entry.c:320
 msgid "Rotate 270 CW"
-msgstr ""
+msgstr "90º gegen Uhrzeiger rotieren"
 
 #: libexif/canon/mnote-canon-entry.c:321
 msgid "Rotated by software"
-msgstr ""
+msgstr "Durch Software rotiert"
 
 #: libexif/canon/mnote-canon-entry.c:331
-#, fuzzy
 msgid "Left to right"
-msgstr "links nach rechts"
+msgstr "Links nach rechts"
 
 #: libexif/canon/mnote-canon-entry.c:332
-#, fuzzy
 msgid "Right to left"
-msgstr "rechts nach links"
+msgstr "Rechts nach links"
 
 #: libexif/canon/mnote-canon-entry.c:333
-#, fuzzy
 msgid "Bottom to top"
-msgstr "unten nach oben"
+msgstr "Unten nach oben"
 
 #: libexif/canon/mnote-canon-entry.c:334
-#, fuzzy
 msgid "Top to bottom"
-msgstr "oben nach unten"
+msgstr "Oben nach unten"
 
 #: libexif/canon/mnote-canon-entry.c:335
 msgid "2x2 matrix (clockwise)"
-msgstr ""
+msgstr "2x2 Matrix (im Uhrzeigersinn)"
 
 #: libexif/canon/mnote-canon-entry.c:392
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: libexif/canon/mnote-canon-entry.c:471 libexif/canon/mnote-canon-entry.c:554
 #, c-format
@@ -979,9 +915,9 @@ msgid "%i (ms)"
 msgstr "%i (ms)"
 
 #: libexif/canon/mnote-canon-entry.c:506
-#, fuzzy, c-format
+#, c-format
 msgid "%.2f mm"
-msgstr "%.2f EV"
+msgstr "%.2f mm"
 
 #: libexif/canon/mnote-canon-entry.c:528
 #, c-format
@@ -1008,7 +944,6 @@ msgid "Settings (first part)"
 msgstr "Einstellungen (erster Teil)"
 
 #: libexif/canon/mnote-canon-tag.c:35 libexif/canon/mnote-canon-tag.c:87
-#, fuzzy
 msgid "Focal length"
 msgstr "Brennweite"
 
@@ -1017,7 +952,6 @@ msgid "Settings (second part)"
 msgstr "Einstellungen (zweiter Teil)"
 
 #: libexif/canon/mnote-canon-tag.c:37
-#, fuzzy
 msgid "Panorama"
 msgstr "Panorama"
 
@@ -1050,7 +984,6 @@ msgid "Macro mode"
 msgstr "Makromodus"
 
 #: libexif/canon/mnote-canon-tag.c:53 libexif/canon/mnote-canon-tag.c:112
-#, fuzzy
 msgid "Self-timer"
 msgstr "Selbstauslöser"
 
@@ -1065,9 +998,8 @@ msgid "Flash mode"
 msgstr "Blitzmodus"
 
 #: libexif/canon/mnote-canon-tag.c:56
-#, fuzzy
 msgid "Drive mode"
-msgstr "Messmodus"
+msgstr "Aufnahmemodus"
 
 #: libexif/canon/mnote-canon-tag.c:57 libexif/canon/mnote-canon-tag.c:77
 msgid "Focus mode"
@@ -1082,7 +1014,6 @@ msgid "Easy shooting mode"
 msgstr "Einfacher Aufnahmemodus"
 
 #: libexif/canon/mnote-canon-tag.c:60
-#, fuzzy
 msgid "Digital zoom"
 msgstr "Digital Zoom"
 
@@ -1111,14 +1042,12 @@ msgid "Metering mode"
 msgstr "Messmodus"
 
 #: libexif/canon/mnote-canon-tag.c:66
-#, fuzzy
 msgid "Focus range"
-msgstr "Fokus Modus"
+msgstr "Fokusbereich"
 
 #: libexif/canon/mnote-canon-tag.c:67 libexif/canon/mnote-canon-tag.c:100
-#, fuzzy
 msgid "AF point"
-msgstr "Benutzter AF Punkt "
+msgstr "AF Punkt "
 
 #: libexif/canon/mnote-canon-tag.c:68
 msgid "Exposure mode"
@@ -1145,9 +1074,8 @@ msgid "Maximal aperture"
 msgstr "Maximale Blende"
 
 #: libexif/canon/mnote-canon-tag.c:74
-#, fuzzy
 msgid "Minimal aperture"
-msgstr "Maximale Blende"
+msgstr "Minimale Blende"
 
 #: libexif/canon/mnote-canon-tag.c:75
 msgid "Flash activity"
@@ -1158,79 +1086,68 @@ msgid "Flash details"
 msgstr "Blitz Details"
 
 #: libexif/canon/mnote-canon-tag.c:78
-#, fuzzy
 msgid "AE setting"
-msgstr "ISO Einstellungen"
+msgstr "AE Einstellungen"
 
 #: libexif/canon/mnote-canon-tag.c:79
-#, fuzzy
 msgid "Image stabilization"
-msgstr "Bildbeschreibung"
+msgstr "Bildstabilisation"
 
 #: libexif/canon/mnote-canon-tag.c:80
-#, fuzzy
 msgid "Display aperture"
-msgstr "Maximale Blende"
+msgstr "Blendenanzeige"
 
 #: libexif/canon/mnote-canon-tag.c:81
 msgid "Zoom source width"
-msgstr ""
+msgstr "Breite der Zoomquelle"
 
 #: libexif/canon/mnote-canon-tag.c:82
-#, fuzzy
 msgid "Zoom target width"
-msgstr "Bildbreite"
+msgstr "Breite des Zoomtargets"
 
 #: libexif/canon/mnote-canon-tag.c:83
 msgid "Photo effect"
-msgstr ""
+msgstr "Photoeffekt"
 
 #: libexif/canon/mnote-canon-tag.c:84 libexif/canon/mnote-canon-tag.c:113
 msgid "Manual flash output"
-msgstr ""
+msgstr "Manuelle Blitzausgabe"
 
 #: libexif/canon/mnote-canon-tag.c:85
 msgid "Color tone"
 msgstr "Farbton"
 
 #: libexif/canon/mnote-canon-tag.c:86
-#, fuzzy
 msgid "Focal type"
 msgstr "Fokusart"
 
 #: libexif/canon/mnote-canon-tag.c:88
-#, fuzzy
 msgid "Focal plane x size"
 msgstr "Fokusebene x-Auflösung"
 
 #: libexif/canon/mnote-canon-tag.c:89
-#, fuzzy
 msgid "Focal plane y size"
 msgstr "Fokusebene y-Auflösung"
 
 #: libexif/canon/mnote-canon-tag.c:90
-#, fuzzy
 msgid "Auto ISO"
-msgstr "Automatisch"
+msgstr "Auto ISO"
 
 #: libexif/canon/mnote-canon-tag.c:91
-#, fuzzy
 msgid "Shot ISO"
-msgstr "Short Int"
+msgstr "Aufnahme ISO"
 
 #: libexif/canon/mnote-canon-tag.c:92
 msgid "Measured EV"
-msgstr ""
+msgstr "Gemessener EV"
 
 #: libexif/canon/mnote-canon-tag.c:93
-#, fuzzy
 msgid "Target aperture"
-msgstr "Maximale Blende"
+msgstr "Zielblende"
 
 #: libexif/canon/mnote-canon-tag.c:94
-#, fuzzy
 msgid "Target exposure time"
-msgstr "Belichtungszeit"
+msgstr "Zielbelichtungszeit"
 
 #: libexif/canon/mnote-canon-tag.c:96
 msgid "White balance"
@@ -1241,72 +1158,60 @@ msgid "Sequence number"
 msgstr "Sequenznummer"
 
 #: libexif/canon/mnote-canon-tag.c:99
-#, fuzzy
 msgid "Flash guide number"
-msgstr "Bildnummer"
+msgstr "Blitzleitzahl"
 
 #: libexif/canon/mnote-canon-tag.c:101 libexif/olympus/mnote-olympus-tag.c:52
-#, fuzzy
 msgid "Flash exposure compensation"
-msgstr "Blitzkompensation ?"
+msgstr "Blitz belichtungskompensation"
 
 #: libexif/canon/mnote-canon-tag.c:102
-#, fuzzy
 msgid "AE bracketing"
-msgstr "Automatischer Erfassung"
+msgstr "AE Bracketing"
 
 #: libexif/canon/mnote-canon-tag.c:103
-#, fuzzy
 msgid "AE bracket value"
-msgstr "Automatischer Erfassung"
+msgstr "AE Bracketwert"
 
 #: libexif/canon/mnote-canon-tag.c:104
-#, fuzzy
 msgid "Focus distance upper"
-msgstr "Manueller Fokusabstand"
+msgstr "Oberer Fokusabstand"
 
 #: libexif/canon/mnote-canon-tag.c:105
-#, fuzzy
 msgid "Focus distance lower"
-msgstr "Manueller Fokusabstand"
+msgstr "Unterer Fokusabstand"
 
 #: libexif/canon/mnote-canon-tag.c:106 libexif/exif-tag.c:297
 msgid "FNumber"
 msgstr "F Nummer."
 
 #: libexif/canon/mnote-canon-tag.c:107
-#, fuzzy
 msgid "Exposure time"
 msgstr "Belichtungszeit"
 
 #: libexif/canon/mnote-canon-tag.c:108
-#, fuzzy
 msgid "Bulb duration"
-msgstr "Sättigung"
+msgstr "Langzeitbelichtungszeit"
 
 #: libexif/canon/mnote-canon-tag.c:109
-#, fuzzy
 msgid "Camera type"
-msgstr "Kamera ID"
+msgstr "Kamera Typ"
 
 #: libexif/canon/mnote-canon-tag.c:110
-#, fuzzy
 msgid "Auto rotate"
-msgstr "Automatischer Erfassung"
+msgstr "Automatisches Rotieren"
 
 #: libexif/canon/mnote-canon-tag.c:111
 msgid "ND filter"
-msgstr ""
+msgstr "ND Filter"
 
 #: libexif/canon/mnote-canon-tag.c:114
-#, fuzzy
 msgid "Panorama frame"
-msgstr "Panorama"
+msgstr "Panorama Teil"
 
 #: libexif/canon/mnote-canon-tag.c:115
-#, fuzzy
 msgid "Panorama direction"
-msgstr "Geschwindigkeit/Sequenz/Panorama Richtung"
+msgstr "Panorama Richtung"
 
 #: libexif/exif-byte-order.c:33
 msgid "Motorola"
@@ -1379,8 +1284,7 @@ msgstr ""
 "Spezifikation zu folgen."
 
 #: libexif/exif-entry.c:322
-msgid ""
-"Tag 'UserComment' did not start with format identifier. This has been fixed."
+msgid "Tag 'UserComment' did not start with format identifier. This has been fixed."
 msgstr ""
 "Der Tag \"UserComment\" begann nicht mit einem Formattyp. Dieser Fehler "
 "wurde behoben."
@@ -1388,13 +1292,11 @@ msgstr ""
 #: libexif/exif-entry.c:360
 #, c-format
 msgid "The tag '%s' contains data of an invalid format ('%s', expected '%s')."
-msgstr ""
-"Der Tag '%s' enthält ein ungültiges Datenformat ('%s', '%s' wurde erwartet)."
+msgstr "Der Tag '%s' enthält ein ungültiges Datenformat ('%s', '%s' wurde erwartet)."
 
 #: libexif/exif-entry.c:373
 #, c-format
-msgid ""
-"The tag '%s' contains an invalid number of components (%i, expected %i)."
+msgid "The tag '%s' contains an invalid number of components (%i, expected %i)."
 msgstr ""
 "Der Tag '%s' enthält eine ungültige Anzahl von Komponenten (%i, %i wurden "
 "erwartet)."
@@ -1518,19 +1420,19 @@ msgstr "Standard"
 
 #: libexif/exif-entry.c:409
 msgid "Low gain up"
-msgstr ""
+msgstr "Low gain up"
 
 #: libexif/exif-entry.c:409
 msgid "High gain up"
-msgstr ""
+msgstr "High gain up"
 
 #: libexif/exif-entry.c:410
 msgid "Low gain down"
-msgstr ""
+msgstr "Low gain up"
 
 #: libexif/exif-entry.c:410
 msgid "High gain down"
-msgstr ""
+msgstr "High gain down"
 
 #: libexif/exif-entry.c:412
 msgid "Low saturation"
@@ -1594,9 +1496,8 @@ msgid "JPEG compression"
 msgstr "JPEG Kompression"
 
 #: libexif/exif-entry.c:439
-#, fuzzy
 msgid "Deflate/ZIP compression"
-msgstr "LZW Kompression"
+msgstr "Deflate/ZIP Kompression"
 
 #: libexif/exif-entry.c:443 libexif/olympus/mnote-olympus-entry.c:118
 #: libexif/pentax/mnote-pentax-entry.c:85
@@ -1757,23 +1658,18 @@ msgid "W. strobe"
 msgstr "Mit Röhrenblitz"
 
 #: libexif/exif-entry.c:492
-#, fuzzy
 msgid "Flash fired, compulsory flash mode"
 msgstr "Blitz ausgelöst, festgelegter Blitzmodus"
 
 #: libexif/exif-entry.c:493
-#, fuzzy
 msgid "Flash fired, compulsory flash mode, return light not detected."
-msgstr ""
-"Blitz ausgelöst, festgelegter Blitzmodus, Blitzreflektion nicht erkannt."
+msgstr "Blitz ausgelöst, festgelegter Blitzmodus, Blitzreflektion nicht erkannt."
 
 #: libexif/exif-entry.c:495
-#, fuzzy
 msgid "Flash fired, compulsory flash mode, return light detected."
 msgstr "Blitz ausgelöst, festgelegter Blitzmodus, Blitzreflektion erkannt."
 
 #: libexif/exif-entry.c:497
-#, fuzzy
 msgid "Flash did not fire, compulsory flash mode."
 msgstr "Blitz löste nicht aus, erzwungener Blitzmodus."
 
@@ -1803,8 +1699,7 @@ msgstr "Blitz ausgelöst, Rote Augen Reduktions Modus."
 
 #: libexif/exif-entry.c:505
 msgid "Flash fired, red-eye reduction mode, return light not detected."
-msgstr ""
-"Blitz ausgelöst, Rote Augen Reduktions Modus, Blitzreflektion nicht erkannt."
+msgstr "Blitz ausgelöst, Rote Augen Reduktions Modus, Blitzreflektion nicht erkannt."
 
 #: libexif/exif-entry.c:507
 msgid "Flash fired, red-eye reduction mode, return light detected."
@@ -1823,24 +1718,21 @@ msgstr ""
 "Blitzreflektion erkannt."
 
 #: libexif/exif-entry.c:513
-msgid ""
-"Flash fired, compulsory flash mode, red-eye reduction, return light detected"
+msgid "Flash fired, compulsory flash mode, red-eye reduction, return light detected"
 msgstr ""
 "Blitz ausgelöst, fester Blitzmodus, Rote Augen Reduktions Modus, "
 "Blitzreflektion erkannt."
 
 #: libexif/exif-entry.c:515
 msgid "Flash did not fire, auto mode, red-eye reduction mode"
-msgstr ""
-"Blitz nicht ausgelöst, automatischer Modus, Rote Augen Reduktions Modus."
+msgstr "Blitz nicht ausgelöst, automatischer Modus, Rote Augen Reduktions Modus."
 
 #: libexif/exif-entry.c:516
 msgid "Flash fired, auto mode, red-eye reduction mode"
 msgstr "Blitz ausgelöst, automatischer Modus, Rote Augen Reduktions Modus."
 
 #: libexif/exif-entry.c:517
-msgid ""
-"Flash fired, auto mode, return light not detected, red-eye reduction mode."
+msgid "Flash fired, auto mode, return light not detected, red-eye reduction mode."
 msgstr ""
 "Blitz ausgelöst, automatischer Modus, Blitzreflektion nicht erkannt, Rote "
 "Augen Reduktionsmodus."
@@ -1898,8 +1790,7 @@ msgstr "Nicht unterstützter JIS String."
 
 #: libexif/exif-entry.c:636
 msgid "Tag UserComment does not comply with standard but contains data."
-msgstr ""
-"Der Tag \"UserComment\" ist nicht standard konform, enthält aber Daten."
+msgstr "Der Tag \"UserComment\" ist nicht standard konform, enthält aber Daten."
 
 #: libexif/exif-entry.c:640
 #, c-format
@@ -2941,8 +2832,7 @@ msgid "The kind of light source."
 msgstr "Die Art der Lichtquelle."
 
 #: libexif/exif-tag.c:440
-msgid ""
-"This tag is recorded when an image is taken using a strobe light (flash)."
+msgid "This tag is recorded when an image is taken using a strobe light (flash)."
 msgstr ""
 "Dieser Eintrag wird aufgezeichnet, wenn das Bild mit einem Blitz gemacht "
 "wurde."
@@ -3022,15 +2912,13 @@ msgstr ""
 "erfassen."
 
 #: libexif/exif-tag.c:481
-msgid ""
-"A tag used to record fractions of seconds for the <DateTimeOriginal> tag."
+msgid "A tag used to record fractions of seconds for the <DateTimeOriginal> tag."
 msgstr ""
 "Der Tag wird benutzt um Sekundenbruchteile für den <DateTimeOriginal> Tag zu "
 "erfassen."
 
 #: libexif/exif-tag.c:486
-msgid ""
-"A tag used to record fractions of seconds for the <DateTimeDigitized> tag."
+msgid "A tag used to record fractions of seconds for the <DateTimeDigitized> tag."
 msgstr ""
 "Der Tag wird benutzt um Sekundenbruchteile für den <DateTimeDigitized> Tag "
 "zu erfassen."
@@ -3200,7 +3088,6 @@ msgid "Subject Location"
 msgstr "Ort des Objektes"
 
 #: libexif/exif-tag.c:587
-#, fuzzy
 msgid ""
 "Indicates the location of the main subject in the scene. The value of this "
 "tag represents the pixel at the center of the main subject relative to the "
@@ -3238,7 +3125,6 @@ msgid "File Source"
 msgstr "Dateiquelle"
 
 #: libexif/exif-tag.c:600
-#, fuzzy
 msgid ""
 "Indicates the image source. If a DSC recorded the image, the tag value of "
 "this tag always be set to 3, indicating that the image was recorded on a DSC."
@@ -3267,8 +3153,7 @@ msgstr "Motivbereich"
 msgid ""
 "This tag indicates the location and area of the main subject in the overall "
 "scene."
-msgstr ""
-"Dieser Tag gibt die Position und Größe des Hauptmotivs in der Szene an."
+msgstr "Dieser Tag gibt die Position und Größe des Hauptmotivs in der Szene an."
 
 #: libexif/exif-tag.c:615
 msgid "TIFF/EP Standard ID"
@@ -3305,8 +3190,7 @@ msgstr "Weißabgleich"
 
 #: libexif/exif-tag.c:626
 msgid "This tag indicates the white balance mode set when the image was shot."
-msgstr ""
-"Dieser Tag gibt die Weißabgleichsmodus der zur Aufnahme eingestellt war."
+msgstr "Dieser Tag gibt die Weißabgleichsmodus der zur Aufnahme eingestellt war."
 
 #: libexif/exif-tag.c:629
 msgid "Digital Zoom Ratio"
@@ -3543,7 +3427,7 @@ msgstr "Voreinstellung"
 
 #: libexif/olympus/mnote-olympus-entry.c:119
 msgid "Incandescence"
-msgstr ""
+msgstr "Glühlampe"
 
 #: libexif/olympus/mnote-olympus-entry.c:120
 msgid "Fluorescence"
@@ -3621,34 +3505,28 @@ msgid "AF Position: Right"
 msgstr "AF Position: Rechts"
 
 #: libexif/olympus/mnote-olympus-entry.c:315
-#, fuzzy
 msgid "AF Position: Upper-left"
-msgstr "AF Position: Links"
+msgstr "AF Position: Oben-links"
 
 #: libexif/olympus/mnote-olympus-entry.c:316
-#, fuzzy
 msgid "AF Position: Upper-right"
-msgstr "AF Position: Rechts"
+msgstr "AF Position: Oben-rechts"
 
 #: libexif/olympus/mnote-olympus-entry.c:317
-#, fuzzy
 msgid "AF Position: Lower-left"
-msgstr "AF Position: Links"
+msgstr "AF Position: Unten-links"
 
 #: libexif/olympus/mnote-olympus-entry.c:318
-#, fuzzy
 msgid "AF Position: Lower-right"
-msgstr "AF Position: Rechts"
+msgstr "AF Position: Unten-rechts"
 
 #: libexif/olympus/mnote-olympus-entry.c:319
-#, fuzzy
 msgid "AF Position: Far Left"
-msgstr "AF Position: Links"
+msgstr "AF Position: Weit-links"
 
 #: libexif/olympus/mnote-olympus-entry.c:320
-#, fuzzy
 msgid "AF Position: Far Right"
-msgstr "AF Position: Rechts"
+msgstr "AF Position: Weit-rechts"
 
 #: libexif/olympus/mnote-olympus-entry.c:321
 msgid "Unknown AF Position"
@@ -3719,7 +3597,7 @@ msgstr "Manuell: Unbekannt"
 
 #: libexif/olympus/mnote-olympus-entry.c:545
 msgid "One-touch"
-msgstr ""
+msgstr "One-touch"
 
 #: libexif/olympus/mnote-olympus-entry.c:568
 #, c-format
@@ -3776,24 +3654,23 @@ msgstr "ISO Selektion"
 
 #: libexif/olympus/mnote-olympus-tag.c:50
 msgid "Preview Image"
-msgstr ""
+msgstr "Vorschaubild"
 
 #: libexif/olympus/mnote-olympus-tag.c:51
 msgid "Exposurediff ?"
 msgstr "Belichtungsdifferenz ?"
 
 #: libexif/olympus/mnote-olympus-tag.c:54
-#, fuzzy
 msgid "Image Boundary"
-msgstr "Bildnummer"
+msgstr "Bildbegrenzung"
 
 #: libexif/olympus/mnote-olympus-tag.c:56
 msgid "Flash exposure bracket value"
-msgstr ""
+msgstr "Blitzbelichtungs Bracket Wert"
 
 #: libexif/olympus/mnote-olympus-tag.c:57
 msgid "Exposure bracket value"
-msgstr ""
+msgstr "Belichtungsbracketwert"
 
 #: libexif/olympus/mnote-olympus-tag.c:58
 #: libexif/olympus/mnote-olympus-tag.c:96
@@ -3802,7 +3679,7 @@ msgstr "Bildanpassung"
 
 #: libexif/olympus/mnote-olympus-tag.c:59
 msgid "Tonecompensation"
-msgstr ""
+msgstr "Farbtonkompensation"
 
 #: libexif/olympus/mnote-olympus-tag.c:60
 msgid "Adapter"
@@ -3837,12 +3714,11 @@ msgstr "AF Fokus Position"
 
 #: libexif/olympus/mnote-olympus-tag.c:67
 msgid "Bracketing"
-msgstr ""
+msgstr "Bracketierung"
 
 #: libexif/olympus/mnote-olympus-tag.c:69
-#, fuzzy
 msgid "Lens F stops"
-msgstr "Linsentyp"
+msgstr "Linsen F Stops"
 
 #: libexif/olympus/mnote-olympus-tag.c:70
 msgid "Contrast curve"
@@ -3854,7 +3730,6 @@ msgid "Colormode"
 msgstr "Farbmodus"
 
 #: libexif/olympus/mnote-olympus-tag.c:72
-#, fuzzy
 msgid "Lighttype"
 msgstr "Lichtart"
 
@@ -3868,12 +3743,11 @@ msgstr "Rauschreduktion"
 
 #: libexif/olympus/mnote-olympus-tag.c:79
 msgid "Sensor pixel size"
-msgstr ""
+msgstr "Sensor Pixelgröße"
 
 #: libexif/olympus/mnote-olympus-tag.c:82
-#, fuzzy
 msgid "Image datasize"
-msgstr "Bildgrõße"
+msgstr "Bilddatengrõße"
 
 #: libexif/olympus/mnote-olympus-tag.c:84
 msgid "Total number of pictures taken"
@@ -3884,9 +3758,8 @@ msgid "Optimize Image"
 msgstr "Bild optimieren"
 
 #: libexif/olympus/mnote-olympus-tag.c:88
-#, fuzzy
 msgid "Vari Program"
-msgstr "Programm"
+msgstr "Vari Programm"
 
 #: libexif/olympus/mnote-olympus-tag.c:89
 msgid "Capture Editor Data"
@@ -4068,3 +3941,4 @@ msgstr "[DO_NOT_TRANSLATE_THIS_MARKER_de]"
 
 #~ msgid "Subject distance"
 #~ msgstr "Entfernung des Objekts"
+
