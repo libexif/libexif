@@ -54,7 +54,7 @@
 
 #define CC2(number,t1,t2,v,maxlen)                                      \
 {                                                                       \
-	if ((number != t1) && (number != t2)) {                         \
+	if ((number < t1) || (number > t2)) {                           \
 		snprintf (v, maxlen,                                    \
 			_("Invalid number of components (%i, "          \
 			"expected %i or %i)."), (int) number,		\
@@ -129,6 +129,8 @@ static struct {
     { {1, N_("SQ")},
       {2, N_("HQ")},
       {3, N_("SHQ")},
+      {5, N_("SQ1")},
+      {6, N_("SQ2")},
       {0, NULL}}},
   { MNOTE_OLYMPUS_TAG_MACRO, EXIF_FORMAT_SHORT,
     { {0, N_("No")},
