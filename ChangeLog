@@ -1,3 +1,9 @@
+2007-02-25  Lutz Mueller <lutz@users.sourceforge.net>
+
+  Suggestions by Jef Driesen <jefdriesen@hotmail.com>:
+
+  * libexif/exif-entry.c: Correct formulas regarding to APEX values.
+
 2006-10-03  Marcus Meissner <marcus@jet.franken.de>
 
 	* libexif/olympus/*.[ch]: Added several Nikon Makernotes

@@ -705,13 +705,16 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 						    (float) v_rat.denominator);
 		break;
 	case EXIF_TAG_APERTURE_VALUE:
+  case EXIF_TAG_MAX_APERTURE_VALUE:
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator) return val;
-		snprintf (val, maxlen, "f/%.01f",
-			  pow (2 , ((float) v_rat.numerator /
-				    (float) v_rat.denominator) / 2.));
+    d = (double) v_rat.numerator / (double) v_rat.denominator;
+    snprintf (val, maxlen, _("%.02f EV"), d);
+    snprintf (b, sizeof (b), _(" (f/%.01f)"), pow (2, d / 2.));
+    if (maxlen > strlen (val) + strlen (b))
+      strncat (val, b, maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_FOCAL_LENGTH:
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
@@ -776,23 +779,32 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
 		if (!v_srat.denominator) return val;
-		snprintf (val, maxlen, "%.0f/%.0f", (float) v_srat.numerator,
-			  (float) v_srat.denominator);
-		if (maxlen > strlen (val) + strlen (_(" sec.")))
-			strncat (val, _(" sec."), maxlen - strlen (val) - 1);
-		snprintf (b, sizeof (b), " (APEX: %i)",
-			(int) pow (sqrt(2), (float) v_srat.numerator /
-				            (float) v_srat.denominator));
+    d = (double) v_srat.numerator / (double) v_srat.denominator;
+    snprintf (val, maxlen, _("%.02f EV"), d);
+		snprintf (b, sizeof (b), " (APEX: %i)", (int) pow (sqrt(2), d));
 		if (maxlen > strlen (val) + strlen (b))
 			strncat (val, b, maxlen - strlen (val) - 1);
+    d = 1. / pow (2, d);
+    if (d < 1)
+      snprintf (b, sizeof (b), _(" 1/%d sec.)"), (int) (1. / d));
+    else
+      snprintf (b, sizeof (b), _(" %d sec.)"), (int) d);
+    if (maxlen > strlen (val) + strlen (b)) {
+      val[strlen (val) - 1] = ',';
+      strncat (val, b, maxlen - strlen (val) - 1);
+    }
 		break;
 	case EXIF_TAG_BRIGHTNESS_VALUE:
 		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
-		snprintf (val, maxlen, "%i/%i", (int) v_srat.numerator,
-						  (int) v_srat.denominator);
-		/* FIXME: How do I calculate the APEX value? */
+    if (!v_srat.denominator) return val;
+    d = (double) v_srat.numerator / (double) v_srat.denominator;
+    snprintf (val, maxlen, _("%.02f EV"), d);
+    snprintf (b, sizeof (b), _(" (%.02f cd/m^2)"),
+        1. / (M_PI * 0.3048 * 0.3048) * pow (2, d));
+    if (maxlen > strlen (val) + strlen (b))
+      strncat (val, b, maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_FILE_SOURCE:
 		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
@@ -825,10 +837,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
 		if (!v_srat.denominator) return val;
-		snprintf (val, maxlen, "%s%.01f",
-			  v_srat.denominator * v_srat.numerator > 0 ? "+" : "",
-			  (double) v_srat.numerator /
-			  (double) v_srat.denominator);
+    d = (double) v_srat.numerator / (double) v_srat.denominator;
+    snprintf (val, maxlen, _("%.02f EV"), d);
 		break;
 	case EXIF_TAG_YCBCR_SUB_SAMPLING:
 		CF (e, EXIF_FORMAT_SHORT, val, maxlen);
