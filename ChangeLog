@@ -1,19 +1,39 @@
+2007-04-24  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/canon/mnote-canon-entry.c: Added hook for ISO settings of Canon
+	  PowerShot S3 IS - unlike other Canons, it doesn't use index into LUT, but
+	  direct ISO value ored w/ 0x4000
+
+2007-03-17  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-entry.c: Fixed values of EXIF_TAG_PHOTOMETRIC_INTERPRETATION,
+	  updated values of EXIF_TAG_COMPRESSION.
+
 2007-02-25  Lutz Mueller <lutz@users.sourceforge.net>
 
-  Suggestions by Jef Driesen <jefdriesen@hotmail.com>:
+	Suggestions by Jef Driesen <jefdriesen@hotmail.com>:
 
-  * libexif/exif-entry.c: Correct formulas regarding to APEX values.
+	* libexif/exif-entry.c: Correct formulas regarding to APEX values.
+
+2007-02-14  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/olympus/mnote-olympus-entry.c:
+	  Updated MNOTE_OLYMPUS_TAG_QUALITY & MNOTE_OLYMPUS_TAG_VERSION
 
 2006-10-03  Marcus Meissner <marcus@jet.franken.de>
 
 	* libexif/olympus/*.[ch]: Added several Nikon Makernotes
 	  entries, extracted from exiftool.
 
+2006-09-19  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/exif-loader.c: exif_loader_write() skips non-EXIF APP1 markers
+
 2006-09-17  Lutz Mueller <lutz@users.sourceforge.net>
 
-  Patch by Jef Driesen <jefdriesen@hotmail.com>:
+	Patch by Jef Driesen <jefdriesen@hotmail.com>:
 
-  * libexif/canon/*: Improve support for canon maker notes.
+	* libexif/canon/*: Improve support for canon maker notes.
 
 2006-05-05  Jan Patera <patera@users.sourceforge.net>
 	* libexif/exif-content.c: fixed bug #1471060: wasted space in 

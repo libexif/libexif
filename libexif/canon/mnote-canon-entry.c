@@ -470,6 +470,15 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 			if (!vs) break;
 			snprintf (val, maxlen, _("%i (ms)"), vs * 100);
 			break;
+		case 15:
+			if (((vs & 0xC000) == 0x4000) && (vs != 0x7FFF)) {
+				/* Canon S3 IS - directly specified value */
+				snprintf (val, maxlen, _("%i"), vs & ~0x4000);
+			} else {
+				/* Standard Canon - index into lookup table */
+				canon_search_table_value (entries_settings_1, t, vs, val, maxlen);
+			}
+			break;
 		case 22:
 		case 23:
 		case 24:
