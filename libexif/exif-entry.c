@@ -493,6 +493,7 @@ static struct {
       {0x0005, {N_("Strobe return light not detected."), N_("W/o strobe"),
 		NULL}},
       {0x0007, {N_("Strobe return light detected."), N_("W. strobe"), NULL}},
+      {0x0008, {N_("Flash did not fire, compulsory flash mode"), NULL}}, /* Olympus E-330 */
       {0x0009, {N_("Flash fired, compulsory flash mode"), NULL}},
       {0x000d, {N_("Flash fired, compulsory flash mode, return light "
 		   "not detected."), NULL}},
