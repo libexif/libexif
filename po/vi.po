@@ -977,7 +977,7 @@ msgstr "%i (miligiây)"
 #: libexif/canon/mnote-canon-entry.c:476
 #, fuzzy, c-format
 msgid "%i"
-msgstr "%li"
+msgstr "%i"
 
 #: libexif/canon/mnote-canon-entry.c:515
 #, fuzzy, c-format
@@ -1618,12 +1618,12 @@ msgstr "Nén JPEG"
 #: libexif/exif-entry.c:442
 #, fuzzy
 msgid "Deflate/ZIP compression"
-msgstr "Nén LZW"
+msgstr "Nén Deflate/ZIP"
 
 #: libexif/exif-entry.c:443
 #, fuzzy
 msgid "PackBits compression"
-msgstr "Nén JPEG"
+msgstr "Nén PackBits"
 
 #: libexif/exif-entry.c:447 libexif/olympus/mnote-olympus-entry.c:118
 #: libexif/pentax/mnote-pentax-entry.c:85
@@ -2000,12 +2000,12 @@ msgstr " giây"
 #: libexif/exif-entry.c:794
 #, fuzzy, c-format
 msgid " 1/%d sec.)"
-msgstr " giây"
+msgstr " 1/%d giây)"
 
 #: libexif/exif-entry.c:796
 #, fuzzy, c-format
 msgid " %d sec.)"
-msgstr " giây"
+msgstr " %d giây)"
 
 #: libexif/exif-entry.c:809
 #, c-format
@@ -3642,12 +3642,12 @@ msgstr "SHQ"
 #: libexif/olympus/mnote-olympus-entry.c:133
 #, fuzzy
 msgid "SQ1"
-msgstr "SQ"
+msgstr "SQ1"
 
 #: libexif/olympus/mnote-olympus-entry.c:134
 #, fuzzy
 msgid "SQ2"
-msgstr "SQ"
+msgstr "SQ2"
 
 #: libexif/olympus/mnote-olympus-entry.c:137
 #: libexif/olympus/mnote-olympus-entry.c:161

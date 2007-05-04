@@ -970,7 +970,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:547 libexif/exif-entry.c:775
 #, fuzzy, c-format
 msgid "1/%d"
-msgstr "1/%d sec."
+msgstr "1/%d"
 
 #: libexif/canon/mnote-canon-entry.c:549 libexif/exif-entry.c:778
 #, c-format
@@ -1591,7 +1591,7 @@ msgstr "Non compressé"
 #: libexif/exif-entry.c:439
 #, fuzzy
 msgid "LZW compression"
-msgstr "Compression JPEG"
+msgstr "Compression LZW"
 
 #: libexif/exif-entry.c:440 libexif/exif-entry.c:441
 msgid "JPEG compression"
@@ -1600,12 +1600,12 @@ msgstr "Compression JPEG"
 #: libexif/exif-entry.c:442
 #, fuzzy
 msgid "Deflate/ZIP compression"
-msgstr "Compression JPEG"
+msgstr "Compression Deflate/ZIP"
 
 #: libexif/exif-entry.c:443
 #, fuzzy
 msgid "PackBits compression"
-msgstr "Compression JPEG"
+msgstr "Compression PackBits"
 
 #: libexif/exif-entry.c:447 libexif/olympus/mnote-olympus-entry.c:118
 #: libexif/pentax/mnote-pentax-entry.c:85
@@ -1915,7 +1915,7 @@ msgstr "Non calibré"
 #: libexif/exif-entry.c:589
 #, fuzzy, c-format
 msgid "Invalid size of entry (%i, expected %li x %i)."
-msgstr "Nombre invalide de composants (%i, attendait %i)."
+msgstr "Nombre invalide de composants (%i, attendait %li x %i)."
 
 #: libexif/exif-entry.c:622
 msgid "Unsupported UNICODE string"
@@ -1989,17 +1989,17 @@ msgstr " (équivalent 35mm: %d mm)"
 #: libexif/exif-entry.c:779 libexif/exif-entry.c:780
 #, fuzzy
 msgid " sec."
-msgstr "%d sec."
+msgstr " sec."
 
 #: libexif/exif-entry.c:794
 #, fuzzy, c-format
 msgid " 1/%d sec.)"
-msgstr "%d sec."
+msgstr " 1/%d sec.)"
 
 #: libexif/exif-entry.c:796
 #, fuzzy, c-format
 msgid " %d sec.)"
-msgstr "%d sec."
+msgstr "%d sec.)"
 
 #: libexif/exif-entry.c:809
 #, c-format
@@ -3638,7 +3638,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-entry.c:571
 #, fuzzy, c-format
 msgid "%li bytes unknown data: "
-msgstr "%i de données inconnues"
+msgstr "%li de données inconnues"
 
 #: libexif/olympus/mnote-olympus-tag.c:37
 #, fuzzy
