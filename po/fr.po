@@ -32,9 +32,9 @@ msgstr "Nombre invalide de composants (%i, attendait %i)."
 
 #: libexif/canon/mnote-canon-entry.c:61
 #: libexif/olympus/mnote-olympus-entry.c:59
-#, fuzzy, c-format
+#, c-format
 msgid "Invalid number of components (%i, expected %i or %i)."
-msgstr "Nombre invalide de composants (%i, attendait %i)."
+msgstr "Nombre invalide de composants (%i, attendait %i ou %i)."
 
 #: libexif/canon/mnote-canon-entry.c:75 libexif/canon/mnote-canon-entry.c:120
 #: libexif/canon/mnote-canon-entry.c:168 libexif/exif-entry.c:529
@@ -968,7 +968,7 @@ msgid "%.2f EV"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:547 libexif/exif-entry.c:775
-#, fuzzy, c-format
+#, c-format
 msgid "1/%d"
 msgstr "1/%d"
 
@@ -996,21 +996,18 @@ msgid "Settings (second part)"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:37
-#, fuzzy
 msgid "Panorama"
-msgstr "normal"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:38
-#, fuzzy
 msgid "Image type"
-msgstr "Hauteur de l'image"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:39 libexif/olympus/mnote-olympus-tag.c:112
 msgid "Firmware version"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:40
-#, fuzzy
 msgid "Image number"
 msgstr "ID unique de l'image"
 
@@ -1019,9 +1016,8 @@ msgid "Owner name"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:42 libexif/olympus/mnote-olympus-tag.c:81
-#, fuzzy
 msgid "Serial number"
-msgstr "Le nombre F."
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:43
 #, fuzzy
@@ -1166,9 +1162,8 @@ msgid "Zoom source width"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:82
-#, fuzzy
 msgid "Zoom target width"
-msgstr "Hauteur de l'image"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:83
 msgid "Photo effect"
@@ -1227,28 +1222,24 @@ msgid "White balance"
 msgstr "Balance des blancs"
 
 #: libexif/canon/mnote-canon-tag.c:98
-#, fuzzy
 msgid "Sequence number"
-msgstr "Le nombre F."
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:99
-#, fuzzy
 msgid "Flash guide number"
-msgstr "ID unique de l'image"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:101 libexif/olympus/mnote-olympus-tag.c:52
 msgid "Flash exposure compensation"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:102
-#, fuzzy
 msgid "AE bracketing"
-msgstr "action"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:103
-#, fuzzy
 msgid "AE bracket value"
-msgstr "Bracketing automatique"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:104
 #, fuzzy
@@ -1271,28 +1262,24 @@ msgid "Exposure time"
 msgstr "Temps d'exposition"
 
 #: libexif/canon/mnote-canon-tag.c:108
-#, fuzzy
 msgid "Bulb duration"
-msgstr "Saturation"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:109
-#, fuzzy
 msgid "Camera type"
-msgstr "Hauteur de l'image"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:110
-#, fuzzy
 msgid "Auto rotate"
-msgstr "Bracketing automatique"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:111
 msgid "ND filter"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:114
-#, fuzzy
 msgid "Panorama frame"
-msgstr "normal"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:115
 msgid "Panorama direction"
@@ -1373,10 +1360,10 @@ msgid "The tag '%s' contains data of an invalid format ('%s', expected '%s')."
 msgstr "Format invalide '%s', attendait '%s'."
 
 #: libexif/exif-entry.c:373
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The tag '%s' contains an invalid number of components (%i, expected %i)."
-msgstr "Nombre invalide de composants (%i, attendait %i)."
+msgstr ""
 
 #: libexif/exif-entry.c:386
 msgid "chunky format"
@@ -1589,7 +1576,6 @@ msgid "Uncompressed"
 msgstr "Non compressé"
 
 #: libexif/exif-entry.c:439
-#, fuzzy
 msgid "LZW compression"
 msgstr "Compression LZW"
 
@@ -1598,12 +1584,10 @@ msgid "JPEG compression"
 msgstr "Compression JPEG"
 
 #: libexif/exif-entry.c:442
-#, fuzzy
 msgid "Deflate/ZIP compression"
 msgstr "Compression Deflate/ZIP"
 
 #: libexif/exif-entry.c:443
-#, fuzzy
 msgid "PackBits compression"
 msgstr "Compression PackBits"
 
@@ -1755,7 +1739,6 @@ msgstr "Flash"
 
 #: libexif/exif-entry.c:492 libexif/olympus/mnote-olympus-entry.c:138
 #: libexif/olympus/mnote-olympus-entry.c:162
-#, fuzzy
 msgid "Yes"
 msgstr "oui"
 
@@ -1776,7 +1759,6 @@ msgid "W. strobe"
 msgstr ""
 
 #: libexif/exif-entry.c:496
-#, fuzzy
 msgid "Flash did not fire, compulsory flash mode"
 msgstr "Flash non déclenché, mode de flash obligatoire."
 
@@ -1798,7 +1780,6 @@ msgstr ""
 "Flash déclenché, mode de flash obligatoire, lumière de retour détectée."
 
 #: libexif/exif-entry.c:502
-#, fuzzy
 msgid "Flash did not fire, compulsory flash mode."
 msgstr "Flash non déclenché, mode de flash obligatoire."
 
@@ -1913,7 +1894,7 @@ msgid "Uncalibrated"
 msgstr "Non calibré"
 
 #: libexif/exif-entry.c:589
-#, fuzzy, c-format
+#, c-format
 msgid "Invalid size of entry (%i, expected %li x %i)."
 msgstr "Nombre invalide de composants (%i, attendait %li x %i)."
 
@@ -1935,14 +1916,13 @@ msgid "Byte at position %i: 0x%02x"
 msgstr ""
 
 #: libexif/exif-entry.c:654
-#, fuzzy
 msgid "Unknown Exif Version"
-msgstr "Version d'exif"
+msgstr "Version d'exif inconnu"
 
 #: libexif/exif-entry.c:658
-#, fuzzy, c-format
+#, c-format
 msgid "Exif Version %d.%d"
-msgstr "Version d'exif"
+msgstr "Version d'exif %d.%d"
 
 #: libexif/exif-entry.c:669
 msgid "FlashPix Version 1.0"

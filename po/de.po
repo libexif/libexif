@@ -916,7 +916,7 @@ msgid "%i (ms)"
 msgstr "%i (ms)"
 
 #: libexif/canon/mnote-canon-entry.c:476
-#, fuzzy, c-format
+#, c-format
 msgid "%i"
 msgstr "%i"
 
@@ -1531,7 +1531,6 @@ msgid "Deflate/ZIP compression"
 msgstr "Deflate/ZIP Kompression"
 
 #: libexif/exif-entry.c:443
-#, fuzzy
 msgid "PackBits compression"
 msgstr "PackBits Kompression"
 
@@ -1881,9 +1880,9 @@ msgstr "(Editor)"
 
 #: libexif/exif-entry.c:719 libexif/exif-entry.c:788 libexif/exif-entry.c:808
 #: libexif/exif-entry.c:846
-#, fuzzy, c-format
+#, c-format
 msgid "%.02f EV"
-msgstr "%.2f EV"
+msgstr "%.02f EV"
 
 #: libexif/exif-entry.c:720
 #, c-format
@@ -1900,12 +1899,12 @@ msgid " sec."
 msgstr "sek."
 
 #: libexif/exif-entry.c:794
-#, fuzzy, c-format
+#, c-format
 msgid " 1/%d sec.)"
 msgstr "1/%dsek.)"
 
 #: libexif/exif-entry.c:796
-#, fuzzy, c-format
+#,  c-format
 msgid " %d sec.)"
 msgstr " %dsek.)"
 
@@ -3535,12 +3534,10 @@ msgid "SHQ"
 msgstr "SHQ"
 
 #: libexif/olympus/mnote-olympus-entry.c:133
-#, fuzzy
 msgid "SQ1"
 msgstr "SQ1"
 
 #: libexif/olympus/mnote-olympus-entry.c:134
-#, fuzzy
 msgid "SQ2"
 msgstr "SQ2"
 

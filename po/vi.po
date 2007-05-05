@@ -398,9 +398,8 @@ msgid "400"
 msgstr "400"
 
 #: libexif/canon/mnote-canon-entry.c:158
-#, fuzzy
 msgid "800"
-msgstr "100"
+msgstr "800"
 
 #: libexif/canon/mnote-canon-entry.c:159
 msgid "Default"
@@ -515,9 +514,8 @@ msgid "A-DEP"
 msgstr "A-DEP"
 
 #: libexif/canon/mnote-canon-entry.c:189
-#, fuzzy
 msgid "M-DEP"
-msgstr "A-DEP"
+msgstr "M-DEP"
 
 #: libexif/canon/mnote-canon-entry.c:190
 msgid "Canon EF 50mm f/1.8"
@@ -750,9 +748,8 @@ msgstr "Đồng bộ FP đã dùng"
 
 # Name: don't translate / Tên: đừng dịch
 #: libexif/canon/mnote-canon-entry.c:248
-#, fuzzy
 msgid "Internal"
-msgstr "Intel"
+msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:249
 #, fuzzy
@@ -975,14 +972,14 @@ msgstr "%i (miligiây)"
 
 # Variable: don't translate / Biến: đừng dịch
 #: libexif/canon/mnote-canon-entry.c:476
-#, fuzzy, c-format
+#, c-format
 msgid "%i"
 msgstr "%i"
 
 #: libexif/canon/mnote-canon-entry.c:515
-#, fuzzy, c-format
+#,  c-format
 msgid "%.2f mm"
-msgstr "%.2f EV"
+msgstr "%.2f mm"
 
 #: libexif/canon/mnote-canon-entry.c:537
 #, c-format
@@ -1616,12 +1613,10 @@ msgid "JPEG compression"
 msgstr "Nén JPEG"
 
 #: libexif/exif-entry.c:442
-#, fuzzy
 msgid "Deflate/ZIP compression"
 msgstr "Nén Deflate/ZIP"
 
 #: libexif/exif-entry.c:443
-#, fuzzy
 msgid "PackBits compression"
 msgstr "Nén PackBits"
 
@@ -1979,9 +1974,9 @@ msgstr "(Nhà soạn thảo)"
 
 #: libexif/exif-entry.c:719 libexif/exif-entry.c:788 libexif/exif-entry.c:808
 #: libexif/exif-entry.c:846
-#, fuzzy, c-format
+#, c-format
 msgid "%.02f EV"
-msgstr "%.2f EV"
+msgstr "%.02f EV"
 
 #: libexif/exif-entry.c:720
 #, c-format
@@ -1998,12 +1993,12 @@ msgid " sec."
 msgstr " giây"
 
 #: libexif/exif-entry.c:794
-#, fuzzy, c-format
+#, c-format
 msgid " 1/%d sec.)"
 msgstr " 1/%d giây)"
 
 #: libexif/exif-entry.c:796
-#, fuzzy, c-format
+#, c-format
 msgid " %d sec.)"
 msgstr " %d giây)"
 
@@ -3640,12 +3635,10 @@ msgid "SHQ"
 msgstr "SHQ"
 
 #: libexif/olympus/mnote-olympus-entry.c:133
-#, fuzzy
 msgid "SQ1"
 msgstr "SQ1"
 
 #: libexif/olympus/mnote-olympus-entry.c:134
-#, fuzzy
 msgid "SQ2"
 msgstr "SQ2"
 

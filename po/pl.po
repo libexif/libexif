@@ -142,14 +142,12 @@ msgid "Continuous, speed priority"
 msgstr "Tryb ciągłego przesuwania"
 
 #: libexif/canon/mnote-canon-entry.c:94
-#, fuzzy
 msgid "Continuous, low"
-msgstr "Ciągły"
+msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:95
-#, fuzzy
 msgid "Continuous, high"
-msgstr "Ciągły"
+msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:96
 #, fuzzy
@@ -396,9 +394,8 @@ msgid "400"
 msgstr "400"
 
 #: libexif/canon/mnote-canon-entry.c:158
-#, fuzzy
 msgid "800"
-msgstr "100"
+msgstr "800"
 
 #: libexif/canon/mnote-canon-entry.c:159
 msgid "Default"
@@ -471,9 +468,8 @@ msgid "Auto-selected"
 msgstr "automatycznie wybrany"
 
 #: libexif/canon/mnote-canon-entry.c:179 libexif/canon/mnote-canon-entry.c:302
-#, fuzzy
 msgid "Right"
-msgstr "noc"
+msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:180 libexif/canon/mnote-canon-entry.c:303
 #, fuzzy
@@ -513,9 +509,8 @@ msgid "A-DEP"
 msgstr "A-DEP"
 
 #: libexif/canon/mnote-canon-entry.c:189
-#, fuzzy
 msgid "M-DEP"
-msgstr "A-DEP"
+msgstr "M-DEP"
 
 #: libexif/canon/mnote-canon-entry.c:190
 msgid "Canon EF 50mm f/1.8"
@@ -747,9 +742,8 @@ msgid "FP sync used"
 msgstr "Użyto FP sync"
 
 #: libexif/canon/mnote-canon-entry.c:248
-#, fuzzy
 msgid "Internal"
-msgstr "Intel"
+msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:249
 #, fuzzy
@@ -971,14 +965,14 @@ msgid "%i (ms)"
 msgstr "%i (ms)"
 
 #: libexif/canon/mnote-canon-entry.c:476
-#, fuzzy, c-format
+#, c-format
 msgid "%i"
 msgstr "%i"
 
 #: libexif/canon/mnote-canon-entry.c:515
-#, fuzzy, c-format
+#, c-format
 msgid "%.2f mm"
-msgstr "%.2f EV"
+msgstr "%.2f mm"
 
 #: libexif/canon/mnote-canon-entry.c:537
 #, c-format
@@ -1144,7 +1138,7 @@ msgstr "Maksymalna jasność"
 #: libexif/canon/mnote-canon-tag.c:74
 #, fuzzy
 msgid "Minimal aperture"
-msgstr "Maksymalna jasność"
+msgstr "Minmalna jasność"
 
 #: libexif/canon/mnote-canon-tag.c:75
 msgid "Flash activity"
@@ -1160,9 +1154,8 @@ msgid "AE setting"
 msgstr "Ustawienie ISO"
 
 #: libexif/canon/mnote-canon-tag.c:79
-#, fuzzy
 msgid "Image stabilization"
-msgstr "Opis obrazu"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:80
 #, fuzzy
@@ -1211,9 +1204,8 @@ msgid "Auto ISO"
 msgstr "Auto"
 
 #: libexif/canon/mnote-canon-tag.c:91
-#, fuzzy
 msgid "Shot ISO"
-msgstr "Short"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:92
 msgid "Measured EV"
@@ -1287,9 +1279,8 @@ msgid "Camera type"
 msgstr "ID aparatu"
 
 #: libexif/canon/mnote-canon-tag.c:110
-#, fuzzy
 msgid "Auto rotate"
-msgstr "Auto bracket"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:111
 msgid "ND filter"
@@ -1476,9 +1467,8 @@ msgid "Reversed mono"
 msgstr ""
 
 #: libexif/exif-entry.c:399
-#, fuzzy
 msgid "Normal mono"
-msgstr "Standard"
+msgstr ""
 
 #: libexif/exif-entry.c:399
 msgid "RGB"
@@ -1491,7 +1481,7 @@ msgstr "Wzorzec"
 
 #: libexif/exif-entry.c:400
 msgid "CMYK"
-msgstr ""
+msgstr "CMYK"
 
 #: libexif/exif-entry.c:400
 msgid "YCbCr"
@@ -1499,7 +1489,7 @@ msgstr "YCbCr"
 
 #: libexif/exif-entry.c:400
 msgid "CieLAB"
-msgstr ""
+msgstr "CieLAB"
 
 #: libexif/exif-entry.c:402
 msgid "Normal process"
@@ -1611,12 +1601,10 @@ msgid "JPEG compression"
 msgstr "Kompresja JPEG"
 
 #: libexif/exif-entry.c:442
-#, fuzzy
 msgid "Deflate/ZIP compression"
 msgstr "Kompresja Deflate/ZIP"
 
 #: libexif/exif-entry.c:443
-#, fuzzy
 msgid "PackBits compression"
 msgstr "Kompresja PackBits"
 
@@ -1972,9 +1960,9 @@ msgstr "(Redaktor)"
 
 #: libexif/exif-entry.c:719 libexif/exif-entry.c:788 libexif/exif-entry.c:808
 #: libexif/exif-entry.c:846
-#, fuzzy, c-format
+#, c-format
 msgid "%.02f EV"
-msgstr "%.2f EV"
+msgstr "%.02f EV"
 
 #: libexif/exif-entry.c:720
 #, c-format
@@ -1991,12 +1979,12 @@ msgid " sec."
 msgstr " sek."
 
 #: libexif/exif-entry.c:794
-#, fuzzy, c-format
+#, c-format
 msgid " 1/%d sec.)"
 msgstr " 1/%d sek.)"
 
 #: libexif/exif-entry.c:796
-#, fuzzy, c-format
+#, c-format
 msgid " %d sec.)"
 msgstr " %d sek.)"
 
@@ -3668,12 +3656,10 @@ msgid "SHQ"
 msgstr "SHQ"
 
 #: libexif/olympus/mnote-olympus-entry.c:133
-#, fuzzy
 msgid "SQ1"
 msgstr "SQ1"
 
 #: libexif/olympus/mnote-olympus-entry.c:134
-#, fuzzy
 msgid "SQ2"
 msgstr "SQ2"
 
