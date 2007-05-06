@@ -1,3 +1,9 @@
+2007-05-06  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/olympus/exif-mnote-data-olympus.c: Nikon v1 makernotes were saved
+	  with wrong offsets, Nikon v1 & v2 maker notes were saved with wrong offset
+	  to 2nd IFD (Reported by Joakim Larsson as patch #1664543)
+
 2007-04-24  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/canon/mnote-canon-entry.c: Added hook for ISO settings of Canon
