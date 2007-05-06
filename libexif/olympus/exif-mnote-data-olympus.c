@@ -108,11 +108,14 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	case nikonV1: 
 		base = MNOTE_NIKON1_TAG_BASE;
 
+		/* v1 has offsets based to main IFD, not makernote IFD */
+		datao += n->offset + 10;
 		/* subtract the size here, so the increment in the next case will not harm us */
-		*buf_size -= 8;
+		*buf_size -= 8 + 2;
 		/* Fall through */
 	case nikonV2: 
-		*buf_size += 8;
+		*buf_size += 8 + 2;
+		*buf_size += 4; /* Next IFD pointer */
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
 		if (!*buf) return;
 
@@ -120,7 +123,6 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		strcpy ((char *)*buf, "Nikon");
 		(*buf)[6] = n->version;
 
-		*buf_size += 2;
 		if (n->version == nikonV2) {
 			exif_set_short (*buf + 10, n->order, (ExifShort) (
 				(n->order == EXIF_BYTE_ORDER_INTEL) ?
@@ -130,7 +132,9 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 			exif_set_long (*buf + 14, n->order, (ExifShort) 8);
 			o2 += 2 + 8;
 		}
-		datao = -10;
+		datao -= 10;
+		/* Reset next IFD pointer */
+		exif_set_long (*buf + o2 + 2 + n->count * 12, n->order, 0);
 		break;
 
 	default:
