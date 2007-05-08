@@ -493,8 +493,8 @@ static struct {
       {0x0005, {N_("Strobe return light not detected."), N_("W/o strobe"),
 		NULL}},
       {0x0007, {N_("Strobe return light detected."), N_("W. strobe"), NULL}},
-      {0x0008, {N_("Flash did not fire, compulsory flash mode"), NULL}}, /* Olympus E-330 */
-      {0x0009, {N_("Flash fired, compulsory flash mode"), NULL}},
+      {0x0008, {N_("Flash did not fire."), NULL}}, /* Olympus E-330 */
+      {0x0009, {N_("Flash fired, compulsory flash mode."), NULL}},
       {0x000d, {N_("Flash fired, compulsory flash mode, return light "
 		   "not detected."), NULL}},
       {0x000f, {N_("Flash fired, compulsory flash mode, return light "
@@ -514,11 +514,11 @@ static struct {
       {0x0049, {N_("Flash fired, compulsory flash mode, red-eye reduction "
 		   "mode."), NULL}},
       {0x004d, {N_("Flash fired, compulsory flash mode, red-eye reduction "
-		  "mode, return light not detected"), NULL}},
-      {0x004f, {N_("Flash fired, compulsory flash mode, red-eye reduction, "
-		   "return light detected"), NULL}},
-      {0x0058, {N_("Flash did not fire, auto mode, red-eye reduction mode"), NULL}},
-      {0x0059, {N_("Flash fired, auto mode, red-eye reduction mode"), NULL}},
+		  "mode, return light not detected."), NULL}},
+      {0x004f, {N_("Flash fired, compulsory flash mode, red-eye reduction mode, "
+		   "return light detected."), NULL}},
+      {0x0058, {N_("Flash did not fire, auto mode, red-eye reduction mode."), NULL}},
+      {0x0059, {N_("Flash fired, auto mode, red-eye reduction mode."), NULL}},
       {0x005d, {N_("Flash fired, auto mode, return light not detected, "
 		   "red-eye reduction mode."), NULL}},
       {0x005f, {N_("Flash fired, auto mode, return light detected, "

@@ -1781,15 +1781,10 @@ msgstr "Phát hiện đẻn trở về nháy nhanh."
 msgid "W. strobe"
 msgstr "Có nháy nhanh"
 
-#: libexif/exif-entry.c:496
-#, fuzzy
-msgid "Flash did not fire, compulsory flash mode"
-msgstr "Đèn nháy không hoạt động, chế độ nháy bắt buộc"
-
 #: libexif/exif-entry.c:497
 #, fuzzy
-msgid "Flash fired, compulsory flash mode"
-msgstr "Đèn nháy đã hoạt động, chế độ nháy bắt buộc"
+msgid "Flash fired, compulsory flash mode."
+msgstr "Đèn nháy đã hoạt động, chế độ nháy bắt buộc."
 
 #: libexif/exif-entry.c:498
 #, fuzzy
@@ -1806,7 +1801,7 @@ msgstr ""
 #: libexif/exif-entry.c:502
 #, fuzzy
 msgid "Flash did not fire, compulsory flash mode."
-msgstr "Đèn nháy không hoạt động, chế độ nháy bắt buộc"
+msgstr "Đèn nháy không hoạt động, chế độ nháy bắt buộc."
 
 #: libexif/exif-entry.c:503
 msgid "Flash did not fire, auto mode."
@@ -1814,7 +1809,7 @@ msgstr "Đèn nháy không hoạt động, chế độ tự động."
 
 #: libexif/exif-entry.c:504
 msgid "Flash fired, auto mode."
-msgstr "Đèn nháy đã hoạt động, chế độ tự động"
+msgstr "Đèn nháy đã hoạt động, chế độ tự động."
 
 #: libexif/exif-entry.c:505
 msgid "Flash fired, auto mode, return light not detected."
@@ -1848,24 +1843,24 @@ msgstr "Đèn nháy đã hoạt động, chế độ nháy bắt buộc, chế �
 #: libexif/exif-entry.c:516
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
-"detected"
+"detected."
 msgstr ""
 "Đèn nháy đã hoạt động, chế độ nháy bắt buộc, chế độ giảm mặt đỏ, chưa phát "
 "hiện ánh sáng trở về."
 
 #: libexif/exif-entry.c:518
 msgid ""
-"Flash fired, compulsory flash mode, red-eye reduction, return light detected"
+"Flash fired, compulsory flash mode, red-eye reduction, return light detected."
 msgstr ""
 "Đèn nháy đã hoạt động, chế độ nháy bắt buộc, chế độ giảm mặt đỏ, phát hiện "
 "ánh sáng trở về."
 
 #: libexif/exif-entry.c:520
-msgid "Flash did not fire, auto mode, red-eye reduction mode"
+msgid "Flash did not fire, auto mode, red-eye reduction mode."
 msgstr "Đèn nháy chưa hoạt động, chế độ tự động, chế độ giảm mặt đỏ."
 
 #: libexif/exif-entry.c:521
-msgid "Flash fired, auto mode, red-eye reduction mode"
+msgid "Flash fired, auto mode, red-eye reduction mode."
 msgstr "Đèn nháy đã hoạt động, chế độ tự động, chế độ giảm mặt đỏ."
 
 #: libexif/exif-entry.c:522

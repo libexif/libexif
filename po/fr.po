@@ -1758,13 +1758,9 @@ msgstr ""
 msgid "W. strobe"
 msgstr ""
 
-#: libexif/exif-entry.c:496
-msgid "Flash did not fire, compulsory flash mode"
-msgstr "Flash non déclenché, mode de flash obligatoire."
-
 #: libexif/exif-entry.c:497
 #, fuzzy
-msgid "Flash fired, compulsory flash mode"
+msgid "Flash fired, compulsory flash mode."
 msgstr "Flash non déclenché, mode de flash obligatoire."
 
 #: libexif/exif-entry.c:498
@@ -1824,7 +1820,7 @@ msgstr "Flash déclenché, mode de flash obligatoire, mode anti-yeux rouges."
 #, fuzzy
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
-"detected"
+"detected."
 msgstr ""
 "Flash déclenché, mode de flash obligatoire, mode anti-yeux rouges, lumière "
 "de retour non détectée."
@@ -1832,19 +1828,19 @@ msgstr ""
 #: libexif/exif-entry.c:518
 #, fuzzy
 msgid ""
-"Flash fired, compulsory flash mode, red-eye reduction, return light detected"
+"Flash fired, compulsory flash mode, red-eye reduction, return light detected."
 msgstr ""
 "Flash déclenché, mode de flash obligatoire, mode anti-yeux rouges, lumière "
-"de retour détectée"
+"de retour détectée."
 
 #: libexif/exif-entry.c:520
 #, fuzzy
-msgid "Flash did not fire, auto mode, red-eye reduction mode"
+msgid "Flash did not fire, auto mode, red-eye reduction mode."
 msgstr "Flash déclenché, mode auto, mode anti-yeux rouges."
 
 #: libexif/exif-entry.c:521
 #, fuzzy
-msgid "Flash fired, auto mode, red-eye reduction mode"
+msgid "Flash fired, auto mode, red-eye reduction mode."
 msgstr "Flash déclenché, mode auto, mode anti-yeux rouges."
 
 #: libexif/exif-entry.c:522

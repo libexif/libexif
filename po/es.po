@@ -1761,14 +1761,9 @@ msgstr "Luz de retorno estrosboscópica detectada."
 msgid "W. strobe"
 msgstr "con estrosboscópica"
 
-#: libexif/exif-entry.c:496
-#, fuzzy
-msgid "Flash did not fire, compulsory flash mode"
-msgstr "El flash no disparó, modo compulsivo del flash."
-
 #: libexif/exif-entry.c:497
 #, fuzzy
-msgid "Flash fired, compulsory flash mode"
+msgid "Flash fired, compulsory flash mode."
 msgstr "El flash no disparó, modo compulsivo del flash."
 
 #: libexif/exif-entry.c:498
@@ -1831,7 +1826,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
-"detected"
+"detected."
 msgstr ""
 "El flash disparó, modo compulsivo del flash, modo de reducción de ojos "
 "rojos, luz de retorno no detectada."
@@ -1839,19 +1834,19 @@ msgstr ""
 #: libexif/exif-entry.c:518
 #, fuzzy
 msgid ""
-"Flash fired, compulsory flash mode, red-eye reduction, return light detected"
+"Flash fired, compulsory flash mode, red-eye reduction, return light detected."
 msgstr ""
 "El flash disparó, modo compulsivo del flash, modo de reducción de ojos "
 "rojos, luz de retorno detectada."
 
 #: libexif/exif-entry.c:520
 #, fuzzy
-msgid "Flash did not fire, auto mode, red-eye reduction mode"
+msgid "Flash did not fire, auto mode, red-eye reduction mode."
 msgstr "El flash disparó, modo automático, modo de reducción de ojos rojos."
 
 #: libexif/exif-entry.c:521
 #, fuzzy
-msgid "Flash fired, auto mode, red-eye reduction mode"
+msgid "Flash fired, auto mode, red-eye reduction mode."
 msgstr "El flash disparó, modo automático, modo de reducción de ojos rojos."
 
 #: libexif/exif-entry.c:522

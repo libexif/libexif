@@ -1766,15 +1766,10 @@ msgstr "Zwrotne światło stroboskopowe wykryte."
 msgid "W. strobe"
 msgstr "Ze światłem stroboskopowym"
 
-#: libexif/exif-entry.c:496
-#, fuzzy
-msgid "Flash did not fire, compulsory flash mode"
-msgstr "Flesz się nie uruchomił w trybie pulsującym."
-
 #: libexif/exif-entry.c:497
 #, fuzzy
-msgid "Flash fired, compulsory flash mode"
-msgstr "Flesz się uruchomił w trybie pulsującym"
+msgid "Flash fired, compulsory flash mode."
+msgstr "Flesz się uruchomił w trybie pulsującym."
 
 #: libexif/exif-entry.c:498
 #, fuzzy
@@ -1835,26 +1830,26 @@ msgstr "Flesz się uruchomił w trybie pulsującym z redukcją czerwonych oczu."
 #: libexif/exif-entry.c:516
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
-"detected"
+"detected."
 msgstr ""
 "Flesz się uruchomił w trybie pulsującym z redukcją czerwonych oczu, światło "
-"zwrotne nie wykryte"
+"zwrotne nie wykryte."
 
 #: libexif/exif-entry.c:518
 msgid ""
-"Flash fired, compulsory flash mode, red-eye reduction, return light detected"
+"Flash fired, compulsory flash mode, red-eye reduction, return light detected."
 msgstr ""
 "Flesz się uruchomił w trybie pulsującym z redukcją czerwonych oczu, światło "
-"zwrotne wykryte"
+"zwrotne wykryte."
 
 #: libexif/exif-entry.c:520
-msgid "Flash did not fire, auto mode, red-eye reduction mode"
+msgid "Flash did not fire, auto mode, red-eye reduction mode."
 msgstr ""
-"Flesz się nie uruchomił w trybie automatycznym z redukcją czerwonych oczu"
+"Flesz się nie uruchomił w trybie automatycznym z redukcją czerwonych oczu."
 
 #: libexif/exif-entry.c:521
-msgid "Flash fired, auto mode, red-eye reduction mode"
-msgstr "Flesz się uruchomił w trybie automatycznym z redukcją czerwonych oczu"
+msgid "Flash fired, auto mode, red-eye reduction mode."
+msgstr "Flesz się uruchomił w trybie automatycznym z redukcją czerwonych oczu."
 
 #: libexif/exif-entry.c:522
 msgid ""
