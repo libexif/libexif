@@ -102,6 +102,7 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 
 		/* Write the header and the number of entries. */
 		strcpy ((char *)*buf, "OLYMP");
+		exif_set_short (*buf + 6, n->order, (ExifShort) 1);
 		datao = n->offset;
 		break;
 	case olympusV2:
@@ -224,6 +225,10 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 
 		/* The number of entries is at position 8. */
 		n->version = olympusV1;
+		if (buf[o2 + 6] == 1)
+			n->order = EXIF_BYTE_ORDER_INTEL;
+		else if (buf[o2 + 6 + 1] == 1)
+			n->order = EXIF_BYTE_ORDER_MOTOROLA;
 		o2 += 8;
 
 	} else if (!memcmp (buf + o2, "OLYMPUS", 8)) {
