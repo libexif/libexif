@@ -86,7 +86,7 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		unsigned char **buf, unsigned int *buf_size)
 {
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) ne;
-	unsigned int i, o, s, doff, base = 0, o2 = 6;
+	unsigned int i, o, s, doff, base = 0, o2 = 6 + 2;
 	int datao = 0;
 
 	if (!n || !buf || !buf_size) return;
@@ -95,15 +95,28 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	 * Allocate enough memory for all entries and the number of entries.
 	 */
 	*buf_size = 6 + 2 + 2 + n->count * 12;
-	o2 += 2;
 	switch (n->version) {
-	case olympus: 
+	case olympusV1:
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
 		if (!*buf) return;
 
 		/* Write the header and the number of entries. */
 		strcpy ((char *)*buf, "OLYMP");
 		datao = n->offset;
+		break;
+	case olympusV2:
+		*buf_size += 8-6 + 4;
+		*buf = exif_mem_alloc (ne->mem, *buf_size);
+		if (!*buf) return;
+
+		/* Write the header and the number of entries. */
+		strcpy ((char *)*buf, "OLYMPUS");
+		exif_set_short (*buf + 8, n->order, (ExifShort) (
+			(n->order == EXIF_BYTE_ORDER_INTEL) ?
+			('I' << 8) | 'I' :
+			('M' << 8) | 'M'));
+		exif_set_short (*buf + 10, n->order, (ExifShort) 3);
+		o2 += 4;
 		break;
 	case nikonV1: 
 		base = MNOTE_NIKON1_TAG_BASE;
@@ -205,13 +218,30 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	 * lastly 0x2A.
 	 */
 	if (buf_size - n->offset < 22) return;
-	if (!memcmp (buf + o2, "OLYMP", 5)) {
+	if (!memcmp (buf + o2, "OLYMP", 6)) {
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
-			"Parsing Olympus maker note...");
+			"Parsing Olympus maker note v1...");
 
 		/* The number of entries is at position 8. */
-		n->version = olympus;
+		n->version = olympusV1;
 		o2 += 8;
+
+	} else if (!memcmp (buf + o2, "OLYMPUS", 8)) {
+		/* Olympus S760, S770 */
+		datao = o2;
+		o2 += 8;
+		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
+			"Parsing Olympus maker note v2 (0x%02x, %02x, %02x, %02x)...",
+			buf[o2], buf[o2 + 1], buf[o2 + 2], buf[o2 + 3]);
+
+		if ((buf[o2] == 'I') && (buf[o2 + 1] == 'I'))
+			n->order = EXIF_BYTE_ORDER_INTEL;
+		else if ((buf[o2] == 'M') && (buf[o2 + 1] == 'M'))
+			n->order = EXIF_BYTE_ORDER_MOTOROLA;
+
+		/* The number of entries is at position 8+4. */
+		n->version = olympusV2;
+		o2 += 4;
 
 	} else if (!memcmp (buf + o2, "Nikon", 6)) {
 		o2 += 6;

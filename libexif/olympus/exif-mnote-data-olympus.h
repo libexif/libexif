@@ -26,7 +26,7 @@
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-mem.h>
 
-enum OlympusVersion {olympus = 0, nikonV1 = 1, nikonV2 = 2};
+enum OlympusVersion {nikonV1 = 1, nikonV2 = 2, olympusV1 = 3, olympusV2 = 4 };
 
 
 typedef struct _ExifMnoteDataOlympus ExifMnoteDataOlympus;
