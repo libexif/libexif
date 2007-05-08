@@ -663,8 +663,8 @@ exif_data_get_type_maker_note (ExifData *d)
 		return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
 
 	/* Olympus & Nikon */
-	if ((e->size >= 5) && (!memcmp (e->data, "OLYMP", 5) ||
-			       !memcmp (e->data, "Nikon", 5)))
+	if ((e->size >= 8) && (!memcmp (e->data, "OLYMP", 6) ||
+			!memcmp (e->data, "OLYMPUS", 8) || !memcmp (e->data, "Nikon", 6)))
 		return EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS;
 
 	em = exif_data_get_entry (d, EXIF_TAG_MAKE);

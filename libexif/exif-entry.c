@@ -533,7 +533,8 @@ static struct {
   { EXIF_TAG_COLOR_SPACE,
     { {1, {N_("sRGB"), NULL}},
       {2, {N_("Adobe RGB"), NULL}},
-      {0xffff, {N_("Uncalibrated"), NULL}}}},
+      {0xffff, {N_("Uncalibrated"), NULL}},
+      {0x0000, {NULL}}}},
   {0, }
 };
 
@@ -918,7 +919,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 
 		/* Find the value */
-		for (j = 0; list2[i].elem[j].values &&
+		for (j = 0; list2[i].elem[j].values[0] &&
 			    (list2[i].elem[j].index < v_short); j++);
 		if (list2[i].elem[j].index != v_short) {
 			snprintf (val, maxlen, _("Internal error (unknown "
@@ -928,8 +929,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 
 		/* Find a short enough value */
 		memset (val, 0, maxlen);
-		for (k = 0; list2[i].elem[j].values &&
-			    list2[i].elem[j].values[k]; k++) {
+		for (k = 0; list2[i].elem[j].values[k]; k++) {
 		  l = strlen (_(list2[i].elem[j].values[k]));
 		  if ((maxlen > l) && (strlen (val) < l))
 		    strncpy (val, _(list2[i].elem[j].values[k]), maxlen - 1);
@@ -968,6 +968,10 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		else
 			strncpy (val, _(list[i].strings[j]), maxlen - 1);
 		break; 	
+	case EXIF_TAG_INTEROPERABILITY_VERSION:
+		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
+		strncpy (val, (char *) e->data, MIN (maxlen, e->size));
+		break;
 	default:
 		if (!e->components) break;
 		switch (e->format) {
