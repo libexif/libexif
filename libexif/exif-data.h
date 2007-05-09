@@ -84,7 +84,8 @@ void          exif_data_foreach_content (ExifData *data,
 
 typedef enum {
 	EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS = 1 << 0,
-	EXIF_DATA_OPTION_FOLLOW_SPECIFICATION = 1 << 1
+	EXIF_DATA_OPTION_FOLLOW_SPECIFICATION = 1 << 1,
+	EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE = 1 << 2
 } ExifDataOption;
 
 const char *exif_data_option_get_name        (ExifDataOption);

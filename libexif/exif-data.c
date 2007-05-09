@@ -222,17 +222,17 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	exif_set_short (*d + 6 + offset + 2,
 			data->priv->order, (ExifShort) e->format);
 
-#ifndef EXIF_DONT_CHANGE_MAKER_NOTE
-	/* If this is the maker note tag, update it. */
-	if ((e->tag == EXIF_TAG_MAKER_NOTE) && data->priv->md) {
-		exif_mem_free (data->priv->mem, e->data);
-		e->data = NULL;
-		e->size = 0;
-		exif_mnote_data_set_offset (data->priv->md, *ds - 6);
-		exif_mnote_data_save (data->priv->md, &e->data, &e->size);
-		e->components = e->size;
+	if (!(data->priv->options & EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE)) {
+		/* If this is the maker note tag, update it. */
+		if ((e->tag == EXIF_TAG_MAKER_NOTE) && data->priv->md) {
+			exif_mem_free (data->priv->mem, e->data);
+			e->data = NULL;
+			e->size = 0;
+			exif_mnote_data_set_offset (data->priv->md, *ds - 6);
+			exif_mnote_data_save (data->priv->md, &e->data, &e->size);
+			e->components = e->size;
+		}
 	}
-#endif
 
 	exif_set_long  (*d + 6 + offset + 4,
 			data->priv->order, e->components);
@@ -847,7 +847,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
 		break;
 	case EXIF_DATA_TYPE_MAKER_NOTE_CANON:
-		data->priv->md = exif_mnote_data_canon_new (data->priv->mem);
+		data->priv->md = exif_mnote_data_canon_new (data->priv->mem, data->priv->options);
 		break;
 	default:
 		break;
@@ -1102,6 +1102,9 @@ static struct {
 	{EXIF_DATA_OPTION_FOLLOW_SPECIFICATION, N_("Follow specification"),
 	 N_("Add, correct and remove entries to get EXIF data that follows "
 	    "the specification.")},
+	{EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE, N_("Don not change maker note"),
+	 N_("When loading and resaving Exif data, save the maker note unmodified."
+	    " Be aware that the maker note can get corrupted.")},
 	{0, NULL, NULL}
 };
 
