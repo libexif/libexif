@@ -127,13 +127,22 @@ mnote_canon_tag_get_name (MnoteCanonTag t)
 }
 
 const char *
-mnote_canon_tag_get_name_sub (MnoteCanonTag t, unsigned int s)
+mnote_canon_tag_get_name_sub (MnoteCanonTag t, unsigned int s, ExifDataOption o)
 {
 	unsigned int i;
-	for (i = 0; i < sizeof (table_sub) / sizeof (table_sub[0]); i++)
-		if ((table_sub[i].tag == t) && (table_sub[i].subtag == s))
-			return table_sub[i].name;
-	return mnote_canon_tag_get_name (t);
+	int tag_found = 0;
+
+	for (i = 0; i < sizeof (table_sub) / sizeof (table_sub[0]); i++) {
+		if (table_sub[i].tag == t) {
+			if (table_sub[i].subtag == s)
+				return table_sub[i].name;
+			tag_found = 1;
+		}
+	}
+	if (!tag_found || !(o & EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS))
+		return mnote_canon_tag_get_name (t);
+	else
+		return NULL;
 }
 
 const char *
@@ -148,13 +157,22 @@ mnote_canon_tag_get_title (MnoteCanonTag t)
 }
 
 const char *
-mnote_canon_tag_get_title_sub (MnoteCanonTag t, unsigned int s)
+mnote_canon_tag_get_title_sub (MnoteCanonTag t, unsigned int s, ExifDataOption o)
 {
 	unsigned int i;
-	for (i = 0; i < sizeof (table_sub) / sizeof (table_sub[0]); i++)
-		if ((table_sub[i].tag == t) && (table_sub[i].subtag == s))
-			return _(table_sub[i].name);
-	return mnote_canon_tag_get_title (t);
+	int tag_found = 0;
+
+	for (i = 0; i < sizeof (table_sub) / sizeof (table_sub[0]); i++) {
+		if (table_sub[i].tag == t) {
+			if (table_sub[i].subtag == s)
+				return _(table_sub[i].name);
+			tag_found = 1;
+		}
+	}
+	if (!tag_found || !(o & EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS))
+		return mnote_canon_tag_get_title (t);
+	else
+		return NULL;
 }
 
 const char *

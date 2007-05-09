@@ -257,7 +257,7 @@ exif_mnote_data_canon_get_name (ExifMnoteData *note, unsigned int i)
 	if (!dc) return NULL;
 	exif_mnote_data_canon_get_tags (dc, i, &m, &s);
 	if (m >= dc->count) return NULL;
-	return mnote_canon_tag_get_name_sub (dc->entries[m].tag, s);
+	return mnote_canon_tag_get_name_sub (dc->entries[m].tag, s, dc->options);
 }
 
 static const char *
@@ -269,7 +269,7 @@ exif_mnote_data_canon_get_title (ExifMnoteData *note, unsigned int i)
 	if (!dc) return NULL;
 	exif_mnote_data_canon_get_tags (dc, i, &m, &s);
 	if (m >= dc->count) return NULL;
-	return mnote_canon_tag_get_title_sub (dc->entries[m].tag, s);
+	return mnote_canon_tag_get_title_sub (dc->entries[m].tag, s, dc->options);
 }
 
 static const char *
@@ -285,9 +285,10 @@ exif_mnote_data_canon_get_description (ExifMnoteData *note, unsigned int i)
 }
 
 ExifMnoteData *
-exif_mnote_data_canon_new (ExifMem *mem)
+exif_mnote_data_canon_new (ExifMem *mem, ExifDataOption o)
 {
 	ExifMnoteData *d;
+	ExifMnoteDataCanon *dc;
 
 	if (!mem) return NULL;
 
@@ -309,5 +310,7 @@ exif_mnote_data_canon_new (ExifMem *mem)
 	d->methods.get_description = exif_mnote_data_canon_get_description;
 	d->methods.get_value       = exif_mnote_data_canon_get_value;
 
+	dc = (ExifMnoteDataCanon*)d;
+	dc->options = o;
 	return d;
 }
