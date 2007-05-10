@@ -2,7 +2,8 @@ AC_PREREQ(2.59)
 AC_INIT([EXIF library],[0.6.14],[libexif-devel@lists.sourceforge.net],[libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
-AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2 dist-zip])
+AC_CONFIG_MACRO_DIR([auto-m4])
+AM_INIT_AUTOMAKE([-Wall gnu 1.9 dist-bzip2 dist-zip check-news])
 
 if test ! -d "$srcdir/m4m"; then
 AC_MSG_ERROR([
@@ -46,7 +47,7 @@ dnl  increment AGE, Otherwise AGE is reset to 0. If CURRENT has changed,
 dnl  REVISION is set to 0, otherwise REVISION is incremented.
 dnl ---------------------------------------------------------------------------
 LIBEXIF_AGE=0
-LIBEXIF_REVISION=1
+LIBEXIF_REVISION=2
 LIBEXIF_CURRENT=12
 AC_SUBST([LIBEXIF_AGE])
 AC_SUBST([LIBEXIF_REVISION])
@@ -145,6 +146,8 @@ AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_srcdir)"
 AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_srcdir)/libexif"
 AM_LDFLAGS="$LDFLAGS"
 if test "x$GCC" = "xyes"; then
+    AM_CFLAGS="$AM_CFLAGS -ansi -pedantic-error"
+    AM_CXXFLAGS="$AM_CXXFLAGS -ansi -pedantic-error"
     AM_CPPFLAGS="$AM_CPPFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
     AM_LDFLAGS="$AM_LDFLAGS -g -Wall"
 fi
