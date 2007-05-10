@@ -1,3 +1,17 @@
+2007-05-09  Jan Patera <patera@users.sourceforge.net>
+
+	* Added support for Olympus S760 & S770 makernote (bug #1703284)
+	* Fixed crashes when looking up invalid values (bug #1457501)
+	* Added heuristics (bug #1525770): mismatching Olympus makernote
+	  in big endian when the rest is in little endian is detected
+	  to prevent crashes
+	* Added option EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE to prevent
+	  modification of maker notes
+	* EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS propagated to Canon makernote
+	  (Bug #1617991)
+	* Updated several tags
+	* Updated translations
+
 2007-05-06  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/olympus/exif-mnote-data-olympus.c: Nikon v1 makernotes were saved

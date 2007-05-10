@@ -4,14 +4,19 @@ New in 0.6.14.cvs1 since 0.6.14 (2007-05-10):
     [ 1443183 ] install error when doxygen is not present.
 
 
-New in 0.6.14 since 0.6.13 (2005-12-27):
+New in 0.6.14 (2007-05-10) since 0.6.13 (2005-12-27):
 
-  * Bug fixes: #1716196
+  * Bug fixes: #1457501, #1471060, #1525770, #1617991, #1703284, #1716196
+
+  * Extended support of Canon, Nikon, Olympus makernotes
+
+  * Added option EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE to prevent
+    modification of maker notes
 
   * Other fixes and improvements which include API/ABI additions.
 
 
-New in 0.6.13 since 0.6.12 (2005-03-13):
+New in 0.6.13 (2005-12-27) since 0.6.12 (2005-03-13):
 
   * Bug fixes: #803191, #1051994, #1054321, #1054323, #1196787
   
