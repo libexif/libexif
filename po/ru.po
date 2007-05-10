@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-03 15:46+0200\n"
+"POT-Creation-Date: 2007-05-10 15:58+0200\n"
 "PO-Revision-Date: 2006-01-12 13:25+0300\n"
 "Last-Translator: Alexandre Prokoudine <alexandre.prokoudine@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -976,12 +976,12 @@ msgstr "%.2f mm"
 msgid "%.2f EV"
 msgstr "%.2f EV"
 
-#: libexif/canon/mnote-canon-entry.c:547 libexif/exif-entry.c:775
+#: libexif/canon/mnote-canon-entry.c:547 libexif/exif-entry.c:776
 #, c-format
 msgid "1/%d"
 msgstr "1/%d"
 
-#: libexif/canon/mnote-canon-entry.c:549 libexif/exif-entry.c:778
+#: libexif/canon/mnote-canon-entry.c:549 libexif/exif-entry.c:779
 #, c-format
 msgid "%d"
 msgstr "%d"
@@ -1298,38 +1298,48 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-data.c:693
+#: libexif/exif-data.c:695
 msgid "Size of data too small to allow for EXIF data."
 msgstr ""
 
-#: libexif/exif-data.c:754
+#: libexif/exif-data.c:756
 msgid "EXIF marker not found."
 msgstr "Маркер EXIF не найден"
 
-#: libexif/exif-data.c:781
+#: libexif/exif-data.c:783
 msgid "EXIF header not found."
 msgstr "Заголовок EXIF не найден"
 
-#: libexif/exif-data.c:797
+#: libexif/exif-data.c:799
 msgid "Unknown encoding."
 msgstr "Неизвестная кодировка"
 
-#: libexif/exif-data.c:1100
+#: libexif/exif-data.c:1102
 msgid "Ignore unknown tags"
 msgstr "Игнорировать неизвестные тэги"
 
-#: libexif/exif-data.c:1101
+#: libexif/exif-data.c:1103
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Игнорировать неизвестные тэги при загрузке данных EXIF"
 
-#: libexif/exif-data.c:1102
+#: libexif/exif-data.c:1104
 msgid "Follow specification"
 msgstr "Следовать спецификации"
 
-#: libexif/exif-data.c:1103
+#: libexif/exif-data.c:1105
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
+msgstr ""
+
+#: libexif/exif-data.c:1107
+msgid "Don not change maker note"
+msgstr ""
+
+#: libexif/exif-data.c:1108
+msgid ""
+"When loading and resaving Exif data, save the maker note unmodified. Be "
+"aware that the maker note can get corrupted."
 msgstr ""
 
 #: libexif/exif-entry.c:202 libexif/exif-entry.c:236
@@ -1714,7 +1724,7 @@ msgstr ""
 msgid "Landscape mode (for landscape photos with the background in focus)"
 msgstr "Альбомный режим (для альбомных фото с передним планом в фокусе)"
 
-#: libexif/exif-entry.c:491
+#: libexif/exif-entry.c:491 libexif/exif-entry.c:496
 msgid "Flash did not fire."
 msgstr "Снято без вспышки"
 
@@ -1814,9 +1824,11 @@ msgid ""
 msgstr ""
 
 #: libexif/exif-entry.c:518
+#, fuzzy
 msgid ""
-"Flash fired, compulsory flash mode, red-eye reduction, return light detected."
-msgstr ""
+"Flash fired, compulsory flash mode, red-eye reduction mode, return light "
+"detected."
+msgstr "Вспышка сработала, автоматический режим, возвратный свет найден"
 
 #: libexif/exif-entry.c:520
 msgid "Flash did not fire, auto mode, red-eye reduction mode."
@@ -1869,167 +1881,167 @@ msgstr "Adobe RGB"
 msgid "Uncalibrated"
 msgstr "Не откалибровано"
 
-#: libexif/exif-entry.c:589
+#: libexif/exif-entry.c:590
 #, c-format
 msgid "Invalid size of entry (%i, expected %li x %i)."
 msgstr "Некорректный размер записи (%i, ожидалось %li x %i)."
 
-#: libexif/exif-entry.c:622
+#: libexif/exif-entry.c:623
 msgid "Unsupported UNICODE string"
 msgstr "Неподдерживаемая строка Unicode"
 
-#: libexif/exif-entry.c:626
+#: libexif/exif-entry.c:627
 msgid "Unsupported JIS string"
 msgstr "Неподдерживаемая строка JIS"
 
-#: libexif/exif-entry.c:641
+#: libexif/exif-entry.c:642
 msgid "Tag UserComment does not comply with standard but contains data."
 msgstr "Тэг UserComment не соответствует стандарту, но содержит данные"
 
-#: libexif/exif-entry.c:645
+#: libexif/exif-entry.c:646
 #, c-format
 msgid "Byte at position %i: 0x%02x"
 msgstr "Байт в позиции %i: 0x%02x"
 
-#: libexif/exif-entry.c:654
+#: libexif/exif-entry.c:655
 msgid "Unknown Exif Version"
 msgstr "Неизвестная версия EXIF"
 
-#: libexif/exif-entry.c:658
+#: libexif/exif-entry.c:659
 #, c-format
 msgid "Exif Version %d.%d"
 msgstr "EXIF версии %d.%d"
 
-#: libexif/exif-entry.c:669
+#: libexif/exif-entry.c:670
 msgid "FlashPix Version 1.0"
 msgstr "FlashPix версии 1.0"
 
-#: libexif/exif-entry.c:671
+#: libexif/exif-entry.c:672
 msgid "FlashPix Version 1.01"
 msgstr "FlashPix версии 1.01"
 
-#: libexif/exif-entry.c:673
+#: libexif/exif-entry.c:674
 msgid "Unknown FlashPix Version"
 msgstr "Неизвестная версия FlashPix"
 
-#: libexif/exif-entry.c:686 libexif/exif-entry.c:698 libexif/exif-entry.c:1307
-#: libexif/exif-entry.c:1312 libexif/exif-entry.c:1315
-#: libexif/exif-entry.c:1320 libexif/exif-entry.c:1321
+#: libexif/exif-entry.c:687 libexif/exif-entry.c:699 libexif/exif-entry.c:1311
+#: libexif/exif-entry.c:1316 libexif/exif-entry.c:1319
+#: libexif/exif-entry.c:1324 libexif/exif-entry.c:1325
 msgid "[None]"
 msgstr "[Ничего]"
 
-#: libexif/exif-entry.c:688
+#: libexif/exif-entry.c:689
 msgid "(Photographer)"
 msgstr "(Фотограф)"
 
-#: libexif/exif-entry.c:701
+#: libexif/exif-entry.c:702
 msgid "(Editor)"
 msgstr "(Редактор)"
 
-#: libexif/exif-entry.c:719 libexif/exif-entry.c:788 libexif/exif-entry.c:808
-#: libexif/exif-entry.c:846
+#: libexif/exif-entry.c:720 libexif/exif-entry.c:789 libexif/exif-entry.c:809
+#: libexif/exif-entry.c:847
 #, c-format
 msgid "%.02f EV"
 msgstr "%.02f EV"
 
-#: libexif/exif-entry.c:720
+#: libexif/exif-entry.c:721
 #, c-format
 msgid " (f/%.01f)"
 msgstr ""
 
-#: libexif/exif-entry.c:751
+#: libexif/exif-entry.c:752
 #, c-format
 msgid " (35 equivalent: %d mm)"
 msgstr " (35мм эквивалент: %d мм)"
 
-#: libexif/exif-entry.c:779 libexif/exif-entry.c:780
+#: libexif/exif-entry.c:780 libexif/exif-entry.c:781
 msgid " sec."
 msgstr " сек."
 
-#: libexif/exif-entry.c:794
+#: libexif/exif-entry.c:795
 #, c-format
 msgid " 1/%d sec.)"
 msgstr " 1/%d сек.)"
 
-#: libexif/exif-entry.c:796
+#: libexif/exif-entry.c:797
 #, c-format
 msgid " %d sec.)"
 msgstr " %d сек.)"
 
-#: libexif/exif-entry.c:809
+#: libexif/exif-entry.c:810
 #, c-format
 msgid " (%.02f cd/m^2)"
 msgstr ""
 
-#: libexif/exif-entry.c:818
+#: libexif/exif-entry.c:819
 msgid "DSC"
 msgstr "DSC"
 
-#: libexif/exif-entry.c:827
+#: libexif/exif-entry.c:828
 msgid "-"
 msgstr "-"
 
-#: libexif/exif-entry.c:828
+#: libexif/exif-entry.c:829
 msgid "Y"
 msgstr "Y"
 
-#: libexif/exif-entry.c:829
+#: libexif/exif-entry.c:830
 msgid "Cb"
 msgstr "Cb"
 
-#: libexif/exif-entry.c:830
+#: libexif/exif-entry.c:831
 msgid "Cr"
 msgstr "Cr"
 
-#: libexif/exif-entry.c:831
+#: libexif/exif-entry.c:832
 msgid "R"
 msgstr "R"
 
-#: libexif/exif-entry.c:832
+#: libexif/exif-entry.c:833
 msgid "G"
 msgstr "G"
 
-#: libexif/exif-entry.c:833
+#: libexif/exif-entry.c:834
 msgid "B"
 msgstr "B"
 
-#: libexif/exif-entry.c:834
+#: libexif/exif-entry.c:835
 msgid "reserved"
 msgstr "зарезервировано"
 
-#: libexif/exif-entry.c:856
+#: libexif/exif-entry.c:857
 msgid "YCbCr4:2:2"
 msgstr "YCbCr4:2:2"
 
-#: libexif/exif-entry.c:858
+#: libexif/exif-entry.c:859
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:864
+#: libexif/exif-entry.c:865
 #, c-format
 msgid "%i bytes unknown data"
 msgstr "%i байтов неизвестных данных"
 
-#: libexif/exif-entry.c:880
+#: libexif/exif-entry.c:881
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
 msgstr ""
 
-#: libexif/exif-entry.c:889
+#: libexif/exif-entry.c:890
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
 msgstr ""
 
-#: libexif/exif-entry.c:895
+#: libexif/exif-entry.c:896
 #, c-format
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Неожиданное количество компонентов (%li, ожидалось 2, 3, или 4)."
 
-#: libexif/exif-entry.c:916 libexif/exif-entry.c:960
+#: libexif/exif-entry.c:917 libexif/exif-entry.c:960
 msgid "Internal error."
 msgstr "Внутренняя ошибка"
 
-#: libexif/exif-entry.c:924
+#: libexif/exif-entry.c:925
 #, c-format
 msgid "Internal error (unknown value %i)."
 msgstr "Внутренняя ошибка (неизвестное значение %i)"
