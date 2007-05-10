@@ -467,7 +467,10 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		vs = exif_get_short (entry->data + 2 + t * 2, entry->order);
 		switch (t) {
 		case 1:
-			if (!vs) break;
+			if (!vs) {
+				strncpy(val, _("Off"), maxlen);
+				break;
+			}
 			snprintf (val, maxlen, _("%i (ms)"), vs * 100);
 			break;
 		case 15:
@@ -559,7 +562,10 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 			snprintf (val, maxlen, _("%u mm"), vs);
 			break;
 		case 28:
-			if (!vs) break;
+			if (!vs) {
+				strncpy(val, _("Off"), maxlen);
+				break;
+			}
 			snprintf (val, maxlen, _("%i (ms)"), vs * 100);
 			break;
 		default:
