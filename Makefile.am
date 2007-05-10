@@ -43,4 +43,8 @@ cvs-tag-release:
 	read; \
 	cd "$(srcdir)" && cvs tag "$${tag}"
 
+.PHONY: upload-release
+upload-release:
+	echo ncftpput upload.sourceforge.net incoming/ $(PACKAGE_TARNAME)-$(PACKAGE_VERSION).*
+
 # End of Makefile.am.
