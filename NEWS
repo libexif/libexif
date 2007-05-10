@@ -1,6 +1,11 @@
-New in CVS HEAD since 0.6.13 (2005-12-27):
+New in 0.6.14 since 0.6.13 (2005-12-27):
 
-New in CVS HEAD since 0.6.12 (2005-03-13):
+  * Bug fixes: #1716196
+
+  * Other fixes and improvements.
+
+
+New in 0.6.13 since 0.6.12 (2005-03-13):
 
   * Bug fixes: #803191, #1051994, #1054321, #1054323, #1196787
   
