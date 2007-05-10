@@ -61,6 +61,15 @@ $(DOXYGEN_UPLOAD): $(DOXYGEN_STAMPS)
 	rsync -avz --progress $(DOXYGEN_OUTPUT_DIR)/$(HTML_APIDOC_INTERNALS_DIR)/ sf:/home/users/h/hu/hun/libexif/htdocs/internals/
 	ssh "sf" "find /home/groups/l/li/libexif/htdocs/internals /home/groups/l/li/libexif/htdocs/api \( -type d -exec chgrp libexif {} \; -exec chmod g+rwxs,a+rx {} \; \) -or \( -type f -exec chgrp libexif {} \; -exec chmod g+rw {} \; \( -name '*.html' -or -name '*.png' -or -name '*.php' -or -name '*.jpg' -or -name '*.css' -name '*.dot' -name '*.map' \) -exec chmod a+r {} \; \)"
 
+else
+
+# Dummy targets for non-doxygen case
+install-apidocs:
+install-apidocs-internals:
+uninstall-apidocs:
+uninstall-apidocs-internals:
+clean-apidocs:
+
 endif
 
 

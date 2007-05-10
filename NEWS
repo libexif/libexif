@@ -1,6 +1,7 @@
 New in 0.6.14.cvs1 since 0.6.14 (2007-05-10):
 
   * Bug fixes:
+    [ 1443183 ] install error when doxygen is not present.
 
 
 New in 0.6.14 since 0.6.13 (2005-12-27):
