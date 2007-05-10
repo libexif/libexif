@@ -46,9 +46,12 @@ dnl  change does not break upward compatibility (ie it is an addition),
 dnl  increment AGE, Otherwise AGE is reset to 0. If CURRENT has changed, 
 dnl  REVISION is set to 0, otherwise REVISION is incremented.
 dnl ---------------------------------------------------------------------------
-LIBEXIF_AGE=0
-LIBEXIF_REVISION=2
-LIBEXIF_CURRENT=12
+dnl C:A:R
+dnl 12:0:1   0.6.13
+dnl 13:1:0   added EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE (for 0.6.14)
+LIBEXIF_AGE=1
+LIBEXIF_REVISION=0
+LIBEXIF_CURRENT=13
 AC_SUBST([LIBEXIF_AGE])
 AC_SUBST([LIBEXIF_REVISION])
 AC_SUBST([LIBEXIF_CURRENT])
