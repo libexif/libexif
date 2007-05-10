@@ -179,7 +179,9 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	else
 		doff = offset + 8;
 
-	/* Sanity check */
+	/* Sanity checks */
+	if ((doff + s < doff) || (doff + s < s))
+		return 0;
 	if (size < doff + s)
 		return 0;
 
