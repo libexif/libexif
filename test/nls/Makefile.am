@@ -29,6 +29,6 @@ CLEANFILES = $(check_SCRIPTS)
 
 EXTRA_DIST = check-localedir.in check-nls.in test-nls.c test-codeset.c
 
-%.sh: %.in Makefile
+.in.sh: Makefile
 	sed 's|@top_builddir\@|$(top_builddir)|g;s|@localedir\@|$(localedir)|g;s|@PRINT_LOCALEDIR\@|./print-localedir$(EXEEXT)|g;s|@build_alias\@|$(build_alias)|g;s|@host_alias\@|$(host_alias)|g;s|@codeset_tests\@|$(codeset_tests)|g;s|@DESTDIR\@|$(DESTDIR)|g' < $< > $@
 	chmod +x $@
