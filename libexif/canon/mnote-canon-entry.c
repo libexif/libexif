@@ -450,10 +450,13 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 	char buf[128];
 	ExifLong vl;
 	ExifShort vs, n;
-	unsigned char *data = entry->data;
+	unsigned char *data;
 	double d;
 
-	if (!entry) return NULL;
+	if (!entry) 
+		return NULL;
+
+	data = entry->data;
 
 	memset (val, 0, maxlen);
 	maxlen--;
