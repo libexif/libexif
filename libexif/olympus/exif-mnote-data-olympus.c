@@ -401,7 +401,7 @@ exif_mnote_data_olympus_get_description (ExifMnoteData *d, unsigned int i)
 	
 	if (!n) return NULL;
 	if (i >= n->count) return NULL;
-        return mnote_olympus_tag_get_title (n->entries[i].tag);
+        return mnote_olympus_tag_get_description (n->entries[i].tag);
 }
 
 static void
