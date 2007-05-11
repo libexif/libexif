@@ -180,7 +180,8 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	memset (v, 0, maxlen);
 	maxlen--;
 
-	if ((!entry->data) && (entry->components > 0)) return (v);
+	if ((!entry->data) && (entry->components > 0)) 
+		return (v);
 
 	switch (entry->tag) {
 	
@@ -229,8 +230,13 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_NIKON_TAG_IMAGEADJUSTMENT:
 	case MNOTE_NIKON_TAG_ADAPTER:
 	case MNOTE_NIKON_TAG_SATURATION2:
-                CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                memcpy(v, entry->data, MIN (maxlen, entry->components));
+		if (entry->data == NULL) {
+			*v = 0;
+		}
+		else {
+			CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
+			memcpy(v, entry->data, MIN (maxlen, entry->components));
+		}
                 break;
 	case MNOTE_NIKON_TAG_TOTALPICTURES:
                 CF (entry->format, EXIF_FORMAT_LONG, v, maxlen);
