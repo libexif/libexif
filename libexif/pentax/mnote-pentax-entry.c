@@ -177,17 +177,17 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 	case MNOTE_PENTAX_TAG_TZ_CITY:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (entry->components, 4, val, maxlen);
-		snprintf (val, entry->components, "%s", entry->data);
+		strncpy (val, (char*)entry->data, MIN(maxlen, entry->size));
 		break;
 	case MNOTE_PENTAX_TAG_TZ_DST:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (entry->components, 4, val, maxlen);
-		snprintf (val, entry->components, "%s", entry->data);
+		strncpy (val, (char*)entry->data, MIN(maxlen, entry->size));
 		break;
 	default:
 		switch (entry->format) {
 		case EXIF_FORMAT_ASCII:
-		  strncpy (val, (char *)entry->data, MIN(maxlen, entry->components));
+		  strncpy (val, (char *)entry->data, MIN(maxlen, entry->size));
 		  break;
 		case EXIF_FORMAT_SHORT:
 		  vs = exif_get_short (entry->data, entry->order);
