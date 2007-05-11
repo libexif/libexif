@@ -33,7 +33,8 @@ exif_mem_new (ExifMemAllocFunc alloc_func, ExifMemReallocFunc realloc_func,
 {
 	ExifMem *mem;
 
-	if (!alloc_func || !realloc_func) return NULL;
+	if (!alloc_func && !realloc_func) 
+		return NULL;
 	mem = alloc_func ? alloc_func (sizeof (ExifMem)) :
 		           realloc_func (NULL, sizeof (ExifMem));
 	if (!mem) return NULL;
