@@ -193,7 +193,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 
 	/* If this is the MakerNote, remember the offset */
 	if (entry->tag == EXIF_TAG_MAKER_NOTE) {
-		if (entry->data) {
+		if (!entry->data) {
 			exif_log (data->priv->log,
                                                EXIF_LOG_CODE_DEBUG, "ExifData",
                                                "MakerNote found with NULL data");	

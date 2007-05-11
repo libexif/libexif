@@ -969,9 +969,11 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			strncpy (val, _(list[i].strings[j]), maxlen - 1);
 		break; 	
 	case EXIF_TAG_INTEROPERABILITY_VERSION:
-		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		strncpy (val, (char *) e->data, MIN (maxlen, e->size));
-		break;
+		if (e->format == EXIF_FORMAT_UNDEFINED) {
+			strncpy (val, (char *) e->data, MIN (maxlen, e->size));
+			break;
+		}
+		/* Fall through - EXIF_TAG_GPS_LATITUDE is same as INTEROPERABILITY_VERSION */
 	default:
 		if (!e->components) break;
 		switch (e->format) {
