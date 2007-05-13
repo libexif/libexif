@@ -73,41 +73,61 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 		const unsigned char *buf, unsigned int buf_size)
 {
 	ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) en;
-	unsigned int i, o, s;
+	unsigned int i, o, s, datao = 6 + n->offset, base = 0;
 	ExifShort c;
 
 	/* Number of entries */
-	if (buf_size < 2) return;
-	c = exif_get_short (buf + 6 + n->offset, n->order);
+	if (buf_size < datao + (4 + 2) + 2) return;
+	if (!memcmp(buf + datao, "AOC", 4)) {
+		if ((buf[datao + 4] == 'I') && (buf[datao + 5] == 'I')) {
+			n->version = pentaxV3;
+			n->order = EXIF_BYTE_ORDER_INTEL;
+		} else if ((buf[datao + 4] == 'M') && (buf[datao + 5] == 'M')) {
+			n->version = pentaxV3;
+			n->order = EXIF_BYTE_ORDER_MOTOROLA;
+		} else {
+			/* Uses Casio v2 tags */
+			n->version = pentaxV2;
+		}
+		datao += 4 + 2;
+		base = MNOTE_PENTAX2_TAG_BASE;
+	} if (!memcmp(buf + datao, "QVC", 4)) {
+		n->version = casioV2;
+		base = MNOTE_CASIO2_TAG_BASE;
+		datao += 4 + 2;
+	} else {
+		n->version = pentaxV1;
+	}
+	c = exif_get_short (buf + datao, n->order);
 	n->entries = exif_mem_alloc (en->mem, sizeof (MnotePentaxEntry) * c);
 	if (!n->entries) return;
 
 	for (i = 0; i < c; i++) {
-	    o = 6 + 2 + n->offset + 12 * i;
-	    if (o + 8 > buf_size) return;
+		o = datao + 2 + 12 * i;
+		if (o + 8 > buf_size) return;
 
-	    n->count = i + 1;
-	    n->entries[i].tag        = exif_get_short (buf + o + 0, n->order);
-	    n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
-	    n->entries[i].components = exif_get_long  (buf + o + 4, n->order);
-	    n->entries[i].order      = n->order;
+		n->count = i + 1;
+		n->entries[i].tag        = exif_get_short (buf + o + 0, n->order) + base;
+		n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
+		n->entries[i].components = exif_get_long  (buf + o + 4, n->order);
+		n->entries[i].order      = n->order;
 
-            /*
-             * Size? If bigger than 4 bytes, the actual data is not
-             * in the entry but somewhere else (offset).
-             */
-            s = exif_format_get_size (n->entries[i].format) *
+		/*
+		 * Size? If bigger than 4 bytes, the actual data is not
+		 * in the entry but somewhere else (offset).
+		 */
+		s = exif_format_get_size (n->entries[i].format) *
                                       n->entries[i].components;
-            if (!s) return;
-            o += 8;
-            if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
-            if (o + s > buf_size) return;
+		if (!s) return;
+		o += 8;
+		if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
+		if (o + s > buf_size) return;
                                                                                 
-            /* Sanity check */
-            n->entries[i].data = exif_mem_alloc (en->mem, sizeof (char) * s);
-            if (!n->entries[i].data) return;
-            n->entries[i].size = s;
-            memcpy (n->entries[i].data, buf + o, s);
+		/* Sanity check */
+		n->entries[i].data = exif_mem_alloc (en->mem, s);
+		if (!n->entries[i].data) return;
+		n->entries[i].size = s;
+		memcpy (n->entries[i].data, buf + o, s);
         }
 }
 
