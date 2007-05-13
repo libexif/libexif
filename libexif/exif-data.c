@@ -654,7 +654,9 @@ typedef enum {
 	EXIF_DATA_TYPE_MAKER_NOTE_NONE		= 0,
 	EXIF_DATA_TYPE_MAKER_NOTE_CANON		= 1,
 	EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS	= 2,
-	EXIF_DATA_TYPE_MAKER_NOTE_PENTAX	= 3
+	EXIF_DATA_TYPE_MAKER_NOTE_PENTAX		= 3,
+	EXIF_DATA_TYPE_MAKER_NOTE_NIKON		= 4,
+	EXIF_DATA_TYPE_MAKER_NOTE_CASIO		= 5
 } ExifDataTypeMakerNote;
 
 static ExifDataTypeMakerNote
@@ -688,9 +690,15 @@ exif_data_get_type_maker_note (ExifData *d)
 		if (!strncasecmp (
 			    exif_entry_get_value (em, value, sizeof(value)),
 			    "Nikon", 5))
-			return EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS;
+			return EXIF_DATA_TYPE_MAKER_NOTE_NIKON;
 		else
 			return EXIF_DATA_TYPE_MAKER_NOTE_PENTAX;
+	}
+	if ((e->size >= 8) && !memcmp (e->data, "AOC", 4)) {
+		return EXIF_DATA_TYPE_MAKER_NOTE_PENTAX;
+	}
+	if ((e->size >= 8) && !memcmp (e->data, "QVC", 4)) {
+		return EXIF_DATA_TYPE_MAKER_NOTE_CASIO;
 	}
 
 	return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
@@ -849,9 +857,11 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	 */
 	switch (exif_data_get_type_maker_note (data)) {
 	case EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS:
+	case EXIF_DATA_TYPE_MAKER_NOTE_NIKON:
 		data->priv->md = exif_mnote_data_olympus_new (data->priv->mem);
 		break;
 	case EXIF_DATA_TYPE_MAKER_NOTE_PENTAX:
+	case EXIF_DATA_TYPE_MAKER_NOTE_CASIO:
 		data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
 		break;
 	case EXIF_DATA_TYPE_MAKER_NOTE_CANON:

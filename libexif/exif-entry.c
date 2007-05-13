@@ -975,9 +975,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 		/* Fall through - EXIF_TAG_GPS_LATITUDE is same as INTEROPERABILITY_VERSION */
 	default:
-		if (!e->components) break;
+		if (!e->size) break;
 		switch (e->format) {
 		case EXIF_FORMAT_UNDEFINED:
+			if ((e->tag == EXIF_TAG_SCENE_TYPE) && (e->size == 1)) {
+				snprintf (val, maxlen, "%i", e->data[0]);
+			}
 			break;
 		case EXIF_FORMAT_BYTE:
 		case EXIF_FORMAT_SBYTE:
