@@ -1,3 +1,10 @@
+2007-05-13  Jan Patera <patera@users.sourceforge.net>
+
+	* Added support of a new Pentax makernote type, plus another makernote
+	  type shared by Pentax & Casio
+	* Updated several tags
+	* Fixed some "security" sanity checks for broken entries
+
 2007-05-09  Jan Patera <patera@users.sourceforge.net>
 
 	* Added support for Olympus S760 & S770 makernote (bug #1703284)
