@@ -669,7 +669,7 @@ exif_data_get_type_maker_note (ExifData *d)
 		return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
 	
 	e = exif_data_get_entry (d, EXIF_TAG_MAKER_NOTE);
-        if (!e) 
+	if (!e) 
 		return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
 
 	/* Olympus & Nikon */
@@ -842,11 +842,10 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		/* Sanity check. */
 		if (offset > ds - 6) {
 			exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
-				  "ExifData", "Bogus offset.");
-			return;
+				  "ExifData", "Bogus offset of IFD1.");
+		} else {
+		   exif_data_load_data_content (data, EXIF_IFD_1, d + 6, ds - 6, offset, 0);
 		}
-
-		exif_data_load_data_content (data, EXIF_IFD_1, d + 6, ds - 6, offset, 0);
 	}
 
 	/*
