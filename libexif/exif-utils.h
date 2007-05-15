@@ -65,6 +65,8 @@ void exif_set_rational  (unsigned char *b, ExifByteOrder order,
 void exif_set_srational (unsigned char *b, ExifByteOrder order,
 			 ExifSRational value);
 
+void exif_convert_utf16_to_utf8 (char *out, const unsigned short *in, int maxlen);
+
 /* Please do not use this function outside of the library. */
 void exif_array_set_byte_order (ExifFormat, unsigned char *, unsigned int,
 		ExifByteOrder o_orig, ExifByteOrder o_new);

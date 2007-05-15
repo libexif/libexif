@@ -711,16 +711,16 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 						    (float) v_rat.denominator);
 		break;
 	case EXIF_TAG_APERTURE_VALUE:
-  case EXIF_TAG_MAX_APERTURE_VALUE:
+	case EXIF_TAG_MAX_APERTURE_VALUE:
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator) return val;
-    d = (double) v_rat.numerator / (double) v_rat.denominator;
-    snprintf (val, maxlen, _("%.02f EV"), d);
-    snprintf (b, sizeof (b), _(" (f/%.01f)"), pow (2, d / 2.));
-    if (maxlen > strlen (val) + strlen (b))
-      strncat (val, b, maxlen - strlen (val) - 1);
+		d = (double) v_rat.numerator / (double) v_rat.denominator;
+		snprintf (val, maxlen, _("%.02f EV"), d);
+		snprintf (b, sizeof (b), _(" (f/%.01f)"), pow (2, d / 2.));
+		if (maxlen > strlen (val) + strlen (b))
+			strncat (val, b, maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_FOCAL_LENGTH:
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
@@ -785,8 +785,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
 		if (!v_srat.denominator) return val;
-    d = (double) v_srat.numerator / (double) v_srat.denominator;
-    snprintf (val, maxlen, _("%.02f EV"), d);
+		d = (double) v_srat.numerator / (double) v_srat.denominator;
+		snprintf (val, maxlen, _("%.02f EV"), d);
 		snprintf (b, sizeof (b), " (APEX: %i)", (int) pow (sqrt(2), d));
 		if (maxlen > strlen (val) + strlen (b))
 			strncat (val, b, maxlen - strlen (val) - 1);
@@ -804,13 +804,13 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
-    if (!v_srat.denominator) return val;
-    d = (double) v_srat.numerator / (double) v_srat.denominator;
-    snprintf (val, maxlen, _("%.02f EV"), d);
-    snprintf (b, sizeof (b), _(" (%.02f cd/m^2)"),
-        1. / (M_PI * 0.3048 * 0.3048) * pow (2, d));
-    if (maxlen > strlen (val) + strlen (b))
-      strncat (val, b, maxlen - strlen (val) - 1);
+		if (!v_srat.denominator) return val;
+		d = (double) v_srat.numerator / (double) v_srat.denominator;
+		snprintf (val, maxlen, _("%.02f EV"), d);
+		snprintf (b, sizeof (b), _(" (%.02f cd/m^2)"),
+			1. / (M_PI * 0.3048 * 0.3048) * pow (2, d));
+		if (maxlen > strlen (val) + strlen (b))
+			strncat (val, b, maxlen - strlen (val) - 1);
 		break;
 	case EXIF_TAG_FILE_SOURCE:
 		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
@@ -843,8 +843,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e, 1, val, maxlen);
 		v_srat = exif_get_srational (e->data, o);
 		if (!v_srat.denominator) return val;
-    d = (double) v_srat.numerator / (double) v_srat.denominator;
-    snprintf (val, maxlen, _("%.02f EV"), d);
+		d = (double) v_srat.numerator / (double) v_srat.denominator;
+		snprintf (val, maxlen, _("%.02f EV"), d);
 		break;
 	case EXIF_TAG_YCBCR_SUB_SAMPLING:
 		CF (e, EXIF_FORMAT_SHORT, val, maxlen);
@@ -967,7 +967,15 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			snprintf (val, maxlen, "%i", v_short);
 		else
 			strncpy (val, _(list[i].strings[j]), maxlen - 1);
-		break; 	
+		break;
+	case EXIF_TAG_XP_TITLE:
+	case EXIF_TAG_XP_COMMENT:
+	case EXIF_TAG_XP_AUTHOR:
+	case EXIF_TAG_XP_KEYWORDS:
+	case EXIF_TAG_XP_SUBJECT:
+		/* Warning! The texts are converted from UTF16 to UTF8 */
+		exif_convert_utf16_to_utf8(val, (unsigned short*)e->data, MIN(maxlen, e->size));
+		break;
 	case EXIF_TAG_INTEROPERABILITY_VERSION:
 		if (e->format == EXIF_FORMAT_UNDEFINED) {
 			strncpy (val, (char *) e->data, MIN (maxlen, e->size));
