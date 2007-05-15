@@ -1,3 +1,11 @@
+2007-05-15  Jan Patera <patera@users.sourceforge.net>
+
+	* Windows XP Explorer writes Title, Comment, Author, Metadata, Keywords,
+	  and Subject metadata into proprietary UTF16-encoded tags 0x9c9b-0x9c9f
+	  in IFD0. We now recognize them, exif_entry_get_value returns their value
+	  converted to UTF8. BTW, Explorer corrupts makernotes using offsets
+	  relative to IFD0...
+
 2007-05-13  Jan Patera <patera@users.sourceforge.net>
 
 	* Added support of a new Pentax makernote type, plus another makernote
