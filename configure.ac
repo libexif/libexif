@@ -178,8 +178,18 @@ AC_CONFIG_FILES([
   doc/Makefile
   doc/Doxyfile
   doc/Doxyfile-internals
-  libexif/libexif.pc
+  libexif.pc
+  libexif-uninstalled.pc
   binary/Makefile
+], [
+	# Symlink to enable proper #include <exif/foo.h> on uninstalled
+	# libexif source tree. Move the header files once the source
+	# is out of CVS and in SVN, git, bzr, whatever.
+	if test -e "${srcdir}/libexif/exif"; then
+		: # do nothing
+	else
+		(cd ${srcdir}/libexif && ${LN_S} exif .)
+	fi
 ])
 AC_OUTPUT
 

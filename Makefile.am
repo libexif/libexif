@@ -6,6 +6,14 @@ endif
 
 EXTRA_DIST = @PACKAGE_TARNAME@.spec autogen.sh $(README_W32_XDIST)
 
+pkgconfigdir = $(libdir)/pkgconfig
+
+pkgconfig_DATA = libexif.pc
+EXTRA_DIST    += libexif.pc.in
+
+noinst_DATA = libexif-uninstalled.pc
+EXTRA_DIST += libexif-uninstalled.pc.in
+
 ACLOCAL_AMFLAGS = -I auto-m4 -I m4m
 
 doc_DATA = README AUTHORS NEWS ChangeLog ABOUT-NLS COPYING

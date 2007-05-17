@@ -62,9 +62,7 @@ libexifinclude_HEADERS = 	\
 	exif-utils.h		\
 	_stdint.h
 
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libexif.pc
-EXTRA_DIST = libexif.pc.in libexif.sym
+EXTRA_DIST = libexif.sym
 
 DISTCLEANFILES = _stdint.h
 
