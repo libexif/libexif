@@ -2005,7 +2005,7 @@ msgid "Shutter speed"
 msgstr ""
 
 #: libexif/exif-tag.c:409
-msgid "Shutter speed. The unit is the APEX (Additive System of Photographic Exposure) setting (see Appendix C)."
+msgid "Shutter speed. The unit is the APEX (Additive System of Photographic Exposure) setting."
 msgstr ""
 
 #: libexif/exif-tag.c:413
@@ -2105,11 +2105,11 @@ msgid "Color Space"
 msgstr ""
 
 #: libexif/exif-tag.c:493
-msgid "The color space information tag is always recorded as the color space specifier. Normally sRGB (=1) is used to define the color space based on the PC monitor conditions and environment. If a color space other than sRGB is used, Uncalibrated (=FFFF.H) is set. Image data recorded as Uncalibrated can be treated as sRGB when it is converted to FlashPix. On sRGB see Appendix E."
+msgid "The color space information tag is always recorded as the color space specifier. Normally sRGB (=1) is used to define the color space based on the PC monitor conditions and environment. If a color space other than sRGB is used, Uncalibrated (=FFFF.H) is set. Image data recorded as Uncalibrated can be treated as sRGB when it is converted to FlashPix."
 msgstr ""
 
 #: libexif/exif-tag.c:502
-msgid "Information specific to compressed data. When a compressed file is recorded, the valid width of the meaningful image must be recorded in this tag, whether or not there is padding data or a restart marker. This tag should not exist in an uncompressed file. For details see section 2.8.1 and Appendix F."
+msgid "Information specific to compressed data. When a compressed file is recorded, the valid width of the meaningful image must be recorded in this tag, whether or not there is padding data or a restart marker. This tag should not exist in an uncompressed file."
 msgstr ""
 
 #: libexif/exif-tag.c:510
@@ -2262,7 +2262,7 @@ msgid "Scene Capture Type"
 msgstr ""
 
 #: libexif/exif-tag.c:641
-msgid "This tag indicates the type of scene that was shot. It can also be used to record the mode in which the image was shot. Note that this differs from the scene type (SceneType) tag."
+msgid "This tag indicates the type of scene that was shot. It can also be used to record the mode in which the image was shot. Note that this differs from the scene type <SceneType> tag."
 msgstr ""
 
 #: libexif/exif-tag.c:645
