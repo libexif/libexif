@@ -1,7 +1,5 @@
-# Include stuff requires a system which can do symlinks.
-
 Name: libexif
 Description: Library for easy access to EXIF data
 Version: @VERSION@
 Libs: ${pcfiledir}/libexif/libexif.la
-Cflags: -I${pcfiledir}/@srcdir@/libexif
+Cflags: -I${pcfiledir}/@srcdir@

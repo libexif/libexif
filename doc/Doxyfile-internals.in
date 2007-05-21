@@ -477,7 +477,7 @@ EXCLUDE                =
 # directories that are symbolic links (a Unix filesystem feature) are excluded 
 # from the input.
 
-EXCLUDE_SYMLINKS       = YES
+EXCLUDE_SYMLINKS       = NO
 
 # If the value of the INPUT tag contains directories, you can use the 
 # EXCLUDE_PATTERNS tag to specify one or more wildcard patterns to exclude 

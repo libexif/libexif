@@ -33,10 +33,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * \section using_libexif Using libexif
  *
- * ##include <exif/exif.h>
- *
- * Do not let it confuse you that the source code still contains these
- * include files in its libexif/ subdirectory.
+ * ##include <libexif/exif.h>
  *
  * libexif provides a libexif.pc file for use with pkgconfig. The
  * libexif-uninstalled.pc file probably still needs some work WRT to
