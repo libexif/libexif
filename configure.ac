@@ -3,6 +3,15 @@ AC_INIT([EXIF library],[0.6.14.cvs1],[libexif-devel@lists.sourceforge.net],[libe
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
+AC_CONFIG_COMMANDS_PRE([
+	# Symlink to enable proper #include <exif/foo.h> on uninstalled
+	# libexif source tree. Move the header files once the source
+	# is out of CVS and in SVN, git, bzr, whatever.
+	if test -e "${srcdir}/libexif/exif"; then
+		rm -f "${srcdir}/libexif/exif"
+	fi
+	(cd "${srcdir}/libexif" && ${LN_S} . exif)
+])
 AM_INIT_AUTOMAKE([-Wall gnu 1.9 dist-bzip2 dist-zip check-news])
 
 if test ! -d "$srcdir/m4m"; then
@@ -181,15 +190,6 @@ AC_CONFIG_FILES([
   libexif.pc
   libexif-uninstalled.pc
   binary/Makefile
-], [
-	# Symlink to enable proper #include <exif/foo.h> on uninstalled
-	# libexif source tree. Move the header files once the source
-	# is out of CVS and in SVN, git, bzr, whatever.
-	if test -e "${srcdir}/libexif/exif"; then
-		: # do nothing
-	else
-		(cd ${srcdir}/libexif && ${LN_S} exif .)
-	fi
 ])
 AC_OUTPUT
 
