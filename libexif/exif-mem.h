@@ -1,7 +1,8 @@
 /*! \file exif-mem.h
  *  \brief Define the ExifMem data type and the associated functions.
- *  ExifMem defined the memory management functions used my the ExifLoader.
+ *  ExifMem defines the memory management functions used by the ExifLoader.
  */
+
 /* exif-mem.h
  *
  * Copyright © 2003 Lutz Müller <lutz@users.sourceforge.net>

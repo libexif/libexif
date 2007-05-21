@@ -1,4 +1,5 @@
-/* exif-entry.h
+/*! \file exif-entry.h
+ *  \brief Handling EXIF entries
  *
  * Copyright © 2001 Lutz Müller <lutz@users.sourceforge.net>
  *
@@ -32,6 +33,7 @@ typedef struct _ExifEntryPrivate ExifEntryPrivate;
 #include <libexif/exif-format.h>
 #include <libexif/exif-mem.h>
 
+/*! \struct _ExifEntry exif-entry.h exif/exif-entry.h */
 struct _ExifEntry {
         ExifTag tag;
         ExifFormat format;
@@ -47,19 +49,40 @@ struct _ExifEntry {
 };
 
 /* Lifecycle */
+
+/*! Reserve memory for and initialize new #ExifEntry* */
 ExifEntry  *exif_entry_new     (void);
+
 ExifEntry  *exif_entry_new_mem (ExifMem *);
+
+/*! Increase reference counter for #ExifEntry* */
 void        exif_entry_ref     (ExifEntry *entry);
+
+/*! Decrease reference counter for #ExifEntry* */
 void        exif_entry_unref   (ExifEntry *entry);
+
+/*! Actually free the #ExifEntry*
+ *
+ * \deprecated Should not be called directly. Use exif_entry_ref() and
+ *             exif_entry_unref() instead.
+ */
 void        exif_entry_free  (ExifEntry *entry);
 
 void        exif_entry_initialize (ExifEntry *entry, ExifTag tag);
 void        exif_entry_fix        (ExifEntry *entry);
 
 /* For your convenience */
+
+/*! Return the value of the EXIF entry
+ *
+ * CAUTION: The character set of the returned string is not defined.
+ *          It may be UTF-8, latin1, the native encoding of the
+ *          computer, or the native encoding of the camera.
+ */
 const char *exif_entry_get_value (ExifEntry *entry, char *val,
 				  unsigned int maxlen);
 
+/*! Dump text representation of #ExifEntry to stdout */
 void        exif_entry_dump      (ExifEntry *entry, unsigned int indent);
 
 #define exif_entry_get_ifd(e) ((e)?exif_content_get_ifd((e)->parent):EXIF_IFD_COUNT)
