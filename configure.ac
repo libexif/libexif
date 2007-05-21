@@ -151,7 +151,7 @@ AM_CONDITIONAL([ENABLE_INTERNAL_DOCS],
 # ---------------------------------------------------------------------------
 # i18n support
 # ---------------------------------------------------------------------------
-ALL_LINGUAS="de es fr pl ru vi"
+ALL_LINGUAS="de es fr pl ru vi sk cs"
 GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT_MIN}],
                 [Lutz Mueller and others])
 AM_GNU_GETTEXT_VERSION([0.14.1])

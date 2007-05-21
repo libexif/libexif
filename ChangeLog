@@ -1,3 +1,8 @@
+2007-05-21  Jan Patera <patera@users.sourceforge.net>
+
+	* First version of Czech localization (cs.po)
+	* First version of Slovak localization (sk.po), submitted by Ivan Masar
+
 2007-05-15  Jan Patera <patera@users.sourceforge.net>
 
 	* Windows XP Explorer writes Title, Comment, Author, Keywords, and
