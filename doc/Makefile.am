@@ -64,13 +64,13 @@ install-apidocs: $(HTML_APIDOC_DIR).stamp
 if ENABLE_INTERNAL_DOCS
 DOXYGEN_UNINSTALL_TARGETS += uninstall-apidocs-internals
 uninstall-apidocs-internals:
-	cd $(DESTDIR)$(docdir) && rm -f $(DOC_APIDOC_INTERNALS_HTML)/*
+	cd "$(DESTDIR)$(docdir)" && rm -f $(DOC_APIDOC_INTERNALS_HTML)/*
 	rmdir $(DESTDIR)$(docdir)/$(DOC_APIDOC_INTERNALS_HTML)
 endif
 
 DOXYGEN_UNINSTALL_TARGETS += uninstall-apidocs
 uninstall-apidocs:
-	cd $(DESTDIR)$(docdir) && rm -f $(DOC_APIDOC_HTML)/*
+	cd "$(DESTDIR)$(docdir)" && rm -f $(DOC_APIDOC_HTML)/*
 	rmdir $(DESTDIR)$(docdir)/$(DOC_APIDOC_HTML)
 
 DOXYGEN_CLEAN_TARGETS += clean-apidocs
