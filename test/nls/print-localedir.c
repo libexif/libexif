@@ -1,5 +1,5 @@
 #include "config.h"
-#include "i18n.h"
+#include "libexif/i18n.h"
 
 #include <stdio.h>
 
