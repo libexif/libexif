@@ -1,10 +1,14 @@
 New in 0.6.14.cvs1 since 0.6.14 (2007-05-10):
 
   * Added support of 2 new types of Pentax makernotes & Casio type2 makernote
+
   * Added support of Win XP metadata (Author, Comment, KeyWords, Title,
     Subject) tags
+
   * Bug fixes:
     [ 1443183 ] install error when doxygen is not present.
+
+  * Improved doxygen generated documentation.
 
 
 New in 0.6.14 (2007-05-10) since 0.6.13 (2005-12-27):
