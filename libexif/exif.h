@@ -23,6 +23,47 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
 
+/*! \file exif.h exif/exif.h
+ *
+ * \mainpage The libexif library
+ *
+ * \section general_notes General Notes
+ *
+ * This documentation is work in progress, as is the code itself.
+ *
+ * \section using_libexif Using libexif
+ *
+ * ##include <exif/exif.h>
+ *
+ * Do not let it confuse you that the source code still contains these
+ * include files in its libexif/ subdirectory.
+ *
+ * libexif provides a libexif.pc file for use with pkgconfig. The
+ * libexif-uninstalled.pc file probably still needs some work WRT to
+ * the include file location.
+ *
+ * \section string_conventions String Conventions
+ *
+ * Strings of 8 bit characters ("char*"). Character set and encoding
+ * are currently undefined, but that will change in the future.
+ *
+ * \section memory_management Memory Management Patterns
+ *
+ * For pointers to data objects, libexif uses reference counting. The
+ * pattern is to use the foo_new() function to create a data object,
+ * foo_ref() to increase the reference counter, and foo_unref() to
+ * decrease the reference counter and possibly free(3)ing the memory.
+ *
+ * Libexif by default relies on the calloc(3), realloc(3), and free(3)
+ * functions, but the libexif user can tell libexif to use their
+ * special memory management functions at runtime.
+ * 
+ * \section thread_safety Thread Safety
+ * 
+ * FIXME: Good question. Needs to be determined.
+ *
+ */
+
 typedef struct exif_rational {
   int      num;
   unsigned denom;
