@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([EXIF library], [0.6.14.cvs1], [libexif-devel@lists.sourceforge.net], [libexif])
+AC_INIT([EXIF library], [0.6.14.cvs2], [libexif-devel@lists.sourceforge.net], [libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
@@ -122,13 +122,38 @@ AC_SUBST([MATHLIBS])
 GP_CHECK_DOC_DIR
 GP_CHECK_DOXYGEN
 
+# Whether to enable the internal docs build.
+#
+# This takes quite some time due to the generation of lots of call
+# graphs, so it is disabled by default.
+enable_internal_docs=no
+AC_ARG_ENABLE([internal-docs], [dnl
+AS_HELP_STRING([--enable-internal-docs], 
+[Build internal code docs if doxygen available])], [dnl
+  if   test "x$enableval" = xno \
+    || test "x$enableval" = xoff \
+    || test "x$enableval" = xfalse; 
+  then
+    enable_internal_docs=no
+  elif test "x$enableval" = xyes \
+    || test "x$enableval" = xon \
+    || test "x$enableval" = xtrue
+  then
+    enable_internal_docs=yes
+  fi
+])
+AC_MSG_CHECKING([whether to create internal code docs])
+AC_MSG_RESULT([${enable_internal_docs}])
+AM_CONDITIONAL([ENABLE_INTERNAL_DOCS],
+               [test "x${enable_internal_docs}" = "xyes"])
+
 
 # ---------------------------------------------------------------------------
 # i18n support
 # ---------------------------------------------------------------------------
+ALL_LINGUAS="de es fr pl ru vi"
 GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT_MIN}],
                 [Lutz Mueller and others])
-ALL_LINGUAS="de es fr pl ru vi"
 AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT([external])
 AM_PO_SUBDIRS()

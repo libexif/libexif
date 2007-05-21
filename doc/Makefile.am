@@ -2,11 +2,21 @@
 # Conditional rules, depending on tool availability
 ########################################################################
 
+DOXYGEN_FILES =
+DOXYGEN_STAMPS =
+DOXYGEN_UPLOAD =
+
 if HAVE_DOXYGEN
 
-DOXYGEN_FILES =
-DOXYGEN_STAMPS = $(HTML_APIDOC_DIR).stamp    $(HTML_APIDOC_INTERNALS_DIR).stamp $(DOXYGEN_OUTPUT_DIR).stamp
-DOXYGEN_UPLOAD = $(HTML_APIDOC_DIR).uploaded $(HTML_APIDOC_INTERNALS_DIR).uploaded
+DOXYGEN_STAMPS += $(HTML_APIDOC_DIR).stamp
+DOXYGEN_UPLOAD += $(HTML_APIDOC_DIR).uploaded
+
+if ENABLE_INTERNAL_DOCS
+DOXYGEN_STAMPS += $(HTML_APIDOC_INTERNALS_DIR).stamp
+DOXYGEN_UPLOAD += $(HTML_APIDOC_INTERNALS_DIR).uploaded
+endif
+
+DOXYGEN_STAMPS += $(DOXYGEN_OUTPUT_DIR).stamp
 
 # FIXME: Depending on the source files would be sufficient...
 $(HTML_APIDOC_DIR).stamp: Doxyfile $(top_builddir)/libexif/libexif.la
@@ -43,11 +53,11 @@ install-apidocs: $(HTML_APIDOC_DIR).stamp
 	$(INSTALL) -m 0644 $(DOXYGEN_OUTPUT_DIR)/$(HTML_APIDOC_DIR)/* $(DESTDIR)$(docdir)/$(DOC_APIDOC_HTML)/
 
 uninstall-apidocs-internals:
-	rm -f $(DESTDIR)$(docdir)/$(DOC_APIDOC_INTERNALS_HTML)/*
+	cd $(DESTDIR)$(docdir) && rm -f $(DOC_APIDOC_INTERNALS_HTML)/*
 	rmdir $(DESTDIR)$(docdir)/$(DOC_APIDOC_INTERNALS_HTML)
 
 uninstall-apidocs:
-	rm -f $(DESTDIR)$(docdir)/$(DOC_APIDOC_HTML)/*
+	cd $(DESTDIR)$(docdir) && rm -f $(DOC_APIDOC_HTML)/*
 	rmdir $(DESTDIR)$(docdir)/$(DOC_APIDOC_HTML)
 
 clean-apidocs:
