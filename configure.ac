@@ -146,7 +146,7 @@ dnl ---------------------------------------------------------------------------
 dnl Compiler/Linker Options and Warnings
 dnl ---------------------------------------------------------------------------
 AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_srcdir)"
-AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_srcdir)/libexif"
+AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_builddir)"
 AM_LDFLAGS="$LDFLAGS"
 if test "x$GCC" = "xyes"; then
     AM_CFLAGS="$AM_CFLAGS -ansi -pedantic-error"

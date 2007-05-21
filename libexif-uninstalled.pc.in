@@ -2,4 +2,4 @@ Name: libexif
 Description: Library for easy access to EXIF data
 Version: @VERSION@
 Libs: ${pcfiledir}/libexif/libexif.la
-Cflags: -I${pcfiledir}/@srcdir@
+Cflags: -I${pcfiledir}/@srcdir@ -I${pcfiledir}
