@@ -8,6 +8,8 @@ New in 0.6.14.cvs2 since 0.6.14 (2007-05-10):
   * Bug fixes:
     [ 1443183 ] install error when doxygen is not present.
 
+  * New translations: Czech, Slovak.
+
   * Improved doxygen generated API and code internals
     documentation. Made building of code internals docs optional
     (--enable-internal-docs) as the call graphs take quite long to
