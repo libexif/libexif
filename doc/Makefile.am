@@ -18,6 +18,7 @@ DOXYGEN_TARBALLS =
 $(top_builddir)/libexif/libexif.la:
 	cd $(top_builddir)/libexif && $(MAKE) libexif.la
 
+if BUILD_DOCS
 if HAVE_DOXYGEN
 
 DOXYGEN_UPLOAD += $(HTML_APIDOC_DIR).uploaded
@@ -83,7 +84,8 @@ if ENABLE_INTERNAL_DOCS
 endif
 	ssh "sf" "find /home/groups/l/li/libexif/htdocs/internals /home/groups/l/li/libexif/htdocs/api \( -type d -exec chgrp libexif {} \; -exec chmod g+rwxs,a+rx {} \; \) -or \( -type f -exec chgrp libexif {} \; -exec chmod g+rw {} \; \( -name '*.html' -or -name '*.png' -or -name '*.php' -or -name '*.jpg' -or -name '*.css' -name '*.dot' -name '*.map' \) -exec chmod a+r {} \; \)"
 
-endif
+endif # HAVE_DOXYGEN
+endif # BUILD_DOCS
 
 
 ########################################################################
@@ -92,7 +94,7 @@ endif
 
 EXTRA_DIST = Doxyfile.in Doxyfile-internals.in README.apidocs $(HTML_APIDOC_DIR).tar.gz
 
-doc_DATA = $(DOXYGEN_FILES) README.apidocs
+doc_DATA = $(DOXYGEN_FILES)
 
 all-local: $(DOXYGEN_STAMPS)
 
