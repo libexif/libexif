@@ -5,8 +5,24 @@ dnl determines documentation "root directory", i.e. the directory
 dnl where all documentation will be placed in
 dnl
 
+AC_DEFUN([GP_DOC_GENERAL],[dnl
+AC_MSG_CHECKING([whether to build any docs])
+AC_ARG_ENABLE([docs], [dnl
+AS_HELP_STRING([--disable-docs], [whether to create any documentation])], [dnl
+case "$enableval" in
+	yes|true|on) gp_build_docs="yes" ;;
+	*) gp_build_docs="no" ;;
+esac
+],[dnl
+gp_build_docs="yes"
+])dnl
+AC_MSG_RESULT([${gp_build_docs}])
+AM_CONDITIONAL([BUILD_DOCS], [test "x${gp_build_docs}" = "xyes"])
+])dnl
+
 AC_DEFUN([GP_CHECK_DOC_DIR],
 [
+AC_REQUIRE([GP_DOC_GENERAL])dnl
 AC_BEFORE([$0], [GP_BUILD_GTK_DOCS])dnl
 AC_BEFORE([$0], [GP_CHECK_DOXYGEN])dnl
 
