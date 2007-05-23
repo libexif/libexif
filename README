@@ -8,6 +8,7 @@ libexif is a library for parsing, editing, and saving EXIF data. It is
 intended to replace lots of redundant implementations in command-line
 utilities and programs with GUIs.
 
+
 FEATURES
 --------
 
@@ -15,10 +16,12 @@ libexif supports parsing, editing and saving of EXIF data. In addition, it
 has gettext support. All EXIF tags described in EXIF standard 2.1
 are supported.
 
+
 REQUIREMENTS
 ------------
 
 libexif is written in plain C and does not require any additional library.
+
 
 LIMITATIONS
 -----------
@@ -27,15 +30,27 @@ libexif can only handle some maker notes, and even those not very well. More
 work needs to be done. Note that libmnote has been merged with libexif - it
 is no longer needed.
 
+
 USAGE
 -----
 
-Until someone writes some documentation, you need to refer to the header 
-files. The short test-program test/test-mem illustrates how to create valid
+We have started documenting the libexif API using doxygen and are making
+the results available at http://libexif.sourceforge.net/api/
+
+Until someone writes some better documentation however, you need to refer
+to the header files.
+
+The short test-program test/test-mem illustrates how to create valid
 EXIF data from scratch, how to save EXIF data and how to load EXIF data 
 from data in memory. Don't hesitate to contact us 
 (<libexif-devel@lists.sourceforge.net>) if you've got any questions
 on how to use libexif.
+
+To link to libexif into your own package, we recommend using the
+pkgconfig utility (cf. http://pkg-config.freedesktop.org/wiki/). For
+your convenience, libexif both provides libexif-uninstalled.pc and
+installs libexif.pc.
+
 
 FRONTENDS
 ---------
@@ -54,11 +69,13 @@ Right now, I know of the following frontends to libexif:
 If you would like to migrate your program to use libexif or add EXIF support
 to it, don't hesitate to contact the authors.
 
+
 LIBRARIES
 ---------
 
 I know of the following libraries that use or have been inspired by libexif:
  - pel: PHP-Code (http://pel.sourceforge.net)
+
 
 AUTHORS
 -------
@@ -67,6 +84,7 @@ libexif has originally been written by Curtis Galloway
 <curtisg@users.sourceforge.net>. Because of the original design not
 supporting editing and saving, Lutz Müller <lutz@users.sourceforge.net>
 rewrote libexif from scratch.
+
 
 LINKS
 -----
