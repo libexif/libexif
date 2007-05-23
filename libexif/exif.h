@@ -35,9 +35,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * ##include <libexif/exif.h>
  *
- * libexif provides a libexif.pc file for use with pkgconfig. The
- * libexif-uninstalled.pc file probably still needs some work WRT to
- * the include file location.
+ * libexif provides a libexif.pc file for use with pkgconfig on the
+ * libexif installation. If you are using libtool to build your
+ * package, you can also integrate make use of libexif-uninstalled.pc.
  *
  * \section string_conventions String Conventions
  *
