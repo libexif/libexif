@@ -49,9 +49,10 @@ dnl ---------------------------------------------------------------------------
 dnl C:A:R
 dnl 12:0:1   0.6.13
 dnl 13:1:0   added EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE (for 0.6.14)
-LIBEXIF_AGE=1
+dnl 14:2:0   added XP_ WinXP tags (for 0.6.15)
+LIBEXIF_AGE=2
 LIBEXIF_REVISION=0
-LIBEXIF_CURRENT=13
+LIBEXIF_CURRENT=14
 AC_SUBST([LIBEXIF_AGE])
 AC_SUBST([LIBEXIF_REVISION])
 AC_SUBST([LIBEXIF_CURRENT])
