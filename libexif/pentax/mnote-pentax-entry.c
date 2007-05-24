@@ -341,7 +341,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			/* search the tag */
 			for (i = 0; (items[i].tag && items[i].tag != entry->tag); i++);
 			if (!items[i].tag) {
-			  	strncpy (val, "Internal error", maxlen);
+			  	strncpy (val, _("Internal error"), maxlen);
 			  	break;
 			}
 
@@ -350,7 +350,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			    (items[i].elem[j].index < vs); j++);
 			if (items[i].elem[j].index != vs) {
 				snprintf (val, maxlen,
-					  "Internal error (unknown value %i)", vs);
+					  _("Internal error (unknown value %i)"), vs);
 				break;
 			}
 			strncpy (val, items[i].elem[j].string, maxlen);
@@ -364,7 +364,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			/* search the tag */
 			for (i = 0; (items2[i].tag && items2[i].tag != entry->tag); i++);
 			if (!items2[i].tag) {
-			  	strncpy (val, "Internal error", maxlen);
+			  	strncpy (val, _("Internal error"), maxlen);
 			  	break;
 			}
 
@@ -373,7 +373,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 				|| ((items2[i].elem[j].index2 == vs2) && (items2[i].elem[j].index1 < vs))); j++);
 			if ((items2[i].elem[j].index1 != vs) || (items2[i].elem[j].index2 != vs2)) {
 				snprintf (val, maxlen,
-					  "Internal error (unknown value %i %i )", vs, vs2);
+					  _("Internal error (unknown value %i %i)"), vs, vs2);
 				break;
 			}
 			strncpy (val, items2[i].elem[j].string, maxlen);
@@ -389,8 +389,8 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 	case MNOTE_PENTAX_TAG_PRINTIM:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (entry->components, 124, val, maxlen);
-		snprintf (val, maxlen, "%li bytes unknown data",
-			  entry->components);
+		snprintf (val, maxlen, _("%i bytes unknown data"),
+			entry->size);
 		break;
 	case MNOTE_PENTAX_TAG_TZ_CITY:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
@@ -417,8 +417,8 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		  break;
 		case EXIF_FORMAT_UNDEFINED:
 		default:
-		  snprintf (val, maxlen, "%li bytes unknown data",
-			    entry->components);
+		  snprintf (val, maxlen, _("%i bytes unknown data"),
+			  entry->size);
 		  break;
 		}
 		break;

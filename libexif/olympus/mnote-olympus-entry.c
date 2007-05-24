@@ -568,8 +568,8 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			break;
 		case EXIF_FORMAT_UNDEFINED:
 		default:
-			snprintf (v, maxlen, _("%li bytes unknown data: "),
-				  (long int) entry->size);
+			snprintf (v, maxlen, _("%i bytes unknown data: "),
+				  entry->size);
 			for (i = 0; i < (int)entry->size; i++) {
 				sprintf (buf, "%02x", entry->data[i]);
 				strncat (v, buf, maxlen - strlen (v));
