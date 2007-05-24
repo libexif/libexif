@@ -2034,8 +2034,13 @@ msgstr "Interner Fehler."
 
 #: libexif/exif-entry.c:925
 #, c-format
-msgid "Internal error (unknown value %i)."
-msgstr "Interner Fehler (unbekannter Wert %i)."
+msgid "Internal error (unknown value %i)"
+msgstr "Interner Fehler (unbekannter Wert %i)"
+
+#: libexif/pentax/mnote-pentax-entry.c:376
+#, c-format
+msgid "Internal error (unknown value %i %i)"
+msgstr "Interner Fehler (unbekannter Wert %i %i)"
 
 #: libexif/exif-format.c:33
 msgid "Byte"
@@ -3757,8 +3762,8 @@ msgstr "One-touch"
 
 #: libexif/olympus/mnote-olympus-entry.c:571
 #, c-format
-msgid "%li bytes unknown data: "
-msgstr "%li Byte unbekannte Daten: "
+msgid "%i bytes unknown data: "
+msgstr "%i Byte unbekannte Daten: "
 
 #: libexif/olympus/mnote-olympus-tag.c:37
 msgid "Firmware Version"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libexif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-05-21 15:49+0200\n"
-"PO-Revision-Date: 2007-05-03 15:46+0200\n"
+"PO-Revision-Date: 2007-05-24 06:46+0200\n"
 "Last-Translator: Jan Patera <patera@users.sourceforge.net>\n"
 "Language-Team: <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-entry.c:39
 #, c-format
 msgid "Invalid format '%s', expected '%s'."
-msgstr "Špatný formát '%s', očekáván je '%s'"
+msgstr "Špatný formát '%s', očekáván je '%s'."
 
 #: libexif/canon/mnote-canon-entry.c:52
 #: libexif/olympus/mnote-olympus-entry.c:49
@@ -1797,13 +1797,12 @@ msgstr ""
 "nedetekován."
 
 #: libexif/exif-entry.c:518
-#, fuzzy
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light "
 "detected."
 msgstr ""
 "Blesk bleskl, blesk zapnut, režim redukce červených očí, odraz světla "
-"nedetekován."
+"detekován."
 
 #: libexif/exif-entry.c:520
 msgid "Flash did not fire, auto mode, red-eye reduction mode."
@@ -2015,13 +2014,19 @@ msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Neočekávaný počet položek (%li, očekáváno 2, 3 nebo 4)."
 
 #: libexif/exif-entry.c:917 libexif/exif-entry.c:960
-msgid "Internal error."
-msgstr "Vnitřní chyba."
+#: libexif/olympus/mnote-olympus-entry.c:358
+msgid "Internal error"
+msgstr "Vnitřní chyba"
 
 #: libexif/exif-entry.c:925
 #, c-format
-msgid "Internal error (unknown value %i)."
-msgstr "Vnitřní chyba (neznámá hodnota %i)."
+msgid "Internal error (unknown value %i)"
+msgstr "Vnitřní chyba (neznámá hodnota %i)"
+
+#: libexif/pentax/mnote-pentax-entry.c:376
+#, c-format
+msgid "Internal error (unknown value %i %i)"
+msgstr "Vnitřní chyba (neznámá hodnota %i %i)"
 
 #: libexif/exif-format.c:33
 msgid "Byte"
@@ -2897,25 +2902,23 @@ msgstr "Zlomky sekundy z údaje 'Datum a čas digitalizace'."
 
 #: libexif/exif-tag.c:489
 msgid "XP Title"
-msgstr ""
+msgstr "Titulek (Windows)"
 
 #: libexif/exif-tag.c:491
-#, fuzzy
 msgid "XP Comment"
-msgstr "Komentář"
+msgstr "Komentář (Windows)"
 
 #: libexif/exif-tag.c:493
-#, fuzzy
 msgid "XP Author"
-msgstr "Automaticky"
+msgstr "Autor (Windows)"
 
 #: libexif/exif-tag.c:495
 msgid "XP Keywords"
-msgstr ""
+msgstr "Klíčová slova (Windows)"
 
 #: libexif/exif-tag.c:497
 msgid "XP Subject"
-msgstr ""
+msgstr "Subjekt (Windows)"
 
 #: libexif/exif-tag.c:500
 msgid "The FlashPix format version supported by a FPXR file."
@@ -3479,10 +3482,6 @@ msgstr ""
 msgid "Unknown AF Position"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:358
-msgid "Internal error"
-msgstr "Vnitřní chyba"
-
 #: libexif/olympus/mnote-olympus-entry.c:379
 #, c-format
 msgid "Unknown value %hi"
@@ -3548,8 +3547,8 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:571
 #, c-format
-msgid "%li bytes unknown data: "
-msgstr "%li bajtů neznámých dat: "
+msgid "%i bytes unknown data: "
+msgstr "%i bajtů neznámých dat: "
 
 #: libexif/olympus/mnote-olympus-tag.c:37
 msgid "Firmware Version"
@@ -3768,9 +3767,8 @@ msgstr "Noční scéna"
 
 #: libexif/pentax/mnote-pentax-entry.c:79
 #: libexif/pentax/mnote-pentax-entry.c:133
-#, fuzzy
 msgid "Multi-exposure"
-msgstr "Ruční expozice"
+msgstr "Vícenásobna expozice"
 
 #: libexif/pentax/mnote-pentax-entry.c:82
 #: libexif/pentax/mnote-pentax-entry.c:136
@@ -3821,13 +3819,11 @@ msgid "Program AE"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:167
-#, fuzzy
 msgid "Sport"
-msgstr "Short Int"
+msgstr "Sport"
 
 #: libexif/pentax/mnote-pentax-entry.c:168
 #: libexif/pentax/mnote-pentax-entry.c:291
-#, fuzzy
 msgid "Night Scene"
 msgstr "Noční scéna"
 
@@ -3840,63 +3836,53 @@ msgid "Sunset or Candlelight"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:172
-#, fuzzy
 msgid "Autumn"
-msgstr "Automaticky"
+msgstr "Podzim"
 
 #: libexif/pentax/mnote-pentax-entry.c:175
 msgid "Text"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:177
-#, fuzzy
 msgid "Self Portrait"
-msgstr "Na výšku"
+msgstr "Autoportrét"
 
 #: libexif/pentax/mnote-pentax-entry.c:178
-#, fuzzy
 msgid "Illustrations"
-msgstr "Sytost"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:179
-#, fuzzy
 msgid "Digital Filter"
-msgstr "Digitální zvětšení"
+msgstr "Digitální filtr"
 
 #: libexif/pentax/mnote-pentax-entry.c:180
-#, fuzzy
 msgid "Museum"
-msgstr "Střední"
+msgstr "Muzeum"
 
 #: libexif/pentax/mnote-pentax-entry.c:181
-#, fuzzy
 msgid "Food"
-msgstr "Dobrý"
+msgstr "Jídlo"
 
 #: libexif/pentax/mnote-pentax-entry.c:182
-#, fuzzy
 msgid "Green Mode"
-msgstr "Režim měření"
+msgstr "Zelený režim"
 
 #: libexif/pentax/mnote-pentax-entry.c:183
-#, fuzzy
 msgid "Light Pet"
-msgstr "Druh světla"
+msgstr "Světlé zvíře"
 
 #: libexif/pentax/mnote-pentax-entry.c:184
 msgid "Dark Pet"
-msgstr ""
+msgstr "Tmavé zvíře"
 
 #: libexif/pentax/mnote-pentax-entry.c:185
-#, fuzzy
 msgid "Medium Pet"
-msgstr "Střední 1"
+msgstr "Středně tmavé zvíře"
 
 #: libexif/pentax/mnote-pentax-entry.c:187
 #: libexif/pentax/mnote-pentax-entry.c:292
-#, fuzzy
 msgid "Candlelight"
-msgstr "Denní světlo"
+msgstr "Světlo svíčky"
 
 #: libexif/pentax/mnote-pentax-entry.c:188
 msgid "Natural Skin Tone"
@@ -3911,27 +3897,22 @@ msgid "Frame Composite"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:193
-#, fuzzy
 msgid "Auto, Did not fire"
-msgstr "Blesk nebleskl"
+msgstr "Automaticky + Blesk nebleskl"
 
 #: libexif/pentax/mnote-pentax-entry.c:195
-#, fuzzy
 msgid "Auto, Did not fire, Red-eye reduction"
-msgstr "Automaticky + Redukce červených očí"
+msgstr "Automaticky + Blesk nebleskl, Redukce červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:196
-#, fuzzy
 msgid "Auto, Fired"
-msgstr "Automatické otočení"
+msgstr "Automaticky + Blesk bleskl"
 
 #: libexif/pentax/mnote-pentax-entry.c:198
-#, fuzzy
 msgid "Auto, Fired, Red-eye reduction"
-msgstr "Automaticky + Redukce červených očí"
+msgstr "Automaticky + Blesk bleskl, Redukce červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:199
-#, fuzzy
 msgid "On, Red-eye reduction"
 msgstr "Zapnuto + Redukce červených očí"
 
@@ -3944,23 +3925,20 @@ msgid "On, Soft"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:202
-#, fuzzy
 msgid "On, Slow-sync"
-msgstr "Pomalá synchronizace"
+msgstr "Zapnuto + Pomalá synchronizace"
 
 #: libexif/pentax/mnote-pentax-entry.c:203
-#, fuzzy
 msgid "On, Slow-sync, Red-eye reduction"
-msgstr "Zapnuto + Redukce červených očí"
+msgstr "Zapnuto + Pomalá synchronizace, Redukce červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:204
 msgid "On, Trailing-curtain Sync"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:211
-#, fuzzy
 msgid "Pan Focus"
-msgstr "Ruční zaostřování"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:212
 msgid "AF-S"
@@ -3971,96 +3949,80 @@ msgid "AF-C"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:216
-#, fuzzy
 msgid "Upper-left"
 msgstr "Nahoře vlevo"
 
 #: libexif/pentax/mnote-pentax-entry.c:217
 msgid "Top"
-msgstr ""
+msgstr "Nahoře"
 
 #: libexif/pentax/mnote-pentax-entry.c:218
-#, fuzzy
 msgid "Upper-right"
 msgstr "Nahoře vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:220
 msgid "Mid-left"
-msgstr ""
+msgstr ""Uprostřed vlevo"
 
 #: libexif/pentax/mnote-pentax-entry.c:222
-#, fuzzy
 msgid "Mid-right"
-msgstr "Nahoře vpravo"
+msgstr "Uprostřed vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:224
-#, fuzzy
 msgid "Lower-left"
-msgstr "Nahoře vlevo"
+msgstr "Dole vlevo"
 
 #: libexif/pentax/mnote-pentax-entry.c:225
-#, fuzzy
 msgid "Bottom"
-msgstr "Zdola nahoru"
+msgstr "Dole"
 
 #: libexif/pentax/mnote-pentax-entry.c:226
-#, fuzzy
 msgid "Lower-right"
-msgstr "Nahoře vpravo"
+msgstr "Dole vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:227
-#, fuzzy
 msgid "Fixed Center"
-msgstr "Pěkné počasí"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:231
 msgid "Multiple"
-msgstr ""
+msgstr "Vícenásobný"
 
 #: libexif/pentax/mnote-pentax-entry.c:232
-#, fuzzy
 msgid "Top-left"
 msgstr "Nahoře vlevo"
 
 #: libexif/pentax/mnote-pentax-entry.c:233
-#, fuzzy
 msgid "Top-center"
-msgstr "Uprostřed"
+msgstr "Nahoře uprostřed"
 
 #: libexif/pentax/mnote-pentax-entry.c:234
-#, fuzzy
 msgid "Top-right"
 msgstr "Nahoře vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:238
-#, fuzzy
 msgid "Bottom-left"
 msgstr "Dole vlevo"
 
 #: libexif/pentax/mnote-pentax-entry.c:239
-#, fuzzy
 msgid "Bottom-center"
-msgstr "Dole vlevo"
+msgstr "Dole uprostřed"
 
 #: libexif/pentax/mnote-pentax-entry.c:240
-#, fuzzy
 msgid "Bottom-right"
 msgstr "Dole vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:250
-#, fuzzy
 msgid "Daylight Fluorescent"
-msgstr "Světélkující"
+msgstr "Světélkující denní světlo"
 
 #: libexif/pentax/mnote-pentax-entry.c:251
-#, fuzzy
 msgid "Daywhite Fluorescent"
-msgstr "Světélkující"
+msgstr "Světélkující denní bílé světlo"
 
 #: libexif/pentax/mnote-pentax-entry.c:252
-#, fuzzy
 msgid "White Fluorescent"
-msgstr "Světélkující"
+msgstr "Světélkující bílé světlo"
 
 #: libexif/pentax/mnote-pentax-entry.c:256
 msgid "User Selected"
@@ -4087,9 +4049,8 @@ msgid "ISOSpeed"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:55
-#, fuzzy
 msgid "Colors"
-msgstr "Barevný"
+msgstr "Barvy"
 
 #: libexif/pentax/mnote-pentax-tag.c:58
 msgid "PrintIM Settings"
@@ -4100,12 +4061,10 @@ msgid "Time Zone"
 msgstr "Časové pásmo"
 
 #: libexif/pentax/mnote-pentax-tag.c:60
-#, fuzzy
 msgid "Daylight Savings"
 msgstr "Letní čas"
 
 #: libexif/pentax/mnote-pentax-tag.c:63
-#, fuzzy
 msgid "Image Size"
 msgstr "Velikost obrazových dat"
 
@@ -4122,19 +4081,16 @@ msgid "Auto AF Point"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:70
-#, fuzzy
 msgid "Object Distance"
 msgstr "Vzdálenost objektu"
 
 #: libexif/pentax/mnote-pentax-tag.c:70
-#, fuzzy
 msgid "Distance of photographed object in millimeters."
-msgstr "Vzdálenost fotografovaného objektu v metrech."
+msgstr "Vzdálenost fotografovaného objektu v milimetrech."
 
 #: libexif/pentax/mnote-pentax-tag.c:72
-#, fuzzy
 msgid "Bestshot mode"
-msgstr "Režim blesku"
+msgstr ""
 
 # This is a very special string. It is used for test purposes, and
 # we only test the de locale as a proof-of-concept example. There is
@@ -4142,10 +4098,3 @@ msgstr "Režim blesku"
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
 msgstr ""
-
-#~ msgid ""
-#~ "Flash fired, compulsory flash mode, red-eye reduction, return light "
-#~ "detected."
-#~ msgstr ""
-#~ "Blesk bleskl, blesk zapnut, režim redukce červených očí, odraz světla "
-#~ "detekován."

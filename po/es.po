@@ -2114,7 +2114,7 @@ msgstr ""
 
 #: libexif/exif-entry.c:925
 #, c-format
-msgid "Internal error (unknown value %i)."
+msgid "Internal error (unknown value %i)"
 msgstr ""
 
 #: libexif/exif-format.c:33
@@ -3910,8 +3910,8 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:571
 #, c-format
-msgid "%li bytes unknown data: "
-msgstr "%li bytes de datos desconocidos: "
+msgid "%i bytes unknown data: "
+msgstr "%i bytes de datos desconocidos: "
 
 #: libexif/olympus/mnote-olympus-tag.c:37
 msgid "Firmware Version"

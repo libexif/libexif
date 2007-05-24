@@ -2107,7 +2107,7 @@ msgstr ""
 
 #: libexif/exif-entry.c:925
 #, c-format
-msgid "Internal error (unknown value %i)."
+msgid "Internal error (unknown value %i)"
 msgstr ""
 
 #: libexif/exif-format.c:33
@@ -3608,23 +3608,21 @@ msgid "AF Position: Far Right"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:325
-#, fuzzy
 msgid "Unknown AF Position"
-msgstr "Version d'exif"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:358
 msgid "Internal error"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:379
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown value %hi"
-msgstr "Inconnu"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:408
-#, fuzzy
 msgid "Infinite"
-msgstr "Intel"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:422
 msgid "normal"
@@ -3688,9 +3686,9 @@ msgid "One-touch"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:571
-#, fuzzy, c-format
-msgid "%li bytes unknown data: "
-msgstr "%li de données inconnues"
+#, c-format
+msgid "%i bytes unknown data: "
+msgstr "%i de données inconnues: "
 
 #: libexif/olympus/mnote-olympus-tag.c:37
 #, fuzzy
