@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif-0.6.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-21 15:49+0200\n"
+"POT-Creation-Date: 2007-06-06 16:05+0200\n"
 "PO-Revision-Date: 2007-03-13 05:51+0100\n"
 "Last-Translator: helix84 <helix84@centrum.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -2083,7 +2083,8 @@ msgstr "YCbCr4:2:2"
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:865
+#: libexif/exif-entry.c:865 libexif/pentax/mnote-pentax-entry.c:392
+#: libexif/pentax/mnote-pentax-entry.c:420
 #, c-format
 msgid "%i bytes unknown data"
 msgstr "%i bajtov neznámych údajov"
@@ -2108,14 +2109,9 @@ msgid "Internal error."
 msgstr "Vnútorná chyba."
 
 #: libexif/exif-entry.c:925
-#, c-format
-msgid "Internal error (unknown value %i)"
+#, fuzzy, c-format
+msgid "Internal error (unknown value %i)."
 msgstr "Vnútorná chyba (neznáma hodnota %i)"
-
-#: libexif/pentax/mnote-pentax-entry.c:376
-#, c-format
-msgid "Internal error (unknown value %i %i)"
-msgstr "Vnútorná chyba (neznáma hodnota %i %i)"
 
 #: libexif/exif-format.c:33
 msgid "Byte"
@@ -3548,6 +3544,8 @@ msgid "Unknown AF Position"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:358
+#: libexif/pentax/mnote-pentax-entry.c:344
+#: libexif/pentax/mnote-pentax-entry.c:367
 msgid "Internal error"
 msgstr ""
 
@@ -4146,6 +4144,16 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-entry.c:289
 msgid "Digital Filter?"
 msgstr ""
+
+#: libexif/pentax/mnote-pentax-entry.c:353
+#, c-format
+msgid "Internal error (unknown value %i)"
+msgstr "Vnútorná chyba (neznáma hodnota %i)"
+
+#: libexif/pentax/mnote-pentax-entry.c:376
+#, c-format
+msgid "Internal error (unknown value %i %i)"
+msgstr "Vnútorná chyba (neznáma hodnota %i %i)"
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
 msgid "Capture Mode"

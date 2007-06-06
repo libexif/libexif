@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-21 15:49+0200\n"
+"POT-Creation-Date: 2007-06-06 16:05+0200\n"
 "PO-Revision-Date: 2005-03-12 05:43+0100\n"
 "Last-Translator: Fabian Mandelbaum <fabman@mandrakesoft.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -2088,7 +2088,8 @@ msgstr "YCbCr4:2:2"
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:865
+#: libexif/exif-entry.c:865 libexif/pentax/mnote-pentax-entry.c:392
+#: libexif/pentax/mnote-pentax-entry.c:420
 #, c-format
 msgid "%i bytes unknown data"
 msgstr "%i bytes de datos desconocidos"
@@ -2114,7 +2115,7 @@ msgstr ""
 
 #: libexif/exif-entry.c:925
 #, c-format
-msgid "Internal error (unknown value %i)"
+msgid "Internal error (unknown value %i)."
 msgstr ""
 
 #: libexif/exif-format.c:33
@@ -3836,6 +3837,8 @@ msgid "Unknown AF Position"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:358
+#: libexif/pentax/mnote-pentax-entry.c:344
+#: libexif/pentax/mnote-pentax-entry.c:367
 msgid "Internal error"
 msgstr ""
 
@@ -4461,6 +4464,16 @@ msgstr ""
 #, fuzzy
 msgid "Digital Filter?"
 msgstr "Relación de zoom digital"
+
+#: libexif/pentax/mnote-pentax-entry.c:353
+#, c-format
+msgid "Internal error (unknown value %i)"
+msgstr ""
+
+#: libexif/pentax/mnote-pentax-entry.c:376
+#, c-format
+msgid "Internal error (unknown value %i %i)"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
 #, fuzzy

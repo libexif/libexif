@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-21 15:49+0200\n"
+"POT-Creation-Date: 2007-06-06 16:05+0200\n"
 "PO-Revision-Date: 2006-10-17 17:03+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <de@li.org>\n"
@@ -2008,7 +2008,8 @@ msgstr "YCbCr4:2:2"
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:865
+#: libexif/exif-entry.c:865 libexif/pentax/mnote-pentax-entry.c:392
+#: libexif/pentax/mnote-pentax-entry.c:420
 #, c-format
 msgid "%i bytes unknown data"
 msgstr "%i Byte(s) unbekannte Daten"
@@ -2033,14 +2034,9 @@ msgid "Internal error."
 msgstr "Interner Fehler."
 
 #: libexif/exif-entry.c:925
-#, c-format
-msgid "Internal error (unknown value %i)"
+#, fuzzy, c-format
+msgid "Internal error (unknown value %i)."
 msgstr "Interner Fehler (unbekannter Wert %i)"
-
-#: libexif/pentax/mnote-pentax-entry.c:376
-#, c-format
-msgid "Internal error (unknown value %i %i)"
-msgstr "Interner Fehler (unbekannter Wert %i %i)"
 
 #: libexif/exif-format.c:33
 msgid "Byte"
@@ -3694,6 +3690,8 @@ msgid "Unknown AF Position"
 msgstr "Unbekannte AF Position"
 
 #: libexif/olympus/mnote-olympus-entry.c:358
+#: libexif/pentax/mnote-pentax-entry.c:344
+#: libexif/pentax/mnote-pentax-entry.c:367
 msgid "Internal error"
 msgstr "Interner Fehler"
 
@@ -4292,6 +4290,16 @@ msgstr ""
 #, fuzzy
 msgid "Digital Filter?"
 msgstr "Digitalmakro"
+
+#: libexif/pentax/mnote-pentax-entry.c:353
+#, c-format
+msgid "Internal error (unknown value %i)"
+msgstr "Interner Fehler (unbekannter Wert %i)"
+
+#: libexif/pentax/mnote-pentax-entry.c:376
+#, c-format
+msgid "Internal error (unknown value %i %i)"
+msgstr "Interner Fehler (unbekannter Wert %i %i)"
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
 msgid "Capture Mode"

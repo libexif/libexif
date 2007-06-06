@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-21 15:49+0200\n"
+"POT-Creation-Date: 2007-06-06 16:05+0200\n"
 "PO-Revision-Date: 2007-05-24 06:46+0200\n"
 "Last-Translator: Jan Patera <patera@users.sourceforge.net>\n"
 "Language-Team: <cs@li.org>\n"
@@ -1993,7 +1993,8 @@ msgstr "YCbCr4:2:2"
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:865
+#: libexif/exif-entry.c:865 libexif/pentax/mnote-pentax-entry.c:392
+#: libexif/pentax/mnote-pentax-entry.c:420
 #, c-format
 msgid "%i bytes unknown data"
 msgstr "%i bajtů neznámých dat"
@@ -2014,19 +2015,14 @@ msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Neočekávaný počet položek (%li, očekáváno 2, 3 nebo 4)."
 
 #: libexif/exif-entry.c:917 libexif/exif-entry.c:960
-#: libexif/olympus/mnote-olympus-entry.c:358
-msgid "Internal error"
+#, fuzzy
+msgid "Internal error."
 msgstr "Vnitřní chyba"
 
 #: libexif/exif-entry.c:925
-#, c-format
-msgid "Internal error (unknown value %i)"
+#, fuzzy, c-format
+msgid "Internal error (unknown value %i)."
 msgstr "Vnitřní chyba (neznámá hodnota %i)"
-
-#: libexif/pentax/mnote-pentax-entry.c:376
-#, c-format
-msgid "Internal error (unknown value %i %i)"
-msgstr "Vnitřní chyba (neznámá hodnota %i %i)"
 
 #: libexif/exif-format.c:33
 msgid "Byte"
@@ -3482,6 +3478,12 @@ msgstr ""
 msgid "Unknown AF Position"
 msgstr ""
 
+#: libexif/olympus/mnote-olympus-entry.c:358
+#: libexif/pentax/mnote-pentax-entry.c:344
+#: libexif/pentax/mnote-pentax-entry.c:367
+msgid "Internal error"
+msgstr "Vnitřní chyba"
+
 #: libexif/olympus/mnote-olympus-entry.c:379
 #, c-format
 msgid "Unknown value %hi"
@@ -3962,7 +3964,7 @@ msgstr "Nahoře vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:220
 msgid "Mid-left"
-msgstr ""Uprostřed vlevo"
+msgstr "Uprostřed vlevo"
 
 #: libexif/pentax/mnote-pentax-entry.c:222
 msgid "Mid-right"
@@ -4035,6 +4037,16 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-entry.c:289
 msgid "Digital Filter?"
 msgstr ""
+
+#: libexif/pentax/mnote-pentax-entry.c:353
+#, c-format
+msgid "Internal error (unknown value %i)"
+msgstr "Vnitřní chyba (neznámá hodnota %i)"
+
+#: libexif/pentax/mnote-pentax-entry.c:376
+#, c-format
+msgid "Internal error (unknown value %i %i)"
+msgstr "Vnitřní chyba (neznámá hodnota %i %i)"
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
 msgid "Capture Mode"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-21 15:49+0200\n"
+"POT-Creation-Date: 2007-06-06 16:05+0200\n"
 "PO-Revision-Date: 2006-01-12 13:25+0300\n"
 "Last-Translator: Alexandre Prokoudine <alexandre.prokoudine@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -2061,7 +2061,8 @@ msgstr "YCbCr4:2:2"
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:865
+#: libexif/exif-entry.c:865 libexif/pentax/mnote-pentax-entry.c:392
+#: libexif/pentax/mnote-pentax-entry.c:420
 #, c-format
 msgid "%i bytes unknown data"
 msgstr "%i байтов неизвестных данных"
@@ -2086,8 +2087,8 @@ msgid "Internal error."
 msgstr "Внутренняя ошибка"
 
 #: libexif/exif-entry.c:925
-#, c-format
-msgid "Internal error (unknown value %i)"
+#, fuzzy, c-format
+msgid "Internal error (unknown value %i)."
 msgstr "Внутренняя ошибка (неизвестное значение %i)"
 
 #: libexif/exif-format.c:33
@@ -3624,6 +3625,8 @@ msgid "Unknown AF Position"
 msgstr "Неизвестная версия EXIF"
 
 #: libexif/olympus/mnote-olympus-entry.c:358
+#: libexif/pentax/mnote-pentax-entry.c:344
+#: libexif/pentax/mnote-pentax-entry.c:367
 #, fuzzy
 msgid "Internal error"
 msgstr "Встроенная вспышка"
@@ -4217,6 +4220,16 @@ msgstr ""
 #, fuzzy
 msgid "Digital Filter?"
 msgstr "Цифровой трансфокатор"
+
+#: libexif/pentax/mnote-pentax-entry.c:353
+#, c-format
+msgid "Internal error (unknown value %i)"
+msgstr "Внутренняя ошибка (неизвестное значение %i)"
+
+#: libexif/pentax/mnote-pentax-entry.c:376
+#, fuzzy, c-format
+msgid "Internal error (unknown value %i %i)"
+msgstr "Внутренняя ошибка (неизвестное значение %i)"
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
 msgid "Capture Mode"

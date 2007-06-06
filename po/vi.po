@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif-0.6.13\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-21 15:49+0200\n"
+"POT-Creation-Date: 2007-06-06 16:05+0200\n"
 "PO-Revision-Date: 2006-02-11 22:57+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
@@ -2102,7 +2102,8 @@ msgstr "YCbCr4:2:2"
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:865
+#: libexif/exif-entry.c:865 libexif/pentax/mnote-pentax-entry.c:392
+#: libexif/pentax/mnote-pentax-entry.c:420
 #, c-format
 msgid "%i bytes unknown data"
 msgstr "%i byte dữ liệu lạ"
@@ -2127,14 +2128,9 @@ msgid "Internal error."
 msgstr "Lỗi nội bộ."
 
 #: libexif/exif-entry.c:925
-#, c-format
-msgid "Internal error (unknown value %i)"
+#, fuzzy, c-format
+msgid "Internal error (unknown value %i)."
 msgstr "Lỗi nội bộ (không biết giá trị %i)"
-
-#: libexif/pentax/mnote-pentax-entry.c:376
-#, c-format
-msgid "Internal error (unknown value %i %i)"
-msgstr "Lỗi nội bộ (không biết giá trị %i %i)"
 
 #: libexif/exif-format.c:33
 msgid "Byte"
@@ -3802,6 +3798,8 @@ msgid "Unknown AF Position"
 msgstr "Không biết vị trí AF"
 
 #: libexif/olympus/mnote-olympus-entry.c:358
+#: libexif/pentax/mnote-pentax-entry.c:344
+#: libexif/pentax/mnote-pentax-entry.c:367
 msgid "Internal error"
 msgstr "Lỗi nội bộ"
 
@@ -4406,6 +4404,16 @@ msgstr ""
 #, fuzzy
 msgid "Digital Filter?"
 msgstr "Phóng to số"
+
+#: libexif/pentax/mnote-pentax-entry.c:353
+#, c-format
+msgid "Internal error (unknown value %i)"
+msgstr "Lỗi nội bộ (không biết giá trị %i)"
+
+#: libexif/pentax/mnote-pentax-entry.c:376
+#, c-format
+msgid "Internal error (unknown value %i %i)"
+msgstr "Lỗi nội bộ (không biết giá trị %i %i)"
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
 msgid "Capture Mode"
