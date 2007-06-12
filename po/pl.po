@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif 0.6.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-06 16:05+0200\n"
+"POT-Creation-Date: 2007-06-12 15:13+0200\n"
 "PO-Revision-Date: 2007-05-26 19:42+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -1260,35 +1260,35 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-data.c:709
+#: libexif/exif-data.c:714
 msgid "Size of data too small to allow for EXIF data."
 msgstr "Rozmiar danych zbyt mały aby pozwalał na dane EXIF."
 
-#: libexif/exif-data.c:770
+#: libexif/exif-data.c:775
 msgid "EXIF marker not found."
 msgstr "Nie znaleziono znacznika EXIF."
 
-#: libexif/exif-data.c:797
+#: libexif/exif-data.c:802
 msgid "EXIF header not found."
 msgstr "Nie znaleziono nagłówka EXIF."
 
-#: libexif/exif-data.c:813
+#: libexif/exif-data.c:818
 msgid "Unknown encoding."
 msgstr "Nieznane kodowanie."
 
-#: libexif/exif-data.c:1117
+#: libexif/exif-data.c:1122
 msgid "Ignore unknown tags"
 msgstr "Ignorowanie nieznanych znaczników"
 
-#: libexif/exif-data.c:1118
+#: libexif/exif-data.c:1123
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Ignorowanie nieznanych znaczników przy wczytywaniu danych EXIF."
 
-#: libexif/exif-data.c:1119
+#: libexif/exif-data.c:1124
 msgid "Follow specification"
 msgstr "Zgodność ze specyfikacją"
 
-#: libexif/exif-data.c:1120
+#: libexif/exif-data.c:1125
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
@@ -1296,11 +1296,11 @@ msgstr ""
 "Dodawanie, poprawianie i usuwanie wpisów aby uzyskać dane EXIF zgodne ze "
 "specyfikacją."
 
-#: libexif/exif-data.c:1122
+#: libexif/exif-data.c:1127
 msgid "Don not change maker note"
 msgstr "Nie zmieniaj oznaczenia twórcy"
 
-#: libexif/exif-data.c:1123
+#: libexif/exif-data.c:1128
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."

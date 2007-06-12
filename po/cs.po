@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-06 16:05+0200\n"
+"POT-Creation-Date: 2007-06-12 15:13+0200\n"
 "PO-Revision-Date: 2007-05-24 06:46+0200\n"
 "Last-Translator: Jan Patera <patera@users.sourceforge.net>\n"
 "Language-Team: <cs@li.org>\n"
@@ -1264,35 +1264,35 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-data.c:709
+#: libexif/exif-data.c:714
 msgid "Size of data too small to allow for EXIF data."
 msgstr "Příliš málo dat pro EXIF data."
 
-#: libexif/exif-data.c:770
+#: libexif/exif-data.c:775
 msgid "EXIF marker not found."
 msgstr "EXIF marker nebyl nalezen."
 
-#: libexif/exif-data.c:797
+#: libexif/exif-data.c:802
 msgid "EXIF header not found."
 msgstr "Hlavička dat EXIF nebyla nalezena."
 
-#: libexif/exif-data.c:813
+#: libexif/exif-data.c:818
 msgid "Unknown encoding."
 msgstr "Neznámé kódování"
 
-#: libexif/exif-data.c:1117
+#: libexif/exif-data.c:1122
 msgid "Ignore unknown tags"
 msgstr "Ignorovat neznámé značky"
 
-#: libexif/exif-data.c:1118
+#: libexif/exif-data.c:1123
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Ignorovat neznámé značky při načítání EXIF dat."
 
-#: libexif/exif-data.c:1119
+#: libexif/exif-data.c:1124
 msgid "Follow specification"
 msgstr "Dodržovat specifikaci"
 
-#: libexif/exif-data.c:1120
+#: libexif/exif-data.c:1125
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
@@ -1300,11 +1300,11 @@ msgstr ""
 "Dodržovat specifikaci EXIF dat pomocí přidání, opravení nebo odstranění "
 "položek."
 
-#: libexif/exif-data.c:1122
+#: libexif/exif-data.c:1127
 msgid "Don not change maker note"
 msgstr ""
 
-#: libexif/exif-data.c:1123
+#: libexif/exif-data.c:1128
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."

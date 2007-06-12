@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-06 16:05+0200\n"
+"POT-Creation-Date: 2007-06-12 15:13+0200\n"
 "PO-Revision-Date: 2006-10-17 17:03+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <de@li.org>\n"
@@ -1268,35 +1268,35 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-data.c:709
+#: libexif/exif-data.c:714
 msgid "Size of data too small to allow for EXIF data."
 msgstr "Größe der Daten zu klein um EXIF Daten aufzunehmen."
 
-#: libexif/exif-data.c:770
+#: libexif/exif-data.c:775
 msgid "EXIF marker not found."
 msgstr "EXIF Marker nicht gefunden."
 
-#: libexif/exif-data.c:797
+#: libexif/exif-data.c:802
 msgid "EXIF header not found."
 msgstr "EXIF Informationen nicht gefunden."
 
-#: libexif/exif-data.c:813
+#: libexif/exif-data.c:818
 msgid "Unknown encoding."
 msgstr "Unbekannte Kodierung."
 
-#: libexif/exif-data.c:1117
+#: libexif/exif-data.c:1122
 msgid "Ignore unknown tags"
 msgstr "Ignoriere unbekannte EXIF Tags."
 
-#: libexif/exif-data.c:1118
+#: libexif/exif-data.c:1123
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Ignoriere unbekannte Tags beim Laden der EXIF Daten."
 
-#: libexif/exif-data.c:1119
+#: libexif/exif-data.c:1124
 msgid "Follow specification"
 msgstr "Beachte Spezifikation."
 
-#: libexif/exif-data.c:1120
+#: libexif/exif-data.c:1125
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
@@ -1304,11 +1304,11 @@ msgstr ""
 "Korrigiere, entferne oder füge fehlende Einträge zu den EXIF Daten hinzu, um "
 "Daten zu erhalten, die der Spezifikation entsprechen."
 
-#: libexif/exif-data.c:1122
+#: libexif/exif-data.c:1127
 msgid "Don not change maker note"
 msgstr ""
 
-#: libexif/exif-data.c:1123
+#: libexif/exif-data.c:1128
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."
