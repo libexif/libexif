@@ -1,20 +1,20 @@
 # Vietnamese translation for LibEXIF.
-# Copyright © 2006 Free Software Foundation, Inc.
-# Clytie Siddall <clytie@riverland.net.au>, 2006.
+# Copyright © 2007 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2006-2007.
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif-0.6.13\n"
+"Project-Id-Version: libexif 0.6.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-06 16:05+0200\n"
-"PO-Revision-Date: 2006-02-11 22:57+1030\n"
+"POT-Creation-Date: 2007-06-12 15:13+0200\n"
+"PO-Revision-Date: 2007-06-12 22:19+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
-"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: LocFactoryEditor 1.6b36\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.6.3b1\n"
 
 #: libexif/canon/mnote-canon-entry.c:40
 #: libexif/olympus/mnote-olympus-entry.c:37
@@ -44,7 +44,7 @@ msgstr "Số thành phần không hợp lệ (%i, còn ngờ %i hay %i)."
 #: libexif/pentax/mnote-pentax-entry.c:208
 #: libexif/pentax/mnote-pentax-entry.c:293
 msgid "Macro"
-msgstr "Bộ lệnh"
+msgstr "Vĩ lệnh"
 
 #: libexif/canon/mnote-canon-entry.c:76 libexif/canon/mnote-canon-entry.c:78
 #: libexif/canon/mnote-canon-entry.c:143 libexif/canon/mnote-canon-entry.c:146
@@ -62,22 +62,21 @@ msgstr "Chuẩn"
 
 #: libexif/canon/mnote-canon-entry.c:77
 msgid "Economy"
-msgstr ""
+msgstr "Tiết kiệm"
 
 #: libexif/canon/mnote-canon-entry.c:79
-#, fuzzy
 msgid "Fine"
-msgstr "in"
+msgstr "Chính xác"
 
 #: libexif/canon/mnote-canon-entry.c:80
 #: libexif/olympus/mnote-olympus-entry.c:132
 #: libexif/pentax/mnote-pentax-entry.c:140
 msgid "RAW"
-msgstr ""
+msgstr "RAW"
 
 #: libexif/canon/mnote-canon-entry.c:81
 msgid "Superfine"
-msgstr ""
+msgstr "Siêu chính xác"
 
 #: libexif/canon/mnote-canon-entry.c:82 libexif/canon/mnote-canon-entry.c:257
 #: libexif/canon/mnote-canon-entry.c:260 libexif/canon/mnote-canon-entry.c:268
@@ -111,7 +110,7 @@ msgstr "Tự động"
 #: libexif/pentax/mnote-pentax-entry.c:197
 #: libexif/pentax/mnote-pentax-entry.c:260
 msgid "On"
-msgstr ""
+msgstr "Bật"
 
 #: libexif/canon/mnote-canon-entry.c:85
 #: libexif/olympus/mnote-olympus-entry.c:146
@@ -119,24 +118,20 @@ msgid "Red-eye reduction"
 msgstr "Giảm mắt đỏ"
 
 #: libexif/canon/mnote-canon-entry.c:86
-#, fuzzy
 msgid "Slow synchro"
-msgstr "đồng bộ chậm"
+msgstr "Đồng bộ chậm"
 
 #: libexif/canon/mnote-canon-entry.c:87
-#, fuzzy
 msgid "Auto + Red-eye reduction"
-msgstr "tự động + giảm mặt đỏ"
+msgstr "Tự động + giảm mặt đỏ"
 
 #: libexif/canon/mnote-canon-entry.c:88
-#, fuzzy
 msgid "On + Red-eye reduction"
-msgstr "Giảm mắt đỏ"
+msgstr "Bật + giảm mắt đỏ"
 
 #: libexif/canon/mnote-canon-entry.c:89
-#, fuzzy
 msgid "External flash"
-msgstr "Đèn nháy nôi bộ"
+msgstr "Đèn nháy ngoài"
 
 #: libexif/canon/mnote-canon-entry.c:90 libexif/canon/mnote-canon-entry.c:100
 #: libexif/canon/mnote-canon-entry.c:250
@@ -150,83 +145,68 @@ msgstr "Liên tục"
 
 #: libexif/canon/mnote-canon-entry.c:92
 msgid "Movie"
-msgstr ""
+msgstr "Phim"
 
 #: libexif/canon/mnote-canon-entry.c:93
-#, fuzzy
 msgid "Continuous, speed priority"
-msgstr "Chế độ chạy liên tục"
+msgstr "Liên tục, ưu tiên tốc độ"
 
 #: libexif/canon/mnote-canon-entry.c:94
-#, fuzzy
 msgid "Continuous, low"
-msgstr "Liên tục"
+msgstr "Liên tục, thấp"
 
 #: libexif/canon/mnote-canon-entry.c:95
-#, fuzzy
 msgid "Continuous, high"
-msgstr "Liên tục"
+msgstr "Liên tục, cao"
 
 #: libexif/canon/mnote-canon-entry.c:96
-#, fuzzy
 msgid "One-shot AF"
-msgstr "chụp một"
+msgstr "AF chụp một"
 
 #: libexif/canon/mnote-canon-entry.c:97
-#, fuzzy
 msgid "AI servo AF"
-msgstr "dịch vụ trí tuệ"
+msgstr "AF dịch vụ trí tuệ"
 
 #: libexif/canon/mnote-canon-entry.c:98
-#, fuzzy
 msgid "AI focus AF"
-msgstr "Tiêu điểm trí tuệ"
+msgstr "AF tiêu điểm trí tuệ"
 
 #: libexif/canon/mnote-canon-entry.c:99 libexif/canon/mnote-canon-entry.c:102
-#, fuzzy
 msgid "Manual focus"
 msgstr "Tiêu điểm thủ công"
 
 #: libexif/canon/mnote-canon-entry.c:103 libexif/canon/mnote-canon-entry.c:122
 #: libexif/canon/mnote-canon-entry.c:173
-#, fuzzy
 msgid "Pan focus"
 msgstr "Kéo ngang tiêu điểm"
 
 #: libexif/canon/mnote-canon-entry.c:104
-#, fuzzy
 msgid "Large"
-msgstr "lớn"
+msgstr "Lớn"
 
 #: libexif/canon/mnote-canon-entry.c:105
-#, fuzzy
 msgid "Medium"
-msgstr "vừa"
+msgstr "Vừa"
 
 #: libexif/canon/mnote-canon-entry.c:106
-#, fuzzy
 msgid "Small"
-msgstr "nhỏ"
+msgstr "Nhỏ"
 
 #: libexif/canon/mnote-canon-entry.c:107
-#, fuzzy
 msgid "Medium 1"
-msgstr "vừa"
+msgstr "Vừa 1"
 
 #: libexif/canon/mnote-canon-entry.c:108
-#, fuzzy
 msgid "Medium 2"
-msgstr "vừa"
+msgstr "Vừa 2"
 
 #: libexif/canon/mnote-canon-entry.c:109
-#, fuzzy
 msgid "Medium 3"
-msgstr "vừa"
+msgstr "Vừa 3"
 
 #: libexif/canon/mnote-canon-entry.c:110
-#, fuzzy
 msgid "Full auto"
-msgstr "tự động đầy đủ"
+msgstr "Tự động đầy đủ"
 
 #: libexif/canon/mnote-canon-entry.c:111 libexif/canon/mnote-canon-entry.c:165
 #: libexif/canon/mnote-canon-entry.c:187 libexif/canon/mnote-canon-entry.c:241
@@ -247,23 +227,20 @@ msgid "Landscape"
 msgstr "Nằm ngang"
 
 #: libexif/canon/mnote-canon-entry.c:113
-#, fuzzy
 msgid "Fast shutter"
-msgstr "chập nhanh"
+msgstr "Chập nhanh"
 
 #: libexif/canon/mnote-canon-entry.c:114 libexif/canon/mnote-canon-tag.c:97
-#, fuzzy
 msgid "Slow shutter"
-msgstr "chập chậm"
+msgstr "Chập chậm"
 
 #: libexif/canon/mnote-canon-entry.c:115
-#, fuzzy
 msgid "Night"
-msgstr "đem"
+msgstr "Đem"
 
 #: libexif/canon/mnote-canon-entry.c:116
 msgid "Grayscale"
-msgstr ""
+msgstr "Mức xám"
 
 #: libexif/canon/mnote-canon-entry.c:117 libexif/canon/mnote-canon-entry.c:264
 #: libexif/pentax/mnote-pentax-entry.c:127
@@ -284,18 +261,16 @@ msgstr "Thể thao"
 
 #: libexif/canon/mnote-canon-entry.c:121 libexif/canon/mnote-canon-entry.c:265
 #: libexif/canon/mnote-canon-entry.c:287
-#, fuzzy
 msgid "Black & white"
 msgstr "Đen trắng"
 
 #: libexif/canon/mnote-canon-entry.c:123 libexif/canon/mnote-canon-entry.c:261
 msgid "Vivid"
-msgstr ""
+msgstr "Sặc sỡ"
 
 #: libexif/canon/mnote-canon-entry.c:124 libexif/canon/mnote-canon-entry.c:262
-#, fuzzy
 msgid "Neutral"
-msgstr "bên ngoài"
+msgstr "Trung lập"
 
 #: libexif/canon/mnote-canon-entry.c:125
 #: libexif/pentax/mnote-pentax-entry.c:92
@@ -303,66 +278,60 @@ msgid "Flash off"
 msgstr "Đèn nháy bị tắt"
 
 #: libexif/canon/mnote-canon-entry.c:126
-#, fuzzy
 msgid "Long shutter"
-msgstr "chập chậm"
+msgstr "Chập lâu"
 
 #: libexif/canon/mnote-canon-entry.c:127 libexif/canon/mnote-canon-entry.c:174
-#, fuzzy
 msgid "Super macro"
-msgstr "bộ lệnh"
+msgstr "Siêu vĩ lệnh"
 
 #: libexif/canon/mnote-canon-entry.c:128
-#, fuzzy
 msgid "Foliage"
-msgstr "lớn"
+msgstr "Hoa lá"
 
 #: libexif/canon/mnote-canon-entry.c:129
 msgid "Indoor"
-msgstr ""
+msgstr "Trong nhà"
 
 #: libexif/canon/mnote-canon-entry.c:130
 #: libexif/pentax/mnote-pentax-entry.c:174
 msgid "Fireworks"
-msgstr ""
+msgstr "Pháo hoa"
 
 #: libexif/canon/mnote-canon-entry.c:131
 msgid "Beach"
-msgstr ""
+msgstr "Bãi biển"
 
 #: libexif/canon/mnote-canon-entry.c:132 libexif/canon/mnote-canon-entry.c:296
 #: libexif/pentax/mnote-pentax-entry.c:186
 #: libexif/pentax/mnote-pentax-entry.c:288
 #: libexif/pentax/mnote-pentax-entry.c:294
-#, fuzzy
 msgid "Underwater"
-msgstr "Trời đẹp"
+msgstr "Dưới mặt nước"
 
 #: libexif/canon/mnote-canon-entry.c:133
 msgid "Snow"
-msgstr ""
+msgstr "Tuyết"
 
 #: libexif/canon/mnote-canon-entry.c:134
 msgid "Kids & pets"
-msgstr ""
+msgstr "Trẻ con và Vật cưng"
 
 #: libexif/canon/mnote-canon-entry.c:135
-#, fuzzy
 msgid "Night snapshot"
-msgstr "Cảnh đem"
+msgstr "Ảnh chụp đem"
 
 #: libexif/canon/mnote-canon-entry.c:136
-#, fuzzy
 msgid "Digital macro"
-msgstr "Phóng to số"
+msgstr "Vĩ lệnh số"
 
 #: libexif/canon/mnote-canon-entry.c:137
 msgid "My colors"
-msgstr ""
+msgstr "Màu sắc tôi"
 
 #: libexif/canon/mnote-canon-entry.c:138
 msgid "Still image"
-msgstr ""
+msgstr "Ảnh tĩnh"
 
 #: libexif/canon/mnote-canon-entry.c:139 libexif/canon/mnote-canon-entry.c:300
 #: libexif/canon/mnote-canon-entry.c:317
@@ -375,11 +344,11 @@ msgstr "Không có"
 #: libexif/canon/mnote-canon-entry.c:140
 #: libexif/olympus/mnote-olympus-entry.c:142
 msgid "2x"
-msgstr "2x"
+msgstr "2×"
 
 #: libexif/canon/mnote-canon-entry.c:141
 msgid "4x"
-msgstr ""
+msgstr "4×"
 
 #: libexif/canon/mnote-canon-entry.c:142 libexif/exif-entry.c:435
 #: libexif/exif-entry.c:465
@@ -401,9 +370,8 @@ msgid "Low"
 msgstr "Thấp"
 
 #: libexif/canon/mnote-canon-entry.c:152
-#, fuzzy
 msgid "Auto high"
-msgstr "cao"
+msgstr "Tự động cao"
 
 #: libexif/canon/mnote-canon-entry.c:154
 msgid "50"
@@ -431,7 +399,7 @@ msgstr "800"
 
 #: libexif/canon/mnote-canon-entry.c:159
 msgid "Default"
-msgstr ""
+msgstr "Mặc định"
 
 #: libexif/canon/mnote-canon-entry.c:160 libexif/exif-entry.c:431
 msgid "Spot"
@@ -442,108 +410,92 @@ msgid "Average"
 msgstr "Trung bình"
 
 #: libexif/canon/mnote-canon-entry.c:162
-#, fuzzy
 msgid "Evaluative"
-msgstr "ước lượng"
+msgstr "Ước lượng"
 
 #: libexif/canon/mnote-canon-entry.c:163 libexif/exif-entry.c:434
 msgid "Partial"
 msgstr "Bộ phận"
 
 #: libexif/canon/mnote-canon-entry.c:164
-#, fuzzy
 msgid "Center-weighted average"
 msgstr "Trung bình nặng giữa"
 
 #: libexif/canon/mnote-canon-entry.c:167
-#, fuzzy
 msgid "Not known"
 msgstr "Không rõ"
 
 #: libexif/canon/mnote-canon-entry.c:169
-#, fuzzy
 msgid "Very close"
-msgstr "gần"
+msgstr "Rất gần"
 
 #: libexif/canon/mnote-canon-entry.c:170
-#, fuzzy
 msgid "Close"
-msgstr "gần"
+msgstr "Gần"
 
 #: libexif/canon/mnote-canon-entry.c:171
 msgid "Middle range"
-msgstr ""
+msgstr "Phạm vị giữa"
 
 #: libexif/canon/mnote-canon-entry.c:172
-#, fuzzy
 msgid "Far range"
-msgstr "Phạm vị truyền"
+msgstr "Phạm vị xa"
 
 #: libexif/canon/mnote-canon-entry.c:175
 #: libexif/pentax/mnote-pentax-entry.c:209
-#, fuzzy
 msgid "Infinity"
 msgstr "Vô hạn"
 
 #: libexif/canon/mnote-canon-entry.c:176
-#, fuzzy
 msgid "Manual AF point selection"
-msgstr "Điểm AF được chọn"
+msgstr "Tự chọn điểm AF"
 
 #: libexif/canon/mnote-canon-entry.c:177 libexif/canon/mnote-canon-entry.c:301
-#, fuzzy
 msgid "None (MF)"
-msgstr "Không có"
+msgstr "Không có (MF)"
 
 #: libexif/canon/mnote-canon-entry.c:178
-#, fuzzy
 msgid "Auto-selected"
-msgstr "tự động chọn"
+msgstr "Tự động chọn"
 
 #: libexif/canon/mnote-canon-entry.c:179 libexif/canon/mnote-canon-entry.c:302
 #: libexif/pentax/mnote-pentax-entry.c:223
 #: libexif/pentax/mnote-pentax-entry.c:237
-#, fuzzy
 msgid "Right"
-msgstr "đem"
+msgstr "Phải"
 
 #: libexif/canon/mnote-canon-entry.c:180 libexif/canon/mnote-canon-entry.c:303
 #: libexif/pentax/mnote-pentax-entry.c:221
 #: libexif/pentax/mnote-pentax-entry.c:236
-#, fuzzy
 msgid "Center"
-msgstr "giữa"
+msgstr "Giữa"
 
 #: libexif/canon/mnote-canon-entry.c:181 libexif/canon/mnote-canon-entry.c:305
 #: libexif/pentax/mnote-pentax-entry.c:219
 #: libexif/pentax/mnote-pentax-entry.c:235
-#, fuzzy
 msgid "Left"
-msgstr "trái"
+msgstr "Trái"
 
 #: libexif/canon/mnote-canon-entry.c:182
-#, fuzzy
 msgid "Auto AF point selection"
-msgstr "Điểm AF được chọn"
+msgstr "Tự động chọn điểm AF"
 
 #: libexif/canon/mnote-canon-entry.c:183
-#, fuzzy
 msgid "Easy shooting"
-msgstr "chụp dễ"
+msgstr "Chụp dễ"
 
 #: libexif/canon/mnote-canon-entry.c:184
 #: libexif/pentax/mnote-pentax-entry.c:162
-#, fuzzy
 msgid "Program"
-msgstr "chương trình"
+msgstr "Chương trình"
 
 #: libexif/canon/mnote-canon-entry.c:185
 msgid "Tv-priority"
-msgstr "ưu tiên TV"
+msgstr "Ưu tiên TV"
 
 #: libexif/canon/mnote-canon-entry.c:186
 msgid "Av-priority"
-msgstr "ưu tiên nghe nhín"
+msgstr "Ưu tiên nghe nhín"
 
 #: libexif/canon/mnote-canon-entry.c:188
 msgid "A-DEP"
@@ -759,68 +711,63 @@ msgstr "Canon EF 17-40mm f/4L"
 
 #: libexif/canon/mnote-canon-entry.c:242
 msgid "TTL"
-msgstr ""
+msgstr "TTL"
 
 #: libexif/canon/mnote-canon-entry.c:243
 msgid "A-TTL"
-msgstr ""
+msgstr "A-TTL"
 
 #: libexif/canon/mnote-canon-entry.c:244
 msgid "E-TTL"
-msgstr ""
+msgstr "E-TTL"
 
 #: libexif/canon/mnote-canon-entry.c:245
 msgid "FP sync enabled"
 msgstr "Đồng bộ FP đã bật"
 
 #: libexif/canon/mnote-canon-entry.c:246
-#, fuzzy
 msgid "2nd-curtain sync used"
-msgstr "Đồng bộ FP đã dùng"
+msgstr "Đồng bộ mành thứ hai đã dùng"
 
 #: libexif/canon/mnote-canon-entry.c:247
 msgid "FP sync used"
 msgstr "Đồng bộ FP đã dùng"
 
-# Name: don't translate / Tên: đừng dịch
 #: libexif/canon/mnote-canon-entry.c:248
 msgid "Internal"
-msgstr ""
+msgstr "Nội bộ"
 
 #: libexif/canon/mnote-canon-entry.c:249
-#, fuzzy
 msgid "External"
-msgstr "bên ngoài"
+msgstr "Ngoài"
 
 #: libexif/canon/mnote-canon-entry.c:252
-#, fuzzy
 msgid "Normal AE"
-msgstr "Chuẩn"
+msgstr "AE chuẩn"
 
 #: libexif/canon/mnote-canon-entry.c:253 libexif/canon/mnote-canon-tag.c:95
-#, fuzzy
 msgid "Exposure compensation"
-msgstr "Sự bù sắc màu"
+msgstr "Sự bù phơi sáng"
 
 #: libexif/canon/mnote-canon-entry.c:254
 msgid "AE lock"
-msgstr ""
+msgstr "Khoá AE"
 
 #: libexif/canon/mnote-canon-entry.c:255
 msgid "AE lock + Exposure compensation"
-msgstr ""
+msgstr "Khoá AE + sự bù phơi sáng"
 
 #: libexif/canon/mnote-canon-entry.c:256
 msgid "No AE"
-msgstr ""
+msgstr "Không AE"
 
 #: libexif/canon/mnote-canon-entry.c:259
 msgid "On, shot only"
-msgstr ""
+msgstr "Bật, chỉ chụp"
 
 #: libexif/canon/mnote-canon-entry.c:263
 msgid "Smooth"
-msgstr ""
+msgstr "Mịn"
 
 #: libexif/canon/mnote-canon-entry.c:266 libexif/canon/mnote-canon-entry.c:286
 #: libexif/pentax/mnote-pentax-entry.c:86
@@ -829,7 +776,7 @@ msgstr "Tự chọn"
 
 #: libexif/canon/mnote-canon-entry.c:267
 msgid "My color data"
-msgstr ""
+msgstr "Dữ liệu màu tôi"
 
 #: libexif/canon/mnote-canon-entry.c:269 libexif/canon/mnote-canon-entry.c:327
 #: libexif/pentax/mnote-pentax-entry.c:125
@@ -839,19 +786,19 @@ msgstr "Đầy"
 
 #: libexif/canon/mnote-canon-entry.c:270 libexif/canon/mnote-canon-entry.c:326
 msgid "2/3"
-msgstr ""
+msgstr "2/3"
 
 #: libexif/canon/mnote-canon-entry.c:271 libexif/canon/mnote-canon-entry.c:325
 msgid "1/3"
-msgstr ""
+msgstr "1/3"
 
 #: libexif/canon/mnote-canon-entry.c:275
 msgid "Fixed"
-msgstr ""
+msgstr "Cố định"
 
 #: libexif/canon/mnote-canon-entry.c:276 libexif/pentax/mnote-pentax-tag.c:43
 msgid "Zoom"
-msgstr "Phóng to"
+msgstr "Thu/phóng"
 
 #: libexif/canon/mnote-canon-entry.c:281
 msgid "Sunny"
@@ -888,123 +835,115 @@ msgstr "Bóng"
 
 #: libexif/canon/mnote-canon-entry.c:289
 msgid "Manual temperature (Kelvin)"
-msgstr ""
+msgstr "Tự đặt nhiệt độ (Kenvin)"
 
 #: libexif/canon/mnote-canon-entry.c:290
 msgid "PC set 1"
-msgstr ""
+msgstr "PC lập 1"
 
 #: libexif/canon/mnote-canon-entry.c:291
 msgid "PC set 2"
-msgstr ""
+msgstr "PC lập 2"
 
 #: libexif/canon/mnote-canon-entry.c:292
 msgid "PC set 3"
-msgstr ""
+msgstr "PC lập 3"
 
 #: libexif/canon/mnote-canon-entry.c:293 libexif/exif-entry.c:454
 msgid "Daylight fluorescent"
 msgstr "Huỳnh quang ảnh nắng ban ngày"
 
 #: libexif/canon/mnote-canon-entry.c:294
-#, fuzzy
 msgid "Custom 1"
-msgstr "Tự chọn"
+msgstr "Tự chọn 1"
 
 #: libexif/canon/mnote-canon-entry.c:295
-#, fuzzy
 msgid "Custom 2"
-msgstr "Tự chọn"
+msgstr "Tự chọn 2"
 
 #: libexif/canon/mnote-canon-entry.c:298 libexif/exif-entry.c:409
 msgid "Night scene"
 msgstr "Cảnh đem"
 
 #: libexif/canon/mnote-canon-entry.c:304
-#, fuzzy
 msgid "Center + Right"
-msgstr "Nặng giữa"
+msgstr "Giữa + Phải"
 
 #: libexif/canon/mnote-canon-entry.c:306
-#, fuzzy
 msgid "Left + Right"
-msgstr "trái qua phải"
+msgstr "Trái + Phải"
 
 #: libexif/canon/mnote-canon-entry.c:307
 msgid "Left + Center"
-msgstr ""
+msgstr "Trái + Giữa"
 
 #: libexif/canon/mnote-canon-entry.c:308
 msgid "All"
-msgstr ""
+msgstr "Tất cả"
 
 #: libexif/canon/mnote-canon-entry.c:310
 msgid "On (shot 1)"
-msgstr ""
+msgstr "Bật (chụp 1)"
 
 #: libexif/canon/mnote-canon-entry.c:311
 msgid "On (shot 2)"
-msgstr ""
+msgstr "Bật (chụp 2)"
 
 #: libexif/canon/mnote-canon-entry.c:312
 msgid "On (shot 3)"
-msgstr ""
+msgstr "Bật (chụp 3)"
 
 #: libexif/canon/mnote-canon-entry.c:314
 msgid "EOS high-end"
-msgstr ""
+msgstr "EOS cấp cao"
 
 #: libexif/canon/mnote-canon-entry.c:315
 msgid "Compact"
-msgstr ""
+msgstr "Gọn"
 
 #: libexif/canon/mnote-canon-entry.c:316
 msgid "EOS mid-range"
-msgstr ""
+msgstr "EOS cấp vừa"
 
 #: libexif/canon/mnote-canon-entry.c:318
 msgid "Rotate 90 CW"
-msgstr ""
+msgstr "Xoay 90º xuôi chiều"
 
 #: libexif/canon/mnote-canon-entry.c:319
 msgid "Rotate 180"
-msgstr ""
+msgstr "Xoay 180º"
 
 #: libexif/canon/mnote-canon-entry.c:320
 msgid "Rotate 270 CW"
-msgstr ""
+msgstr "Xoay 270º xuôi chiều"
 
 #: libexif/canon/mnote-canon-entry.c:321
 msgid "Rotated by software"
-msgstr ""
+msgstr "Do phần mềm xoay"
 
 #: libexif/canon/mnote-canon-entry.c:331
-#, fuzzy
 msgid "Left to right"
-msgstr "trái qua phải"
+msgstr "Trái qua phải"
 
 #: libexif/canon/mnote-canon-entry.c:332
-#, fuzzy
 msgid "Right to left"
-msgstr "phải qua trái"
+msgstr "Phải qua trái"
 
 #: libexif/canon/mnote-canon-entry.c:333
-#, fuzzy
 msgid "Bottom to top"
-msgstr "dưới lên trên"
+msgstr "Dưới lên trên"
 
 #: libexif/canon/mnote-canon-entry.c:334
-#, fuzzy
 msgid "Top to bottom"
-msgstr "trên xuống dưới"
+msgstr "Trên xuống dưới"
 
 #: libexif/canon/mnote-canon-entry.c:335
 msgid "2x2 matrix (clockwise)"
-msgstr ""
+msgstr "Lưới 2×2 (xuôi chiều)"
 
 #: libexif/canon/mnote-canon-entry.c:392
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: libexif/canon/mnote-canon-entry.c:477 libexif/canon/mnote-canon-entry.c:572
 #, c-format
@@ -1048,7 +987,6 @@ msgid "Settings (first part)"
 msgstr "Thiết lập (phần đầu)"
 
 #: libexif/canon/mnote-canon-tag.c:35 libexif/canon/mnote-canon-tag.c:87
-#, fuzzy
 msgid "Focal length"
 msgstr "Tiêu cự"
 
@@ -1057,9 +995,8 @@ msgid "Settings (second part)"
 msgstr "Thiết lập (phần thứ hai"
 
 #: libexif/canon/mnote-canon-tag.c:37 libexif/pentax/mnote-pentax-entry.c:176
-#, fuzzy
 msgid "Panorama"
-msgstr "cảnh quay lia"
+msgstr "Cảnh quay lia"
 
 #: libexif/canon/mnote-canon-tag.c:38
 msgid "Image type"
@@ -1071,7 +1008,7 @@ msgstr "Phiên bản phần vững"
 
 #: libexif/canon/mnote-canon-tag.c:40
 msgid "Image number"
-msgstr "Số thứ tự ảnh"
+msgstr "Số hiệu ảnh"
 
 #: libexif/canon/mnote-canon-tag.c:41
 msgid "Owner name"
@@ -1083,14 +1020,13 @@ msgstr "Số sản xuất"
 
 #: libexif/canon/mnote-canon-tag.c:43
 msgid "Custom functions"
-msgstr "Chức năng tùy chỉnh"
+msgstr "Chức năng riêng"
 
 #: libexif/canon/mnote-canon-tag.c:52
 msgid "Macro mode"
-msgstr "Chế độ macrô"
+msgstr "Chế độ vĩ lệnh"
 
 #: libexif/canon/mnote-canon-tag.c:53 libexif/canon/mnote-canon-tag.c:112
-#, fuzzy
 msgid "Self-timer"
 msgstr "Tự đếm thời gian"
 
@@ -1105,9 +1041,8 @@ msgid "Flash mode"
 msgstr "Chế độ đèn nháy"
 
 #: libexif/canon/mnote-canon-tag.c:56
-#, fuzzy
 msgid "Drive mode"
-msgstr "Chế độ do"
+msgstr "Chế độ đẩy lên"
 
 #: libexif/canon/mnote-canon-tag.c:57 libexif/canon/mnote-canon-tag.c:77
 msgid "Focus mode"
@@ -1122,9 +1057,8 @@ msgid "Easy shooting mode"
 msgstr "Chế độ chụp dễ"
 
 #: libexif/canon/mnote-canon-tag.c:60
-#, fuzzy
 msgid "Digital zoom"
-msgstr "Phóng to số"
+msgstr "Thu/phóng số"
 
 #: libexif/canon/mnote-canon-tag.c:61 libexif/exif-tag.c:657
 #: libexif/pentax/mnote-pentax-tag.c:45
@@ -1151,18 +1085,16 @@ msgid "Metering mode"
 msgstr "Chế độ do"
 
 #: libexif/canon/mnote-canon-tag.c:66
-#, fuzzy
 msgid "Focus range"
-msgstr "Chế độ tiêu điểm"
+msgstr "Phạm vị tiêu điểm"
 
 #: libexif/canon/mnote-canon-tag.c:67 libexif/canon/mnote-canon-tag.c:100
-#, fuzzy
 msgid "AF point"
-msgstr "Điểm AF đã dùng"
+msgstr "Điểm AF"
 
 #: libexif/canon/mnote-canon-tag.c:68
 msgid "Exposure mode"
-msgstr "Chế độ phơi nắng"
+msgstr "Chế độ phơi sáng"
 
 #: libexif/canon/mnote-canon-tag.c:69
 msgid "Lens type"
@@ -1185,9 +1117,8 @@ msgid "Maximal aperture"
 msgstr "Lỗ ống kính tối đa"
 
 #: libexif/canon/mnote-canon-tag.c:74
-#, fuzzy
 msgid "Minimal aperture"
-msgstr "Lỗ ống kính tối đa"
+msgstr "Lỗ ống kính tối thiểu"
 
 #: libexif/canon/mnote-canon-tag.c:75
 msgid "Flash activity"
@@ -1198,79 +1129,68 @@ msgid "Flash details"
 msgstr "Chi tiết đèn nháy"
 
 #: libexif/canon/mnote-canon-tag.c:78
-#, fuzzy
 msgid "AE setting"
-msgstr "Thiết lập ISO"
+msgstr "Thiết lập AE"
 
 #: libexif/canon/mnote-canon-tag.c:79
-#, fuzzy
 msgid "Image stabilization"
-msgstr "Mô tả ảnh"
+msgstr "Làm ổn định ảnh"
 
 #: libexif/canon/mnote-canon-tag.c:80
-#, fuzzy
 msgid "Display aperture"
-msgstr "Lỗ ống kính tối đa"
+msgstr "Lỗ ống kính trình bày"
 
 #: libexif/canon/mnote-canon-tag.c:81
 msgid "Zoom source width"
-msgstr ""
+msgstr "Rộng nguồn thu/phóng"
 
 #: libexif/canon/mnote-canon-tag.c:82
-#, fuzzy
 msgid "Zoom target width"
-msgstr "Rộng ảnh"
+msgstr "Rộng đích thu/phóng"
 
 #: libexif/canon/mnote-canon-tag.c:83
 msgid "Photo effect"
-msgstr ""
+msgstr "Hiệu ứng ảnh chụp"
 
 #: libexif/canon/mnote-canon-tag.c:84 libexif/canon/mnote-canon-tag.c:113
 msgid "Manual flash output"
-msgstr ""
+msgstr "Tự mở đèn nháy"
 
 #: libexif/canon/mnote-canon-tag.c:85
 msgid "Color tone"
 msgstr "Sắc màu"
 
 #: libexif/canon/mnote-canon-tag.c:86
-#, fuzzy
 msgid "Focal type"
 msgstr "Kiểu tiêu điểm"
 
 #: libexif/canon/mnote-canon-tag.c:88
-#, fuzzy
 msgid "Focal plane x size"
-msgstr "Độ phân giải X phẳng tiêu"
+msgstr "Cỡ X phẳng tiêu"
 
 #: libexif/canon/mnote-canon-tag.c:89
-#, fuzzy
 msgid "Focal plane y size"
-msgstr "Độ phân giải Y phẳng tiêu"
+msgstr "Cỡ Y phẳng tiêu"
 
 #: libexif/canon/mnote-canon-tag.c:90
-#, fuzzy
 msgid "Auto ISO"
-msgstr "Tự động"
+msgstr "Tự động ISO"
 
 #: libexif/canon/mnote-canon-tag.c:91
-#, fuzzy
 msgid "Shot ISO"
-msgstr "Ngắn"
+msgstr "ISO chụp"
 
 #: libexif/canon/mnote-canon-tag.c:92
 msgid "Measured EV"
-msgstr ""
+msgstr "EV đã đo"
 
 #: libexif/canon/mnote-canon-tag.c:93
-#, fuzzy
 msgid "Target aperture"
-msgstr "Lỗ ống kính tối đa"
+msgstr "Lỗ ống kính đích"
 
 #: libexif/canon/mnote-canon-tag.c:94
-#, fuzzy
 msgid "Target exposure time"
-msgstr "Thời gian phơi bày"
+msgstr "Thời gian phơi bày đích"
 
 #: libexif/canon/mnote-canon-tag.c:96
 msgid "White balance"
@@ -1281,72 +1201,60 @@ msgid "Sequence number"
 msgstr "Số thứ tự dây"
 
 #: libexif/canon/mnote-canon-tag.c:99
-#, fuzzy
 msgid "Flash guide number"
-msgstr "Số thứ tự ảnh"
+msgstr "Số dẫn đèn nháy"
 
 #: libexif/canon/mnote-canon-tag.c:101 libexif/olympus/mnote-olympus-tag.c:52
-#, fuzzy
 msgid "Flash exposure compensation"
-msgstr "Sự bù đèn nháy  ?"
+msgstr "Sự bù phơi sáng đèn nháy"
 
 #: libexif/canon/mnote-canon-tag.c:102
-#, fuzzy
 msgid "AE bracketing"
-msgstr "Định vị giữa ngoặc"
+msgstr "Ngoặc AE"
 
 #: libexif/canon/mnote-canon-tag.c:103
-#, fuzzy
 msgid "AE bracket value"
-msgstr "Tự động đặt giữa"
+msgstr "Giá trị ngoặc AE"
 
 #: libexif/canon/mnote-canon-tag.c:104
-#, fuzzy
 msgid "Focus distance upper"
-msgstr "Khoảng cách tiêu điểm thủ công"
+msgstr "Khoảng cách tiêu điểm trên"
 
 #: libexif/canon/mnote-canon-tag.c:105
-#, fuzzy
 msgid "Focus distance lower"
-msgstr "Khoảng cách tiêu điểm thủ công"
+msgstr "Khoảng cách tiêu điểm dưới"
 
 #: libexif/canon/mnote-canon-tag.c:106 libexif/exif-tag.c:297
 msgid "FNumber"
 msgstr "Số F"
 
 #: libexif/canon/mnote-canon-tag.c:107
-#, fuzzy
 msgid "Exposure time"
-msgstr "Thời gian phơi bày"
+msgstr "Thời gian phơi sáng"
 
 #: libexif/canon/mnote-canon-tag.c:108
-#, fuzzy
 msgid "Bulb duration"
-msgstr "Độ bão hòa"
+msgstr "Thời gian bóng đèn"
 
 #: libexif/canon/mnote-canon-tag.c:109
-#, fuzzy
 msgid "Camera type"
-msgstr "ID máy ảnh"
+msgstr "Kiểu máy ảnh"
 
 #: libexif/canon/mnote-canon-tag.c:110
-#, fuzzy
 msgid "Auto rotate"
-msgstr "Tự động đặt giữa"
+msgstr "Tự động xoay"
 
 #: libexif/canon/mnote-canon-tag.c:111
 msgid "ND filter"
-msgstr ""
+msgstr "Lọc ND"
 
 #: libexif/canon/mnote-canon-tag.c:114
-#, fuzzy
 msgid "Panorama frame"
-msgstr "cảnh quay lia"
+msgstr "Khung cảnh quay lia"
 
 #: libexif/canon/mnote-canon-tag.c:115
-#, fuzzy
 msgid "Panorama direction"
-msgstr "Hướng Tốc độ/Dãy/Cảnh quay lia"
+msgstr "Hướng cảnh quay lia"
 
 # Name: don't translate / Tên: đừng dịch
 #: libexif/exif-byte-order.c:33
@@ -1358,49 +1266,51 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-data.c:709
+#: libexif/exif-data.c:714
 msgid "Size of data too small to allow for EXIF data."
 msgstr "Dữ liệu có kích cỡ quá nhỏ để chứa dữ liệu EXIF."
 
-#: libexif/exif-data.c:770
+#: libexif/exif-data.c:775
 msgid "EXIF marker not found."
 msgstr "Không tìm thấy dấu hiệu EXIF."
 
-#: libexif/exif-data.c:797
+#: libexif/exif-data.c:802
 msgid "EXIF header not found."
 msgstr "Không tìm thấy phần đầu EXIF."
 
-#: libexif/exif-data.c:813
+#: libexif/exif-data.c:818
 msgid "Unknown encoding."
 msgstr "Không biết bảng mã."
 
-#: libexif/exif-data.c:1117
+#: libexif/exif-data.c:1122
 msgid "Ignore unknown tags"
 msgstr "Bỏ qua các thẻ lạ"
 
-#: libexif/exif-data.c:1118
+#: libexif/exif-data.c:1123
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Bỏ qua các thẻ lạ khi tải dữ liệu EXIF."
 
-#: libexif/exif-data.c:1119
+#: libexif/exif-data.c:1124
 msgid "Follow specification"
 msgstr "Theo đặc tả"
 
-#: libexif/exif-data.c:1120
+#: libexif/exif-data.c:1125
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
 msgstr "Thêm, sửa và gỡ bỏ mục nhập để tạo dữ liệu EXIF tùy theo đặc tả."
 
-#: libexif/exif-data.c:1122
+#: libexif/exif-data.c:1127
 msgid "Don not change maker note"
-msgstr ""
+msgstr "Không thay đổi ghi chú hãng chế tạo"
 
-#: libexif/exif-data.c:1123
+#: libexif/exif-data.c:1128
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."
 msgstr ""
+"Khi nạp và lưu lại dữ liệu EXIF, lưu ghi chú hãng chế tạo, không sửa đổi nó. "
+"Lưu ý rằng ghi chú hãng chế tạo có thể bị hỏng."
 
 #: libexif/exif-entry.c:202 libexif/exif-entry.c:236
 #, c-format
@@ -1408,8 +1318,8 @@ msgid ""
 "Tag '%s' was of format '%s' (which is against specification) and has been "
 "changed to format '%s'."
 msgstr ""
-"Thẻ « %s » có dạng thức « %s » (mà vi phạm đặc tả) và đã được thay đổi thành "
-"dạng thức « %s »."
+"Thẻ « %s » có định dạng « %s » (mà vi phạm đặc tả) và đã được thay đổi thành "
+"định dạng « %s »."
 
 #: libexif/exif-entry.c:253
 #, c-format
@@ -1417,7 +1327,7 @@ msgid ""
 "Tag 'UserComment' had invalid format '%s'. Format has been set to "
 "'undefined'."
 msgstr ""
-"Thẻ « Người dùng ghi chú » có dạng thức không hợp lệ « %s ». Dạng thức nó đã "
+"Thẻ « Người dùng ghi chú » có định dạng không hợp lệ « %s ». Định dạng nó đã "
 "được đặt thành « chưa định nghĩa »."
 
 #: libexif/exif-entry.c:280
@@ -1432,13 +1342,13 @@ msgstr ""
 msgid ""
 "Tag 'UserComment' did not start with format identifier. This has been fixed."
 msgstr ""
-"Thẻ « Người dùng ghi chú » không bắt đầu với dấu hiệu dạng thức: đã được sửa."
+"Thẻ « Người dùng ghi chú » không bắt đầu với dấu hiệu định dạng: đã được sửa."
 
 #: libexif/exif-entry.c:360
 #, c-format
 msgid "The tag '%s' contains data of an invalid format ('%s', expected '%s')."
 msgstr ""
-"Thẻ « %s » chứa dữ liệu ở dạng thức không hợp lệ (« %s », còn ngờ « %s »)."
+"Thẻ « %s » chứa dữ liệu ở định dạng không hợp lệ (« %s », còn ngờ « %s »)."
 
 #: libexif/exif-entry.c:373
 #, c-format
@@ -1448,16 +1358,16 @@ msgstr "Thẻ « %s » chứa số thành phần không hợp lệ (%i, còn ng�
 
 #: libexif/exif-entry.c:386
 msgid "chunky format"
-msgstr "dạng thức từng đoạn"
+msgstr "định dạng từng đoạn"
 
 #: libexif/exif-entry.c:386
 msgid "planar format"
-msgstr "dạng thức phẳng"
+msgstr "định dạng phẳng"
 
 #: libexif/exif-entry.c:388 libexif/exif-entry.c:476
 #: test/nls/test-codeset.c:54
 msgid "Not defined"
-msgstr "Chưa định nghĩa"
+msgstr "Chưa xác định"
 
 #: libexif/exif-entry.c:388
 msgid "One-chip color area sensor"
@@ -1485,39 +1395,39 @@ msgstr "Máy nhạy tuyến màu tuần tự"
 
 #: libexif/exif-entry.c:393
 msgid "top - left"
-msgstr "trên, góc trái"
+msgstr "trên-trái"
 
 #: libexif/exif-entry.c:393
 msgid "top - right"
-msgstr "trên, góc phải"
+msgstr "trên-phải"
 
 #: libexif/exif-entry.c:393
 msgid "bottom - right"
-msgstr "dưới, góc phải"
+msgstr "dưới-phải"
 
 #: libexif/exif-entry.c:394
 msgid "bottom - left"
-msgstr "dưới, góc trái"
+msgstr "dưới-trái"
 
 #: libexif/exif-entry.c:394
 msgid "left - top"
-msgstr "trái, góc trên"
+msgstr "trái-trên"
 
 #: libexif/exif-entry.c:394
 msgid "right - top"
-msgstr "phải, góc trên"
+msgstr "phải-trên"
 
 #: libexif/exif-entry.c:395
 msgid "right - bottom"
-msgstr "phải, góc dưới"
+msgstr "phải-dưới"
 
 #: libexif/exif-entry.c:395
 msgid "left - bottom"
-msgstr "trái, góc dưới"
+msgstr "trái-dưới"
 
 #: libexif/exif-entry.c:397
 msgid "centered"
-msgstr "cạnh giữa"
+msgstr "ở giữa"
 
 #: libexif/exif-entry.c:397
 msgid "co-sited"
@@ -1525,12 +1435,11 @@ msgstr "định vị với nhau"
 
 #: libexif/exif-entry.c:399
 msgid "Reversed mono"
-msgstr ""
+msgstr "Đơn nguồn ngược lại"
 
 #: libexif/exif-entry.c:399
-#, fuzzy
 msgid "Normal mono"
-msgstr "Chuẩn"
+msgstr "Đơn nguồn chuẩn"
 
 # Literal: don't translate / Nghĩa chữ: đừng dịch
 #: libexif/exif-entry.c:399
@@ -1538,13 +1447,12 @@ msgid "RGB"
 msgstr "RGB"
 
 #: libexif/exif-entry.c:399
-#, fuzzy
 msgid "Palette"
-msgstr "Mẫu"
+msgstr "Bảng chọn"
 
 #: libexif/exif-entry.c:400
 msgid "CMYK"
-msgstr ""
+msgstr "CMYK"
 
 #: libexif/exif-entry.c:400
 msgid "YCbCr"
@@ -1552,7 +1460,7 @@ msgstr "YCbCr"
 
 #: libexif/exif-entry.c:400
 msgid "CieLAB"
-msgstr ""
+msgstr "CieLAB"
 
 #: libexif/exif-entry.c:402
 msgid "Normal process"
@@ -1560,15 +1468,15 @@ msgstr "Tiến trình chuẩn"
 
 #: libexif/exif-entry.c:402
 msgid "Custom process"
-msgstr "Tiến trình tự chọn"
+msgstr "Tiến trình riêng"
 
 #: libexif/exif-entry.c:404
 msgid "Auto exposure"
-msgstr "Tự động phơi nắng"
+msgstr "Tự động phơi sáng"
 
 #: libexif/exif-entry.c:404
 msgid "Manual exposure"
-msgstr "Tự phơi nắng"
+msgstr "Tự phơi sáng"
 
 #: libexif/exif-entry.c:404
 msgid "Auto bracket"
@@ -1596,11 +1504,11 @@ msgstr "Lấn lên cao"
 
 #: libexif/exif-entry.c:412
 msgid "Low gain down"
-msgstr "Lấn xuống thấp"
+msgstr "Khuếch đại thấp xuống"
 
 #: libexif/exif-entry.c:412
 msgid "High gain down"
-msgstr "Lấn xuống cao"
+msgstr "Khuếch đại cao xuống"
 
 #: libexif/exif-entry.c:414
 msgid "Low saturation"
@@ -1667,7 +1575,7 @@ msgstr "Nén JPEG"
 
 #: libexif/exif-entry.c:442
 msgid "Deflate/ZIP compression"
-msgstr "Nén Deflate/ZIP"
+msgstr "Nén Zip/Deflate"
 
 #: libexif/exif-entry.c:443
 msgid "PackBits compression"
@@ -1836,26 +1744,22 @@ msgid "W. strobe"
 msgstr "Có nháy nhanh"
 
 #: libexif/exif-entry.c:497
-#, fuzzy
 msgid "Flash fired, compulsory flash mode."
-msgstr "Đèn nháy đã hoạt động, chế độ nháy bắt buộc."
+msgstr "Đèn nháy đã hoạt động, chế độ nháy bắt buộc"
 
 #: libexif/exif-entry.c:498
-#, fuzzy
 msgid "Flash fired, compulsory flash mode, return light not detected."
 msgstr ""
 "Đèn nháy đã hoạt động, chế độ nháy bắt buộc, chưa phát hiện ánh sáng trở về."
 
 #: libexif/exif-entry.c:500
-#, fuzzy
 msgid "Flash fired, compulsory flash mode, return light detected."
 msgstr ""
 "Đèn nháy đã hoạt động, chế độ nháy bắt buộc, phát hiện ánh sáng trở về."
 
 #: libexif/exif-entry.c:502
-#, fuzzy
 msgid "Flash did not fire, compulsory flash mode."
-msgstr "Đèn nháy không hoạt động, chế độ nháy bắt buộc."
+msgstr "Đèn nháy chưa hoạt động, chế độ nháy bắt buộc"
 
 #: libexif/exif-entry.c:503
 msgid "Flash did not fire, auto mode."
@@ -1863,7 +1767,7 @@ msgstr "Đèn nháy không hoạt động, chế độ tự động."
 
 #: libexif/exif-entry.c:504
 msgid "Flash fired, auto mode."
-msgstr "Đèn nháy đã hoạt động, chế độ tự động."
+msgstr "Đèn nháy đã hoạt động, chế độ tự động"
 
 #: libexif/exif-entry.c:505
 msgid "Flash fired, auto mode, return light not detected."
@@ -1903,7 +1807,6 @@ msgstr ""
 "hiện ánh sáng trở về."
 
 #: libexif/exif-entry.c:518
-#, fuzzy
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light "
 "detected."
@@ -2032,7 +1935,7 @@ msgstr "%.02f EV"
 #: libexif/exif-entry.c:721
 #, c-format
 msgid " (f/%.01f)"
-msgstr ""
+msgstr " (f/%.01f)"
 
 #: libexif/exif-entry.c:752
 #, c-format
@@ -2056,7 +1959,7 @@ msgstr " %d giây)"
 #: libexif/exif-entry.c:810
 #, c-format
 msgid " (%.02f cd/m^2)"
-msgstr ""
+msgstr " (%.02f cd/m²)"
 
 #: libexif/exif-entry.c:819
 msgid "DSC"
@@ -2446,7 +2349,7 @@ msgid ""
 "format. In JPEG compressed files a JPEG marker is used instead of this tag. "
 "If this field does not exist, the TIFF default of 1 (chunky) is assumed."
 msgstr ""
-"Ngụ ý nếu thành phần điểm ảnh được thu thanh trong dạng thức kiểu từng đoạn "
+"Ngụ ý nếu thành phần điểm ảnh được thu thanh trong định dạng kiểu từng đoạn "
 "hay phẳng. Trong dữ liệu đã nén JPEG, một dấu hiệu JPEG được dùng thay vào "
 "thẻ này. Nếu không có trường này, giả sử giá trị TIFF mặc định: 1 (kiểu từng "
 "đoạn)."
@@ -2490,7 +2393,7 @@ msgid ""
 "followed. When the field is left blank, it is treated as unknown."
 msgstr ""
 "Thẻ này ghi lưu tên và phiên bản của phần mềm hay phần vững của máy ảnh hay "
-"thiết bị ảnh được dùng để tạo ra ảnh. Không ghi rõ dạng thức chi tiết, nhưng "
+"thiết bị ảnh được dùng để tạo ra ảnh. Không ghi rõ định dạng chi tiết, nhưng "
 "mà khuyên theo thí dụ được hiển thị bên dưới. Khi trường này trống, giá trị "
 "được xử lý là không rõ."
 
@@ -2518,7 +2421,7 @@ msgid ""
 "Interoperability. When the field is left blank, it is treated as unknown."
 msgstr ""
 "Thẻ này ghi lưu tên của người sở hữu máy ảnh, nhà nhiếp ảnh hay người tạo "
-"ảnh. Không ghi rõ dạng thức chi tiết, nhưng mà khuyên ghi thông tin theo thí "
+"ảnh. Không ghi rõ định dạng chi tiết, nhưng mà khuyên ghi thông tin theo thí "
 "dụ bên dưới, để làm dễ dàng thao thác với nhau. Khi trường này trống, giá "
 "trị được xử lý là không rõ."
 
@@ -2759,7 +2662,7 @@ msgid ""
 "The class of the program used by the camera to set exposure when the picture "
 "is taken."
 msgstr ""
-"Hạng của chương trình được dùng bởi máy ảnh để đặt độ phơi nắng khi chụp ảnh."
+"Hạng của chương trình được dùng bởi máy ảnh để đặt độ phơi sáng khi chụp ảnh."
 
 #: libexif/exif-tag.c:315
 msgid "Spectral Sensitivity"
@@ -2824,9 +2727,9 @@ msgid ""
 "given up to two decimal places, the format is dd/1,mmmm/100,0/1."
 msgstr ""
 "Ngụ ý độ vĩ. Độ vĩ được thế hiện là ba giá trị HỮU TỶ đưa ra độ, phút và "
-"giây riêng từng. Khi thế hiện độ, phút và giây, dạng thức là <đđ/1,pp/1,"
+"giây riêng từng. Khi thế hiện độ, phút và giây, định dạng là <đđ/1,pp/1,"
 "gg/1>. Khi dùng độ và phút, và, lấy thí dụ, phần độ được đưa ra đến hai lần "
-"số, dạng thức là <đđ/1,pppp/100,0/1>."
+"số, định dạng là <đđ/1,pppp/100,0/1>."
 
 #: libexif/exif-tag.c:344
 msgid "East or West Longitude"
@@ -2853,9 +2756,9 @@ msgid ""
 "given up to two decimal places, the format is ddd/1,mmmm/100,0/1."
 msgstr ""
 "Ngụ ý độ kinh. Độ kinh được thế hiện là ba giá trị HỮU TỶ đưa ra độ, phút và "
-"giây riêng từng. Khi thế hiện độ, phút và giây, dạng thức là <đđ/1,pp/1,"
+"giây riêng từng. Khi thế hiện độ, phút và giây, định dạng là <đđ/1,pp/1,"
 "gg/1>. Khi dùng độ và phút, và, lấy thí dụ, phần độ được đưa ra đến hai lần "
-"số, dạng thức là <đđ/1,pppp/100,0/1>."
+"số, định dạng là <đđ/1,pppp/100,0/1>."
 
 #: libexif/exif-tag.c:356
 msgid "Altitude reference"
@@ -2937,7 +2840,7 @@ msgstr "Ngày và Giờ (đã số hóa)"
 
 #: libexif/exif-tag.c:389
 msgid "The date and time when the image was stored as digital data. "
-msgstr "Ngày và giờ lưu ảnh dạng dữ liệu số."
+msgstr "Ngày và giờ lưu ảnh dạng dữ liệu số. "
 
 #: libexif/exif-tag.c:393
 msgid ""
@@ -2977,8 +2880,8 @@ msgid ""
 "Shutter speed. The unit is the APEX (Additive System of Photographic "
 "Exposure) setting."
 msgstr ""
-"Tốc độ của chập. Đơn vị là thiết lập APEX (hệ thống để cộng vào sự phơi nắng "
-"chụp ảnh)."
+"Tốc độ của chập. Đơn vị là thiết lập APEX (hệ thống phơi sáng chụp ảnh kiểu "
+"cộng vào)."
 
 #: libexif/exif-tag.c:413
 msgid "The lens aperture. The unit is the APEX value."
@@ -2998,14 +2901,14 @@ msgstr ""
 
 #: libexif/exif-tag.c:420
 msgid "Exposure Bias"
-msgstr "Khuynh hướng phơi nắng"
+msgstr "Khuynh hướng phơi sáng"
 
 #: libexif/exif-tag.c:421
 msgid ""
 "The exposure bias. The units is the APEX value. Ordinarily it is given in "
 "the range of -99.99 to 99.99."
 msgstr ""
-"Khuynh hướng của sự phơi nắng. Đơn vị là giá trị APEX. Bình thường, nó được "
+"Khuynh hướng của sự phơi sáng. Đơn vị là giá trị APEX. Bình thường, nó được "
 "đưa ra trong phạm vị <-99.99 ... 99.99>."
 
 #: libexif/exif-tag.c:425
@@ -3128,30 +3031,27 @@ msgstr "Thẻ dùng để ghi lưu phần giây cho thẻ <ngày giờ đã số
 
 #: libexif/exif-tag.c:489
 msgid "XP Title"
-msgstr ""
+msgstr "Tựa XP"
 
 #: libexif/exif-tag.c:491
-#, fuzzy
 msgid "XP Comment"
-msgstr "Người dùng ghi chú"
+msgstr "Ghi chú XP"
 
 #: libexif/exif-tag.c:493
-#, fuzzy
 msgid "XP Author"
-msgstr "Tự động"
+msgstr "Tác giả XP"
 
 #: libexif/exif-tag.c:495
 msgid "XP Keywords"
-msgstr ""
+msgstr "Từ khoá XP"
 
 #: libexif/exif-tag.c:497
-#, fuzzy
 msgid "XP Subject"
-msgstr "Diện tích chủ thể"
+msgstr "Chủ đề XP"
 
 #: libexif/exif-tag.c:500
 msgid "The FlashPix format version supported by a FPXR file."
-msgstr "Phiên bản dạng thức FlashPix được hỗ trợ bởi tập tin FPXR."
+msgstr "Phiên bản định dạng FlashPix được hỗ trợ bởi tập tin FPXR."
 
 #: libexif/exif-tag.c:502
 msgid "Color Space"
@@ -3166,9 +3066,9 @@ msgid ""
 "be treated as sRGB when it is converted to FlashPix."
 msgstr ""
 "Thẻ thông tin miền màu luôn luôn được ghi lưu như là bộ ghi rõ miền màu. "
-"Bình thường, <sRGB (=1)> được dùng để định nghĩa miền màu đựa vào điều kiện "
-"màn hình và môi trường máy tính. Nếu dùng miền màu khác với sRGB, có đặt "
-"Chưa định chuẩn (=FFFF.H). Dữ liệu ảnh được ghi lưu dạng Chưa định chuẩn có "
+"Bình thường, <sRGB (=1)> được dùng để xác định miền màu dựa vào điều kiện "
+"màn hình và môi trường máy tính. Dùng miền màu khác với sRGB thì Chưa định "
+"chuẩn (=FFFF.H) được đặt. Dữ liệu ảnh được ghi lưu dạng Chưa định chuẩn có "
 "thể được xử lý dạng sRGB khi được chuyển đổi sang FlashPix."
 
 #: libexif/exif-tag.c:512
@@ -3181,7 +3081,7 @@ msgstr ""
 "Thông tin đặc trưng cho dữ liệu đã nén. Khi ghi lưu tập tin đã nén, độ rộng "
 "hợp lệ của ảnh có nghĩa phải được ghi lưu trong thẻ này, bất chấp có dữ liệu "
 "đệm hay dấu hiệu sở khởi lại. Không nên có thẻ này trong tập tin không đã "
-"nén. Để tìm chi tiết, xem tiết đoạn 2.8.1 và Phụ Lục F."
+"nén."
 
 #: libexif/exif-tag.c:519
 msgid ""
@@ -3232,12 +3132,12 @@ msgstr ""
 "<kkkkkkkk.kkk>). Không ghi lưu đường dẫn đến tập tin đó. Có ghi rõ điều kiện "
 "âm thanh trong tiết đoạn 3.6.3. Đưa ra quy ước đặt tên tập tin trong tiết "
 "đoạn 3.7.1. Khi dùng thẻ này, tập tin âm thanh phải được thu với điều kiện "
-"của dạng thức âm thanh Exif. Bộ ghi cũng được phép lưu dữ liệu như âm thanh "
+"của định dạng âm thanh Exif. Bộ ghi cũng được phép lưu dữ liệu như âm thanh "
 "ở trong APP2, dạng dữ liệu luồng phần mở rộng FlashPix. Tập tin âm thanh "
-"phải được thu với điều kiện của dạng thức âm thanh Exif. Việc ánh xạ tập tin "
+"phải được thu với điều kiện của định dạng âm thanh Exif. Việc ánh xạ tập tin "
 "kiểu ảnh và âm thanh Exif được thực hiện bằng một của ba cách được hiển thị "
 "trong Bảng 8. Nếu nhiều tập tin được ánh xạ tới cùng một tập tin như trong "
-"[2] hay [3] của Bảng này, dạng thức trên được dùng để ghi lưu chỉ một tên "
+"[2] hay [3] của Bảng này, định dạng trên được dùng để ghi lưu chỉ một tên "
 "tập tin âm thanh thôi. Trong trường hợp [3] của Bảng 8, lấy thí dụ, cho tập "
 "tin ảnh Exif <DSC00001.JPG>, chỉ đưa ra <SND00001.WAV> như là tập tin âm "
 "thanh Exif tương ứng. Khi có ba tập tin âm thanh Exif, <SND00001.WAV>, "
@@ -3330,7 +3230,6 @@ msgid "Subject Location"
 msgstr "Vị trí chủ thể"
 
 #: libexif/exif-tag.c:596
-#, fuzzy
 msgid ""
 "Indicates the location of the main subject in the scene. The value of this "
 "tag represents the pixel at the center of the main subject relative to the "
@@ -3340,19 +3239,19 @@ msgid ""
 msgstr ""
 "Ngụ ý vị trí của chủ thể chính trong cảnh. Giá trị của thẻ này thể hiện điểm "
 "tại tâm của chủ thể chính, tương ứng với cạnh bên trái, trước khi xử lý độ "
-"xoay tùy theo thẻ <độ xoay>. Giá trị thứ nhất ngụ ý số cột  X, còn giá trị "
-"thứ hai ngụ ý số hàng Y."
+"xoay tùy theo thẻ <độ xoay>. Giá trị thứ nhất ngụ ý số hiệu cột X, còn giá "
+"trị thứ hai ngụ ý số hiệu hàng Y."
 
 #: libexif/exif-tag.c:602
 msgid "Exposure index"
-msgstr "Chỉ số phơi nắng"
+msgstr "Chỉ số phơi sáng"
 
 #: libexif/exif-tag.c:603
 msgid ""
 "Indicates the exposure index selected on the camera or input device at the "
 "time the image is captured."
 msgstr ""
-"Ngụ ý chỉ số phơi nắng đã chọn trên máy ảnh hay thiết bị nhập vào lúc chụp "
+"Ngụ ý chỉ số phơi sáng đã chọn trên máy ảnh hay thiết bị nhập vào lúc chụp "
 "ảnh."
 
 #: libexif/exif-tag.c:605
@@ -3368,13 +3267,12 @@ msgid "File Source"
 msgstr "Nguồn tập tin"
 
 #: libexif/exif-tag.c:609
-#, fuzzy
 msgid ""
 "Indicates the image source. If a DSC recorded the image, the tag value of "
 "this tag always be set to 3, indicating that the image was recorded on a DSC."
 msgstr ""
 "Ngụ ý nguồn ảnh. Nếu DSC đã ghi lưu ảnh đó, giá trị thẻ của thẻ này phải "
-"luôn được đặt là 3, ngụ ý là ảnh được ghi lưu trên DSC."
+"luôn được đặt thành 3, ngụ ý là ảnh được ghi lưu trên DSC."
 
 #: libexif/exif-tag.c:612
 msgid "Scene Type"
@@ -3419,7 +3317,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:630
 msgid "Exposure Mode"
-msgstr "Chế độ phơi nắng"
+msgstr "Chế độ phơi sáng"
 
 #: libexif/exif-tag.c:631
 msgid ""
@@ -3427,9 +3325,9 @@ msgid ""
 "bracketing mode, the camera shoots a series of frames of the same scene at "
 "different exposure settings."
 msgstr ""
-"Thẻ này ngụ ý chế độ phơi nắng được đắt vào lúc chụp ảnh. Trong chế độ tự "
+"Thẻ này ngụ ý chế độ phơi sáng được đắt vào lúc chụp ảnh. Trong chế độ tự "
 "động định vị ảnh giữa ngoặc, máy ảnh chụp một dãy khung của cùng một cảnh "
-"tại một số cấp phơi nắng khác nhau."
+"tại một số cấp phơi sáng khác nhau."
 
 #: libexif/exif-tag.c:634 libexif/pentax/mnote-pentax-tag.c:40
 #: libexif/pentax/mnote-pentax-tag.c:69
@@ -3477,8 +3375,8 @@ msgid ""
 "record the mode in which the image was shot. Note that this differs from the "
 "scene type <SceneType> tag."
 msgstr ""
-"Thẻ này ngụ ý kiểu cảnh đã bắt. Cũng có thể sử dụng nó để ghi lưu chế độ "
-"chụp ảnh. Ghi chú rằng nó khác với thẻ <kiểu cảnh>."
+"Thẻ này ngụ ý kiểu cảnh đã chụp. Cũng có thể sử dụng nó để ghi lưu chế độ "
+"chụp ảnh. Ghi chú rằng nó khác với thẻ <Kiểu cảnh>."
 
 #: libexif/exif-tag.c:654
 msgid "Gain Control"
@@ -3675,7 +3573,6 @@ msgid "Preset"
 msgstr "Định sẵn"
 
 #: libexif/olympus/mnote-olympus-entry.c:119
-#, fuzzy
 msgid "Incandescence"
 msgstr "Độ nóng sáng"
 
@@ -3764,34 +3661,28 @@ msgid "AF Position: Right"
 msgstr "Vị trí AF: phải"
 
 #: libexif/olympus/mnote-olympus-entry.c:319
-#, fuzzy
 msgid "AF Position: Upper-left"
-msgstr "Vị trí AF: trái"
+msgstr "Vị trí AF: trái-trên"
 
 #: libexif/olympus/mnote-olympus-entry.c:320
-#, fuzzy
 msgid "AF Position: Upper-right"
-msgstr "Vị trí AF: phải"
+msgstr "Vị trí AF: phải-trên"
 
 #: libexif/olympus/mnote-olympus-entry.c:321
-#, fuzzy
 msgid "AF Position: Lower-left"
-msgstr "Vị trí AF: trái"
+msgstr "Vị trí AF: trái-dưới"
 
 #: libexif/olympus/mnote-olympus-entry.c:322
-#, fuzzy
 msgid "AF Position: Lower-right"
-msgstr "Vị trí AF: phải"
+msgstr "Vị trí AF: phải-dưới"
 
 #: libexif/olympus/mnote-olympus-entry.c:323
-#, fuzzy
 msgid "AF Position: Far Left"
-msgstr "Vị trí AF: trái"
+msgstr "Vị trí AF: trái-xa"
 
 #: libexif/olympus/mnote-olympus-entry.c:324
-#, fuzzy
 msgid "AF Position: Far Right"
-msgstr "Vị trí AF: phải"
+msgstr "Vị trí AF: phải-xa"
 
 #: libexif/olympus/mnote-olympus-entry.c:325
 msgid "Unknown AF Position"
@@ -3868,9 +3759,9 @@ msgid "One-touch"
 msgstr "Bấm đơn"
 
 #: libexif/olympus/mnote-olympus-entry.c:571
-#, c-format
+#, fuzzy, c-format
 msgid "%i bytes unknown data: "
-msgstr "%i byte dữ liệu không rõ : "
+msgstr "%li byte dữ liệu không rõ : "
 
 #: libexif/olympus/mnote-olympus-tag.c:37
 msgid "Firmware Version"
@@ -3923,24 +3814,23 @@ msgstr "Chọn ISO"
 
 #: libexif/olympus/mnote-olympus-tag.c:50
 msgid "Preview Image"
-msgstr ""
+msgstr "Xem thử ảnh"
 
 #: libexif/olympus/mnote-olympus-tag.c:51
 msgid "Exposurediff ?"
-msgstr "Hiệu số phơi nắng ?"
+msgstr "Hiệu số phơi sáng ?"
 
 #: libexif/olympus/mnote-olympus-tag.c:54
-#, fuzzy
 msgid "Image Boundary"
-msgstr "Số thứ tự ảnh"
+msgstr "Ranh giới ảnh"
 
 #: libexif/olympus/mnote-olympus-tag.c:56
 msgid "Flash exposure bracket value"
-msgstr ""
+msgstr "Giá trị ngoặc phơi sáng đèn nháy"
 
 #: libexif/olympus/mnote-olympus-tag.c:57
 msgid "Exposure bracket value"
-msgstr ""
+msgstr "Giá trị ngoặc"
 
 #: libexif/olympus/mnote-olympus-tag.c:58
 #: libexif/olympus/mnote-olympus-tag.c:96
@@ -3987,9 +3877,8 @@ msgid "Bracketing"
 msgstr "Định vị giữa ngoặc"
 
 #: libexif/olympus/mnote-olympus-tag.c:69
-#, fuzzy
 msgid "Lens F stops"
-msgstr "Kiểu ống kính"
+msgstr "Cấp tiêu ống kính"
 
 #: libexif/olympus/mnote-olympus-tag.c:70
 msgid "Contrast curve"
@@ -4001,7 +3890,6 @@ msgid "Colormode"
 msgstr "Chế độ màu"
 
 #: libexif/olympus/mnote-olympus-tag.c:72
-#, fuzzy
 msgid "Lighttype"
 msgstr "Kiểu ánh sáng"
 
@@ -4015,16 +3903,15 @@ msgstr "Giảm ồn"
 
 #: libexif/olympus/mnote-olympus-tag.c:79
 msgid "Sensor pixel size"
-msgstr ""
+msgstr "Cỡ điểm ảnh máy nhạy"
 
 #: libexif/olympus/mnote-olympus-tag.c:82
-#, fuzzy
 msgid "Image datasize"
-msgstr "Cỡ ảnh"
+msgstr "Cỡ dữ liệu ảnh"
 
 #: libexif/olympus/mnote-olympus-tag.c:82
 msgid "Size of compressed image data in bytes."
-msgstr ""
+msgstr "Kích cỡ của ảnh đã nén, theo byte."
 
 #: libexif/olympus/mnote-olympus-tag.c:84
 msgid "Total number of pictures taken"
@@ -4035,9 +3922,8 @@ msgid "Optimize Image"
 msgstr "Tối đa hoá ảnh"
 
 #: libexif/olympus/mnote-olympus-tag.c:88
-#, fuzzy
 msgid "Vari Program"
-msgstr "chương trình"
+msgstr "Chương trình Vari"
 
 #: libexif/olympus/mnote-olympus-tag.c:89
 msgid "Capture Editor Data"
@@ -4094,9 +3980,8 @@ msgstr "Cảnh đem"
 
 #: libexif/pentax/mnote-pentax-entry.c:79
 #: libexif/pentax/mnote-pentax-entry.c:133
-#, fuzzy
 msgid "Multi-exposure"
-msgstr "Tự phơi nắng"
+msgstr "Đa phơi sáng"
 
 #: libexif/pentax/mnote-pentax-entry.c:82
 #: libexif/pentax/mnote-pentax-entry.c:136
@@ -4127,283 +4012,242 @@ msgstr "Đen trắng"
 
 #: libexif/pentax/mnote-pentax-entry.c:139
 msgid "TIFF"
-msgstr ""
+msgstr "TIFF"
 
 #: libexif/pentax/mnote-pentax-entry.c:149
 msgid "2560x1920 or 2304x1728"
-msgstr ""
+msgstr "2560×1920 hay 2304×1728"
 
 #: libexif/pentax/mnote-pentax-entry.c:155
 msgid "2304x1728 or 2592x1944"
-msgstr ""
+msgstr "2304×1728 hay 2592×1944"
 
 #: libexif/pentax/mnote-pentax-entry.c:157
 msgid "2816x2212 or 2816x2112"
-msgstr ""
+msgstr "2816×2212 hay 2816×2112"
 
 #: libexif/pentax/mnote-pentax-entry.c:163
 #: libexif/pentax/mnote-pentax-entry.c:295
-#, fuzzy
 msgid "Program AE"
-msgstr "chương trình"
+msgstr "AE chương trình"
 
 #: libexif/pentax/mnote-pentax-entry.c:167
-#, fuzzy
 msgid "Sport"
 msgstr "Thể thao"
 
 #: libexif/pentax/mnote-pentax-entry.c:168
 #: libexif/pentax/mnote-pentax-entry.c:291
-#, fuzzy
 msgid "Night Scene"
 msgstr "Cảnh đem"
 
 #: libexif/pentax/mnote-pentax-entry.c:170
 msgid "Surf & Snow"
-msgstr ""
+msgstr "Lướt sóng và Tuyết"
 
 #: libexif/pentax/mnote-pentax-entry.c:171
 msgid "Sunset or Candlelight"
-msgstr ""
+msgstr "Hoàng hôn hay Ánh sáng đèn nến"
 
 #: libexif/pentax/mnote-pentax-entry.c:172
-#, fuzzy
 msgid "Autumn"
-msgstr "Tự động"
+msgstr "Mùa Thu"
 
 #: libexif/pentax/mnote-pentax-entry.c:175
 msgid "Text"
-msgstr ""
+msgstr "Văn bản"
 
 #: libexif/pentax/mnote-pentax-entry.c:177
-#, fuzzy
 msgid "Self Portrait"
-msgstr "Thẳng đứng"
+msgstr "Bức tự hoạ"
 
 #: libexif/pentax/mnote-pentax-entry.c:178
-#, fuzzy
 msgid "Illustrations"
-msgstr "Độ bão hòa"
+msgstr "Ảnh minh hoạ"
 
 #: libexif/pentax/mnote-pentax-entry.c:179
-#, fuzzy
 msgid "Digital Filter"
-msgstr "Phóng to số"
+msgstr "Lọc số"
 
 #: libexif/pentax/mnote-pentax-entry.c:180
-#, fuzzy
 msgid "Museum"
-msgstr "vừa"
+msgstr "Nhà bảo tàng"
 
 #: libexif/pentax/mnote-pentax-entry.c:181
-#, fuzzy
 msgid "Food"
-msgstr "Tốt"
+msgstr "Đồ ăn"
 
 #: libexif/pentax/mnote-pentax-entry.c:182
-#, fuzzy
 msgid "Green Mode"
-msgstr "Chế độ do"
+msgstr "Chế độ lục"
 
 #: libexif/pentax/mnote-pentax-entry.c:183
-#, fuzzy
 msgid "Light Pet"
-msgstr "Kiểu ánh sáng"
+msgstr "Con cưng sáng"
 
 #: libexif/pentax/mnote-pentax-entry.c:184
 msgid "Dark Pet"
-msgstr ""
+msgstr "Con cưng tối"
 
 #: libexif/pentax/mnote-pentax-entry.c:185
-#, fuzzy
 msgid "Medium Pet"
-msgstr "vừa"
+msgstr "Con cưng vừa"
 
 #: libexif/pentax/mnote-pentax-entry.c:187
 #: libexif/pentax/mnote-pentax-entry.c:292
-#, fuzzy
 msgid "Candlelight"
-msgstr "Ánh nắng ban ngày"
+msgstr "Ánh sáng đèn nến"
 
 #: libexif/pentax/mnote-pentax-entry.c:188
 msgid "Natural Skin Tone"
-msgstr ""
+msgstr "Sắc màu da thật"
 
 #: libexif/pentax/mnote-pentax-entry.c:189
 msgid "Synchro Sound Record"
-msgstr ""
+msgstr "Thu âm đồng bộ"
 
 #: libexif/pentax/mnote-pentax-entry.c:190
 msgid "Frame Composite"
-msgstr ""
+msgstr "Khung ghép"
 
 #: libexif/pentax/mnote-pentax-entry.c:193
-#, fuzzy
 msgid "Auto, Did not fire"
-msgstr "đèn nháy chưa hoạt động"
+msgstr "Tự động, chưa hoạt động"
 
 #: libexif/pentax/mnote-pentax-entry.c:195
-#, fuzzy
 msgid "Auto, Did not fire, Red-eye reduction"
-msgstr "tự động + giảm mặt đỏ"
+msgstr "Tự động, chưa hoạt động, giảm mặt đỏ."
 
 #: libexif/pentax/mnote-pentax-entry.c:196
-#, fuzzy
 msgid "Auto, Fired"
-msgstr "Tự động đặt giữa"
+msgstr "Tự động, hoạt động"
 
 #: libexif/pentax/mnote-pentax-entry.c:198
-#, fuzzy
 msgid "Auto, Fired, Red-eye reduction"
-msgstr "tự động + giảm mặt đỏ"
+msgstr "Tự động, hoạt động, giảm mặt đỏ"
 
 #: libexif/pentax/mnote-pentax-entry.c:199
-#, fuzzy
 msgid "On, Red-eye reduction"
-msgstr "Giảm mắt đỏ"
+msgstr "Bật, giảm mắt đỏ"
 
 #: libexif/pentax/mnote-pentax-entry.c:200
 msgid "On, Wireless"
-msgstr ""
+msgstr "Bật, vô tuyến"
 
 #: libexif/pentax/mnote-pentax-entry.c:201
-#, fuzzy
 msgid "On, Soft"
-msgstr "Mềm"
+msgstr "Bật, mềm"
 
 #: libexif/pentax/mnote-pentax-entry.c:202
-#, fuzzy
 msgid "On, Slow-sync"
-msgstr "đồng bộ chậm"
+msgstr "Bật, đồng bộ chậm"
 
 #: libexif/pentax/mnote-pentax-entry.c:203
-#, fuzzy
 msgid "On, Slow-sync, Red-eye reduction"
-msgstr "Giảm mắt đỏ"
+msgstr "Bật, đồng bộ chậm, giảm mắt đỏ"
 
 #: libexif/pentax/mnote-pentax-entry.c:204
 msgid "On, Trailing-curtain Sync"
-msgstr ""
+msgstr "Bật, đồng bộ mành đi theo"
 
 #: libexif/pentax/mnote-pentax-entry.c:211
-#, fuzzy
 msgid "Pan Focus"
 msgstr "Kéo ngang tiêu điểm"
 
 #: libexif/pentax/mnote-pentax-entry.c:212
 msgid "AF-S"
-msgstr ""
+msgstr "AF-S"
 
 #: libexif/pentax/mnote-pentax-entry.c:213
 msgid "AF-C"
-msgstr ""
+msgstr "AF-C"
 
 #: libexif/pentax/mnote-pentax-entry.c:216
-#, fuzzy
 msgid "Upper-left"
-msgstr "Vị trí AF: trái"
+msgstr "Trái-trên"
 
 #: libexif/pentax/mnote-pentax-entry.c:217
 msgid "Top"
-msgstr ""
+msgstr "Trên"
 
 #: libexif/pentax/mnote-pentax-entry.c:218
-#, fuzzy
 msgid "Upper-right"
-msgstr "trên, góc phải"
+msgstr "Phải-trên"
 
 #: libexif/pentax/mnote-pentax-entry.c:220
 msgid "Mid-left"
-msgstr ""
+msgstr "Trái-giữa"
 
 #: libexif/pentax/mnote-pentax-entry.c:222
-#, fuzzy
 msgid "Mid-right"
-msgstr "phải"
+msgstr "Phải-giữa"
 
 #: libexif/pentax/mnote-pentax-entry.c:224
-#, fuzzy
 msgid "Lower-left"
-msgstr "Vị trí AF: trái"
+msgstr "Trái-dưới"
 
 #: libexif/pentax/mnote-pentax-entry.c:225
-#, fuzzy
 msgid "Bottom"
-msgstr "dưới lên trên"
+msgstr "Dưới"
 
 #: libexif/pentax/mnote-pentax-entry.c:226
-#, fuzzy
 msgid "Lower-right"
-msgstr "trên, góc phải"
+msgstr "Phải-dưới"
 
 #: libexif/pentax/mnote-pentax-entry.c:227
-#, fuzzy
 msgid "Fixed Center"
-msgstr "Trời đẹp"
+msgstr "Giữa cố định"
 
 #: libexif/pentax/mnote-pentax-entry.c:231
-#, fuzzy
 msgid "Multiple"
-msgstr "Đa chấm"
+msgstr "Đa"
 
 #: libexif/pentax/mnote-pentax-entry.c:232
-#, fuzzy
 msgid "Top-left"
-msgstr "trên, góc trái"
+msgstr "Trái-trên"
 
 #: libexif/pentax/mnote-pentax-entry.c:233
-#, fuzzy
 msgid "Top-center"
-msgstr "cạnh giữa"
+msgstr "Trên-giữa"
 
 #: libexif/pentax/mnote-pentax-entry.c:234
-#, fuzzy
 msgid "Top-right"
-msgstr "trên, góc phải"
+msgstr "Phải-trên"
 
 #: libexif/pentax/mnote-pentax-entry.c:238
-#, fuzzy
 msgid "Bottom-left"
-msgstr "dưới, góc trái"
+msgstr "Trái-dưới"
 
 #: libexif/pentax/mnote-pentax-entry.c:239
-#, fuzzy
 msgid "Bottom-center"
-msgstr "dưới, góc trái"
+msgstr "Dưới-giữa"
 
 #: libexif/pentax/mnote-pentax-entry.c:240
-#, fuzzy
 msgid "Bottom-right"
-msgstr "dưới, góc phải"
+msgstr "Phải-dưới"
 
 #: libexif/pentax/mnote-pentax-entry.c:250
-#, fuzzy
 msgid "Daylight Fluorescent"
 msgstr "Huỳnh quang ảnh nắng ban ngày"
 
 #: libexif/pentax/mnote-pentax-entry.c:251
-#, fuzzy
 msgid "Daywhite Fluorescent"
 msgstr "Huỳnh quang ngày trắng"
 
 #: libexif/pentax/mnote-pentax-entry.c:252
-#, fuzzy
 msgid "White Fluorescent"
 msgstr "Huỳnh quang trắng"
 
 #: libexif/pentax/mnote-pentax-entry.c:256
-#, fuzzy
 msgid "User Selected"
-msgstr "tự động chọn"
+msgstr "Tự chọn"
 
 #: libexif/pentax/mnote-pentax-entry.c:278
 msgid "3008x2008 or 3040x2024"
-msgstr ""
+msgstr "3008×2008 hay 3040×2024"
 
 #: libexif/pentax/mnote-pentax-entry.c:289
-#, fuzzy
 msgid "Digital Filter?"
-msgstr "Phóng to số"
+msgstr "Lọc số ?"
 
 #: libexif/pentax/mnote-pentax-entry.c:353
 #, c-format
@@ -4411,9 +4255,9 @@ msgid "Internal error (unknown value %i)"
 msgstr "Lỗi nội bộ (không biết giá trị %i)"
 
 #: libexif/pentax/mnote-pentax-entry.c:376
-#, c-format
+#, fuzzy, c-format
 msgid "Internal error (unknown value %i %i)"
-msgstr "Lỗi nội bộ (không biết giá trị %i %i)"
+msgstr "Lỗi nội bộ (không biết giá trị %i)"
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
 msgid "Capture Mode"
@@ -4428,135 +4272,49 @@ msgid "ISOSpeed"
 msgstr "Tốc độ ISO"
 
 #: libexif/pentax/mnote-pentax-tag.c:55
-#, fuzzy
 msgid "Colors"
-msgstr "Màu"
+msgstr "Màu sắc"
 
 #: libexif/pentax/mnote-pentax-tag.c:58
 msgid "PrintIM Settings"
 msgstr "Thiết lập PrintIM"
 
 #: libexif/pentax/mnote-pentax-tag.c:59 libexif/pentax/mnote-pentax-tag.c:71
-#, fuzzy
 msgid "Time Zone"
 msgstr "Múi giờ"
 
 #: libexif/pentax/mnote-pentax-tag.c:60
-#, fuzzy
 msgid "Daylight Savings"
 msgstr "Giờ giữ ban ngày"
 
 #: libexif/pentax/mnote-pentax-tag.c:63
-#, fuzzy
 msgid "Image Size"
 msgstr "Cỡ ảnh"
 
 #: libexif/pentax/mnote-pentax-tag.c:64
-#, fuzzy
 msgid "PictureMode"
-msgstr "Chế độ bắt"
+msgstr "Chế độ ảnh"
 
 #: libexif/pentax/mnote-pentax-tag.c:67
-#, fuzzy
 msgid "AF Point Selected"
-msgstr "Điểm AF được chọn"
+msgstr "Điểm AF đã chọn"
 
 #: libexif/pentax/mnote-pentax-tag.c:68
-#, fuzzy
 msgid "Auto AF Point"
-msgstr "Điểm AF đã dùng"
+msgstr "Tự động điểm AF"
 
 #: libexif/pentax/mnote-pentax-tag.c:70
-#, fuzzy
 msgid "Object Distance"
-msgstr "Khoảng cách chủ thể"
+msgstr "Khoảng cách đối tượng"
 
 #: libexif/pentax/mnote-pentax-tag.c:70
-#, fuzzy
 msgid "Distance of photographed object in millimeters."
-msgstr "Khoảng cách tới chủ thể, theo mét."
+msgstr "Khoảng cách tới đối tượng đã chụp, theo milimét."
 
 #: libexif/pentax/mnote-pentax-tag.c:72
-#, fuzzy
 msgid "Bestshot mode"
-msgstr "Chế độ chụp dễ"
+msgstr "Chế độ chụp tốt nhất"
 
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
 msgstr "[DO_NOT_TRANSLATE_THIS_MARKER]"
-
-#~ msgid ""
-#~ "Flash fired, compulsory flash mode, red-eye reduction, return light "
-#~ "detected."
-#~ msgstr ""
-#~ "Đèn nháy đã hoạt động, chế độ nháy bắt buộc, chế độ giảm mặt đỏ, phát "
-#~ "hiện ánh sáng trở về."
-
-#~ msgid "auto"
-#~ msgstr "tự động"
-
-#~ msgid "on"
-#~ msgstr "bật"
-
-#~ msgid "red eyes reduction"
-#~ msgstr "giảm mặt đỏ"
-
-#~ msgid "on + red eyes reduction"
-#~ msgstr "bật + giảm mặt đỏ"
-
-#~ msgid "single or timer"
-#~ msgstr "đơn hay bộ đếm thời gian"
-
-#~ msgid "continuous"
-#~ msgstr "liên tục"
-
-#~ msgid "MF"
-#~ msgstr "MF"
-
-#~ msgid "manual"
-#~ msgstr "thủ công"
-
-#~ msgid "landscape"
-#~ msgstr "nằm ngang"
-
-#~ msgid "Macro / Close-Up"
-#~ msgstr "Cảnh gần"
-
-#~ msgid "low"
-#~ msgstr "thấp"
-
-#~ msgid "partial"
-#~ msgstr "bộ phận"
-
-#~ msgid "center-weighted"
-#~ msgstr "nặng giữa"
-
-#~ msgid "none (manual focus)"
-#~ msgstr "không có (tự điều chỉnh tiêu điểm)"
-
-#~ msgid "single"
-#~ msgstr "đơn"
-
-#~ msgid "External E-TTL"
-#~ msgstr "E-TTL bên ngoài"
-
-#~ msgid "Flourescent"
-#~ msgstr "Huỳnh quang"
-
-#~ msgid " (1 available focus point)"
-#~ msgstr " (2 điểm tiêu điểm sẵn sàng)"
-
-#~ msgid " (%u available focus points)"
-#~ msgstr " (%u điểm tiêu điểm sẵn sàng)"
-
-#~ msgid "Zoomed resolution"
-#~ msgstr "Độ phân giải đã phóng to"
-
-#~ msgid "Zoomed resolution base"
-#~ msgstr "Cơ bản độ phân giải đã phóng to"
-
-#~ msgid "Flash bias"
-#~ msgstr "Khuynh hướng đèn nháy"
-
-#~ msgid "Subject distance"
-#~ msgstr "Khoảng cách chủ thể"
