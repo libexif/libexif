@@ -1,4 +1,5 @@
-libexif-0.6.16:
+libexif-0.6.16 (2007-06-12):
+  * Security fix: CVE-2006-4168 aka IDEF1514.
   * Updated translations: cz, pl, vi
 
 

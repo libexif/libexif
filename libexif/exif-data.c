@@ -167,13 +167,18 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 		  "Loading entry 0x%x ('%s')...", entry->tag,
 		  exif_tag_get_name (entry->tag));
 
+	/* {0,1,2,4,8} x { 0x00000000 .. 0xffffffff } 
+	 *   -> { 0x000000000 .. 0x7fffffff8 } */
+	s = exif_format_get_size(entry->format) * entry->components;
+	if (s < entry->components) {
+		return 0;
+	}
+	if (0 == s)
+		return 0;
 	/*
 	 * Size? If bigger than 4 bytes, the actual data is not
 	 * in the entry but somewhere else (offset).
 	 */
-	s = exif_format_get_size (entry->format) * entry->components;
-	if (!s)
-		return 0;
 	if (s > 4)
 		doff = exif_get_long (d + offset + 8, data->priv->order);
 	else
