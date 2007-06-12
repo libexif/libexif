@@ -10,9 +10,9 @@ SUBDIRS = nls
 #      And this is just the lib - we don't have the program available
 #      here yet.
 
-TESTS = test-mem test-value
+TESTS = test-mem test-value test-integers
 
-check_PROGRAMS = test-mem test-mnote test-value
+check_PROGRAMS = test-mem test-mnote test-value test-integers
 
 test_mem_LDADD   = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
 
