@@ -1124,7 +1124,7 @@ static struct {
 	{EXIF_DATA_OPTION_FOLLOW_SPECIFICATION, N_("Follow specification"),
 	 N_("Add, correct and remove entries to get EXIF data that follows "
 	    "the specification.")},
-	{EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE, N_("Don not change maker note"),
+	{EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE, N_("Do not change maker note"),
 	 N_("When loading and resaving Exif data, save the maker note unmodified."
 	    " Be aware that the maker note can get corrupted.")},
 	{0, NULL, NULL}
