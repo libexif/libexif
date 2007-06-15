@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif 0.6.15\n"
+"Project-Id-Version: libexif 0.6.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-12 15:13+0200\n"
-"PO-Revision-Date: 2007-05-26 19:42+0200\n"
+"PO-Revision-Date: 2007-07-14 18:10+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -3787,9 +3787,9 @@ msgid "One-touch"
 msgstr "One-touch"
 
 #: libexif/olympus/mnote-olympus-entry.c:571
-#, fuzzy, c-format
+#, c-format
 msgid "%i bytes unknown data: "
-msgstr "%li bajtów nieznanych danych: "
+msgstr "%i bajtów nieznanych danych: "
 
 #: libexif/olympus/mnote-olympus-tag.c:37
 msgid "Firmware Version"
@@ -4278,14 +4278,14 @@ msgid "Digital Filter?"
 msgstr "Filtr cyfrowy?"
 
 #: libexif/pentax/mnote-pentax-entry.c:353
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %i)"
-msgstr "Błąd wewnętrzny (nieznana wartość %i)."
+msgstr "Błąd wewnętrzny (nieznana wartość %i)"
 
 #: libexif/pentax/mnote-pentax-entry.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %i %i)"
-msgstr "Błąd wewnętrzny (nieznana wartość %i)."
+msgstr "Błąd wewnętrzny (nieznana wartość %i %i)"
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
 msgid "Capture Mode"
