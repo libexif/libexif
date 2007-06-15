@@ -863,7 +863,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_MAKER_NOTE:
 		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		snprintf (val, maxlen, _("%i bytes unknown data"),
-			  (int) e->components);
+			  e->size);
 		break;
 	case EXIF_TAG_SUBJECT_AREA:
 		CF (e, EXIF_FORMAT_SHORT, val, maxlen);
@@ -914,7 +914,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		/* Search the tag */
 		for (i = 0; list2[i].tag && (list2[i].tag != e->tag); i++);
 		if (!list2[i].tag) {
-			strncpy (val, _("Internal error."), maxlen - 1);
+			strncpy (val, _("Internal error"), maxlen);
 			break;
 		}
 
@@ -923,7 +923,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			    (list2[i].elem[j].index < v_short); j++);
 		if (list2[i].elem[j].index != v_short) {
 			snprintf (val, maxlen, _("Internal error (unknown "
-				  "value %i)."), v_short);
+				  "value %i)"), v_short);
 			break;
 		}
 
@@ -932,7 +932,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		for (k = 0; list2[i].elem[j].values[k]; k++) {
 		  l = strlen (_(list2[i].elem[j].values[k]));
 		  if ((maxlen > l) && (strlen (val) < l))
-		    strncpy (val, _(list2[i].elem[j].values[k]), maxlen - 1);
+		    strncpy (val, _(list2[i].elem[j].values[k]), maxlen);
 		}
 		if (!strlen (val)) snprintf (val, maxlen, "%i", v_short);
 
@@ -957,7 +957,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		/* Search the tag */
 		for (i = 0; list[i].tag && (list[i].tag != e->tag); i++);
 		if (!list[i].tag) {
-			strncpy (val, _("Internal error."), maxlen - 1);
+			strncpy (val, _("Internal error"), maxlen);
 			break;
 		}
 
@@ -966,7 +966,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		if (!list[i].strings[j])
 			snprintf (val, maxlen, "%i", v_short);
 		else
-			strncpy (val, _(list[i].strings[j]), maxlen - 1);
+			strncpy (val, _(list[i].strings[j]), maxlen);
 		break;
 	case EXIF_TAG_XP_TITLE:
 	case EXIF_TAG_XP_COMMENT:
