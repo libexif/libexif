@@ -2109,10 +2109,6 @@ msgstr "Dentro del rectángulo (ancho %i, alto %i) alrededor de (x,y) = (%i,%i)"
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Cantidad de componentes inesperada (%li, esperados 2, 3, o 4)."
 
-#: libexif/exif-entry.c:917 libexif/exif-entry.c:960
-msgid "Internal error."
-msgstr ""
-
 #: libexif/exif-entry.c:925
 #, c-format
 msgid "Internal error (unknown value %i)."

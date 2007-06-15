@@ -2109,9 +2109,9 @@ msgid "Internal error."
 msgstr "Vnútorná chyba."
 
 #: libexif/exif-entry.c:925
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %i)."
-msgstr "Vnútorná chyba (neznáma hodnota %i)"
+msgstr "Vnútorná chyba (neznáma hodnota %i)."
 
 #: libexif/exif-format.c:33
 msgid "Byte"
@@ -3547,7 +3547,7 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-entry.c:344
 #: libexif/pentax/mnote-pentax-entry.c:367
 msgid "Internal error"
-msgstr ""
+msgstr "Vnútorná chyba"
 
 #: libexif/olympus/mnote-olympus-entry.c:379
 #, c-format
