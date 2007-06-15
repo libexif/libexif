@@ -4,10 +4,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif 0.6.15\n"
+"Project-Id-Version: libexif 0.6.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-12 15:13+0200\n"
-"PO-Revision-Date: 2007-06-12 22:19+0930\n"
+"PO-Revision-Date: 2007-06-15 13:00+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -2031,9 +2031,9 @@ msgid "Internal error."
 msgstr "Lỗi nội bộ."
 
 #: libexif/exif-entry.c:925
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %i)."
-msgstr "Lỗi nội bộ (không biết giá trị %i)"
+msgstr "Lỗi nội bộ (không biết giá trị %i)."
 
 #: libexif/exif-format.c:33
 msgid "Byte"
@@ -3759,9 +3759,9 @@ msgid "One-touch"
 msgstr "Bấm đơn"
 
 #: libexif/olympus/mnote-olympus-entry.c:571
-#, fuzzy, c-format
+#, c-format
 msgid "%i bytes unknown data: "
-msgstr "%li byte dữ liệu không rõ : "
+msgstr "%i byte dữ liệu không rõ : "
 
 #: libexif/olympus/mnote-olympus-tag.c:37
 msgid "Firmware Version"
@@ -4252,12 +4252,12 @@ msgstr "Lọc số ?"
 #: libexif/pentax/mnote-pentax-entry.c:353
 #, c-format
 msgid "Internal error (unknown value %i)"
-msgstr "Lỗi nội bộ (không biết giá trị %i)"
+msgstr "Lỗi nội bộ (giá trị không rõ %i)"
 
 #: libexif/pentax/mnote-pentax-entry.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %i %i)"
-msgstr "Lỗi nội bộ (không biết giá trị %i)"
+msgstr "Lỗi nội bộ (giá trị không rõ %i %i)"
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
 msgid "Capture Mode"
