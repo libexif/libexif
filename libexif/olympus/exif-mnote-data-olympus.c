@@ -267,6 +267,16 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		case nikonV1:
 
 			base = MNOTE_NIKON1_TAG_BASE;
+			/* Fix endianness, if needed */
+			if (o2 >= buf_size) return;
+			c = exif_get_short (buf + o2, n->order);
+			if ((!(c & 0xFF)) && (c > 0x500)) {
+				if (n->order == EXIF_BYTE_ORDER_INTEL) {
+					n->order = EXIF_BYTE_ORDER_MOTOROLA;
+				} else {
+					n->order = EXIF_BYTE_ORDER_INTEL;
+				}
+			}
 			break;
 
 		case nikonV2:
