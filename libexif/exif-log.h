@@ -66,7 +66,7 @@ void     exif_logv (ExifLog *log, ExifLogCode, const char *domain,
 		    const char *format, va_list args);
 
 /* For your convenience */
-#define EXIF_LOG_NO_MEMORY(l,d,s) exif_log (l, EXIF_LOG_CODE_NO_MEMORY, d, "Could not allocate %i byte(s).", s)
+#define EXIF_LOG_NO_MEMORY(l,d,s) exif_log ((l), EXIF_LOG_CODE_NO_MEMORY, (d), "Could not allocate %lu byte(s).", (unsigned long)(s))
 
 #ifdef __cplusplus
 }
