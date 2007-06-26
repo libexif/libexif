@@ -39,9 +39,14 @@ typedef char *		ExifAscii;
 typedef uint16_t	ExifShort;         /* 2 bytes */
 typedef int16_t         ExifSShort;        /* 2 bytes */
 typedef uint32_t	ExifLong;          /* 4 bytes */
+
+/** EXIF Unsigned Rational */
 typedef struct {ExifLong numerator; ExifLong denominator;} ExifRational;
+
 typedef char		ExifUndefined;     /* 1 byte  */
 typedef int32_t		ExifSLong;         /* 4 bytes */
+
+/** EXIF Signed Rational. */
 typedef struct {ExifSLong numerator; ExifSLong denominator;} ExifSRational;
 
 

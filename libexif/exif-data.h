@@ -100,7 +100,7 @@ ExifDataType exif_data_get_data_type (ExifData *);
 void exif_data_dump (ExifData *data);
 void exif_data_log  (ExifData *data, ExifLog *log);
 
-/* For your convenience */
+/** convenience macro. */
 #define exif_data_get_entry(d,t)					\
 	(exif_content_get_entry(d->ifd[EXIF_IFD_0],t) ?			\
 	 exif_content_get_entry(d->ifd[EXIF_IFD_0],t) :			\

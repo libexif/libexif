@@ -33,7 +33,7 @@ typedef struct _ExifEntryPrivate ExifEntryPrivate;
 #include <libexif/exif-format.h>
 #include <libexif/exif-mem.h>
 
-/*! \struct _ExifEntry exif-entry.h exif/exif-entry.h */
+/*! */
 struct _ExifEntry {
         ExifTag tag;
         ExifFormat format;
