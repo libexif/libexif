@@ -1127,6 +1127,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_LONG;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
 		break;
 
 	/* SHORT, 1 component, no default */
@@ -1155,6 +1156,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
 		exif_set_short (e->data, o, 0);
 		break;
 
@@ -1166,6 +1168,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
 		exif_set_short (e->data, o, 1);
 		break;
 
@@ -1176,6 +1179,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
 		exif_set_short (e->data, o, 2);
 		break;
 
@@ -1185,6 +1189,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
 		exif_set_short (e->data, o, 3);
 		break;
 
@@ -1222,6 +1227,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SRATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
 		break;
 
 	/* RATIONAL, 1 component, no default */
@@ -1242,6 +1248,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
 		break;
 
 	/* RATIONAL, 1 component, default 72/1 */
@@ -1251,6 +1258,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
 		r.numerator = 72;
 		r.denominator = 1;
 		exif_set_rational (e->data, o, r);
@@ -1262,6 +1270,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
 		break;
 
 	/* RATIONAL, 6 components */
