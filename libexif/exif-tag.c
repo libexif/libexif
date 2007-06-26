@@ -773,7 +773,7 @@ typedef const char * (*get_stuff_func) (ExifTag tag, ExifIfd ifd);
 static const char *
 exif_tag_get_stuff (ExifTag tag, get_stuff_func func)
 {
-	const static ExifIfd ifds[5] = {
+	static const ExifIfd ifds[5] = {
 		EXIF_IFD_0,
 		EXIF_IFD_1,
 		EXIF_IFD_EXIF,
