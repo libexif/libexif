@@ -1,3 +1,5 @@
+EXTRA_DIST =
+
 SUBDIRS = canon olympus pentax
 
 lib_LTLIBRARIES = libexif.la
@@ -62,7 +64,9 @@ libexifinclude_HEADERS = 	\
 	exif-utils.h		\
 	_stdint.h
 
-EXTRA_DIST = libexif.sym
+EXTRA_DIST += exif-system.h
+
+EXTRA_DIST += libexif.sym
 
 DISTCLEANFILES = _stdint.h
 
