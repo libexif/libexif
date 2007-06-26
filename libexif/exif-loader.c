@@ -263,7 +263,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 		default:
 			switch (eld->b[i]) {
 			case JPEG_MARKER_APP1:
-				if (!memcmp (eld->b + i + 3, ExifHeader, MIN(sizeof (ExifHeader), MAX(0, sizeof (eld->b) - i - 3)))) {
+			  if (!memcmp (eld->b + i + 3, ExifHeader, MIN((ssize_t)(sizeof(ExifHeader)), MAX(0, ((ssize_t)(sizeof(eld->b))) - ((ssize_t)i) - 3)))) {
 					eld->data_format = EL_DATA_FORMAT_EXIF;
 				} else {
 					eld->data_format = EL_DATA_FORMAT_JPEG; /* Probably JFIF - keep searching for APP1 EXIF*/
