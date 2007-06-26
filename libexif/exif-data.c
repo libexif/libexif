@@ -28,6 +28,7 @@
 #include <libexif/exif-loader.h>
 #include <libexif/exif-log.h>
 #include <libexif/i18n.h>
+#include <libexif/exif-system.h>
 
 #include <libexif/olympus/exif-mnote-data-olympus.h>
 #include <libexif/canon/exif-mnote-data-canon.h>
@@ -194,6 +195,9 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	if (entry->data) {
 		entry->size = s;
 		memcpy (entry->data, d + doff, s);
+	} else {
+		/* FIXME: What do our callers do if (entry->data == NULL)? */
+		EXIF_LOG_NO_MEMORY(data->priv->log, "ExifData", s);
 	}
 
 	/* If this is the MakerNote, remember the offset */
@@ -202,8 +206,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 			exif_log (data->priv->log,
                                                EXIF_LOG_CODE_DEBUG, "ExifData",
                                                "MakerNote found with NULL data");	
-		}
-		else if (entry->size > 6) 
+		} else if (entry->size > 6) {
 			exif_log (data->priv->log,
 					       EXIF_LOG_CODE_DEBUG, "ExifData",
 					       "MakerNote found (%02x %02x %02x %02x "
@@ -211,6 +214,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 					       entry->data[0], entry->data[1], entry->data[2],
 					       entry->data[3], entry->data[4], entry->data[5],
 					       entry->data[6]);
+		}
 		data->priv->offset_mnote = doff;
 	}
 	return 1;
@@ -334,8 +338,21 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 
 	if (!data || !data->priv) 
 		return;
-	if ((ifd < 0) || (ifd >= EXIF_IFD_COUNT)) 
-		return;
+	/* check for valid ExifIfd enum range
+	 * if ((((int)ifd) < 0) || (ifd >= EXIF_IFD_COUNT))
+	 * return;
+	*/
+	switch (ifd) {
+	case EXIF_IFD_0:
+	case EXIF_IFD_1:
+	case EXIF_IFD_EXIF:
+	case EXIF_IFD_GPS:
+	case EXIF_IFD_INTEROPERABILITY:
+	case EXIF_IFD_COUNT:
+	  break;
+	default:
+	  return;
+	}
 
 	if (recursion_depth > 150) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
@@ -1171,7 +1188,7 @@ exif_data_unset_option (ExifData *d, ExifDataOption o)
 }
 
 static void
-fix_func (ExifContent *c, void *data)
+fix_func (ExifContent *c, void *UNUSED(data))
 {
 	switch (exif_content_get_ifd (c)) {
 	case EXIF_IFD_1:
