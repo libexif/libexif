@@ -21,6 +21,7 @@
 #include <config.h>
 
 #include <libexif/exif-content.h>
+#include <libexif/exif-system.h>
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -226,7 +227,7 @@ exif_content_get_ifd (ExifContent *c)
 }
 
 static void
-fix_func (ExifEntry *e, void *data)
+fix_func (ExifEntry *e, void *UNUSED(data))
 {
 	exif_entry_fix (e);
 }
