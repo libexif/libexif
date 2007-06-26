@@ -161,12 +161,6 @@ AM_PO_SUBDIRS()
 AM_ICONV()
 GP_GETTEXT_FLAGS()
 
-dnl We cannot use AC_DEFINE_UNQUOTED() for these definitions, as
-dnl we require make to do insert the proper $(datadir) value
-localedir="\$(datadir)/locale"
-AC_SUBST(localedir)
-AM_CPPFLAGS="$AM_CPPFLAGS -DLOCALEDIR=\\\"${localedir}\\\""
-
 
 dnl ---------------------------------------------------------------------------
 dnl Compiler/Linker Options and Warnings
