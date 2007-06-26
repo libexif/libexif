@@ -28,7 +28,7 @@
 #include <stdlib.h>
 
 int
-main (int argc, char **argv)
+main ()
 {
 	ExifData *ed;
 	/* ExifEntry *e; */
