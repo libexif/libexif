@@ -1095,6 +1095,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 	}
 
+	val[maxlen-1] = '\0'; /* make sure the returned string is zero terminated */
 	return val;
 }
 
