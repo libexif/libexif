@@ -161,7 +161,7 @@ static struct {
     { {0, N_("No")},
       {1, N_("Yes")},
       {0, NULL}}},
-  { 0, }
+  { 0, 0, { { 0, NULL } } }
 };
 
 char *
