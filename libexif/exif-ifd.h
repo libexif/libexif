@@ -22,12 +22,12 @@
 #define __EXIF_IFD_H__
 
 typedef enum {
-	EXIF_IFD_0 = 0,
-	EXIF_IFD_1,
-	EXIF_IFD_EXIF,
-	EXIF_IFD_GPS,
-	EXIF_IFD_INTEROPERABILITY,
-	EXIF_IFD_COUNT
+	EXIF_IFD_0 = 0,                /*!< */
+	EXIF_IFD_1,                    /*!< */
+	EXIF_IFD_EXIF,                 /*!< */
+	EXIF_IFD_GPS,                  /*!< */
+	EXIF_IFD_INTEROPERABILITY,     /*!< */
+	EXIF_IFD_COUNT                 /*!< Not a real value, just (max_value + 1). */
 } ExifIfd;
 
 const char *exif_ifd_get_name (ExifIfd ifd);

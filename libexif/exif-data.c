@@ -338,21 +338,10 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 
 	if (!data || !data->priv) 
 		return;
-	/* check for valid ExifIfd enum range
-	 * if ((((int)ifd) < 0) || (ifd >= EXIF_IFD_COUNT))
-	 * return;
-	*/
-	switch (ifd) {
-	case EXIF_IFD_0:
-	case EXIF_IFD_1:
-	case EXIF_IFD_EXIF:
-	case EXIF_IFD_GPS:
-	case EXIF_IFD_INTEROPERABILITY:
-	case EXIF_IFD_COUNT:
-	  break;
-	default:
+
+	/* check for valid ExifIfd enum range */
+	if (( ((int)ifd) < 0) || ( ((int)ifd) >= EXIF_IFD_COUNT))
 	  return;
-	}
 
 	if (recursion_depth > 150) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
