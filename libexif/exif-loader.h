@@ -24,7 +24,6 @@
 #define __EXIF_LOADER_H__
 
 #include <libexif/exif-data.h>
-#include <libexif/exif-loader.h>
 #include <libexif/exif-log.h>
 #include <libexif/exif-mem.h>
 
