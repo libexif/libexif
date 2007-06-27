@@ -581,9 +581,10 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		return val;
 	o = exif_data_get_byte_order (e->parent->parent);
 
+	/* make sure the returned string is zero terminated */
 	memset (val, 0, maxlen);
-	memset (b, 0, sizeof (b));
 	maxlen--;
+	memset (b, 0, sizeof (b));
 
 	/* Sanity check */
 	if (e->size != e->components * exif_format_get_size (e->format)) {
@@ -1095,10 +1096,13 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 	}
 
-	val[maxlen-1] = '\0'; /* make sure the returned string is zero terminated */
 	return val;
 }
 
+
+/**
+ * \bug Log and report failed exif_mem_malloc() calls.
+ */
 void
 exif_entry_initialize (ExifEntry *e, ExifTag tag)
 {
