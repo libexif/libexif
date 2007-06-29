@@ -27,8 +27,8 @@
 #include <stdlib.h>
 
 
-void content_foreach_func(ExifEntry *entry, void *user_data);
-void content_foreach_func(ExifEntry *entry, void *UNUSED(user_data))
+void content_foreach_func(ExifEntry *entry, void *callback_data);
+void content_foreach_func(ExifEntry *entry, void *UNUSED(callback_data))
 {
   char buf[2000];
   exif_entry_get_value(entry, buf, sizeof(buf));
@@ -44,31 +44,31 @@ void content_foreach_func(ExifEntry *entry, void *UNUSED(user_data))
 }
 
 
-void data_foreach_func(ExifContent *content, void *user_data);
-void data_foreach_func(ExifContent *content, void *user_data)
+void data_foreach_func(ExifContent *content, void *callback_data);
+void data_foreach_func(ExifContent *content, void *callback_data)
 {
   printf("  Content %p: ifd=%d\n", content, exif_content_get_ifd(content));
-  exif_content_foreach_entry(content, content_foreach_func, user_data);
+  exif_content_foreach_entry(content, content_foreach_func, callback_data);
 }
 
 
-void test_parse(const char *filename, void *data);
-void test_parse(const char *filename, void *data)
+void test_parse(const char *filename, void *callback_data);
+void test_parse(const char *filename, void *callback_data)
 {
   ExifData *d;
   printf("File %s\n", filename);
 
   d = exif_data_new_from_file(filename);
-  exif_data_foreach_content(d, data_foreach_func, data);
+  exif_data_foreach_content(d, data_foreach_func, callback_data);
   exif_data_unref(d);
 }
 
-typedef void (*test_parse_func) (const char *filename, void *data);
+typedef void (*test_parse_func) (const char *filename, void *callback_data);
 
 
 /** Split string at whitespace and call callback with each substring */
-void split_ws_string(const char *string, test_parse_func func, void *data);
-void split_ws_string(const char *string, test_parse_func func, void *data)
+void split_ws_string(const char *string, test_parse_func func, void *callback_data);
+void split_ws_string(const char *string, test_parse_func func, void *callback_data)
 {
   const char *start = string;
   const char *p = start;
@@ -100,11 +100,11 @@ void split_ws_string(const char *string, test_parse_func func, void *data)
 int main(const int argc, const char *argv[])
 {
   int i;
-  void *data = NULL;
+  void *callback_data = NULL;
 
   const char *envar = getenv("TEST_IMAGES");
   if (envar) {
-    split_ws_string(envar, test_parse, data);
+    split_ws_string(envar, test_parse, callback_data);
   }
 
   for (i=1; i<argc; i++) {
