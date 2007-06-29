@@ -17,6 +17,7 @@
  * License along with this library; if not, write to the
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
+ *
  */
 
 #include "libexif/exif-data.h"
@@ -27,6 +28,7 @@
 #include <stdlib.h>
 
 
+/** Callback function handling an ExifEntry. */
 void content_foreach_func(ExifEntry *entry, void *callback_data);
 void content_foreach_func(ExifEntry *entry, void *UNUSED(callback_data))
 {
@@ -44,6 +46,7 @@ void content_foreach_func(ExifEntry *entry, void *UNUSED(callback_data))
 }
 
 
+/** Callback function handling an ExifContent (corresponds 1:1 to an IFD). */
 void data_foreach_func(ExifContent *content, void *callback_data);
 void data_foreach_func(ExifContent *content, void *callback_data)
 {
@@ -52,6 +55,7 @@ void data_foreach_func(ExifContent *content, void *callback_data)
 }
 
 
+/** Run EXIF parsing test on the given file. */
 void test_parse(const char *filename, void *callback_data);
 void test_parse(const char *filename, void *callback_data)
 {
@@ -63,10 +67,12 @@ void test_parse(const char *filename, void *callback_data)
   exif_data_unref(d);
 }
 
+
+/** Callback function prototype for string parsing. */
 typedef void (*test_parse_func) (const char *filename, void *callback_data);
 
 
-/** Split string at whitespace and call callback with each substring */
+/** Split string at whitespace and call callback with each substring. */
 void split_ws_string(const char *string, test_parse_func func, void *callback_data);
 void split_ws_string(const char *string, test_parse_func func, void *callback_data)
 {
@@ -97,6 +103,7 @@ void split_ws_string(const char *string, test_parse_func func, void *callback_da
 }
 
 
+/** Main program. */
 int main(const int argc, const char *argv[])
 {
   int i;
