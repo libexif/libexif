@@ -1,15 +1,15 @@
-# translation of libexif-0.6.14.pot to Slovak
-# Copyright (C) 2007 Lutz Müller and others
+# translation of libexif-0.6.13.pot to Slovak
+# Copyright (C) YEAR Lutz Müller and others
 # This file is distributed under the same license as the libexif package.
 # Ivan Masár <helix84@centrum.sk>, 2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif-0.6.14\n"
+"Project-Id-Version: libexif-0.6.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-12 15:13+0200\n"
-"PO-Revision-Date: 2007-03-13 05:51+0100\n"
-"Last-Translator: helix84 <helix84@centrum.sk>\n"
+"PO-Revision-Date: 2007-07-09 13:49+0100\n"
+"Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,22 +61,21 @@ msgstr "normálny"
 
 #: libexif/canon/mnote-canon-entry.c:77
 msgid "Economy"
-msgstr ""
+msgstr "ekonomický"
 
 #: libexif/canon/mnote-canon-entry.c:79
-#, fuzzy
 msgid "Fine"
-msgstr "pl"
+msgstr "jemný"
 
 #: libexif/canon/mnote-canon-entry.c:80
 #: libexif/olympus/mnote-olympus-entry.c:132
 #: libexif/pentax/mnote-pentax-entry.c:140
 msgid "RAW"
-msgstr ""
+msgstr "RAW"
 
 #: libexif/canon/mnote-canon-entry.c:81
 msgid "Superfine"
-msgstr ""
+msgstr "superjemný"
 
 #: libexif/canon/mnote-canon-entry.c:82 libexif/canon/mnote-canon-entry.c:257
 #: libexif/canon/mnote-canon-entry.c:260 libexif/canon/mnote-canon-entry.c:268
@@ -87,7 +86,7 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-entry.c:194
 #: libexif/pentax/mnote-pentax-entry.c:259
 msgid "Off"
-msgstr ""
+msgstr "vypnutý"
 
 #: libexif/canon/mnote-canon-entry.c:83 libexif/canon/mnote-canon-entry.c:153
 #: libexif/canon/mnote-canon-entry.c:166 libexif/canon/mnote-canon-entry.c:280
@@ -110,32 +109,28 @@ msgstr "auto"
 #: libexif/pentax/mnote-pentax-entry.c:197
 #: libexif/pentax/mnote-pentax-entry.c:260
 msgid "On"
-msgstr ""
+msgstr "zapnutý"
 
 #: libexif/canon/mnote-canon-entry.c:85
 #: libexif/olympus/mnote-olympus-entry.c:146
 msgid "Red-eye reduction"
-msgstr ""
+msgstr "redukcia červených očí"
 
 #: libexif/canon/mnote-canon-entry.c:86
-#, fuzzy
 msgid "Slow synchro"
 msgstr "pomalá synchronizácia"
 
 #: libexif/canon/mnote-canon-entry.c:87
-#, fuzzy
 msgid "Auto + Red-eye reduction"
 msgstr "auto + redukcia červených očí"
 
 #: libexif/canon/mnote-canon-entry.c:88
-#, fuzzy
 msgid "On + Red-eye reduction"
 msgstr "zapnutý + redukcia červených očí"
 
 #: libexif/canon/mnote-canon-entry.c:89
-#, fuzzy
 msgid "External flash"
-msgstr "Vstavaný blesk"
+msgstr "Externý blesk"
 
 #: libexif/canon/mnote-canon-entry.c:90 libexif/canon/mnote-canon-entry.c:100
 #: libexif/canon/mnote-canon-entry.c:250
@@ -148,44 +143,39 @@ msgid "Continuous"
 msgstr "spojitý"
 
 #: libexif/canon/mnote-canon-entry.c:92
-#, fuzzy
 msgid "Movie"
-msgstr "Model"
+msgstr "film"
 
 #: libexif/canon/mnote-canon-entry.c:93
-#, fuzzy
 msgid "Continuous, speed priority"
-msgstr "Plynulý režim"
+msgstr "spojitý, prioritna pre rýchlosť"
 
 #: libexif/canon/mnote-canon-entry.c:94
-#, fuzzy
 msgid "Continuous, low"
-msgstr "spojitý"
+msgstr "spojitý, nízky"
 
 #: libexif/canon/mnote-canon-entry.c:95
-#, fuzzy
 msgid "Continuous, high"
-msgstr "spojitý"
+msgstr "spojitý, vysoký"
 
+# AF = automatické zaostrenie
 #: libexif/canon/mnote-canon-entry.c:96
-#, fuzzy
 msgid "One-shot AF"
-msgstr "jeden záber"
+msgstr "automatické zaostrenie pre jeden záber"
 
+# AF = automatické zaostrenie
 #: libexif/canon/mnote-canon-entry.c:97
-#, fuzzy
 msgid "AI servo AF"
-msgstr "inteligentné servo"
+msgstr "inteligentné servo zaostrenie"
 
+# AF = automatické zaostrenie
 #: libexif/canon/mnote-canon-entry.c:98
-#, fuzzy
 msgid "AI focus AF"
 msgstr "inteligentné zaostrenie"
 
 #: libexif/canon/mnote-canon-entry.c:99 libexif/canon/mnote-canon-entry.c:102
-#, fuzzy
 msgid "Manual focus"
-msgstr "žiadny (manuálne zaostrenie)"
+msgstr "ručné zaostrenie"
 
 #: libexif/canon/mnote-canon-entry.c:103 libexif/canon/mnote-canon-entry.c:122
 #: libexif/canon/mnote-canon-entry.c:173
@@ -193,37 +183,30 @@ msgid "Pan focus"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:104
-#, fuzzy
 msgid "Large"
 msgstr "veľký"
 
 #: libexif/canon/mnote-canon-entry.c:105
-#, fuzzy
 msgid "Medium"
 msgstr "stredný"
 
 #: libexif/canon/mnote-canon-entry.c:106
-#, fuzzy
 msgid "Small"
 msgstr "malý"
 
 #: libexif/canon/mnote-canon-entry.c:107
-#, fuzzy
 msgid "Medium 1"
-msgstr "stredný"
+msgstr "stredný 1"
 
 #: libexif/canon/mnote-canon-entry.c:108
-#, fuzzy
 msgid "Medium 2"
-msgstr "stredný"
+msgstr "stredný 2"
 
 #: libexif/canon/mnote-canon-entry.c:109
-#, fuzzy
 msgid "Medium 3"
-msgstr "stredný"
+msgstr "stredný 3"
 
 #: libexif/canon/mnote-canon-entry.c:110
-#, fuzzy
 msgid "Full auto"
 msgstr "plná automatika"
 
@@ -246,23 +229,20 @@ msgid "Landscape"
 msgstr "krajinka"
 
 #: libexif/canon/mnote-canon-entry.c:113
-#, fuzzy
 msgid "Fast shutter"
 msgstr "rýchla uzávierka"
 
 #: libexif/canon/mnote-canon-entry.c:114 libexif/canon/mnote-canon-tag.c:97
-#, fuzzy
 msgid "Slow shutter"
 msgstr "pomalá uzávierka"
 
 #: libexif/canon/mnote-canon-entry.c:115
-#, fuzzy
 msgid "Night"
 msgstr "nočný"
 
 #: libexif/canon/mnote-canon-entry.c:116
 msgid "Grayscale"
-msgstr ""
+msgstr "odtiene šedej"
 
 #: libexif/canon/mnote-canon-entry.c:117 libexif/canon/mnote-canon-entry.c:264
 #: libexif/pentax/mnote-pentax-entry.c:127
@@ -283,100 +263,93 @@ msgstr "šport"
 
 #: libexif/canon/mnote-canon-entry.c:121 libexif/canon/mnote-canon-entry.c:265
 #: libexif/canon/mnote-canon-entry.c:287
-#, fuzzy
 msgid "Black & white"
 msgstr "čiernobiely"
 
 #: libexif/canon/mnote-canon-entry.c:123 libexif/canon/mnote-canon-entry.c:261
 msgid "Vivid"
-msgstr ""
+msgstr "živé"
 
 #: libexif/canon/mnote-canon-entry.c:124 libexif/canon/mnote-canon-entry.c:262
-#, fuzzy
 msgid "Neutral"
-msgstr "externý"
+msgstr "neutrálny"
 
 #: libexif/canon/mnote-canon-entry.c:125
 #: libexif/pentax/mnote-pentax-entry.c:92
 msgid "Flash off"
-msgstr ""
+msgstr "blesk vypnutý"
 
 #: libexif/canon/mnote-canon-entry.c:126
-#, fuzzy
 msgid "Long shutter"
 msgstr "pomalá uzávierka"
 
 #: libexif/canon/mnote-canon-entry.c:127 libexif/canon/mnote-canon-entry.c:174
-#, fuzzy
 msgid "Super macro"
-msgstr "makro"
+msgstr "super makro"
 
 #: libexif/canon/mnote-canon-entry.c:128
-#, fuzzy
 msgid "Foliage"
-msgstr "veľký"
+msgstr "zeleň"
 
 #: libexif/canon/mnote-canon-entry.c:129
 msgid "Indoor"
-msgstr ""
+msgstr "vnútri"
 
 #: libexif/canon/mnote-canon-entry.c:130
 #: libexif/pentax/mnote-pentax-entry.c:174
 msgid "Fireworks"
-msgstr ""
+msgstr "ohňostroj"
 
 #: libexif/canon/mnote-canon-entry.c:131
 msgid "Beach"
-msgstr ""
+msgstr "pláž"
 
 #: libexif/canon/mnote-canon-entry.c:132 libexif/canon/mnote-canon-entry.c:296
 #: libexif/pentax/mnote-pentax-entry.c:186
 #: libexif/pentax/mnote-pentax-entry.c:288
 #: libexif/pentax/mnote-pentax-entry.c:294
-#, fuzzy
 msgid "Underwater"
-msgstr "pekné počasie"
+msgstr "pod vodou"
 
 #: libexif/canon/mnote-canon-entry.c:133
 msgid "Snow"
-msgstr ""
+msgstr "sneh"
 
 #: libexif/canon/mnote-canon-entry.c:134
 msgid "Kids & pets"
-msgstr ""
+msgstr "deti & zvieratá"
 
 #: libexif/canon/mnote-canon-entry.c:135
-#, fuzzy
 msgid "Night snapshot"
 msgstr "nočná scéna"
 
 #: libexif/canon/mnote-canon-entry.c:136
 msgid "Digital macro"
-msgstr ""
+msgstr "digitálne makro"
 
 #: libexif/canon/mnote-canon-entry.c:137
 msgid "My colors"
-msgstr ""
+msgstr "moje farby"
 
 #: libexif/canon/mnote-canon-entry.c:138
 msgid "Still image"
-msgstr ""
+msgstr "stabilný obraz"
 
 #: libexif/canon/mnote-canon-entry.c:139 libexif/canon/mnote-canon-entry.c:300
 #: libexif/canon/mnote-canon-entry.c:317
 #: libexif/olympus/mnote-olympus-entry.c:334
 #: libexif/pentax/mnote-pentax-entry.c:241
 msgid "None"
-msgstr ""
+msgstr "žiadny"
 
 #: libexif/canon/mnote-canon-entry.c:140
 #: libexif/olympus/mnote-olympus-entry.c:142
 msgid "2x"
-msgstr ""
+msgstr "2x"
 
 #: libexif/canon/mnote-canon-entry.c:141
 msgid "4x"
-msgstr ""
+msgstr "4x"
 
 #: libexif/canon/mnote-canon-entry.c:142 libexif/exif-entry.c:435
 #: libexif/exif-entry.c:465
@@ -388,19 +361,18 @@ msgstr "iný"
 #: libexif/pentax/mnote-pentax-entry.c:111
 #: libexif/pentax/mnote-pentax-entry.c:116
 msgid "High"
-msgstr ""
+msgstr "vysoký"
 
 #: libexif/canon/mnote-canon-entry.c:145 libexif/canon/mnote-canon-entry.c:148
 #: libexif/canon/mnote-canon-entry.c:151
 #: libexif/pentax/mnote-pentax-entry.c:110
 #: libexif/pentax/mnote-pentax-entry.c:115
 msgid "Low"
-msgstr ""
+msgstr "názky"
 
 #: libexif/canon/mnote-canon-entry.c:152
-#, fuzzy
 msgid "Auto high"
-msgstr "vysoký"
+msgstr "automat. vysoký"
 
 #: libexif/canon/mnote-canon-entry.c:154
 msgid "50"
@@ -423,13 +395,12 @@ msgid "400"
 msgstr "&"
 
 #: libexif/canon/mnote-canon-entry.c:158
-#, fuzzy
 msgid "800"
-msgstr "&"
+msgstr "800"
 
 #: libexif/canon/mnote-canon-entry.c:159
 msgid "Default"
-msgstr ""
+msgstr "štandardný"
 
 #: libexif/canon/mnote-canon-entry.c:160 libexif/exif-entry.c:431
 msgid "Spot"
@@ -440,7 +411,6 @@ msgid "Average"
 msgstr "priemer"
 
 #: libexif/canon/mnote-canon-entry.c:162
-#, fuzzy
 msgid "Evaluative"
 msgstr "vyhodnocujúci"
 
@@ -449,86 +419,76 @@ msgid "Partial"
 msgstr "čiastočný"
 
 #: libexif/canon/mnote-canon-entry.c:164
-#, fuzzy
 msgid "Center-weighted average"
 msgstr "vážený priemer"
 
 #: libexif/canon/mnote-canon-entry.c:167
-#, fuzzy
 msgid "Not known"
-msgstr "neznámy"
+msgstr "neznáme"
 
 #: libexif/canon/mnote-canon-entry.c:169
-#, fuzzy
 msgid "Very close"
-msgstr "zblízka"
+msgstr "veľmi zblízka"
 
 #: libexif/canon/mnote-canon-entry.c:170
-#, fuzzy
 msgid "Close"
 msgstr "zblízka"
 
 #: libexif/canon/mnote-canon-entry.c:171
 msgid "Middle range"
-msgstr ""
+msgstr "stredný rozsah"
 
 #: libexif/canon/mnote-canon-entry.c:172
 msgid "Far range"
-msgstr ""
+msgstr "ďaleký rozsah"
 
 #: libexif/canon/mnote-canon-entry.c:175
 #: libexif/pentax/mnote-pentax-entry.c:209
 msgid "Infinity"
-msgstr ""
+msgstr "nekonečno"
 
+# AF = automatické zaostrenie
 #: libexif/canon/mnote-canon-entry.c:176
-#, fuzzy
 msgid "Manual AF point selection"
-msgstr "Bod automatického zaostrenia zvolený"
+msgstr "Ručná voľba bodu automatického zaostrenia"
 
 #: libexif/canon/mnote-canon-entry.c:177 libexif/canon/mnote-canon-entry.c:301
 msgid "None (MF)"
-msgstr ""
+msgstr "žiadny (MF)"
 
 #: libexif/canon/mnote-canon-entry.c:178
-#, fuzzy
 msgid "Auto-selected"
 msgstr "automatický výber"
 
 #: libexif/canon/mnote-canon-entry.c:179 libexif/canon/mnote-canon-entry.c:302
 #: libexif/pentax/mnote-pentax-entry.c:223
 #: libexif/pentax/mnote-pentax-entry.c:237
-#, fuzzy
 msgid "Right"
 msgstr "nočný"
 
 #: libexif/canon/mnote-canon-entry.c:180 libexif/canon/mnote-canon-entry.c:303
 #: libexif/pentax/mnote-pentax-entry.c:221
 #: libexif/pentax/mnote-pentax-entry.c:236
-#, fuzzy
 msgid "Center"
 msgstr "stred"
 
 #: libexif/canon/mnote-canon-entry.c:181 libexif/canon/mnote-canon-entry.c:305
 #: libexif/pentax/mnote-pentax-entry.c:219
 #: libexif/pentax/mnote-pentax-entry.c:235
-#, fuzzy
 msgid "Left"
 msgstr "vľavo"
 
+# AF = automatické zaostrenie
 #: libexif/canon/mnote-canon-entry.c:182
-#, fuzzy
 msgid "Auto AF point selection"
-msgstr "Bod automatického zaostrenia zvolený"
+msgstr "Automatická voľba bodu zaostrenia"
 
 #: libexif/canon/mnote-canon-entry.c:183
-#, fuzzy
 msgid "Easy shooting"
 msgstr "jednoduché fotenie"
 
 #: libexif/canon/mnote-canon-entry.c:184
 #: libexif/pentax/mnote-pentax-entry.c:162
-#, fuzzy
 msgid "Program"
 msgstr "program"
 
@@ -545,9 +505,8 @@ msgid "A-DEP"
 msgstr "A-DEP"
 
 #: libexif/canon/mnote-canon-entry.c:189
-#, fuzzy
 msgid "M-DEP"
-msgstr "A-DEP"
+msgstr "M-DEP"
 
 #: libexif/canon/mnote-canon-entry.c:190
 msgid "Canon EF 50mm f/1.8"
@@ -755,69 +714,67 @@ msgstr "Canon EF 17-40mm f/4L"
 
 #: libexif/canon/mnote-canon-entry.c:242
 msgid "TTL"
-msgstr ""
+msgstr "TTL"
 
 #: libexif/canon/mnote-canon-entry.c:243
 msgid "A-TTL"
-msgstr ""
+msgstr "A-TTL"
 
 #: libexif/canon/mnote-canon-entry.c:244
 msgid "E-TTL"
-msgstr ""
+msgstr "E-TTL"
 
 #: libexif/canon/mnote-canon-entry.c:245
 msgid "FP sync enabled"
 msgstr "FP synchr. zapnutá"
 
 #: libexif/canon/mnote-canon-entry.c:246
-#, fuzzy
 msgid "2nd-curtain sync used"
-msgstr "FP synchr. použitá"
+msgstr "synchr. 2. zácl. použitá"
 
 #: libexif/canon/mnote-canon-entry.c:247
 msgid "FP sync used"
 msgstr "FP synchr. použitá"
 
 #: libexif/canon/mnote-canon-entry.c:248
-#, fuzzy
 msgid "Internal"
-msgstr "Intel"
+msgstr "interný"
 
 #: libexif/canon/mnote-canon-entry.c:249
-#, fuzzy
 msgid "External"
 msgstr "externý"
 
+# AE - automatická expozícia
 #: libexif/canon/mnote-canon-entry.c:252
-#, fuzzy
 msgid "Normal AE"
-msgstr "normálny"
+msgstr "normálna AE"
 
 #: libexif/canon/mnote-canon-entry.c:253 libexif/canon/mnote-canon-tag.c:95
-#, fuzzy
 msgid "Exposure compensation"
-msgstr "Režim expozície"
+msgstr "Kompenzácia expozície"
 
+# AE - automatická expozícia
 #: libexif/canon/mnote-canon-entry.c:254
 msgid "AE lock"
-msgstr ""
+msgstr "zámok AE"
 
+# AE - automatická expozícia
 #: libexif/canon/mnote-canon-entry.c:255
 msgid "AE lock + Exposure compensation"
-msgstr ""
+msgstr "zámok AE + kompenzácia expozície"
 
+# AE - automatická expozícia
 #: libexif/canon/mnote-canon-entry.c:256
 msgid "No AE"
-msgstr ""
+msgstr "bez AE"
 
 #: libexif/canon/mnote-canon-entry.c:259
 msgid "On, shot only"
-msgstr ""
+msgstr "zapnutý, iba pri fotení"
 
 #: libexif/canon/mnote-canon-entry.c:263
-#, fuzzy
 msgid "Smooth"
-msgstr "bod"
+msgstr "hladký"
 
 #: libexif/canon/mnote-canon-entry.c:266 libexif/canon/mnote-canon-entry.c:286
 #: libexif/pentax/mnote-pentax-entry.c:86
@@ -826,29 +783,29 @@ msgstr "vlastné"
 
 #: libexif/canon/mnote-canon-entry.c:267
 msgid "My color data"
-msgstr ""
+msgstr "moje farebné údaje"
 
 #: libexif/canon/mnote-canon-entry.c:269 libexif/canon/mnote-canon-entry.c:327
 #: libexif/pentax/mnote-pentax-entry.c:125
 #: libexif/pentax/mnote-pentax-entry.c:144
 msgid "Full"
-msgstr ""
+msgstr "plný"
 
 #: libexif/canon/mnote-canon-entry.c:270 libexif/canon/mnote-canon-entry.c:326
 msgid "2/3"
-msgstr ""
+msgstr "2/3"
 
 #: libexif/canon/mnote-canon-entry.c:271 libexif/canon/mnote-canon-entry.c:325
 msgid "1/3"
-msgstr ""
+msgstr "1/3"
 
 #: libexif/canon/mnote-canon-entry.c:275
 msgid "Fixed"
-msgstr ""
+msgstr "pevný"
 
 #: libexif/canon/mnote-canon-entry.c:276 libexif/pentax/mnote-pentax-tag.c:43
 msgid "Zoom"
-msgstr ""
+msgstr "priblíženie"
 
 #: libexif/canon/mnote-canon-entry.c:281
 msgid "Sunny"
@@ -885,123 +842,115 @@ msgstr "odtieň"
 
 #: libexif/canon/mnote-canon-entry.c:289
 msgid "Manual temperature (Kelvin)"
-msgstr ""
+msgstr "ručné nastavenie teploty (v kelvinoch)"
 
 #: libexif/canon/mnote-canon-entry.c:290
 msgid "PC set 1"
-msgstr ""
+msgstr "PC set 1"
 
 #: libexif/canon/mnote-canon-entry.c:291
 msgid "PC set 2"
-msgstr ""
+msgstr "PC set 2"
 
 #: libexif/canon/mnote-canon-entry.c:292
 msgid "PC set 3"
-msgstr ""
+msgstr "PC set 3"
 
 #: libexif/canon/mnote-canon-entry.c:293 libexif/exif-entry.c:454
 msgid "Daylight fluorescent"
 msgstr "denné svetlo fluorescenčné"
 
 #: libexif/canon/mnote-canon-entry.c:294
-#, fuzzy
 msgid "Custom 1"
-msgstr "vlastné"
+msgstr "vlastné 1"
 
 #: libexif/canon/mnote-canon-entry.c:295
-#, fuzzy
 msgid "Custom 2"
-msgstr "vlastné"
+msgstr "vlastné 2"
 
 #: libexif/canon/mnote-canon-entry.c:298 libexif/exif-entry.c:409
 msgid "Night scene"
 msgstr "nočná scéna"
 
 #: libexif/canon/mnote-canon-entry.c:304
-#, fuzzy
 msgid "Center + Right"
-msgstr "vážený"
+msgstr "stred + vpravo"
 
 #: libexif/canon/mnote-canon-entry.c:306
-#, fuzzy
 msgid "Left + Right"
-msgstr "pravý vrchný"
+msgstr "vľavo + vpravo"
 
 #: libexif/canon/mnote-canon-entry.c:307
 msgid "Left + Center"
-msgstr ""
+msgstr "ľavý + stred"
 
 #: libexif/canon/mnote-canon-entry.c:308
 msgid "All"
-msgstr ""
+msgstr "všetky"
 
 #: libexif/canon/mnote-canon-entry.c:310
 msgid "On (shot 1)"
-msgstr ""
+msgstr "zapnutý (záber 1)"
 
 #: libexif/canon/mnote-canon-entry.c:311
 msgid "On (shot 2)"
-msgstr ""
+msgstr "zapnutý (záber 2)"
 
 #: libexif/canon/mnote-canon-entry.c:312
 msgid "On (shot 3)"
-msgstr ""
+msgstr "zapnutý (záber 3)"
 
 #: libexif/canon/mnote-canon-entry.c:314
 msgid "EOS high-end"
-msgstr ""
+msgstr "EOS high-end"
 
 #: libexif/canon/mnote-canon-entry.c:315
 msgid "Compact"
-msgstr ""
+msgstr "kompaktný"
 
 #: libexif/canon/mnote-canon-entry.c:316
 msgid "EOS mid-range"
-msgstr ""
+msgstr "EOS mid-range"
 
 #: libexif/canon/mnote-canon-entry.c:318
 msgid "Rotate 90 CW"
-msgstr ""
+msgstr "otočiť o +90 stupňov"
 
 #: libexif/canon/mnote-canon-entry.c:319
 msgid "Rotate 180"
-msgstr ""
+msgstr "otočiť o 180 stupňov"
 
 #: libexif/canon/mnote-canon-entry.c:320
 msgid "Rotate 270 CW"
-msgstr ""
+msgstr "otočiť o +270 stupňov"
 
 #: libexif/canon/mnote-canon-entry.c:321
 msgid "Rotated by software"
-msgstr ""
+msgstr "otočenie softvérom"
 
 #: libexif/canon/mnote-canon-entry.c:331
-#, fuzzy
 msgid "Left to right"
-msgstr "pravý spodný"
+msgstr "zľava doprava"
 
 #: libexif/canon/mnote-canon-entry.c:332
-#, fuzzy
 msgid "Right to left"
-msgstr "ľavý spodný"
+msgstr "sprava doľava"
 
 #: libexif/canon/mnote-canon-entry.c:333
-#, fuzzy
 msgid "Bottom to top"
-msgstr "ľavý spodný"
+msgstr "zdola hore"
 
 #: libexif/canon/mnote-canon-entry.c:334
-#, fuzzy
 msgid "Top to bottom"
-msgstr "ľavý spodný"
+msgstr "zhora dolu"
 
 #: libexif/canon/mnote-canon-entry.c:335
 msgid "2x2 matrix (clockwise)"
-msgstr ""
+msgstr "matica 2x2 (v smere hodinových ručičiek)"
 
 #: libexif/canon/mnote-canon-entry.c:392
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: libexif/canon/mnote-canon-entry.c:477 libexif/canon/mnote-canon-entry.c:572
 #, c-format
@@ -1011,12 +960,12 @@ msgstr "%i (ms)"
 #: libexif/canon/mnote-canon-entry.c:482
 #, c-format
 msgid "%i"
-msgstr ""
+msgstr "%i"
 
 #: libexif/canon/mnote-canon-entry.c:521
-#, fuzzy, c-format
+#, c-format
 msgid "%.2f mm"
-msgstr "%.2f EV"
+msgstr "%.2f mm"
 
 #: libexif/canon/mnote-canon-entry.c:543
 #, c-format
@@ -1051,9 +1000,8 @@ msgid "Settings (second part)"
 msgstr "Nastavenia (druhá časť)"
 
 #: libexif/canon/mnote-canon-tag.c:37 libexif/pentax/mnote-pentax-entry.c:176
-#, fuzzy
 msgid "Panorama"
-msgstr "normálny"
+msgstr "Panoráma"
 
 #: libexif/canon/mnote-canon-tag.c:38
 msgid "Image type"
@@ -1084,9 +1032,8 @@ msgid "Macro mode"
 msgstr "Režim makro"
 
 #: libexif/canon/mnote-canon-tag.c:53 libexif/canon/mnote-canon-tag.c:112
-#, fuzzy
 msgid "Self-timer"
-msgstr "centimetrov"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:54 libexif/olympus/mnote-olympus-tag.c:40
 #: libexif/olympus/mnote-olympus-tag.c:94
@@ -1099,9 +1046,8 @@ msgid "Flash mode"
 msgstr "Režim blesku"
 
 #: libexif/canon/mnote-canon-tag.c:56
-#, fuzzy
 msgid "Drive mode"
-msgstr "Merací režim"
+msgstr "Jazda autom"
 
 #: libexif/canon/mnote-canon-tag.c:57 libexif/canon/mnote-canon-tag.c:77
 msgid "Focus mode"
@@ -1117,7 +1063,7 @@ msgstr "Režim jednoduchého fotenia"
 
 #: libexif/canon/mnote-canon-tag.c:60
 msgid "Digital zoom"
-msgstr ""
+msgstr "digiálne priblíženie"
 
 #: libexif/canon/mnote-canon-tag.c:61 libexif/exif-tag.c:657
 #: libexif/pentax/mnote-pentax-tag.c:45
@@ -1144,14 +1090,13 @@ msgid "Metering mode"
 msgstr "Merací režim"
 
 #: libexif/canon/mnote-canon-tag.c:66
-#, fuzzy
 msgid "Focus range"
-msgstr "Typ zaostrenia"
+msgstr "Rozsah zaostrenia"
 
+# AF = automatické zaostrenie
 #: libexif/canon/mnote-canon-tag.c:67 libexif/canon/mnote-canon-tag.c:100
-#, fuzzy
 msgid "AF point"
-msgstr "Použitý bod automatického zaostrenia"
+msgstr "bod automatického zaostrenia"
 
 #: libexif/canon/mnote-canon-tag.c:68
 msgid "Exposure mode"
@@ -1178,9 +1123,8 @@ msgid "Maximal aperture"
 msgstr "Maximálna clona"
 
 #: libexif/canon/mnote-canon-tag.c:74
-#, fuzzy
 msgid "Minimal aperture"
-msgstr "Maximálna clona"
+msgstr "Minimálna clona"
 
 #: libexif/canon/mnote-canon-tag.c:75
 msgid "Flash activity"
@@ -1190,43 +1134,40 @@ msgstr "Aktivita blesku"
 msgid "Flash details"
 msgstr "Podrobnosti blesku"
 
+# AE - automatická expozícia
 #: libexif/canon/mnote-canon-tag.c:78
 msgid "AE setting"
-msgstr ""
+msgstr "nastavenie AE"
 
 #: libexif/canon/mnote-canon-tag.c:79
-#, fuzzy
 msgid "Image stabilization"
-msgstr "Popis obrázka"
+msgstr "Stabilizácia obrazu"
 
 #: libexif/canon/mnote-canon-tag.c:80
-#, fuzzy
 msgid "Display aperture"
-msgstr "Maximálna clona"
+msgstr "Clona displeja"
 
 #: libexif/canon/mnote-canon-tag.c:81
 msgid "Zoom source width"
-msgstr ""
+msgstr "zdrojová šírka priblíženia"
 
 #: libexif/canon/mnote-canon-tag.c:82
-#, fuzzy
 msgid "Zoom target width"
-msgstr "Šírka obrázka"
+msgstr "Cieľová šírka priblíženia"
 
 #: libexif/canon/mnote-canon-tag.c:83
 msgid "Photo effect"
-msgstr ""
+msgstr "fotoefekt"
 
 #: libexif/canon/mnote-canon-tag.c:84 libexif/canon/mnote-canon-tag.c:113
 msgid "Manual flash output"
-msgstr ""
+msgstr "ručný výstup blesku"
 
 #: libexif/canon/mnote-canon-tag.c:85
 msgid "Color tone"
 msgstr "Farebný odtieň"
 
 #: libexif/canon/mnote-canon-tag.c:86
-#, fuzzy
 msgid "Focal type"
 msgstr "Typ zaostrenia"
 
@@ -1239,28 +1180,24 @@ msgid "Focal plane y size"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:90
-#, fuzzy
 msgid "Auto ISO"
-msgstr "auto"
+msgstr "auto ISO"
 
 #: libexif/canon/mnote-canon-tag.c:91
-#, fuzzy
 msgid "Shot ISO"
-msgstr "Short"
+msgstr "ISO snímku"
 
 #: libexif/canon/mnote-canon-tag.c:92
 msgid "Measured EV"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:93
-#, fuzzy
 msgid "Target aperture"
-msgstr "Maximálna clona"
+msgstr "Cieľová clona"
 
 #: libexif/canon/mnote-canon-tag.c:94
-#, fuzzy
 msgid "Target exposure time"
-msgstr "Režim expozície"
+msgstr "Cieľový čas expozície"
 
 #: libexif/canon/mnote-canon-tag.c:96
 msgid "White balance"
@@ -1271,68 +1208,62 @@ msgid "Sequence number"
 msgstr "Poradové číslo"
 
 #: libexif/canon/mnote-canon-tag.c:99
-#, fuzzy
 msgid "Flash guide number"
-msgstr "Číslo obrázka"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:101 libexif/olympus/mnote-olympus-tag.c:52
 msgid "Flash exposure compensation"
-msgstr ""
+msgstr "kompenzácia expozície blesku"
 
+# AE - automatická expozícia
 #: libexif/canon/mnote-canon-tag.c:102
-#, fuzzy
 msgid "AE bracketing"
-msgstr "automatická kompenzácia expozície"
+msgstr "uzávierka AE"
 
+# AE - automatická expozícia
 #: libexif/canon/mnote-canon-tag.c:103
-#, fuzzy
 msgid "AE bracket value"
-msgstr "automatická kompenzácia expozície"
+msgstr "hodnota uzávierky AE"
 
 #: libexif/canon/mnote-canon-tag.c:104
-#, fuzzy
 msgid "Focus distance upper"
-msgstr "Typ zaostrenia"
+msgstr "horná vzdialenosť zaostrenia"
 
 #: libexif/canon/mnote-canon-tag.c:105
 msgid "Focus distance lower"
-msgstr ""
+msgstr "dolná vzdialenosť zaostrenia"
 
 #: libexif/canon/mnote-canon-tag.c:106 libexif/exif-tag.c:297
 msgid "FNumber"
-msgstr ""
+msgstr "číslo F"
 
 #: libexif/canon/mnote-canon-tag.c:107
-#, fuzzy
 msgid "Exposure time"
-msgstr "Režim expozície"
+msgstr "Čas expozície"
 
 #: libexif/canon/mnote-canon-tag.c:108
-#, fuzzy
 msgid "Bulb duration"
-msgstr "sýtosť"
+msgstr "trvanie žiarovky"
 
 #: libexif/canon/mnote-canon-tag.c:109
-#, fuzzy
 msgid "Camera type"
-msgstr "Typ obrázka"
+msgstr "Typ fotoaparátu"
 
 #: libexif/canon/mnote-canon-tag.c:110
-#, fuzzy
 msgid "Auto rotate"
-msgstr "automatická kompenzácia expozície"
+msgstr "automatické otočenie"
 
 #: libexif/canon/mnote-canon-tag.c:111
 msgid "ND filter"
-msgstr ""
+msgstr "ND filter"
 
 #: libexif/canon/mnote-canon-tag.c:114
 msgid "Panorama frame"
-msgstr ""
+msgstr "rámec panorámy"
 
 #: libexif/canon/mnote-canon-tag.c:115
 msgid "Panorama direction"
-msgstr ""
+msgstr "smer panorámy"
 
 #: libexif/exif-byte-order.c:33
 msgid "Motorola"
@@ -1371,58 +1302,44 @@ msgid "Follow specification"
 msgstr "Dodržiavať špecifikáciu"
 
 #: libexif/exif-data.c:1125
-msgid ""
-"Add, correct and remove entries to get EXIF data that follows the "
-"specification."
-msgstr ""
-"Pridať opraviť a odstrániť záznamy, aby sme získali EXIF údaje, ktoré "
-"dodržiavajú špecifikáciu."
+msgid "Add, correct and remove entries to get EXIF data that follows the specification."
+msgstr "Pridať opraviť a odstrániť záznamy, aby sme získali EXIF údaje, ktoré dodržiavajú špecifikáciu."
 
 #: libexif/exif-data.c:1127
 msgid "Don not change maker note"
-msgstr ""
+msgstr "nemeniť značku"
 
 #: libexif/exif-data.c:1128
-msgid ""
-"When loading and resaving Exif data, save the maker note unmodified. Be "
-"aware that the maker note can get corrupted."
-msgstr ""
+msgid "When loading and resaving Exif data, save the maker note unmodified. Be aware that the maker note can get corrupted."
+msgstr "Pri načítaní a znovuukladaní EXIF údajov uložiť značku nezmenenú. Buďte si vedomý, že značka sa môže poškodiť."
 
 #: libexif/exif-entry.c:202 libexif/exif-entry.c:236
 #, c-format
-msgid ""
-"Tag '%s' was of format '%s' (which is against specification) and has been "
-"changed to format '%s'."
-msgstr ""
+msgid "Tag '%s' was of format '%s' (which is against specification) and has been changed to format '%s'."
+msgstr "Štítok '%s' ma formát '%s' (čo je proti špecifikácii) a bol zmenený na formát '%s'."
 
 #: libexif/exif-entry.c:253
 #, c-format
-msgid ""
-"Tag 'UserComment' had invalid format '%s'. Format has been set to "
-"'undefined'."
-msgstr ""
+msgid "Tag 'UserComment' had invalid format '%s'. Format has been set to 'undefined'."
+msgstr "Štítok 'UserComment' mal neplatný formát '%s'. Formát bol zmenený na 'nedefinovaný'."
 
 #: libexif/exif-entry.c:280
-msgid ""
-"Tag 'UserComment' has been expanded to at least 8 bytes in order to follow "
-"the specification."
-msgstr ""
+msgid "Tag 'UserComment' has been expanded to at least 8 bytes in order to follow the specification."
+msgstr "Štítok 'UserComment' bol rozšírený na aspoň 8 bajtov, aby podliehal špecifikácii."
 
 #: libexif/exif-entry.c:322
-msgid ""
-"Tag 'UserComment' did not start with format identifier. This has been fixed."
-msgstr ""
+msgid "Tag 'UserComment' did not start with format identifier. This has been fixed."
+msgstr "Štítok 'UserComment' nezačínal identifikátorom formátu. Toto bolo opravené."
 
 #: libexif/exif-entry.c:360
 #, c-format
 msgid "The tag '%s' contains data of an invalid format ('%s', expected '%s')."
-msgstr ""
+msgstr "Štítok '%s' obsahuje údaje neplatného formátu ('%s', očakávalo sa '%s')."
 
 #: libexif/exif-entry.c:373
 #, c-format
-msgid ""
-"The tag '%s' contains an invalid number of components (%i, expected %i)."
-msgstr ""
+msgid "The tag '%s' contains an invalid number of components (%i, expected %i)."
+msgstr "Štítok '%s' obsahuje neplatný počet zložiek (%i, očakávalo sa %i)."
 
 #: libexif/exif-entry.c:386
 msgid "chunky format"
@@ -1499,29 +1416,27 @@ msgstr "stredný"
 
 #: libexif/exif-entry.c:397
 msgid "co-sited"
-msgstr ""
+msgstr "spolu umiestnený"
 
 #: libexif/exif-entry.c:399
 msgid "Reversed mono"
-msgstr ""
+msgstr "obrátené mono"
 
 #: libexif/exif-entry.c:399
-#, fuzzy
 msgid "Normal mono"
-msgstr "normálny"
+msgstr "normálny mono"
 
 #: libexif/exif-entry.c:399
 msgid "RGB"
 msgstr "RGB"
 
 #: libexif/exif-entry.c:399
-#, fuzzy
 msgid "Palette"
-msgstr "vzorka"
+msgstr "paleta"
 
 #: libexif/exif-entry.c:400
 msgid "CMYK"
-msgstr ""
+msgstr "CMYK"
 
 #: libexif/exif-entry.c:400
 msgid "YCbCr"
@@ -1529,7 +1444,7 @@ msgstr "YCbCr"
 
 #: libexif/exif-entry.c:400
 msgid "CieLAB"
-msgstr ""
+msgstr "CieLAB"
 
 #: libexif/exif-entry.c:402
 msgid "Normal process"
@@ -1643,14 +1558,12 @@ msgid "JPEG compression"
 msgstr "JPEG kompresia"
 
 #: libexif/exif-entry.c:442
-#, fuzzy
 msgid "Deflate/ZIP compression"
-msgstr "LZW kompresia"
+msgstr "Deflate/ZIP kompresia"
 
 #: libexif/exif-entry.c:443
-#, fuzzy
 msgid "PackBits compression"
-msgstr "JPEG kompresia"
+msgstr "PackBits kompresia"
 
 #: libexif/exif-entry.c:447 libexif/olympus/mnote-olympus-entry.c:118
 #: libexif/pentax/mnote-pentax-entry.c:97
@@ -1797,7 +1710,7 @@ msgstr "áno"
 
 #: libexif/exif-entry.c:493
 msgid "Strobe return light not detected."
-msgstr "Vracajúci sa impulz svetla nebol detegovaný."
+msgstr "Vracajúci sa impulz svetla nebol detekovaný."
 
 #: libexif/exif-entry.c:493
 msgid "W/o strobe"
@@ -1805,31 +1718,25 @@ msgstr "Bez impulzného svetla"
 
 #: libexif/exif-entry.c:495
 msgid "Strobe return light detected."
-msgstr "Vracajúci sa impulz svetla bol detegovaný."
+msgstr "Vracajúci sa impulz svetla bol detekovaný."
 
 #: libexif/exif-entry.c:495
 msgid "W. strobe"
 msgstr "S impulzným svetlom"
 
 #: libexif/exif-entry.c:497
-#, fuzzy
 msgid "Flash fired, compulsory flash mode."
-msgstr "Blesk sa spustil, povinný režim blesku"
+msgstr "Blesk sa spustil, povinný režim blesku."
 
 #: libexif/exif-entry.c:498
-#, fuzzy
 msgid "Flash fired, compulsory flash mode, return light not detected."
-msgstr ""
-"Blesk sa spustil, povinný režim blesku, vracajúce sa svetlo nedetegované."
+msgstr "Blesk sa spustil, povinný režim blesku, vracajúce sa svetlo nedetekované."
 
 #: libexif/exif-entry.c:500
-#, fuzzy
 msgid "Flash fired, compulsory flash mode, return light detected."
-msgstr ""
-"Blesk sa spustil, povinný režim blesku, vracajúce sa svetlo detegované."
+msgstr "Blesk sa spustil, povinný režim blesku, vracajúce sa svetlo detekované."
 
 #: libexif/exif-entry.c:502
-#, fuzzy
 msgid "Flash did not fire, compulsory flash mode."
 msgstr "Blesk sa nespustil, povinný režim blesku."
 
@@ -1843,13 +1750,11 @@ msgstr "Blesk sa spustil, automatický režim blesku."
 
 #: libexif/exif-entry.c:505
 msgid "Flash fired, auto mode, return light not detected."
-msgstr ""
-"Blesk sa spustil, automatický režim blesku, vracajúce sa svetlo nedetegované."
+msgstr "Blesk sa spustil, automatický režim blesku, vracajúce sa svetlo nedetekované."
 
 #: libexif/exif-entry.c:507
 msgid "Flash fired, auto mode, return light detected."
-msgstr ""
-"Blesk sa spustil, automatický režim blesku, vracajúce sa svetlo detegované."
+msgstr "Blesk sa spustil, automatický režim blesku, vracajúce sa svetlo detekované."
 
 #: libexif/exif-entry.c:508
 msgid "No flash function."
@@ -1857,63 +1762,43 @@ msgstr "Bez funkcie blesku."
 
 #: libexif/exif-entry.c:509
 msgid "Flash fired, red-eye reduction mode."
-msgstr "Blesk sa spustil, režim redukcie červených očí."
+msgstr "Blesk sa spustil, redukcia červených očí."
 
 #: libexif/exif-entry.c:510
 msgid "Flash fired, red-eye reduction mode, return light not detected."
-msgstr ""
-"Blesk sa spustil, režim redukcie červených očí, vracajúce sa svetlo "
-"nedetegované."
+msgstr "Blesk sa spustil, redukcia červených očí, vracajúce sa svetlo nedetekované."
 
 #: libexif/exif-entry.c:512
 msgid "Flash fired, red-eye reduction mode, return light detected."
-msgstr ""
-"Blesk sa spustil, režim redukcie červených očí, vracajúce sa svetlo "
-"detegované."
+msgstr "Blesk sa spustil, redukcia červených očí, vracajúce sa svetlo detekované."
 
 #: libexif/exif-entry.c:514
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode."
-msgstr "Blesk sa spustil, povinný režim blesku, režim redukcie červených očí."
+msgstr "Blesk sa spustil, povinný režim blesku, redukcia červených očí."
 
 #: libexif/exif-entry.c:516
-msgid ""
-"Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
-"detected."
-msgstr ""
-"Blesk sa spustil, povinný režim blesku, režim redukcie červených očí, "
-"vracajúce sa svetlo nedetegované."
+msgid "Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected."
+msgstr "Blesk sa spustil, povinný režim blesku, redukcia červených očí, vracajúce sa svetlo nedetekované."
 
 #: libexif/exif-entry.c:518
-#, fuzzy
-msgid ""
-"Flash fired, compulsory flash mode, red-eye reduction mode, return light "
-"detected."
-msgstr ""
-"Blesk sa spustil, povinný režim blesku, režim redukcie červených očí, "
-"vracajúce sa svetlo nedetegované."
+msgid "Flash fired, compulsory flash mode, red-eye reduction mode, return light detected."
+msgstr "Blesk sa spustil, povinný režim blesku, redukcia červených očí, vracajúce sa svetlo nedetekované."
 
 #: libexif/exif-entry.c:520
 msgid "Flash did not fire, auto mode, red-eye reduction mode."
-msgstr ""
-"Blesk sa nespustil, automatický režim blesku, režim redukcie červených očí."
+msgstr "Blesk sa nespustil, automatický režim, redukcia červených očí."
 
 #: libexif/exif-entry.c:521
 msgid "Flash fired, auto mode, red-eye reduction mode."
-msgstr ""
-"Blesk sa spustil, automatický režim blesku, režim redukcie červených očí."
+msgstr "Blesk sa spustil, automatický režim, redukcia červených očí."
 
 #: libexif/exif-entry.c:522
-msgid ""
-"Flash fired, auto mode, return light not detected, red-eye reduction mode."
-msgstr ""
-"Blesk sa nespustil, automatický režim blesku, vracajúce sa svetlo "
-"nedetegované, režim redukcie červených očí."
+msgid "Flash fired, auto mode, return light not detected, red-eye reduction mode."
+msgstr "Blesk sa nespustil, automatický režim blesku, vracajúce sa svetlo nedetekované, redukcia červených očí."
 
 #: libexif/exif-entry.c:524
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode."
-msgstr ""
-"Blesk sa nespustil, automatický režim blesku, vracajúce sa svetlo "
-"detegované, režim redukcie červených očí."
+msgstr "Blesk sa nespustil, automatický režim blesku, vracajúce sa svetlo detekované, redukcia červených očí."
 
 #: libexif/exif-entry.c:528
 msgid "?"
@@ -1967,7 +1852,7 @@ msgstr "Značka UserComment nezodpovedá štandardu, ale obsahuje údaje."
 #: libexif/exif-entry.c:646
 #, c-format
 msgid "Byte at position %i: 0x%02x"
-msgstr ""
+msgstr "bajt na pozícii %i: 0x%02x"
 
 #: libexif/exif-entry.c:655
 msgid "Unknown Exif Version"
@@ -2006,14 +1891,14 @@ msgstr "(redaktor)"
 
 #: libexif/exif-entry.c:720 libexif/exif-entry.c:789 libexif/exif-entry.c:809
 #: libexif/exif-entry.c:847
-#, fuzzy, c-format
+#, c-format
 msgid "%.02f EV"
-msgstr "%.2f EV"
+msgstr "%.02f EV"
 
 #: libexif/exif-entry.c:721
 #, c-format
 msgid " (f/%.01f)"
-msgstr ""
+msgstr " (f/%.01f)"
 
 #: libexif/exif-entry.c:752
 #, c-format
@@ -2025,19 +1910,19 @@ msgid " sec."
 msgstr " sek."
 
 #: libexif/exif-entry.c:795
-#, fuzzy, c-format
+#, c-format
 msgid " 1/%d sec.)"
-msgstr " sek."
+msgstr " 1/%d sek.)"
 
 #: libexif/exif-entry.c:797
-#, fuzzy, c-format
+#, c-format
 msgid " %d sec.)"
-msgstr " sek."
+msgstr " %d sek.)"
 
 #: libexif/exif-entry.c:810
 #, c-format
 msgid " (%.02f cd/m^2)"
-msgstr ""
+msgstr " (%.02f cd/m^2)"
 
 #: libexif/exif-entry.c:819
 msgid "DSC"
@@ -2199,81 +2084,48 @@ msgid "A general indication of the kind of data contained in this subfile."
 msgstr "Všeobecná indikácia údajov obsiahnutých v tomto podsúbore."
 
 #: libexif/exif-tag.c:53
-msgid ""
-"Indicates the identification of the Interoperability rule. Use \"R98\" for "
-"stating ExifR98 Rules. Four bytes used including the termination code "
-"(NULL). see the separate volume of Recommended Exif Interoperability Rules "
-"(ExifR98) for other tags used for ExifR98."
-msgstr ""
-"Indikuje identifkáciu Pravidla interoperability. Použite \"R98\" pre "
-"vyhlásenie pravidiel ExifR98. Použité štyri bajty vrátane ukončovacieho "
-"znaku (NULL). Ďalšie značky použité v ExifR98 nájdete v samostatnom zväzku "
-"Recommended Exif Interoperability Rules (ExifR98)."
+msgid "Indicates the identification of the Interoperability rule. Use \"R98\" for stating ExifR98 Rules. Four bytes used including the termination code (NULL). see the separate volume of Recommended Exif Interoperability Rules (ExifR98) for other tags used for ExifR98."
+msgstr "Indikuje identifkáciu Pravidla interoperability. Použite \"R98\" pre vyhlásenie pravidiel ExifR98. Použité štyri bajty vrátane ukončovacieho znaku (NULL). Ďalšie značky použité v ExifR98 nájdete v samostatnom zväzku Recommended Exif Interoperability Rules (ExifR98)."
 
 #: libexif/exif-tag.c:62
 msgid "Image Width"
 msgstr "Šírka obrázka"
 
 #: libexif/exif-tag.c:63
-msgid ""
-"The number of columns of image data, equal to the number of pixels per row. "
-"In JPEG compressed data a JPEG marker is used instead of this tag."
-msgstr ""
-"Počet stĺpcov obrazových údajov rovný počtu pixelov na riadok. V JPEG "
-"komprimovaných dátach sa namiesto tejto značky používa JPEG značka."
+msgid "The number of columns of image data, equal to the number of pixels per row. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgstr "Počet stĺpcov obrazových údajov rovný počtu pixelov na riadok. V JPEG komprimovaných dátach sa namiesto tejto značky používa JPEG značka."
 
 #: libexif/exif-tag.c:67
 msgid "Image Length"
 msgstr "Dĺžka obrázka"
 
 #: libexif/exif-tag.c:68
-msgid ""
-"The number of rows of image data. In JPEG compressed data a JPEG marker is "
-"used instead of this tag."
-msgstr ""
-"Počet riadkov obrazových údajov rovný počtu pixelov na stĺpec. V JPEG "
-"komprimovaných dátach sa namiesto tejto značky používa JPEG značka."
+msgid "The number of rows of image data. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgstr "Počet riadkov obrazových údajov rovný počtu pixelov na stĺpec. V JPEG komprimovaných dátach sa namiesto tejto značky používa JPEG značka."
 
 #: libexif/exif-tag.c:71
 msgid "Bits per Sample"
 msgstr "Bitov na vzorku"
 
 #: libexif/exif-tag.c:72
-msgid ""
-"The number of bits per image component. In this standard each component of "
-"the image is 8 bits, so the value for this tag is 8. See also "
-"<SamplesPerPixel>. In JPEG compressed data a JPEG marker is used instead of "
-"this tag."
-msgstr ""
-"Počet bitov na obrazovú zložku. V tomto štandarde má každá zložka 8 bitov, "
-"takže hodnota tejto značky je 8. Pozri aj <SamplesPerPixel>. V JPEG "
-"komprimovaných dátach sa namiesto tejto značky používa JPEG značka."
+msgid "The number of bits per image component. In this standard each component of the image is 8 bits, so the value for this tag is 8. See also <SamplesPerPixel>. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgstr "Počet bitov na obrazovú zložku. V tomto štandarde má každá zložka 8 bitov, takže hodnota tejto značky je 8. Pozri aj <SamplesPerPixel>. V JPEG komprimovaných dátach sa namiesto tejto značky používa JPEG značka."
 
 #: libexif/exif-tag.c:77
 msgid "Compression"
 msgstr "Kompresia"
 
 #: libexif/exif-tag.c:78
-msgid ""
-"The compression scheme used for the image data. When a primary image is JPEG "
-"compressed, this designation is not necessary and is omitted. When "
-"thumbnails use JPEG compression, this tag value is set to 6."
-msgstr ""
-"Kompresná schéma použitá na obrazové dáta. Keď je primárny obrázok "
-"komprimovaný ako JPEG, toto určenie nie je potrebné a vynecháva sa. Ak "
-"náhľady používajú JPEG kompresiu, hodnota tejto značky je 6."
+msgid "The compression scheme used for the image data. When a primary image is JPEG compressed, this designation is not necessary and is omitted. When thumbnails use JPEG compression, this tag value is set to 6."
+msgstr "Kompresná schéma použitá na obrazové dáta. Keď je primárny obrázok komprimovaný ako JPEG, toto určenie nie je potrebné a vynecháva sa. Ak náhľady používajú JPEG kompresiu, hodnota tejto značky je 6."
 
 #: libexif/exif-tag.c:84
 msgid "Photometric Interpretation"
 msgstr "Fotometrická interpretácia"
 
 #: libexif/exif-tag.c:85
-msgid ""
-"The pixel composition. In JPEG compressed data a JPEG marker is used instead "
-"of this tag."
-msgstr ""
-"Kompozícia pixelov. V JPEG komprimovaných dátach sa namiesto tejto značky "
-"používa JPEG značka."
+msgid "The pixel composition. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgstr "Kompozícia pixelov. V JPEG komprimovaných dátach sa namiesto tejto značky používa JPEG značka."
 
 #: libexif/exif-tag.c:88
 msgid "Fill Order"
@@ -2288,55 +2140,31 @@ msgid "Image Description"
 msgstr "Popis obrázka"
 
 #: libexif/exif-tag.c:92
-msgid ""
-"A character string giving the title of the image. It may be a comment such "
-"as \"1988 company picnic\" or the like. Two-bytes character codes cannot be "
-"used. When a 2-bytes code is necessary, the Exif Private tag <UserComment> "
-"is to be used."
-msgstr ""
-"Znakový reťazec udávajúci nadpis obrázka. Môže to byť komentár ako \"rodinný "
-"piknik 1988\" alebo podobne. Dvojbajtové znakové sady nie je možné použiť. "
-"Keď je potrebná dvojbajtová znaková sada, použite Privátnu značku Exif "
-"<UserComment>."
+msgid "A character string giving the title of the image. It may be a comment such as \"1988 company picnic\" or the like. Two-bytes character codes cannot be used. When a 2-bytes code is necessary, the Exif Private tag <UserComment> is to be used."
+msgstr "Znakový reťazec udávajúci nadpis obrázka. Môže to byť komentár ako \"rodinný piknik 1988\" alebo podobne. Dvojbajtové znakové sady nie je možné použiť. Keď je potrebná dvojbajtová znaková sada, použite Privátnu značku Exif <UserComment>."
 
 #: libexif/exif-tag.c:98
 msgid "Manufacturer"
 msgstr "Výrobca"
 
 #: libexif/exif-tag.c:99
-msgid ""
-"The manufacturer of the recording equipment. This is the manufacturer of the "
-"DSC, scanner, video digitizer or other equipment that generated the image. "
-"When the field is left blank, it is treated as unknown."
-msgstr ""
-"Výrobca záznamového zariadenia. Toto je výrobca digitálneho fotoaparátu, "
-"skenera, videodigitalizátora alebo iného zariadenia, ktoré vytvorilo "
-"obrázok. Keď je pole prázdne, výrobca je neznámy."
+msgid "The manufacturer of the recording equipment. This is the manufacturer of the DSC, scanner, video digitizer or other equipment that generated the image. When the field is left blank, it is treated as unknown."
+msgstr "Výrobca záznamového zariadenia. Toto je výrobca digitálneho fotoaparátu, skenera, videodigitalizátora alebo iného zariadenia, ktoré vytvorilo obrázok. Keď je pole prázdne, výrobca je neznámy."
 
 #: libexif/exif-tag.c:105
 msgid "Model"
 msgstr "Model"
 
 #: libexif/exif-tag.c:106
-msgid ""
-"The model name or model number of the equipment. This is the model name or "
-"number of the DSC, scanner, video digitizer or other equipment that "
-"generated the image. When the field is left blank, it is treated as unknown."
-msgstr ""
-"Názov alebo číslo modelu zariadenia. Toto je model digitálneho fotoaparátu, "
-"skenera, videodigitalizátora alebo iného zariadenia, ktoré vytvorilo "
-"obrázok. Keď je pole prázdne, model je neznámy."
+msgid "The model name or model number of the equipment. This is the model name or number of the DSC, scanner, video digitizer or other equipment that generated the image. When the field is left blank, it is treated as unknown."
+msgstr "Názov alebo číslo modelu zariadenia. Toto je model digitálneho fotoaparátu, skenera, videodigitalizátora alebo iného zariadenia, ktoré vytvorilo obrázok. Keď je pole prázdne, model je neznámy."
 
 #: libexif/exif-tag.c:111
 msgid "Strip Offsets"
 msgstr ""
 
 #: libexif/exif-tag.c:112
-msgid ""
-"For each strip, the byte offset of that strip. It is recommended that this "
-"be selected so the number of strip bytes does not exceed 64 Kbytes. With "
-"JPEG compressed data this designation is not needed and is omitted. See also "
-"<RowsPerStrip> and <StripByteCounts>."
+msgid "For each strip, the byte offset of that strip. It is recommended that this be selected so the number of strip bytes does not exceed 64 Kbytes. With JPEG compressed data this designation is not needed and is omitted. See also <RowsPerStrip> and <StripByteCounts>."
 msgstr ""
 
 #: libexif/exif-tag.c:118
@@ -2352,25 +2180,15 @@ msgid "Samples per Pixel"
 msgstr "Vzoriek na pixel"
 
 #: libexif/exif-tag.c:123
-msgid ""
-"The number of components per pixel. Since this standard applies to RGB and "
-"YCbCr images, the value set for this tag is 3. In JPEG compressed data a "
-"JPEG marker is used instead of this tag."
-msgstr ""
-"Počet zložiek na pixel. Keďže tento štandard sa vzťahuje na RGB a YCbCr "
-"obrázky, hodnota tejto značny je 3. V JPEG komprimovaných dátach sa namiesto "
-"tejto značky používa JPEG značka."
+msgid "The number of components per pixel. Since this standard applies to RGB and YCbCr images, the value set for this tag is 3. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgstr "Počet zložiek na pixel. Keďže tento štandard sa vzťahuje na RGB a YCbCr obrázky, hodnota tejto značny je 3. V JPEG komprimovaných dátach sa namiesto tejto značky používa JPEG značka."
 
 #: libexif/exif-tag.c:128
 msgid "Rows per Strip"
 msgstr ""
 
 #: libexif/exif-tag.c:129
-msgid ""
-"The number of rows per strip. This is the number of rows in the image of one "
-"strip when an image is divided into strips. With JPEG compressed data this "
-"designation is not needed and is omitted. See also <StripOffsets> and "
-"<StripByteCounts>."
+msgid "The number of rows per strip. This is the number of rows in the image of one strip when an image is divided into strips. With JPEG compressed data this designation is not needed and is omitted. See also <StripOffsets> and <StripByteCounts>."
 msgstr ""
 
 #: libexif/exif-tag.c:135
@@ -2378,9 +2196,7 @@ msgid "Strip Byte Count"
 msgstr ""
 
 #: libexif/exif-tag.c:136
-msgid ""
-"The total number of bytes in each strip. With JPEG compressed data this "
-"designation is not needed and is omitted."
+msgid "The total number of bytes in each strip. With JPEG compressed data this designation is not needed and is omitted."
 msgstr ""
 
 #: libexif/exif-tag.c:139
@@ -2388,139 +2204,80 @@ msgid "x-Resolution"
 msgstr "Horizontálne rozlíšenie"
 
 #: libexif/exif-tag.c:140
-msgid ""
-"The number of pixels per <ResolutionUnit> in the <ImageWidth> direction. "
-"When the image resolution is unknown, 72 [dpi] is designated."
-msgstr ""
-"Počet pixelov na <ResolutionUnit> v smere <ImageWidth>. Keď je rozlíšenie "
-"obrázka neznáme, použije sa 72 [dpi]."
+msgid "The number of pixels per <ResolutionUnit> in the <ImageWidth> direction. When the image resolution is unknown, 72 [dpi] is designated."
+msgstr "Počet pixelov na <ResolutionUnit> v smere <ImageWidth>. Keď je rozlíšenie obrázka neznáme, použije sa 72 [dpi]."
 
 #: libexif/exif-tag.c:144
 msgid "y-Resolution"
 msgstr "Vertikálne rozlíšenie"
 
 #: libexif/exif-tag.c:145
-msgid ""
-"The number of pixels per <ResolutionUnit> in the <ImageLength> direction. "
-"The same value as <XResolution> is designated."
-msgstr ""
-"Počet pixelov na <ResolutionUnit> v smere <ImageLength>. Použije sa rovnaká "
-"hodnota ako <XResolution>."
+msgid "The number of pixels per <ResolutionUnit> in the <ImageLength> direction. The same value as <XResolution> is designated."
+msgstr "Počet pixelov na <ResolutionUnit> v smere <ImageLength>. Použije sa rovnaká hodnota ako <XResolution>."
 
 #: libexif/exif-tag.c:149
 msgid "Planar Configuration"
 msgstr "Rovinná konfigurácia"
 
 #: libexif/exif-tag.c:150
-msgid ""
-"Indicates whether pixel components are recorded in a chunky or planar "
-"format. In JPEG compressed files a JPEG marker is used instead of this tag. "
-"If this field does not exist, the TIFF default of 1 (chunky) is assumed."
-msgstr ""
-"Indikuje, či sa obrazové zložky zaznamenávajú v kúskovom alebo rovinnom "
-"formáte. V JPEG komprimovaných dátach sa namiesto tejto značky používa JPEG "
-"značka. Ak toto pole neexistuje, štandardná hodnota pre TIFF sa predpokladá "
-"1 (kúskový)."
+msgid "Indicates whether pixel components are recorded in a chunky or planar format. In JPEG compressed files a JPEG marker is used instead of this tag. If this field does not exist, the TIFF default of 1 (chunky) is assumed."
+msgstr "Indikuje, či sa obrazové zložky zaznamenávajú v kúskovom alebo rovinnom formáte. V JPEG komprimovaných dátach sa namiesto tejto značky používa JPEG značka. Ak toto pole neexistuje, štandardná hodnota pre TIFF sa predpokladá 1 (kúskový)."
 
 #: libexif/exif-tag.c:155
 msgid "Resolution Unit"
 msgstr "Jednotka rozlíšenia"
 
 #: libexif/exif-tag.c:156
-msgid ""
-"The unit for measuring <XResolution> and <YResolution>. The same unit is "
-"used for both <XResolution> and <YResolution>. If the image resolution is "
-"unknown, 2 (inches) is designated."
-msgstr ""
-"Jednotka pre meranie <XResolution> and <YResolution>. Rovnaká jednotka sa "
-"používa pre <XResolution> aj <YResolution>. Ak je rozlíšenie obrázka "
-"neznáme, použije sa 2 (palce)."
+msgid "The unit for measuring <XResolution> and <YResolution>. The same unit is used for both <XResolution> and <YResolution>. If the image resolution is unknown, 2 (inches) is designated."
+msgstr "Jednotka pre meranie <XResolution> and <YResolution>. Rovnaká jednotka sa používa pre <XResolution> aj <YResolution>. Ak je rozlíšenie obrázka neznáme, použije sa 2 (palce)."
 
 #: libexif/exif-tag.c:161
 msgid "Transfer Function"
 msgstr "Prenosová funkcia"
 
 #: libexif/exif-tag.c:162
-msgid ""
-"A transfer function for the image, described in tabular style. Normally this "
-"tag is not necessary, since color space is specified in the color space "
-"information tag (<ColorSpace>)."
-msgstr ""
-"Prenosová funkcia obrázka, popísaná tabuľkou. Bežne táto značka nie je "
-"potrebná, keďže farebný priestor je uvedený v informačnej značke farebného "
-"priestoru (<ColorSpace>)."
+msgid "A transfer function for the image, described in tabular style. Normally this tag is not necessary, since color space is specified in the color space information tag (<ColorSpace>)."
+msgstr "Prenosová funkcia obrázka, popísaná tabuľkou. Bežne táto značka nie je potrebná, keďže farebný priestor je uvedený v informačnej značke farebného priestoru (<ColorSpace>)."
 
 #: libexif/exif-tag.c:166
 msgid "Software"
 msgstr "Softvér"
 
 #: libexif/exif-tag.c:167
-msgid ""
-"This tag records the name and version of the software or firmware of the "
-"camera or image input device used to generate the image. The detailed format "
-"is not specified, but it is recommended that the example shown below be "
-"followed. When the field is left blank, it is treated as unknown."
-msgstr ""
-"Táto značka zaznamenáva názov a verziu softvéru alebo firmvéru fotoaparátu "
-"alebo zariadenia, ktoré bolo použité pri tvorbe obrázka. Podrobný formát nie "
-"je špecifikovaný, ale odporúča sa dodržiavať formát ako v doluuvedenom "
-"príklade. Keď je pole prázdne, verzia je neznáma."
+msgid "This tag records the name and version of the software or firmware of the camera or image input device used to generate the image. The detailed format is not specified, but it is recommended that the example shown below be followed. When the field is left blank, it is treated as unknown."
+msgstr "Táto značka zaznamenáva názov a verziu softvéru alebo firmvéru fotoaparátu alebo zariadenia, ktoré bolo použité pri tvorbe obrázka. Podrobný formát nie je špecifikovaný, ale odporúča sa dodržiavať formát ako v doluuvedenom príklade. Keď je pole prázdne, verzia je neznáma."
 
 #: libexif/exif-tag.c:174
 msgid "Date and Time"
 msgstr "Dátum a čas"
 
 #: libexif/exif-tag.c:175
-msgid ""
-"The date and time of image creation. In this standard (EXIF-2.1) it is the "
-"date and time the file was changed."
-msgstr ""
-"Dátum a čas vytvorenia obrázka. V tomto štandarde (EXIF-2.1) je to dátum a "
-"čas zmeny súboru."
+msgid "The date and time of image creation. In this standard (EXIF-2.1) it is the date and time the file was changed."
+msgstr "Dátum a čas vytvorenia obrázka. V tomto štandarde (EXIF-2.1) je to dátum a čas zmeny súboru."
 
 #: libexif/exif-tag.c:178
 msgid "Artist"
 msgstr "Umelec"
 
 #: libexif/exif-tag.c:179
-msgid ""
-"This tag records the name of the camera owner, photographer or image "
-"creator. The detailed format is not specified, but it is recommended that "
-"the information be written as in the example below for ease of "
-"Interoperability. When the field is left blank, it is treated as unknown."
-msgstr ""
-"Táto značka zaznamenáva vlastníka fotoaparátu, fotografaa alebo tvorcu "
-"obrázka. Presný formát nie je špecifikovaný, ale odporúča sa, aby kvôli "
-"interoperabilite bola informácia zapísaná ako v doluuvedenom príklade. Keď "
-"je pole prázdne, umelec je neznámy."
+msgid "This tag records the name of the camera owner, photographer or image creator. The detailed format is not specified, but it is recommended that the information be written as in the example below for ease of Interoperability. When the field is left blank, it is treated as unknown."
+msgstr "Táto značka zaznamenáva vlastníka fotoaparátu, fotografaa alebo tvorcu obrázka. Presný formát nie je špecifikovaný, ale odporúča sa, aby kvôli interoperabilite bola informácia zapísaná ako v doluuvedenom príklade. Keď je pole prázdne, umelec je neznámy."
 
 #: libexif/exif-tag.c:185
 msgid "White Point"
 msgstr "Biely bod"
 
 #: libexif/exif-tag.c:186
-msgid ""
-"The chromaticity of the white point of the image. Normally this tag is not "
-"necessary, since color space is specified in the colorspace information tag "
-"(<ColorSpace>)."
-msgstr ""
-"Chromaticita bieleho bodu obrázka. Bežne nie je táto značka potrebná, keďže "
-"farebný priestor je uvedený v informačnej značke farebného priestoru "
-"(<ColorSpace>)."
+msgid "The chromaticity of the white point of the image. Normally this tag is not necessary, since color space is specified in the colorspace information tag (<ColorSpace>)."
+msgstr "Chromaticita bieleho bodu obrázka. Bežne nie je táto značka potrebná, keďže farebný priestor je uvedený v informačnej značke farebného priestoru (<ColorSpace>)."
 
 #: libexif/exif-tag.c:191
 msgid "Primary Chromaticities"
 msgstr "Priárne chromaticity"
 
 #: libexif/exif-tag.c:192
-msgid ""
-"The chromaticity of the three primary colors of the image. Normally this tag "
-"is not necessary, since colorspace is specified in the colorspace "
-"information tag (<ColorSpace>)."
-msgstr ""
-"Chromaticity troch primárnych farieb obrázka. Bežne nie je táto značka "
-"potrebná, keďže farebný priestor je uvedený v informačnej značke farebného "
-"priestoru (<ColorSpace>)."
+msgid "The chromaticity of the three primary colors of the image. Normally this tag is not necessary, since colorspace is specified in the colorspace information tag (<ColorSpace>)."
+msgstr "Chromaticity troch primárnych farieb obrázka. Bežne nie je táto značka potrebná, keďže farebný priestor je uvedený v informačnej značke farebného priestoru (<ColorSpace>)."
 
 #: libexif/exif-tag.c:196
 msgid "Transfer Range"
@@ -2535,9 +2292,7 @@ msgid "JPEG Interchange Format"
 msgstr ""
 
 #: libexif/exif-tag.c:202
-msgid ""
-"The offset to the start byte (SOI) of JPEG compressed thumbnail data. This "
-"is not used for primary image JPEG data."
+msgid "The offset to the start byte (SOI) of JPEG compressed thumbnail data. This is not used for primary image JPEG data."
 msgstr ""
 
 #: libexif/exif-tag.c:207
@@ -2545,12 +2300,7 @@ msgid "JPEG Interchange Format Length"
 msgstr ""
 
 #: libexif/exif-tag.c:208
-msgid ""
-"The number of bytes of JPEG compressed thumbnail data. This is not used for "
-"primary image JPEG data. JPEG thumbnails are not divided but are recorded as "
-"a continuous JPEG bitstream from SOI to EOI. Appn and COM markers should not "
-"be recorded. Compressed thumbnails must be recorded in no more than 64 "
-"Kbytes, including all other data to be recorded in APP1."
+msgid "The number of bytes of JPEG compressed thumbnail data. This is not used for primary image JPEG data. JPEG thumbnails are not divided but are recorded as a continuous JPEG bitstream from SOI to EOI. Appn and COM markers should not be recorded. Compressed thumbnails must be recorded in no more than 64 Kbytes, including all other data to be recorded in APP1."
 msgstr ""
 
 #: libexif/exif-tag.c:217
@@ -2558,12 +2308,7 @@ msgid "YCbCr Coefficients"
 msgstr ""
 
 #: libexif/exif-tag.c:218
-msgid ""
-"The matrix coefficients for transformation from RGB to YCbCr image data. No "
-"default is given in TIFF; but here the value given in Appendix E, \"Color "
-"Space Guidelines\", is used as the default. The color space is declared in a "
-"color space information tag, with the default being the value that gives the "
-"optimal image characteristics Interoperability this condition."
+msgid "The matrix coefficients for transformation from RGB to YCbCr image data. No default is given in TIFF; but here the value given in Appendix E, \"Color Space Guidelines\", is used as the default. The color space is declared in a color space information tag, with the default being the value that gives the optimal image characteristics Interoperability this condition."
 msgstr ""
 
 #: libexif/exif-tag.c:227
@@ -2571,9 +2316,7 @@ msgid "YCbCr Sub-Sampling"
 msgstr ""
 
 #: libexif/exif-tag.c:228
-msgid ""
-"The sampling ratio of chrominance components in relation to the luminance "
-"component. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgid "The sampling ratio of chrominance components in relation to the luminance component. In JPEG compressed data a JPEG marker is used instead of this tag."
 msgstr ""
 
 #: libexif/exif-tag.c:233
@@ -2581,18 +2324,7 @@ msgid "YCbCr Positioning"
 msgstr ""
 
 #: libexif/exif-tag.c:234
-msgid ""
-"The position of chrominance components in relation to the luminance "
-"component. This field is designated only for JPEG compressed data or "
-"uncompressed YCbCr data. The TIFF default is 1 (centered); but when Y:Cb:Cr "
-"= 4:2:2 it is recommended in this standard that 2 (co-sited) be used to "
-"record data, in order to improve the image quality when viewed on TV "
-"systems. When this field does not exist, the reader shall assume the TIFF "
-"default. In the case of Y:Cb:Cr = 4:2:0, the TIFF default (centered) is "
-"recommended. If the reader does not have the capability of supporting both "
-"kinds of <YCbCrPositioning>, it shall follow the TIFF default regardless of "
-"the value in this field. It is preferable that readers be able to support "
-"both centered and co-sited positioning."
+msgid "The position of chrominance components in relation to the luminance component. This field is designated only for JPEG compressed data or uncompressed YCbCr data. The TIFF default is 1 (centered); but when Y:Cb:Cr = 4:2:2 it is recommended in this standard that 2 (co-sited) be used to record data, in order to improve the image quality when viewed on TV systems. When this field does not exist, the reader shall assume the TIFF default. In the case of Y:Cb:Cr = 4:2:0, the TIFF default (centered) is recommended. If the reader does not have the capability of supporting both kinds of <YCbCrPositioning>, it shall follow the TIFF default regardless of the value in this field. It is preferable that readers be able to support both centered and co-sited positioning."
 msgstr ""
 
 #: libexif/exif-tag.c:249
@@ -2600,58 +2332,35 @@ msgid "Reference Black/White"
 msgstr ""
 
 #: libexif/exif-tag.c:250
-msgid ""
-"The reference black point value and reference white point value. No defaults "
-"are given in TIFF, but the values below are given as defaults here. The "
-"color space is declared in a color space information tag, with the default "
-"being the value that gives the optimal image characteristics "
-"Interoperability these conditions."
+msgid "The reference black point value and reference white point value. No defaults are given in TIFF, but the values below are given as defaults here. The color space is declared in a color space information tag, with the default being the value that gives the optimal image characteristics Interoperability these conditions."
 msgstr ""
 
 #: libexif/exif-tag.c:257
 msgid "XML Packet"
-msgstr ""
+msgstr "XML paket"
 
 #: libexif/exif-tag.c:257
 msgid "XMP Metadata"
-msgstr ""
+msgstr "XMP metadáta"
 
 #: libexif/exif-tag.c:267 libexif/exif-tag.c:617
 msgid "CFA Pattern"
 msgstr ""
 
 #: libexif/exif-tag.c:268 libexif/exif-tag.c:618
-msgid ""
-"Indicates the color filter array (CFA) geometric pattern of the image sensor "
-"when a one-chip color area sensor is used. It does not apply to all sensing "
-"methods."
+msgid "Indicates the color filter array (CFA) geometric pattern of the image sensor when a one-chip color area sensor is used. It does not apply to all sensing methods."
 msgstr ""
 
 #: libexif/exif-tag.c:271
 msgid "Battery Level"
-msgstr ""
+msgstr "úroveň batérie"
 
 #: libexif/exif-tag.c:272
 msgid "Copyright"
 msgstr ""
 
 #: libexif/exif-tag.c:273
-msgid ""
-"Copyright information. In this standard the tag is used to indicate both the "
-"photographer and editor copyrights. It is the copyright notice of the person "
-"or organization claiming rights to the image. The Interoperability copyright "
-"statement including date and rights should be written in this field; e.g., "
-"\"Copyright, John Smith, 19xx. All rights reserved.\". In this standard the "
-"field records both the photographer and editor copyrights, with each "
-"recorded in a separate part of the statement. When there is a clear "
-"distinction between the photographer and editor copyrights, these are to be "
-"written in the order of photographer followed by editor copyright, separated "
-"by NULL (in this case, since the statement also ends with a NULL, there are "
-"two NULL codes) (see example 1). When only the photographer is given, it is "
-"terminated by one NULL code (see example 2). When only the editor copyright "
-"is given, the photographer copyright part consists of one space followed by "
-"a terminating NULL code, then the editor copyright is given (see example 3). "
-"When the field is left blank, it is treated as unknown."
+msgid "Copyright information. In this standard the tag is used to indicate both the photographer and editor copyrights. It is the copyright notice of the person or organization claiming rights to the image. The Interoperability copyright statement including date and rights should be written in this field; e.g., \"Copyright, John Smith, 19xx. All rights reserved.\". In this standard the field records both the photographer and editor copyrights, with each recorded in a separate part of the statement. When there is a clear distinction between the photographer and editor copyrights, these are to be written in the order of photographer followed by editor copyright, separated by NULL (in this case, since the statement also ends with a NULL, there are two NULL codes) (see example 1). When only the photographer is given, it is terminated by one NULL code (see example 2). When only the editor copyright is given, the photographer copyright part consists of one space followed by a terminating NULL code, then the editor copyright is given (see example 3). When the field is left blank, it is treated as unknown."
 msgstr ""
 
 #: libexif/exif-tag.c:294
@@ -2664,23 +2373,18 @@ msgstr ""
 
 #: libexif/exif-tag.c:298
 msgid "The F number."
-msgstr ""
+msgstr "Číslo F."
 
 #: libexif/exif-tag.c:301
 msgid "Image Resources Block"
 msgstr ""
 
 #: libexif/exif-tag.c:303
-msgid ""
-"A pointer to the Exif IFD. Interoperability, Exif IFD has the same structure "
-"as that of the IFD specified in TIFF. ordinarily, however, it does not "
-"contain image data as in the case of TIFF."
+msgid "A pointer to the Exif IFD. Interoperability, Exif IFD has the same structure as that of the IFD specified in TIFF. ordinarily, however, it does not contain image data as in the case of TIFF."
 msgstr ""
 
 #: libexif/exif-tag.c:311
-msgid ""
-"The class of the program used by the camera to set exposure when the picture "
-"is taken."
+msgid "The class of the program used by the camera to set exposure when the picture is taken."
 msgstr ""
 
 #: libexif/exif-tag.c:315
@@ -2688,16 +2392,11 @@ msgid "Spectral Sensitivity"
 msgstr ""
 
 #: libexif/exif-tag.c:316
-msgid ""
-"Indicates the spectral sensitivity of each channel of the camera used. The "
-"tag value is an ASCII string compatible with the standard developed by the "
-"ASTM Technical Committee."
+msgid "Indicates the spectral sensitivity of each channel of the camera used. The tag value is an ASCII string compatible with the standard developed by the ASTM Technical Committee."
 msgstr ""
 
 #: libexif/exif-tag.c:322
-msgid ""
-"A pointer to the GPS Info IFD. The Interoperability structure of the GPS "
-"Info IFD, like that of Exif IFD, has no image data."
+msgid "A pointer to the GPS Info IFD. The Interoperability structure of the GPS Info IFD, like that of Exif IFD, has no image data."
 msgstr ""
 
 #: libexif/exif-tag.c:326
@@ -2705,11 +2404,7 @@ msgid "GPS tag version"
 msgstr ""
 
 #: libexif/exif-tag.c:327
-msgid ""
-"Indicates the version of <GPSInfoIFD>. The version is given as 2.0.0.0. This "
-"tag is mandatory when <GPSInfo> tag is present. (Note: The <GPSVersionID> "
-"tag is given in bytes, unlike the <ExifVersion> tag. When the version is "
-"2.0.0.0, the tag value is 02000000.H)."
+msgid "Indicates the version of <GPSInfoIFD>. The version is given as 2.0.0.0. This tag is mandatory when <GPSInfo> tag is present. (Note: The <GPSVersionID> tag is given in bytes, unlike the <ExifVersion> tag. When the version is 2.0.0.0, the tag value is 02000000.H)."
 msgstr ""
 
 #: libexif/exif-tag.c:332
@@ -2717,9 +2412,7 @@ msgid "North or South Latitude"
 msgstr ""
 
 #: libexif/exif-tag.c:333
-msgid ""
-"Indicates whether the latitude is north or south latitude. The ASCII value "
-"'N' indicates north latitude, and 'S' is south latitude."
+msgid "Indicates whether the latitude is north or south latitude. The ASCII value 'N' indicates north latitude, and 'S' is south latitude."
 msgstr ""
 
 #: libexif/exif-tag.c:336
@@ -2727,12 +2420,7 @@ msgid "Latitude"
 msgstr ""
 
 #: libexif/exif-tag.c:337
-msgid ""
-"Indicates the latitude. The latitude is expressed as three RATIONAL values "
-"giving the degrees, minutes, and seconds, respectively. When degrees, "
-"minutes and seconds are expressed, the format is dd/1,mm/1,ss/1. When "
-"degrees and minutes are used and, for example, fractions of minutes are "
-"given up to two decimal places, the format is dd/1,mmmm/100,0/1."
+msgid "Indicates the latitude. The latitude is expressed as three RATIONAL values giving the degrees, minutes, and seconds, respectively. When degrees, minutes and seconds are expressed, the format is dd/1,mm/1,ss/1. When degrees and minutes are used and, for example, fractions of minutes are given up to two decimal places, the format is dd/1,mmmm/100,0/1."
 msgstr ""
 
 #: libexif/exif-tag.c:344
@@ -2740,9 +2428,7 @@ msgid "East or West Longitude"
 msgstr ""
 
 #: libexif/exif-tag.c:345
-msgid ""
-"Indicates whether the longitude is east or west longitude. ASCII 'E' "
-"indicates east longitude, and 'W' is west longitude."
+msgid "Indicates whether the longitude is east or west longitude. ASCII 'E' indicates east longitude, and 'W' is west longitude."
 msgstr ""
 
 #: libexif/exif-tag.c:348
@@ -2750,12 +2436,7 @@ msgid "Longitude"
 msgstr ""
 
 #: libexif/exif-tag.c:349
-msgid ""
-"Indicates the longitude. The longitude is expressed as three RATIONAL values "
-"giving the degrees, minutes, and seconds, respectively. When degrees, "
-"minutes and seconds are expressed, the format is ddd/1,mm/1,ss/1. When "
-"degrees and minutes are used and, for example, fractions of minutes are "
-"given up to two decimal places, the format is ddd/1,mmmm/100,0/1."
+msgid "Indicates the longitude. The longitude is expressed as three RATIONAL values giving the degrees, minutes, and seconds, respectively. When degrees, minutes and seconds are expressed, the format is ddd/1,mm/1,ss/1. When degrees and minutes are used and, for example, fractions of minutes are given up to two decimal places, the format is ddd/1,mmmm/100,0/1."
 msgstr ""
 
 #: libexif/exif-tag.c:356
@@ -2763,12 +2444,7 @@ msgid "Altitude reference"
 msgstr ""
 
 #: libexif/exif-tag.c:357
-msgid ""
-"Indicates the altitude used as the reference altitude. If the reference is "
-"sea level and the altitude is above sea level, 0 is given. If the altitude "
-"is below sea level, a value of 1 is given and the altitude is indicated as "
-"an absolute value in the GSPAltitude tag. The reference unit is meters. Note "
-"that this tag is BYTE type, unlike other reference tags."
+msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GSPAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
 msgstr ""
 
 #: libexif/exif-tag.c:363
@@ -2776,9 +2452,7 @@ msgid "Altitude"
 msgstr ""
 
 #: libexif/exif-tag.c:364
-msgid ""
-"Indicates the altitude based on the reference in GPSAltitudeRef. Altitude is "
-"expressed as one RATIONAL value. The reference unit is meters."
+msgid "Indicates the altitude based on the reference in GPSAltitudeRef. Altitude is expressed as one RATIONAL value. The reference unit is meters."
 msgstr ""
 
 #: libexif/exif-tag.c:368
@@ -2786,16 +2460,11 @@ msgid "ISO Speed Ratings"
 msgstr ""
 
 #: libexif/exif-tag.c:369
-msgid ""
-"Indicates the ISO Speed and ISO Latitude of the camera or input device as "
-"specified in ISO 12232."
+msgid "Indicates the ISO Speed and ISO Latitude of the camera or input device as specified in ISO 12232."
 msgstr ""
 
 #: libexif/exif-tag.c:373
-msgid ""
-"Indicates the Opto-Electoric Conversion Function (OECF) specified in ISO "
-"14524. <OECF> is the relationship between the camera optical input and the "
-"image values."
+msgid "Indicates the Opto-Electoric Conversion Function (OECF) specified in ISO 14524. <OECF> is the relationship between the camera optical input and the image values."
 msgstr ""
 
 #: libexif/exif-tag.c:377
@@ -2803,9 +2472,7 @@ msgid "Exif Version"
 msgstr ""
 
 #: libexif/exif-tag.c:378
-msgid ""
-"The version of this standard supported. Nonexistence of this field is taken "
-"to mean nonconformance to the standard."
+msgid "The version of this standard supported. Nonexistence of this field is taken to mean nonconformance to the standard."
 msgstr ""
 
 #: libexif/exif-tag.c:382
@@ -2813,9 +2480,7 @@ msgid "Date and Time (original)"
 msgstr ""
 
 #: libexif/exif-tag.c:383
-msgid ""
-"The date and time when the original image data was generated. For a digital "
-"still camera the date and time the picture was taken are recorded."
+msgid "The date and time when the original image data was generated. For a digital still camera the date and time the picture was taken are recorded."
 msgstr ""
 
 #: libexif/exif-tag.c:388
@@ -2827,13 +2492,7 @@ msgid "The date and time when the image was stored as digital data. "
 msgstr ""
 
 #: libexif/exif-tag.c:393
-msgid ""
-"Information specific to compressed data. The channels of each component are "
-"arranged in order from the 1st component to the 4th. For uncompressed data "
-"the data arrangement is given in the <PhotometricInterpretation> tag. "
-"However, since <PhotometricInterpretation> can only express the order of Y, "
-"Cb and Cr, this tag is provided for cases when compressed data uses "
-"components other than Y, Cb, and Cr and to enable support of other sequences."
+msgid "Information specific to compressed data. The channels of each component are arranged in order from the 1st component to the 4th. For uncompressed data the data arrangement is given in the <PhotometricInterpretation> tag. However, since <PhotometricInterpretation> can only express the order of Y, Cb and Cr, this tag is provided for cases when compressed data uses components other than Y, Cb, and Cr and to enable support of other sequences."
 msgstr ""
 
 #: libexif/exif-tag.c:403
@@ -2841,9 +2500,7 @@ msgid "Compressed Bits per Pixel"
 msgstr ""
 
 #: libexif/exif-tag.c:404
-msgid ""
-"Information specific to compressed data. The compression mode used for a "
-"compressed image is indicated in unit bits per pixel."
+msgid "Information specific to compressed data. The compression mode used for a compressed image is indicated in unit bits per pixel."
 msgstr ""
 
 #: libexif/exif-tag.c:408
@@ -2851,9 +2508,7 @@ msgid "Shutter speed"
 msgstr ""
 
 #: libexif/exif-tag.c:409
-msgid ""
-"Shutter speed. The unit is the APEX (Additive System of Photographic "
-"Exposure) setting."
+msgid "Shutter speed. The unit is the APEX (Additive System of Photographic Exposure) setting."
 msgstr ""
 
 #: libexif/exif-tag.c:413
@@ -2865,9 +2520,7 @@ msgid "Brightness"
 msgstr ""
 
 #: libexif/exif-tag.c:416
-msgid ""
-"The value of brightness. The unit is the APEX value. Ordinarily it is given "
-"in the range of -99.99 to 99.99."
+msgid "The value of brightness. The unit is the APEX value. Ordinarily it is given in the range of -99.99 to 99.99."
 msgstr ""
 
 #: libexif/exif-tag.c:420
@@ -2875,15 +2528,11 @@ msgid "Exposure Bias"
 msgstr ""
 
 #: libexif/exif-tag.c:421
-msgid ""
-"The exposure bias. The units is the APEX value. Ordinarily it is given in "
-"the range of -99.99 to 99.99."
+msgid "The exposure bias. The units is the APEX value. Ordinarily it is given in the range of -99.99 to 99.99."
 msgstr ""
 
 #: libexif/exif-tag.c:425
-msgid ""
-"The smallest F number of the lens. The unit is the APEX value. Ordinarily it "
-"is given in the range of 00.00 to 99.99, but it is not limited to this range."
+msgid "The smallest F number of the lens. The unit is the APEX value. Ordinarily it is given in the range of 00.00 to 99.99, but it is not limited to this range."
 msgstr ""
 
 #: libexif/exif-tag.c:430
@@ -2911,8 +2560,7 @@ msgid "The kind of light source."
 msgstr ""
 
 #: libexif/exif-tag.c:440
-msgid ""
-"This tag is recorded when an image is taken using a strobe light (flash)."
+msgid "This tag is recorded when an image is taken using a strobe light (flash)."
 msgstr ""
 
 #: libexif/exif-tag.c:442
@@ -2920,9 +2568,7 @@ msgid "Focal Length"
 msgstr ""
 
 #: libexif/exif-tag.c:443
-msgid ""
-"The actual focal length of the lens, in mm. Conversion is not made to the "
-"focal length of a 35 mm film camera."
+msgid "The actual focal length of the lens, in mm. Conversion is not made to the focal length of a 35 mm film camera."
 msgstr ""
 
 #: libexif/exif-tag.c:446
@@ -2930,9 +2576,7 @@ msgid "Maker Note"
 msgstr ""
 
 #: libexif/exif-tag.c:447
-msgid ""
-"A tag for manufacturers of Exif writers to record any desired information. "
-"The contents are up to the manufacturer."
+msgid "A tag for manufacturers of Exif writers to record any desired information. The contents are up to the manufacturer."
 msgstr ""
 
 #: libexif/exif-tag.c:450
@@ -2940,25 +2584,7 @@ msgid "User Comment"
 msgstr ""
 
 #: libexif/exif-tag.c:451
-msgid ""
-"A tag for Exif users to write keywords or comments on the image besides "
-"those in <ImageDescription>, and without the character code limitations of "
-"the <ImageDescription> tag. The character code used in the <UserComment> tag "
-"is identified based on an ID code in a fixed 8-byte area at the start of the "
-"tag data area. The unused portion of the area is padded with NULL (\"00.h"
-"\"). ID codes are assigned by means of registration. The designation method "
-"and references for each character code are given in Table 6. The value of "
-"CountN is determinated based on the 8 bytes in the character code area and "
-"the number of bytes in the user comment part. Since the TYPE is not ASCII, "
-"NULL termination is not necessary (see Fig. 9). The ID code for the "
-"<UserComment> area may be a Defined code such as JIS or ASCII, or may be "
-"Undefined. The Undefined name is UndefinedText, and the ID code is filled "
-"with 8 bytes of all \"NULL\" (\"00.H\"). An Exif reader that reads the "
-"<UserComment> tag must have a function for determining the ID code. This "
-"function is not required in Exif readers that do not use the <UserComment> "
-"tag (see Table 7). When a <UserComment> area is set aside, it is recommended "
-"that the ID code be ASCII and that the following user comment part be filled "
-"with blank characters [20.H]."
+msgid "A tag for Exif users to write keywords or comments on the image besides those in <ImageDescription>, and without the character code limitations of the <ImageDescription> tag. The character code used in the <UserComment> tag is identified based on an ID code in a fixed 8-byte area at the start of the tag data area. The unused portion of the area is padded with NULL (\"00.h\"). ID codes are assigned by means of registration. The designation method and references for each character code are given in Table 6. The value of CountN is determinated based on the 8 bytes in the character code area and the number of bytes in the user comment part. Since the TYPE is not ASCII, NULL termination is not necessary (see Fig. 9). The ID code for the <UserComment> area may be a Defined code such as JIS or ASCII, or may be Undefined. The Undefined name is UndefinedText, and the ID code is filled with 8 bytes of all \"NULL\" (\"00.H\"). An Exif reader that reads the <UserComment> tag must have a function for determining the ID code. This function is not required in Exif readers that do not use the <UserComment> tag (see Table 7). When a <UserComment> area is set aside, it is recommended that the ID code be ASCII and that the following user comment part be filled with blank characters [20.H]."
 msgstr ""
 
 #: libexif/exif-tag.c:476
@@ -2966,13 +2592,11 @@ msgid "A tag used to record fractions of seconds for the <DateTime> tag."
 msgstr ""
 
 #: libexif/exif-tag.c:481
-msgid ""
-"A tag used to record fractions of seconds for the <DateTimeOriginal> tag."
+msgid "A tag used to record fractions of seconds for the <DateTimeOriginal> tag."
 msgstr ""
 
 #: libexif/exif-tag.c:486
-msgid ""
-"A tag used to record fractions of seconds for the <DateTimeDigitized> tag."
+msgid "A tag used to record fractions of seconds for the <DateTimeDigitized> tag."
 msgstr ""
 
 #: libexif/exif-tag.c:489
@@ -2984,9 +2608,8 @@ msgid "XP Comment"
 msgstr ""
 
 #: libexif/exif-tag.c:493
-#, fuzzy
 msgid "XP Author"
-msgstr "auto"
+msgstr "XP Author"
 
 #: libexif/exif-tag.c:495
 msgid "XP Keywords"
@@ -3005,67 +2628,23 @@ msgid "Color Space"
 msgstr ""
 
 #: libexif/exif-tag.c:503
-msgid ""
-"The color space information tag is always recorded as the color space "
-"specifier. Normally sRGB (=1) is used to define the color space based on the "
-"PC monitor conditions and environment. If a color space other than sRGB is "
-"used, Uncalibrated (=FFFF.H) is set. Image data recorded as Uncalibrated can "
-"be treated as sRGB when it is converted to FlashPix."
+msgid "The color space information tag is always recorded as the color space specifier. Normally sRGB (=1) is used to define the color space based on the PC monitor conditions and environment. If a color space other than sRGB is used, Uncalibrated (=FFFF.H) is set. Image data recorded as Uncalibrated can be treated as sRGB when it is converted to FlashPix."
 msgstr ""
 
 #: libexif/exif-tag.c:512
-msgid ""
-"Information specific to compressed data. When a compressed file is recorded, "
-"the valid width of the meaningful image must be recorded in this tag, "
-"whether or not there is padding data or a restart marker. This tag should "
-"not exist in an uncompressed file."
+msgid "Information specific to compressed data. When a compressed file is recorded, the valid width of the meaningful image must be recorded in this tag, whether or not there is padding data or a restart marker. This tag should not exist in an uncompressed file."
 msgstr ""
 
 #: libexif/exif-tag.c:519
-msgid ""
-"Information specific to compressed data. When a compressed file is recorded, "
-"the valid height of the meaningful image must be recorded in this tag, "
-"whether or not there is padding data or a restart marker. This tag should "
-"not exist in an uncompressed file. For details see section 2.8.1 and "
-"Appendix F. Since data padding is unnecessary in the vertical direction, the "
-"number of lines recorded in this valid image height tag will in fact be the "
-"same as that recorded in the SOF."
+msgid "Information specific to compressed data. When a compressed file is recorded, the valid height of the meaningful image must be recorded in this tag, whether or not there is padding data or a restart marker. This tag should not exist in an uncompressed file. For details see section 2.8.1 and Appendix F. Since data padding is unnecessary in the vertical direction, the number of lines recorded in this valid image height tag will in fact be the same as that recorded in the SOF."
 msgstr ""
 
 #: libexif/exif-tag.c:530
-msgid ""
-"This tag is used to record the name of an audio file related to the image "
-"data. The only relational information recorded here is the Exif audio file "
-"name and extension (an ASCII string consisting of 8 characters + '.' + 3 "
-"characters). The path is not recorded. Stipulations on audio are given in  "
-"section 3.6.3. File naming conventions are given in section 3.7.1. When "
-"using this tag, audio files must be recorded in conformance to the Exif "
-"audio format. Writers are also allowed to store the data such as Audio "
-"within APP2 as FlashPix extension stream data. Audio files must be recorded "
-"in conformance to the Exif audio format. The mapping of Exif image files and "
-"audio files is done in any of the three ways shown in Table 8. If multiple "
-"files are mapped to one file as in [2] or [3] of this table, the above "
-"format is used to record just one audio file name. If there are multiple "
-"audio files, the first recorded file is given. In the case of [3] in Table "
-"8, for example, for the Exif image file \"DSC00001.JPG\" only  \"SND00001.WAV"
-"\" is given as the related Exif audio file. When there are three Exif audio "
-"files \"SND00001.WAV\", \"SND00002.WAV\" and \"SND00003.WAV\", the Exif "
-"image file name for each of them, \"DSC00001.JPG\", is indicated. By "
-"combining multiple relational information, a variety of playback "
-"possibilities can be supported. The method of using relational information "
-"is left to the implementation on the playback side. Since this information "
-"is an ASCII character string, it is terminated by NULL. When this tag is "
-"used to map audio files, the relation of the audio file to image data must "
-"also be indicated on the audio file end."
+msgid "This tag is used to record the name of an audio file related to the image data. The only relational information recorded here is the Exif audio file name and extension (an ASCII string consisting of 8 characters + '.' + 3 characters). The path is not recorded. Stipulations on audio are given in  section 3.6.3. File naming conventions are given in section 3.7.1. When using this tag, audio files must be recorded in conformance to the Exif audio format. Writers are also allowed to store the data such as Audio within APP2 as FlashPix extension stream data. Audio files must be recorded in conformance to the Exif audio format. The mapping of Exif image files and audio files is done in any of the three ways shown in Table 8. If multiple files are mapped to one file as in [2] or [3] of this table, the above format is used to record just one audio file name. If there are multiple audio files, the first recorded file is given. In the case of [3] in Table 8, for example, for the Exif image file \"DSC00001.JPG\" only  \"SND00001.WAV\" is given as the related Exif audio file. When there are three Exif audio files \"SND00001.WAV\", \"SND00002.WAV\" and \"SND00003.WAV\", the Exif image file name for each of them, \"DSC00001.JPG\", is indicated. By combining multiple relational information, a variety of playback possibilities can be supported. The method of using relational information is left to the implementation on the playback side. Since this information is an ASCII character string, it is terminated by NULL. When this tag is used to map audio files, the relation of the audio file to image data must also be indicated on the audio file end."
 msgstr ""
 
 #: libexif/exif-tag.c:563
-msgid ""
-"Interoperability IFD is composed of tags which stores the information to "
-"ensure the Interoperability and pointed by the following tag located in Exif "
-"IFD. The Interoperability structure of Interoperability IFD is the same as "
-"TIFF defined IFD structure but does not contain the image data "
-"characteristically compared with normal TIFF IFD."
+msgid "Interoperability IFD is composed of tags which stores the information to ensure the Interoperability and pointed by the following tag located in Exif IFD. The Interoperability structure of Interoperability IFD is the same as TIFF defined IFD structure but does not contain the image data characteristically compared with normal TIFF IFD."
 msgstr ""
 
 #: libexif/exif-tag.c:572
@@ -3073,9 +2652,7 @@ msgid "Flash Energy"
 msgstr ""
 
 #: libexif/exif-tag.c:573
-msgid ""
-"Indicates the strobe energy at the time the image is captured, as measured "
-"in Beam Candle Power Seconds (BCPS)."
+msgid "Indicates the strobe energy at the time the image is captured, as measured in Beam Candle Power Seconds (BCPS)."
 msgstr ""
 
 #: libexif/exif-tag.c:576
@@ -3083,10 +2660,7 @@ msgid "Spatial Frequency Response"
 msgstr ""
 
 #: libexif/exif-tag.c:577
-msgid ""
-"This tag records the camera or input device spatial frequency table and SFR "
-"values in the direction of image width, image height, and diagonal "
-"direction, as specified in ISO 12233."
+msgid "This tag records the camera or input device spatial frequency table and SFR values in the direction of image width, image height, and diagonal direction, as specified in ISO 12233."
 msgstr ""
 
 #: libexif/exif-tag.c:582
@@ -3094,9 +2668,7 @@ msgid "Focal Plane x-Resolution"
 msgstr ""
 
 #: libexif/exif-tag.c:583
-msgid ""
-"Indicates the number of pixels in the image width (X) direction per "
-"<FocalPlaneResolutionUnit> on the camera focal plane."
+msgid "Indicates the number of pixels in the image width (X) direction per <FocalPlaneResolutionUnit> on the camera focal plane."
 msgstr ""
 
 #: libexif/exif-tag.c:586
@@ -3104,9 +2676,7 @@ msgid "Focal Plane y-Resolution"
 msgstr ""
 
 #: libexif/exif-tag.c:587
-msgid ""
-"Indicates the number of pixels in the image height (V) direction per "
-"<FocalPlaneResolutionUnit> on the camera focal plane."
+msgid "Indicates the number of pixels in the image height (V) direction per <FocalPlaneResolutionUnit> on the camera focal plane."
 msgstr ""
 
 #: libexif/exif-tag.c:590
@@ -3114,9 +2684,7 @@ msgid "Focal Plane Resolution Unit"
 msgstr ""
 
 #: libexif/exif-tag.c:591
-msgid ""
-"Indicates the unit for measuring <FocalPlaneXResolution> and "
-"<FocalPlaneYResolution>. This value is the same as the <ResolutionUnit>."
+msgid "Indicates the unit for measuring <FocalPlaneXResolution> and <FocalPlaneYResolution>. This value is the same as the <ResolutionUnit>."
 msgstr ""
 
 #: libexif/exif-tag.c:595
@@ -3124,12 +2692,7 @@ msgid "Subject Location"
 msgstr ""
 
 #: libexif/exif-tag.c:596
-msgid ""
-"Indicates the location of the main subject in the scene. The value of this "
-"tag represents the pixel at the center of the main subject relative to the "
-"left edge, prior to rotation processing as per the <Rotation> tag. The first "
-"value indicates the X column number and the second indicates the Y row "
-"number."
+msgid "Indicates the location of the main subject in the scene. The value of this tag represents the pixel at the center of the main subject relative to the left edge, prior to rotation processing as per the <Rotation> tag. The first value indicates the X column number and the second indicates the Y row number."
 msgstr ""
 
 #: libexif/exif-tag.c:602
@@ -3137,9 +2700,7 @@ msgid "Exposure index"
 msgstr ""
 
 #: libexif/exif-tag.c:603
-msgid ""
-"Indicates the exposure index selected on the camera or input device at the "
-"time the image is captured."
+msgid "Indicates the exposure index selected on the camera or input device at the time the image is captured."
 msgstr ""
 
 #: libexif/exif-tag.c:605
@@ -3155,9 +2716,7 @@ msgid "File Source"
 msgstr ""
 
 #: libexif/exif-tag.c:609
-msgid ""
-"Indicates the image source. If a DSC recorded the image, the tag value of "
-"this tag always be set to 3, indicating that the image was recorded on a DSC."
+msgid "Indicates the image source. If a DSC recorded the image, the tag value of this tag always be set to 3, indicating that the image was recorded on a DSC."
 msgstr ""
 
 #: libexif/exif-tag.c:612
@@ -3165,9 +2724,7 @@ msgid "Scene Type"
 msgstr ""
 
 #: libexif/exif-tag.c:613
-msgid ""
-"Indicates the type of scene. If a DSC recorded the image, this tag value "
-"must always be set to 1, indicating that the image was directly photographed."
+msgid "Indicates the type of scene. If a DSC recorded the image, this tag value must always be set to 1, indicating that the image was directly photographed."
 msgstr ""
 
 #: libexif/exif-tag.c:621
@@ -3175,9 +2732,7 @@ msgid "Subject Area"
 msgstr ""
 
 #: libexif/exif-tag.c:622
-msgid ""
-"This tag indicates the location and area of the main subject in the overall "
-"scene."
+msgid "This tag indicates the location and area of the main subject in the overall scene."
 msgstr ""
 
 #: libexif/exif-tag.c:624
@@ -3189,10 +2744,7 @@ msgid "Custom Rendered"
 msgstr ""
 
 #: libexif/exif-tag.c:626
-msgid ""
-"This tag indicates the use of special processing on image data, such as "
-"rendering geared to output. When special processing is performed, the reader "
-"is expected to disable or minimize any further processing."
+msgid "This tag indicates the use of special processing on image data, such as rendering geared to output. When special processing is performed, the reader is expected to disable or minimize any further processing."
 msgstr ""
 
 #: libexif/exif-tag.c:630
@@ -3200,10 +2752,7 @@ msgid "Exposure Mode"
 msgstr ""
 
 #: libexif/exif-tag.c:631
-msgid ""
-"This tag indicates the exposure mode set when the image was shot. In auto-"
-"bracketing mode, the camera shoots a series of frames of the same scene at "
-"different exposure settings."
+msgid "This tag indicates the exposure mode set when the image was shot. In auto-bracketing mode, the camera shoots a series of frames of the same scene at different exposure settings."
 msgstr ""
 
 #: libexif/exif-tag.c:634 libexif/pentax/mnote-pentax-tag.c:40
@@ -3216,14 +2765,12 @@ msgid "This tag indicates the white balance mode set when the image was shot."
 msgstr ""
 
 #: libexif/exif-tag.c:638
+#, fuzzy
 msgid "Digital Zoom Ratio"
-msgstr ""
+msgstr "pomer digitálneho priblíženia"
 
 #: libexif/exif-tag.c:639
-msgid ""
-"This tag indicates the digital zoom ratio when the image was shot. If the "
-"numerator of the recorded value is 0, this indicates that digital zoom was "
-"not used."
+msgid "This tag indicates the digital zoom ratio when the image was shot. If the numerator of the recorded value is 0, this indicates that digital zoom was not used."
 msgstr ""
 
 #: libexif/exif-tag.c:643
@@ -3231,10 +2778,7 @@ msgid "Focal Length In 35mm Film"
 msgstr ""
 
 #: libexif/exif-tag.c:644
-msgid ""
-"This tag indicates the equivalent focal length assuming a 35mm film camera, "
-"in mm. A value of 0 means the focal length is unknown. Note that this tag "
-"differs from the FocalLength tag."
+msgid "This tag indicates the equivalent focal length assuming a 35mm film camera, in mm. A value of 0 means the focal length is unknown. Note that this tag differs from the FocalLength tag."
 msgstr ""
 
 #: libexif/exif-tag.c:649
@@ -3242,10 +2786,7 @@ msgid "Scene Capture Type"
 msgstr ""
 
 #: libexif/exif-tag.c:650
-msgid ""
-"This tag indicates the type of scene that was shot. It can also be used to "
-"record the mode in which the image was shot. Note that this differs from the "
-"scene type <SceneType> tag."
+msgid "This tag indicates the type of scene that was shot. It can also be used to record the mode in which the image was shot. Note that this differs from the scene type <SceneType> tag."
 msgstr ""
 
 #: libexif/exif-tag.c:654
@@ -3257,21 +2798,15 @@ msgid "This tag indicates the degree of overall image gain adjustment."
 msgstr ""
 
 #: libexif/exif-tag.c:658
-msgid ""
-"This tag indicates the direction of contrast processing applied by the "
-"camera when the image was shot."
+msgid "This tag indicates the direction of contrast processing applied by the camera when the image was shot."
 msgstr ""
 
 #: libexif/exif-tag.c:661
-msgid ""
-"This tag indicates the direction of saturation processing applied by the "
-"camera when the image was shot."
+msgid "This tag indicates the direction of saturation processing applied by the camera when the image was shot."
 msgstr ""
 
 #: libexif/exif-tag.c:664
-msgid ""
-"This tag indicates the direction of sharpness processing applied by the "
-"camera when the image was shot."
+msgid "This tag indicates the direction of sharpness processing applied by the camera when the image was shot."
 msgstr ""
 
 #: libexif/exif-tag.c:667
@@ -3279,10 +2814,7 @@ msgid "Device Setting Description"
 msgstr ""
 
 #: libexif/exif-tag.c:668
-msgid ""
-"This tag indicates information on the picture-taking conditions of a "
-"particular camera model. The tag is used only to indicate the picture-taking "
-"conditions in the reader."
+msgid "This tag indicates information on the picture-taking conditions of a particular camera model. The tag is used only to indicate the picture-taking conditions in the reader."
 msgstr ""
 
 #: libexif/exif-tag.c:673
@@ -3298,250 +2830,259 @@ msgid "Image Unique ID"
 msgstr ""
 
 #: libexif/exif-tag.c:676
-msgid ""
-"This tag indicates an identifier assigned uniquely to each image. It is "
-"recorded as an ASCII string equivalent to hexadecimal notation and 128-bit "
-"fixed length."
+msgid "This tag indicates an identifier assigned uniquely to each image. It is recorded as an ASCII string equivalent to hexadecimal notation and 128-bit fixed length."
 msgstr ""
 
 #: libexif/exif-tag.c:679
 msgid "Gamma"
-msgstr ""
+msgstr "gamma"
 
 #: libexif/exif-tag.c:680
 msgid "Indicates the value of coefficient gamma."
-msgstr ""
+msgstr "Značí hodnotu koeficientu gamma."
 
 #: libexif/exif-tag.c:682
 msgid "Unknown (related to Epson's PRINT Image Matching technology)"
-msgstr ""
+msgstr "neznáme (týkajúce sa technológie Epson PRINT Image Matching)"
 
 #: libexif/olympus/mnote-olympus-entry.c:75
 msgid "AF non D Lens"
-msgstr ""
+msgstr "šošovky AF nie D"
 
 #: libexif/olympus/mnote-olympus-entry.c:77
 msgid "AF-D or AF-S Lens"
-msgstr ""
+msgstr "šošovky AF-D alebo AF-S"
 
 #: libexif/olympus/mnote-olympus-entry.c:78
 msgid "AF-D G Lens"
-msgstr ""
+msgstr "šošovky AF-D G"
 
 #: libexif/olympus/mnote-olympus-entry.c:79
 msgid "AF-D VR Lens"
-msgstr ""
+msgstr "šošovky AF-D VR"
 
 #: libexif/olympus/mnote-olympus-entry.c:82
 msgid "Flash did not fire"
-msgstr ""
+msgstr "blesk sa nespustil"
 
 #: libexif/olympus/mnote-olympus-entry.c:83
 msgid "Flash unit unknown"
-msgstr ""
+msgstr "jednotka blesku nerozpoznaná"
 
 #: libexif/olympus/mnote-olympus-entry.c:84
 msgid "Flash is external"
-msgstr ""
+msgstr "blesk je externý"
 
 #: libexif/olympus/mnote-olympus-entry.c:85
 msgid "Flash is on Camera"
-msgstr ""
+msgstr "blesk je na fotoaparáte"
 
 #: libexif/olympus/mnote-olympus-entry.c:88
 msgid "VGA Basic"
-msgstr ""
+msgstr "VGA základné"
 
 #: libexif/olympus/mnote-olympus-entry.c:89
 msgid "VGA Normal"
-msgstr ""
+msgstr "VGA normálne"
 
 #: libexif/olympus/mnote-olympus-entry.c:90
 msgid "VGA Fine"
-msgstr ""
+msgstr "VGA jemné"
 
 #: libexif/olympus/mnote-olympus-entry.c:91
 msgid "SXGA Basic"
-msgstr ""
+msgstr "SXGA základné"
 
 #: libexif/olympus/mnote-olympus-entry.c:92
 msgid "SXGA Normal"
-msgstr ""
+msgstr "SXGA normálne"
 
 #: libexif/olympus/mnote-olympus-entry.c:93
 msgid "SXGA Fine"
-msgstr ""
+msgstr "SXGA jemné"
 
 #: libexif/olympus/mnote-olympus-entry.c:94
 msgid "2 MPixel Basic"
-msgstr ""
+msgstr "2 MPixel základné"
 
 #: libexif/olympus/mnote-olympus-entry.c:95
 msgid "2 MPixel Normal"
-msgstr ""
+msgstr "2 MPixel normálne"
 
 #: libexif/olympus/mnote-olympus-entry.c:96
 msgid "2 MPixel Fine"
-msgstr ""
+msgstr "2 MPixel jemné"
 
 #: libexif/olympus/mnote-olympus-entry.c:99
 msgid "Color"
-msgstr ""
+msgstr "farba"
 
 #: libexif/olympus/mnote-olympus-entry.c:100
 msgid "Monochrome"
-msgstr ""
+msgstr "jednofarebné"
 
 #: libexif/olympus/mnote-olympus-entry.c:104
 msgid "Bright+"
-msgstr ""
+msgstr "jas+"
 
 #: libexif/olympus/mnote-olympus-entry.c:105
 msgid "Bright-"
-msgstr ""
+msgstr "jas-"
 
 #: libexif/olympus/mnote-olympus-entry.c:106
 msgid "Contrast+"
-msgstr ""
+msgstr "kontrast+"
 
 #: libexif/olympus/mnote-olympus-entry.c:107
 msgid "Contrast-"
-msgstr ""
+msgstr "kontrast-"
 
 #: libexif/olympus/mnote-olympus-entry.c:110
 msgid "ISO80"
-msgstr ""
+msgstr "ISO80"
 
 #: libexif/olympus/mnote-olympus-entry.c:111
 msgid "ISO160"
-msgstr ""
+msgstr "ISO160"
 
 #: libexif/olympus/mnote-olympus-entry.c:112
 msgid "ISO320"
-msgstr ""
+msgstr "ISO320"
 
 #: libexif/olympus/mnote-olympus-entry.c:113
 msgid "ISO100"
-msgstr ""
+msgstr "ISO100"
 
 #: libexif/olympus/mnote-olympus-entry.c:117
 msgid "Preset"
-msgstr ""
+msgstr "prednastavené"
 
 #: libexif/olympus/mnote-olympus-entry.c:119
 msgid "Incandescence"
-msgstr ""
+msgstr "inkadescencia"
 
 #: libexif/olympus/mnote-olympus-entry.c:120
 msgid "Fluorescence"
-msgstr ""
+msgstr "fluorescencia"
 
 #: libexif/olympus/mnote-olympus-entry.c:122
 msgid "SpeedLight"
-msgstr ""
+msgstr "rýchlosvetlo"
 
 #: libexif/olympus/mnote-olympus-entry.c:125
 msgid "No Fisheye"
-msgstr ""
+msgstr "rybie oko vypnuté"
 
 #: libexif/olympus/mnote-olympus-entry.c:126
 msgid "Fisheye On"
-msgstr ""
+msgstr "rybie oko zapnuté"
 
 #: libexif/olympus/mnote-olympus-entry.c:129
 msgid "SQ"
-msgstr ""
+msgstr "SQ"
 
 #: libexif/olympus/mnote-olympus-entry.c:130
 msgid "HQ"
-msgstr ""
+msgstr "HQ"
 
 #: libexif/olympus/mnote-olympus-entry.c:131
 msgid "SHQ"
-msgstr ""
+msgstr "SHQ"
 
 #: libexif/olympus/mnote-olympus-entry.c:133
 msgid "SQ1"
-msgstr ""
+msgstr "SQ1"
 
 #: libexif/olympus/mnote-olympus-entry.c:134
 msgid "SQ2"
-msgstr ""
+msgstr "SQ2"
 
 #: libexif/olympus/mnote-olympus-entry.c:137
 #: libexif/olympus/mnote-olympus-entry.c:161
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: libexif/olympus/mnote-olympus-entry.c:141
 msgid "1x"
-msgstr ""
+msgstr "1x"
 
 #: libexif/olympus/mnote-olympus-entry.c:147
 msgid "Fill"
-msgstr ""
+msgstr "výplň"
 
 #: libexif/olympus/mnote-olympus-entry.c:274
 #, c-format
 msgid "Red Correction %f, Blue Correction %f"
-msgstr ""
+msgstr "korekcia červenej %f, korekcia modrej %f"
 
 #: libexif/olympus/mnote-olympus-entry.c:282
 #, c-format
 msgid "%2.2f meters"
-msgstr ""
+msgstr "%2.2f metrov"
 
 #: libexif/olympus/mnote-olympus-entry.c:284
 msgid "No manual focus selection"
-msgstr ""
+msgstr "Bez výberu automatického zaostrenia"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:314
 msgid "AF Position: Center"
-msgstr ""
+msgstr "Poloha AZ: stred"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:315
 msgid "AF Position: Top"
-msgstr ""
+msgstr "Poloha AZ: hore"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:316
 msgid "AF Position: Bottom"
-msgstr ""
+msgstr "Poloha AZ: dolu"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:317
 msgid "AF Position: Left"
-msgstr ""
+msgstr "Poloha AZ: vľavo"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:318
 msgid "AF Position: Right"
-msgstr ""
+msgstr "Poloha AZ: vpravo"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:319
 msgid "AF Position: Upper-left"
-msgstr ""
+msgstr "Poloha AZ: vyššie vľavo"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:320
 msgid "AF Position: Upper-right"
-msgstr ""
+msgstr "Poloha AZ: vyššie vpravo"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:321
 msgid "AF Position: Lower-left"
-msgstr ""
+msgstr "Poloha AZ: nižšie vľavo"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:322
 msgid "AF Position: Lower-right"
-msgstr ""
+msgstr "Poloha AZ: nižšie vpravo"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:323
 msgid "AF Position: Far Left"
-msgstr ""
+msgstr "Poloha AZ: celkom vľavo"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:324
 msgid "AF Position: Far Right"
-msgstr ""
+msgstr "Poloha AZ: celkom vpravo"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-entry.c:325
 msgid "Unknown AF Position"
-msgstr ""
+msgstr "Neznáma poloha AZ"
 
 #: libexif/olympus/mnote-olympus-entry.c:358
 #: libexif/pentax/mnote-pentax-entry.c:344
@@ -3552,11 +3093,11 @@ msgstr "Vnútorná chyba"
 #: libexif/olympus/mnote-olympus-entry.c:379
 #, c-format
 msgid "Unknown value %hi"
-msgstr ""
+msgstr "neznáma hodnota %hi"
 
 #: libexif/olympus/mnote-olympus-entry.c:408
 msgid "Infinite"
-msgstr ""
+msgstr "nekonečno"
 
 #: libexif/olympus/mnote-olympus-entry.c:422
 msgid "normal"
@@ -3564,307 +3105,302 @@ msgstr "normálny"
 
 #: libexif/olympus/mnote-olympus-entry.c:425
 msgid "unknown"
-msgstr ""
+msgstr "neznáme"
 
 #: libexif/olympus/mnote-olympus-entry.c:428
 msgid "fast"
-msgstr ""
+msgstr "rýchlo"
 
 #: libexif/olympus/mnote-olympus-entry.c:431
 msgid "panorama"
-msgstr ""
+msgstr "panoráma"
 
 #: libexif/olympus/mnote-olympus-entry.c:434
 #: libexif/olympus/mnote-olympus-entry.c:454
 #, c-format
 msgid "%li"
-msgstr ""
+msgstr "%li"
 
 #: libexif/olympus/mnote-olympus-entry.c:442
 msgid "left to right"
-msgstr ""
+msgstr "zľava doprava"
 
 #: libexif/olympus/mnote-olympus-entry.c:445
 msgid "right to left"
-msgstr ""
+msgstr "sprava doľava"
 
 #: libexif/olympus/mnote-olympus-entry.c:448
 msgid "bottom to top"
-msgstr ""
+msgstr "zdola hore"
 
 #: libexif/olympus/mnote-olympus-entry.c:451
 msgid "top to bottom"
-msgstr ""
+msgstr "zhora dolu"
 
 #: libexif/olympus/mnote-olympus-entry.c:462
 msgid "Unknown tag."
-msgstr ""
+msgstr "neznámy štítok."
 
 #: libexif/olympus/mnote-olympus-entry.c:510
 msgid "Automatic"
-msgstr ""
+msgstr "automatika"
 
 #: libexif/olympus/mnote-olympus-entry.c:543
 msgid "Manual: Unknown"
-msgstr ""
+msgstr "Ručné: neznáme"
 
 #: libexif/olympus/mnote-olympus-entry.c:549
 msgid "One-touch"
-msgstr ""
+msgstr "jedným dotykom"
 
 #: libexif/olympus/mnote-olympus-entry.c:571
 #, c-format
 msgid "%i bytes unknown data: "
-msgstr ""
+msgstr "%i bajtov neznámych údajov:"
 
 #: libexif/olympus/mnote-olympus-tag.c:37
 msgid "Firmware Version"
-msgstr ""
+msgstr "verzia firmvéru"
 
 #: libexif/olympus/mnote-olympus-tag.c:38
 #: libexif/olympus/mnote-olympus-tag.c:53
 msgid "ISO Setting"
-msgstr ""
+msgstr "nastavenie ISO"
 
 #: libexif/olympus/mnote-olympus-tag.c:39
 msgid "Colormode (?)"
-msgstr ""
+msgstr "farebný režim (?)"
 
 #: libexif/olympus/mnote-olympus-tag.c:41
 #: libexif/olympus/mnote-olympus-tag.c:98
 msgid "Whitebalance"
-msgstr ""
+msgstr "vyváženie bielej"
 
 #: libexif/olympus/mnote-olympus-tag.c:42
 msgid "Image Sharpening"
-msgstr ""
+msgstr "zaostrenie obrazu"
 
 #: libexif/olympus/mnote-olympus-tag.c:43 libexif/pentax/mnote-pentax-tag.c:36
 #: libexif/pentax/mnote-pentax-tag.c:66
 msgid "Focus Mode"
-msgstr ""
+msgstr "režim zaostrenia"
 
 #: libexif/olympus/mnote-olympus-tag.c:44
 msgid "Flash Setting"
-msgstr ""
+msgstr "nastavenie blesku"
 
 #: libexif/olympus/mnote-olympus-tag.c:45
 #: libexif/olympus/mnote-olympus-tag.c:116
 #: libexif/pentax/mnote-pentax-tag.c:37 libexif/pentax/mnote-pentax-tag.c:65
 msgid "Flash Mode"
-msgstr ""
+msgstr "režim blesku"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
 msgid "Whitebalance fine ajustment"
-msgstr ""
+msgstr "RB vyváženia bielej"
 
 #: libexif/olympus/mnote-olympus-tag.c:47
 msgid "Whitebalance RB"
-msgstr ""
+msgstr "doladenie vyváženia bielej"
 
 #: libexif/olympus/mnote-olympus-tag.c:49
 msgid "Isoselection"
-msgstr ""
+msgstr "výber ISO"
 
 #: libexif/olympus/mnote-olympus-tag.c:50
 msgid "Preview Image"
-msgstr ""
+msgstr "náhľad"
 
 #: libexif/olympus/mnote-olympus-tag.c:51
 msgid "Exposurediff ?"
-msgstr ""
+msgstr "rozdiel expozície ?"
 
 #: libexif/olympus/mnote-olympus-tag.c:54
-#, fuzzy
 msgid "Image Boundary"
-msgstr "Číslo obrázka"
+msgstr "Okraj obrázka"
 
 #: libexif/olympus/mnote-olympus-tag.c:56
 msgid "Flash exposure bracket value"
-msgstr ""
+msgstr "Hodnota uzávierky expozície s bleskom"
 
 #: libexif/olympus/mnote-olympus-tag.c:57
 msgid "Exposure bracket value"
-msgstr ""
+msgstr "Hodnota uzávierky expozície"
 
 #: libexif/olympus/mnote-olympus-tag.c:58
 #: libexif/olympus/mnote-olympus-tag.c:96
 msgid "Image Adjustment"
-msgstr ""
+msgstr "doladenie obrázka"
 
 #: libexif/olympus/mnote-olympus-tag.c:59
 msgid "Tonecompensation"
-msgstr ""
+msgstr "kompenzácia tónu"
 
 #: libexif/olympus/mnote-olympus-tag.c:60
 msgid "Adapter"
-msgstr ""
+msgstr "adaptér"
 
 #: libexif/olympus/mnote-olympus-tag.c:61
 msgid "Lenstype"
-msgstr ""
+msgstr "typ šošoviek"
 
 #: libexif/olympus/mnote-olympus-tag.c:62
 msgid "Lens"
-msgstr ""
+msgstr "šošovky"
 
 #: libexif/olympus/mnote-olympus-tag.c:63
 #: libexif/olympus/mnote-olympus-tag.c:117
 msgid "Manual Focus Distance"
-msgstr ""
+msgstr "ručné nastavenie vzdialenosti zaostrenia"
 
 #: libexif/olympus/mnote-olympus-tag.c:64
 #: libexif/olympus/mnote-olympus-tag.c:101
 #: libexif/olympus/mnote-olympus-tag.c:109
 msgid "Digital Zoom"
-msgstr ""
+msgstr "digitálne priblíženie"
 
 #: libexif/olympus/mnote-olympus-tag.c:65
 msgid "Flash used"
-msgstr ""
+msgstr "použitý blesk"
 
+# AF = automatické zaostrenie
 #: libexif/olympus/mnote-olympus-tag.c:66
 msgid "AF Focus position"
-msgstr ""
+msgstr "poloha automatického zaostrenia"
 
 #: libexif/olympus/mnote-olympus-tag.c:67
 msgid "Bracketing"
-msgstr ""
+msgstr "uzávierka"
 
 #: libexif/olympus/mnote-olympus-tag.c:69
-#, fuzzy
 msgid "Lens F stops"
-msgstr "Typ šošoviek"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:70
 msgid "Contrast curve"
-msgstr ""
+msgstr "krivka kontrastu"
 
 #: libexif/olympus/mnote-olympus-tag.c:71
 #: libexif/olympus/mnote-olympus-tag.c:95
 msgid "Colormode"
-msgstr ""
+msgstr "farebný režim"
 
 #: libexif/olympus/mnote-olympus-tag.c:72
-#, fuzzy
 msgid "Lighttype"
-msgstr "pravý vrchný"
+msgstr "typ svetla"
 
 #: libexif/olympus/mnote-olympus-tag.c:74
 msgid "Hue Adjustment"
-msgstr ""
+msgstr "nastavenie sýtosti"
 
 #: libexif/olympus/mnote-olympus-tag.c:76
 msgid "Noisereduction"
-msgstr ""
+msgstr "redukcia šumu"
 
 #: libexif/olympus/mnote-olympus-tag.c:79
 msgid "Sensor pixel size"
-msgstr ""
+msgstr "veľkosť obrazového bodu snímača"
 
 #: libexif/olympus/mnote-olympus-tag.c:82
-#, fuzzy
 msgid "Image datasize"
-msgstr "Veľkosť obrázka"
+msgstr "Veľkosť dát obrázka"
 
 #: libexif/olympus/mnote-olympus-tag.c:82
 msgid "Size of compressed image data in bytes."
-msgstr ""
+msgstr "veľkosť komprimovaných obrazových dát v bajtoch."
 
 #: libexif/olympus/mnote-olympus-tag.c:84
 msgid "Total number of pictures taken"
-msgstr ""
+msgstr "celkový počet odfotených obrázkov"
 
 #: libexif/olympus/mnote-olympus-tag.c:86
 msgid "Optimize Image"
-msgstr ""
+msgstr "optimalizovať obrázok"
 
 #: libexif/olympus/mnote-olympus-tag.c:88
-#, fuzzy
 msgid "Vari Program"
-msgstr "program"
+msgstr "vari program"
 
 #: libexif/olympus/mnote-olympus-tag.c:89
 msgid "Capture Editor Data"
-msgstr ""
+msgstr "dáta editora zachytávania"
 
 #: libexif/olympus/mnote-olympus-tag.c:90
 msgid "Capture Editor Version"
-msgstr ""
+msgstr "verzia editora zachytávania"
 
 #: libexif/olympus/mnote-olympus-tag.c:97
 msgid "CCD Sensitivity"
-msgstr ""
+msgstr "citlivosť CCD"
 
 #: libexif/olympus/mnote-olympus-tag.c:99
 msgid "Focus"
-msgstr ""
+msgstr "zaostrenie"
 
 #: libexif/olympus/mnote-olympus-tag.c:102
 msgid "Converter"
-msgstr ""
+msgstr "konvertor"
 
 #: libexif/olympus/mnote-olympus-tag.c:105
 msgid "Speed/Sequence/Panorama direction"
-msgstr ""
+msgstr "rýchlosť/sekvencia/smer panorámy"
 
 #: libexif/olympus/mnote-olympus-tag.c:113
 msgid "Info"
-msgstr ""
+msgstr "info"
 
 #: libexif/olympus/mnote-olympus-tag.c:114
 msgid "Camera ID"
-msgstr ""
+msgstr "ID prístroja"
 
 #: libexif/olympus/mnote-olympus-tag.c:118
 msgid "Sharpness Setting"
-msgstr ""
+msgstr "nastavenie ostrosti"
 
 #: libexif/olympus/mnote-olympus-tag.c:119
 msgid "White Balance Setting"
-msgstr ""
+msgstr "nastavenie vyváženia bielej"
 
 #: libexif/olympus/mnote-olympus-tag.c:120
 msgid "Contrast Setting"
-msgstr ""
+msgstr "nastavenie kontrastu"
 
 #: libexif/olympus/mnote-olympus-tag.c:121
 msgid "Manual Focus"
-msgstr ""
+msgstr "ručné zaostrenie"
 
 #: libexif/pentax/mnote-pentax-entry.c:77
 #: libexif/pentax/mnote-pentax-entry.c:131
 msgid "Night-scene"
-msgstr ""
+msgstr "nočná scéna"
 
 #: libexif/pentax/mnote-pentax-entry.c:79
 #: libexif/pentax/mnote-pentax-entry.c:133
-#, fuzzy
 msgid "Multi-exposure"
-msgstr "manuálna expozícia"
+msgstr "multiexpozícia"
 
 #: libexif/pentax/mnote-pentax-entry.c:82
 #: libexif/pentax/mnote-pentax-entry.c:136
 msgid "Good"
-msgstr ""
+msgstr "dobrý"
 
 #: libexif/pentax/mnote-pentax-entry.c:83
 #: libexif/pentax/mnote-pentax-entry.c:137
 msgid "Better"
-msgstr ""
+msgstr "lepší"
 
 #: libexif/pentax/mnote-pentax-entry.c:84
 #: libexif/pentax/mnote-pentax-entry.c:138
 msgid "Best"
-msgstr ""
+msgstr "najlepší"
 
 #: libexif/pentax/mnote-pentax-entry.c:91
 msgid "Flash on"
-msgstr ""
+msgstr "blesk zapnutý"
 
 #: libexif/pentax/mnote-pentax-entry.c:93
 msgid "Red-eye Reduction"
-msgstr ""
+msgstr "redukcia červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:126
 msgid "Black & White"
@@ -3872,278 +3408,245 @@ msgstr "čiernobiely"
 
 #: libexif/pentax/mnote-pentax-entry.c:139
 msgid "TIFF"
-msgstr ""
+msgstr "TIFF"
 
 #: libexif/pentax/mnote-pentax-entry.c:149
 msgid "2560x1920 or 2304x1728"
-msgstr ""
+msgstr "2560x1920 alebo 2304x1728"
 
 #: libexif/pentax/mnote-pentax-entry.c:155
 msgid "2304x1728 or 2592x1944"
-msgstr ""
+msgstr "2304x1728 alebo 2592x1944"
 
 #: libexif/pentax/mnote-pentax-entry.c:157
 msgid "2816x2212 or 2816x2112"
-msgstr ""
+msgstr "2816x2212 alebo 2816x2112"
 
+# AE - automatická expozícia
 #: libexif/pentax/mnote-pentax-entry.c:163
 #: libexif/pentax/mnote-pentax-entry.c:295
-#, fuzzy
 msgid "Program AE"
-msgstr "program"
+msgstr "program AE"
 
 #: libexif/pentax/mnote-pentax-entry.c:167
-#, fuzzy
 msgid "Sport"
 msgstr "šport"
 
 #: libexif/pentax/mnote-pentax-entry.c:168
 #: libexif/pentax/mnote-pentax-entry.c:291
-#, fuzzy
 msgid "Night Scene"
 msgstr "nočná scéna"
 
 #: libexif/pentax/mnote-pentax-entry.c:170
 msgid "Surf & Snow"
-msgstr ""
+msgstr "surfovanie & sneh"
 
 #: libexif/pentax/mnote-pentax-entry.c:171
 msgid "Sunset or Candlelight"
-msgstr ""
+msgstr "západ slnka alebo svetlo sviečky"
 
 #: libexif/pentax/mnote-pentax-entry.c:172
-#, fuzzy
 msgid "Autumn"
-msgstr "auto"
+msgstr "jeseň"
 
 #: libexif/pentax/mnote-pentax-entry.c:175
 msgid "Text"
-msgstr ""
+msgstr "text"
 
 #: libexif/pentax/mnote-pentax-entry.c:177
-#, fuzzy
 msgid "Self Portrait"
-msgstr "portrét"
+msgstr "autoportrét"
 
 #: libexif/pentax/mnote-pentax-entry.c:178
-#, fuzzy
 msgid "Illustrations"
-msgstr "sýtosť"
+msgstr "ilustrácie"
 
 #: libexif/pentax/mnote-pentax-entry.c:179
 msgid "Digital Filter"
-msgstr ""
+msgstr "digitálny filter"
 
 #: libexif/pentax/mnote-pentax-entry.c:180
 msgid "Museum"
-msgstr ""
+msgstr "múzeum"
 
 #: libexif/pentax/mnote-pentax-entry.c:181
 msgid "Food"
-msgstr ""
+msgstr "jedlo"
 
 #: libexif/pentax/mnote-pentax-entry.c:182
-#, fuzzy
 msgid "Green Mode"
-msgstr "Merací režim"
+msgstr "zelený režim"
 
 #: libexif/pentax/mnote-pentax-entry.c:183
-#, fuzzy
 msgid "Light Pet"
-msgstr "nočná scéna"
+msgstr "svetlé zviera"
 
 #: libexif/pentax/mnote-pentax-entry.c:184
 msgid "Dark Pet"
-msgstr ""
+msgstr "tmavé zviera"
 
 #: libexif/pentax/mnote-pentax-entry.c:185
-#, fuzzy
 msgid "Medium Pet"
-msgstr "stredný"
+msgstr "stredné zviera"
 
 #: libexif/pentax/mnote-pentax-entry.c:187
 #: libexif/pentax/mnote-pentax-entry.c:292
-#, fuzzy
 msgid "Candlelight"
-msgstr "denné svetlo"
+msgstr "svetlo sviečky"
 
 #: libexif/pentax/mnote-pentax-entry.c:188
 msgid "Natural Skin Tone"
-msgstr ""
+msgstr "prirodzený tón pokožky"
 
 #: libexif/pentax/mnote-pentax-entry.c:189
 msgid "Synchro Sound Record"
-msgstr ""
+msgstr "synchr. zvukového záznamu"
 
 #: libexif/pentax/mnote-pentax-entry.c:190
 msgid "Frame Composite"
-msgstr ""
+msgstr "Kompozitný snímok"
 
 #: libexif/pentax/mnote-pentax-entry.c:193
-#, fuzzy
 msgid "Auto, Did not fire"
-msgstr "blesk sa nespustil"
+msgstr "auto, blesk sa nespustil"
 
 #: libexif/pentax/mnote-pentax-entry.c:195
-#, fuzzy
 msgid "Auto, Did not fire, Red-eye reduction"
-msgstr ""
-"Blesk sa nespustil, automatický režim blesku, režim redukcie červených očí."
+msgstr "auto, blesk sa nespustil, redukcia červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:196
-#, fuzzy
 msgid "Auto, Fired"
-msgstr "automatická kompenzácia expozície"
+msgstr "auto, blesk sa spustil"
 
 #: libexif/pentax/mnote-pentax-entry.c:198
-#, fuzzy
 msgid "Auto, Fired, Red-eye reduction"
-msgstr "auto + redukcia červených očí"
+msgstr "auto, blesk sa spustil, redukcia červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:199
-#, fuzzy
 msgid "On, Red-eye reduction"
-msgstr "zapnutý + redukcia červených očí"
+msgstr "zapnutý, redukcia červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:200
 msgid "On, Wireless"
-msgstr ""
+msgstr "zapnuté, bezdrôtovo"
 
 #: libexif/pentax/mnote-pentax-entry.c:201
-#, fuzzy
 msgid "On, Soft"
-msgstr "mäkký"
+msgstr "zapnutý, mäkký"
 
 #: libexif/pentax/mnote-pentax-entry.c:202
 msgid "On, Slow-sync"
-msgstr ""
+msgstr "zapnuté, pomalá synchr."
 
 #: libexif/pentax/mnote-pentax-entry.c:203
-#, fuzzy
 msgid "On, Slow-sync, Red-eye reduction"
-msgstr "zapnutý + redukcia červených očí"
+msgstr "zapnutý, pomalá synch., redukcia červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:204
 msgid "On, Trailing-curtain Sync"
-msgstr ""
+msgstr "zapnuté, synchr. koncovej záclony"
 
 #: libexif/pentax/mnote-pentax-entry.c:211
 msgid "Pan Focus"
 msgstr ""
 
+# AF = automatické zaostrenie
 #: libexif/pentax/mnote-pentax-entry.c:212
 msgid "AF-S"
-msgstr ""
+msgstr "AZ-S"
 
+# AF = automatické zaostrenie
 #: libexif/pentax/mnote-pentax-entry.c:213
 msgid "AF-C"
-msgstr ""
+msgstr "AZ-C"
 
 #: libexif/pentax/mnote-pentax-entry.c:216
-#, fuzzy
 msgid "Upper-left"
-msgstr "ľavý vrchný"
+msgstr "vyššie vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:217
 msgid "Top"
-msgstr ""
+msgstr "hore"
 
 #: libexif/pentax/mnote-pentax-entry.c:218
-#, fuzzy
 msgid "Upper-right"
-msgstr "pravý vrchný"
+msgstr "vyššie vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:220
-#, fuzzy
 msgid "Mid-left"
-msgstr "vľavo"
+msgstr "v strede vľavo"
 
 #: libexif/pentax/mnote-pentax-entry.c:222
-#, fuzzy
 msgid "Mid-right"
-msgstr "vpravo"
+msgstr "v strede vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:224
-#, fuzzy
 msgid "Lower-left"
-msgstr "ľavý vrchný"
+msgstr "nižšie vľavo"
 
 #: libexif/pentax/mnote-pentax-entry.c:225
 msgid "Bottom"
-msgstr ""
+msgstr "dolu"
 
 #: libexif/pentax/mnote-pentax-entry.c:226
-#, fuzzy
 msgid "Lower-right"
-msgstr "pravý vrchný"
+msgstr "nižšie vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:227
-#, fuzzy
 msgid "Fixed Center"
-msgstr "pekné počasie"
+msgstr "pevný stred"
 
 #: libexif/pentax/mnote-pentax-entry.c:231
-#, fuzzy
 msgid "Multiple"
-msgstr "viac bodov"
+msgstr "viacero"
 
 #: libexif/pentax/mnote-pentax-entry.c:232
-#, fuzzy
 msgid "Top-left"
-msgstr "ľavý vrchný"
+msgstr "hore vľavo"
 
 #: libexif/pentax/mnote-pentax-entry.c:233
-#, fuzzy
 msgid "Top-center"
-msgstr "stred"
+msgstr "hore v strede"
 
 #: libexif/pentax/mnote-pentax-entry.c:234
-#, fuzzy
 msgid "Top-right"
-msgstr "pravý vrchný"
+msgstr "hore vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:238
-#, fuzzy
 msgid "Bottom-left"
-msgstr "ľavý spodný"
+msgstr "dolu vľavo"
 
 #: libexif/pentax/mnote-pentax-entry.c:239
-#, fuzzy
 msgid "Bottom-center"
-msgstr "stred"
+msgstr "dolu v strede"
 
 #: libexif/pentax/mnote-pentax-entry.c:240
-#, fuzzy
 msgid "Bottom-right"
-msgstr "pravý spodný"
+msgstr "dolu vpravo"
 
 #: libexif/pentax/mnote-pentax-entry.c:250
-#, fuzzy
 msgid "Daylight Fluorescent"
-msgstr "denné svetlo fluorescenčné"
+msgstr "denné svetlo, fluorescenčné"
 
 #: libexif/pentax/mnote-pentax-entry.c:251
-#, fuzzy
 msgid "Daywhite Fluorescent"
 msgstr "biely deň, fluorescenčné"
 
 #: libexif/pentax/mnote-pentax-entry.c:252
-#, fuzzy
 msgid "White Fluorescent"
-msgstr "biela, fluorescenčné"
+msgstr "biela, fluorescenčná"
 
 #: libexif/pentax/mnote-pentax-entry.c:256
-#, fuzzy
 msgid "User Selected"
-msgstr "automatický výber"
+msgstr "Používateľský výber"
 
 #: libexif/pentax/mnote-pentax-entry.c:278
 msgid "3008x2008 or 3040x2024"
-msgstr ""
+msgstr "3008x2008 alebo 3040x2024"
 
 #: libexif/pentax/mnote-pentax-entry.c:289
 msgid "Digital Filter?"
-msgstr ""
+msgstr "digitálny Filter?"
 
 #: libexif/pentax/mnote-pentax-entry.c:353
 #, c-format
@@ -4157,65 +3660,61 @@ msgstr "Vnútorná chyba (neznáma hodnota %i %i)"
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
 msgid "Capture Mode"
-msgstr ""
+msgstr "režim zachytávania"
 
 #: libexif/pentax/mnote-pentax-tag.c:35 libexif/pentax/mnote-pentax-tag.c:62
 msgid "Quality Level"
-msgstr ""
+msgstr "úroveň kvality"
 
 #: libexif/pentax/mnote-pentax-tag.c:53
 msgid "ISOSpeed"
-msgstr ""
+msgstr "ISO rýchlosť"
 
 #: libexif/pentax/mnote-pentax-tag.c:55
-#, fuzzy
 msgid "Colors"
-msgstr "Farebný odtieň"
+msgstr "Farby"
 
 #: libexif/pentax/mnote-pentax-tag.c:58
 msgid "PrintIM Settings"
-msgstr ""
+msgstr "nastavenia PrintIM"
 
 #: libexif/pentax/mnote-pentax-tag.c:59 libexif/pentax/mnote-pentax-tag.c:71
 msgid "Time Zone"
-msgstr ""
+msgstr "časové pásmo"
 
 #: libexif/pentax/mnote-pentax-tag.c:60
-#, fuzzy
 msgid "Daylight Savings"
-msgstr "denné svetlo"
+msgstr "Letný čas"
 
 #: libexif/pentax/mnote-pentax-tag.c:63
-#, fuzzy
 msgid "Image Size"
 msgstr "Veľkosť obrázka"
 
 #: libexif/pentax/mnote-pentax-tag.c:64
 msgid "PictureMode"
-msgstr ""
+msgstr "režim obrázka"
 
+# AF = automatické zaostrenie
 #: libexif/pentax/mnote-pentax-tag.c:67
-#, fuzzy
 msgid "AF Point Selected"
 msgstr "Bod automatického zaostrenia zvolený"
 
+# AF = automatické zaostrenie
 #: libexif/pentax/mnote-pentax-tag.c:68
 msgid "Auto AF Point"
-msgstr ""
+msgstr "automatický bod zaostrenia"
 
 #: libexif/pentax/mnote-pentax-tag.c:70
-#, fuzzy
 msgid "Object Distance"
-msgstr "Vzdialenosť subjektu"
+msgstr "Vzdialenosť objektu"
 
 #: libexif/pentax/mnote-pentax-tag.c:70
 msgid "Distance of photographed object in millimeters."
-msgstr ""
+msgstr "Vzdialenosť fotografovaných objektov v milimetroch."
 
 #: libexif/pentax/mnote-pentax-tag.c:72
-#, fuzzy
 msgid "Bestshot mode"
-msgstr "Režim jednoduchého fotenia"
+msgstr "Režim najlepšieho snímku"
 
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
@@ -4281,9 +3780,5 @@ msgstr ""
 #~ msgid "Flash bias"
 #~ msgstr "Skreslenie blesku"
 
-#~ msgid ""
-#~ "Flash fired, compulsory flash mode, red-eye reduction, return light "
-#~ "detected."
-#~ msgstr ""
-#~ "Blesk sa spustil, povinný režim blesku, režim redukcie červených očí, "
-#~ "vracajúce sa svetlo detegované."
+#~ msgid "Flash fired, compulsory flash mode, red-eye reduction, return light detected"
+#~ msgstr "Blesk sa spustil, povinný režim blesku, režim redukcie červených očí, vracajúce sa svetlo detegované."
