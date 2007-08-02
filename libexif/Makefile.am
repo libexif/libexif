@@ -1,13 +1,16 @@
 EXTRA_DIST =
+lib_LTLIBRARIES =
+noinst_LTLIBRARIES =
 
-SUBDIRS = canon olympus pentax
-
-lib_LTLIBRARIES = libexif.la
+include canon/Makefile-files
+include olympus/Makefile-files
+include pentax/Makefile-files
 
 # The -no-undefined makes it possible to build DLLs for Windows,
 # or shared libraries for Tru64 or AIX (according to the autobook
 # chapter on "Portable Library Design"). It doesn't seem to hurt
 # elsewhere, so we can leave it in.
+lib_LTLIBRARIES += libexif.la
 libexif_la_LDFLAGS = \
 	-export-symbols $(srcdir)/libexif.sym \
 	-no-undefined -version-info @LIBEXIF_VERSION_INFO@
@@ -28,24 +31,15 @@ libexif_la_SOURCES =		\
 	i18n.h
 libexif_la_DEPENDENCIES = \
 	$(srcdir)/libexif.sym \
-	canon/libmnote-canon.la		\
-	olympus/libmnote-olympus.la	\
-	pentax/libmnote-pentax.la
+	libmnote-canon.la		\
+	libmnote-olympus.la	\
+	libmnote-pentax.la
 libexif_la_LIBADD =			\
 	$(MATHLIBS)			\
 	$(LTLIBINTL)			\
-	canon/libmnote-canon.la		\
-	olympus/libmnote-olympus.la	\
-	pentax/libmnote-pentax.la
-
-canon/libmnote-canon.la:
-	cd canon && $(MAKE) libmnote-canon.la
-
-olympus/libmnote-olympus.la:
-	cd olympus && $(MAKE) libmnote-olympus.la
-
-pentax/libmnote-pentax.la:
-	cd pentax && $(MAKE) libmnote-pentax.la
+	libmnote-canon.la		\
+	libmnote-olympus.la	\
+	libmnote-pentax.la
 
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = 	\
@@ -69,4 +63,3 @@ EXTRA_DIST += exif-system.h
 EXTRA_DIST += libexif.sym
 
 DISTCLEANFILES = _stdint.h
-

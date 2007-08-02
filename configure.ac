@@ -189,9 +189,6 @@ AC_CONFIG_FILES([
   Makefile
   libexif.spec
   libexif/Makefile
-  libexif/canon/Makefile
-  libexif/olympus/Makefile
-  libexif/pentax/Makefile
   test/Makefile
   test/nls/Makefile
   m4m/Makefile
