@@ -87,7 +87,7 @@ void split_ws_string(const char *string, test_parse_func func, void *callback_da
 	if (str) {
 	  memcpy(str, start, len);
 	  str[len] = '\0';
-	  func(str, data);
+	  func(str, callback_data);
 	  free(str);
 	  start = p+1;
 	}
@@ -115,7 +115,7 @@ int main(const int argc, const char *argv[])
   }
 
   for (i=1; i<argc; i++) {
-    test_parse(argv[i], data);
+    test_parse(argv[i], callback_data);
   }
 
   return 0;
