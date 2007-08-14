@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-12 15:13+0200\n"
+"POT-Creation-Date: 2007-07-01 01:50+0200\n"
 "PO-Revision-Date: 2005-03-12 05:43+0100\n"
 "Last-Translator: Fabian Mandelbaum <fabman@mandrakesoft.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -38,7 +38,7 @@ msgid "Invalid number of components (%i, expected %i or %i)."
 msgstr "Cantidad de componentes no válida (%i, se esperaba %i o %i)."
 
 #: libexif/canon/mnote-canon-entry.c:75 libexif/canon/mnote-canon-entry.c:120
-#: libexif/canon/mnote-canon-entry.c:168 libexif/exif-entry.c:529
+#: libexif/canon/mnote-canon-entry.c:168 libexif/exif-entry.c:546
 #: libexif/olympus/mnote-olympus-tag.c:107
 #: libexif/pentax/mnote-pentax-entry.c:173
 #: libexif/pentax/mnote-pentax-entry.c:208
@@ -48,9 +48,9 @@ msgstr "Macro"
 
 #: libexif/canon/mnote-canon-entry.c:76 libexif/canon/mnote-canon-entry.c:78
 #: libexif/canon/mnote-canon-entry.c:143 libexif/canon/mnote-canon-entry.c:146
-#: libexif/canon/mnote-canon-entry.c:149 libexif/exif-entry.c:411
-#: libexif/exif-entry.c:414 libexif/exif-entry.c:415 libexif/exif-entry.c:416
-#: libexif/exif-entry.c:478 libexif/olympus/mnote-olympus-entry.c:103
+#: libexif/canon/mnote-canon-entry.c:149 libexif/exif-entry.c:428
+#: libexif/exif-entry.c:431 libexif/exif-entry.c:432 libexif/exif-entry.c:433
+#: libexif/exif-entry.c:495 libexif/olympus/mnote-olympus-entry.c:103
 #: libexif/olympus/mnote-olympus-entry.c:151
 #: libexif/olympus/mnote-olympus-entry.c:157
 #: libexif/pentax/mnote-pentax-entry.c:104
@@ -219,7 +219,7 @@ msgstr "acción"
 
 #: libexif/canon/mnote-canon-entry.c:111 libexif/canon/mnote-canon-entry.c:165
 #: libexif/canon/mnote-canon-entry.c:187 libexif/canon/mnote-canon-entry.c:241
-#: libexif/exif-entry.c:477 libexif/olympus/mnote-olympus-entry.c:76
+#: libexif/exif-entry.c:494 libexif/olympus/mnote-olympus-entry.c:76
 #: libexif/pentax/mnote-pentax-entry.c:78
 #: libexif/pentax/mnote-pentax-entry.c:101
 #: libexif/pentax/mnote-pentax-entry.c:132
@@ -229,8 +229,8 @@ msgstr "acción"
 msgid "Manual"
 msgstr "Manual"
 
-#: libexif/canon/mnote-canon-entry.c:112 libexif/exif-entry.c:408
-#: libexif/exif-entry.c:488 libexif/pentax/mnote-pentax-entry.c:166
+#: libexif/canon/mnote-canon-entry.c:112 libexif/exif-entry.c:425
+#: libexif/exif-entry.c:505 libexif/pentax/mnote-pentax-entry.c:166
 #: libexif/pentax/mnote-pentax-entry.c:297
 msgid "Landscape"
 msgstr "Paisaje"
@@ -259,8 +259,8 @@ msgstr ""
 msgid "Sepia"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:118 libexif/exif-entry.c:408
-#: libexif/exif-entry.c:486 libexif/pentax/mnote-pentax-entry.c:165
+#: libexif/canon/mnote-canon-entry.c:118 libexif/exif-entry.c:425
+#: libexif/exif-entry.c:503 libexif/pentax/mnote-pentax-entry.c:165
 #: libexif/pentax/mnote-pentax-entry.c:287
 #: libexif/pentax/mnote-pentax-entry.c:290
 #: libexif/pentax/mnote-pentax-entry.c:296
@@ -368,8 +368,8 @@ msgstr ""
 msgid "4x"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:142 libexif/exif-entry.c:435
-#: libexif/exif-entry.c:465
+#: libexif/canon/mnote-canon-entry.c:142 libexif/exif-entry.c:452
+#: libexif/exif-entry.c:482
 msgid "Other"
 msgstr "Otro"
 
@@ -419,11 +419,11 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:160 libexif/exif-entry.c:431
+#: libexif/canon/mnote-canon-entry.c:160 libexif/exif-entry.c:448
 msgid "Spot"
 msgstr "Lugar"
 
-#: libexif/canon/mnote-canon-entry.c:161 libexif/exif-entry.c:429
+#: libexif/canon/mnote-canon-entry.c:161 libexif/exif-entry.c:446
 msgid "Average"
 msgstr "Promedio"
 
@@ -431,7 +431,7 @@ msgstr "Promedio"
 msgid "Evaluative"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:163 libexif/exif-entry.c:434
+#: libexif/canon/mnote-canon-entry.c:163 libexif/exif-entry.c:451
 msgid "Partial"
 msgstr "Parcial"
 
@@ -842,25 +842,25 @@ msgstr "soleado"
 msgid "Cloudy"
 msgstr "nublado"
 
-#: libexif/canon/mnote-canon-entry.c:283 libexif/exif-entry.c:449
+#: libexif/canon/mnote-canon-entry.c:283 libexif/exif-entry.c:466
 #: libexif/pentax/mnote-pentax-entry.c:99
 #: libexif/pentax/mnote-pentax-entry.c:248
 #, fuzzy
 msgid "Tungsten"
 msgstr "tungsteno"
 
-#: libexif/canon/mnote-canon-entry.c:284 libexif/exif-entry.c:448
+#: libexif/canon/mnote-canon-entry.c:284 libexif/exif-entry.c:465
 #: libexif/pentax/mnote-pentax-entry.c:100
 #: libexif/pentax/mnote-pentax-entry.c:247
 msgid "Fluorescent"
 msgstr "Fluorescente"
 
-#: libexif/canon/mnote-canon-entry.c:285 libexif/exif-entry.c:450
+#: libexif/canon/mnote-canon-entry.c:285 libexif/exif-entry.c:467
 #: libexif/exif-tag.c:439 libexif/pentax/mnote-pentax-entry.c:253
 msgid "Flash"
 msgstr "Flash"
 
-#: libexif/canon/mnote-canon-entry.c:288 libexif/exif-entry.c:453
+#: libexif/canon/mnote-canon-entry.c:288 libexif/exif-entry.c:470
 #: libexif/pentax/mnote-pentax-entry.c:98
 #: libexif/pentax/mnote-pentax-entry.c:246
 msgid "Shade"
@@ -882,7 +882,7 @@ msgstr ""
 msgid "PC set 3"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:293 libexif/exif-entry.c:454
+#: libexif/canon/mnote-canon-entry.c:293 libexif/exif-entry.c:471
 msgid "Daylight fluorescent"
 msgstr "Luz de día fluorescente"
 
@@ -896,7 +896,7 @@ msgstr "Proceso personalizado"
 msgid "Custom 2"
 msgstr "Proceso personalizado"
 
-#: libexif/canon/mnote-canon-entry.c:298 libexif/exif-entry.c:409
+#: libexif/canon/mnote-canon-entry.c:298 libexif/exif-entry.c:426
 msgid "Night scene"
 msgstr "Escena nocturna"
 
@@ -1007,12 +1007,12 @@ msgstr ""
 msgid "%.2f EV"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:553 libexif/exif-entry.c:776
+#: libexif/canon/mnote-canon-entry.c:553 libexif/exif-entry.c:794
 #, c-format
 msgid "1/%d"
 msgstr "1/%d"
 
-#: libexif/canon/mnote-canon-entry.c:555 libexif/exif-entry.c:779
+#: libexif/canon/mnote-canon-entry.c:555 libexif/exif-entry.c:797
 #, c-format
 msgid "%d"
 msgstr ""
@@ -1336,252 +1336,252 @@ msgstr ""
 msgid "Intel"
 msgstr ""
 
-#: libexif/exif-data.c:714
+#: libexif/exif-data.c:720
 msgid "Size of data too small to allow for EXIF data."
 msgstr ""
 
-#: libexif/exif-data.c:775
+#: libexif/exif-data.c:781
 msgid "EXIF marker not found."
 msgstr ""
 
-#: libexif/exif-data.c:802
+#: libexif/exif-data.c:808
 msgid "EXIF header not found."
 msgstr ""
 
-#: libexif/exif-data.c:818
+#: libexif/exif-data.c:824
 #, fuzzy
 msgid "Unknown encoding."
 msgstr "Desconocido"
 
-#: libexif/exif-data.c:1122
+#: libexif/exif-data.c:1128
 msgid "Ignore unknown tags"
 msgstr ""
 
-#: libexif/exif-data.c:1123
+#: libexif/exif-data.c:1129
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr ""
 
-#: libexif/exif-data.c:1124
+#: libexif/exif-data.c:1130
 msgid "Follow specification"
 msgstr ""
 
-#: libexif/exif-data.c:1125
+#: libexif/exif-data.c:1131
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
 msgstr ""
 
-#: libexif/exif-data.c:1127
-msgid "Don not change maker note"
+#: libexif/exif-data.c:1133
+msgid "Do not change maker note"
 msgstr ""
 
-#: libexif/exif-data.c:1128
+#: libexif/exif-data.c:1134
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."
 msgstr ""
 
-#: libexif/exif-entry.c:202 libexif/exif-entry.c:236
+#: libexif/exif-entry.c:205 libexif/exif-entry.c:239
 #, c-format
 msgid ""
 "Tag '%s' was of format '%s' (which is against specification) and has been "
 "changed to format '%s'."
 msgstr ""
 
-#: libexif/exif-entry.c:253
+#: libexif/exif-entry.c:256
 #, c-format
 msgid ""
 "Tag 'UserComment' had invalid format '%s'. Format has been set to "
 "'undefined'."
 msgstr ""
 
-#: libexif/exif-entry.c:280
+#: libexif/exif-entry.c:283
 msgid ""
 "Tag 'UserComment' has been expanded to at least 8 bytes in order to follow "
 "the specification."
 msgstr ""
 
-#: libexif/exif-entry.c:322
+#: libexif/exif-entry.c:325
 msgid ""
 "Tag 'UserComment' did not start with format identifier. This has been fixed."
 msgstr ""
 
-#: libexif/exif-entry.c:360
+#: libexif/exif-entry.c:377
 #, fuzzy, c-format
 msgid "The tag '%s' contains data of an invalid format ('%s', expected '%s')."
 msgstr "Formato no válido '%s', se esperaba '%s'."
 
-#: libexif/exif-entry.c:373
+#: libexif/exif-entry.c:390
 #, fuzzy, c-format
 msgid ""
 "The tag '%s' contains an invalid number of components (%i, expected %i)."
 msgstr "Cantidad de componentes no válida (%i, se esperaba %i)."
 
-#: libexif/exif-entry.c:386
+#: libexif/exif-entry.c:403
 msgid "chunky format"
 msgstr "formato por trozos"
 
-#: libexif/exif-entry.c:386
+#: libexif/exif-entry.c:403
 msgid "planar format"
 msgstr "formato planar"
 
-#: libexif/exif-entry.c:388 libexif/exif-entry.c:476
+#: libexif/exif-entry.c:405 libexif/exif-entry.c:493
 #: test/nls/test-codeset.c:54
 msgid "Not defined"
 msgstr "No definido"
 
-#: libexif/exif-entry.c:388
+#: libexif/exif-entry.c:405
 msgid "One-chip color area sensor"
 msgstr "Sensor de área de color de un chip"
 
-#: libexif/exif-entry.c:389
+#: libexif/exif-entry.c:406
 msgid "Two-chip color area sensor"
 msgstr "Sensor de área de color de dos chips"
 
-#: libexif/exif-entry.c:389
+#: libexif/exif-entry.c:406
 msgid "Three-chip color area sensor"
 msgstr "Sensor de área de color de tres chips"
 
-#: libexif/exif-entry.c:390
+#: libexif/exif-entry.c:407
 msgid "Color sequential area sensor"
 msgstr "Sensor de área de color secuencial"
 
-#: libexif/exif-entry.c:390
+#: libexif/exif-entry.c:407
 msgid "Trilinear sensor"
 msgstr "Sensor tri-lineal"
 
-#: libexif/exif-entry.c:391
+#: libexif/exif-entry.c:408
 msgid "Color sequential linear sensor"
 msgstr "Sensor lineal secuencial de color"
 
-#: libexif/exif-entry.c:393
+#: libexif/exif-entry.c:410
 msgid "top - left"
 msgstr "arriba - izquierda"
 
-#: libexif/exif-entry.c:393
+#: libexif/exif-entry.c:410
 msgid "top - right"
 msgstr "arriba - derecha"
 
-#: libexif/exif-entry.c:393
+#: libexif/exif-entry.c:410
 msgid "bottom - right"
 msgstr "abajo - derecha"
 
-#: libexif/exif-entry.c:394
+#: libexif/exif-entry.c:411
 msgid "bottom - left"
 msgstr "abajo - izquierda"
 
-#: libexif/exif-entry.c:394
+#: libexif/exif-entry.c:411
 msgid "left - top"
 msgstr "izquierda - arriba"
 
-#: libexif/exif-entry.c:394
+#: libexif/exif-entry.c:411
 msgid "right - top"
 msgstr "derecha - arriba"
 
-#: libexif/exif-entry.c:395
+#: libexif/exif-entry.c:412
 msgid "right - bottom"
 msgstr "derecha - abajo"
 
-#: libexif/exif-entry.c:395
+#: libexif/exif-entry.c:412
 msgid "left - bottom"
 msgstr "izquierda - abajo"
 
-#: libexif/exif-entry.c:397
+#: libexif/exif-entry.c:414
 msgid "centered"
 msgstr "centrado"
 
-#: libexif/exif-entry.c:397
+#: libexif/exif-entry.c:414
 msgid "co-sited"
 msgstr "co-situado"
 
-#: libexif/exif-entry.c:399
+#: libexif/exif-entry.c:416
 msgid "Reversed mono"
 msgstr ""
 
-#: libexif/exif-entry.c:399
+#: libexif/exif-entry.c:416
 #, fuzzy
 msgid "Normal mono"
 msgstr "Normal"
 
-#: libexif/exif-entry.c:399
+#: libexif/exif-entry.c:416
 msgid "RGB"
 msgstr "RVA"
 
-#: libexif/exif-entry.c:399
+#: libexif/exif-entry.c:416
 #, fuzzy
 msgid "Palette"
 msgstr "Patrón"
 
-#: libexif/exif-entry.c:400
+#: libexif/exif-entry.c:417
 msgid "CMYK"
 msgstr ""
 
-#: libexif/exif-entry.c:400
+#: libexif/exif-entry.c:417
 msgid "YCbCr"
 msgstr "YCbCr"
 
-#: libexif/exif-entry.c:400
+#: libexif/exif-entry.c:417
 msgid "CieLAB"
 msgstr ""
 
-#: libexif/exif-entry.c:402
+#: libexif/exif-entry.c:419
 msgid "Normal process"
 msgstr "Proceso normal"
 
-#: libexif/exif-entry.c:402
+#: libexif/exif-entry.c:419
 msgid "Custom process"
 msgstr "Proceso personalizado"
 
-#: libexif/exif-entry.c:404
+#: libexif/exif-entry.c:421
 msgid "Auto exposure"
 msgstr "Exposición automática"
 
-#: libexif/exif-entry.c:404
+#: libexif/exif-entry.c:421
 msgid "Manual exposure"
 msgstr "Exposición manual"
 
-#: libexif/exif-entry.c:404
+#: libexif/exif-entry.c:421
 msgid "Auto bracket"
 msgstr "Auto bracket"
 
-#: libexif/exif-entry.c:406
+#: libexif/exif-entry.c:423
 msgid "Auto white balance"
 msgstr "Balance de blanco automático"
 
-#: libexif/exif-entry.c:406
+#: libexif/exif-entry.c:423
 msgid "Manual white balance"
 msgstr "Balance de blanco manual"
 
-#: libexif/exif-entry.c:408
+#: libexif/exif-entry.c:425
 msgid "Standard"
 msgstr "Estándar"
 
-#: libexif/exif-entry.c:411
+#: libexif/exif-entry.c:428
 msgid "Low gain up"
 msgstr "Ganancia baja alta"
 
-#: libexif/exif-entry.c:411
+#: libexif/exif-entry.c:428
 msgid "High gain up"
 msgstr "Ganancia alta alta"
 
-#: libexif/exif-entry.c:412
+#: libexif/exif-entry.c:429
 msgid "Low gain down"
 msgstr "Ganancia baja baja"
 
-#: libexif/exif-entry.c:412
+#: libexif/exif-entry.c:429
 msgid "High gain down"
 msgstr "Ganancia alta baja"
 
-#: libexif/exif-entry.c:414
+#: libexif/exif-entry.c:431
 msgid "Low saturation"
 msgstr "Baja saturación"
 
-#: libexif/exif-entry.c:414 test/nls/test-codeset.c:48
+#: libexif/exif-entry.c:431 test/nls/test-codeset.c:48
 #: test/nls/test-codeset.c:61
 msgid "High saturation"
 msgstr "Alta saturación"
 
-#: libexif/exif-entry.c:415 libexif/exif-entry.c:416
+#: libexif/exif-entry.c:432 libexif/exif-entry.c:433
 #: libexif/olympus/mnote-olympus-entry.c:153
 #: libexif/olympus/mnote-olympus-entry.c:158
 #: libexif/pentax/mnote-pentax-entry.c:105
@@ -1589,294 +1589,294 @@ msgstr "Alta saturación"
 msgid "Soft"
 msgstr "Suave"
 
-#: libexif/exif-entry.c:415 libexif/exif-entry.c:416
+#: libexif/exif-entry.c:432 libexif/exif-entry.c:433
 #: libexif/olympus/mnote-olympus-entry.c:152
 #: libexif/olympus/mnote-olympus-entry.c:156
 #: libexif/pentax/mnote-pentax-entry.c:106
 msgid "Hard"
 msgstr "Duro"
 
-#: libexif/exif-entry.c:428 libexif/exif-entry.c:446 libexif/exif-entry.c:528
+#: libexif/exif-entry.c:445 libexif/exif-entry.c:463 libexif/exif-entry.c:545
 #: libexif/exif-tag.c:681 libexif/olympus/mnote-olympus-entry.c:496
 #: libexif/olympus/mnote-olympus-entry.c:552
 #: libexif/pentax/mnote-pentax-entry.c:255
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: libexif/exif-entry.c:429
+#: libexif/exif-entry.c:446
 #, fuzzy
 msgid "avg"
 msgstr "promedio"
 
-#: libexif/exif-entry.c:430
+#: libexif/exif-entry.c:447
 msgid "Center-Weighted Average"
 msgstr "Promedio Ponderado en el Centro"
 
-#: libexif/exif-entry.c:430
+#: libexif/exif-entry.c:447
 #, fuzzy
 msgid "Center-Weight"
 msgstr "peso centrado"
 
-#: libexif/exif-entry.c:432
+#: libexif/exif-entry.c:449
 msgid "Multi Spot"
 msgstr "Multi Lugar"
 
-#: libexif/exif-entry.c:433
+#: libexif/exif-entry.c:450
 msgid "Pattern"
 msgstr "Patrón"
 
-#: libexif/exif-entry.c:438
+#: libexif/exif-entry.c:455
 msgid "Uncompressed"
 msgstr "Descomprimido"
 
-#: libexif/exif-entry.c:439
+#: libexif/exif-entry.c:456
 msgid "LZW compression"
 msgstr "compresión LZW"
 
-#: libexif/exif-entry.c:440 libexif/exif-entry.c:441
+#: libexif/exif-entry.c:457 libexif/exif-entry.c:458
 msgid "JPEG compression"
 msgstr "compresión JPEG"
 
-#: libexif/exif-entry.c:442
+#: libexif/exif-entry.c:459
 msgid "Deflate/ZIP compression"
 msgstr "compresión Deflate/ZIP"
 
-#: libexif/exif-entry.c:443
+#: libexif/exif-entry.c:460
 msgid "PackBits compression"
 msgstr "compresión PackBits"
 
-#: libexif/exif-entry.c:447 libexif/olympus/mnote-olympus-entry.c:118
+#: libexif/exif-entry.c:464 libexif/olympus/mnote-olympus-entry.c:118
 #: libexif/pentax/mnote-pentax-entry.c:97
 #: libexif/pentax/mnote-pentax-entry.c:245
 msgid "Daylight"
 msgstr "Luz de día"
 
-#: libexif/exif-entry.c:449
+#: libexif/exif-entry.c:466
 #, fuzzy
 msgid "Tungsten incandescent light"
 msgstr "Tungsteno (luz incandescente)"
 
-#: libexif/exif-entry.c:451
+#: libexif/exif-entry.c:468
 msgid "Fine weather"
 msgstr "Tiempo bueno"
 
-#: libexif/exif-entry.c:452
+#: libexif/exif-entry.c:469
 msgid "Cloudy weather"
 msgstr "Tiempo nublado"
 
-#: libexif/exif-entry.c:452
+#: libexif/exif-entry.c:469
 msgid "cloudy"
 msgstr "nublado"
 
-#: libexif/exif-entry.c:455
+#: libexif/exif-entry.c:472
 msgid "Day white fluorescent"
 msgstr "Día blanco fluorescente"
 
-#: libexif/exif-entry.c:456
+#: libexif/exif-entry.c:473
 msgid "Cool white fluorescent"
 msgstr "Blanco frío fluorescente"
 
-#: libexif/exif-entry.c:457
+#: libexif/exif-entry.c:474
 msgid "White fluorescent"
 msgstr "Blanco fluorescente"
 
-#: libexif/exif-entry.c:458
+#: libexif/exif-entry.c:475
 msgid "Standard light A"
 msgstr "Luz estándar A"
 
-#: libexif/exif-entry.c:459
+#: libexif/exif-entry.c:476
 msgid "Standard light B"
 msgstr "Luz estándar B"
 
-#: libexif/exif-entry.c:460
+#: libexif/exif-entry.c:477
 msgid "Standard light C"
 msgstr "Luz estándar C"
 
-#: libexif/exif-entry.c:461
+#: libexif/exif-entry.c:478
 msgid "D55"
 msgstr "D55"
 
-#: libexif/exif-entry.c:462
+#: libexif/exif-entry.c:479
 msgid "D65"
 msgstr "D65"
 
-#: libexif/exif-entry.c:463
+#: libexif/exif-entry.c:480
 msgid "D75"
 msgstr "D75"
 
-#: libexif/exif-entry.c:464
+#: libexif/exif-entry.c:481
 msgid "ISO studio tungsten"
 msgstr "tungsteno de estudio ISO"
 
-#: libexif/exif-entry.c:468 libexif/exif-entry.c:472
+#: libexif/exif-entry.c:485 libexif/exif-entry.c:489
 msgid "Inch"
 msgstr "Pulgada"
 
-#: libexif/exif-entry.c:468 libexif/exif-entry.c:472
+#: libexif/exif-entry.c:485 libexif/exif-entry.c:489
 msgid "in"
 msgstr "pulg"
 
-#: libexif/exif-entry.c:469 libexif/exif-entry.c:473
+#: libexif/exif-entry.c:486 libexif/exif-entry.c:490
 msgid "Centimeter"
 msgstr "Centímetro"
 
-#: libexif/exif-entry.c:469 libexif/exif-entry.c:473
+#: libexif/exif-entry.c:486 libexif/exif-entry.c:490
 msgid "cm"
 msgstr "cm"
 
-#: libexif/exif-entry.c:478
+#: libexif/exif-entry.c:495
 msgid "Normal program"
 msgstr "Programa normal"
 
-#: libexif/exif-entry.c:479
+#: libexif/exif-entry.c:496
 msgid "Aperture priority"
 msgstr "Prioridad de apertura"
 
-#: libexif/exif-entry.c:479 libexif/exif-tag.c:412
+#: libexif/exif-entry.c:496 libexif/exif-tag.c:412
 msgid "Aperture"
 msgstr "Apertura"
 
-#: libexif/exif-entry.c:480
+#: libexif/exif-entry.c:497
 msgid "Shutter priority"
 msgstr "Prioridad del obturador"
 
-#: libexif/exif-entry.c:480
+#: libexif/exif-entry.c:497
 #, fuzzy
 msgid "Shutter"
 msgstr "obturador"
 
-#: libexif/exif-entry.c:481
+#: libexif/exif-entry.c:498
 msgid "Creative program (biased toward depth of field)"
 msgstr "Programa creativo (orientado a la profundidad del campo)"
 
-#: libexif/exif-entry.c:482
+#: libexif/exif-entry.c:499
 #, fuzzy
 msgid "Creative"
 msgstr "creativo"
 
-#: libexif/exif-entry.c:483
+#: libexif/exif-entry.c:500
 #, fuzzy
 msgid "Creative program (biased toward fast shutter speed)"
 msgstr "Programa de acción (orientado a velocidad rápida del obturador)"
 
-#: libexif/exif-entry.c:484
+#: libexif/exif-entry.c:501
 #, fuzzy
 msgid "Action"
 msgstr "acción"
 
-#: libexif/exif-entry.c:485
+#: libexif/exif-entry.c:502
 #, fuzzy
 msgid "Portrait mode (for closeup photos with the background out of focus)"
 msgstr "Modo retrato (para fotos de cerca con el fondo fuera de foco"
 
-#: libexif/exif-entry.c:487
+#: libexif/exif-entry.c:504
 #, fuzzy
 msgid "Landscape mode (for landscape photos with the background in focus)"
 msgstr "Modo paisaje (para fotos de paisaje con el fondo en foco"
 
-#: libexif/exif-entry.c:491 libexif/exif-entry.c:496
+#: libexif/exif-entry.c:508 libexif/exif-entry.c:513
 msgid "Flash did not fire."
 msgstr "El flash no disparó."
 
-#: libexif/exif-entry.c:491
+#: libexif/exif-entry.c:508
 #, fuzzy
 msgid "no flash"
 msgstr "Flash"
 
-#: libexif/exif-entry.c:492
+#: libexif/exif-entry.c:509
 msgid "Flash fired."
 msgstr "El flash disparó."
 
-#: libexif/exif-entry.c:492
+#: libexif/exif-entry.c:509
 #, fuzzy
 msgid "flash"
 msgstr "Flash"
 
-#: libexif/exif-entry.c:492 libexif/olympus/mnote-olympus-entry.c:138
+#: libexif/exif-entry.c:509 libexif/olympus/mnote-olympus-entry.c:138
 #: libexif/olympus/mnote-olympus-entry.c:162
 msgid "Yes"
 msgstr "sí"
 
-#: libexif/exif-entry.c:493
+#: libexif/exif-entry.c:510
 msgid "Strobe return light not detected."
 msgstr "Luz de retorno estrosboscópica no detectada."
 
-#: libexif/exif-entry.c:493
+#: libexif/exif-entry.c:510
 #, fuzzy
 msgid "W/o strobe"
 msgstr "sin estrosboscópica"
 
-#: libexif/exif-entry.c:495
+#: libexif/exif-entry.c:512
 msgid "Strobe return light detected."
 msgstr "Luz de retorno estrosboscópica detectada."
 
-#: libexif/exif-entry.c:495
+#: libexif/exif-entry.c:512
 #, fuzzy
 msgid "W. strobe"
 msgstr "con estrosboscópica"
 
-#: libexif/exif-entry.c:497
+#: libexif/exif-entry.c:514
 #, fuzzy
 msgid "Flash fired, compulsory flash mode."
 msgstr "El flash no disparó, modo compulsivo del flash."
 
-#: libexif/exif-entry.c:498
+#: libexif/exif-entry.c:515
 #, fuzzy
 msgid "Flash fired, compulsory flash mode, return light not detected."
 msgstr ""
 "El flash disparó, modo compulsivo del flash, luz de retorno no detectada."
 
-#: libexif/exif-entry.c:500
+#: libexif/exif-entry.c:517
 #, fuzzy
 msgid "Flash fired, compulsory flash mode, return light detected."
 msgstr "El flash disparó, modo compulsivo del flash, luz de retorno detectada."
 
-#: libexif/exif-entry.c:502
+#: libexif/exif-entry.c:519
 #, fuzzy
 msgid "Flash did not fire, compulsory flash mode."
 msgstr "El flash no disparó, modo compulsivo del flash."
 
-#: libexif/exif-entry.c:503
+#: libexif/exif-entry.c:520
 msgid "Flash did not fire, auto mode."
 msgstr "El flash no disparó, modo automático."
 
-#: libexif/exif-entry.c:504
+#: libexif/exif-entry.c:521
 msgid "Flash fired, auto mode."
 msgstr "El flash disparó, modo automático."
 
-#: libexif/exif-entry.c:505
+#: libexif/exif-entry.c:522
 msgid "Flash fired, auto mode, return light not detected."
 msgstr "El flash disparó, modo automático, luz de retorno no detectada."
 
-#: libexif/exif-entry.c:507
+#: libexif/exif-entry.c:524
 msgid "Flash fired, auto mode, return light detected."
 msgstr "El flash disparó, modo automático, luz de retorno detectada."
 
-#: libexif/exif-entry.c:508
+#: libexif/exif-entry.c:525
 msgid "No flash function."
 msgstr "Sin función de flash."
 
-#: libexif/exif-entry.c:509
+#: libexif/exif-entry.c:526
 msgid "Flash fired, red-eye reduction mode."
 msgstr "El flash disparó, modo de reducción de ojos rojos."
 
-#: libexif/exif-entry.c:510
+#: libexif/exif-entry.c:527
 msgid "Flash fired, red-eye reduction mode, return light not detected."
 msgstr ""
 "El flash disparó, modo de reducción de ojos rojos, luz de retorno no "
 "detectada."
 
-#: libexif/exif-entry.c:512
+#: libexif/exif-entry.c:529
 msgid "Flash fired, red-eye reduction mode, return light detected."
 msgstr ""
 "El flash disparó, modo de reducción de ojos rojos, luz de retorno detectada."
 
-#: libexif/exif-entry.c:514
+#: libexif/exif-entry.c:531
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode."
 msgstr ""
 "El flash disparó, modo compulsivo del flash, modo de reducción de ojos rojos."
 
-#: libexif/exif-entry.c:516
+#: libexif/exif-entry.c:533
 #, fuzzy
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
@@ -1885,7 +1885,7 @@ msgstr ""
 "El flash disparó, modo compulsivo del flash, modo de reducción de ojos "
 "rojos, luz de retorno no detectada."
 
-#: libexif/exif-entry.c:518
+#: libexif/exif-entry.c:535
 #, fuzzy
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light "
@@ -1894,224 +1894,231 @@ msgstr ""
 "El flash disparó, modo compulsivo del flash, modo de reducción de ojos "
 "rojos, luz de retorno no detectada."
 
-#: libexif/exif-entry.c:520
+#: libexif/exif-entry.c:537
 #, fuzzy
 msgid "Flash did not fire, auto mode, red-eye reduction mode."
 msgstr "El flash disparó, modo automático, modo de reducción de ojos rojos."
 
-#: libexif/exif-entry.c:521
+#: libexif/exif-entry.c:538
 #, fuzzy
 msgid "Flash fired, auto mode, red-eye reduction mode."
 msgstr "El flash disparó, modo automático, modo de reducción de ojos rojos."
 
-#: libexif/exif-entry.c:522
+#: libexif/exif-entry.c:539
 msgid ""
 "Flash fired, auto mode, return light not detected, red-eye reduction mode."
 msgstr ""
 "El flash disparó, modo automático, modo de reducción de ojos rojos, luz de "
 "retorno no detectada."
 
-#: libexif/exif-entry.c:524
+#: libexif/exif-entry.c:541
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode."
 msgstr ""
 "El flash disparó, modo automático, modo de reducción de ojos rojos, luz de "
 "retorno detectada."
 
-#: libexif/exif-entry.c:528
+#: libexif/exif-entry.c:545
 msgid "?"
 msgstr ""
 
-#: libexif/exif-entry.c:530
+#: libexif/exif-entry.c:547
 msgid "Close view"
 msgstr "Vista cercana"
 
-#: libexif/exif-entry.c:530
+#: libexif/exif-entry.c:547
 #, fuzzy
 msgid "close"
 msgstr "co-situado"
 
-#: libexif/exif-entry.c:531
+#: libexif/exif-entry.c:548
 msgid "Distant view"
 msgstr "Vista distante"
 
-#: libexif/exif-entry.c:531
+#: libexif/exif-entry.c:548
 #, fuzzy
 msgid "distant"
 msgstr "Vista distante"
 
-#: libexif/exif-entry.c:534
+#: libexif/exif-entry.c:551
 msgid "sRGB"
 msgstr "sRVA"
 
-#: libexif/exif-entry.c:535
+#: libexif/exif-entry.c:552
 msgid "Adobe RGB"
 msgstr ""
 
-#: libexif/exif-entry.c:536
+#: libexif/exif-entry.c:553
 msgid "Uncalibrated"
 msgstr "Descalibrado"
 
-#: libexif/exif-entry.c:590
+#: libexif/exif-entry.c:608
 #, c-format
 msgid "Invalid size of entry (%i, expected %li x %i)."
 msgstr "Cantidad de componentes no válida (%i, se esperaba %li x %i)."
 
-#: libexif/exif-entry.c:623
+#: libexif/exif-entry.c:641
 msgid "Unsupported UNICODE string"
 msgstr ""
 
-#: libexif/exif-entry.c:627
+#: libexif/exif-entry.c:645
 msgid "Unsupported JIS string"
 msgstr ""
 
-#: libexif/exif-entry.c:642
+#: libexif/exif-entry.c:660
 msgid "Tag UserComment does not comply with standard but contains data."
 msgstr ""
 
-#: libexif/exif-entry.c:646
+#: libexif/exif-entry.c:664
 #, c-format
 msgid "Byte at position %i: 0x%02x"
 msgstr ""
 
-#: libexif/exif-entry.c:655
+#: libexif/exif-entry.c:673
 #, fuzzy
 msgid "Unknown Exif Version"
 msgstr "Versión Exif"
 
-#: libexif/exif-entry.c:659
+#: libexif/exif-entry.c:677
 #, c-format
 msgid "Exif Version %d.%d"
 msgstr "Versión Exif %d.%d"
 
-#: libexif/exif-entry.c:670
+#: libexif/exif-entry.c:688
 msgid "FlashPix Version 1.0"
 msgstr ""
 
-#: libexif/exif-entry.c:672
+#: libexif/exif-entry.c:690
 msgid "FlashPix Version 1.01"
 msgstr ""
 
-#: libexif/exif-entry.c:674
+#: libexif/exif-entry.c:692
 msgid "Unknown FlashPix Version"
 msgstr ""
 
-#: libexif/exif-entry.c:687 libexif/exif-entry.c:699 libexif/exif-entry.c:1324
-#: libexif/exif-entry.c:1329 libexif/exif-entry.c:1332
-#: libexif/exif-entry.c:1337 libexif/exif-entry.c:1338
+#: libexif/exif-entry.c:705 libexif/exif-entry.c:717 libexif/exif-entry.c:1355
+#: libexif/exif-entry.c:1360 libexif/exif-entry.c:1363
+#: libexif/exif-entry.c:1368 libexif/exif-entry.c:1369
 msgid "[None]"
 msgstr ""
 
-#: libexif/exif-entry.c:689
+#: libexif/exif-entry.c:707
 msgid "(Photographer)"
 msgstr ""
 
-#: libexif/exif-entry.c:702
+#: libexif/exif-entry.c:720
 msgid "(Editor)"
 msgstr ""
 
-#: libexif/exif-entry.c:720 libexif/exif-entry.c:789 libexif/exif-entry.c:809
-#: libexif/exif-entry.c:847
+#: libexif/exif-entry.c:738 libexif/exif-entry.c:807 libexif/exif-entry.c:827
+#: libexif/exif-entry.c:865
 #, c-format
 msgid "%.02f EV"
 msgstr ""
 
-#: libexif/exif-entry.c:721
+#: libexif/exif-entry.c:739
 #, c-format
 msgid " (f/%.01f)"
 msgstr ""
 
-#: libexif/exif-entry.c:752
+#: libexif/exif-entry.c:770
 #, c-format
 msgid " (35 equivalent: %d mm)"
 msgstr " (equivalente 35: %d mm)"
 
-#: libexif/exif-entry.c:780 libexif/exif-entry.c:781
+#: libexif/exif-entry.c:798 libexif/exif-entry.c:799
 msgid " sec."
 msgstr " seg."
 
-#: libexif/exif-entry.c:795
+#: libexif/exif-entry.c:813
 #, c-format
 msgid " 1/%d sec.)"
 msgstr " 1/%d seg.)"
 
-#: libexif/exif-entry.c:797
+#: libexif/exif-entry.c:815
 #, c-format
 msgid " %d sec.)"
 msgstr " %d seg.)"
 
-#: libexif/exif-entry.c:810
+#: libexif/exif-entry.c:828
 #, c-format
 msgid " (%.02f cd/m^2)"
 msgstr ""
 
-#: libexif/exif-entry.c:819
+#: libexif/exif-entry.c:837
 msgid "DSC"
 msgstr "DSC"
 
-#: libexif/exif-entry.c:828
+#: libexif/exif-entry.c:846
 msgid "-"
 msgstr "-"
 
-#: libexif/exif-entry.c:829
+#: libexif/exif-entry.c:847
 msgid "Y"
 msgstr "Y"
 
-#: libexif/exif-entry.c:830
+#: libexif/exif-entry.c:848
 msgid "Cb"
 msgstr "Cb"
 
-#: libexif/exif-entry.c:831
+#: libexif/exif-entry.c:849
 msgid "Cr"
 msgstr "Cr"
 
-#: libexif/exif-entry.c:832
+#: libexif/exif-entry.c:850
 msgid "R"
 msgstr "R"
 
-#: libexif/exif-entry.c:833
+#: libexif/exif-entry.c:851
 msgid "G"
 msgstr "V"
 
-#: libexif/exif-entry.c:834
+#: libexif/exif-entry.c:852
 msgid "B"
 msgstr "A"
 
-#: libexif/exif-entry.c:835
+#: libexif/exif-entry.c:853
 msgid "reserved"
 msgstr "reservado"
 
-#: libexif/exif-entry.c:857
+#: libexif/exif-entry.c:875
 msgid "YCbCr4:2:2"
 msgstr "YCbCr4:2:2"
 
-#: libexif/exif-entry.c:859
+#: libexif/exif-entry.c:877
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:865 libexif/pentax/mnote-pentax-entry.c:392
+#: libexif/exif-entry.c:883 libexif/pentax/mnote-pentax-entry.c:392
 #: libexif/pentax/mnote-pentax-entry.c:420
 #, c-format
 msgid "%i bytes unknown data"
 msgstr "%i bytes de datos desconocidos"
 
-#: libexif/exif-entry.c:881
+#: libexif/exif-entry.c:899
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
 msgstr "Dentro de la distancia %i de (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:890
+#: libexif/exif-entry.c:908
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
 msgstr "Dentro del rectángulo (ancho %i, alto %i) alrededor de (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:896
+#: libexif/exif-entry.c:914
 #, c-format
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Cantidad de componentes inesperada (%li, esperados 2, 3, o 4)."
 
-#: libexif/exif-entry.c:925
+#: libexif/exif-entry.c:935 libexif/exif-entry.c:978
+#: libexif/olympus/mnote-olympus-entry.c:358
+#: libexif/pentax/mnote-pentax-entry.c:344
+#: libexif/pentax/mnote-pentax-entry.c:367
+msgid "Internal error"
+msgstr ""
+
+#: libexif/exif-entry.c:943 libexif/pentax/mnote-pentax-entry.c:353
 #, c-format
-msgid "Internal error (unknown value %i)."
+msgid "Internal error (unknown value %i)"
 msgstr ""
 
 #: libexif/exif-format.c:33
@@ -2164,12 +2171,12 @@ msgstr ""
 msgid "Undefined"
 msgstr "Indefinido"
 
-#: libexif/exif-loader.c:113
+#: libexif/exif-loader.c:114
 #, c-format
 msgid "The file '%s' could not be opened."
 msgstr ""
 
-#: libexif/exif-loader.c:288
+#: libexif/exif-loader.c:289
 msgid "The data supplied does not seem to contain EXIF data."
 msgstr ""
 
@@ -3832,12 +3839,6 @@ msgstr ""
 msgid "Unknown AF Position"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:358
-#: libexif/pentax/mnote-pentax-entry.c:344
-#: libexif/pentax/mnote-pentax-entry.c:367
-msgid "Internal error"
-msgstr ""
-
 #: libexif/olympus/mnote-olympus-entry.c:379
 #, c-format
 msgid "Unknown value %hi"
@@ -4460,11 +4461,6 @@ msgstr ""
 #, fuzzy
 msgid "Digital Filter?"
 msgstr "Relación de zoom digital"
-
-#: libexif/pentax/mnote-pentax-entry.c:353
-#, c-format
-msgid "Internal error (unknown value %i)"
-msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:376
 #, c-format
