@@ -1,3 +1,9 @@
+2007-08-16  Jan Patera <patera@users.sourceforge.net>
+
+	* exif-mnote-data-olympus.c: Fix of bugs #1773810, #1774626, gnome bug #466044:
+	  Some Olympus files have main IFD in MM byte order as well as makernote, but
+	  makernote order was guessed wrongly. Bug introduced when fixing bug #1525770.
+
 2007-06-25  Jan Patera <patera@users.sourceforge.net>
 
 	* Endianess of Nikon V1 makernotes is now guessed, it might not

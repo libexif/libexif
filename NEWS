@@ -1,5 +1,6 @@
 libexif-0.6.16.2:
-  * Updated translations: de, pl, vi
+  * Updated translations: de, pl, sk, vi
+  * Bug fixes: #1773810, #1774626
 
 
 libexif-0.6.16 (2007-06-12):
