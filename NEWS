@@ -1,9 +1,11 @@
 libexif-0.6.16.2:
   * Updated translations: de, pl, sk, vi
+  * New translations: nl, se
   * Bug fixes: #1773810, #1774626
+  * Enhanced support of Canon makernotes 
 
 
-libexif-0.6.16 (2007-06-12):
+libexif-0.6.16 (2007-06-12) since 0.6.1.15 (2007-05-23):
   * Security fix: CVE-2006-4168 aka IDEF1514.
   * Updated translations: cz, pl, vi
 

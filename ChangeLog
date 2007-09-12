@@ -1,3 +1,8 @@
+2007-09-12  Jan Patera <patera@users.sourceforge.net>
+
+	* Enhancements to Canon makernote parsers submitted by Thorsten Kukuk
+	* Added Dutch and Swedish translations, updated Slovak translation
+
 2007-08-16  Jan Patera <patera@users.sourceforge.net>
 
 	* exif-mnote-data-olympus.c: Fix of bugs #1773810, #1774626, gnome bug #466044:
