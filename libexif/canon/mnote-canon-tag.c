@@ -39,6 +39,7 @@ static struct {
 	{MNOTE_CANON_TAG_FIRMWARE, "FirmwareVersion", N_("Firmware version"), ""},
 	{MNOTE_CANON_TAG_IMAGE_NUMBER, "ImageNumber", N_("Image number"), ""},
 	{MNOTE_CANON_TAG_OWNER, "OwnerName", N_("Owner name"), ""},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, "ColorInformation", N_("Color information"), ""},
 	{MNOTE_CANON_TAG_SERIAL_NUMBER, "SerialNumber", N_("Serial number"), ""},
 	{MNOTE_CANON_TAG_CUSTOM_FUNCS, "CustomFunctions", N_("Custom functions"), ""},
 	{0, NULL, NULL, NULL}
@@ -55,6 +56,7 @@ static struct {
 	{MNOTE_CANON_TAG_SETTINGS_1,  3, N_("Flash mode")},
 	{MNOTE_CANON_TAG_SETTINGS_1,  4, N_("Drive mode")},
 	{MNOTE_CANON_TAG_SETTINGS_1,  6, N_("Focus mode")},
+	{MNOTE_CANON_TAG_SETTINGS_1,  8, N_("Record mode")},
 	{MNOTE_CANON_TAG_SETTINGS_1,  9, N_("Image size")},
 	{MNOTE_CANON_TAG_SETTINGS_1, 10, N_("Easy shooting mode")},
 	{MNOTE_CANON_TAG_SETTINGS_1, 11, N_("Digital zoom")},
@@ -113,6 +115,10 @@ static struct {
 	{MNOTE_CANON_TAG_SETTINGS_2, 32, N_("Manual flash output")},
 	{MNOTE_CANON_TAG_PANORAMA, 2, N_("Panorama frame")},
 	{MNOTE_CANON_TAG_PANORAMA, 5, N_("Panorama direction")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 0, N_("Tone curve")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 2, N_("Sharpness frequency")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 7, N_("White balance")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 9, N_("Picture style")},
 	{0, 0, NULL}
 };
 
