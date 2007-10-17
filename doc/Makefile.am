@@ -13,8 +13,9 @@ DOXYGEN_CLEAN_TARGETS =
 
 DOXYGEN_TARBALLS =
 
-# FIXME: Depending on the source files would be sufficient.
-#        Depending on libexif.la works at least, however.
+# FIXME: Depending on the source files would be sufficient, but only
+#        maintainable with a completely non-recursive build.
+#        Depending on libexif.la works at least.
 $(top_builddir)/libexif/libexif.la:
 	cd $(top_builddir)/libexif && $(MAKE) libexif.la
 
@@ -46,33 +47,31 @@ $(HTML_APIDOC_INTERNALS_DIR).tar.gz: $(HTML_APIDOC_INTERNALS_DIR).stamp
 
 DOXYGEN_INSTALL_TARGETS += install-apidocs-internals
 install-apidocs-internals: $(HTML_APIDOC_INTERNALS_DIR).stamp
-	$(INSTALL) -m 0755 -d $(DESTDIR)$(docdir)/$(DOC_APIDOC_INTERNALS_HTML)
-	$(INSTALL) -m 0644 $(DOXYGEN_OUTPUT_DIR)/$(HTML_APIDOC_INTERNALS_DIR)/* $(DESTDIR)$(docdir)/$(DOC_APIDOC_INTERNALS_HTML)/
+	mkdir -p "$(DESTDIR)$(docdir)"
+	find "$(DOXYGEN_OUTPUT_DIR)/$(HTML_APIDOC_INTERNALS_DIR)" \
+		\( -type d -exec chmod 0755 {} \; \) -or \
+		\( -type f -exec chmod 0644 {} \; \)
+	(unset CDPATH; cd "$(DOXYGEN_OUTPUT_DIR)" && tar cpf - "$(HTML_APIDOC_INTERNALS_DIR)") \
+		| (cd "$(DESTDIR)$(docdir)" && tar xpf -)
 
 DOXYGEN_UNINSTALL_TARGETS += uninstall-apidocs-internals
 uninstall-apidocs-internals:
-	if cd "$(DESTDIR)$(docdir)"; then \
-		rm -f "$(DOC_APIDOC_INTERNALS_HTML)/"*; \
-		rmdir "$(DOC_APIDOC_INTERNALS_HTML)"; \
-	fi;:
+	rm -rf "$(DESTDIR)$(docdir)/$(HTML_APIDOC_INTERNALS_DIR)"
 
 endif
 
-# Directory names used while installing
-DOC_APIDOC_HTML = api.html
-DOC_APIDOC_INTERNALS_HTML = internals.html
-
 DOXYGEN_INSTALL_TARGETS += install-apidocs
 install-apidocs: $(HTML_APIDOC_DIR).stamp
-	$(INSTALL) -m 0755 -d $(DESTDIR)$(docdir)/$(DOC_APIDOC_HTML)
-	$(INSTALL) -m 0644 $(DOXYGEN_OUTPUT_DIR)/$(HTML_APIDOC_DIR)/* $(DESTDIR)$(docdir)/$(DOC_APIDOC_HTML)/
+	mkdir -p "$(DESTDIR)$(docdir)"
+	find "$(DOXYGEN_OUTPUT_DIR)/$(HTML_APIDOC_DIR)" \
+		\( -type d -exec chmod 0755 {} \; \) -or \
+		\( -type f -exec chmod 0644 {} \; \)
+	(unset CDPATH; cd "$(DOXYGEN_OUTPUT_DIR)" && tar cpf - "$(HTML_APIDOC_DIR)") \
+		| (cd "$(DESTDIR)$(docdir)" && tar xpf -)
 
 DOXYGEN_UNINSTALL_TARGETS += uninstall-apidocs
 uninstall-apidocs:
-	if cd "$(DESTDIR)$(docdir)"; then \
-		rm -f "$(DOC_APIDOC_HTML)/"*; \
-		rmdir "$(DOC_APIDOC_HTML)"; \
-	fi;:
+	rm -rf "$(DESTDIR)$(docdir)/$(HTML_APIDOC_DIR)"
 
 DOXYGEN_CLEAN_TARGETS += clean-apidocs
 clean-apidocs:
