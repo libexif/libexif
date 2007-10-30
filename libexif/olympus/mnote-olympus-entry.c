@@ -63,7 +63,7 @@
 	}                                                               \
 }
 
-static struct {
+static const struct {
 	ExifTag tag;
     ExifFormat fmt;
 	struct {

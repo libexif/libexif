@@ -65,7 +65,7 @@
 	}                                                               \
 }
 
-static struct {
+static const struct {
 	ExifTag tag;
 	struct {
 		int index;
@@ -263,7 +263,7 @@ static struct {
 };
 
 /* Two-component values */
-static struct {
+static const struct {
 	ExifTag tag;
 	struct {
 		int index1, index2;

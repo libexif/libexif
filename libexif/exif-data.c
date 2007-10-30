@@ -318,7 +318,7 @@ if ((i) == ifd) {				\
 }							\
 if (data->ifd[(i)]->count) {				\
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,	\
-		"ExifData", "Attemt to load IFD "	\
+		"ExifData", "Attempt to load IFD "	\
 		"'%s' multiple times detected. "	\
 		"Skipping...",				\
 		exif_ifd_get_name (i));			\
@@ -1120,7 +1120,7 @@ exif_data_get_log (ExifData *data)
 	return data->priv->log;
 }
 
-static struct {
+static const struct {
 	ExifDataOption option;
 	const char *name;
 	const char *description;

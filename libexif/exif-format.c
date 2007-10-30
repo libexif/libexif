@@ -25,7 +25,7 @@
 
 #include <stdlib.h>
 
-static struct {
+static const struct {
         ExifFormat format;
 	const char *name;
         unsigned char size;

@@ -26,7 +26,7 @@
 
 #include <stdlib.h>
 
-static struct {
+static const struct {
 	MnoteOlympusTag tag;
 	const char *name;
 	const char *title;
@@ -43,7 +43,7 @@ static struct {
 	{MNOTE_NIKON_TAG_FOCUSMODE,    "FOCUSMODE",   N_("Focus Mode"), ""},
 	{MNOTE_NIKON_TAG_FLASHSETTING, "FLASHSETTING",   N_("Flash Setting"), ""},
 	{MNOTE_NIKON_TAG_FLASHMODE,    "FLASHMODE",    N_("Flash Mode"), ""},
-	{MNOTE_NIKON_TAG_WHITEBALANCEFINE,"WHITEBALANCEFINE",N_("Whitebalance fine ajustment"), ""},
+	{MNOTE_NIKON_TAG_WHITEBALANCEFINE,"WHITEBALANCEFINE",N_("Whitebalance fine adjustment"), ""},
 	{MNOTE_NIKON_TAG_WHITEBALANCERB,  "WHITEBALANCERB", N_("Whitebalance RB"), ""},
 	{MNOTE_NIKON_TAG_UNKNOWN_0X000D,  NULL, NULL, NULL},
 	{MNOTE_NIKON_TAG_ISOSELECTION,    "ISOSELECTION", N_("Isoselection"), ""},

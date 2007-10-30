@@ -25,7 +25,7 @@
 
 #include <libexif/i18n.h>
 
-static struct {
+static const struct {
 	MnotePentaxTag tag;
 	const char *name;
 	const char *title;

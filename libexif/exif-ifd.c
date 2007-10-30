@@ -24,7 +24,7 @@
 
 #include <stdlib.h>
 
-static struct {
+static const struct {
 	ExifIfd ifd;
 	const char *name;
 } ExifIfdTable[] = {

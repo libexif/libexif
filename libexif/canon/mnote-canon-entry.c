@@ -67,10 +67,10 @@
 
 #define UNDEFINED 0xFF
     
-static struct canon_entry_table_t {
+static const struct canon_entry_table_t {
   unsigned int subtag;
   ExifShort value;
-  char *name;
+  const char *name;
 } entries_settings_1 [] = {
   { 0,  1, N_("Macro")},
   { 0,  2, N_("Normal")},
@@ -425,7 +425,7 @@ color_information [] = {
 };
 
 static void
-canon_search_table_value (struct canon_entry_table_t table[],
+canon_search_table_value (const struct canon_entry_table_t table[],
     unsigned int t, ExifShort vs, char *val, unsigned int maxlen)
 {
 	unsigned int j;
@@ -447,7 +447,7 @@ canon_search_table_value (struct canon_entry_table_t table[],
 }
 
 static void
-canon_search_table_bitfield (struct canon_entry_table_t table[],
+canon_search_table_bitfield (const struct canon_entry_table_t table[],
     unsigned int t, ExifShort vs, char *val, unsigned int maxlen)
 {
 	unsigned int j;

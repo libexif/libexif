@@ -25,7 +25,7 @@
 
 #include <libexif/i18n.h>
 
-static struct {
+static const struct {
 	MnoteCanonTag tag;
 	const char *name;
 	const char *title;
@@ -45,7 +45,7 @@ static struct {
 	{0, NULL, NULL, NULL}
 };
 
-static struct {
+static const struct {
 	MnoteCanonTag tag;
 	unsigned int subtag;
 	const char *name;
