@@ -681,8 +681,8 @@ static const struct {
 	 N_("Indicates the value of coefficient gamma.")},
 	{EXIF_TAG_UNKNOWN_C4A5, "UnknownC4A5", N_("Unknown"),
 	 N_("Unknown (related to Epson's PRINT Image Matching technology)")},
-	{0, NULL, NULL, NULL}
 #endif
+	{0, NULL, NULL, NULL}
 };
 
 /* For now, do not use these functions. */

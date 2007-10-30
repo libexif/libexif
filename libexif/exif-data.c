@@ -134,7 +134,13 @@ exif_data_new_mem (ExifMem *mem)
 	}
 
 	/* Default options */
+#ifndef NO_VERBOSE_TAG_STRINGS
+	/*
+	 * When the tag list is compiled away, setting this option prevents
+	 * any tags from being loaded
+	 */
 	exif_data_set_option (data, EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS);
+#endif
 	exif_data_set_option (data, EXIF_DATA_OPTION_FOLLOW_SPECIFICATION);
 
 	/* Default data type: none */
