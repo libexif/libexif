@@ -42,6 +42,7 @@ struct _ExifEntryPrivate
 /* This function is hidden in exif-data.c */
 ExifLog *exif_data_get_log (ExifData *);
 
+#ifndef NO_VERBOSE_TAG_STRINGS
 static void
 exif_entry_log (ExifEntry *e, ExifLogCode code, const char *format, ...)
 {
@@ -54,6 +55,15 @@ exif_entry_log (ExifEntry *e, ExifLogCode code, const char *format, ...)
 	exif_logv (l, code, "ExifEntry", format, args);
 	va_end (args);
 }
+#else
+#if defined(__STDC_VERSION__) &&  __STDC_VERSION__ >= 199901L
+#define exif_entry_log(...) do { } while (0)
+#elif defined(__GNUC__)
+#define exif_entry_log(x...) do { } while (0)
+#else
+#define exif_entry_log (void)
+#endif
+#endif
 
 static void *
 exif_entry_alloc (ExifEntry *e, unsigned int i)
@@ -378,10 +388,11 @@ exif_entry_dump (ExifEntry *e, unsigned int indent)
 	}								\
 }
 
-static struct {
+static const struct {
 	ExifTag tag;
 	const char *strings[10];
 } list[] = {
+#ifndef NO_VERBOSE_TAG_STRINGS
   { EXIF_TAG_PLANAR_CONFIGURATION,
     { N_("chunky format"), N_("planar format"), NULL}},
   { EXIF_TAG_SENSING_METHOD,
@@ -414,16 +425,18 @@ static struct {
     { N_("Normal"), N_("Low saturation"), N_("High saturation"), NULL}},
   { EXIF_TAG_CONTRAST , {N_("Normal"), N_("Soft"), N_("Hard"), NULL}},
   { EXIF_TAG_SHARPNESS, {N_("Normal"), N_("Soft"), N_("Hard"), NULL}},
+#endif
   { 0, {NULL}}
 };
 
-static struct {
+static const struct {
   ExifTag tag;
   struct {
     int index;
     const char *values[4];
   } elem[25];
 } list2[] = {
+#ifndef NO_VERBOSE_TAG_STRINGS
   { EXIF_TAG_METERING_MODE,
     { {  0, {N_("Unknown"), NULL}},
       {  1, {N_("Average"), N_("avg"), NULL}},
@@ -535,6 +548,7 @@ static struct {
       {2, {N_("Adobe RGB"), NULL}},
       {0xffff, {N_("Uncalibrated"), NULL}},
       {0x0000, {NULL}}}},
+#endif
   {0, { { 0, {NULL}}} }
 };
 
@@ -554,8 +568,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	ExifByteOrder o;
 	double d;
 	ExifEntry *entry;
-	static struct {
-		char *label;
+	static const struct {
+		const char *label;
 		char major, minor;
 	} versions[] = {
 		{"0110", 1,  1},
@@ -915,7 +929,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		/* Search the tag */
 		for (i = 0; list2[i].tag && (list2[i].tag != e->tag); i++);
 		if (!list2[i].tag) {
-			strncpy (val, _("Internal error"), maxlen);
+			snprintf (val, maxlen, _("Internal error (unknown "
+				  "value %i)"), v_short);
 			break;
 		}
 
@@ -958,7 +973,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		/* Search the tag */
 		for (i = 0; list[i].tag && (list[i].tag != e->tag); i++);
 		if (!list[i].tag) {
-			strncpy (val, _("Internal error"), maxlen);
+			snprintf (val, maxlen, _("Internal error (unknown "
+				  "value %i)"), v_short);
 			break;
 		}
 

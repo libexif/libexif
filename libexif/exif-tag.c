@@ -38,13 +38,14 @@
 #define ESL_NNNO { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_OPTIONAL }
 #define ESL_GPS { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN }
 
-static struct {
+static const struct {
 	ExifTag tag;
 	const char *name;
 	const char *title;
 	const char *description;
 	ExifSupportLevel esl[EXIF_IFD_COUNT][4];
 } ExifTagTable[] = {
+#ifndef NO_VERBOSE_TAG_STRINGS
 	{EXIF_TAG_NEW_SUBFILE_TYPE, "NewSubfileType",
 	 "New Subfile Type", N_("A general indication of the kind of data "
 	    "contained in this subfile.")},
@@ -681,6 +682,7 @@ static struct {
 	{EXIF_TAG_UNKNOWN_C4A5, "UnknownC4A5", N_("Unknown"),
 	 N_("Unknown (related to Epson's PRINT Image Matching technology)")},
 	{0, NULL, NULL, NULL}
+#endif
 };
 
 /* For now, do not use these functions. */

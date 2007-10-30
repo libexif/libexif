@@ -1,3 +1,12 @@
+2007-10-29  Dan Fandrich <dan@coneharvesters.com>
+	* Fixed some typos in messages
+	* Made some structs const
+	* Support compiling away the detailed tag tables and log messages when
+	  the NO_VERBOSE_TAG_STRINGS macro is defined to reduce the size of
+	  the library for use in embedded applications where space is at
+	  a premium
+	* Display the raw value of a tag when the tag is unknown
+
 2007-09-12  Jan Patera <patera@users.sourceforge.net>
 
 	* Enhancements to Canon makernote parsers submitted by Thorsten Kukuk
