@@ -267,7 +267,7 @@ exif_content_fix (ExifContent *c)
 			e = exif_content_get_entry (c, t);
 			if (!e) break;
 			exif_log (c->priv->log, EXIF_LOG_CODE_DEBUG, "exif-content",
-					"Tag '%s' is not recoreded in IFD '%s' and has therefore been "
+					"Tag '%s' is not recorded in IFD '%s' and has therefore been "
 					"removed.", exif_tag_get_name_in_ifd (t, ifd),
 					exif_ifd_get_name (ifd));
 			exif_content_remove_entry (c, e);
