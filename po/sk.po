@@ -1634,10 +1634,6 @@ msgstr "pekné počasie"
 msgid "Cloudy weather"
 msgstr "oblačné počasie"
 
-#: libexif/exif-entry.c:452
-msgid "cloudy"
-msgstr "oblačno"
-
 # exif-lightsource-13
 #: libexif/exif-entry.c:455
 msgid "Day white fluorescent"
@@ -1879,17 +1875,13 @@ msgstr "?"
 msgid "Close view"
 msgstr "pohľad zblízka"
 
-#: libexif/exif-entry.c:530
-msgid "close"
-msgstr "zblízka"
-
 # exif-subjectdistancerange-3
 #: libexif/exif-entry.c:531
 msgid "Distant view"
 msgstr "vzdialený pohľad"
 
 #: libexif/exif-entry.c:531
-msgid "distant"
+msgid "Distant"
 msgstr "vzdialený"
 
 #: libexif/exif-entry.c:534
@@ -3345,7 +3337,7 @@ msgid "Flash Mode"
 msgstr "režim blesku"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
-msgid "Whitebalance fine ajustment"
+msgid "Whitebalance fine adjustment"
 msgstr "RB vyváženia bielej"
 
 #: libexif/olympus/mnote-olympus-tag.c:47

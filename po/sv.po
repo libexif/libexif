@@ -1570,10 +1570,6 @@ msgstr "Fint väder"
 msgid "Cloudy weather"
 msgstr "Molnigt väder"
 
-#: libexif/exif-entry.c:452
-msgid "cloudy"
-msgstr "molnigt"
-
 #: libexif/exif-entry.c:455
 msgid "Day white fluorescent"
 msgstr ""
@@ -1795,16 +1791,12 @@ msgstr "?"
 msgid "Close view"
 msgstr ""
 
-#: libexif/exif-entry.c:530
-msgid "close"
-msgstr "nära"
-
 #: libexif/exif-entry.c:531
 msgid "Distant view"
 msgstr ""
 
 #: libexif/exif-entry.c:531
-msgid "distant"
+msgid "Distant"
 msgstr ""
 
 #: libexif/exif-entry.c:534
@@ -3171,7 +3163,7 @@ msgid "Flash Mode"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:46
-msgid "Whitebalance fine ajustment"
+msgid "Whitebalance fine adjustment"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:47

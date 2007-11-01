@@ -1572,10 +1572,6 @@ msgstr "Mooi weer"
 msgid "Cloudy weather"
 msgstr "Bewolkt weer"
 
-#: libexif/exif-entry.c:452
-msgid "cloudy"
-msgstr "bewolkt"
-
 #: libexif/exif-entry.c:455
 msgid "Day white fluorescent"
 msgstr "Daglicht wit TL-licht"
@@ -1797,16 +1793,12 @@ msgstr "?"
 msgid "Close view"
 msgstr "Dichtbij bekijken"
 
-#: libexif/exif-entry.c:530
-msgid "close"
-msgstr "dichtbij"
-
 #: libexif/exif-entry.c:531
 msgid "Distant view"
 msgstr "Op afstand bekijken"
 
 #: libexif/exif-entry.c:531
-msgid "distant"
+msgid "Distant"
 msgstr "op afstand"
 
 #: libexif/exif-entry.c:534
@@ -3172,7 +3164,7 @@ msgid "Flash Mode"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:46
-msgid "Whitebalance fine ajustment"
+msgid "Whitebalance fine adjustment"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:47

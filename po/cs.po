@@ -1194,7 +1194,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:96
 msgid "White balance"
-msgstr ""
+msgstr "Vyvážení bílé"
 
 #: libexif/canon/mnote-canon-tag.c:98
 msgid "Sequence number"
@@ -1480,11 +1480,11 @@ msgstr ""
 
 #: libexif/exif-entry.c:423
 msgid "Auto white balance"
-msgstr ""
+msgstr "Automatické vyvážení"
 
 #: libexif/exif-entry.c:423
 msgid "Manual white balance"
-msgstr ""
+msgstr "Ruční nastavení"
 
 #: libexif/exif-entry.c:425
 msgid "Standard"
@@ -1555,7 +1555,7 @@ msgstr ""
 
 #: libexif/exif-entry.c:450
 msgid "Pattern"
-msgstr "Vzorek"
+msgstr "Vzorkování"
 
 #: libexif/exif-entry.c:455
 msgid "Uncompressed"
@@ -1594,10 +1594,6 @@ msgstr "Pěkné počasí"
 #: libexif/exif-entry.c:469
 msgid "Cloudy weather"
 msgstr "Oblačné počasí"
-
-#: libexif/exif-entry.c:469
-msgid "cloudy"
-msgstr "Oblačno"
 
 #: libexif/exif-entry.c:472
 msgid "Day white fluorescent"
@@ -1833,16 +1829,12 @@ msgstr "?"
 msgid "Close view"
 msgstr "Blízký pohled"
 
-#: libexif/exif-entry.c:547
-msgid "close"
-msgstr "Blízko"
-
 #: libexif/exif-entry.c:548
 msgid "Distant view"
 msgstr "Vzdálený pohled"
 
 #: libexif/exif-entry.c:548
-msgid "distant"
+msgid "Distant"
 msgstr "Vzdáleno"
 
 #: libexif/exif-entry.c:551
@@ -2784,7 +2776,7 @@ msgid ""
 "The value of brightness. The unit is the APEX value. Ordinarily it is given "
 "in the range of -99.99 to 99.99."
 msgstr ""
-"Úroven jasu, v jednotkách APEX. Obvykle se nachází v rozsahu -99,99 až 99,99."
+"Úroveň jasu, v jednotkách APEX. Obvykle se nachází v rozsahu -99,99 až 99,99."
 
 #: libexif/exif-tag.c:420
 msgid "Exposure Bias"
@@ -3105,7 +3097,7 @@ msgstr ""
 msgid ""
 "This tag indicates the location and area of the main subject in the overall "
 "scene."
-msgstr ""
+msgstr "Udává pozici a velikost hlavního objektu ve fotografované scéně."
 
 #: libexif/exif-tag.c:624
 msgid "TIFF/EP Standard ID"
@@ -3131,16 +3123,17 @@ msgid ""
 "This tag indicates the exposure mode set when the image was shot. In auto-"
 "bracketing mode, the camera shoots a series of frames of the same scene at "
 "different exposure settings."
-msgstr ""
+msgstr "Udává režim expozice při pořizování snímků. V režimu auto bracket "
+"fotoaparát pořizuje sekvenci snímků s různým nastavením expozice."
 
 #: libexif/exif-tag.c:634 libexif/pentax/mnote-pentax-tag.c:40
 #: libexif/pentax/mnote-pentax-tag.c:69
 msgid "White Balance"
-msgstr ""
+msgstr "Vyvážení bílé"
 
 #: libexif/exif-tag.c:635
 msgid "This tag indicates the white balance mode set when the image was shot."
-msgstr ""
+msgstr "Udává způsob vyvážení bílé při pořizování snímku."
 
 #: libexif/exif-tag.c:638
 msgid "Digital Zoom Ratio"
@@ -3193,19 +3186,19 @@ msgstr ""
 msgid ""
 "This tag indicates the direction of contrast processing applied by the "
 "camera when the image was shot."
-msgstr ""
+msgstr "Udává směr zpracování kontrastu fotoaparátem při pořizování snímku."
 
 #: libexif/exif-tag.c:661
 msgid ""
 "This tag indicates the direction of saturation processing applied by the "
 "camera when the image was shot."
-msgstr ""
+msgstr "Udává směr zpracování sytosti fotoaparátem při pořizování snímku."
 
 #: libexif/exif-tag.c:664
 msgid ""
 "This tag indicates the direction of sharpness processing applied by the "
 "camera when the image was shot."
-msgstr ""
+msgstr "Udává směr zpracování ostrosti fotoaparátem při pořizování snímku."
 
 #: libexif/exif-tag.c:667
 msgid "Device Setting Description"
@@ -3586,7 +3579,7 @@ msgid "Flash Mode"
 msgstr "Režim blesku"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
-msgid "Whitebalance fine ajustment"
+msgid "Whitebalance fine adjustment"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:47
@@ -3748,7 +3741,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:119
 msgid "White Balance Setting"
-msgstr ""
+msgstr "Nastavení vyvážení bílé"
 
 #: libexif/olympus/mnote-olympus-tag.c:120
 msgid "Contrast Setting"

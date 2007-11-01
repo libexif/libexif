@@ -1600,10 +1600,6 @@ msgstr "Trời đẹp"
 msgid "Cloudy weather"
 msgstr "Đầy mây"
 
-#: libexif/exif-entry.c:469
-msgid "cloudy"
-msgstr "đầy mây"
-
 #: libexif/exif-entry.c:472
 msgid "Day white fluorescent"
 msgstr "Huỳnh quang ngày trắng"
@@ -1844,16 +1840,12 @@ msgstr "?"
 msgid "Close view"
 msgstr "Xem gần"
 
-#: libexif/exif-entry.c:547
-msgid "close"
-msgstr "gần"
-
 #: libexif/exif-entry.c:548
 msgid "Distant view"
 msgstr "Xem xa"
 
 #: libexif/exif-entry.c:548
-msgid "distant"
+msgid "Distant"
 msgstr "xa"
 
 #: libexif/exif-entry.c:551
@@ -3799,7 +3791,7 @@ msgid "Flash Mode"
 msgstr "Chế độ đèn nháy"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
-msgid "Whitebalance fine ajustment"
+msgid "Whitebalance fine adjustment"
 msgstr "Điều chỉnh chính xác cán cân trắng"
 
 #: libexif/olympus/mnote-olympus-tag.c:47

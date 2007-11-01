@@ -1597,10 +1597,6 @@ msgstr "Dobra pogoda"
 msgid "Cloudy weather"
 msgstr "Pochmurna pogoda"
 
-#: libexif/exif-entry.c:469
-msgid "cloudy"
-msgstr "pochmurno"
-
 #: libexif/exif-entry.c:472
 msgid "Day white fluorescent"
 msgstr "Białe fluorescencyjne światło dzienne"
@@ -1841,16 +1837,12 @@ msgstr "?"
 msgid "Close view"
 msgstr "Widok bliski"
 
-#: libexif/exif-entry.c:547
-msgid "close"
-msgstr "blisko"
-
 #: libexif/exif-entry.c:548
 msgid "Distant view"
 msgstr "Widok daleki"
 
 #: libexif/exif-entry.c:548
-msgid "distant"
+msgid "Distant"
 msgstr "daleko"
 
 #: libexif/exif-entry.c:551
@@ -3827,7 +3819,7 @@ msgid "Flash Mode"
 msgstr "Tryb flesza"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
-msgid "Whitebalance fine ajustment"
+msgid "Whitebalance fine adjustment"
 msgstr "Dokładne ustawienie balansu bieli"
 
 #: libexif/olympus/mnote-olympus-tag.c:47

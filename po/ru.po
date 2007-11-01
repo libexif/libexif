@@ -1663,10 +1663,6 @@ msgstr "Ясная погода"
 msgid "Cloudy weather"
 msgstr "Облачность"
 
-#: libexif/exif-entry.c:469
-msgid "cloudy"
-msgstr "облачно"
-
 #: libexif/exif-entry.c:472
 msgid "Day white fluorescent"
 msgstr ""
@@ -1901,16 +1897,12 @@ msgstr "?"
 msgid "Close view"
 msgstr "Крупный план"
 
-#: libexif/exif-entry.c:547
-msgid "close"
-msgstr ""
-
 #: libexif/exif-entry.c:548
 msgid "Distant view"
 msgstr ""
 
 #: libexif/exif-entry.c:548
-msgid "distant"
+msgid "Distant"
 msgstr ""
 
 #: libexif/exif-entry.c:551
@@ -3734,7 +3726,7 @@ msgid "Flash Mode"
 msgstr "Режим вспышки"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
-msgid "Whitebalance fine ajustment"
+msgid "Whitebalance fine adjustment"
 msgstr "Точная подстройка баланса белого"
 
 #: libexif/olympus/mnote-olympus-tag.c:47

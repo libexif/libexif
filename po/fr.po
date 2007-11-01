@@ -1663,10 +1663,6 @@ msgstr "Temps clair"
 msgid "Cloudy weather"
 msgstr "Temps couvert"
 
-#: libexif/exif-entry.c:469
-msgid "cloudy"
-msgstr "nuageux"
-
 #: libexif/exif-entry.c:472
 msgid "Day white fluorescent"
 msgstr ""
@@ -1919,17 +1915,13 @@ msgstr ""
 msgid "Close view"
 msgstr "Vue de près"
 
-#: libexif/exif-entry.c:547
-msgid "close"
-msgstr ""
-
 #: libexif/exif-entry.c:548
 msgid "Distant view"
 msgstr "Vue de loin"
 
 #: libexif/exif-entry.c:548
 #, fuzzy
-msgid "distant"
+msgid "Distant"
 msgstr "Vue de loin"
 
 #: libexif/exif-entry.c:551
@@ -3736,7 +3728,7 @@ msgstr "Flash"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
 #, fuzzy
-msgid "Whitebalance fine ajustment"
+msgid "Whitebalance fine adjustment"
 msgstr "Balance des blancs"
 
 #: libexif/olympus/mnote-olympus-tag.c:47

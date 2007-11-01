@@ -815,7 +815,7 @@ msgstr "Sonnig"
 #: libexif/olympus/mnote-olympus-entry.c:121
 #: libexif/pentax/mnote-pentax-entry.c:254
 msgid "Cloudy"
-msgstr "Wolkiges Wetter"
+msgstr "Wolkig"
 
 #: libexif/canon/mnote-canon-entry.c:283 libexif/exif-entry.c:466
 #: libexif/pentax/mnote-pentax-entry.c:99
@@ -1607,10 +1607,6 @@ msgstr "Gutes Wetter"
 msgid "Cloudy weather"
 msgstr "Wolkiges Wetter"
 
-#: libexif/exif-entry.c:469
-msgid "cloudy"
-msgstr "wolkig"
-
 #: libexif/exif-entry.c:472
 msgid "Day white fluorescent"
 msgstr "Tageslichtweiß Leuchtstoff"
@@ -1848,16 +1844,12 @@ msgstr "?"
 msgid "Close view"
 msgstr "Nahaufnahme"
 
-#: libexif/exif-entry.c:547
-msgid "close"
-msgstr "nah"
-
 #: libexif/exif-entry.c:548
 msgid "Distant view"
 msgstr "Große Entfernung"
 
 #: libexif/exif-entry.c:548
-msgid "distant"
+msgid "Distant"
 msgstr "entfernt"
 
 #: libexif/exif-entry.c:551
@@ -3799,7 +3791,7 @@ msgid "Flash Mode"
 msgstr "Blitzmodus"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
-msgid "Whitebalance fine ajustment"
+msgid "Whitebalance fine adjustment"
 msgstr "Weißabgleich Feinabstimmung"
 
 #: libexif/olympus/mnote-olympus-tag.c:47
