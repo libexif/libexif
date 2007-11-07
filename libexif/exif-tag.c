@@ -371,7 +371,7 @@ static const struct {
 	    "input device as specified in ISO 12232."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_OECF, "OECF", "OECF",
-	 N_("Indicates the Opto-Electoric Conversion Function (OECF) "
+	 N_("Indicates the Opto-Electronic Conversion Function (OECF) "
 	    "specified in ISO 14524. <OECF> is the relationship between "
 	    "the camera optical input and the image values."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
@@ -458,7 +458,7 @@ static const struct {
 	    "with NULL (\"00.h\"). ID codes are assigned by means of "
 	    "registration. The designation method and references for each "
 	    "character code are given in Table 6. The value of CountN "
-	    "is determinated based on the 8 bytes in the character code "
+	    "is determined based on the 8 bytes in the character code "
 	    "area and the number of bytes in the user comment part. Since "
 	    "the TYPE is not ASCII, NULL termination is not necessary "
 	    "(see Fig. 9). "
@@ -679,8 +679,8 @@ static const struct {
 	    "to hexadecimal notation and 128-bit fixed length.")},
 	{EXIF_TAG_GAMMA, "Gamma", N_("Gamma"),
 	 N_("Indicates the value of coefficient gamma.")},
-	{EXIF_TAG_UNKNOWN_C4A5, "UnknownC4A5", N_("Unknown"),
-	 N_("Unknown (related to Epson's PRINT Image Matching technology)")},
+	{EXIF_TAG_PRINT_IMAGE_MATCHING, "PrintImageMatching", N_("PRINT Image Matching"),
+	 N_("Related to Epson's PRINT Image Matching technology")},
 #endif
 	{0, NULL, NULL, NULL}
 };

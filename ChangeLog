@@ -1,3 +1,10 @@
+2007-11-06  Dan Fandrich <dan@coneharvesters.com>
+	* Renamed EXIF_TAG_UNKNOWN_C4A5 to EXIF_TAG_PRINT_IMAGE_MATCHING
+	  The PIM entry seems to have a format consisting of an 8 byte
+	  magic number, 6 byte version number, 2 byte record count field,
+	  then a series of 6 byte records consisting of a 2 byte tag field
+	  and an 4 byte data field.
+
 2007-10-29  Dan Fandrich <dan@coneharvesters.com>
 	* Fixed some typos in messages
 	* Made some structs const

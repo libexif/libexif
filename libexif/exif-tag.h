@@ -142,8 +142,8 @@ typedef enum {
 	EXIF_TAG_DEVICE_SETTING_DESCRIPTION	= 0xa40b,
 	EXIF_TAG_SUBJECT_DISTANCE_RANGE		= 0xa40c,
 	EXIF_TAG_IMAGE_UNIQUE_ID		= 0xa420,
-	EXIF_TAG_GAMMA = 0xa500,
-	EXIF_TAG_UNKNOWN_C4A5 = 0xc4a5
+	EXIF_TAG_GAMMA				= 0xa500,
+	EXIF_TAG_PRINT_IMAGE_MATCHING		= 0xc4a5
 } ExifTag;
 
 /* GPS tags overlap with above ones. */
@@ -197,6 +197,9 @@ ExifSupportLevel exif_tag_get_support_level_in_ifd (ExifTag, ExifIfd,
 const char     *exif_tag_get_name        (ExifTag tag);
 const char     *exif_tag_get_title       (ExifTag tag);
 const char     *exif_tag_get_description (ExifTag tag);
+
+/* Don't use these definitions. They are here for compatibility only. */
+#define EXIF_TAG_UNKNOWN_C4A5 EXIF_TAG_PRINT_IMAGE_MATCHING
 
 #ifdef __cplusplus
 }
