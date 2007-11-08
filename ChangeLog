@@ -1,3 +1,6 @@
+2007-11-08  Dan Fandrich <dan@coneharvesters.com>
+	* Added Canadian English translation, eh?
+
 2007-11-06  Dan Fandrich <dan@coneharvesters.com>
 	* Renamed EXIF_TAG_UNKNOWN_C4A5 to EXIF_TAG_PRINT_IMAGE_MATCHING
 	  The PIM entry seems to have a format consisting of an 8 byte
