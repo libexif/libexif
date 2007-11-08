@@ -186,13 +186,13 @@ static const struct {
 	{EXIF_TAG_WHITE_POINT, "WhitePoint", N_("White Point"),
 	 N_("The chromaticity of the white point of the image. Normally "
 	    "this tag is not necessary, since color space is specified "
-	    "in the colorspace information tag (<ColorSpace>)."),
+	    "in the color space information tag (<ColorSpace>)."),
 	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_PRIMARY_CHROMATICITIES, "PrimaryChromaticities",
 	 N_("Primary Chromaticities"),
 	 N_("The chromaticity of the three primary colors of the image. "
-	    "Normally this tag is not necessary, since colorspace is "
-	    "specified in the colorspace information tag (<ColorSpace>)."),
+	    "Normally this tag is not necessary, since color space is "
+	    "specified in the color space information tag (<ColorSpace>)."),
 	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_TRANSFER_RANGE, "TransferRange", N_("Transfer Range"), ""},
 	{EXIF_TAG_SUB_IFDS, "SubIFDs", "SubIFD Offsets", N_("Defined by Adobe Corporation "
