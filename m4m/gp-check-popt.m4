@@ -54,8 +54,8 @@ if test "$require_popt" != yes; then
 fi
 
 dnl Implicit AC_SUBST
-AC_ARG_VAR([POPT_CFLAGS],[cppflags to compile with libpopt])dnl
-AC_ARG_VAR([POPT_LIBS],[location of libpopt to link against])dnl
+AC_ARG_VAR([POPT_CFLAGS],[CPPFLAGS to compile with libpopt])dnl
+AC_ARG_VAR([POPT_LIBS],[LDFLAGS to link with libpopt])dnl
 
 have_popt=no
 
