@@ -875,11 +875,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		else
 			snprintf (val, maxlen, "%i, %i", v_short, v_short2);
 		break;
-	case EXIF_TAG_MAKER_NOTE:
-		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		snprintf (val, maxlen, _("%i bytes unknown data"),
-			  e->size);
-		break;
 	case EXIF_TAG_SUBJECT_AREA:
 		CF (e, EXIF_FORMAT_SHORT, val, maxlen);
 		switch (e->components) {
@@ -1005,6 +1000,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		case EXIF_FORMAT_UNDEFINED:
 			if ((e->tag == EXIF_TAG_SCENE_TYPE) && (e->size == 1)) {
 				snprintf (val, maxlen, "%i", e->data[0]);
+			} else {
+				snprintf (val, maxlen, _("%i bytes undefined data"),
+					  e->size);
 			}
 			break;
 		case EXIF_FORMAT_BYTE:
