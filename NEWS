@@ -3,6 +3,7 @@ libexif-0.6.16.2:
   * New translations: nl, se, en_CA
   * Bug fixes: #1773810, #1774626
   * Enhanced support of Canon makernotes 
+  * Added support for Sanyo makernotes
   * Added support for the NO_VERBOSE_TAG_STRINGS macro for embedded
     applications
 

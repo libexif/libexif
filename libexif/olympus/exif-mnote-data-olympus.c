@@ -97,11 +97,12 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	*buf_size = 6 + 2 + 2 + n->count * 12;
 	switch (n->version) {
 	case olympusV1:
+	case sanyoV1:
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
 		if (!*buf) return;
 
 		/* Write the header and the number of entries. */
-		strcpy ((char *)*buf, "OLYMP");
+		strcpy ((char *)*buf, n->version==sanyoV1?"SANYO":"OLYMP");
 		exif_set_short (*buf + 6, n->order, (ExifShort) 1);
 		datao = n->offset;
 		break;
@@ -208,6 +209,9 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	 * a size of 22 bytes (6 for 'OLYMP', 2 other bytes, 2 for the
 	 * number of entries, and 12 for one entry.
 	 *
+	 * Sanyo format is identical and uses identical tags except that
+	 * header starts with "SANYO".
+	 *
 	 * Nikon headers start with "Nikon" (6 bytes including '\0'), 
 	 * version number (1 or 2).
 	 * 
@@ -219,12 +223,15 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	 * lastly 0x2A.
 	 */
 	if (buf_size - n->offset < 22) return;
-	if (!memcmp (buf + o2, "OLYMP", 6)) {
+	if (!memcmp (buf + o2, "OLYMP", 6) || !memcmp (buf + o2, "SANYO", 6)) {
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
-			"Parsing Olympus maker note v1...");
+			"Parsing Olympus/Sanyo maker note v1...");
 
 		/* The number of entries is at position 8. */
-		n->version = olympusV1;
+		if (!memcmp (buf + o2, "SANYO", 6))
+			n->version = sanyoV1;
+		else
+			n->version = olympusV1;
 		if (buf[o2 + 6] == 1)
 			n->order = EXIF_BYTE_ORDER_INTEL;
 		else if (buf[o2 + 6 + 1] == 1)
