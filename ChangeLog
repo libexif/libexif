@@ -1,3 +1,11 @@
+2007-11-12  Dan Fandrich <dan@coneharvesters.com>
+	* Added support for more Olympus makernotes, based on data on
+	  Phil Harvey's ExifTool page at
+	  http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/
+	  and sanity checked by the pel-images in the libexif test suite.
+	* Added support for Sanyo makernotes, which have the identical
+	  tag format and (so it seems) namespace of the Olympus tags.
+
 2007-11-08  Dan Fandrich <dan@coneharvesters.com>
 	* Added Canadian English translation, eh?
 

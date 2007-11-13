@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif 0.6.16.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-07 22:45-0800\n"
-"PO-Revision-Date: 2007-11-07 20:30-0800\n"
+"POT-Creation-Date: 2007-11-12 18:25-0800\n"
+"PO-Revision-Date: 2007-11-12 18:00-0800\n"
 "Last-Translator: Dan Fandrich <dan@coneharvesters.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=US-ASCII\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 7bit\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 
 #: libexif/canon/mnote-canon-entry.c:40
@@ -39,10 +39,11 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:75 libexif/canon/mnote-canon-entry.c:129
 #: libexif/canon/mnote-canon-entry.c:181 libexif/exif-entry.c:542
-#: libexif/olympus/mnote-olympus-tag.c:107
+#: libexif/olympus/mnote-olympus-entry.c:168
+#: libexif/olympus/mnote-olympus-tag.c:108
 #: libexif/pentax/mnote-pentax-entry.c:173
 #: libexif/pentax/mnote-pentax-entry.c:208
-#: libexif/pentax/mnote-pentax-entry.c:293
+#: libexif/pentax/mnote-pentax-entry.c:294
 msgid "Macro"
 msgstr ""
 
@@ -50,9 +51,10 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:156 libexif/canon/mnote-canon-entry.c:159
 #: libexif/canon/mnote-canon-entry.c:162 libexif/exif-entry.c:422
 #: libexif/exif-entry.c:425 libexif/exif-entry.c:426 libexif/exif-entry.c:427
-#: libexif/exif-entry.c:491 libexif/olympus/mnote-olympus-entry.c:103
-#: libexif/olympus/mnote-olympus-entry.c:151
-#: libexif/olympus/mnote-olympus-entry.c:157
+#: libexif/exif-entry.c:491 libexif/olympus/mnote-olympus-entry.c:104
+#: libexif/olympus/mnote-olympus-entry.c:167
+#: libexif/olympus/mnote-olympus-entry.c:175
+#: libexif/olympus/mnote-olympus-entry.c:185
 #: libexif/pentax/mnote-pentax-entry.c:104
 #: libexif/pentax/mnote-pentax-entry.c:109
 #: libexif/pentax/mnote-pentax-entry.c:114
@@ -69,7 +71,7 @@ msgid "Fine"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:80
-#: libexif/olympus/mnote-olympus-entry.c:132
+#: libexif/olympus/mnote-olympus-entry.c:133
 #: libexif/pentax/mnote-pentax-entry.c:140
 msgid "RAW"
 msgstr ""
@@ -83,7 +85,10 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:340 libexif/canon/mnote-canon-entry.c:352
 #: libexif/canon/mnote-canon-entry.c:365 libexif/canon/mnote-canon-entry.c:367
 #: libexif/canon/mnote-canon-entry.c:563 libexif/canon/mnote-canon-entry.c:658
-#: libexif/olympus/mnote-olympus-entry.c:148
+#: libexif/olympus/mnote-olympus-entry.c:151
+#: libexif/olympus/mnote-olympus-entry.c:159
+#: libexif/olympus/mnote-olympus-entry.c:211
+#: libexif/olympus/mnote-olympus-entry.c:468
 #: libexif/pentax/mnote-pentax-entry.c:194
 #: libexif/pentax/mnote-pentax-entry.c:259
 msgid "Off"
@@ -92,8 +97,9 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:83 libexif/canon/mnote-canon-entry.c:166
 #: libexif/canon/mnote-canon-entry.c:179 libexif/canon/mnote-canon-entry.c:323
 #: libexif/canon/mnote-canon-entry.c:391
-#: libexif/olympus/mnote-olympus-entry.c:116
-#: libexif/olympus/mnote-olympus-entry.c:145
+#: libexif/olympus/mnote-olympus-entry.c:117
+#: libexif/olympus/mnote-olympus-entry.c:156
+#: libexif/olympus/mnote-olympus-entry.c:171
 #: libexif/pentax/mnote-pentax-entry.c:76
 #: libexif/pentax/mnote-pentax-entry.c:87
 #: libexif/pentax/mnote-pentax-entry.c:90
@@ -101,20 +107,22 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-entry.c:130
 #: libexif/pentax/mnote-pentax-entry.c:228
 #: libexif/pentax/mnote-pentax-entry.c:244
-#: libexif/pentax/mnote-pentax-entry.c:286
+#: libexif/pentax/mnote-pentax-entry.c:287
 msgid "Auto"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:84 libexif/canon/mnote-canon-entry.c:301
 #: libexif/canon/mnote-canon-entry.c:342 libexif/canon/mnote-canon-entry.c:356
 #: libexif/canon/mnote-canon-entry.c:366
+#: libexif/olympus/mnote-olympus-entry.c:152
+#: libexif/olympus/mnote-olympus-entry.c:471
 #: libexif/pentax/mnote-pentax-entry.c:197
 #: libexif/pentax/mnote-pentax-entry.c:260
 msgid "On"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:85
-#: libexif/olympus/mnote-olympus-entry.c:146
+#: libexif/olympus/mnote-olympus-entry.c:157
 msgid "Red-eye reduction"
 msgstr ""
 
@@ -248,7 +256,8 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:120 libexif/canon/mnote-canon-entry.c:178
 #: libexif/canon/mnote-canon-entry.c:200 libexif/canon/mnote-canon-entry.c:284
 #: libexif/canon/mnote-canon-entry.c:383 libexif/exif-entry.c:490
-#: libexif/olympus/mnote-olympus-entry.c:76
+#: libexif/olympus/mnote-olympus-entry.c:77
+#: libexif/olympus/mnote-olympus-entry.c:172
 #: libexif/pentax/mnote-pentax-entry.c:78
 #: libexif/pentax/mnote-pentax-entry.c:101
 #: libexif/pentax/mnote-pentax-entry.c:132
@@ -261,7 +270,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:121 libexif/canon/mnote-canon-entry.c:421
 #: libexif/exif-entry.c:419 libexif/exif-entry.c:501
 #: libexif/pentax/mnote-pentax-entry.c:166
-#: libexif/pentax/mnote-pentax-entry.c:297
+#: libexif/pentax/mnote-pentax-entry.c:298
 msgid "Landscape"
 msgstr ""
 
@@ -274,6 +283,7 @@ msgid "Slow shutter"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:124
+#: libexif/olympus/mnote-olympus-entry.c:214
 msgid "Night"
 msgstr ""
 
@@ -289,9 +299,9 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:127 libexif/canon/mnote-canon-entry.c:420
 #: libexif/exif-entry.c:419 libexif/exif-entry.c:499
 #: libexif/pentax/mnote-pentax-entry.c:165
-#: libexif/pentax/mnote-pentax-entry.c:287
-#: libexif/pentax/mnote-pentax-entry.c:290
-#: libexif/pentax/mnote-pentax-entry.c:296
+#: libexif/pentax/mnote-pentax-entry.c:288
+#: libexif/pentax/mnote-pentax-entry.c:291
+#: libexif/pentax/mnote-pentax-entry.c:297
 msgid "Portrait"
 msgstr ""
 
@@ -346,8 +356,8 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:141 libexif/canon/mnote-canon-entry.c:339
 #: libexif/canon/mnote-canon-entry.c:407
 #: libexif/pentax/mnote-pentax-entry.c:186
-#: libexif/pentax/mnote-pentax-entry.c:288
-#: libexif/pentax/mnote-pentax-entry.c:294
+#: libexif/pentax/mnote-pentax-entry.c:289
+#: libexif/pentax/mnote-pentax-entry.c:295
 msgid "Underwater"
 msgstr ""
 
@@ -393,13 +403,14 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:152 libexif/canon/mnote-canon-entry.c:343
 #: libexif/canon/mnote-canon-entry.c:360 libexif/canon/mnote-canon-entry.c:408
-#: libexif/olympus/mnote-olympus-entry.c:334
+#: libexif/olympus/mnote-olympus-entry.c:197
+#: libexif/olympus/mnote-olympus-entry.c:390
 #: libexif/pentax/mnote-pentax-entry.c:241
 msgid "None"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:153
-#: libexif/olympus/mnote-olympus-entry.c:142
+#: libexif/olympus/mnote-olympus-entry.c:148
 msgid "2x"
 msgstr ""
 
@@ -911,10 +922,12 @@ msgid "FP sync used"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:291
+#: libexif/olympus/mnote-olympus-entry.c:162
 msgid "Internal"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:292
+#: libexif/olympus/mnote-olympus-entry.c:163
 msgid "External"
 msgstr ""
 
@@ -954,7 +967,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:310
 msgid "My color data"
-msgstr ""
+msgstr "My colour data"
 
 #: libexif/canon/mnote-canon-entry.c:312 libexif/canon/mnote-canon-entry.c:370
 #: libexif/pentax/mnote-pentax-entry.c:125
@@ -983,7 +996,7 @@ msgid "Sunny"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:325 libexif/canon/mnote-canon-entry.c:393
-#: libexif/exif-entry.c:465 libexif/olympus/mnote-olympus-entry.c:121
+#: libexif/exif-entry.c:465 libexif/olympus/mnote-olympus-entry.c:122
 #: libexif/pentax/mnote-pentax-entry.c:254
 msgid "Cloudy"
 msgstr ""
@@ -1046,7 +1059,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:347
 msgid "Center + Right"
-msgstr ""
+msgstr "Centre + Right"
 
 #: libexif/canon/mnote-canon-entry.c:349
 msgid "Left + Right"
@@ -1122,7 +1135,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:382 libexif/canon/mnote-canon-entry.c:388
 #: libexif/canon/mnote-canon-entry.c:409 libexif/canon/mnote-canon-entry.c:419
-#: libexif/exif-entry.c:419
+#: libexif/exif-entry.c:419 libexif/olympus/mnote-olympus-entry.c:198
 msgid "Standard"
 msgstr ""
 
@@ -1139,7 +1152,7 @@ msgid "Highest"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:392 libexif/exif-entry.c:460
-#: libexif/olympus/mnote-olympus-entry.c:118
+#: libexif/olympus/mnote-olympus-entry.c:119
 #: libexif/pentax/mnote-pentax-entry.c:97
 #: libexif/pentax/mnote-pentax-entry.c:245
 msgid "Daylight"
@@ -1212,7 +1225,7 @@ msgid "Faithful"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:424
-#: libexif/olympus/mnote-olympus-entry.c:100
+#: libexif/olympus/mnote-olympus-entry.c:101
 msgid "Monochrome"
 msgstr ""
 
@@ -1275,7 +1288,7 @@ msgstr ""
 msgid "Image type"
 msgstr ""
 
-#: libexif/canon/mnote-canon-tag.c:39 libexif/olympus/mnote-olympus-tag.c:112
+#: libexif/canon/mnote-canon-tag.c:39 libexif/olympus/mnote-olympus-tag.c:113
 msgid "Firmware version"
 msgstr ""
 
@@ -1309,7 +1322,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:55 libexif/olympus/mnote-olympus-tag.c:40
 #: libexif/olympus/mnote-olympus-tag.c:94
-#: libexif/olympus/mnote-olympus-tag.c:106
+#: libexif/olympus/mnote-olympus-tag.c:107
 msgid "Quality"
 msgstr ""
 
@@ -1439,7 +1452,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:87
 msgid "Color tone"
-msgstr ""
+msgstr "Colour tone"
 
 #: libexif/canon/mnote-canon-tag.c:88
 msgid "Focal type"
@@ -1557,45 +1570,45 @@ msgstr ""
 msgid "Intel"
 msgstr ""
 
-#: libexif/exif-data.c:726
+#: libexif/exif-data.c:728
 msgid "Size of data too small to allow for EXIF data."
 msgstr ""
 
-#: libexif/exif-data.c:787
+#: libexif/exif-data.c:789
 msgid "EXIF marker not found."
 msgstr ""
 
-#: libexif/exif-data.c:814
+#: libexif/exif-data.c:816
 msgid "EXIF header not found."
 msgstr ""
 
-#: libexif/exif-data.c:830
+#: libexif/exif-data.c:832
 msgid "Unknown encoding."
 msgstr ""
 
-#: libexif/exif-data.c:1134
+#: libexif/exif-data.c:1136
 msgid "Ignore unknown tags"
 msgstr ""
 
-#: libexif/exif-data.c:1135
+#: libexif/exif-data.c:1137
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr ""
 
-#: libexif/exif-data.c:1136
+#: libexif/exif-data.c:1138
 msgid "Follow specification"
 msgstr ""
 
-#: libexif/exif-data.c:1137
+#: libexif/exif-data.c:1139
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
 msgstr ""
 
-#: libexif/exif-data.c:1139
+#: libexif/exif-data.c:1141
 msgid "Do not change maker note"
 msgstr ""
 
-#: libexif/exif-data.c:1140
+#: libexif/exif-data.c:1142
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."
@@ -1708,7 +1721,7 @@ msgstr ""
 
 #: libexif/exif-entry.c:408
 msgid "centered"
-msgstr "centreed"
+msgstr "centred"
 
 #: libexif/exif-entry.c:408
 msgid "co-sited"
@@ -1796,23 +1809,24 @@ msgid "High saturation"
 msgstr ""
 
 #: libexif/exif-entry.c:426 libexif/exif-entry.c:427
-#: libexif/olympus/mnote-olympus-entry.c:153
-#: libexif/olympus/mnote-olympus-entry.c:158
+#: libexif/olympus/mnote-olympus-entry.c:177
+#: libexif/olympus/mnote-olympus-entry.c:186
 #: libexif/pentax/mnote-pentax-entry.c:105
 #: libexif/pentax/mnote-pentax-entry.c:169
 msgid "Soft"
 msgstr ""
 
 #: libexif/exif-entry.c:426 libexif/exif-entry.c:427
-#: libexif/olympus/mnote-olympus-entry.c:152
-#: libexif/olympus/mnote-olympus-entry.c:156
+#: libexif/olympus/mnote-olympus-entry.c:176
+#: libexif/olympus/mnote-olympus-entry.c:184
 #: libexif/pentax/mnote-pentax-entry.c:106
 msgid "Hard"
 msgstr ""
 
 #: libexif/exif-entry.c:441 libexif/exif-entry.c:459 libexif/exif-entry.c:541
-#: libexif/olympus/mnote-olympus-entry.c:496
-#: libexif/olympus/mnote-olympus-entry.c:552
+#: libexif/olympus/mnote-olympus-entry.c:474
+#: libexif/olympus/mnote-olympus-entry.c:588
+#: libexif/olympus/mnote-olympus-entry.c:644
 #: libexif/pentax/mnote-pentax-entry.c:255
 msgid "Unknown"
 msgstr ""
@@ -1985,8 +1999,11 @@ msgstr ""
 msgid "flash"
 msgstr ""
 
-#: libexif/exif-entry.c:505 libexif/olympus/mnote-olympus-entry.c:138
-#: libexif/olympus/mnote-olympus-entry.c:162
+#: libexif/exif-entry.c:505 libexif/olympus/mnote-olympus-entry.c:139
+#: libexif/olympus/mnote-olympus-entry.c:144
+#: libexif/olympus/mnote-olympus-entry.c:181
+#: libexif/olympus/mnote-olympus-entry.c:190
+#: libexif/olympus/mnote-olympus-entry.c:208
 msgid "Yes"
 msgstr ""
 
@@ -2158,9 +2175,9 @@ msgstr ""
 msgid "Unknown FlashPix Version"
 msgstr ""
 
-#: libexif/exif-entry.c:702 libexif/exif-entry.c:714 libexif/exif-entry.c:1354
-#: libexif/exif-entry.c:1359 libexif/exif-entry.c:1362
-#: libexif/exif-entry.c:1367 libexif/exif-entry.c:1368
+#: libexif/exif-entry.c:702 libexif/exif-entry.c:714 libexif/exif-entry.c:1352
+#: libexif/exif-entry.c:1357 libexif/exif-entry.c:1360
+#: libexif/exif-entry.c:1365 libexif/exif-entry.c:1366
 msgid "[None]"
 msgstr ""
 
@@ -2251,31 +2268,31 @@ msgstr ""
 msgid "YCbCr4:2:0"
 msgstr ""
 
-#: libexif/exif-entry.c:880 libexif/pentax/mnote-pentax-entry.c:392
-#: libexif/pentax/mnote-pentax-entry.c:420
-#, c-format
-msgid "%i bytes unknown data"
-msgstr ""
-
-#: libexif/exif-entry.c:896
+#: libexif/exif-entry.c:891
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
 msgstr ""
 
-#: libexif/exif-entry.c:905
+#: libexif/exif-entry.c:900
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
 msgstr ""
 
-#: libexif/exif-entry.c:911
+#: libexif/exif-entry.c:906
 #, c-format
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr ""
 
-#: libexif/exif-entry.c:932 libexif/exif-entry.c:941 libexif/exif-entry.c:976
-#: libexif/pentax/mnote-pentax-entry.c:353
+#: libexif/exif-entry.c:927 libexif/exif-entry.c:936 libexif/exif-entry.c:971
+#: libexif/olympus/mnote-olympus-entry.c:440
+#: libexif/pentax/mnote-pentax-entry.c:354
 #, c-format
 msgid "Internal error (unknown value %i)"
+msgstr ""
+
+#: libexif/exif-entry.c:1004
+#, c-format
+msgid "%i bytes undefined data"
 msgstr ""
 
 #: libexif/exif-format.c:33
@@ -2633,8 +2650,8 @@ msgid ""
 "is not necessary, since color space is specified in the color space "
 "information tag (<ColorSpace>)."
 msgstr ""
-"The chromaticity of the three primary colours of the image. Normally this tag "
-"is not necessary, since colour space is specified in the colour space "
+"The chromaticity of the three primary colours of the image. Normally this "
+"tag is not necessary, since colour space is specified in the colour space "
 "information tag (<ColorSpace>)."
 
 #: libexif/exif-tag.c:197
@@ -2740,7 +2757,7 @@ msgid ""
 msgstr ""
 "The reference black point value and reference white point value. No defaults "
 "are given in TIFF, but the values below are given as defaults here. The "
-"color space is declared in a colour space information tag, with the default "
+"colour space is declared in a colour space information tag, with the default "
 "being the value that gives the optimal image characteristics "
 "Interoperability these conditions."
 
@@ -2762,6 +2779,9 @@ msgid ""
 "when a one-chip color area sensor is used. It does not apply to all sensing "
 "methods."
 msgstr ""
+"Indicates the colour filter array (CFA) geometric pattern of the image "
+"sensor when a one-chip colour area sensor is used. It does not apply to all "
+"sensing methods."
 
 #: libexif/exif-tag.c:272
 msgid "Battery Level"
@@ -3278,6 +3298,11 @@ msgid ""
 "value indicates the X column number and the second indicates the Y row "
 "number."
 msgstr ""
+"Indicates the location of the main subject in the scene. The value of this "
+"tag represents the pixel at the centre of the main subject relative to the "
+"left edge, prior to rotation processing as per the <Rotation> tag. The first "
+"value indicates the X column number and the second indicates the Y row "
+"number."
 
 #: libexif/exif-tag.c:603
 msgid "Exposure index"
@@ -3467,299 +3492,373 @@ msgstr ""
 msgid "Related to Epson's PRINT Image Matching technology"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:75
+#: libexif/olympus/mnote-olympus-entry.c:76
 msgid "AF non D Lens"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:77
+#: libexif/olympus/mnote-olympus-entry.c:78
 msgid "AF-D or AF-S Lens"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:78
+#: libexif/olympus/mnote-olympus-entry.c:79
 msgid "AF-D G Lens"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:79
+#: libexif/olympus/mnote-olympus-entry.c:80
 msgid "AF-D VR Lens"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:82
+#: libexif/olympus/mnote-olympus-entry.c:83
 msgid "Flash did not fire"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:83
+#: libexif/olympus/mnote-olympus-entry.c:84
 msgid "Flash unit unknown"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:84
+#: libexif/olympus/mnote-olympus-entry.c:85
 msgid "Flash is external"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:85
+#: libexif/olympus/mnote-olympus-entry.c:86
 msgid "Flash is on Camera"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:88
+#: libexif/olympus/mnote-olympus-entry.c:89
 msgid "VGA Basic"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:89
+#: libexif/olympus/mnote-olympus-entry.c:90
 msgid "VGA Normal"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:90
+#: libexif/olympus/mnote-olympus-entry.c:91
 msgid "VGA Fine"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:91
+#: libexif/olympus/mnote-olympus-entry.c:92
 msgid "SXGA Basic"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:92
+#: libexif/olympus/mnote-olympus-entry.c:93
 msgid "SXGA Normal"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:93
+#: libexif/olympus/mnote-olympus-entry.c:94
 msgid "SXGA Fine"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:94
+#: libexif/olympus/mnote-olympus-entry.c:95
 msgid "2 MPixel Basic"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:95
+#: libexif/olympus/mnote-olympus-entry.c:96
 msgid "2 MPixel Normal"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:96
+#: libexif/olympus/mnote-olympus-entry.c:97
 msgid "2 MPixel Fine"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:99
+#: libexif/olympus/mnote-olympus-entry.c:100
 msgid "Color"
-msgstr ""
+msgstr "Colour"
 
-#: libexif/olympus/mnote-olympus-entry.c:104
+#: libexif/olympus/mnote-olympus-entry.c:105
 msgid "Bright+"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:105
+#: libexif/olympus/mnote-olympus-entry.c:106
 msgid "Bright-"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:106
+#: libexif/olympus/mnote-olympus-entry.c:107
 msgid "Contrast+"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:107
+#: libexif/olympus/mnote-olympus-entry.c:108
 msgid "Contrast-"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:110
+#: libexif/olympus/mnote-olympus-entry.c:111
 msgid "ISO80"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:111
+#: libexif/olympus/mnote-olympus-entry.c:112
 msgid "ISO160"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:112
+#: libexif/olympus/mnote-olympus-entry.c:113
 msgid "ISO320"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:113
+#: libexif/olympus/mnote-olympus-entry.c:114
 msgid "ISO100"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:117
+#: libexif/olympus/mnote-olympus-entry.c:118
 msgid "Preset"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:119
+#: libexif/olympus/mnote-olympus-entry.c:120
 msgid "Incandescence"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:120
+#: libexif/olympus/mnote-olympus-entry.c:121
 msgid "Fluorescence"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:122
+#: libexif/olympus/mnote-olympus-entry.c:123
 msgid "SpeedLight"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:125
+#: libexif/olympus/mnote-olympus-entry.c:126
 msgid "No Fisheye"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:126
+#: libexif/olympus/mnote-olympus-entry.c:127
 msgid "Fisheye On"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:129
+#: libexif/olympus/mnote-olympus-entry.c:130
 msgid "SQ"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:130
+#: libexif/olympus/mnote-olympus-entry.c:131
 msgid "HQ"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:131
+#: libexif/olympus/mnote-olympus-entry.c:132
 msgid "SHQ"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:133
+#: libexif/olympus/mnote-olympus-entry.c:134
 msgid "SQ1"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:134
+#: libexif/olympus/mnote-olympus-entry.c:135
 msgid "SQ2"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:137
-#: libexif/olympus/mnote-olympus-entry.c:161
+#: libexif/olympus/mnote-olympus-entry.c:138
+#: libexif/olympus/mnote-olympus-entry.c:143
+#: libexif/olympus/mnote-olympus-entry.c:180
+#: libexif/olympus/mnote-olympus-entry.c:189
+#: libexif/olympus/mnote-olympus-entry.c:207
 msgid "No"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:141
-msgid "1x"
+#: libexif/olympus/mnote-olympus-entry.c:140
+msgid "Super Macro"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:147
+msgid "1x"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:153
+msgid "On (Preset)"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:158
 msgid "Fill"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:274
+#: libexif/olympus/mnote-olympus-entry.c:164
+msgid "Internal + External"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:193
+msgid "Interlaced"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:194
+msgid "Progressive"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:199
+#: libexif/pentax/mnote-pentax-entry.c:84
+#: libexif/pentax/mnote-pentax-entry.c:138
+msgid "Best"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:200
+msgid "Adjust Exposure"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:203
+msgid "Record while down"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:204
+msgid "Press start, press stop"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:212
+#: libexif/pentax/mnote-pentax-entry.c:167
+msgid "Sport"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:213
+msgid "TV"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:215
+msgid "User 1"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:216
+msgid "User 2"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:217
+msgid "Lamp"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:220
+msgid "5 frames/sec"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:221
+msgid "10 frames/sec"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:222
+msgid "15 frames/sec"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:223
+msgid "20 frames/sec"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:337
 #, c-format
 msgid "Red Correction %f, Blue Correction %f"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:282
+#: libexif/olympus/mnote-olympus-entry.c:345
 #, c-format
 msgid "%2.2f meters"
 msgstr "%2.2f metres"
 
-#: libexif/olympus/mnote-olympus-entry.c:284
+#: libexif/olympus/mnote-olympus-entry.c:347
 msgid "No manual focus selection"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:314
+#: libexif/olympus/mnote-olympus-entry.c:370
 msgid "AF Position: Center"
 msgstr "AF Position: Centre"
 
-#: libexif/olympus/mnote-olympus-entry.c:315
+#: libexif/olympus/mnote-olympus-entry.c:371
 msgid "AF Position: Top"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:316
+#: libexif/olympus/mnote-olympus-entry.c:372
 msgid "AF Position: Bottom"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:317
+#: libexif/olympus/mnote-olympus-entry.c:373
 msgid "AF Position: Left"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:318
+#: libexif/olympus/mnote-olympus-entry.c:374
 msgid "AF Position: Right"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:319
+#: libexif/olympus/mnote-olympus-entry.c:375
 msgid "AF Position: Upper-left"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:320
+#: libexif/olympus/mnote-olympus-entry.c:376
 msgid "AF Position: Upper-right"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:321
+#: libexif/olympus/mnote-olympus-entry.c:377
 msgid "AF Position: Lower-left"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:322
+#: libexif/olympus/mnote-olympus-entry.c:378
 msgid "AF Position: Lower-right"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:323
+#: libexif/olympus/mnote-olympus-entry.c:379
 msgid "AF Position: Far Left"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:324
+#: libexif/olympus/mnote-olympus-entry.c:380
 msgid "AF Position: Far Right"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:325
+#: libexif/olympus/mnote-olympus-entry.c:381
 msgid "Unknown AF Position"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:358
-#: libexif/pentax/mnote-pentax-entry.c:344
-#: libexif/pentax/mnote-pentax-entry.c:367
-msgid "Internal error"
-msgstr ""
-
-#: libexif/olympus/mnote-olympus-entry.c:379
+#: libexif/olympus/mnote-olympus-entry.c:448
 #, c-format
 msgid "Unknown value %hi"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:408
-msgid "Infinite"
-msgstr ""
-
-#: libexif/olympus/mnote-olympus-entry.c:422
+#: libexif/olympus/mnote-olympus-entry.c:504
 msgid "normal"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:425
+#: libexif/olympus/mnote-olympus-entry.c:507
 msgid "unknown"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:428
+#: libexif/olympus/mnote-olympus-entry.c:510
 msgid "fast"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:431
+#: libexif/olympus/mnote-olympus-entry.c:513
 msgid "panorama"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:434
-#: libexif/olympus/mnote-olympus-entry.c:454
+#: libexif/olympus/mnote-olympus-entry.c:516
+#: libexif/olympus/mnote-olympus-entry.c:536
 #, c-format
 msgid "%li"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:442
+#: libexif/olympus/mnote-olympus-entry.c:524
 msgid "left to right"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:445
+#: libexif/olympus/mnote-olympus-entry.c:527
 msgid "right to left"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:448
+#: libexif/olympus/mnote-olympus-entry.c:530
 msgid "bottom to top"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:451
+#: libexif/olympus/mnote-olympus-entry.c:533
 msgid "top to bottom"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:462
-msgid "Unknown tag."
-msgstr ""
-
-#: libexif/olympus/mnote-olympus-entry.c:510
+#: libexif/olympus/mnote-olympus-entry.c:602
 msgid "Automatic"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:543
+#: libexif/olympus/mnote-olympus-entry.c:632
+#, c-format
+msgid "Manual: %liK"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:635
 msgid "Manual: Unknown"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:549
+#: libexif/olympus/mnote-olympus-entry.c:641
 msgid "One-touch"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:571
+#: libexif/olympus/mnote-olympus-entry.c:695
+#: libexif/olympus/mnote-olympus-entry.c:705
+msgid "Infinite"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-entry.c:713
 #, c-format
 msgid "%i bytes unknown data: "
 msgstr ""
@@ -3786,8 +3885,9 @@ msgstr ""
 msgid "Image Sharpening"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-tag.c:43 libexif/pentax/mnote-pentax-tag.c:36
-#: libexif/pentax/mnote-pentax-tag.c:66
+#: libexif/olympus/mnote-olympus-tag.c:43
+#: libexif/olympus/mnote-olympus-tag.c:134
+#: libexif/pentax/mnote-pentax-tag.c:36 libexif/pentax/mnote-pentax-tag.c:66
 msgid "Focus Mode"
 msgstr ""
 
@@ -3796,7 +3896,7 @@ msgid "Flash Setting"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:45
-#: libexif/olympus/mnote-olympus-tag.c:116
+#: libexif/olympus/mnote-olympus-tag.c:127
 #: libexif/pentax/mnote-pentax-tag.c:37 libexif/pentax/mnote-pentax-tag.c:65
 msgid "Flash Mode"
 msgstr ""
@@ -3855,13 +3955,15 @@ msgid "Lens"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:63
-#: libexif/olympus/mnote-olympus-tag.c:117
+#: libexif/olympus/mnote-olympus-tag.c:135
+#: libexif/olympus/mnote-olympus-tag.c:183
 msgid "Manual Focus Distance"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:64
 #: libexif/olympus/mnote-olympus-tag.c:101
-#: libexif/olympus/mnote-olympus-tag.c:109
+#: libexif/olympus/mnote-olympus-tag.c:110
+#: libexif/olympus/mnote-olympus-tag.c:179
 msgid "Digital Zoom"
 msgstr ""
 
@@ -3947,31 +4049,271 @@ msgid "Converter"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:105
+msgid "Thumbnail Image"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:106
 msgid "Speed/Sequence/Panorama direction"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-tag.c:113
-msgid "Info"
+#: libexif/olympus/mnote-olympus-tag.c:109
+msgid "B&W Mode"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:111
+msgid "Focal Plane Diagonal"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:112
+msgid "Lens Distortion Parameters"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:114
+msgid "Info"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:115
 msgid "Camera ID"
 msgstr ""
 
+#: libexif/olympus/mnote-olympus-tag.c:116
+msgid "Precapture Frames"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:117
+msgid "White Board"
+msgstr ""
+
 #: libexif/olympus/mnote-olympus-tag.c:118
-msgid "Sharpness Setting"
+msgid "One Touch White Balance"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:119
-msgid "White Balance Setting"
+msgid "White Balance Bracket"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:120
+msgid "White Balance Bias"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:123
+msgid "Shutter Speed"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:124
+msgid "ISO Value"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:125
+msgid "Aperture Value"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:126
+msgid "Brightness Value"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:128
+msgid "Flash Device"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:129
+msgid "Exposure Compensation"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:130
+msgid "Sensor Temperature"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:131
+msgid "Lens Temperature"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:132
+msgid "Light Condition"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:133
+msgid "Focus Range"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:136
+msgid "Zoom Step Count"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:137
+msgid "Focus Step Count"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:138
+msgid "Sharpness Setting"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:139
+msgid "Flash Charge Level"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:140
+msgid "Color Matrix"
+msgstr "Colour Matrix"
+
+#: libexif/olympus/mnote-olympus-tag.c:141
+msgid "Black Level"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:142
+msgid "White Balance Setting"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:143
+msgid "Red Balance"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:144
+msgid "Blue Balance"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:145
+msgid "Color Matrix Number"
+msgstr "Colour Matrix Number"
+
+#: libexif/olympus/mnote-olympus-tag.c:146
+msgid "Serial Number"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:147
+msgid "Flash Exposure Comp"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:148
+msgid "Internal Flash Table"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:149
+msgid "External Flash G Value"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:150
+msgid "External Flash Bounce"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:151
+msgid "External Flash Zoom"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:152
+msgid "External Flash Mode"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:153
 msgid "Contrast Setting"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-tag.c:121
-msgid "Manual Focus"
+#: libexif/olympus/mnote-olympus-tag.c:154
+msgid "Sharpness Factor"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:155
+msgid "Color Control"
+msgstr "Colour Control"
+
+#: libexif/olympus/mnote-olympus-tag.c:156
+msgid "Olympus Image Width"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:157
+msgid "Olympus Image Height"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:158
+msgid "Scene Detect"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:159
+msgid "Compression Ratio"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:160
+msgid "Preview Image Valid"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:161
+msgid "AF Result"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:162
+msgid "CCD Scan Mode"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:163
+msgid "Noise Reduction"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:164
+msgid "Infinity Lens Step"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:165
+msgid "Near Lens Step"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:166
+msgid "Light Value Center"
+msgstr "Light Value Centre"
+
+#: libexif/olympus/mnote-olympus-tag.c:167
+msgid "Light Value Periphery"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:170
+msgid "Sequential Shot"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:171
+msgid "Wide Range"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:172
+msgid "Color Adjustment Mode"
+msgstr "Colour Adjustment Mode"
+
+#: libexif/olympus/mnote-olympus-tag.c:173
+msgid "Quick Shot"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:174
+msgid "Self Timer"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:175
+msgid "Voice Memo"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:176
+msgid "Record Shutter Release"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:177
+msgid "Flicker Reduce"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:178
+msgid "Optical Zoom"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:180
+msgid "Light Source Special"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:181
+msgid "Resaved"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:182
+msgid "Scene Select"
+msgstr ""
+
+#: libexif/olympus/mnote-olympus-tag.c:184
+msgid "Sequence Shot Interval"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:77
@@ -3992,11 +4334,6 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-entry.c:83
 #: libexif/pentax/mnote-pentax-entry.c:137
 msgid "Better"
-msgstr ""
-
-#: libexif/pentax/mnote-pentax-entry.c:84
-#: libexif/pentax/mnote-pentax-entry.c:138
-msgid "Best"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:91
@@ -4024,16 +4361,12 @@ msgid "2816x2212 or 2816x2112"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:163
-#: libexif/pentax/mnote-pentax-entry.c:295
+#: libexif/pentax/mnote-pentax-entry.c:296
 msgid "Program AE"
 msgstr ""
 
-#: libexif/pentax/mnote-pentax-entry.c:167
-msgid "Sport"
-msgstr ""
-
 #: libexif/pentax/mnote-pentax-entry.c:168
-#: libexif/pentax/mnote-pentax-entry.c:291
+#: libexif/pentax/mnote-pentax-entry.c:292
 msgid "Night Scene"
 msgstr ""
 
@@ -4090,7 +4423,7 @@ msgid "Medium Pet"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:187
-#: libexif/pentax/mnote-pentax-entry.c:292
+#: libexif/pentax/mnote-pentax-entry.c:293
 msgid "Candlelight"
 msgstr ""
 
@@ -4192,7 +4525,7 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:227
 msgid "Fixed Center"
-msgstr ""
+msgstr "Fixed Centre"
 
 #: libexif/pentax/mnote-pentax-entry.c:231
 msgid "Multiple"
@@ -4234,17 +4567,28 @@ msgstr ""
 msgid "User Selected"
 msgstr ""
 
-#: libexif/pentax/mnote-pentax-entry.c:278
+#: libexif/pentax/mnote-pentax-entry.c:279
 msgid "3008x2008 or 3040x2024"
 msgstr ""
 
-#: libexif/pentax/mnote-pentax-entry.c:289
+#: libexif/pentax/mnote-pentax-entry.c:290
 msgid "Digital Filter?"
 msgstr ""
 
-#: libexif/pentax/mnote-pentax-entry.c:376
+#: libexif/pentax/mnote-pentax-entry.c:345
+#: libexif/pentax/mnote-pentax-entry.c:368
+msgid "Internal error"
+msgstr ""
+
+#: libexif/pentax/mnote-pentax-entry.c:377
 #, c-format
 msgid "Internal error (unknown value %i %i)"
+msgstr ""
+
+#: libexif/pentax/mnote-pentax-entry.c:393
+#: libexif/pentax/mnote-pentax-entry.c:421
+#, c-format
+msgid "%i bytes unknown data"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:34 libexif/pentax/mnote-pentax-tag.c:61
@@ -4261,7 +4605,7 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:55
 msgid "Colors"
-msgstr ""
+msgstr "Colours"
 
 #: libexif/pentax/mnote-pentax-tag.c:58
 msgid "PrintIM Settings"
