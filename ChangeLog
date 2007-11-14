@@ -1,3 +1,11 @@
+2007-11-13  Dan Fandrich <dan@coneharvesters.com>
+	* Added support for a new macro NO_VERBOSE_TAG_DATA to allow
+	  some size reduction but still retain the ability to properly
+	  interpret each tag.
+	* Added an end-of-table marker in the Canon color_information
+	  makernote table that could otherwise potentially cause a crash 
+	  on a bad image.
+
 2007-11-12  Dan Fandrich <dan@coneharvesters.com>
 	* Added support for more Olympus makernotes, based on data on
 	  Phil Harvey's ExifTool page at

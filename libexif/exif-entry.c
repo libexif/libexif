@@ -392,7 +392,7 @@ static const struct {
 	ExifTag tag;
 	const char *strings[10];
 } list[] = {
-#ifndef NO_VERBOSE_TAG_STRINGS
+#ifndef NO_VERBOSE_TAG_DATA
   { EXIF_TAG_PLANAR_CONFIGURATION,
     { N_("chunky format"), N_("planar format"), NULL}},
   { EXIF_TAG_SENSING_METHOD,
@@ -436,7 +436,7 @@ static const struct {
     const char *values[4];
   } elem[25];
 } list2[] = {
-#ifndef NO_VERBOSE_TAG_STRINGS
+#ifndef NO_VERBOSE_TAG_DATA
   { EXIF_TAG_METERING_MODE,
     { {  0, {N_("Unknown"), NULL}},
       {  1, {N_("Average"), N_("avg"), NULL}},

@@ -72,6 +72,7 @@ static const struct {
 		const char *string;
 	} elem[33];
 } items[] = {
+#ifndef NO_VERBOSE_TAG_DATA
   { MNOTE_PENTAX_TAG_MODE,
     { {0, N_("Auto")},
       {1, N_("Night-scene")},
@@ -259,6 +260,7 @@ static const struct {
     { {0, N_("Off")},
       {1, N_("On")},
       {0, NULL}}},
+#endif
   {0, {{0, NULL}}}
 };
 
@@ -270,6 +272,7 @@ static const struct {
 		const char *string;
 	} elem[39];
 } items2[] = {
+#ifndef NO_VERBOSE_TAG_DATA
   { MNOTE_PENTAX2_TAG_IMAGE_SIZE,
     { {0, 0, "2304x1728"},
       {4, 0, "1600x1200"},
@@ -297,6 +300,7 @@ static const struct {
       {5,   2, N_("Portrait")},
       {6,   2, N_("Landscape")},
       {0,   0, NULL}}},
+#endif
   {0, {{0, 0, NULL}}}
 };
 
@@ -342,7 +346,8 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			/* search the tag */
 			for (i = 0; (items[i].tag && items[i].tag != entry->tag); i++);
 			if (!items[i].tag) {
-			  	strncpy (val, _("Internal error"), maxlen);
+				snprintf (val, maxlen,
+					  _("Internal error (unknown value %i)"), vs);
 			  	break;
 			}
 
@@ -365,7 +370,8 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			/* search the tag */
 			for (i = 0; (items2[i].tag && items2[i].tag != entry->tag); i++);
 			if (!items2[i].tag) {
-			  	strncpy (val, _("Internal error"), maxlen);
+				snprintf (val, maxlen,
+					  _("Internal error (unknown value %i %i)"), vs, vs2);
 			  	break;
 			}
 

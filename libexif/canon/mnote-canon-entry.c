@@ -72,6 +72,7 @@ static const struct canon_entry_table_t {
   ExifShort value;
   const char *name;
 } entries_settings_1 [] = {
+#ifndef NO_VERBOSE_TAG_DATA
   { 0,  1, N_("Macro")},
   { 0,  2, N_("Normal")},
   { 2,  1, N_("Economy")},
@@ -312,14 +313,18 @@ static const struct canon_entry_table_t {
   {40, 0x0500, N_("Full")},
   {40, 0x0502, N_("2/3")},
   {40, 0x0504, N_("1/3")},
+#endif
   { 0,  0, NULL}
 },
 entries_focal_length [] = {
+#ifndef NO_VERBOSE_TAG_DATA
 	{0, 1, N_("Fixed")},
 	{0, 2, N_("Zoom")},
+#endif
 	{0, 0, NULL}
 },
 entries_settings_2 [] = {
+#ifndef NO_VERBOSE_TAG_DATA
   { 6,  0, N_("Auto")},
   { 6,  1, N_("Sunny")},
   { 6,  2, N_("Cloudy")},
@@ -368,17 +373,21 @@ entries_settings_2 [] = {
   { 32,  0x0014, N_("1/3")},
   { 32,  0x008c, N_("2/3")},
   { 32,  0x07d0, N_("Full")},
+#endif
   {0, 0, NULL}
 },
 entries_panorama [] = {
+#ifndef NO_VERBOSE_TAG_DATA
 	{0, 0, N_("Left to right")},
 	{0, 1, N_("Right to left")},
 	{0, 2, N_("Bottom to top")},
 	{0, 3, N_("Top to bottom")},
 	{0, 4, N_("2x2 matrix (clockwise)")},
+#endif
 	{0, 0, NULL}
 },
 color_information [] = {
+#ifndef NO_VERBOSE_TAG_DATA
   {0, 0, N_("Standard")},
   {0, 1, N_("Manual")},
   {0, 2, N_("Custom")},
@@ -422,6 +431,8 @@ color_information [] = {
   {9, 0x84, N_("Neutral")},
   {9, 0x85, N_("Faithful")},
   {9, 0x86, N_("Monochrome")},
+#endif
+  {0, 0, NULL}
 };
 
 static void

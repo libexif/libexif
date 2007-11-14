@@ -31,6 +31,7 @@ static const struct {
 	const char *title;
 	const char *description;
 } table[] = {
+#ifndef NO_VERBOSE_TAG_STRINGS
 	{MNOTE_PENTAX_TAG_MODE, "Mode", N_("Capture Mode"), ""},
 	{MNOTE_PENTAX_TAG_QUALITY, "Quality", N_("Quality Level"), ""},
 	{MNOTE_PENTAX_TAG_FOCUS, "Focus", N_("Focus Mode"), ""},
@@ -70,6 +71,7 @@ static const struct {
 	{MNOTE_CASIO2_TAG_OBJECT_DISTANCE, "ObjectDistance", N_("Object Distance"), N_("Distance of photographed object in millimeters.")},
 	{MNOTE_CASIO2_TAG_TIME_ZONE, "TimeZone", N_("Time Zone"), ""},
 	{MNOTE_CASIO2_TAG_BESTSHOT_MODE, "BestshotMode", N_("Bestshot mode"), ""},
+#endif
 	{0, NULL, NULL, NULL}
 };
 

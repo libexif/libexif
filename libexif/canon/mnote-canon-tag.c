@@ -31,6 +31,7 @@ static const struct {
 	const char *title;
 	const char *description;
 } table[] = {
+#ifndef NO_VERBOSE_TAG_STRINGS
 	{MNOTE_CANON_TAG_SETTINGS_1, "Settings1", N_("Settings (first part)"), ""},
 	{MNOTE_CANON_TAG_FOCAL_LENGTH, "FocalLength", N_("Focal length"), ""},
 	{MNOTE_CANON_TAG_SETTINGS_2, "Settings2", N_("Settings (second part)"), ""},
@@ -42,6 +43,7 @@ static const struct {
 	{MNOTE_CANON_TAG_COLOR_INFORMATION, "ColorInformation", N_("Color information"), ""},
 	{MNOTE_CANON_TAG_SERIAL_NUMBER, "SerialNumber", N_("Serial number"), ""},
 	{MNOTE_CANON_TAG_CUSTOM_FUNCS, "CustomFunctions", N_("Custom functions"), ""},
+#endif
 	{0, NULL, NULL, NULL}
 };
 
@@ -50,6 +52,7 @@ static const struct {
 	unsigned int subtag;
 	const char *name;
 } table_sub[] = {
+#ifndef NO_VERBOSE_TAG_STRINGS
 	{MNOTE_CANON_TAG_SETTINGS_1,  0, N_("Macro mode")},
 	{MNOTE_CANON_TAG_SETTINGS_1,  1, N_("Self-timer")},
 	{MNOTE_CANON_TAG_SETTINGS_1,  2, N_("Quality")},
@@ -119,6 +122,7 @@ static const struct {
 	{MNOTE_CANON_TAG_COLOR_INFORMATION, 2, N_("Sharpness frequency")},
 	{MNOTE_CANON_TAG_COLOR_INFORMATION, 7, N_("White balance")},
 	{MNOTE_CANON_TAG_COLOR_INFORMATION, 9, N_("Picture style")},
+#endif
 	{0, 0, NULL}
 };
 

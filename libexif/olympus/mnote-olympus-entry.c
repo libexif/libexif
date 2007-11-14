@@ -84,7 +84,7 @@ static const struct {
 		const char *string;
 	} elem[10];
 } items[] = {
-#ifndef NO_VERBOSE_TAG_STRINGS
+#ifndef NO_VERBOSE_TAG_DATA
   { MNOTE_NIKON_TAG_LENSTYPE, EXIF_FORMAT_BYTE,
     { {0, N_("AF non D Lens")},
       {1, N_("Manual")},

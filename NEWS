@@ -4,8 +4,8 @@ libexif-0.6.16.2:
   * Bug fixes: #1773810, #1774626
   * Enhanced support of Canon and Olympus makernotes 
   * Added support for Sanyo makernotes
-  * Added support for the NO_VERBOSE_TAG_STRINGS macro for embedded
-    applications
+  * Added support for the NO_VERBOSE_TAG_STRINGS and NO_VERBOSE_TAG_DATA
+    macros to reduce size for embedded applications
 
 
 libexif-0.6.16 (2007-06-12) since 0.6.1.15 (2007-05-23):
