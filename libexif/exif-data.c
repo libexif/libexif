@@ -30,8 +30,9 @@
 #include <libexif/i18n.h>
 #include <libexif/exif-system.h>
 
-#include <libexif/olympus/exif-mnote-data-olympus.h>
 #include <libexif/canon/exif-mnote-data-canon.h>
+#include <libexif/fuji/exif-mnote-data-fuji.h>
+#include <libexif/olympus/exif-mnote-data-olympus.h>
 #include <libexif/pentax/exif-mnote-data-pentax.h>
 
 #include <stdlib.h>
@@ -673,7 +674,8 @@ typedef enum {
 	EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS	= 2,
 	EXIF_DATA_TYPE_MAKER_NOTE_PENTAX		= 3,
 	EXIF_DATA_TYPE_MAKER_NOTE_NIKON		= 4,
-	EXIF_DATA_TYPE_MAKER_NOTE_CASIO		= 5
+	EXIF_DATA_TYPE_MAKER_NOTE_CASIO		= 5,
+	EXIF_DATA_TYPE_MAKER_NOTE_FUJI 		= 6
 } ExifDataTypeMakerNote;
 
 static ExifDataTypeMakerNote
@@ -718,6 +720,9 @@ exif_data_get_type_maker_note (ExifData *d)
 	}
 	if ((e->size >= 8) && !memcmp (e->data, "QVC", 4)) {
 		return EXIF_DATA_TYPE_MAKER_NOTE_CASIO;
+	}
+	if ((e->size >= 12) && !memcmp (e->data, "FUJIFILM", 8)) {
+		return EXIF_DATA_TYPE_MAKER_NOTE_FUJI;
 	}
 
 	return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
@@ -884,6 +889,9 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		break;
 	case EXIF_DATA_TYPE_MAKER_NOTE_CANON:
 		data->priv->md = exif_mnote_data_canon_new (data->priv->mem, data->priv->options);
+		break;
+	case EXIF_DATA_TYPE_MAKER_NOTE_FUJI:
+		data->priv->md = exif_mnote_data_fuji_new (data->priv->mem);
 		break;
 	default:
 		break;

@@ -3,6 +3,7 @@ lib_LTLIBRARIES =
 noinst_LTLIBRARIES =
 
 include canon/Makefile-files
+include fuji/Makefile-files
 include olympus/Makefile-files
 include pentax/Makefile-files
 
@@ -32,12 +33,14 @@ libexif_la_SOURCES =		\
 libexif_la_DEPENDENCIES = \
 	$(srcdir)/libexif.sym \
 	libmnote-canon.la		\
+	libmnote-fuji.la		\
 	libmnote-olympus.la	\
 	libmnote-pentax.la
 libexif_la_LIBADD =			\
 	$(MATHLIBS)			\
 	$(LTLIBINTL)			\
 	libmnote-canon.la		\
+	libmnote-fuji.la	\
 	libmnote-olympus.la	\
 	libmnote-pentax.la
 
