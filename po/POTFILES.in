@@ -7,6 +7,8 @@ libexif/exif-format.c
 libexif/exif-loader.c
 libexif/exif-log.c
 libexif/exif-tag.c
+libexif/fuji/mnote-fuji-entry.c
+libexif/fuji/mnote-fuji-tag.c
 libexif/olympus/mnote-olympus-entry.c
 libexif/olympus/mnote-olympus-tag.c
 libexif/pentax/mnote-pentax-entry.c

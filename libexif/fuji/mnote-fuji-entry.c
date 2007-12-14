@@ -284,13 +284,13 @@ mnote_fuji_entry_get_value (MnoteFujiEntry *entry,
 		case EXIF_FORMAT_RATIONAL:
 		  vr = exif_get_rational (entry->data, entry->order);
 		  if (!vr.denominator) break;
-		  snprintf (val, maxlen, _("%2.4f"), (double) vr.numerator /
+		  snprintf (val, maxlen, "%2.4f", (double) vr.numerator /
 						    vr.denominator);
 		  break;
 		case EXIF_FORMAT_SRATIONAL:
 		  vsr = exif_get_srational (entry->data, entry->order);
 		  if (!vsr.denominator) break;
-		  snprintf (val, maxlen, _("%2.4f"), (double) vsr.numerator /
+		  snprintf (val, maxlen, "%2.4f", (double) vsr.numerator /
 			  vsr.denominator);
 		  break;
 		case EXIF_FORMAT_UNDEFINED:
