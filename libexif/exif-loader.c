@@ -176,6 +176,8 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 		break;
 	}
 
+	if (!len)
+		return 1;
 	exif_log (eld->log, EXIF_LOG_CODE_DEBUG, "ExifLoader",
 		  "Scanning %i byte(s) of data...", len);
 

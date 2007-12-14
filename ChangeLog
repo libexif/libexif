@@ -1,3 +1,10 @@
+2007-12-14  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Bug pointed out by Meder Kydyraliev, Google Security Team:
+
+	* libexif/exif-loader.c: (exif_loader_write) Ignore buffers of
+	zero length.
+
 2007-12-07  Jan Patera <patera@users.sourceforge.net>
 
 	* Added support for Fuji makernotes
