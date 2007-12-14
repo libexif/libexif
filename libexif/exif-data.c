@@ -299,10 +299,9 @@ static void
 exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 			       unsigned int ds, ExifLong offset, ExifLong size)
 {
-	if (ds < offset + size) {
+	if ((ds < offset + size) || (offset < 0) || (offset > ds)) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-			  "Bogus thumbnail offset and size: %i < %i + %i.",
-			  (int) ds, (int) offset, (int) size);
+			  "Bogus thumbnail offset and size.");
 		return;
 	}
 	if (data->data) 

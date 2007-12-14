@@ -1,5 +1,12 @@
 2007-12-14  Lutz Mueller <lutz@users.sourceforge.net>
 
+	Bug pointed out by Meder Kydyraliev, Google Security Team:
+
+	* libexif/exif-data.c: (exif_data_load_data_thumbnail) Ignore bugus
+	data.
+
+2007-12-14  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* README: Point users to some tools needed to build libexif.
 	* configure.ac: It looks like po/Makefile.in is already registered
 	with AC_CONFIG_FILES (whatever this means).
