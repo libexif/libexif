@@ -77,6 +77,22 @@ I know of the following libraries that use or have been inspired by libexif:
  - pel: PHP-Code (http://pel.sourceforge.net)
 
 
+BUILDING
+--------
+
+It really depends on your environment what to do in order to get libexif
+to build. In my case, I do something like:
+- gettextize
+- mv po/Makevars.template po/Makevars
+- aclocal -I auto-m4 -I m4m
+- autoheader
+- libtoolize --force
+- automake --add-missing
+- autoconf
+- configure
+- make
+
+
 AUTHORS
 -------
 

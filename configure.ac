@@ -156,7 +156,7 @@ ALL_LINGUAS="cs de en_CA es fr pl ru sk vi"
 AM_PO_SUBDIRS
 GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT_MIN}],
                 [Lutz Mueller and others])
-AM_GNU_GETTEXT_VERSION([0.14.1])
+AM_GNU_GETTEXT_VERSION([0.17])
 AM_GNU_GETTEXT([external])
 AM_ICONV()
 GP_GETTEXT_FLAGS()
@@ -184,8 +184,7 @@ AC_SUBST(AM_LDFLAGS)
 dnl ---------------------------------------------------------------------------
 dnl Output files
 dnl ---------------------------------------------------------------------------
-AC_CONFIG_FILES([ 
-  po/Makefile.in
+AC_CONFIG_FILES([  po/Makefile.in
   Makefile
   libexif.spec
   libexif/Makefile
