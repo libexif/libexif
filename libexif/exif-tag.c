@@ -47,7 +47,7 @@ static const struct {
 } ExifTagTable[] = {
 #ifndef NO_VERBOSE_TAG_STRINGS
 	{EXIF_TAG_NEW_SUBFILE_TYPE, "NewSubfileType",
-	 "New Subfile Type", N_("A general indication of the kind of data "
+	 N_("New Subfile Type"), N_("A general indication of the kind of data "
 	    "contained in this subfile.")},
 	{EXIF_TAG_INTEROPERABILITY_INDEX, "InteroperabilityIndex",
 	 "InteroperabilityIndex",
@@ -308,7 +308,7 @@ static const struct {
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_INTER_COLOR_PROFILE, "InterColorProfile",
 	 "InterColorProfile", ""},
-	{EXIF_TAG_EXPOSURE_PROGRAM, "ExposureProgram", "ExposureProgram",
+	{EXIF_TAG_EXPOSURE_PROGRAM, "ExposureProgram", N_("Exposure Program"),
 	 N_("The class of the program used by the camera to set exposure "
 	    "when the picture is taken."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
@@ -390,7 +390,7 @@ static const struct {
 	 N_("The date and time when the image was stored as digital data. "),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_COMPONENTS_CONFIGURATION, "ComponentsConfiguration",
-	 "ComponentsConfiguration",
+	 N_("Components Configuration"),
 	 N_("Information specific to compressed data. The channels of "
 	    "each component are arranged in order from the 1st "
 	    "component to the 4th. For uncompressed data the data "
@@ -600,7 +600,7 @@ static const struct {
 	    "processing as per the <Rotation> tag. The first value "
 	    "indicates the X column number and the second indicates "
 	    "the Y row number.")},
-	{EXIF_TAG_EXPOSURE_INDEX, "ExposureIndex", N_("Exposure index"),
+	{EXIF_TAG_EXPOSURE_INDEX, "ExposureIndex", N_("Exposure Index"),
 	 N_("Indicates the exposure index selected on the camera or "
 	    "input device at the time the image is captured.")},
 	{EXIF_TAG_SENSING_METHOD, "SensingMethod", N_("Sensing Method"),
