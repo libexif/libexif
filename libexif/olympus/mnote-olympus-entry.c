@@ -468,7 +468,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			snprintf (v, maxlen, _("Unknown value %hi"), vs);
 			break;
 		}
-		strncpy (v, items[i].elem[j].string, maxlen);
+		strncpy (v, _(items[i].elem[j].string), maxlen);
 		break;
 	case MNOTE_OLYMPUS_TAG_NOISEREDUCTION:
 	case MNOTE_SANYO_TAG_WIDERANGE:

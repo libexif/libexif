@@ -359,7 +359,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 					  _("Internal error (unknown value %i)"), vs);
 				break;
 			}
-			strncpy (val, items[i].elem[j].string, maxlen);
+			strncpy (val, _(items[i].elem[j].string), maxlen);
 		} else {
 			/* Two-component values */
 			CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);

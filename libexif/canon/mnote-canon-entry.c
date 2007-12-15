@@ -449,8 +449,8 @@ canon_search_table_value (const struct canon_entry_table_t table[],
 		}
 	}
 	if ((table[j].subtag == t) && (table[j].value == vs) && table[j].name) {
-    /* Matching subtag and value found. */
-		strncpy (val, table[j].name, maxlen);
+		/* Matching subtag and value found. */
+		strncpy (val, _(table[j].name), maxlen);
 	} else {
 		/* No matching subtag and/or value found. */
 		snprintf (val, maxlen, "0x%04x", vs);
@@ -473,9 +473,9 @@ canon_search_table_bitfield (const struct canon_entry_table_t table[],
 		unsigned int i, bit, lastbit = 0;
 
 		/*
-     * Search the table for the last matching bit, because
-     * that one needs no additional comma appended.
-     */
+		 * Search the table for the last matching bit, because
+		 * that one needs no additional comma appended.
+		 */
 		for (i = j; table[i].name && (table[i].subtag == t); i++) {
 			bit = table[i].value;
 			if ((vs >> bit) & 1) {
