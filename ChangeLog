@@ -1,3 +1,9 @@
+2007-12-15  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* po/*.po: Updated po-files.
+	* libexif/exif-data.c: (exif_data_load_data_thumbnail) guard against 
+	negative size (in addition to negative offset), too.
+
 2007-12-14  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Bug pointed out by Meder Kydyraliev, Google Security Team:
