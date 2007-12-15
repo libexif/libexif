@@ -245,7 +245,7 @@ mnote_fuji_entry_get_value (MnoteFujiEntry *entry,
 				  _("Internal error (unknown value %i)"), vs);
 			break;
 		}
-		strncpy (val, items[i].elem[j].string, maxlen);
+		strncpy (val, _(items[i].elem[j].string), maxlen);
 		break;
 	  case MNOTE_FUJI_TAG_FOCUS_POINT:
 		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);

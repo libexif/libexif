@@ -383,7 +383,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 					  _("Internal error (unknown value %i %i)"), vs, vs2);
 				break;
 			}
-			strncpy (val, items2[i].elem[j].string, maxlen);
+			strncpy (val, _(items2[i].elem[j].string), maxlen);
 		}
 		break;
 
