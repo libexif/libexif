@@ -292,7 +292,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:124 libexif/canon/mnote-canon-tag.c:102
 msgid "Slow shutter"
-msgstr ""
+msgstr "Pomalá uzávěrka"
 
 #: libexif/canon/mnote-canon-entry.c:125 libexif/fuji/mnote-fuji-entry.c:123
 #: libexif/olympus/mnote-olympus-entry.c:225
@@ -398,23 +398,20 @@ msgid "Still image"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:149
-#, fuzzy
 msgid "Color accent"
-msgstr "Barevný model"
+msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:150
-#, fuzzy
 msgid "Color swap"
-msgstr "Barvy"
+msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:151
 msgid "Aquarium"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:152
-#, fuzzy
 msgid "ISO 3200"
-msgstr "ISO320"
+msgstr "ISO 320"
 
 #: libexif/canon/mnote-canon-entry.c:153 libexif/canon/mnote-canon-entry.c:348
 #: libexif/canon/mnote-canon-entry.c:365 libexif/canon/mnote-canon-entry.c:417
@@ -606,9 +603,8 @@ msgid "Tokina AF193-2 19-35mm f/3.5-4.5"
 msgstr "Tokina AF193-2 19-35mm f/3.5-4.5"
 
 #: libexif/canon/mnote-canon-entry.c:208
-#, fuzzy
 msgid "Canon EF 100-300mm F5.6L"
-msgstr "Canon EF 100-400mm f/4.5-5.6L IS"
+msgstr "Canon EF 100-300mm F5.6L"
 
 #: libexif/canon/mnote-canon-entry.c:209
 msgid "Sigma 50mm f/2.8 EX or 28mm f/1.8"
@@ -643,14 +639,12 @@ msgid "Canon EF 50mm f/1.8 MkII"
 msgstr "Canon EF 50mm f/1.8 MkII"
 
 #: libexif/canon/mnote-canon-entry.c:217
-#, fuzzy
 msgid "Tamron SP AF 300mm f/2.8 LD IF"
-msgstr "Canon EF 300mm f/2.8L"
+msgstr "Tamron SP AF 300mm f/2.8 LD IF"
 
 #: libexif/canon/mnote-canon-entry.c:218
-#, fuzzy
 msgid "Canon EF 24mm f/2.8 or Sigma 15mm f/2.8 EX Fisheye"
-msgstr "Canon EF 28-70mm f/2.8L nebo Sigma 24-70mm EX f/2.8"
+msgstr "Canon EF 24mm f/2.8 nebo Sigma 15mm f/2.8 EX Fisheye"
 
 #: libexif/canon/mnote-canon-entry.c:219
 msgid "Canon EF 75-300mm f/4-5.6"
@@ -661,14 +655,12 @@ msgid "Canon EF 28-80mm f/3.5-5.6"
 msgstr "Canon EF 28-80mm f/3.5-5.6"
 
 #: libexif/canon/mnote-canon-entry.c:221
-#, fuzzy
 msgid "Canon EF 28-105mm f/4-5.6"
-msgstr "Canon EF 28-80mm f/3.5-5.6"
+msgstr "Canon EF 28-105mm f/4-5.6"
 
 #: libexif/canon/mnote-canon-entry.c:222
-#, fuzzy
 msgid "Canon EF-S 18-55mm f/3.5-5.6"
-msgstr "Canon EF 28-80mm f/3.5-5.6"
+msgstr "Canon EF-S 18-55mm f/3.5-5.6"
 
 #: libexif/canon/mnote-canon-entry.c:223
 msgid "Canon MP-E 65mm f/2.8 1-5x Macro Photo"
@@ -679,28 +671,24 @@ msgid "Canon TS-E 24mm f/3.5L"
 msgstr "Canon TS-E 24mm f/3.5L"
 
 #: libexif/canon/mnote-canon-entry.c:225
-#, fuzzy
 msgid "Canon TS-E 45mm f/2.8"
-msgstr "Canon EF 15mm f/2.8"
+msgstr "Canon TS-E 45mm f/2.8"
 
 #: libexif/canon/mnote-canon-entry.c:226
-#, fuzzy
 msgid "Canon TS-E 90mm f/2.8"
-msgstr "Canon EF 300mm f/2.8L"
+msgstr "Canon TS-E 90mm f/2.8"
 
 #: libexif/canon/mnote-canon-entry.c:227
-#, fuzzy
 msgid "Canon EF 50mm f/1.0L"
-msgstr "Canon EF 50mm f/1.8"
+msgstr "Canon EF 50mm f/1.0L"
 
 #: libexif/canon/mnote-canon-entry.c:228
 msgid "Sigma 17-35mm f2.8-4 EX Aspherical HSM"
 msgstr "Sigma 17-35mm f2.8-4 EX Aspherical HSM"
 
 #: libexif/canon/mnote-canon-entry.c:229
-#, fuzzy
 msgid "Canon EF 600mm f/4L IS"
-msgstr "Canon EF 300mm f/4L IS"
+msgstr "Canon EF 600mm f/4L IS"
 
 #: libexif/canon/mnote-canon-entry.c:230
 msgid "Canon EF 200mm f/1.8L"
@@ -711,9 +699,8 @@ msgid "Canon EF 300mm f/2.8L"
 msgstr "Canon EF 300mm f/2.8L"
 
 #: libexif/canon/mnote-canon-entry.c:232
-#, fuzzy
 msgid "Canon EF 85mm f/1.2L"
-msgstr "Canon EF 35mm f/1.4L"
+msgstr "Canon EF 85mm f/1.2L"
 
 #: libexif/canon/mnote-canon-entry.c:233
 msgid "Canon EF 400mm f/2.8L"
@@ -724,14 +711,12 @@ msgid "Canon EF 500mm f/4.5L"
 msgstr "Canon EF 500mm f/4.5L"
 
 #: libexif/canon/mnote-canon-entry.c:235
-#, fuzzy
 msgid "Canon EF 300mm f/2.8L IS"
-msgstr "Canon EF 300mm f/2.8L"
+msgstr "Canon EF 300mm f/2.8L IS"
 
 #: libexif/canon/mnote-canon-entry.c:236
-#, fuzzy
 msgid "Canon EF 500mm f/4L IS"
-msgstr "Canon EF 300mm f/4L IS"
+msgstr "Canon EF 500mm f/4L IS"
 
 #: libexif/canon/mnote-canon-entry.c:237
 msgid "Canon EF 100mm f/2"
@@ -782,9 +767,8 @@ msgid "Canon EF 70-200mm f/2.8 L + x2"
 msgstr "Canon EF 70-200mm f/2.8 L + x2"
 
 #: libexif/canon/mnote-canon-entry.c:249
-#, fuzzy
 msgid "Canon EF 28mm f/1.8 USM"
-msgstr "Canon EF 85mm f/1.8 USM"
+msgstr "Canon EF 28mm f/1.8 USM"
 
 #: libexif/canon/mnote-canon-entry.c:250
 msgid "Sigma 15-30mm f/3.5-4.5 EX DG Aspherical"
@@ -819,9 +803,8 @@ msgid "Canon EF 35mm f/1.4L"
 msgstr "Canon EF 35mm f/1.4L"
 
 #: libexif/canon/mnote-canon-entry.c:258
-#, fuzzy
 msgid "Canon EF 100-400mm f/4.5-5.6L IS + x1.4"
-msgstr "Canon EF 100-400mm f/4.5-5.6L IS + x2"
+msgstr "Canon EF 100-400mm f/4.5-5.6L IS + x1.4"
 
 #: libexif/canon/mnote-canon-entry.c:259
 msgid "Canon EF 100-400mm f/4.5-5.6L IS + x2"
@@ -832,9 +815,8 @@ msgid "Canon EF 100-400mm f/4.5-5.6L IS"
 msgstr "Canon EF 100-400mm f/4.5-5.6L IS"
 
 #: libexif/canon/mnote-canon-entry.c:261
-#, fuzzy
 msgid "Canon EF 400mm f/2.8L + x2"
-msgstr "Canon EF 400mm f/2.8L"
+msgstr "Canon EF 400mm f/2.8L + x2"
 
 #: libexif/canon/mnote-canon-entry.c:262
 msgid "Canon EF 70-200mm f/4L"
@@ -861,33 +843,28 @@ msgid "Canon EF 28-80 f/3.5-5.6 USM IV"
 msgstr "Canon EF 28-80 f/3.5-5.6 USM IV"
 
 #: libexif/canon/mnote-canon-entry.c:268
-#, fuzzy
 msgid "Canon EF 28-200mm f/3.5-5.6"
-msgstr "Canon EF 28-80mm f/3.5-5.6"
+msgstr "Canon EF 28-200mm f/3.5-5.6"
 
 #: libexif/canon/mnote-canon-entry.c:269
 msgid "Canon EF 90-300mm f/4.5-5.6"
 msgstr "Canon EF 90-300mm f/4.5-5.6"
 
 #: libexif/canon/mnote-canon-entry.c:270
-#, fuzzy
 msgid "Canon EF-S 18-55mm f/3.5-4.5 USM"
-msgstr "Canon EF 28-105mm f/3.5-4.5 USM"
+msgstr "Canon EF-S 18-55mm f/3.5-4.5 USM"
 
 #: libexif/canon/mnote-canon-entry.c:271
-#, fuzzy
 msgid "Canon EF 70-200mm f/2.8L IS USM"
-msgstr "Canon EF 70-200mm f/2.8 L"
+msgstr "Canon EF 70-200mm f/2.8L IS USM"
 
 #: libexif/canon/mnote-canon-entry.c:272
-#, fuzzy
 msgid "Canon EF 70-200mm f/2.8L IS USM + x1.4"
-msgstr "Canon EF 70-200mm f/2.8 L + x1.4"
+msgstr "Canon EF 70-200mm f/2.8L IS USM + x1.4"
 
 #: libexif/canon/mnote-canon-entry.c:273
-#, fuzzy
 msgid "Canon EF 70-200mm f/2.8L IS USM + x2"
-msgstr "Canon EF 70-200mm f/2.8 L + x2"
+msgstr "Canon EF 70-200mm f/2.8L IS USM + x2"
 
 #: libexif/canon/mnote-canon-entry.c:274
 msgid "Canon EF 16-35mm f/2.8L"
@@ -902,44 +879,36 @@ msgid "Canon EF 17-40mm f/4L"
 msgstr "Canon EF 17-40mm f/4L"
 
 #: libexif/canon/mnote-canon-entry.c:277
-#, fuzzy
 msgid "Canon EF 70-300mm f/4.5-5.6 DO IS USM"
-msgstr "Canon EF 75-300mm f/4-5.6 IS"
+msgstr "Canon EF 70-300mm f/4.5-5.6 DO IS USM"
 
 #: libexif/canon/mnote-canon-entry.c:278
-#, fuzzy
 msgid "Canon EF-S 17-85mm f4-5.6 IS USM"
-msgstr "Canon EF 75-300mm f/4-5.6 IS"
+msgstr "Canon EF-S 17-85mm f4-5.6 IS USM"
 
 #: libexif/canon/mnote-canon-entry.c:279
-#, fuzzy
 msgid "Canon EF-S10-22mm F3.5-4.5 USM"
-msgstr "Canon EF 28-105mm f/3.5-4.5 USM"
+msgstr "Canon EF-S10-22mm F3.5-4.5 USM"
 
 #: libexif/canon/mnote-canon-entry.c:280
-#, fuzzy
 msgid "Canon EF-S60mm F2.8 Macro USM"
-msgstr "Canon EF 100mm f/2.8 Macro"
+msgstr "Canon EF-S60mm F2.8 Macro USM"
 
 #: libexif/canon/mnote-canon-entry.c:281
-#, fuzzy
 msgid "Canon EF 24-105mm f/4L IS"
-msgstr "Canon EF 300mm f/4L IS"
+msgstr "Canon EF 24-105mm f/4L IS"
 
 #: libexif/canon/mnote-canon-entry.c:282
-#, fuzzy
 msgid "Canon EF 70-300mm F4-5.6 IS USM"
-msgstr "Canon EF 75-300mm f/4-5.6 IS"
+msgstr "Canon EF 70-300mm F4-5.6 IS USM"
 
 #: libexif/canon/mnote-canon-entry.c:283
-#, fuzzy
 msgid "Canon EF 50mm F1.2L USM"
-msgstr "Canon EF 85mm f/1.8 USM"
+msgstr "Canon EF 50mm F1.2L USM"
 
 #: libexif/canon/mnote-canon-entry.c:284
-#, fuzzy
 msgid "Canon EF 70-200mm f/4L IS USM"
-msgstr "Canon EF 70-200mm f/4L"
+msgstr "Canon EF 70-200mm f/4L IS USM"
 
 #: libexif/canon/mnote-canon-entry.c:286
 msgid "TTL"
@@ -1136,7 +1105,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:363
 msgid "Compact"
-msgstr ""
+msgstr "Kompakt"
 
 #: libexif/canon/mnote-canon-entry.c:364
 msgid "EOS mid-range"
@@ -1192,14 +1161,12 @@ msgid "N/A"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:395
-#, fuzzy
 msgid "Lowest"
-msgstr "Nízký"
+msgstr "Nejnižší"
 
 #: libexif/canon/mnote-canon-entry.c:399
-#, fuzzy
 msgid "Highest"
-msgstr "Vysoký"
+msgstr "Nejvyšší"
 
 #: libexif/canon/mnote-canon-entry.c:401 libexif/exif-entry.c:460
 #: libexif/fuji/mnote-fuji-entry.c:74
@@ -1215,7 +1182,6 @@ msgid "Black & White"
 msgstr "Černobílý"
 
 #: libexif/canon/mnote-canon-entry.c:409
-#, fuzzy
 msgid "Manual Temperature (Kelvin)"
 msgstr "Ruční teplota (Kelvin)"
 
@@ -1261,19 +1227,16 @@ msgid "User Def. 3"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:425
-#, fuzzy
 msgid "External 1"
-msgstr "Přídavný"
+msgstr "Přídavný 1"
 
 #: libexif/canon/mnote-canon-entry.c:426
-#, fuzzy
 msgid "External 2"
-msgstr "Přídavný"
+msgstr "Přídavný 2"
 
 #: libexif/canon/mnote-canon-entry.c:427
-#, fuzzy
 msgid "External 3"
-msgstr "Přídavný"
+msgstr "Přídavný 3"
 
 #: libexif/canon/mnote-canon-entry.c:432
 msgid "Faithful"
@@ -1356,9 +1319,8 @@ msgid "Owner name"
 msgstr "Jméno vlastníka"
 
 #: libexif/canon/mnote-canon-tag.c:43
-#, fuzzy
 msgid "Color information"
-msgstr "Ladicí informace"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:44 libexif/olympus/mnote-olympus-tag.c:81
 msgid "Serial number"
@@ -1396,9 +1358,8 @@ msgid "Focus mode"
 msgstr "Režim ostření"
 
 #: libexif/canon/mnote-canon-tag.c:62
-#, fuzzy
 msgid "Record mode"
-msgstr "Režim makro"
+msgstr "Režim záznamu"
 
 #: libexif/canon/mnote-canon-tag.c:63
 msgid "Image size"
@@ -1518,11 +1479,11 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:93
 msgid "Focal plane x size"
-msgstr ""
+msgstr "Šířka ohniskové roviny"
 
 #: libexif/canon/mnote-canon-tag.c:94
 msgid "Focal plane y size"
-msgstr ""
+msgstr "Výška ohniskové roviny"
 
 #: libexif/canon/mnote-canon-tag.c:95
 msgid "Auto ISO"
@@ -1613,9 +1574,8 @@ msgid "Tone curve"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:122
-#, fuzzy
 msgid "Sharpness frequency"
-msgstr "Ostrost"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:124
 msgid "Picture style"
@@ -2370,7 +2330,7 @@ msgid "Internal error (unknown value %i)"
 msgstr "Vnitřní chyba (neznámá hodnota %i)"
 
 #: libexif/exif-entry.c:1004
-#, fuzzy, c-format
+#, c-format
 msgid "%i bytes undefined data"
 msgstr "%i bajtů neznámých dat"
 
@@ -3097,14 +3057,14 @@ msgstr ""
 
 #: libexif/exif-tag.c:404
 msgid "Compressed Bits per Pixel"
-msgstr ""
+msgstr "Komprimovaných bitů na pixel"
 
 #: libexif/exif-tag.c:405
 msgid ""
 "Information specific to compressed data. The compression mode used for a "
 "compressed image is indicated in unit bits per pixel."
 msgstr ""
-"Informace o vlastních komprimovaných datech. Udává kompresní režim pro "
+"Informace o vlastních komprimovaných datech. Udává kompresní poměr pro "
 "komprimovaná obrazová data jako přibližný počet bitů na pixel."
 
 #: libexif/exif-tag.c:409
@@ -3150,7 +3110,9 @@ msgstr ""
 msgid ""
 "The smallest F number of the lens. The unit is the APEX value. Ordinarily it "
 "is given in the range of 00.00 to 99.99, but it is not limited to this range."
-msgstr ""
+msgstr "Nejmenší číslo F čoček, v jednotkách APEX. Obvykle se nachází v rozsahu -99,99 "
+"až 99,99, ale není to podmínkou."
+
 
 #: libexif/exif-tag.c:431
 msgid "Subject Distance"
@@ -3431,7 +3393,7 @@ msgid ""
 "this tag always be set to 3, indicating that the image was recorded on a DSC."
 msgstr ""
 "Určuje zdroj obrazových dat. Pro fotoaparáty (Digital Still Camera) se "
-"používá honodta DSC."
+"používá hodnota DSC."
 
 #: libexif/exif-tag.c:613
 msgid "Scene Type"
@@ -3602,30 +3564,26 @@ msgid "PRINT Image Matching"
 msgstr ""
 
 #: libexif/exif-tag.c:683
-#, fuzzy
 msgid "Related to Epson's PRINT Image Matching technology"
 msgstr ""
 "Údaj pravděpodobné pro Epson PRINT Image Matching technology, jeho přesný "
 "význam není znám."
 
 #: libexif/fuji/mnote-fuji-entry.c:62
-#, fuzzy
 msgid "Softest"
-msgstr "Software"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:66
 msgid "Hardest"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:67 libexif/fuji/mnote-fuji-entry.c:96
-#, fuzzy
 msgid "Medium soft"
-msgstr "Středně tmavé zvíře"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:68 libexif/fuji/mnote-fuji-entry.c:94
-#, fuzzy
 msgid "Medium hard"
-msgstr "Střední 1"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:69 libexif/fuji/mnote-fuji-entry.c:90
 #: libexif/fuji/mnote-fuji-entry.c:98 libexif/fuji/mnote-fuji-entry.c:182
@@ -3633,12 +3591,10 @@ msgid "Film simulation mode"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:76
-#, fuzzy
 msgid "Daylight-color fluorescent"
 msgstr "Světélkující denní světlo"
 
 #: libexif/fuji/mnote-fuji-entry.c:77
-#, fuzzy
 msgid "DayWhite-color fluorescent"
 msgstr "Světélkující denní bílé světlo"
 
@@ -3647,14 +3603,12 @@ msgid "Incandescent"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:85
-#, fuzzy
 msgid "Medium high"
-msgstr "Střední 1"
+msgstr "Středně vysoký"
 
 #: libexif/fuji/mnote-fuji-entry.c:87
-#, fuzzy
 msgid "Medium low"
-msgstr "Střední 1"
+msgstr "Středně nízký"
 
 #: libexif/fuji/mnote-fuji-entry.c:88 libexif/fuji/mnote-fuji-entry.c:97
 msgid "Original"
@@ -3666,14 +3620,12 @@ msgid "Program AE"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:125
-#, fuzzy
 msgid "Natural photo"
-msgstr "Sytost"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:126
-#, fuzzy
 msgid "Vibration reduction"
-msgstr "Redukce šumu"
+msgstr "Redukce vibrací"
 
 #: libexif/fuji/mnote-fuji-entry.c:127
 msgid "Sunset"
@@ -3696,24 +3648,20 @@ msgid "Text"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:132
-#, fuzzy
 msgid "NP & flash"
-msgstr "Bez blesku"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:137
-#, fuzzy
 msgid "Aperture priority AE"
-msgstr "S předvolbou clony"
+msgstr "S předvolbou clony AE"
 
 #: libexif/fuji/mnote-fuji-entry.c:138
-#, fuzzy
 msgid "Shutter priority AE"
-msgstr "S předvolbou clony"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:146
-#, fuzzy
 msgid "F-Standard"
-msgstr "TIFF/EP Standard ID"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:147
 msgid "F-Chrome"
@@ -3732,9 +3680,8 @@ msgid "Blur warning"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:155
-#, fuzzy
 msgid "Focus good"
-msgstr "Režim ostření"
+msgstr "Dobré zaostření"
 
 #: libexif/fuji/mnote-fuji-entry.c:156
 msgid "Out of focus"
@@ -3753,9 +3700,8 @@ msgid "Wide"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:167
-#, fuzzy
 msgid "F0/Standard"
-msgstr "TIFF/EP Standard ID"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:168
 msgid "F1/Studio portrait"
@@ -3802,9 +3748,9 @@ msgid "Wide2 (400%)"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:263
-#, fuzzy, c-format
+#, c-format
 msgid "%2.2f mm"
-msgstr "%.2f mm"
+msgstr "%2.2f mm"
 
 #: libexif/fuji/mnote-fuji-entry.c:298 libexif/pentax/mnote-pentax-entry.c:399
 #: libexif/pentax/mnote-pentax-entry.c:427
@@ -3813,12 +3759,10 @@ msgid "%i bytes unknown data"
 msgstr "%i bajtů neznámých dat"
 
 #: libexif/fuji/mnote-fuji-tag.c:36
-#, fuzzy
 msgid "Maker Note Version"
-msgstr "Maker note"
+msgstr "Verze Maker note"
 
 #: libexif/fuji/mnote-fuji-tag.c:37 libexif/olympus/mnote-olympus-tag.c:146
-#, fuzzy
 msgid "Serial Number"
 msgstr "Sériové číslo"
 
@@ -3827,9 +3771,8 @@ msgid "This number is unique, it contains the date of manufacture."
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:41
-#, fuzzy
 msgid "Chromaticity Saturation"
-msgstr "Sytost"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:43 libexif/olympus/mnote-olympus-tag.c:45
 #: libexif/olympus/mnote-olympus-tag.c:127
@@ -3842,24 +3785,20 @@ msgid "Flash Firing Strength Compensation"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:46
-#, fuzzy
 msgid "Focusing Mode"
-msgstr "Režim zaostřování"
-
-#: libexif/fuji/mnote-fuji-tag.c:47
-#, fuzzy
-msgid "Focus Point"
 msgstr "Režim ostření"
 
+#: libexif/fuji/mnote-fuji-tag.c:47
+msgid "Focus Point"
+msgstr "Střed zaostření"
+
 #: libexif/fuji/mnote-fuji-tag.c:48
-#, fuzzy
 msgid "Slow Synchro Mode"
-msgstr "Pomalá synchronizace"
+msgstr "Režim pomalé synchronizace"
 
 #: libexif/fuji/mnote-fuji-tag.c:49
-#, fuzzy
 msgid "Picture Mode"
-msgstr "Režim expozice"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:50
 msgid "Continuous Taking"
@@ -3882,9 +3821,8 @@ msgid "Auto Focus Check"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:55
-#, fuzzy
 msgid "Auto Exposure Check"
-msgstr "Automatická expozice"
+msgstr "Kontrola automatické expozice"
 
 #: libexif/fuji/mnote-fuji-tag.c:56
 msgid "Dynamic Range"
@@ -3903,14 +3841,12 @@ msgid "Development Dynamic Range Wide Mode"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:60
-#, fuzzy
 msgid "Minimum Focal Length"
-msgstr "Ohnisková vzdálenost"
+msgstr "Minimální ohnisková vzdálenost"
 
 #: libexif/fuji/mnote-fuji-tag.c:61
-#, fuzzy
 msgid "Maximum Focal Length"
-msgstr "Ohnisková vzdálenost"
+msgstr "Maximální ohnisková vzdálenost"
 
 #: libexif/fuji/mnote-fuji-tag.c:62
 msgid "Maximum Aperture at Minimum Focal"
@@ -3921,19 +3857,17 @@ msgid "Maximum Aperture at Maximum Focal"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:65
-#, fuzzy
 msgid "Order Number"
-msgstr "Sériové číslo"
+msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:66
-#, fuzzy
 msgid "Frame Number"
 msgstr "Číslo snímku"
 
 #: libexif/olympus/mnote-olympus-entry.c:49
-#, fuzzy, c-format
+#, c-format
 msgid "Invalid format '%s', expected '%s' or '%s'."
-msgstr "Špatný formát '%s', očekáván je '%s'."
+msgstr "Špatný formát '%s', očekáván je '%s' nebo '%s'."
 
 #: libexif/olympus/mnote-olympus-entry.c:89
 msgid "AF non D Lens"
@@ -4092,7 +4026,6 @@ msgid "No"
 msgstr "Ne"
 
 #: libexif/olympus/mnote-olympus-entry.c:155
-#, fuzzy
 msgid "Super Macro"
 msgstr "Super Makro"
 
@@ -4105,14 +4038,12 @@ msgid "Fill"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:175
-#, fuzzy
 msgid "Internal + External"
-msgstr "Vnitřní chyba"
+msgstr "Vnitřní + vnější"
 
 #: libexif/olympus/mnote-olympus-entry.c:204
-#, fuzzy
 msgid "Interlaced"
-msgstr "Vnitřní"
+msgstr "Prokládaný"
 
 #: libexif/olympus/mnote-olympus-entry.c:205
 msgid "Progressive"
@@ -4125,9 +4056,8 @@ msgid "Best"
 msgstr "Nejlepší"
 
 #: libexif/olympus/mnote-olympus-entry.c:211
-#, fuzzy
 msgid "Adjust Exposure"
-msgstr "Automatická expozice"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:214
 msgid "Record while down"
@@ -4237,9 +4167,9 @@ msgid "Unknown AF Position"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:460
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %hi)"
-msgstr "Vnitřní chyba (neznámá hodnota %i)"
+msgstr "Vnitřní chyba (neznámá hodnota %hi)"
 
 #: libexif/olympus/mnote-olympus-entry.c:468
 #, c-format
@@ -4289,9 +4219,9 @@ msgid "Automatic"
 msgstr "Automatický"
 
 #: libexif/olympus/mnote-olympus-entry.c:652
-#, fuzzy, c-format
+#, c-format
 msgid "Manual: %liK"
-msgstr "Ruční"
+msgstr "Ruční: %liK"
 
 #: libexif/olympus/mnote-olympus-entry.c:655
 msgid "Manual: Unknown"
@@ -4503,9 +4433,8 @@ msgid "B&W Mode"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:111
-#, fuzzy
 msgid "Focal Plane Diagonal"
-msgstr "Horizontální rozlišení ohniskové roviny"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:112
 msgid "Lens Distortion Parameters"
@@ -4524,27 +4453,22 @@ msgid "Precapture Frames"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:117
-#, fuzzy
 msgid "White Board"
-msgstr "Vyvážení bílé"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:118
-#, fuzzy
 msgid "One Touch White Balance"
-msgstr "Vyvážení bílé"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:119
-#, fuzzy
 msgid "White Balance Bracket"
-msgstr "Vyvážení bílé"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:120
-#, fuzzy
 msgid "White Balance Bias"
-msgstr "Vyvážení bílé"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:123
-#, fuzzy
 msgid "Shutter Speed"
 msgstr "Rychlost uzávěrky"
 
@@ -4553,24 +4477,20 @@ msgid "ISO Value"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:125
-#, fuzzy
 msgid "Aperture Value"
-msgstr "Clona"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:126
-#, fuzzy
 msgid "Brightness Value"
-msgstr "Jas"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:128
-#, fuzzy
 msgid "Flash Device"
-msgstr "Blesk bleskl."
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:129
-#, fuzzy
 msgid "Exposure Compensation"
-msgstr "Režim expozice"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:130
 msgid "Sensor Temperature"
@@ -4585,9 +4505,8 @@ msgid "Light Condition"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:133
-#, fuzzy
 msgid "Focus Range"
-msgstr "Režim ostření"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:136
 msgid "Zoom Step Count"
@@ -4606,99 +4525,84 @@ msgid "Flash Charge Level"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:140
-#, fuzzy
 msgid "Color Matrix"
-msgstr "Barevný model"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:141
-#, fuzzy
 msgid "Black Level"
-msgstr "Stav baterie"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:142
 msgid "White Balance Setting"
 msgstr "Nastavení vyvážení bílé"
 
 #: libexif/olympus/mnote-olympus-tag.c:143
-#, fuzzy
 msgid "Red Balance"
-msgstr "Vyvážení bílé"
+msgstr "Vyvážení červené"
 
 #: libexif/olympus/mnote-olympus-tag.c:144
-#, fuzzy
 msgid "Blue Balance"
-msgstr "Vyvážení bílé"
+msgstr "Vyvážení modré"
 
 #: libexif/olympus/mnote-olympus-tag.c:145
 msgid "Color Matrix Number"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:147
-#, fuzzy
 msgid "Flash Exposure Comp"
-msgstr "Režim expozice"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:148
-#, fuzzy
 msgid "Internal Flash Table"
-msgstr "Přídavný blesk"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:149
-#, fuzzy
 msgid "External Flash G Value"
-msgstr "Přídavný blesk"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:150
-#, fuzzy
 msgid "External Flash Bounce"
-msgstr "Přídavný blesk"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:151
-#, fuzzy
 msgid "External Flash Zoom"
-msgstr "Přídavný blesk"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:152
-#, fuzzy
 msgid "External Flash Mode"
-msgstr "Přídavný blesk"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:153
 msgid "Contrast Setting"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:154
-#, fuzzy
 msgid "Sharpness Factor"
-msgstr "Ostrost"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:155
 msgid "Color Control"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:156
-#, fuzzy
 msgid "Olympus Image Width"
-msgstr "Šířka obrázku"
+msgstr "Šířka obrázku - Olympus"
 
 #: libexif/olympus/mnote-olympus-tag.c:157
 msgid "Olympus Image Height"
-msgstr ""
+msgstr "Výška obrázku - Olympus"
 
 #: libexif/olympus/mnote-olympus-tag.c:158
-#, fuzzy
 msgid "Scene Detect"
-msgstr "Typ scény"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:159
-#, fuzzy
 msgid "Compression Ratio"
-msgstr "Komprese"
+msgstr "Kompresní poměr"
 
 #: libexif/olympus/mnote-olympus-tag.c:160
-#, fuzzy
 msgid "Preview Image Valid"
-msgstr "Náhled"
+msgstr "Náhled je platný"
 
 #: libexif/olympus/mnote-olympus-tag.c:161
 msgid "AF Result"
@@ -4709,24 +4613,20 @@ msgid "CCD Scan Mode"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:163
-#, fuzzy
 msgid "Noise Reduction"
 msgstr "Redukce šumu"
 
 #: libexif/olympus/mnote-olympus-tag.c:164
-#, fuzzy
 msgid "Infinity Lens Step"
-msgstr "Nekonečno"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:165
-#, fuzzy
 msgid "Near Lens Step"
-msgstr "Typ čoček"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:166
-#, fuzzy
 msgid "Light Value Center"
-msgstr "Vlevo - uprostřed"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:167
 msgid "Light Value Periphery"
@@ -4737,9 +4637,8 @@ msgid "Sequential Shot"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:171
-#, fuzzy
 msgid "Wide Range"
-msgstr "Vyvážení bílé"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:172
 msgid "Color Adjustment Mode"
@@ -4750,7 +4649,6 @@ msgid "Quick Shot"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:174
-#, fuzzy
 msgid "Self Timer"
 msgstr "Samospoušť"
 
@@ -4767,24 +4665,20 @@ msgid "Flicker Reduce"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:178
-#, fuzzy
 msgid "Optical Zoom"
-msgstr "Digitální zoom"
+msgstr "Optický zoom"
 
 #: libexif/olympus/mnote-olympus-tag.c:180
-#, fuzzy
 msgid "Light Source Special"
-msgstr "Zdroj světla"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:181
-#, fuzzy
 msgid "Resaved"
-msgstr "Rezervováno"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:182
-#, fuzzy
 msgid "Scene Select"
-msgstr "Typ scény"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:184
 msgid "Sequence Shot Interval"
