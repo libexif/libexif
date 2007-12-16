@@ -1,3 +1,11 @@
+2007-12-16  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Marcus Meissner <marcus@jet.franken.de> pointed out the following:
+
+	* libexif/exif-data.c: (exif_data_load_data_thumbnail) ExifLong is
+	unsigned. Therefore no need to check for negative values. Check for
+	sane offset instead.
+
 2007-12-15  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* po/*.po: Updated po-files.
