@@ -1,3 +1,11 @@
+2007-12-18  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Dan Fandrich <dan@coneharvesters.com> pointed out the following:
+
+	* configure.ac: Keep gettext requirement as low as 0.14.1.
+	gettextize changes it automatically to 0.17, but as long as we don't
+	know why, there is no need to enforce this version.
+
 2007-12-16  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Marcus Meissner <marcus@jet.franken.de> pointed out the following:
