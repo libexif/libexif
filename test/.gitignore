@@ -1,6 +1,7 @@
 Makefile.in
 Makefile
 test-exif
+test-parse
 *.o
 .deps
 .libs

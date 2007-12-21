@@ -1,6 +1,6 @@
 ChangeLog
 *.gmo
-libexif-*.pot
+libexif*.pot
 Makevars
 Makevars.template
 Makefile
