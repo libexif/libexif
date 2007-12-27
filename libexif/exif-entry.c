@@ -722,8 +722,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator) return val;
-		snprintf (val, maxlen, "f/%.01f", (float) v_rat.numerator /
-						    (float) v_rat.denominator);
+		d = (double) v_rat.numerator / (double) v_rat.denominator;
+		snprintf (val, maxlen, "f/%.01lf", d);
 		break;
 	case EXIF_TAG_APERTURE_VALUE:
 	case EXIF_TAG_MAX_APERTURE_VALUE:
@@ -732,7 +732,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator) return val;
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
-		snprintf (val, maxlen, _("%.02f EV"), d);
+		snprintf (val, maxlen, _("%.02lf EV"), d);
 		snprintf (b, sizeof (b), _(" (f/%.01f)"), pow (2, d / 2.));
 		if (maxlen > strlen (val) + strlen (b))
 			strncat (val, b, maxlen - strlen (val) - 1);
@@ -768,8 +768,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 				  (int) (d * (double) v_rat.numerator /
 				  	     (double) v_rat.denominator));
 
-		snprintf (val, maxlen, "%.1f mm",
-			(float) v_rat.numerator / (float) v_rat.denominator);
+		d = (double) v_rat.numerator / (double) v_rat.denominator;
+		snprintf (val, maxlen, "%.1lf mm", d);
 		if (maxlen > strlen (val) + strlen (b))
 			strncat (val, b, maxlen - strlen (val) - 1);
 		break;
@@ -778,8 +778,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
 		if (!v_rat.denominator) return val;
-		snprintf (val, maxlen, "%.1f m", (float) v_rat.numerator /
-						   (float) v_rat.denominator);
+		d = (double) v_rat.numerator / (double) v_rat.denominator;
+		snprintf (val, maxlen, "%.1lf m", d);
 		break;
 	case EXIF_TAG_EXPOSURE_TIME:
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
@@ -788,8 +788,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		if (!v_rat.denominator) return val;
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
 		if (d < 1)
-			snprintf (val, maxlen, _("1/%d"),
-				  (int) (1. / d));
+			snprintf (val, maxlen, _("1/%d"), (int) (1. / d));
 		else
 			snprintf (val, maxlen, _("%d"), (int) d);
 		if (maxlen > strlen (val) + strlen (_(" sec.")))
@@ -1068,20 +1067,29 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			break;
 		case EXIF_FORMAT_RATIONAL:
 			v_rat = exif_get_rational (e->data, o);
-			if (v_rat.denominator) {
-				snprintf (val, maxlen, "%2.2f", (double)v_rat.numerator / v_rat.denominator);
-			} else {
-				snprintf (val, maxlen, "%i/%i", v_rat.numerator,  v_rat.denominator);
-			}
+			if (v_rat.denominator)
+				snprintf (val, maxlen, "%2.2lf",
+				          (double) v_rat.numerator /
+					  (double) v_rat.denominator);
+			else
+				snprintf (val, maxlen, "%2.2lf/%2.2lf",
+				          (double) v_rat.numerator,
+					  (double) v_rat.denominator);
 			maxlen -= strlen (val);
 			for (i = 1; i < e->components; i++) {
 				v_rat = exif_get_rational (
 					e->data + 8 * i, o);
-				snprintf (b, sizeof (b), ", %2.2f",
-					   (double)v_rat.numerator / v_rat.denominator);
+				if (v_rat.denominator)
+					snprintf (b, sizeof (b), ", %2.2lf",
+					          (double) v_rat.numerator /
+					          (double) v_rat.denominator);
+				else
+					snprintf (b, sizeof (b), ", %2.2lf/%2.2lf",
+					          (double) v_rat.numerator,
+						  (double) v_rat.denominator);
 				strncat (val, b, maxlen);
 				maxlen -= strlen (b);
-				if ((signed)maxlen <= 0) break;
+				if ((signed) maxlen <= 0) break;
 			}
 			break;
 		case EXIF_FORMAT_SRATIONAL:
