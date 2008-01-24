@@ -1375,8 +1375,10 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		break;
 
 	/* UNDEFINED, no components, no default */
+	/* Use this if the tag is otherwise unsupported */
 	case EXIF_TAG_MAKER_NOTE:
 	case EXIF_TAG_USER_COMMENT:
+	default:
 		e->components = 0;
 		e->format = EXIF_FORMAT_UNDEFINED;
 		e->size = 0;
@@ -1422,8 +1424,5 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		if (!e->data) break;
                 memcpy (e->data, "0210", 4);
                 break;
-
-	default:
-		break;
 	}
 }
