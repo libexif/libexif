@@ -590,15 +590,15 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	 */
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
-	/* We need the byte order */
-	if (!e || !e->parent || !e->parent->parent)
-		return val;
-	o = exif_data_get_byte_order (e->parent->parent);
-
 	/* make sure the returned string is zero terminated */
 	memset (val, 0, maxlen);
 	maxlen--;
 	memset (b, 0, sizeof (b));
+
+	/* We need the byte order */
+	if (!e || !e->parent || !e->parent->parent)
+		return val;
+	o = exif_data_get_byte_order (e->parent->parent);
 
 	/* Sanity check */
 	if (e->size != e->components * exif_format_get_size (e->format)) {
