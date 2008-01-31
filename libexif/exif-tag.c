@@ -760,8 +760,13 @@ exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 
 	if (ifd >= EXIF_IFD_COUNT) return NULL;
 	for (i = 0; ExifTagTable[i].description; i++)
-		if ((ExifTagTable[i].tag == tag) && RECORDED) break;
-	return _(ExifTagTable[i].description);
+		if ((ExifTagTable[i].tag == tag) && RECORDED) {
+			/* GNU gettext acts strangely when given an empty string */
+			if (!*ExifTagTable[i].description)
+				return "";
+			return _(ExifTagTable[i].description);
+		}
+	return NULL;
 }
 
 

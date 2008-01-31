@@ -976,6 +976,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		for (j = 0; list[i].strings[j] && (j < v_short); j++);
 		if (!list[i].strings[j])
 			snprintf (val, maxlen, "%i", v_short);
+		else if (!*list[i].strings[j])
+			val[0] = 0;
 		else
 			strncpy (val, _(list[i].strings[j]), maxlen);
 		break;

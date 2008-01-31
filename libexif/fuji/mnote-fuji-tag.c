@@ -96,6 +96,10 @@ mnote_fuji_tag_get_description (MnoteFujiTag t)
 
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
-		if (table[i].tag == t) return (_(table[i].description));
+		if (table[i].tag == t) {
+			if (!*table[i].description)
+				return "";
+			return (_(table[i].description));
+		}
 	return NULL;
 }
