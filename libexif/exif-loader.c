@@ -381,7 +381,7 @@ exif_loader_get_data (ExifLoader *loader)
 {
 	ExifData *ed;
 
-	if (!loader) 
+	if (!loader || (loader->data_format == EL_DATA_FORMAT_UNKNOWN))
 		return NULL;
 
 	ed = exif_data_new_mem (loader->mem);

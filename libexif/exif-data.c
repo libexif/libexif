@@ -916,14 +916,19 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 void
 exif_data_save_data (ExifData *data, unsigned char **d, unsigned int *ds)
 {
+	if (ds)
+		*ds = 0;	/* This means something went wrong */
+
 	if (!data || !d || !ds)
 		return;
 
 	/* Header */
 	*ds = 14;
 	*d = exif_data_alloc (data, *ds);
-	if (!*d) 
+	if (!*d)  {
+		*ds = 0;
 		return;
+	}
 	memcpy (*d, ExifHeader, 6);
 
 	/* Order (offset 6) */
