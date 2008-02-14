@@ -1168,6 +1168,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_FOCAL_LENGTH_IN_35MM_FILM:
 	case EXIF_TAG_GAIN_CONTROL:
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
+	case EXIF_TAG_COLOR_SPACE:
+	case EXIF_TAG_FLASH:
 
 	/* SHORT, 1 component, default 0 */
 	case EXIF_TAG_IMAGE_WIDTH:

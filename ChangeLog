@@ -1,3 +1,10 @@
+2008-02-14  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Fix #1884609 (partially):
+
+	* libexif/exif-entry.c: (exif_entry_initialize) Initialize
+	EXIF_TAG_FLASH and EXIF_TAG_COLOR_SPACE.
+
 2007-12-27  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Suggestion by Andreas Kleinert <Andreas_Kleinert@gmx.de>:
