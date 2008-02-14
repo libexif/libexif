@@ -157,6 +157,7 @@ void
 exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 {
 	unsigned int i;
+	ExifEntry **t;
 
 	if (!c || !c->priv || !e || (e->parent != c)) return;
 
@@ -170,8 +171,9 @@ exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 	c->count--;
 	e->parent = NULL;
 	exif_entry_unref (e);
-	c->entries = exif_mem_realloc (c->priv->mem, c->entries,
+	t = exif_mem_realloc (c->priv->mem, c->entries,
 					sizeof(ExifEntry*) * c->count);
+	if (t) c->entries = t;
 }
 
 ExifEntry *

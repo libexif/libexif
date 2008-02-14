@@ -119,6 +119,7 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 {
 	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) ne;
 	unsigned int i, o, s, doff;
+	unsigned char *t;
 
 	if (!n || !buf || !buf_size) return;
 
@@ -148,9 +149,10 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 
 			/* Ensure even offsets. Set padding bytes to 0. */
 			if (s & 1) *buf_size += 1;
-			*buf = exif_mem_realloc (ne->mem, *buf,
+			t = exif_mem_realloc (ne->mem, *buf,
 						 sizeof (char) * *buf_size);
-			if (!*buf) return;
+			if (!t) return;
+			*buf = t;
 			doff = *buf_size - s;
 			if (s & 1) { doff--; *(*buf + *buf_size - 1) = '\0'; }
 			exif_set_long (*buf + o, n->order, n->offset + doff);
@@ -186,6 +188,7 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) ne;
 	ExifShort c;
 	unsigned int i, o, s;
+	MnoteCanonEntry *t;
 
 	if (!n || !buf || !buf_size || (buf_size < 6 + n->offset + 2)) return;
 
@@ -199,8 +202,10 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 	  if (o + 8 > buf_size) return;
 
 		n->count = i + 1;
-		n->entries = exif_mem_realloc (ne->mem, n->entries,
-				sizeof (MnoteCanonEntry) * (i+1));
+		t = exif_mem_realloc (ne->mem, n->entries,
+				sizeof (MnoteCanonEntry) * (i + 1));
+		if (!t) return;
+		n->entries = t;
 		memset (&n->entries[i], 0, sizeof (MnoteCanonEntry));
 	  n->entries[i].tag        = exif_get_short (buf + o, n->order);
 	  n->entries[i].format     = exif_get_short (buf + o + 2, n->order);

@@ -233,6 +233,7 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 			   unsigned int offset)
 {
 	unsigned int doff, s;
+	unsigned char *t;
 
 	if (!data || !data->priv) 
 		return;
@@ -277,11 +278,12 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 		 */
 		if (s & 1) 
 			(*ds)++;
-		*d = exif_mem_realloc (data->priv->mem, *d, *ds);
-		if (!*d) {
+		t = exif_mem_realloc (data->priv->mem, *d, *ds);
+		if (!t) {
 			EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
 		  	return;
 		}
+		*d = t;
 		exif_set_long (*d + 6 + offset + 8, data->priv->order, doff);
 		if (s & 1) 
 			*(*d + *ds - 1) = '\0';
@@ -476,6 +478,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 {
 	unsigned int j, n_ptr = 0, n_thumb = 0;
 	ExifIfd i;
+	unsigned char *t;
 
 	if (!data || !data->priv || !ifd || !d || !ds) 
 		return;
@@ -521,11 +524,12 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	 * and the number of entries.
 	 */
 	*ds += (2 + (ifd->count + n_ptr + n_thumb) * 12 + 4);
-	*d = exif_mem_realloc (data->priv->mem, *d, *ds);
-	if (!*d) {
+	t = exif_mem_realloc (data->priv->mem, *d, *ds);
+	if (!t) {
 		EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
 	  	return;
 	}
+	*d = t;
 
 	/* Save the number of entries */
 	exif_set_short (*d + 6 + offset, data->priv->order,
@@ -625,12 +629,13 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 					*ds - 6);
 			*ds += data->size;
-			*d = exif_mem_realloc (data->priv->mem, *d, *ds);
-			if (!*d) {
+			t = exif_mem_realloc (data->priv->mem, *d, *ds);
+			if (!t) {
 				EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData",
 						    *ds);
 			  	return;
 			}
+			*d = t;
 			memcpy (*d + *ds - data->size, data->data, data->size);
 			offset += 12;
 

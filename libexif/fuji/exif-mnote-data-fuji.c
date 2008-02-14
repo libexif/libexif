@@ -79,6 +79,7 @@ exif_mnote_data_fuji_save (ExifMnoteData *ne, unsigned char **buf,
 {
 	ExifMnoteDataFuji *n = (ExifMnoteDataFuji *) ne;
 	unsigned int i, o, s, doff;
+	unsigned char *t;
 
 	if (!n || !buf || !buf_size) return;
 
@@ -117,11 +118,12 @@ exif_mnote_data_fuji_save (ExifMnoteData *ne, unsigned char **buf,
 
 			/* Ensure even offsets. Set padding bytes to 0. */
 			if (s & 1) *buf_size += 1;
-			*buf = exif_mem_realloc (ne->mem, *buf, *buf_size);
-			if (!*buf) {
+			t = exif_mem_realloc (ne->mem, *buf, *buf_size);
+			if (!t) {
 				*buf_size = 0;
 				return;
 			}
+			*buf = t;
 			doff = *buf_size - s;
 			if (s & 1) { doff--; *(*buf + *buf_size - 1) = '\0'; }
 			exif_set_long (*buf + o, n->order, doff);
@@ -144,6 +146,7 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 	ExifMnoteDataFuji *n = (ExifMnoteDataFuji*) en;
 	ExifLong c;
 	unsigned int i, o, s, datao = 6 + n->offset;
+	MnoteFujiEntry *t;
 
 	if (!n || !buf || !buf_size || (buf_size < datao + 12)) return;
 
@@ -160,8 +163,10 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 		if (datao + 12 > buf_size) return;
 
 		n->count = i + 1;
-		n->entries = exif_mem_realloc (en->mem, n->entries,
-				sizeof (MnoteFujiEntry) * (i+1));
+		t = exif_mem_realloc (en->mem, n->entries,
+				sizeof (MnoteFujiEntry) * (i + 1));
+		if (!t) return;
+		n->entries = t;
 		memset (&n->entries[i], 0, sizeof (MnoteFujiEntry));
 		n->entries[i].tag        = exif_get_short (buf + o, n->order);
 		n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
