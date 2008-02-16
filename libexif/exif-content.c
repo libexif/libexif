@@ -168,12 +168,14 @@ exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 	/* Remove the entry */
 	memmove (&c->entries[i], &c->entries[i + 1],
 		 sizeof (ExifEntry*) * (c->count - i - 1));
-	c->count--;
 	e->parent = NULL;
 	exif_entry_unref (e);
 	t = exif_mem_realloc (c->priv->mem, c->entries,
-					sizeof(ExifEntry*) * c->count);
-	if (t) c->entries = t;
+				sizeof(ExifEntry*) * (c->count - 1));
+	if (t) {
+		c->entries = t;
+		c->count--;
+	}
 }
 
 ExifEntry *

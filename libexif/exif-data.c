@@ -234,6 +234,7 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 {
 	unsigned int doff, s;
 	unsigned char *t;
+	unsigned int ts;
 
 	if (!data || !data->priv) 
 		return;
@@ -269,21 +270,22 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	s = exif_format_get_size (e->format) * e->components;
 	if (s > 4) {
 		doff = *ds - 6;
-		*ds += s;
+		ts = *ds + s;
 
 		/*
 		 * According to the TIFF specification,
 		 * the offset must be an even number. If we need to introduce
 		 * a padding byte, we set it to 0.
 		 */
-		if (s & 1) 
-			(*ds)++;
-		t = exif_mem_realloc (data->priv->mem, *d, *ds);
+		if (s & 1)
+			ts++;
+		t = exif_mem_realloc (data->priv->mem, *d, ts);
 		if (!t) {
-			EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
+			EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", ts);
 		  	return;
 		}
 		*d = t;
+		*ds = ts;
 		exif_set_long (*d + 6 + offset + 8, data->priv->order, doff);
 		if (s & 1) 
 			*(*d + *ds - 1) = '\0';
@@ -479,6 +481,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	unsigned int j, n_ptr = 0, n_thumb = 0;
 	ExifIfd i;
 	unsigned char *t;
+	unsigned int ts;
 
 	if (!data || !data->priv || !ifd || !d || !ds) 
 		return;
@@ -523,13 +526,14 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	 * Allocate enough memory for all entries
 	 * and the number of entries.
 	 */
-	*ds += (2 + (ifd->count + n_ptr + n_thumb) * 12 + 4);
-	t = exif_mem_realloc (data->priv->mem, *d, *ds);
+	ts = *ds + (2 + (ifd->count + n_ptr + n_thumb) * 12 + 4);
+	t = exif_mem_realloc (data->priv->mem, *d, ts);
 	if (!t) {
-		EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", *ds);
+		EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", ts);
 	  	return;
 	}
 	*d = t;
+	*ds = ts;
 
 	/* Save the number of entries */
 	exif_set_short (*d + 6 + offset, data->priv->order,
@@ -628,14 +632,15 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 					1);
 			exif_set_long  (*d + 6 + offset + 8, data->priv->order,
 					*ds - 6);
-			*ds += data->size;
-			t = exif_mem_realloc (data->priv->mem, *d, *ds);
+			ts = *ds + data->size;
+			t = exif_mem_realloc (data->priv->mem, *d, ts);
 			if (!t) {
 				EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData",
-						    *ds);
+						    ts);
 			  	return;
 			}
 			*d = t;
+			*ds = ts;
 			memcpy (*d + *ds - data->size, data->data, data->size);
 			offset += 12;
 

@@ -88,6 +88,8 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) ne;
 	unsigned int i, o, s, doff, base = 0, o2 = 6 + 2;
 	int datao = 0;
+	unsigned char *t;
+	unsigned int ts;
 
 	if (!n || !buf || !buf_size) return;
 
@@ -173,10 +175,12 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 						n->entries[i].components;
 		if (s > 4) {
 			doff = *buf_size;
-			*buf_size += s;
-			*buf = exif_mem_realloc (ne->mem, *buf,
-						 sizeof (char) * *buf_size);
-			if (!*buf) return;
+			ts = *buf_size + s;
+			t = exif_mem_realloc (ne->mem, *buf,
+						 sizeof (char) * ts);
+			if (!t) return;
+			*buf = t;
+			*buf_size = ts;
 			exif_set_long (*buf + o, n->order, datao + doff);
 		} else
 			doff = o;
