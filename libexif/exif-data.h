@@ -1,7 +1,7 @@
 /*! \file exif-data.h
  * \brief FIXME foo bar blah
  *
- * \author Lutz Müller <lutz@users.sourceforge.net>
+ * \author Lutz Mueller <lutz@users.sourceforge.net>
  * \date 2001-2005
  *
  * This library is free software; you can redistribute it and/or

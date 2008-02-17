@@ -1,5 +1,12 @@
 2008-02-17  Lutz Mueller <lutz@users.sourceforge.net>
 
+	Fix #1865046:
+
+	* COPYING:
+	* libexif/...: Use 'ue' instead of some strange German character.
+
+2008-02-17  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* libexif/exif-loader.c: (exif_loader_get_data) Return NULL if no
 	EXIF data has been found.
 
