@@ -1,3 +1,8 @@
+2008-02-17  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/exif-loader.c: (exif_loader_get_data) Return NULL if no
+	EXIF data has been found.
+
 2008-02-16  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Jan Patera <patera@pictview.com> spotted a problem with my last fix
