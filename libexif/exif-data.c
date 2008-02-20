@@ -544,11 +544,9 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 		  "Saving %i entries (IFD '%s', offset: %i)...",
 		  ifd->count, exif_ifd_get_name (i), offset);
-	for (j = 0; j < ifd->count; j++) {
-		exif_data_save_data_entry (data, ifd->entries[j], d, ds, offset + 12 * j);
-		if (!*d)
-			return;	/* out of memory */
-	}
+	for (j = 0; j < ifd->count; j++)
+		exif_data_save_data_entry (data, ifd->entries[j], d, ds,
+			offset + 12 * j);
 
 	offset += 12 * ifd->count;
 

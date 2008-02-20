@@ -1,3 +1,10 @@
+2008-02-20  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Follow-up on #1774591:
+
+	* libexif/exif-data.c: (exif_data_save_data_content) Remove check for
+	now impossible NULL value.
+
 2008-02-17  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Fix #1865046:
