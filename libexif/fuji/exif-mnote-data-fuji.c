@@ -121,7 +121,6 @@ exif_mnote_data_fuji_save (ExifMnoteData *ne, unsigned char **buf,
 			if (s & 1) ts += 1;
 			t = exif_mem_realloc (ne->mem, *buf, ts);
 			if (!t) {
-				*buf_size = 0;
 				return;
 			}
 			*buf = t;
