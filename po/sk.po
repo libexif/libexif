@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: libexif 0.6.17-pre1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-12-18 22:53-0800\n"
-"PO-Revision-Date: 2008-04-03 12:47+0100\n"
+"PO-Revision-Date: 2008-04-08 12:26+0100\n"
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
@@ -132,7 +132,7 @@ msgstr "zapnutý"
 #: libexif/canon/mnote-canon-entry.c:86 libexif/fuji/mnote-fuji-entry.c:104
 #: libexif/olympus/mnote-olympus-entry.c:168
 msgid "Red-eye reduction"
-msgstr "redukcia červených očí"
+msgstr "korekcia červených očí"
 
 #: libexif/canon/mnote-canon-entry.c:87
 msgid "Slow synchro"
@@ -140,11 +140,11 @@ msgstr "pomalá synchronizácia"
 
 #: libexif/canon/mnote-canon-entry.c:88
 msgid "Auto + Red-eye reduction"
-msgstr "auto + redukcia červených očí"
+msgstr "auto + korekcia červených očí"
 
 #: libexif/canon/mnote-canon-entry.c:89
 msgid "On + Red-eye reduction"
-msgstr "zapnutý + redukcia červených očí"
+msgstr "zapnutý + korekcia červených očí"
 
 #: libexif/canon/mnote-canon-entry.c:90
 msgid "External flash"
@@ -166,7 +166,7 @@ msgstr "film"
 
 #: libexif/canon/mnote-canon-entry.c:94
 msgid "Continuous, speed priority"
-msgstr "spojitý, prioritna pre rýchlosť"
+msgstr "spojitý, priorita pre rýchlosť"
 
 #: libexif/canon/mnote-canon-entry.c:95
 msgid "Continuous, low"
@@ -198,7 +198,7 @@ msgstr "ručné zaostrenie"
 #: libexif/canon/mnote-canon-entry.c:104 libexif/canon/mnote-canon-entry.c:132
 #: libexif/canon/mnote-canon-entry.c:187
 msgid "Pan focus"
-msgstr "panorámovať zaostrenie"
+msgstr "posúvať zaostrenie"
 
 #: libexif/canon/mnote-canon-entry.c:105
 msgid "JPEG"
@@ -1392,7 +1392,7 @@ msgstr "režim jednoduchého fotenia"
 
 #: libexif/canon/mnote-canon-tag.c:65
 msgid "Digital zoom"
-msgstr "digiálne priblíženie"
+msgstr "digitálne priblíženie"
 
 #: libexif/canon/mnote-canon-tag.c:66 libexif/exif-tag.c:658
 #: libexif/fuji/mnote-fuji-tag.c:42 libexif/pentax/mnote-pentax-tag.c:46
@@ -1521,7 +1521,7 @@ msgstr "auto ISO"
 
 #: libexif/canon/mnote-canon-tag.c:96
 msgid "Shot ISO"
-msgstr "ISO snímku"
+msgstr "ISO snímky"
 
 #: libexif/canon/mnote-canon-tag.c:97
 msgid "Measured EV"
@@ -2152,43 +2152,43 @@ msgstr "Bez funkcie blesku."
 
 #: libexif/exif-entry.c:522
 msgid "Flash fired, red-eye reduction mode."
-msgstr "Blesk sa spustil, redukcia červených očí."
+msgstr "Blesk sa spustil, korekcia červených očí."
 
 #: libexif/exif-entry.c:523
 msgid "Flash fired, red-eye reduction mode, return light not detected."
-msgstr "Blesk sa spustil, redukcia červených očí, vracajúce sa svetlo nedetekované."
+msgstr "Blesk sa spustil, korekcia červených očí, vracajúce sa svetlo nedetekované."
 
 #: libexif/exif-entry.c:525
 msgid "Flash fired, red-eye reduction mode, return light detected."
-msgstr "Blesk sa spustil, redukcia červených očí, vracajúce sa svetlo detekované."
+msgstr "Blesk sa spustil, korekcia červených očí, vracajúce sa svetlo detekované."
 
 #: libexif/exif-entry.c:527
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode."
-msgstr "Blesk sa spustil, povinný režim blesku, redukcia červených očí."
+msgstr "Blesk sa spustil, povinný režim blesku, korekcia červených očí."
 
 #: libexif/exif-entry.c:529
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected."
-msgstr "Blesk sa spustil, povinný režim blesku, redukcia červených očí, vracajúce sa svetlo nedetekované."
+msgstr "Blesk sa spustil, povinný režim blesku, korekcia červených očí, vracajúce sa svetlo nedetekované."
 
 #: libexif/exif-entry.c:531
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode, return light detected."
-msgstr "Blesk sa spustil, povinný režim blesku, redukcia červených očí, vracajúce sa svetlo nedetekované."
+msgstr "Blesk sa spustil, povinný režim blesku, korekcia červených očí, vracajúce sa svetlo nedetekované."
 
 #: libexif/exif-entry.c:533
 msgid "Flash did not fire, auto mode, red-eye reduction mode."
-msgstr "Blesk sa nespustil, automatický režim, redukcia červených očí."
+msgstr "Blesk sa nespustil, automatický režim, korekcia červených očí."
 
 #: libexif/exif-entry.c:534
 msgid "Flash fired, auto mode, red-eye reduction mode."
-msgstr "Blesk sa spustil, automatický režim, redukcia červených očí."
+msgstr "Blesk sa spustil, automatický režim, korekcia červených očí."
 
 #: libexif/exif-entry.c:535
 msgid "Flash fired, auto mode, return light not detected, red-eye reduction mode."
-msgstr "Blesk sa nespustil, automatický režim blesku, vracajúce sa svetlo nedetekované, redukcia červených očí."
+msgstr "Blesk sa nespustil, automatický režim blesku, vracajúce sa svetlo nedetekované, korekcia červených očí."
 
 #: libexif/exif-entry.c:537
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode."
-msgstr "Blesk sa nespustil, automatický režim blesku, vracajúce sa svetlo detekované, redukcia červených očí."
+msgstr "Blesk sa nespustil, automatický režim blesku, vracajúce sa svetlo detekované, korekcia červených očí."
 
 #: libexif/exif-entry.c:541
 msgid "?"
@@ -2582,7 +2582,7 @@ msgstr "vzoriek na pixel"
 
 #: libexif/exif-tag.c:124
 msgid "The number of components per pixel. Since this standard applies to RGB and YCbCr images, the value set for this tag is 3. In JPEG compressed data a JPEG marker is used instead of this tag."
-msgstr "Počet zložiek na pixel. Keďže tento štandard sa vzťahuje na RGB a YCbCr obrázky, hodnota tejto značny je 3. V JPEG komprimovaných dátach sa namiesto tejto značky používa JPEG značka."
+msgstr "Počet zložiek na pixel. Keďže tento štandard sa vzťahuje na RGB a YCbCr obrázky, hodnota tejto značky je 3. V JPEG komprimovaných dátach sa namiesto tejto značky používa JPEG značka."
 
 # exif-rowsperstrip
 #: libexif/exif-tag.c:129
@@ -2654,7 +2654,7 @@ msgstr "softvér"
 
 #: libexif/exif-tag.c:168
 msgid "This tag records the name and version of the software or firmware of the camera or image input device used to generate the image. The detailed format is not specified, but it is recommended that the example shown below be followed. When the field is left blank, it is treated as unknown."
-msgstr "Táto značka zaznamenáva názov a verziu softvéru alebo firmvéru fotoaparátu alebo zariadenia, ktoré bolo použité pri tvorbe obrázka. Podrobný formát nie je špecifikovaný, ale odporúča sa dodržiavať formát ako v doluuvedenom príklade. Keď je pole prázdne, verzia je neznáma."
+msgstr "Táto značka zaznamenáva názov a verziu softvéru alebo firmvéru fotoaparátu alebo zariadenia, ktoré bolo použité pri tvorbe obrázka. Podrobný formát nie je špecifikovaný, ale odporúča sa dodržiavať formát ako v dolu uvedenom príklade. Keď je pole prázdne, verzia je neznáma."
 
 # exif-datetime
 #: libexif/exif-tag.c:175
@@ -2672,7 +2672,7 @@ msgstr "Autor"
 
 #: libexif/exif-tag.c:180
 msgid "This tag records the name of the camera owner, photographer or image creator. The detailed format is not specified, but it is recommended that the information be written as in the example below for ease of Interoperability. When the field is left blank, it is treated as unknown."
-msgstr "Táto značka zaznamenáva vlastníka fotoaparátu, fotografa alebo tvorcu obrázka. Presný formát nie je špecifikovaný, ale odporúča sa, aby kvôli interoperabilite bola informácia zapísaná ako v doluuvedenom príklade. Keď je pole prázdne, umelec je neznámy."
+msgstr "Táto značka zaznamenáva vlastníka fotoaparátu, fotografa alebo tvorcu obrázka. Presný formát nie je špecifikovaný, ale odporúča sa, aby kvôli interoperabilite bola informácia zapísaná ako v dolu uvedenom príklade. Keď je pole prázdne, umelec je neznámy."
 
 # exif-whitepoint
 #: libexif/exif-tag.c:186
@@ -2686,7 +2686,7 @@ msgstr "Chromaticita bieleho bodu obrázka. Bežne nie je táto značka potrebn�
 # exif-primarychromaticities
 #: libexif/exif-tag.c:192
 msgid "Primary Chromaticities"
-msgstr "priárne chromaticity"
+msgstr "primárne chromaticity"
 
 #: libexif/exif-tag.c:193
 msgid "The chromaticity of the three primary colors of the image. Normally this tag is not necessary, since color space is specified in the color space information tag (<ColorSpace>)."
@@ -2725,7 +2725,7 @@ msgstr "koeficienty YCbCr"
 
 #: libexif/exif-tag.c:219
 msgid "The matrix coefficients for transformation from RGB to YCbCr image data. No default is given in TIFF; but here the value given in Appendix E, \"Color Space Guidelines\", is used as the default. The color space is declared in a color space information tag, with the default being the value that gives the optimal image characteristics Interoperability this condition."
-msgstr "Matica koeficientov transformácie obrazových dát z RGB na YCbCr. V TIFF nie je definovaná štandardná hodnota; ale tu sa používa hodnota uvedená v Prílohe E, \"Pokyny ohľadne farebného priestoru\". Farebný priestor je deklarovaný informačným štítkom farebného priestoru, pričom štandardnou hodnotou je tá, ktorá dáva optimálnu chrakteristiku interoperability tohto stavu."
+msgstr "Matica koeficientov transformácie obrazových dát z RGB na YCbCr. V TIFF nie je definovaná štandardná hodnota; ale tu sa používa hodnota uvedená v Prílohe E, \"Pokyny ohľadne farebného priestoru\". Farebný priestor je deklarovaný informačným štítkom farebného priestoru, pričom štandardnou hodnotou je tá, ktorá dáva optimálnu charakteristiku interoperability tohto stavu."
 
 # exif-ycbcrsubsampling
 #: libexif/exif-tag.c:228
@@ -2743,7 +2743,7 @@ msgstr "poloha YCbCr"
 
 #: libexif/exif-tag.c:235
 msgid "The position of chrominance components in relation to the luminance component. This field is designated only for JPEG compressed data or uncompressed YCbCr data. The TIFF default is 1 (centered); but when Y:Cb:Cr = 4:2:2 it is recommended in this standard that 2 (co-sited) be used to record data, in order to improve the image quality when viewed on TV systems. When this field does not exist, the reader shall assume the TIFF default. In the case of Y:Cb:Cr = 4:2:0, the TIFF default (centered) is recommended. If the reader does not have the capability of supporting both kinds of <YCbCrPositioning>, it shall follow the TIFF default regardless of the value in this field. It is preferable that readers be able to support both centered and co-sited positioning."
-msgstr "Poloha zložiek chrominancie vzhľadom ku zložke svietivosti. Toto pole je určené iba prekomprimované dáta JPEG alebo nekomprimované dáta YCbCr. Štandard TIFF je 1 (centrované), ale keď Y:Cb:Cr = 4:2:2 odporúča sa v tomto štandarde použiť pre záznam dát 2 (na rovnakom mieste), aby sa zlepšila kvalita obrazu pri zobrazovaní na televíznych systémoch. Keď toto pole neexistuje, čítacie zariadenie bude predpokladať štandard TIFF. V prípade, že Y:Cb:Cr = 4:2:0 sa odporúča štandard TIFF (centrované). Ak čítacie zariadenie nedokáže naraz podporovať oba druhy <YCbCrPositioning>, bude sa držať štandardu TIFF nezávisle od hodnoty v tomto poli. Uprednostňuje sa, aby čítacie zariadenia podporovali obe polohy - centrované aj na rovnakom mieste."
+msgstr "Poloha zložiek chrominancie vzhľadom ku zložke svietivosti. Toto pole je určené iba pre komprimované dáta JPEG alebo nekomprimované dáta YCbCr. Štandard TIFF je 1 (centrované), ale keď Y:Cb:Cr = 4:2:2 odporúča sa v tomto štandarde použiť pre záznam dát 2 (na rovnakom mieste), aby sa zlepšila kvalita obrazu pri zobrazovaní na televíznych systémoch. Keď toto pole neexistuje, čítacie zariadenie bude predpokladať štandard TIFF. V prípade, že Y:Cb:Cr = 4:2:0 sa odporúča štandard TIFF (centrované). Ak čítacie zariadenie nedokáže naraz podporovať oba druhy <YCbCrPositioning>, bude sa držať štandardu TIFF nezávisle od hodnoty v tomto poli. Uprednostňuje sa, aby čítacie zariadenia podporovali obe polohy - centrované aj na rovnakom mieste."
 
 # exif-referenceblackwhite
 #: libexif/exif-tag.c:250
@@ -2752,7 +2752,7 @@ msgstr "referenčná čierna/biela"
 
 #: libexif/exif-tag.c:251
 msgid "The reference black point value and reference white point value. No defaults are given in TIFF, but the values below are given as defaults here. The color space is declared in a color space information tag, with the default being the value that gives the optimal image characteristics Interoperability these conditions."
-msgstr "Referenčná hodnota čierneho bodu a referenčná hodnota bieleho bodu. TIFF neudáva štandardné hodnoty, ale nižšie uvedené hodnoty sú tu dané ako štandardy. Farebný priestor sa deklaruje v informačnom štítku farebného priestoru, pričom štandardnou hodnotou je tá, ktorá dáva optimálnu chrakteristiku interoperability tohto stavu."
+msgstr "Referenčná hodnota čierneho bodu a referenčná hodnota bieleho bodu. TIFF neudáva štandardné hodnoty, ale nižšie uvedené hodnoty sú tu dané ako štandardy. Farebný priestor sa deklaruje v informačnom štítku farebného priestoru, pričom štandardnou hodnotou je tá, ktorá dáva optimálnu charakteristiku interoperability tohto stavu."
 
 #: libexif/exif-tag.c:258
 msgid "XML Packet"
@@ -2939,7 +2939,7 @@ msgstr "Konfigurácia komponentov"
 
 #: libexif/exif-tag.c:394
 msgid "Information specific to compressed data. The channels of each component are arranged in order from the 1st component to the 4th. For uncompressed data the data arrangement is given in the <PhotometricInterpretation> tag. However, since <PhotometricInterpretation> can only express the order of Y, Cb and Cr, this tag is provided for cases when compressed data uses components other than Y, Cb, and Cr and to enable support of other sequences."
-msgstr "Informácia špecifická pre kompresné dáta. Kanály každej zložky sú zoradené v poradé d 1. po 4. zložku. Pre nekomprimované dáta je poradie dát dané štítkom <PhotometricInterpretation>. Avšak keďže <PhotometricInterpretation> dokáže vyjadriť iba poradie Y, Cb a Cr, tento štítok je použiteľný v prípadoch, kedy komprimované dáta používajú iné komponenty ako Y, Cb, a Cr a na to, aby sa umožnila podpora iných poradí."
+msgstr "Informácia špecifická pre kompresné dáta. Kanály každej zložky sú zoradené v poradí d 1. po 4. zložku. Pre nekomprimované dáta je poradie dát dané štítkom <PhotometricInterpretation>. Avšak keďže <PhotometricInterpretation> dokáže vyjadriť iba poradie Y, Cb a Cr, tento štítok je použiteľný v prípadoch, kedy komprimované dáta používajú iné komponenty ako Y, Cb, a Cr a na to, aby sa umožnila podpora iných poradí."
 
 # exif-compressedbitsperpixel
 #: libexif/exif-tag.c:404
@@ -3041,7 +3041,7 @@ msgstr "komentár používateľa"
 
 #: libexif/exif-tag.c:452
 msgid "A tag for Exif users to write keywords or comments on the image besides those in <ImageDescription>, and without the character code limitations of the <ImageDescription> tag. The character code used in the <UserComment> tag is identified based on an ID code in a fixed 8-byte area at the start of the tag data area. The unused portion of the area is padded with NULL (\"00.h\"). ID codes are assigned by means of registration. The designation method and references for each character code are given in Table 6. The value of CountN is determined based on the 8 bytes in the character code area and the number of bytes in the user comment part. Since the TYPE is not ASCII, NULL termination is not necessary (see Fig. 9). The ID code for the <UserComment> area may be a Defined code such as JIS or ASCII, or may be Undefined. The Undefined name is UndefinedText, and the ID code is filled with 8 bytes of all \"NULL\" (\"00.H\"). An Exif reader that reads the <UserComment> tag must have a function for determining the ID code. This function is not required in Exif readers that do not use the <UserComment> tag (see Table 7). When a <UserComment> area is set aside, it is recommended that the ID code be ASCII and that the following user comment part be filled with blank characters [20.H]."
-msgstr "Štítok pre používateľov exif pre zapísanie kľúčových slov alebo komentára k obrázku naviac k <ImageDescription> a bez obmedzení znakovej sady ako pri štítku <ImageDescription>. Znakový kód použitý v štítku <UserComment> je identifikovaná na základe ID kódu v pevnej 8-bajtovej oblasti na začiatku štítku. Nevyužitá časť oblasti sa doplní znakmi NULL (\"00.h\"). ID kódy sú pridelené na základe registrácie. Spôsoby určenia a referencií každého znakového kódu sú udané v Tabuľke 6. Hodnota CountN sa určí na základe 8 bajtov v oblasti znakového kódu a počtu bajtov v časti používateľského komentára. Keďže TYPE nie je ASCII, nie je potrebné ukončenie pomocou NULL (pozri Obr. 9). ID kód oblasti <UserComment> môže byť Definovaný kód ako JIS alebo ASCII alebo môže byť Nedefinovaný. Nedefinovaný je UndefinedText a ID kód sa vyplní 8 bajtami znaku \"NULL\" (\"00.H\"). Čítacie zariadenie exif, ktoré číta štítok <UserComment> musí mať funkciu na určenie ID kódu. Táto funkcia sa nevyžaduje v čítacích zariadeniach exif, ktoré nevyužívajú štítok <UserComment> (pozri Tabuľku 7). Keď sa vyhradí oblasť <UserComment>, odporúča sa, aby ID kód bol ASCII a nasledovná časť používateľského komentára bola vyplnená prázdnymi znakmi [20.H]."
+msgstr "Štítok, kde používatelia exif môžu zapísať kľúčové slová alebo komentár k obrázku naviac k <ImageDescription> a bez obmedzení znakovej sady ako pri štítku <ImageDescription>. Znakový kód použitý v štítku <UserComment> je identifikovaná na základe ID kódu v pevnej 8-bajtovej oblasti na začiatku štítku. Nevyužitá časť oblasti sa doplní znakmi NULL (\"00.h\"). ID kódy sú pridelené na základe registrácie. Spôsoby určenia a referencií každého znakového kódu sú udané v Tabuľke 6. Hodnota CountN sa určí na základe 8 bajtov v oblasti znakového kódu a počtu bajtov v časti používateľského komentára. Keďže TYPE nie je ASCII, nie je potrebné ukončenie pomocou NULL (pozri Obr. 9). ID kód oblasti <UserComment> môže byť Definovaný kód ako JIS alebo ASCII alebo môže byť Nedefinovaný. Nedefinovaný je UndefinedText a ID kód sa vyplní 8 bajtami znaku \"NULL\" (\"00.H\"). Čítacie zariadenie exif, ktoré číta štítok <UserComment> musí mať funkciu na určenie ID kódu. Táto funkcia sa nevyžaduje v čítacích zariadeniach exif, ktoré nevyužívajú štítok <UserComment> (pozri Tabuľku 7). Keď sa vyhradí oblasť <UserComment>, odporúča sa, aby ID kód bol ASCII a nasledovná časť používateľského komentára bola vyplnená prázdnymi znakmi [20.H]."
 
 #: libexif/exif-tag.c:477
 msgid "A tag used to record fractions of seconds for the <DateTime> tag."
@@ -3320,7 +3320,7 @@ msgstr "Značí hodnotu koeficientu gamma."
 
 #: libexif/exif-tag.c:682
 msgid "PRINT Image Matching"
-msgstr "Zhoda obrázkov PRINT"
+msgstr "PRINT Image Matching"
 
 #: libexif/exif-tag.c:683
 msgid "Related to Epson's PRINT Image Matching technology"
@@ -3429,11 +3429,11 @@ msgstr "F-štandardný"
 
 #: libexif/fuji/mnote-fuji-entry.c:147
 msgid "F-Chrome"
-msgstr "F-Chróm"
+msgstr "F-chróm"
 
 #: libexif/fuji/mnote-fuji-entry.c:148
 msgid "F-B&W"
-msgstr "F-B&W"
+msgstr "F-čb"
 
 #: libexif/fuji/mnote-fuji-entry.c:151
 msgid "No blur"
@@ -3543,7 +3543,7 @@ msgstr "Sýtosť chromaticity"
 #: libexif/olympus/mnote-olympus-tag.c:127
 #: libexif/pentax/mnote-pentax-tag.c:38 libexif/pentax/mnote-pentax-tag.c:66
 msgid "Flash Mode"
-msgstr "režim blesku"
+msgstr "Režim blesku"
 
 #: libexif/fuji/mnote-fuji-tag.c:44
 msgid "Flash Firing Strength Compensation"
@@ -3618,11 +3618,11 @@ msgstr "Maximálna ohnisková vzdialenosť"
 
 #: libexif/fuji/mnote-fuji-tag.c:62
 msgid "Maximum Aperture at Minimum Focal"
-msgstr "maximálna clona pri minimálnom ohnisku"
+msgstr "Maximálna clona pri minimálnom ohnisku"
 
 #: libexif/fuji/mnote-fuji-tag.c:63
 msgid "Maximum Aperture at Maximum Focal"
-msgstr "maximálna clona pri maximálnom ohnisku"
+msgstr "Maximálna clona pri maximálnom ohnisku"
 
 #: libexif/fuji/mnote-fuji-tag.c:65
 msgid "Order Number"
@@ -4157,7 +4157,7 @@ msgstr "nastavenie sýtosti"
 
 #: libexif/olympus/mnote-olympus-tag.c:76
 msgid "Noisereduction"
-msgstr "redukcia šumu"
+msgstr "Redukcia šumu"
 
 #: libexif/olympus/mnote-olympus-tag.c:79
 msgid "Sensor pixel size"
@@ -4502,7 +4502,7 @@ msgstr "blesk zapnutý"
 
 #: libexif/pentax/mnote-pentax-entry.c:94
 msgid "Red-eye Reduction"
-msgstr "redukcia červených očí"
+msgstr "Korekcia červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:140
 msgid "TIFF"
@@ -4592,7 +4592,7 @@ msgstr "auto, blesk sa nespustil"
 
 #: libexif/pentax/mnote-pentax-entry.c:196
 msgid "Auto, Did not fire, Red-eye reduction"
-msgstr "auto, blesk sa nespustil, redukcia červených očí"
+msgstr "auto, blesk sa nespustil, korekcia červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:197
 msgid "Auto, Fired"
@@ -4600,11 +4600,11 @@ msgstr "auto, blesk sa spustil"
 
 #: libexif/pentax/mnote-pentax-entry.c:199
 msgid "Auto, Fired, Red-eye reduction"
-msgstr "auto, blesk sa spustil, redukcia červených očí"
+msgstr "auto, blesk sa spustil, korekcia červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:200
 msgid "On, Red-eye reduction"
-msgstr "zapnutý, redukcia červených očí"
+msgstr "zapnutý, korekcia červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:201
 msgid "On, Wireless"
@@ -4620,7 +4620,7 @@ msgstr "zapnuté, pomalá synchr."
 
 #: libexif/pentax/mnote-pentax-entry.c:204
 msgid "On, Slow-sync, Red-eye reduction"
-msgstr "zapnutý, pomalá synch., redukcia červených očí"
+msgstr "zapnutý, pomalá synch., korekcia červených očí"
 
 #: libexif/pentax/mnote-pentax-entry.c:205
 msgid "On, Trailing-curtain Sync"
@@ -4628,7 +4628,7 @@ msgstr "zapnuté, synchr. koncovej záclony"
 
 #: libexif/pentax/mnote-pentax-entry.c:212
 msgid "Pan Focus"
-msgstr "panorámovať zaostrenie"
+msgstr "posúvať zaostrenie"
 
 # AF = automatické zaostrenie
 #: libexif/pentax/mnote-pentax-entry.c:213
@@ -4789,7 +4789,7 @@ msgstr "Vzdialenosť fotografovaných objektov v milimetroch."
 
 #: libexif/pentax/mnote-pentax-tag.c:73
 msgid "Bestshot mode"
-msgstr "režim najlepšieho snímku"
+msgstr "režim najlepšej snímky"
 
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
