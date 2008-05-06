@@ -1219,8 +1219,16 @@ fix_func (ExifContent *c, void *UNUSED(data))
 			exif_log (c->parent->priv->log, EXIF_LOG_CODE_DEBUG, "exif-data",
 				  "No thumbnail but entries on thumbnail. These entries have been "
 				  "removed.");
-			while (c->count)
+			while (c->count) {
+				int cnt = c->count;
 				exif_content_remove_entry (c, c->entries[c->count - 1]);
+				if (cnt == c->count) {
+					/* safety net */
+					exif_log (c->parent->priv->log, EXIF_LOG_CODE_DEBUG, "exif-data",
+					"failed to remove last entry from entries.");
+					c->count--;
+				}
+			}
 		}
 		break;
 	default:
