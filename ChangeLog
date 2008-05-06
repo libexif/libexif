@@ -1,3 +1,9 @@
+2008-05-06  Marcus Meissner  <meissner@suse.de>
+
+	* libexif/exif-content.c: Fixed a endless loop
+	  possibility in content remove (triggered by EOG
+	  and potentially others on certain JPEGs).
+
 2008-04-03  Dan Fandrich <dan@coneharvesters.com>
 
 	po/sk.po: Updated Slovak translation by Ivan Masár
