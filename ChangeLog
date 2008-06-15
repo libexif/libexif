@@ -1,5 +1,11 @@
 2008-06-15  Lutz Mueller <lutz@users.sourceforge.net>
 
+	* configure.ac: Revert previous commit
+	* po/zh_CN.po: Remove.
+	* po/[sk,vi].po: Revert.
+
+2008-06-15  Lutz Mueller <lutz@users.sourceforge.net>
+
 	* configure.ac: New po-file: zh_CN
 	* po/zh_CN.po: New
 	* po/[sk,vi].po: Updated.
