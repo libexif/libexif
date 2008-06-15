@@ -1,83 +1,83 @@
-# Vietnamese translation for EXIF.
-# Copyright © 2008 Free Software Foundation, Inc.
-# This file is distributed under the same license as the exif-0.6.16-pre1 package.
-# Clytie Siddall <clytie@riverland.net.au>, 2008
+# Chinese translations for exif package
+# exif 软件包的简体中文翻译.
+# Copyright (C) 2008 Lutz Müller and others
+# This file is distributed under the same license as the exif package.
+# Ji ZhengYu <zhengyuji@gmail.com>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: exif 0.6.16-pre1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-01-21 14:29-0800\n"
-"PO-Revision-Date: 2008-03-20 22:32+1030\n"
-"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
-"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"PO-Revision-Date: 2008-03-28 10:37+0800\n"
+"Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
+"Language-Team: Chinese (simplified) <translation-team-zh-cn@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: LocFactoryEditor 1.7b3\n"
 
 #: exif/actions.c:45
 #, c-format
 msgid "EXIF tags in '%s':"
-msgstr "Thể EXIF trong « %s »:"
+msgstr "‘%s’中的 EXIF 标记为:"
 
 #: exif/actions.c:114
 #, c-format
 msgid "Unknown MakerNote format.\n"
-msgstr "Định dạng MakerNote không rõ.\n"
+msgstr "未知的 MakerNote(生产商标注) 格式。\n"
 
 #: exif/actions.c:121
 #, c-format
 msgid "MakerNote does not contain any value.\n"
-msgstr "MakerNote không chứa giá trị.\n"
+msgstr "MakerNote(生产商标注) 不包含任何值。\n"
 
 #: exif/actions.c:124
 #, c-format
 msgid "MakerNote contains %i value:\n"
 msgid_plural "MakerNote contains %i values:\n"
-msgstr[0] "MakerNote chứa %i giá trị:\n"
+msgstr[0] "MakerNote(生产商标注) 包含了 %i 个值:\n"
 
 #: exif/actions.c:134
 msgid "Unknown tag"
-msgstr "Thẻ lạ"
+msgstr "未知的标号"
 
 #: exif/actions.c:137
 msgid "Unknown value"
-msgstr "Giá trị lạ"
+msgstr "未知值"
 
 #: exif/actions.c:162
 #, c-format
 msgid "EXIF tags in '%s' ('%s' byte order):"
-msgstr "Thẻ EXIF trong « %s » (thứ tự byte « %s »):"
+msgstr "‘%s’中的EXIF 标号(‘%s’字节顺序):"
 
 #: exif/actions.c:167 exif/actions.c:169
 msgid "Tag"
-msgstr "Thẻ"
+msgstr "标号"
 
 #: exif/actions.c:173 exif/actions.c:175 exif/main.c:361
 msgid "Value"
-msgstr "Giá trị"
+msgstr "值"
 
 #: exif/actions.c:181
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
-msgstr "Dữ liệu EXIF chứa một ảnh mẫu (%i byte)."
+msgstr "EXIF 数据中含有缩略图(%i 字节)。"
 
 #: exif/actions.c:217
 #, c-format
 msgid "ThumbnailSize\t%i\n"
-msgstr "Kích cỡ ảnh mẫu\t%i\n"
+msgstr "缩略图大小\t%i\n"
 
 #: exif/main.c:57
 #, c-format
 msgid "Internal error. Please contact <%s>."
-msgstr "Lỗi nội bộ. Hãy liên lạc với <%s>."
+msgstr "内部错误。请联系 <%s>。"
 
 #: exif/main.c:80
 #, c-format
 msgid "EXIF entry '%s' "
-msgstr "Mục nhập EXIF « %s »"
+msgstr "EXIF 条目‘%s’"
 
 #: exif/main.c:82
 #, c-format
@@ -87,52 +87,52 @@ msgstr "(0x%x, '%s') "
 #: exif/main.c:85
 #, c-format
 msgid "exists in IFD '%s':\n"
-msgstr "đã tồn tại trong IFD « %s »:\n"
+msgstr "存在于 IFD‘%s’中:\n"
 
 #: exif/main.c:120
 #, c-format
 msgid "Not enough memory."
-msgstr "Không đủ bộ nhớ."
+msgstr "没有足够的内存。"
 
 #: exif/main.c:138
-#, c-format
+#, fuzzy, c-format
 msgid "Too few components specified!"
-msgstr "Ghi rõ quá ít thành phần."
+msgstr "组件指定地太少了！"
 
 #: exif/main.c:168
 #, c-format
 msgid "Not yet implemented!"
-msgstr "Chưa thực hiện."
+msgstr "未实现的功能！"
 
 #: exif/main.c:241
 #, c-format
 msgid "Too much EXIF data (%i bytes). Only %i bytes are allowed."
-msgstr "Quá nhiều dữ liệu EXIF (%i byte). Chỉ cho phép %i byte."
+msgstr "EXIF 数据太多(%i 字节)。只允许 %i 字节。"
 
 #: exif/main.c:255 exif/main.c:513
 #, c-format
 msgid "Wrote file '%s'."
-msgstr "Đã ghi tập tin « %s »."
+msgstr "写入文件‘%s’。"
 
 #: exif/main.c:337
 msgid "Display software version"
-msgstr "Hiển thị phiên bản phần mềm"
+msgstr "显示软件版本"
 
 #: exif/main.c:339
 msgid "Show IDs instead of tag names"
-msgstr "Hiển thị mã số thay cho tên thẻ"
+msgstr "显示 IDs，以代替标号名称"
 
 #: exif/main.c:341
 msgid "Select tag"
-msgstr "Chọn thẻ"
+msgstr "选择标号"
 
 #: exif/main.c:341
 msgid "tag"
-msgstr "thẻ"
+msgstr "标号"
 
 #: exif/main.c:343
 msgid "Select IFD"
-msgstr "Chọn IFD"
+msgstr "选择 IFD"
 
 #: exif/main.c:343
 msgid "IFD"
@@ -140,82 +140,74 @@ msgstr "IFD"
 
 #: exif/main.c:345
 msgid "List all EXIF tags"
-msgstr "Liệt kê mọi thể EXIF"
+msgstr "列出所有 EXIF 标号"
 
 #: exif/main.c:347
 msgid "Show contents of tag MakerNote"
-msgstr "Hiện nội dung của thẻ MakerNote"
+msgstr "显示 MakerNote(生产商标注) 的内容"
 
 #: exif/main.c:349
 msgid "Remove tag or ifd"
-msgstr "Bỏ thẻ hoặc IFD"
+msgstr "移除标号或是 ifd"
 
 #: exif/main.c:351
 msgid "Show description of tag"
-msgstr "Hiện mô tả của thẻ"
+msgstr "显示标号的说明"
 
 #: exif/main.c:353
 msgid "Extract thumbnail"
-msgstr "Trích ảnh mẫu"
+msgstr "解出缩略图"
 
 #: exif/main.c:355
 msgid "Remove thumbnail"
-msgstr "Bỏ ảnh mẫu"
+msgstr "移除缩略图"
 
 #: exif/main.c:357
 msgid "Insert FILE as thumbnail"
-msgstr "Chèn TẬP TIN dạng ảnh mẫu"
+msgstr "插入 FILE 作为缩略图"
 
 #: exif/main.c:357 exif/main.c:359
 msgid "FILE"
-msgstr "TẬP TIN"
+msgstr "FILE"
 
 #: exif/main.c:359
 msgid "Write data to FILE"
-msgstr "Ghi dữ liệu vào TẬP TIN"
+msgstr "将数据写入 FILE"
 
 #: exif/main.c:363
 msgid "Output in a machine-readable (tab delimited) format"
-msgstr "Xuất ra một định dạng cho máy đọc được (định giới bằng khoảng tab)"
+msgstr "以机器可读的格式(以 tab 分隔)输出"
 
 #: exif/main.c:366
 msgid "Output in a XML format"
-msgstr "Xuất ra định dạng XML"
+msgstr "以 XML 格式输出"
 
 #: exif/main.c:369
 msgid "Show debugging messages"
-msgstr "Hiện thông điệp gỡ lỗi"
+msgstr "显示调示信息"
 
 #: exif/main.c:386
 msgid "[OPTION...] file"
-msgstr "[TÙY_CHỌN...] tập_tin"
+msgstr "[OPTION...] file"
 
 #: exif/main.c:414
 #, c-format
-msgid ""
-"Invalid IFD '%s'. Valid IFDs are '0', '1', 'EXIF', 'GPS', and "
-"'Interoperability'."
-msgstr ""
-"IFD không hợp lệ « %s ». Các IFD hợp lệ là:\n"
-" • 0\n"
-" • 1\n"
-" • EXIF\n"
-" • GPS\n"
-" • Interoperability\t\tkhả năng thao tác với nhau."
+msgid "Invalid IFD '%s'. Valid IFDs are '0', '1', 'EXIF', 'GPS', and 'Interoperability'."
+msgstr "无效的 IFD‘%s’。有效的 IFDs 是‘0’,‘1’,‘EXIF’，‘GPS’，以及‘Interoperability’。"
 
 #: exif/main.c:422
 #, c-format
 msgid "Invalid tag '%s'!"
-msgstr "Thẻ không hợp lệ « %s »."
+msgstr "无效标号‘%s’！"
 
 #: exif/main.c:427
 msgid "Please specify a tag!"
-msgstr "Hãy ghi rõ một thẻ."
+msgstr "请指定一个标号！"
 
 #: exif/main.c:432
 #, c-format
 msgid "Tag '%s' "
-msgstr "Thẻ « %s »"
+msgstr "标号‘%s’"
 
 #: exif/main.c:434
 #, c-format
@@ -225,57 +217,57 @@ msgstr "(0x%04x, '%s'): "
 #: exif/main.c:463
 #, c-format
 msgid "'%s' does not contain EXIF data!"
-msgstr "« %s » không chứa dữ liệu EXIF."
+msgstr "‘%s’中没有 EXIF 数据！"
 
 #: exif/main.c:486
 #, c-format
 msgid "IFD '%s' does not contain tag '%s'."
-msgstr "IFD « %s » không chứa thẻ « %s »."
+msgstr "IFD ‘%s’中不含标号‘%s’。"
 
 #: exif/main.c:495
 #, c-format
 msgid "'%s' does not contain a thumbnail!"
-msgstr "IFD « %s » không chứa ảnh mẫu."
+msgstr "‘%s’中不含缩略图！"
 
 #: exif/main.c:503
 #, c-format
 msgid "Could not open '%s' for writing (%m)!"
-msgstr "Không thể mở « %s » để ghi (%m)."
+msgstr "无法打开‘%s’写入(%m)！"
 
 #: exif/main.c:507
 #, c-format
 msgid "Could not open '%s' for writing (%s)!"
-msgstr "Không thể mở « %s » để ghi (%s)."
+msgstr "无法打开‘%s’写入(%s)！"
 
 #: exif/main.c:542
 #, c-format
 msgid "Could not open '%s' (%m)!"
-msgstr "Không thể mở « %s » (%m)."
+msgstr "无法打开‘%s’(%m)！"
 
 #: exif/main.c:545
 #, c-format
 msgid "Could not open '%s' (%s)!"
-msgstr "Không thể mở « %s » (%s)."
+msgstr "无法打开‘%s’(%s)！"
 
 #: exif/main.c:557
 #, c-format
 msgid "Could not read '%s' (%m)."
-msgstr "Không thể đọc « %s » (%m)."
+msgstr "无法读取‘%s’(%m)。"
 
 #: exif/main.c:560
 #, c-format
 msgid "Could not read '%s' (%s)."
-msgstr "Không thể đọc « %s » (%s)."
+msgstr "无法读取‘%s’(%s)。"
 
 #: exif/main.c:571
 msgid "You need to specify a tag!"
-msgstr "Bạn cần phải ghi rõ một thẻ."
+msgstr "您需要指定一个标号！"
 
 #: exif/main.c:576 exif/main.c:595
 msgid "You need to specify an IFD!"
-msgstr "Bạn cần phải ghi rõ một IFD."
+msgstr "您需要指定一个 IFD！"
 
 #: exif/main.c:607
 #, c-format
 msgid "IFD '%s' does not contain a tag '%s'!"
-msgstr "IFD « %s » không chứa một thẻ « %s »."
+msgstr "IFD‘%s’中不含标号‘%s’！"
