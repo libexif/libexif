@@ -1,3 +1,9 @@
+2008-06-23  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Patch by Mika Raento <mikie@google.com>:
+
+	* libexif/exif-loader.c: (exif_loader_free) Don't forget the logger.
+
 2008-06-15  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* configure.ac: Revert previous commit

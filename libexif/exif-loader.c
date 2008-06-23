@@ -350,6 +350,7 @@ exif_loader_free (ExifLoader *loader)
 
 	mem = loader->mem;
 	exif_loader_reset (loader);
+	exif_log_unref (loader->log);
 	exif_mem_free (mem, loader);
 	exif_mem_unref (mem);
 }
