@@ -170,7 +170,8 @@ static const struct {
       {3, N_("Off")},
       {0, NULL}}},
   { MNOTE_OLYMPUS_TAG_FLASHDEVICE, EXIF_FORMAT_SHORT,
-    { {1, N_("Internal")},
+    { {0, N_("None")},
+      {1, N_("Internal")},
       {4, N_("External")},
       {5, N_("Internal + External")},
       {0, NULL}}},
@@ -332,6 +333,9 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		break;
 	case MNOTE_NIKON_TAG_SATURATION:
 	case MNOTE_NIKON_TAG_WHITEBALANCEFINE:
+	case MNOTE_NIKON_TAG_HUE:
+	case MNOTE_OLYMPUS_TAG_SENSORTEMPERATURE:
+	case MNOTE_OLYMPUS_TAG_LENSTEMPERATURE:
 		CF (entry->format, EXIF_FORMAT_SSHORT, v, maxlen);
 		CC (entry->components, 1, v, maxlen);
 		vs = exif_get_short (entry->data, entry->order);
@@ -367,12 +371,6 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		b = (double)vr2.numerator / vr2.denominator;
 		snprintf (v, maxlen, "%2.2f x %2.2f um", r, b);
 		break;
-	case MNOTE_NIKON_TAG_HUE:
-		CF (entry->format, EXIF_FORMAT_SSHORT, v, maxlen);
-		CC (entry->components, 1, v, maxlen);
-		vs = exif_get_short (entry->data, entry->order);
-		snprintf (v, maxlen, "%hd", vs);
-		break;
 	case MNOTE_NIKON_TAG_BRACKETING:
 		CF2 (entry->format, EXIF_FORMAT_BYTE, EXIF_FORMAT_SHORT, v, maxlen);
 		CC (entry->components, 1, v, maxlen);
@@ -401,6 +399,27 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		  	default: strncpy (v, _("Unknown AF Position"), maxlen);
 		}     
 		break;
+	case MNOTE_OLYMPUS_TAG_FLASHDEVICE:
+		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
+		CC (entry->components, 2, v, maxlen);
+		vs = exif_get_short(entry->data, entry->order);
+		/* search for the tag */
+		for (i = 0; (items[i].tag && items[i].tag != entry->tag); i++)
+			;
+		if (!items[i].tag) {
+		  	snprintf (v, maxlen, _("Internal error (unknown value %hi)"), vs);
+		  	break;
+		}
+		CF (entry->format, items[i].fmt, v, maxlen);
+		/* find the value */
+		for (j = 0; items[i].elem[j].string &&
+			    (items[i].elem[j].index < vs); j++);
+		if (items[i].elem[j].index != vs) {
+			snprintf (v, maxlen, _("Unknown value %hi"), vs);
+			break;
+		}
+		strncpy (v, _(items[i].elem[j].string), maxlen);
+		break;
 	case MNOTE_OLYMPUS_TAG_DIGIZOOM:
 		if (entry->format == EXIF_FORMAT_RATIONAL) {
 			CC (entry->components, 1, v, maxlen);
@@ -427,7 +446,6 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_OLYMPUS_TAG_BWMODE:
 	case MNOTE_OLYMPUS_TAG_ONETOUCHWB:
 	case MNOTE_OLYMPUS_TAG_FLASHMODE:
-	case MNOTE_OLYMPUS_TAG_FLASHDEVICE:
 	case MNOTE_OLYMPUS_TAG_FOCUSRANGE:
 	case MNOTE_OLYMPUS_TAG_MANFOCUS:
 	case MNOTE_OLYMPUS_TAG_SHARPNESS:

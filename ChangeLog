@@ -1,3 +1,8 @@
+2008-06-26  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/olympus/exif-mnote-data-olympus.c: better support for
+	  MNOTE_OLYMPUS_TAG_FLASHDEVICE/SENSORTEMPERATURE/LENSTEMPERATURE
+
 2008-06-23  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Patch by Mika Raento <mikie@google.com>:
