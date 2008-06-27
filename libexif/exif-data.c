@@ -1220,7 +1220,7 @@ fix_func (ExifContent *c, void *UNUSED(data))
 				  "No thumbnail but entries on thumbnail. These entries have been "
 				  "removed.");
 			while (c->count) {
-				int cnt = c->count;
+				unsigned int cnt = c->count;
 				exif_content_remove_entry (c, c->entries[c->count - 1]);
 				if (cnt == c->count) {
 					/* safety net */
