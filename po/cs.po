@@ -2451,7 +2451,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:72
 msgid "Bits per Sample"
-msgstr "Pošt bitů na komponentu"
+msgstr "Počet bitů na komponentu"
 
 #: libexif/exif-tag.c:73
 msgid ""
