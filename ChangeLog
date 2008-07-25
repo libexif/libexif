@@ -1,3 +1,8 @@
+2008-07-25  Marcus Meissner  <marcus@jet.franken.de>
+
+	* libexif/exif-content.c: Handle realloc to 0 case
+	  correctly. Fixes EOG and GIMP crashes.
+
 2008-06-26  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/olympus/exif-mnote-data-olympus.c: better support for

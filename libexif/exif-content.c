@@ -157,7 +157,7 @@ void
 exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 {
 	unsigned int i;
-	ExifEntry **t;
+	ExifEntry **t, *temp;
 
 	if (!c || !c->priv || !e || (e->parent != c)) return;
 
@@ -166,15 +166,25 @@ exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 	if (i == c->count) return;
 
 	/* Remove the entry */
-	memmove (&c->entries[i], &c->entries[i + 1],
+	temp = c->entries[i];
+	memcpy (&c->entries[i], &c->entries[i + 1],
 		 sizeof (ExifEntry*) * (c->count - i - 1));
 	e->parent = NULL;
 	exif_entry_unref (e);
-	t = exif_mem_realloc (c->priv->mem, c->entries,
-				sizeof(ExifEntry*) * (c->count - 1));
-	if (t) {
-		c->entries = t;
-		c->count--;
+	if (c->count > 1) {
+		t = exif_mem_realloc (c->priv->mem, c->entries,
+					sizeof(ExifEntry*) * (c->count - 1));
+		if (t) {
+			c->entries = t;
+			c->count--;
+		} else {
+			/* We overwrote one entry, restore it now. */
+			c->entries[c->count-1] = temp;
+		}
+	} else {
+		exif_mem_free (c->priv->mem, c->entries);
+		c->entries = NULL;
+		c->count = 0;
 	}
 }
 
