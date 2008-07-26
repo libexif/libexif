@@ -175,9 +175,10 @@ exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 		}
 		c->entries = t;
 		c->count--;
-		if (i!=c->count) /* we deallocated the last slot already */ 
+		if (i != c->count) { /* we deallocated the last slot already */ 
 			memmove (&t[i], &t[i + 1], sizeof (ExifEntry*) * (c->count - i - 1));
-		t[c->count-1] = temp;
+			t[c->count-1] = temp;
+		} 
 	} else {
 		exif_mem_free (c->priv->mem, c->entries);
 		c->entries = NULL;
