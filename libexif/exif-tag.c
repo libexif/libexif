@@ -738,7 +738,6 @@ exif_tag_get_title_in_ifd (ExifTag tag, ExifIfd ifd)
 	 * bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	 */
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-
 	if (ifd >= EXIF_IFD_COUNT) return NULL;
 	for (i = 0; ExifTagTable[i].title; i++)
 		if ((ExifTagTable[i].tag == tag) && RECORDED) break;
@@ -822,12 +821,16 @@ ExifTag
 exif_tag_from_name (const char *name)
 {
 	unsigned int i;
+	unsigned int result=0;
 
 	if (!name) return 0;
 
 	for (i = 0; ExifTagTable[i].name; i++)
-		if (!strcmp (ExifTagTable[i].name, name)) break;
-	return ExifTagTable[i].tag;
+		if (!strcmp (ExifTagTable[i].name, name))  {
+		  	result = ExifTagTable[i].tag;
+		  	break;
+		}
+	return result;
 }
 
 ExifSupportLevel
