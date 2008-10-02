@@ -78,9 +78,9 @@ exif_mnote_data_fuji_save (ExifMnoteData *ne, unsigned char **buf,
 			   unsigned int *buf_size)
 {
 	ExifMnoteDataFuji *n = (ExifMnoteDataFuji *) ne;
-	unsigned int i, o, s, doff;
+	size_t i, o, s, doff;
 	unsigned char *t;
-	unsigned int ts;
+	size_t ts;
 
 	if (!n || !buf || !buf_size) return;
 
@@ -114,6 +114,12 @@ exif_mnote_data_fuji_save (ExifMnoteData *ne, unsigned char **buf,
 		o += 8;
 		s = exif_format_get_size (n->entries[i].format) *
 						n->entries[i].components;
+		if (s > 65536) {
+			/* Corrupt data: EXIF data size is limited to the
+			 * maximum size of a JPEG segment (64 kb).
+			 */
+			continue;
+		}
 		if (s > 4) {
 			ts = *buf_size + s;
 
@@ -146,7 +152,7 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 {
 	ExifMnoteDataFuji *n = (ExifMnoteDataFuji*) en;
 	ExifLong c;
-	unsigned int i, o, s, datao = 6 + n->offset;
+	size_t i, o, s, datao = 6 + n->offset;
 	MnoteFujiEntry *t;
 
 	if (!n || !buf || !buf_size || (buf_size < datao + 12)) return;

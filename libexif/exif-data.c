@@ -293,8 +293,13 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	} else
 		doff = offset + 8;
 
-	/* Write the data. Fill unneeded bytes with 0. */
-	memcpy (*d + 6 + doff, e->data, s);
+	/* Write the data. Fill unneeded bytes with 0. Do not crash with
+	 * e->data is NULL */
+	if (e->data) {
+		memcpy (*d + 6 + doff, e->data, s);
+	} else {
+		memset (*d + 6 + doff, 0, s);
+	}
 	if (s < 4) 
 		memset (*d + 6 + doff + s, 0, (4 - s));
 }
@@ -540,13 +545,19 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			(ExifShort) (ifd->count + n_ptr + n_thumb));
 	offset += 2;
 
-	/* Save each entry */
+	/*
+	 * Save each entry. Make sure that no memcpys from NULL pointers are
+	 * performed
+	 */
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 		  "Saving %i entries (IFD '%s', offset: %i)...",
 		  ifd->count, exif_ifd_get_name (i), offset);
-	for (j = 0; j < ifd->count; j++)
-		exif_data_save_data_entry (data, ifd->entries[j], d, ds,
-			offset + 12 * j);
+	for (j = 0; j < ifd->count; j++) {
+		if (ifd->entries[j]) {
+			exif_data_save_data_entry (data, ifd->entries[j], d, ds,
+				offset + 12 * j);
+		}
+	}
 
 	offset += 12 * ifd->count;
 

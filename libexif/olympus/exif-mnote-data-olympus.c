@@ -86,10 +86,10 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		unsigned char **buf, unsigned int *buf_size)
 {
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) ne;
-	unsigned int i, o, s, doff, base = 0, o2 = 6 + 2;
-	int datao = 0;
+	size_t i, o, s, doff, base = 0, o2 = 6 + 2;
+	size_t datao = 0;
 	unsigned char *t;
-	unsigned int ts;
+	size_t ts;
 
 	if (!n || !buf || !buf_size) return;
 
@@ -173,6 +173,12 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		o += 8;
 		s = exif_format_get_size (n->entries[i].format) *
 						n->entries[i].components;
+		if (s > 65536) {
+			/* Corrupt data: EXIF data size is limited to the
+			 * maximum size of a JPEG segment (64 kb).
+			 */
+			continue;
+		}
 		if (s > 4) {
 			doff = *buf_size;
 			ts = *buf_size + s;
@@ -201,7 +207,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 {
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) en;
 	ExifShort c;
-	unsigned int i, s, o, o2 = 0, datao = 6, base = 0;
+	size_t i, s, o, o2 = 0, datao = 6, base = 0;
 
 	if (!n || !buf) return;
 

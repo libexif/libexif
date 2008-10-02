@@ -118,9 +118,9 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 	unsigned char **buf, unsigned int *buf_size)
 {
 	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) ne;
-	unsigned int i, o, s, doff;
+	size_t i, o, s, doff;
 	unsigned char *t;
-	unsigned int ts;
+	size_t ts;
 
 	if (!n || !buf || !buf_size) return;
 
@@ -145,6 +145,12 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 		o += 8;
 		s = exif_format_get_size (n->entries[i].format) *
 						n->entries[i].components;
+		if (s > 65536) {
+			/* Corrupt data: EXIF data size is limited to the
+			 * maximum size of a JPEG segment (64 kb).
+			 */
+			continue;
+		}
 		if (s > 4) {
 			ts = *buf_size + s;
 
@@ -189,7 +195,7 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 {
 	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) ne;
 	ExifShort c;
-	unsigned int i, o, s;
+	size_t i, o, s;
 	MnoteCanonEntry *t;
 
 	if (!n || !buf || !buf_size || (buf_size < 6 + n->offset + 2)) return;

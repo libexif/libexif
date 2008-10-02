@@ -73,7 +73,7 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 		const unsigned char *buf, unsigned int buf_size)
 {
 	ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) en;
-	unsigned int i, o, s, datao = 6 + n->offset, base = 0;
+	size_t i, o, s, datao = 6 + n->offset, base = 0;
 	ExifShort c;
 
 	/* Number of entries */
@@ -118,6 +118,12 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 		 */
 		s = exif_format_get_size (n->entries[i].format) *
                                       n->entries[i].components;
+		if (s > 65536) {
+			/* Corrupt data: EXIF data size is limited to the
+			 * maximum size of a JPEG segment (64 kb). 
+			 */
+			continue;
+		}
 		if (!s) return;
 		o += 8;
 		if (s > 4) o = exif_get_long (buf + o, n->order) + 6;

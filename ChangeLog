@@ -1,6 +1,16 @@
+2008-10-02  Niek Bergboer <niek@google.com>
+
+	* libexif/exif-data.c libexif/canon/exif-mnote-data-canon.c
+	  libexif/fuji/exif-mnote-data-fuji.c
+	  libexif/olympus/exif-mnote-data-olympus.c
+	  libexif/pentax/exif-mnote-data-pentax.c:
+	  Replaced unsigned int by size_t in some places
+	  Added some checks on sizes, makernotes shouldn't
+	  be larger than 64kb.
+
 2008-09-04  Dan Fandrich <dan@coneharvesters.com>
 
-	po/nl.po: Updated Dutch translation by Erwin Poeze
+	* po/nl.po: Updated Dutch translation by Erwin Poeze
 
 2008-07-25  Marcus Meissner  <marcus@jet.franken.de>
 
