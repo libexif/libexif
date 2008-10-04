@@ -1,6 +1,6 @@
 2008-10-04  Jan Patera <patera@users.sourceforge.net>
 
-	* libexif/olympus/exif-mnote-data-olympus.c: bug #,
+	* libexif/olympus/exif-mnote-data-olympus.c: bug #2071600,
 	  gnome Bug #549029: Original v1 Nikon makernotes
 	  are always parsed using MM order, regardless of
 	  main EXIF data word order.
