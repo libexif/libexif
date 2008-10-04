@@ -345,6 +345,8 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		}
 	} else if (!memcmp (buf + o2, "\0\x1b", 2)) {
 		n->version = nikonV2;
+		/* 00 1b is # of entries in Motorola order - the rest should also be in MM order */
+		n->order = EXIF_BYTE_ORDER_MOTOROLA;
 	} else {
 		return;
 	}
