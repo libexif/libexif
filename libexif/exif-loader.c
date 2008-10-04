@@ -28,8 +28,12 @@
 #include <string.h>
 #include <stdio.h>
 
+#undef JPEG_MARKER_DHT
+#define JPEG_MARKER_DHT  0xc4
 #undef JPEG_MARKER_SOI
 #define JPEG_MARKER_SOI  0xd8
+#undef JPEG_MARKER_DQT
+#define JPEG_MARKER_DQT  0xdb
 #undef JPEG_MARKER_APP0
 #define JPEG_MARKER_APP0 0xe0
 #undef JPEG_MARKER_APP1
@@ -273,6 +277,8 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 				eld->size = 0;
 				eld->state = EL_READ_SIZE_BYTE_08;
 				break;
+			case JPEG_MARKER_DHT:
+			case JPEG_MARKER_DQT:
 			case JPEG_MARKER_APP0:
 			case JPEG_MARKER_APP2:
 			case JPEG_MARKER_APP13:
