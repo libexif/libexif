@@ -1,3 +1,17 @@
+2008-10-04  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/olympus/exif-mnote-data-olympus.c: bug #,
+	  gnome Bug #549029: Original v1 Nikon makernotes
+	  are always parsed using MM order, regardless of
+	  main EXIF data word order.
+
+2008-10-04  Louis Strous <louis_strous@users.sourceforge.net>
+
+	* libexif/exif-loader.c: DHT & DQT markers are now properly
+	  skipped when searching for APP1 marker in JPEG stream.
+	  Apparently such files are created by Gisteq PhotoTrackr SW
+	  used to add GPS tags.
+
 2008-10-02  Niek Bergboer <niek@google.com>
 
 	* libexif/exif-data.c libexif/canon/exif-mnote-data-canon.c
