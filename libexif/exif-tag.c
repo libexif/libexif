@@ -357,14 +357,20 @@ static const struct {
 	{EXIF_TAG_GPS_ALTITUDE_REF, "GPSAltitudeRef", N_("Altitude reference"),
 	 N_("Indicates the altitude used as the reference altitude. If the "
 	    "reference is sea level and the altitude is above sea level, 0 "
-			"is given. If the altitude is below sea level, a value of 1 is given "
-			"and the altitude is indicated as an absolute value in the "
-			"GSPAltitude tag. The reference unit is meters. Note that this tag "
-			"is BYTE type, unlike other reference tags."), ESL_GPS},
+	    "is given. If the altitude is below sea level, a value of 1 is given "
+	    "and the altitude is indicated as an absolute value in the "
+	    "GSPAltitude tag. The reference unit is meters. Note that this tag "
+	    "is BYTE type, unlike other reference tags."), ESL_GPS},
 	{EXIF_TAG_GPS_ALTITUDE, "GPSAltitude", N_("Altitude"),
 	 N_("Indicates the altitude based on the reference in GPSAltitudeRef. "
-			"Altitude is expressed as one RATIONAL value. The reference unit "
-			"is meters."), ESL_GPS},
+	    "Altitude is expressed as one RATIONAL value. The reference unit "
+	    "is meters."), ESL_GPS},
+	{EXIF_TAG_GPS_IMG_DIRECTION_REF, "GPSImgDirectionRef", N_("GPS Img Direction Reference"),
+	 N_("Indicates the reference for giving the direction of the image when it is captured. "
+	    "'T' denotes true direction and 'M' is magnetic direction."), ESL_GPS},
+	{EXIF_TAG_GPS_IMG_DIRECTION, "GPSImgDirection", N_("GPS Img Direction"),
+	 N_("Indicates the direction of the image when it was captured. The range of values is "
+	    "from 0.00 to 359.99."), ESL_GPS},
 	{EXIF_TAG_ISO_SPEED_RATINGS, "ISOSpeedRatings",
 	 N_("ISO Speed Ratings"),
 	 N_("Indicates the ISO Speed and ISO Latitude of the camera or "
