@@ -633,8 +633,10 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		vs = exif_get_short (data + 2 + t * 2, entry->order);
 		switch (t) {
 		case 0:
+			snprintf (val, maxlen, "%.3f", pow (2, (ExifSShort)vs / 32.0));
+			break;
 		case 1:
-			snprintf (val, maxlen, "%.0f", apex_value_to_iso_speed(vs / 32.0));
+			snprintf (val, maxlen, "%.0f", apex_value_to_iso_speed ((ExifSShort)vs / 32.0));
 			break;
 		case 2:
 		case 5:
@@ -648,7 +650,7 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 			break;
 		case 4:
 		case 21:
-			d = apex_value_to_shutter_speed(vs / 32.0);
+			d = apex_value_to_shutter_speed ((ExifSShort)vs / 32.0);
 			if (d < 1)
 				snprintf (val, maxlen, _("1/%d"),(int)(1.0 / d));
 			else
@@ -665,7 +667,7 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 			snprintf (val, maxlen, _("%u mm"), vs);
 			break;
 		case 28:
-			if (!vs) {
+			if ((ExifSShort)vs <= 0) {
 				strncpy(val, _("Off"), maxlen);
 				break;
 			}
