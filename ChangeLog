@@ -1,3 +1,18 @@
+2008-10-20  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/pentax/mnote-pentax-tag.c & olympus/mnote-olympus-tag.c:
+	  Don't crash in mnote_XX_tag_get_description on unknown tags
+
+2008-10-04  Jan Patera <patera@users.sourceforge.net>
+
+	* libexif/canon/mnote-canon-entry.c: fixed interpretation
+	  of Auto ISO and Self-Timer entries
+
+2008-10-08  Aric Blumer <aricblumer@users.sourceforge.net>
+
+	* libexif/exif-tag.c: GPS tags EXIF_TAG_GPS_IMG_DIRECTION_REF
+	  and EXIF_TAG_GPS_IMG_DIRECTION are now recognized
+
 2008-10-04  Jan Patera <patera@users.sourceforge.net>
 
 	* libexif/olympus/exif-mnote-data-olympus.c: bug #2071600,
