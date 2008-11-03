@@ -24,6 +24,7 @@
 #include <libexif/exif-utils.h>
 #include <libexif/i18n.h>
 
+#include <sys/types.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
