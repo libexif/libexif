@@ -21,6 +21,7 @@ REQUIREMENTS
 ------------
 
 libexif is written in plain C and does not require any additional library.
+GNU gettext will be used for language translation, if available.
 
 
 LIMITATIONS
@@ -81,16 +82,40 @@ BUILDING
 --------
 
 It really depends on your environment what to do in order to get libexif
-to build. In my case, I do something like:
-- gettextize
-- mv po/Makevars.template po/Makevars
-- aclocal -I auto-m4 -I m4m
-- autoheader
-- libtoolize --force
-- automake --add-missing
-- autoconf
-- configure
-- make
+to build. Building from the source tar ball usually involves the commands:
+
+  ./configure
+  make
+  sudo make install
+
+When building from source out of CVS, something like the following will be
+necessary:
+
+  gettextize
+  mv po/Makevars.template po/Makevars
+  aclocal -I auto-m4 -I m4m
+  autoheader
+  libtoolize --force
+  automake --add-missing
+  autoconf
+  ./configure
+  make
+
+Besides the standard arguments, configure takes several specific to libexif:
+
+  --disable-docs          To disable producing any documentation
+  --enable-internal-docs  Build internal code docs if Doxygen available
+  --enable-ship-binaries  To include Windows DLLs in 'make dist'
+
+Certain specialized applications can reduce the size of the libcurl
+binary by setting one or both of the following macros in the CPPFLAGS
+environment variable at configure time.  Each one removes certain kinds of
+text strings from the binary.  Applications which need to access specific,
+known EXIF tags and know in advance the meaning of their data have no need
+of those strings and can save considerable space by eliminating them.
+
+ -DNO_VERBOSE_TAG_STRINGS Names and descriptions of EXIF tags, & debug messages
+ -DNO_VERBOSE_TAG_DATA    Names of enumerated tag data contents
 
 
 INTERNATIONALIZATION
