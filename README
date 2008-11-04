@@ -107,7 +107,7 @@ Besides the standard arguments, configure takes several specific to libexif:
   --enable-internal-docs  Build internal code docs if Doxygen available
   --enable-ship-binaries  To include Windows DLLs in 'make dist'
 
-Certain specialized applications can reduce the size of the libcurl
+Certain specialized applications can reduce the size of the libexif
 binary by setting one or both of the following macros in the CPPFLAGS
 environment variable at configure time.  Each one removes certain kinds of
 text strings from the binary.  Applications which need to access specific,
