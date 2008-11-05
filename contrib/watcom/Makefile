@@ -78,7 +78,10 @@ LIBOBJECTS = &
 	$(LIBEXIFDIR)\mnote-pentax-tag.obj &
 	$(LIBEXIFDIR)\exif-mnote-data-canon.obj &
 	$(LIBEXIFDIR)\mnote-canon-entry.obj &
-	$(LIBEXIFDIR)\mnote-canon-tag.obj 
+	$(LIBEXIFDIR)\mnote-canon-tag.obj &
+	$(LIBEXIFDIR)\exif-mnote-data-fuji.obj &
+	$(LIBEXIFDIR)\mnote-fuji-entry.obj &
+	$(LIBEXIFDIR)\mnote-fuji-tag.obj 
 
 
 #CFLAGS = /dWIN32 /bm /fr -zq -i=. -5r -od -d2 /d2 /zm /fo=$(LIBEXIFDIR)\
@@ -151,6 +154,15 @@ $(LIBEXIFDIR)\mnote-canon-entry.obj : .AUTODEPEND $(LIBEXIFDIR)\canon\mnote-cano
 	$(CC) -c $(CFLAGS) $[*  
 
 $(LIBEXIFDIR)\mnote-canon-tag.obj : .AUTODEPEND $(LIBEXIFDIR)\canon\mnote-canon-tag.c
+	$(CC) -c $(CFLAGS) $[*  
+
+$(LIBEXIFDIR)\exif-mnote-data-fuji.obj : .AUTODEPEND $(LIBEXIFDIR)\fuji\exif-mnote-data-fuji.c
+	$(CC) -c $(CFLAGS) $[*  
+
+$(LIBEXIFDIR)\mnote-fuji-entry.obj : .AUTODEPEND $(LIBEXIFDIR)\fuji\mnote-fuji-entry.c
+	$(CC) -c $(CFLAGS) $[*  
+
+$(LIBEXIFDIR)\mnote-fuji-tag.obj : .AUTODEPEND $(LIBEXIFDIR)\fuji\mnote-fuji-tag.c
 	$(CC) -c $(CFLAGS) $[*  
 
 
