@@ -197,6 +197,7 @@ AC_CONFIG_FILES([  po/Makefile.in
   libexif.pc
   libexif-uninstalled.pc
   binary/Makefile
+  contrib/Makefile
 ])
 AC_OUTPUT
 

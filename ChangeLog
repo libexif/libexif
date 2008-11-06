@@ -3,6 +3,8 @@
 	* aolserver/*: moved to contrib/aolserver/
 	* README: updated
 	* po/de.po: Updated German translation by Marcus Meissner
+	* Added contrib/watcom/ directory to the source tarball now that
+	  Jan Patera brought it up-to-date.
 
 2008-10-20  Jan Patera <patera@users.sourceforge.net>
 

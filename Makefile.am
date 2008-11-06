@@ -1,4 +1,4 @@
-SUBDIRS = m4m po libexif test doc binary
+SUBDIRS = m4m po libexif test doc binary contrib
 
 if SHIP_BINARIES
 README_W32_XDIST = README-Win32.txt
