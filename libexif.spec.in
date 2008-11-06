@@ -2,7 +2,7 @@ Name: @PACKAGE@
 Summary: EXIF tag library
 Version: @VERSION@
 Release: 1
-Source: http://prdownloads.sourceforge.net/libexif/%{name}-%{version}.tar.gz
+Source: http://prdownloads.sourceforge.net/libexif/%{name}-%{version}.tar.bz2
 Url: http://sourceforge.net/projects/libexif/
 Group: System Environment/Libraries
 License: LGPL
