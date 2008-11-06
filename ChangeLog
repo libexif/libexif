@@ -5,6 +5,9 @@
 	* po/de.po: Updated German translation by Marcus Meissner
 	* Added contrib/watcom/ directory to the source tarball now that
 	  Jan Patera brought it up-to-date.
+	* libexif.spec.in: changed default release number to 1; added NEWS,
+	  AUTHORS and COPYING files to package; moved libexif.so file to -devel
+	  package; corrected license to LGPL
 
 2008-10-20  Jan Patera <patera@users.sourceforge.net>
 
