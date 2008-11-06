@@ -1,5 +1,5 @@
 /*! \file exif-data.h
- * \brief FIXME foo bar blah
+ * \brief Defines the ExifData type and the associated functions.
  *
  * \author Lutz Mueller <lutz@users.sourceforge.net>
  * \date 2001-2005
@@ -55,8 +55,6 @@ ExifData *exif_data_new_mem       (ExifMem *);
 
 /*! \brief load exif data from file
  *  \param[in] path filename including path
- *  
- *  Foo bar blah bleh baz.
  */
 ExifData *exif_data_new_from_file (const char *path);
 ExifData *exif_data_new_from_data (const unsigned char *data,
