@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([EXIF library], [0.6.16.2], [libexif-devel@lists.sourceforge.net], [libexif])
+AC_INIT([EXIF library], [0.6.17], [libexif-devel@lists.sourceforge.net], [libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
@@ -50,9 +50,10 @@ dnl C:A:R
 dnl 12:0:1   0.6.13
 dnl 13:1:0   added EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE (for 0.6.14)
 dnl 14:2:0   added XP_ WinXP tags (for 0.6.15)
+dnl 14:2:1   0.6.17
 LIBEXIF_CURRENT=14
 LIBEXIF_AGE=2
-LIBEXIF_REVISION=0
+LIBEXIF_REVISION=1
 AC_SUBST([LIBEXIF_AGE])
 AC_SUBST([LIBEXIF_REVISION])
 AC_SUBST([LIBEXIF_CURRENT])

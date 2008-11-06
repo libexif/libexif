@@ -1,15 +1,17 @@
-libexif-0.6.16.2:
+libexif-0.6.17 (2008-11-06):
   * Updated translations: cs, de, pl, sk, vi
   * New translations: nl, se, en_CA
   * Enabled sv translation by default
-  * Bug fixes: #1773810, #1774626, #1536244, CVE-2007-6351, CVE-2007-6352, #2071600
+  * Bug fixes: #1773810, #1774626, #1536244, CVE-2007-6351, CVE-2007-6352,
+    #2071600 and others
   * Enhanced support of Canon and Olympus makernotes 
   * Added support for Fuji and Sanyo makernotes
   * Added support for the NO_VERBOSE_TAG_STRINGS and NO_VERBOSE_TAG_DATA
     macros to reduce size for embedded applications
+  * Added support for more tags
 
 
-libexif-0.6.16 (2007-06-12) since 0.6.1.15 (2007-05-23):
+libexif-0.6.16 (2007-06-12):
   * Security fix: CVE-2006-4168 aka IDEF1514.
   * Updated translations: cz, pl, vi
 
