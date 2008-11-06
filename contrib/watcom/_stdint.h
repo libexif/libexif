@@ -1,4 +1,3 @@
-/* This file is generated automatically by configure */
 #ifndef __STDINT_H
 #define __STDINT_H
 #include <sys/types.h>
