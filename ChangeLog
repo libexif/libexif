@@ -1,3 +1,8 @@
+2008-11-18  Dan Fandrich <dan@coneharvesters.com>
+
+	* libexif/exif-entry.c & configure.ac: use localtime_r when available
+	  to be more thread safe
+
 2008-11-06  Dan Fandrich <dan@coneharvesters.com>
 
 	* Released 0.6.17

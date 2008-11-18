@@ -1130,8 +1130,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 void
 exif_entry_initialize (ExifEntry *e, ExifTag tag)
 {
-	time_t t;
-	struct tm *tm;
 	ExifRational r;
 	ExifByteOrder o;
 
@@ -1334,8 +1332,17 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_DATE_TIME:
 	case EXIF_TAG_DATE_TIME_ORIGINAL:
 	case EXIF_TAG_DATE_TIME_DIGITIZED:
+	{
+		time_t t;
+		struct tm tms;
+		struct tm *tm;
+
 		t = time (NULL);
+#ifdef HAVE_LOCALTIME_R
+		tm = localtime_r (&t, &tms);
+#else
 		tm = localtime (&t);
+#endif
 		e->components = 20;
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
@@ -1346,6 +1353,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 			  tm->tm_year + 1900, tm->tm_mon + 1, tm->tm_mday,
 			  tm->tm_hour, tm->tm_min, tm->tm_sec);
 		break;
+	}
 
 	/* ASCII, no default */
 	case EXIF_TAG_SUB_SEC_TIME:
