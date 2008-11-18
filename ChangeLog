@@ -4,6 +4,9 @@
 	  to be more thread safe
 	* po/nl.po: Updated Dutch translation by Erwin Poeze
 	* po/pl.po: Updated Polish translation by Jakub Bogusz
+	* contrib/examples/*: Added a couple of simple example programs
+	  to show how to use libexif. One was written by Naysawn Naderi
+	  and the other one I wrote. Closes bug #1246824.
 
 2008-11-06  Dan Fandrich <dan@coneharvesters.com>
 
