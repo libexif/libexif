@@ -26,7 +26,7 @@
 #include "mnote-fuji-tag.h"
 
 
-static struct {
+static const struct {
 	MnoteFujiTag tag;
 	const char *name;
 	const char *title;
