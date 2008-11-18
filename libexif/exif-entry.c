@@ -569,7 +569,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	double d;
 	ExifEntry *entry;
 	static const struct {
-		const char *label;
+		char label[5];
 		char major, minor;
 	} versions[] = {
 		{"0110", 1,  1},
@@ -578,7 +578,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		{"0210", 2,  1},
 		{"0220", 2,  2},
 		{"0221", 2, 21},
-		{NULL  , 0,  0}
+		{""    , 0,  0}
 	};
 
 	/* FIXME: This belongs to somewhere else. */
@@ -668,7 +668,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (e, 4, val, maxlen);
 		strncpy (val, _("Unknown Exif Version"), maxlen);
-		for (i = 0; versions[i].label; i++) {
+		for (i = 0; *versions[i].label; i++) {
 			if (!memcmp (e->data, versions[i].label, 4)) {
     				snprintf (val, maxlen,
 					_("Exif Version %d.%d"),
