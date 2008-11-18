@@ -44,7 +44,8 @@ to the header files.
 
 The short test-program test/test-mem illustrates how to create valid
 EXIF data from scratch, how to save EXIF data and how to load EXIF data 
-from data in memory. Don't hesitate to contact us 
+from data in memory. There are also a few simple example programs available
+in the contrib/examples/ directory.  Don't hesitate to contact us 
 (<libexif-devel@lists.sourceforge.net>) if you've got any questions
 on how to use libexif.
 
@@ -76,6 +77,8 @@ LIBRARIES
 ---------
 
 I know of the following libraries that use or have been inspired by libexif:
+ - libexif-gtk: library of widgets to help display EXIF tags in GTK
+   programs (part of the libexif project)
  - pel: PHP-Code (http://pel.sourceforge.net)
 
 
@@ -99,6 +102,12 @@ necessary:
   libtoolize --force
   automake --add-missing
   autoconf
+  ./configure
+  make
+
+Or, possibly just:
+
+  autoreconf -i
   ./configure
   make
 
