@@ -1,10 +1,10 @@
 libexif-0.6.x:
-  * 
+  * Updated translations: nl, pl
+  * Added some example programs
 
 libexif-0.6.17 (2008-11-06):
   * Updated translations: cs, de, pl, sk, vi
-  * New translations: nl, se, en_CA
-  * Enabled sv translation by default
+  * New translations: nl, sv, en_CA
   * Bug fixes: #1773810, #1774626, #1536244, CVE-2007-6351, CVE-2007-6352,
     #2071600 and others
   * Enhanced support of Canon and Olympus makernotes 
