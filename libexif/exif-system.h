@@ -1,6 +1,7 @@
-/** \file exif-system.h
+/*! \file exif-system.h
  * \brief System specific definitions, not for installation!
- *
+ */
+/*
  * Copyright (C) 2007 Hans Ulrich Niedermann <gp@n-dimensional.de>
  *
  * This library is free software; you can redistribute it and/or

@@ -1,6 +1,7 @@
 /*! \file exif-entry.h
  *  \brief Handling EXIF entries
- *
+ */
+/*
  * Copyright (c) 2001 Lutz Mueller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
@@ -26,6 +27,7 @@
 extern "C" {
 #endif /* __cplusplus */
 
+/*! Data found in one EXIF tag */
 typedef struct _ExifEntry        ExifEntry;
 typedef struct _ExifEntryPrivate ExifEntryPrivate;
 
@@ -55,36 +57,61 @@ ExifEntry  *exif_entry_new     (void);
 
 ExifEntry  *exif_entry_new_mem (ExifMem *);
 
-/*! Increase reference counter for #ExifEntry* */
+/*! Increase reference counter for #ExifEntry*
+ * \param[in] entry #ExifEntry
+ */
 void        exif_entry_ref     (ExifEntry *entry);
 
-/*! Decrease reference counter for #ExifEntry* */
+/*! Decrease reference counter for #ExifEntry*
+ * \param[in] entry #ExifEntry
+ */
 void        exif_entry_unref   (ExifEntry *entry);
 
 /*! Actually free the #ExifEntry*
  *
  * \deprecated Should not be called directly. Use exif_entry_ref() and
  *             exif_entry_unref() instead.
+ *
+ * \param[in] entry EXIF entry
  */
 void        exif_entry_free  (ExifEntry *entry);
 
-void        exif_entry_initialize (ExifEntry *entry, ExifTag tag);
+/*! Initialize an empty #ExifEntry with default data for the given tag.
+ * If the entry is already initialized, this function does nothing.
+ * \param[out] e entry to initialize
+ * \param[in] tag tag number to initialize as
+ */
+void        exif_entry_initialize (ExifEntry *e, ExifTag tag);
+
 void        exif_entry_fix        (ExifEntry *entry);
 
 /* For your convenience */
 
-/*! Return the value of the EXIF entry
+/*! Return a textual representation of the value of the EXIF entry.
  *
- * CAUTION: The character set of the returned string is not defined.
- *          It may be UTF-8, latin1, the native encoding of the
- *          computer, or the native encoding of the camera.
+ * CAUTION: The character set of the returned string may be in
+ *          the encoding of the current locale or the native encoding
+ *          of the camera.
+ *
+ * \param[in] entry EXIF entry
+ * \param[out] val buffer in which to store value
+ * \param[in] maxlen length of the buffer val
+ * \return val pointer
  */
 const char *exif_entry_get_value (ExifEntry *entry, char *val,
 				  unsigned int maxlen);
 
-/*! Dump text representation of #ExifEntry to stdout */
+/*! Dump text representation of #ExifEntry to stdout.
+ * This is intended for diagnostic purposes only.
+ * \param[in] entry EXIF tag data
+ * \param[in] indent how many levels deep to indent the data
+ */
 void        exif_entry_dump      (ExifEntry *entry, unsigned int indent);
 
+/*! Returns the IFD number of the given #ExifEntry
+ * \param[in] e an #ExifEntry*
+ * \return IFD number, or EXIF_IFD_COUNT on error
+ */
 #define exif_entry_get_ifd(e) ((e)?exif_content_get_ifd((e)->parent):EXIF_IFD_COUNT)
 
 #ifdef __cplusplus

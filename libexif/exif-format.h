@@ -1,4 +1,7 @@
-/* exif-format.h
+/*! \file exif-format.h
+ *  \brief Handling native EXIF data types
+ */
+/*
  *
  * Copyright (c) 2001 Lutz Mueller <lutz@users.sourceforge.net>
  *
@@ -25,6 +28,7 @@
 extern "C" {
 #endif /* __cplusplus */
 
+/*! EXIF tag data formats */
 typedef enum {
         EXIF_FORMAT_BYTE       =  1,
         EXIF_FORMAT_ASCII      =  2,
@@ -40,7 +44,16 @@ typedef enum {
 	EXIF_FORMAT_DOUBLE     = 12
 } ExifFormat;
 
+/*! Return a textual representation of the given EXIF data type.
+ * \param[in] format EXIF data format
+ * \return localized textual name
+ */
 const char   *exif_format_get_name (ExifFormat format);
+
+/*! Return the raw size of the given EXIF data type.
+ * \param[in] format EXIF data format
+ * \return size in bytes
+ */
 unsigned char exif_format_get_size (ExifFormat format);
 
 #ifdef __cplusplus

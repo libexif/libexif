@@ -1,6 +1,7 @@
 /*! \file exif-log.h
- *  \brief log message infrastructure
- *
+ *  \brief Log message infrastructure
+ */
+/*
  * Copyright (c) 2004 Lutz Mueller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
@@ -29,12 +30,23 @@ extern "C" {
 #include <libexif/exif-mem.h>
 #include <stdarg.h>
 
+/*! State maintained by the logging interface */
 typedef struct _ExifLog        ExifLog;
 
+/*! Create a new logging instance.
+ * \return new instance of #ExifLog
+ * \see exif_log_free
+ */
 ExifLog *exif_log_new     (void);
 ExifLog *exif_log_new_mem (ExifMem *);
 void     exif_log_ref     (ExifLog *log);
 void     exif_log_unref   (ExifLog *log);
+
+/*! Deletes instance of #ExifLog.
+ * \param[in] log #ExifLog
+ * \return new instance of #ExifLog
+ * \see exif_log_new
+ */
 void     exif_log_free    (ExifLog *log);
 
 typedef enum {
@@ -43,15 +55,28 @@ typedef enum {
 	EXIF_LOG_CODE_NO_MEMORY,
 	EXIF_LOG_CODE_CORRUPT_DATA
 } ExifLogCode;
-const char *exif_log_code_get_title   (ExifLogCode); /* Title for dialog   */
-const char *exif_log_code_get_message (ExifLogCode); /* Message for dialog */
 
-/** Log callback function prototype.
+/*! Return a textual description of the given class of error log.
+ * \param[in] code logging message class
+ * \return textual description of the log class
+ */
+const char *exif_log_code_get_title   (ExifLogCode code);
+
+/*! Return a verbose description of the given class of error log.
+ * \param[in] code logging message class
+ * \return verbose description of the log class
+ */
+const char *exif_log_code_get_message (ExifLogCode code);
+
+/*! Log callback function prototype.
  */
 typedef void (* ExifLogFunc) (ExifLog *log, ExifLogCode, const char *domain,
 			      const char *format, va_list args, void *data);
 
-/** Register log callback function.
+/*! Register log callback function.
+ * \param[in] log #ExifLog
+ * \param[in] func callback function to set
+ * \param[in] data data to pass into callback function
  */
 void     exif_log_set_func (ExifLog *log, ExifLogFunc func, void *data);
 

@@ -1,5 +1,7 @@
-/* exif-utils.h
- *
+/*! \file exif-utils.h
+ *  \brief EXIF data manipulation functions and types 
+ */
+/*
  * Copyright (c) 2001 Lutz Mueller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
@@ -40,13 +42,13 @@ typedef uint16_t	ExifShort;         /* 2 bytes */
 typedef int16_t         ExifSShort;        /* 2 bytes */
 typedef uint32_t	ExifLong;          /* 4 bytes */
 
-/** EXIF Unsigned Rational */
+/*! EXIF Unsigned Rational */
 typedef struct {ExifLong numerator; ExifLong denominator;} ExifRational;
 
 typedef char		ExifUndefined;     /* 1 byte  */
 typedef int32_t		ExifSLong;         /* 4 bytes */
 
-/** EXIF Signed Rational. */
+/*! EXIF Signed Rational. */
 typedef struct {ExifSLong numerator; ExifSLong denominator;} ExifSRational;
 
 
@@ -57,16 +59,51 @@ ExifSLong     exif_get_slong     (const unsigned char *b, ExifByteOrder order);
 ExifRational  exif_get_rational  (const unsigned char *b, ExifByteOrder order);
 ExifSRational exif_get_srational (const unsigned char *b, ExifByteOrder order);
 
+/*! Store an ExifShort value into memory in EXIF format
+ * \param[out] b buffer in which to write raw value
+ * \param[in] order byte order to use
+ * \param[in] value data value to store
+ */
 void exif_set_short     (unsigned char *b, ExifByteOrder order,
 			 ExifShort value);
+
+/*! Store an ExifSShort value into memory in EXIF format
+ * \param[out] b buffer in which to write raw value
+ * \param[in] order byte order to use
+ * \param[in] value data value to store
+ */
 void exif_set_sshort    (unsigned char *b, ExifByteOrder order,
 			 ExifSShort value);
+
+/*! Store an ExifLong value into memory in EXIF format
+ * \param[out] b buffer in which to write raw value
+ * \param[in] order byte order to use
+ * \param[in] value data value to store
+ */
 void exif_set_long      (unsigned char *b, ExifByteOrder order,
 			 ExifLong value);
+
+/*! Store an ExifSLong value into memory in EXIF format
+ * \param[out] b buffer in which to write raw value
+ * \param[in] order byte order to use
+ * \param[in] value data value to store
+ */
 void exif_set_slong     (unsigned char *b, ExifByteOrder order,
 			 ExifSLong value);
+
+/*! Store an ExifRational value into memory in EXIF format
+ * \param[out] b buffer in which to write raw value
+ * \param[in] order byte order to use
+ * \param[in] value data value to store
+ */
 void exif_set_rational  (unsigned char *b, ExifByteOrder order,
 			 ExifRational value);
+
+/*! Store an ExifSRational value into memory in EXIF format
+ * \param[out] b buffer in which to write raw value
+ * \param[in] order byte order to use
+ * \param[in] value data value to store
+ */
 void exif_set_srational (unsigned char *b, ExifByteOrder order,
 			 ExifSRational value);
 

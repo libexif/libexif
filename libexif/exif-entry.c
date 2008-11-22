@@ -1124,7 +1124,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 }
 
 
-/**
+/*!
  * \bug Log and report failed exif_mem_malloc() calls.
  */
 void

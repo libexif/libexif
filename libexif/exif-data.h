@@ -1,6 +1,7 @@
 /*! \file exif-data.h
  * \brief Defines the ExifData type and the associated functions.
- *
+ */
+/*
  * \author Lutz Mueller <lutz@users.sourceforge.net>
  * \date 2001-2005
  *
@@ -33,6 +34,7 @@ extern "C" {
 #include <libexif/exif-log.h>
 #include <libexif/exif-tag.h>
 
+/*! Represents the entire EXIF data found in an image */
 typedef struct _ExifData        ExifData;
 typedef struct _ExifDataPrivate ExifDataPrivate;
 
@@ -50,13 +52,19 @@ struct _ExifData
 	ExifDataPrivate *priv;
 };
 
+/*! Allocate a new #ExifData.
+ * \return allocated #ExifData
+ */
 ExifData *exif_data_new           (void);
+
 ExifData *exif_data_new_mem       (ExifMem *);
 
-/*! \brief load exif data from file
+/*! Load EXIF data from file
  *  \param[in] path filename including path
+ *  \return allocated #ExifData, or NULL on error
  */
 ExifData *exif_data_new_from_file (const char *path);
+
 ExifData *exif_data_new_from_data (const unsigned char *data,
 				   unsigned int size);
 
@@ -69,13 +77,29 @@ void      exif_data_ref   (ExifData *data);
 void      exif_data_unref (ExifData *data);
 void      exif_data_free  (ExifData *data);
 
+/*! Return the byte order in use by this EXIF structure.
+ * \param[in] data EXIF data
+ * \return byte order
+ */
 ExifByteOrder exif_data_get_byte_order  (ExifData *data);
+
 void          exif_data_set_byte_order  (ExifData *data, ExifByteOrder order);
 
-ExifMnoteData *exif_data_get_mnote_data (ExifData *);
+/*! Return the MakerNote data out of the EXIF data.
+ * \param[in] d EXIF data
+ * \return MakerNote data, or NULL if not found
+ */
+ExifMnoteData *exif_data_get_mnote_data (ExifData *d);
+
 void           exif_data_fix (ExifData *);
 
 typedef void (* ExifDataForeachContentFunc) (ExifContent *, void *user_data);
+
+/*! Executes function on each IFD in turn.
+ * \param[in] data EXIF data over which to iterate
+ * \param[in] func function to call for each entry
+ * \param[in] data data to pass into func on each call
+ */
 void          exif_data_foreach_content (ExifData *data,
 					 ExifDataForeachContentFunc func,
 					 void *user_data);
@@ -94,11 +118,23 @@ void        exif_data_unset_option           (ExifData *, ExifDataOption);
 void         exif_data_set_data_type (ExifData *, ExifDataType);
 ExifDataType exif_data_get_data_type (ExifData *);
 
-/* For debugging purposes and error reporting */
+/*! Dump all EXIF data to stdout.
+ * This is intended for diagnostic purposes only.
+ * \param[in] data EXIF data
+ */
 void exif_data_dump (ExifData *data);
+
+/*! Set the log message object for all IFDs.
+ * \param[in] data EXIF data
+ * \param[in] log #ExifLog
+ */
 void exif_data_log  (ExifData *data, ExifLog *log);
 
-/** convenience macro. */
+/*! Return an #ExifEntry for the given tag if found in any IFD.
+ * \param[in] d #ExifData
+ * \param[in] t #ExifTag
+ * \return entry if found, else NULL if not found
+ */
 #define exif_data_get_entry(d,t)					\
 	(exif_content_get_entry(d->ifd[EXIF_IFD_0],t) ?			\
 	 exif_content_get_entry(d->ifd[EXIF_IFD_0],t) :			\

@@ -1,3 +1,8 @@
+2008-11-22  Dan Fandrich <dan@coneharvesters.com>
+
+	* Added Doxygen comments for the main API entry points and data
+	  structures
+
 2008-11-18  Dan Fandrich <dan@coneharvesters.com>
 
 	* libexif/exif-entry.c & configure.ac: use localtime_r when available

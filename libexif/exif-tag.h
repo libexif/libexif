@@ -1,5 +1,7 @@
-/* exif-tag.h
- *
+/*! \file exif-tag.h
+ *  \brief Handling EXIF tags
+ */
+/*
  * Copyright (c) 2001 Lutz Mueller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
@@ -28,6 +30,7 @@ extern "C" {
 #include <libexif/exif-ifd.h>
 #include <libexif/exif-data-type.h>
 
+/*! EXIF tags */
 typedef enum {
 	EXIF_TAG_INTEROPERABILITY_INDEX		= 0x0001,
 	EXIF_TAG_INTEROPERABILITY_VERSION	= 0x0002,
@@ -186,10 +189,36 @@ typedef enum {
 	EXIF_SUPPORT_LEVEL_OPTIONAL
 } ExifSupportLevel;
 
-ExifTag          exif_tag_from_name                (const char *);
-const char      *exif_tag_get_name_in_ifd          (ExifTag, ExifIfd);
-const char      *exif_tag_get_title_in_ifd         (ExifTag, ExifIfd);
-const char      *exif_tag_get_description_in_ifd   (ExifTag, ExifIfd);
+/*! Returns the tag ID given its unique textual name.
+ * \param[in] name tag name
+ * \return tag ID
+ */
+ExifTag          exif_tag_from_name                (const char *name);
+
+/*! Returns textual name of the given tag when found in the given IFD. The
+ * name is a short, unique, non-localized text string containing only
+ * US-ASCII alphanumeric characters.
+ * \param[in] tag EXIF tag
+ * \param[in] ifd IFD
+ * \return textual name of the tag
+ */
+const char      *exif_tag_get_name_in_ifd          (ExifTag tag, ExifIfd ifd);
+
+/*! Returns textual title of the given tag when found in the given IFD.
+ * \param[in] tag EXIF tag
+ * \param[in] ifd IFD
+ * \return textual title of the tag
+ */
+const char      *exif_tag_get_title_in_ifd         (ExifTag tag, ExifIfd ifd);
+
+/*! Returns verbose textual description of the given tag when found in the
+ * given IFD.
+ * \param[in] tag EXIF tag
+ * \param[in] ifd IFD
+ * \return textual description of the tag
+ */
+const char      *exif_tag_get_description_in_ifd   (ExifTag tag, ExifIfd ifd);
+
 ExifSupportLevel exif_tag_get_support_level_in_ifd (ExifTag, ExifIfd,
                                                     ExifDataType);
 

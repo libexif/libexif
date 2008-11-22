@@ -11,18 +11,39 @@
  *
  * \section using_libexif Using libexif
  *
- * ##include <libexif/exif-data.h>
+ * \#include <libexif/exif-data.h>
  *
  * libexif provides a libexif.pc file for use with pkgconfig on the
  * libexif installation. If you are using libtool to build your
  * package, you can also integrate make use of libexif-uninstalled.pc.
+ *
+ * \section data_structures Primary Data Structures
+ *
+ * #ExifLoader
+ * State maintained by the loader interface while importing EXIF data
+ * from an external file or memory
+ *
+ * #ExifData
+ * The entirety of EXIF data found in an image
+ *
+ * #ExifContent
+ * All EXIF tags in a single IFD
+ *
+ * #ExifEntry
+ * Data found in a single EXIF tag
+ *
+ * #ExifMnoteData
+ * All data found in the MakerNote tag
+ *
+ * #ExifLog
+ * State maintained by the logging interface
  *
  * \section string_conventions String Conventions
  *
  * Strings of 8 bit characters ("char*"). When libexif is compiled with
  * NLS, character set and encoding are as set in the current locale,
  * except for strings that come directly from the data in EXIF
- * tags which are returned in raw form.
+ * tags which are currently returned in raw form.
  *
  * \section memory_management Memory Management Patterns
  *
