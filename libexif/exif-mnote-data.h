@@ -78,7 +78,7 @@ const char  *exif_mnote_data_get_description (ExifMnoteData *d, unsigned int n);
 
 /*! Return a textual representation of the value of the MakerNote entry.
  *
- * CAUTION: The character set of the returned string may be in
+ * \warning The character set of the returned string may be in
  *          the encoding of the current locale or the native encoding
  *          of the camera.
  *

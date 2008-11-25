@@ -76,20 +76,25 @@ void        exif_entry_unref   (ExifEntry *entry);
  */
 void        exif_entry_free  (ExifEntry *entry);
 
-/*! Initialize an empty #ExifEntry with default data for the given tag.
- * If the entry is already initialized, this function does nothing.
+/*! Initialize an empty #ExifEntry with default data in the correct format
+ * for the given tag. If the entry is already initialized, this function
+ * does nothing.
  * \param[out] e entry to initialize
  * \param[in] tag tag number to initialize as
  */
 void        exif_entry_initialize (ExifEntry *e, ExifTag tag);
 
+/*! When necessary and possible, fix the type or format of the given
+ * EXIF entry when it is of the wrong type or in an invalid format.
+ * \param[in,out] entry EXIF entry
+ */
 void        exif_entry_fix        (ExifEntry *entry);
 
 /* For your convenience */
 
 /*! Return a textual representation of the value of the EXIF entry.
  *
- * CAUTION: The character set of the returned string may be in
+ * \warning The character set of the returned string may be in
  *          the encoding of the current locale or the native encoding
  *          of the camera.
  *

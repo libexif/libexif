@@ -43,7 +43,7 @@
  * Strings of 8 bit characters ("char*"). When libexif is compiled with
  * NLS, character set and encoding are as set in the current locale,
  * except for strings that come directly from the data in EXIF
- * tags which are currently returned in raw form.
+ * tags which are generally returned in raw form.
  *
  * \section memory_management Memory Management Patterns
  *

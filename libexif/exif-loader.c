@@ -99,9 +99,6 @@ exif_loader_alloc (ExifLoader *l, unsigned int i)
 	return NULL;
 }
 
-#undef  MIN
-#define MIN(a, b)  (((a) < (b)) ? (a) : (b))
-
 void
 exif_loader_write_file (ExifLoader *l, const char *path)
 {

@@ -59,7 +59,7 @@ ExifData *exif_data_new           (void);
 
 ExifData *exif_data_new_mem       (ExifMem *);
 
-/*! Load EXIF data from file
+/*! Load EXIF data from a JPEG file.
  *  \param[in] path filename including path
  *  \return allocated #ExifData, or NULL on error
  */
@@ -68,10 +68,25 @@ ExifData *exif_data_new_from_file (const char *path);
 ExifData *exif_data_new_from_data (const unsigned char *data,
 				   unsigned int size);
 
+/*! Load the #ExifData structure from the raw JPEG or EXIF data in the given
+ * memory buffer.
+ * \param[in,out] data EXIF data
+ * \param[in] d pointer to raw JPEG or EXIF data
+ * \param[in] size number of bytes of data at d
+ */
 void      exif_data_load_data (ExifData *data, const unsigned char *d, 
 			       unsigned int size);
+
+/*! Store raw EXIF data representing the #ExifData structure into a memory
+ * buffer. The buffer is allocated by this function and must subsequently be
+ * freed by the caller.
+ * \param[in] data EXIF data
+ * \param[out] d pointer to buffer pointer containing raw EXIF data on return
+ * \param[out] ds pointer to variable to hold the number of bytes of
+ *   data at d, or set to 0 on error
+ */
 void      exif_data_save_data (ExifData *data, unsigned char **d,
-			       unsigned int *size);
+			       unsigned int *ds);
 
 void      exif_data_ref   (ExifData *data);
 void      exif_data_unref (ExifData *data);
@@ -83,6 +98,12 @@ void      exif_data_free  (ExifData *data);
  */
 ExifByteOrder exif_data_get_byte_order  (ExifData *data);
 
+/*! Set the byte order to use for this EXIF data. If any tags already exist
+ * (including MakerNote tags) they are are converted to the specified byte
+ * order.
+ * \param[in,out] data EXIF data
+ * \param[in] order byte order
+ */
 void          exif_data_set_byte_order  (ExifData *data, ExifByteOrder order);
 
 /*! Return the MakerNote data out of the EXIF data.
@@ -91,32 +112,72 @@ void          exif_data_set_byte_order  (ExifData *data, ExifByteOrder order);
  */
 ExifMnoteData *exif_data_get_mnote_data (ExifData *d);
 
-void           exif_data_fix (ExifData *);
+/*! Fix the EXIF data to bring it into specification. Call exif_content_fix
+ * on each IFD to fix existing entries, create any new entries that are
+ * mandatory but do not yet exist, and remove any entries that are not
+ * allowed.
+ * \param[in,out] d EXIF data
+ */
+void           exif_data_fix (ExifData *d);
 
 typedef void (* ExifDataForeachContentFunc) (ExifContent *, void *user_data);
 
-/*! Executes function on each IFD in turn.
+/*! Execute a function on each IFD in turn.
  * \param[in] data EXIF data over which to iterate
  * \param[in] func function to call for each entry
- * \param[in] data data to pass into func on each call
+ * \param[in] user_data data to pass into func on each call
  */
 void          exif_data_foreach_content (ExifData *data,
 					 ExifDataForeachContentFunc func,
 					 void *user_data);
 
+/*! Options to configure the behaviour of #ExifData */
 typedef enum {
+	/*! Act as though unknown tags are not present */
 	EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS = 1 << 0,
+
+	/*! Fix the EXIF tags to follow the spec */
 	EXIF_DATA_OPTION_FOLLOW_SPECIFICATION = 1 << 1,
+
+	/*! Leave the MakerNote alone, which could cause it to be corrupted */
 	EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE = 1 << 2
 } ExifDataOption;
 
-const char *exif_data_option_get_name        (ExifDataOption);
-const char *exif_data_option_get_description (ExifDataOption);
-void        exif_data_set_option             (ExifData *, ExifDataOption);
-void        exif_data_unset_option           (ExifData *, ExifDataOption);
+/*! Returns short textual description of the given #ExifDataOption.
+ * \param[in] o option
+ * \return localized textual description of the option
+ */
+const char *exif_data_option_get_name        (ExifDataOption o);
 
-void         exif_data_set_data_type (ExifData *, ExifDataType);
-ExifDataType exif_data_get_data_type (ExifData *);
+/*! Returns verbose textual description of the given #ExifDataOption.
+ * \param[in] o option
+ * \return verbose localized textual description of the option
+ */
+const char *exif_data_option_get_description (ExifDataOption o);
+
+/*! Set the given option on the given #ExifData.
+ * \param[in] d EXIF data
+ * \param[in] o option
+ */
+void        exif_data_set_option             (ExifData *d, ExifDataOption o);
+
+/*! Clear the given option on the given #ExifData.
+ * \param[in] d EXIF data
+ * \param[in] o option
+ */
+void        exif_data_unset_option           (ExifData *d, ExifDataOption o);
+
+/*! Set the data type for the given #ExifData.
+ * \param[in] d EXIF data
+ * \param[in] dt data type
+ */
+void         exif_data_set_data_type (ExifData *d, ExifDataType dt);
+
+/*! Return the data type for the given #ExifData.
+ * \param[in] d EXIF data
+ * \return data type, or EXIF_DATA_TYPE_COUNT on error
+ */
+ExifDataType exif_data_get_data_type (ExifData *d);
 
 /*! Dump all EXIF data to stdout.
  * This is intended for diagnostic purposes only.

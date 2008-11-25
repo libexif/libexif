@@ -804,15 +804,15 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		snprintf (b, sizeof (b), " (APEX: %i)", (int) pow (sqrt(2), d));
 		if (maxlen > strlen (val) + strlen (b))
 			strncat (val, b, maxlen - strlen (val) - 1);
-    d = 1. / pow (2, d);
-    if (d < 1)
-      snprintf (b, sizeof (b), _(" 1/%d sec.)"), (int) (1. / d));
-    else
-      snprintf (b, sizeof (b), _(" %d sec.)"), (int) d);
-    if (maxlen > strlen (val) + strlen (b)) {
-      val[strlen (val) - 1] = ',';
-      strncat (val, b, maxlen - strlen (val) - 1);
-    }
+		d = 1. / pow (2, d);
+		if (d < 1)
+		  snprintf (b, sizeof (b), _(" 1/%d sec.)"), (int) (1. / d));
+		else
+		  snprintf (b, sizeof (b), _(" %d sec.)"), (int) d);
+		if (maxlen > strlen (val) + strlen (b)) {
+		  val[strlen (val) - 1] = ',';
+		  strncat (val, b, maxlen - strlen (val) - 1);
+		}
 		break;
 	case EXIF_TAG_BRIGHTNESS_VALUE:
 		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
@@ -987,6 +987,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_XP_KEYWORDS:
 	case EXIF_TAG_XP_SUBJECT:
 		/* Warning! The texts are converted from UTF16 to UTF8 */
+		/* TODO: use iconv to convert into the locale charmap instead */
 		exif_convert_utf16_to_utf8(val, (unsigned short*)e->data, MIN(maxlen, e->size));
 		break;
 	case EXIF_TAG_INTEROPERABILITY_VERSION:

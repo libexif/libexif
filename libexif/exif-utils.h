@@ -120,6 +120,8 @@ void exif_array_set_byte_order (ExifFormat, unsigned char *, unsigned int,
 #define MAX(a, b)  (((a) > (b)) ? (a) : (b))
 
 /* For compatibility with older versions */
+
+/*! \deprecated Use EXIF_TAG_SUB_SEC_TIME instead */
 #define EXIF_TAG_SUBSEC_TIME EXIF_TAG_SUB_SEC_TIME
 
 #ifdef __cplusplus

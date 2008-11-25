@@ -75,12 +75,19 @@ void         exif_content_remove_entry (ExifContent *c, ExifEntry *e);
  * \return #ExifEntry of the tag, or NULL on error
  */
 ExifEntry   *exif_content_get_entry    (ExifContent *content, ExifTag tag);
-void         exif_content_fix          (ExifContent *);
+
+/*! Fix the IFD to bring it into specification. Call exif_entry_fix on
+ * each entry in this IFD to fix existing entries, create any new entries
+ * that are mandatory in this IFD but do not yet exist, and remove any
+ * entries that are not allowed in this IFD.
+ * \param[in,out] c EXIF content for an IFD
+ */
+void         exif_content_fix          (ExifContent *c);
 
 typedef void (* ExifContentForeachEntryFunc) (ExifEntry *, void *user_data);
 
 /*! Executes function on each EXIF tag in turn.
- * \param[in] content IFD over which to iterate
+ * \param[in,out] content IFD over which to iterate
  * \param[in] func function to call for each entry
  * \param[in] user_data data to pass into func on each call
  */
@@ -88,17 +95,17 @@ void         exif_content_foreach_entry (ExifContent *content,
 					 ExifContentForeachEntryFunc func,
 					 void *user_data);
 
-/*! Returns the IFD number in which the given #ExifContent is found.
+/*! Return the IFD number in which the given #ExifContent is found.
  * \param[in] c an #ExifContent*
  * \return IFD number, or EXIF_IFD_COUNT on error
  */
 ExifIfd exif_content_get_ifd (ExifContent *c);
 
-/*! Returns a textual representation of the EXIF data for a tag.
- * \param[in] c #ExifContent for an IFD
+/*! Return a textual representation of the EXIF data for a tag.
+ * \param[in] c #ExifContent* for an IFD
  * \param[in] t #ExifTag to return
- * \param[out] v buffer in which to store value
- * \param[in] m length of the buffer v
+ * \param[out] v char* buffer in which to store value
+ * \param[in] m unsigned int length of the buffer v
  * \return v pointer, or NULL on error
  */
 #define exif_content_get_value(c,t,v,m)					\
@@ -114,7 +121,7 @@ void exif_content_dump  (ExifContent *content, unsigned int indent);
 
 /*! Set the log message object for this IFD.
  * \param[in] content IFD
- * \param[in] log #ExifLog
+ * \param[in] log #ExifLog*
  */
 void exif_content_log   (ExifContent *content, ExifLog *log);
 
