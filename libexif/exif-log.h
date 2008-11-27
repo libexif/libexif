@@ -34,18 +34,20 @@ extern "C" {
 typedef struct _ExifLog        ExifLog;
 
 /*! Create a new logging instance.
- * \return new instance of #ExifLog
  * \see exif_log_free
+ *
+ * \return new instance of #ExifLog
  */
 ExifLog *exif_log_new     (void);
 ExifLog *exif_log_new_mem (ExifMem *);
 void     exif_log_ref     (ExifLog *log);
 void     exif_log_unref   (ExifLog *log);
 
-/*! Deletes instance of #ExifLog.
+/*! Delete instance of #ExifLog.
+ * \see exif_log_new
+ *
  * \param[in] log #ExifLog
  * \return new instance of #ExifLog
- * \see exif_log_new
  */
 void     exif_log_free    (ExifLog *log);
 
@@ -57,12 +59,14 @@ typedef enum {
 } ExifLogCode;
 
 /*! Return a textual description of the given class of error log.
+ *
  * \param[in] code logging message class
  * \return textual description of the log class
  */
 const char *exif_log_code_get_title   (ExifLogCode code);
 
 /*! Return a verbose description of the given class of error log.
+ *
  * \param[in] code logging message class
  * \return verbose description of the log class
  */
@@ -74,6 +78,7 @@ typedef void (* ExifLogFunc) (ExifLog *log, ExifLogCode, const char *domain,
 			      const char *format, va_list args, void *data);
 
 /*! Register log callback function.
+ *
  * \param[in] log #ExifLog
  * \param[in] func callback function to set
  * \param[in] data data to pass into callback function

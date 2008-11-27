@@ -21,6 +21,7 @@
 #ifndef __EXIF_IFD_H__
 #define __EXIF_IFD_H__
 
+/*! Possible EXIF Image File Directories */
 typedef enum {
 	EXIF_IFD_0 = 0,                /*!< */
 	EXIF_IFD_1,                    /*!< */
@@ -30,6 +31,13 @@ typedef enum {
 	EXIF_IFD_COUNT                 /*!< Not a real value, just (max_value + 1). */
 } ExifIfd;
 
+/*! Return a textual name of the given IFD. The name is a short, unique,
+ * non-localized text string containing only US-ASCII alphanumeric
+ * characters.
+ *
+ * \param[in] ifd IFD
+ * \return textual name of the IFD
+ */
 const char *exif_ifd_get_name (ExifIfd ifd);
 
 #endif /* __EXIF_IFD_H__ */

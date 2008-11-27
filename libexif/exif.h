@@ -66,7 +66,7 @@
  * The programmer must ensure that each object allocated by libexif is only
  * used in a single thread at once. For example, an ExifData* allocated
  * in one thread can't be used in a second thread if there is any chance
- * that the first thread could use it at the same time. Two threads
+ * that the first thread could use it at the same time. Multiple threads
  * can use libexif without issues if they never share handles.
  *
  */

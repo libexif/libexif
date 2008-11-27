@@ -692,8 +692,14 @@ static const struct {
 };
 
 /* For now, do not use these functions. */
+
+/*! \internal */
 ExifTag      exif_tag_table_get_tag  (unsigned int n);
+
+/*! \internal */
 const char  *exif_tag_table_get_name (unsigned int n);
+
+/*! \internal */
 unsigned int exif_tag_table_count    (void);
 
 ExifTag

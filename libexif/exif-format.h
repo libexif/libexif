@@ -45,12 +45,14 @@ typedef enum {
 } ExifFormat;
 
 /*! Return a textual representation of the given EXIF data type.
+ *
  * \param[in] format EXIF data format
  * \return localized textual name
  */
 const char   *exif_format_get_name (ExifFormat format);
 
 /*! Return the raw size of the given EXIF data type.
+ *
  * \param[in] format EXIF data format
  * \return size in bytes
  */

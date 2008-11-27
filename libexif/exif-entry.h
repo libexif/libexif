@@ -52,25 +52,30 @@ struct _ExifEntry {
 
 /* Lifecycle */
 
-/*! Reserve memory for and initialize new #ExifEntry* */
+/*! Reserve memory for and initialize new #ExifEntry.
+ * \return new allocated #ExifEntry
+ */
 ExifEntry  *exif_entry_new     (void);
 
 ExifEntry  *exif_entry_new_mem (ExifMem *);
 
-/*! Increase reference counter for #ExifEntry*
+/*! Increase reference counter for #ExifEntry.
+ *
  * \param[in] entry #ExifEntry
  */
 void        exif_entry_ref     (ExifEntry *entry);
 
-/*! Decrease reference counter for #ExifEntry*
+/*! Decrease reference counter for #ExifEntry.
+ * When the reference count drops to zero, free the entry.
+ *
  * \param[in] entry #ExifEntry
  */
 void        exif_entry_unref   (ExifEntry *entry);
 
-/*! Actually free the #ExifEntry*
+/*! Actually free the #ExifEntry.
  *
- * \deprecated Should not be called directly. Use exif_entry_ref() and
- *             exif_entry_unref() instead.
+ * \deprecated Should not be called directly. Use #exif_entry_ref and
+ *             #exif_entry_unref instead.
  *
  * \param[in] entry EXIF entry
  */
@@ -79,6 +84,7 @@ void        exif_entry_free  (ExifEntry *entry);
 /*! Initialize an empty #ExifEntry with default data in the correct format
  * for the given tag. If the entry is already initialized, this function
  * does nothing.
+ *
  * \param[out] e entry to initialize
  * \param[in] tag tag number to initialize as
  */
@@ -86,6 +92,7 @@ void        exif_entry_initialize (ExifEntry *e, ExifTag tag);
 
 /*! When necessary and possible, fix the type or format of the given
  * EXIF entry when it is of the wrong type or in an invalid format.
+ *
  * \param[in,out] entry EXIF entry
  */
 void        exif_entry_fix        (ExifEntry *entry);
@@ -108,14 +115,16 @@ const char *exif_entry_get_value (ExifEntry *entry, char *val,
 
 /*! Dump text representation of #ExifEntry to stdout.
  * This is intended for diagnostic purposes only.
+ *
  * \param[in] entry EXIF tag data
  * \param[in] indent how many levels deep to indent the data
  */
 void        exif_entry_dump      (ExifEntry *entry, unsigned int indent);
 
 /*! Returns the IFD number of the given #ExifEntry
+ *
  * \param[in] e an #ExifEntry*
- * \return IFD number, or EXIF_IFD_COUNT on error
+ * \return #ExifIfd, or #EXIF_IFD_COUNT on error
  */
 #define exif_entry_get_ifd(e) ((e)?exif_content_get_ifd((e)->parent):EXIF_IFD_COUNT)
 

@@ -35,11 +35,29 @@ typedef struct _ExifMnoteData ExifMnoteData;
 void exif_mnote_data_ref   (ExifMnoteData *);
 void exif_mnote_data_unref (ExifMnoteData *);
 
-void exif_mnote_data_load (ExifMnoteData *, const unsigned char *,
-			   unsigned int);
-void exif_mnote_data_save (ExifMnoteData *, unsigned char **, unsigned int *);
+/*! Load the MakerNote data from a memory buffer.
+ *
+ * \param[in] d MakerNote data
+ * \param[in] buf pointer to raw MakerNote tag data
+ * \param[in] buf_siz number of bytes of data at buf
+ */
+void exif_mnote_data_load (ExifMnoteData *d, const unsigned char *buf,
+			   unsigned int buf_siz);
+
+/*!
+ * Save the raw MakerNote data into a memory buffer.  The buffer is
+ * allocated by this function and must subsequently be freed by the
+ * caller.
+ *
+ * \param[in,out] d extract the data from this structure 
+ * \param[out] buf pointer to buffer pointer containing MakerNote data on return
+ * \param[out] buf_siz pointer to the size of the buffer
+ */
+void exif_mnote_data_save (ExifMnoteData *d, unsigned char **buf,
+			   unsigned int *buf_siz);
 
 /*! Return the number of tags in the MakerNote.
+ *
  * \param[in] d MakerNote data
  * \return number of tags, or 0 if no MakerNote or the type is not supported
  */
@@ -47,6 +65,7 @@ unsigned int exif_mnote_data_count           (ExifMnoteData *d);
 
 /*! Return the MakerNote tag number for the tag at the specified index within
  * the MakerNote.
+ *
  * \param[in] d MakerNote data
  * \param[in] n index of the entry within the MakerNote data
  * \return MakerNote tag number
@@ -56,6 +75,7 @@ unsigned int exif_mnote_data_get_id          (ExifMnoteData *d, unsigned int n);
 /*! Returns textual name of the given MakerNote tag. The name is a short,
  * unique (within this type of MakerNote), non-localized text string
  * containing only US-ASCII alphanumeric characters.
+ *
  * \param[in] d MakerNote data
  * \param[in] n tag number within the namespace of this type of MakerNote
  * \return textual name of the tag
@@ -63,6 +83,7 @@ unsigned int exif_mnote_data_get_id          (ExifMnoteData *d, unsigned int n);
 const char  *exif_mnote_data_get_name        (ExifMnoteData *d, unsigned int n);
 
 /*! Returns textual title of the given MakerNote tag.
+ *
  * \param[in] d MakerNote data
  * \param[in] n tag number within the namespace of this type of MakerNote
  * \return textual name of the tag
@@ -70,6 +91,7 @@ const char  *exif_mnote_data_get_name        (ExifMnoteData *d, unsigned int n);
 const char  *exif_mnote_data_get_title       (ExifMnoteData *d, unsigned int n);
 
 /*! Returns verbose textual description of the given MakerNote tag.
+ *
  * \param[in] d MakerNote data
  * \param[in] n tag number within the namespace of this type of MakerNote
  * \return textual description of the tag

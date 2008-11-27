@@ -32,20 +32,24 @@ extern "C" {
 #endif /* __cplusplus */
 
 /*! Should work like calloc()
+ *
  *  \param[in] s the size of the block to allocate.
- *  \returns the allocated memory and initialized. 
+ *  \return the allocated memory and initialized. 
  */
 typedef void * (* ExifMemAllocFunc)   (ExifLong s);
 
 /*! Should work like realloc()
+ *
  * \param[in] p the pointer to reallocate
  * \param[in] s the size of the reallocated block
- * \returns allocated memory 
+ * \return allocated memory 
  */
 typedef void * (* ExifMemReallocFunc) (void *p, ExifLong s);
+
 /*! Free method for ExifMem
+ *
  * \param[in] p the pointer to free
- * \returns the freed pointer
+ * \return the freed pointer
  */
 typedef void   (* ExifMemFreeFunc)    (void *p);
 
@@ -53,6 +57,7 @@ typedef void   (* ExifMemFreeFunc)    (void *p);
 typedef struct _ExifMem ExifMem;
 
 /*! Create a new ExifMem
+ *
  * \param[in] a the allocator function
  * \param[in] r the reallocator function
  * \param[in] f the free function
@@ -62,7 +67,8 @@ ExifMem *exif_mem_new   (ExifMemAllocFunc a, ExifMemReallocFunc r,
 /*! Refcount an ExifMem
  */
 void     exif_mem_ref   (ExifMem *);
-/*! Unrefcount an ExifMem
+
+/*! Unrefcount an ExifMem.
  * If the refcount reaches 0, the ExifMem is freed
  */
 void     exif_mem_unref (ExifMem *);
@@ -72,7 +78,8 @@ void *exif_mem_realloc (ExifMem *m, void *p, ExifLong s);
 void  exif_mem_free    (ExifMem *m, void *p);
 
 /*! The default ExifMem for your convenience
- * \returns return the default ExifMem
+ *
+ * \return return the default ExifMem
  */
 ExifMem *exif_mem_new_default (void);
 
