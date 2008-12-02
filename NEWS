@@ -4,6 +4,7 @@ libexif-0.6.x:
   * libexif is now thread safe when the underlying C library is thread safe
     and when each object allocated by libexif isn't used by more than one
     thread simultaneously
+  * Expanded the Doxygen API documentation
 
 libexif-0.6.17 (2008-11-06):
   * Updated translations: cs, de, pl, sk, vi
