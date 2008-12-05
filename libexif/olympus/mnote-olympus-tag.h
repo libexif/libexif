@@ -187,8 +187,31 @@ typedef enum _MnoteOlympusTag MnoteOlympusTag;
 #define MNOTE_OLYMPUS_TAG_UNKNOWN_2	MNOTE_OLYMPUS_TAG_FOCALPLANEDIAGONAL
 #define MNOTE_OLYMPUS_TAG_UNKNOWN_3	MNOTE_OLYMPUS_TAG_LENSDISTORTION
 
+/*! Return a textual name of the given tag within the Olympus-style MakerNote.
+ * The name is a short, unique, non-localized text string containing only
+ * US-ASCII alphanumeric characters.
+ *
+ * \param[in] tag Olympus-style MakerNote tag
+ * \return textual name of the tag, or NULL if the tag is unknown
+ */
 const char *mnote_olympus_tag_get_name        (MnoteOlympusTag tag);
+
+/*! Return a textual title of the given tag within the Olympus-style MakerNote.
+ * The title is a short, localized description of the tag.
+ *
+ * \param[in] tag Olympus-style MakerNote tag
+ * \return textual title of the tag, or NULL if the tag is unknown
+ */
 const char *mnote_olympus_tag_get_title       (MnoteOlympusTag tag);
+
+/*! Return a verbose textual description of the given tag within the
+ * Olympus-style MakerNote.
+ * The description is a verbose, localized description of the tag.
+ *
+ * \param[in] tag EXIF tag
+ * \param[in] ifd IFD
+ * \return textual description of the tag, or NULL if the tag is unknown
+ */
 const char *mnote_olympus_tag_get_description (MnoteOlympusTag tag);
 
 #ifdef __cplusplus

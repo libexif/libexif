@@ -210,24 +210,25 @@ ExifTag          exif_tag_from_name                (const char *name);
  *
  * \param[in] tag EXIF tag
  * \param[in] ifd IFD
- * \return textual name of the tag
+ * \return textual name of the tag, or NULL if the tag is unknown
  */
 const char      *exif_tag_get_name_in_ifd          (ExifTag tag, ExifIfd ifd);
 
 /*! Return a textual title of the given tag when found in the given IFD.
+ * The title is a short, localized description of the tag.
  *
  * \param[in] tag EXIF tag
  * \param[in] ifd IFD
- * \return textual title of the tag
+ * \return textual title of the tag, or NULL if the tag is unknown
  */
 const char      *exif_tag_get_title_in_ifd         (ExifTag tag, ExifIfd ifd);
 
 /*! Return a verbose textual description of the given tag when found in the
- * given IFD.
+ * given IFD. The description is a verbose, localized description of the tag.
  *
  * \param[in] tag EXIF tag
  * \param[in] ifd IFD
- * \return textual description of the tag
+ * \return textual description of the tag, or NULL if the tag is unknown
  */
 const char      *exif_tag_get_description_in_ifd   (ExifTag tag, ExifIfd ifd);
 

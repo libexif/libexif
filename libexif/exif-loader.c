@@ -63,11 +63,12 @@ typedef enum {
 	EL_DATA_FORMAT_FUJI_RAW
 } ExifLoaderDataFormat;
 
+/*! \internal */
 struct _ExifLoader {
 	ExifLoaderState state;
 	ExifLoaderDataFormat data_format;
 
-	/* Small buffer used for detection of format */
+	/*! Small buffer used for detection of format */
 	unsigned char b[12];
 	unsigned char b_len;
 
@@ -81,6 +82,7 @@ struct _ExifLoader {
 	ExifMem *mem;
 };
 
+/*! Magic number for EXIF header */
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 
 static void *

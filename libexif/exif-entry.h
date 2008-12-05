@@ -27,7 +27,11 @@
 extern "C" {
 #endif /* __cplusplus */
 
-/*! Data found in one EXIF tag */
+/*! Data found in one EXIF tag.
+ * The #exif_entry_get_value function can provide access to the
+ * formatted contents, or the struct members can be used directly to
+ * access the raw contents.
+ */
 typedef struct _ExifEntry        ExifEntry;
 typedef struct _ExifEntryPrivate ExifEntryPrivate;
 
@@ -35,33 +39,61 @@ typedef struct _ExifEntryPrivate ExifEntryPrivate;
 #include <libexif/exif-format.h>
 #include <libexif/exif-mem.h>
 
-/*! */
+/*! Data found in one EXIF tag */
 struct _ExifEntry {
+	/*! EXIF tag for this entry */
         ExifTag tag;
+	
+	/*! Type of data in this entry */
         ExifFormat format;
+
+	/*! Number of elements in the array, if this is an array entry.
+	 * Contains 1 for non-array data types. */
         unsigned long components;
 
+	/*! Pointer to the raw EXIF data for this entry. It is allocated
+	 * by #exif_entry_initialize and is NULL beforehand. Data contained
+	 * here may be manipulated using the functions in exif-utils.h */
         unsigned char *data;
+
+	/*! Number of bytes in the buffer at \c data. This must be no less
+	 * than exif_format_get_size(format)*components */
         unsigned int size;
 
-	/* Content containing this entry */
+	/*! #ExifContent containing this entry. 
+	 * \see #exif_entry_get_ifd */
 	ExifContent *parent;
 
+	/*! Internal data to be used by libexif itself */
 	ExifEntryPrivate *priv;
 };
 
 /* Lifecycle */
 
-/*! Reserve memory for and initialize new #ExifEntry.
- * \return new allocated #ExifEntry
+/*! Reserve memory for and initialize a new #ExifEntry.
+ * No memory is allocated for the \c data element of the returned #ExifEntry.
+ *
+ * \return new allocated #ExifEntry, or NULL on error
+ *
+ * \see exif_entry_new_mem, exif_entry_unref
  */
 ExifEntry  *exif_entry_new     (void);
 
+/*! Reserve memory for and initialize new #ExifEntry using the specified
+ * memory allocator.
+ * No memory is allocated for the \c data element of the returned #ExifEntry.
+ *
+ * \return new allocated #ExifEntry, or NULL on error
+ *
+ * \see exif_entry_new, exif_entry_unref
+ */
 ExifEntry  *exif_entry_new_mem (ExifMem *);
 
 /*! Increase reference counter for #ExifEntry.
  *
  * \param[in] entry #ExifEntry
+ *
+ * \see exif_entry_unref
  */
 void        exif_entry_ref     (ExifEntry *entry);
 
@@ -84,18 +116,29 @@ void        exif_entry_free  (ExifEntry *entry);
 /*! Initialize an empty #ExifEntry with default data in the correct format
  * for the given tag. If the entry is already initialized, this function
  * does nothing.
+ * This call allocates memory for the \c data element of the given #ExifEntry.
+ * That memory is freed at the same time as the #ExifEntry.
  *
  * \param[out] e entry to initialize
  * \param[in] tag tag number to initialize as
  */
 void        exif_entry_initialize (ExifEntry *e, ExifTag tag);
 
-/*! When necessary and possible, fix the type or format of the given
- * EXIF entry when it is of the wrong type or in an invalid format.
+/*! Fix the type or format of the given EXIF entry to bring it into spec.
+ * If the data for this EXIF tag is in of the wrong type or is in an invalid
+ * format according to the EXIF specification, then it is converted to make it
+ * valid. This may involve, for example, converting an EXIF_FORMAT_LONG into a
+ * EXIF_FORMAT_SHORT. If the tag is unknown, its value is untouched.
+ *
+ * \note Unfortunately, some conversions are to a type with a more resticted
+ * range, which could have the side effect that the converted data becomes
+ * invalid. This is unlikely as the range of each tag in the standard is
+ * designed to encompass all likely data.
  *
  * \param[in,out] entry EXIF entry
  */
 void        exif_entry_fix        (ExifEntry *entry);
+
 
 /* For your convenience */
 
@@ -121,7 +164,7 @@ const char *exif_entry_get_value (ExifEntry *entry, char *val,
  */
 void        exif_entry_dump      (ExifEntry *entry, unsigned int indent);
 
-/*! Returns the IFD number of the given #ExifEntry
+/*! Return the IFD number of the given #ExifEntry
  *
  * \param[in] e an #ExifEntry*
  * \return #ExifIfd, or #EXIF_IFD_COUNT on error

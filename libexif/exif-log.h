@@ -78,8 +78,9 @@ typedef void (* ExifLogFunc) (ExifLog *log, ExifLogCode, const char *domain,
 			      const char *format, va_list args, void *data);
 
 /*! Register log callback function.
+ * Calls to the log callback function are purely for diagnostic purposes.
  *
- * \param[in] log #ExifLog
+ * \param[in] log logging state variable
  * \param[in] func callback function to set
  * \param[in] data data to pass into callback function
  */

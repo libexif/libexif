@@ -42,6 +42,7 @@ typedef struct _ExifDataPrivate ExifDataPrivate;
 #include <libexif/exif-mnote-data.h>
 #include <libexif/exif-mem.h>
 
+/*! \internal */
 struct _ExifData
 {
 	ExifContent *ifd[EXIF_IFD_COUNT];

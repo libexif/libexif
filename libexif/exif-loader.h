@@ -34,20 +34,20 @@ extern "C" {
 /*! Data used by the loader interface */
 typedef struct _ExifLoader ExifLoader;
 
-/*! Allocate a new #ExifLoader
+/*! Allocate a new #ExifLoader.
  *
  *  \return allocated ExifLoader
  */
 ExifLoader *exif_loader_new     (void);
 
-/*! Allocate a new #ExifLoader using an #ExifMem
+/*! Allocate a new #ExifLoader using the specified memory allocator.
  *
  *  \param[in] mem the ExifMem
  *  \return allocated ExifLoader
  */
 ExifLoader *exif_loader_new_mem (ExifMem *mem);
 
-/*! Increase the refcount of the #ExifLoader
+/*! Increase the refcount of the #ExifLoader.
  *
  *  \param[in] loader the ExifLoader to increase the refcount of.
  */
@@ -61,6 +61,7 @@ void        exif_loader_ref     (ExifLoader *loader);
 void        exif_loader_unref   (ExifLoader *loader);
 
 /*! Load a file into the given #ExifLoader from the filesystem.
+ * The relevant data is copied in raw form into the #ExifLoader.
  *
  * \param[in] loader loader to write to
  * \param[in] fname path to the file to read
@@ -68,6 +69,7 @@ void        exif_loader_unref   (ExifLoader *loader);
 void        exif_loader_write_file (ExifLoader *loader, const char *fname);
 
 /*! Load a buffer into the #ExifLoader from a memory buffer.
+ * The relevant data is copied in raw form into the #ExifLoader.
  *
  * \param[in] loader loader to write to
  * \param[in] buf buffer to read from
@@ -77,13 +79,16 @@ void        exif_loader_write_file (ExifLoader *loader, const char *fname);
  */
 unsigned char exif_loader_write (ExifLoader *loader, unsigned char *buf, unsigned int sz);
 
-/*! Reset the ExifLoader to its newly-initialized state
+/*! Free any data previously loaded and reset the #ExifLoader to its
+ * newly-initialized state.
  *
  * \param[in] loader the loader
  */
 void          exif_loader_reset (ExifLoader *loader);
 
-/*! Create an ExifData from an ExifLoader
+/*! Create an #ExifData from the data in the loader. The loader must
+ * already contain data from a previous call to #exif_loader_write_file
+ * or #exif_loader_write.
  *
  * \param[in] loader the loader
  * \return allocated ExifData
