@@ -556,7 +556,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		vl = exif_get_long (entry->data + 4, entry->order);
 		snprintf (buf, sizeof (buf), "/%li/", (long int) vl);
 		strncat (v, buf, maxlen - strlen (v));
-		vl = exif_get_long (entry->data + 4, entry->order);
+		vl = exif_get_long (entry->data + 8, entry->order);
 		switch (vl) {
 		case 1:
 			strncat (v, _("left to right"), maxlen - strlen (v));
