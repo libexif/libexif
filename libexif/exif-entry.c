@@ -302,8 +302,9 @@ exif_entry_fix (ExifEntry *e)
 		if (!i) for ( ; (i < e->size) && (e->data[i] == ' '); i++);
 		if ((i >= 8) && (i < e->size)) {
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-				"Tag 'UserComment' is not empty but does not start with "
-				"format identifyer. This has been fixed.");
+				_("Tag 'UserComment' is not empty but does not "
+				"start with a format identifier. "
+				"This has been fixed."));
 			memcpy (e->data, "ASCII\0\0\0", 8);
 			break;
 		}
