@@ -1336,7 +1336,9 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_DATE_TIME_DIGITIZED:
 	{
 		time_t t;
+#ifdef HAVE_LOCALTIME_R
 		struct tm tms;
+#endif
 		struct tm *tm;
 
 		t = time (NULL);
