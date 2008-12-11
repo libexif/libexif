@@ -30,6 +30,8 @@
 
 #define DEBUG
 
+#define EXIF_OVERCOME_SANYO_OFFSET_BUG
+
 static void
 exif_mnote_data_olympus_clear (ExifMnoteDataOlympus *n)
 {
@@ -207,7 +209,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 {
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) en;
 	ExifShort c;
-	size_t i, s, o, o2 = 0, datao = 6, base = 0;
+	size_t i, tcount, s, o, o2 = 0, datao = 6, base = 0;
 
 	if (!n || !buf) return;
 
@@ -362,38 +364,75 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	n->entries = exif_mem_alloc (en->mem, sizeof (MnoteOlympusEntry) * c);
 	if (!n->entries) return;
 
-	/* Parse the entries */
-	for (i = 0; i < c; i++) {
-	    o = o2 + 12 * i;
-	    if (o + 12 > buf_size) return;
+	/* Parse all c entries, storing ones that are successfully parsed */
+	for (i = c, tcount = 0, o = o2; i; --i, o += 12) {
+		size_t dataofs;
+	    if (o + 12 > buf_size) {
+			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				  "ExifMnoteOlympus", "Short MakerNote");
+			break;
+		}
 
-	    n->count = i + 1;
-	    n->entries[i].tag        = exif_get_short (buf + o, n->order) + base;
-	    n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
-	    n->entries[i].components = exif_get_long (buf + o + 4, n->order);
-	    n->entries[i].order      = n->order;
+	    n->entries[tcount].tag        = exif_get_short (buf + o, n->order) + base;
+	    n->entries[tcount].format     = exif_get_short (buf + o + 2, n->order);
+	    n->entries[tcount].components = exif_get_long (buf + o + 4, n->order);
+	    n->entries[tcount].order      = n->order;
 
 	    exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteOlympus",
-		      "Loading entry 0x%x ('%s')...", n->entries[i].tag,
-		      mnote_olympus_tag_get_name (n->entries[i].tag));
+		      "Loading entry 0x%x ('%s')...", n->entries[tcount].tag,
+		      mnote_olympus_tag_get_name (n->entries[tcount].tag));
+	    exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteOlympus",
+			    "0x%x %d %ld*(%d)",
+		    n->entries[tcount].tag,
+		    n->entries[tcount].format,
+		    n->entries[tcount].components,
+		    (int)exif_format_get_size(n->entries[tcount].format));
 
 	    /*
 	     * Size? If bigger than 4 bytes, the actual data is not
 	     * in the entry but somewhere else (offset).
 	     */
-	    s = exif_format_get_size (n->entries[i].format) *
-		   			 n->entries[i].components;
-	    if (!s) continue;
-	    o += 8;
-	    if (s > 4) o = exif_get_long (buf + o, n->order) + datao;
-	    if (o + s > buf_size) continue;
+	    s = exif_format_get_size (n->entries[tcount].format) *
+		   			 n->entries[tcount].components;
+		n->entries[tcount].size = s;
+		if (s) {
+			dataofs = o + 8;
+			if (s > 4) {
+				dataofs = exif_get_long (buf + dataofs, n->order) + datao;
+#ifdef EXIF_OVERCOME_SANYO_OFFSET_BUG
+				/* Some Sanyo models (e.g. VPC-C5, C40) suffer from a bug when
+				 * writing the offset for the MNOTE_OLYMPUS_TAG_THUMBNAILIMAGE
+				 * tag in its MakerNote. The offset is actually the absolute
+				 * position in the file instead of the position within the IFD.
+				 */
+			    if (dataofs + s > buf_size && n->version == sanyoV1) {
+					/* fix pointer */
+					dataofs -= datao + 6;
+					exif_log (en->log, EXIF_LOG_CODE_DEBUG,
+						  "ExifMnoteOlympus",
+						  "Inconsistent thumbnail tag offset; attempting to recover");
+			    }
+#endif
+			}
+			if (dataofs + s > buf_size)  {
+				exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+					  "ExifMnoteOlympus",
+					  "Tag data past end of buffer (%u > %u)",
+					  dataofs+s, buf_size);
+				continue;
+			}
 
-	    /* Sanity check */
-	    n->entries[i].data = exif_mem_alloc (en->mem, s);
-	    if (!n->entries[i].data) continue;
-	    n->entries[i].size = s;
-	    memcpy (n->entries[i].data, buf + o, s);
+			/* Sanity check */
+			n->entries[tcount].data = exif_mem_alloc (en->mem, s);
+			if (!n->entries[tcount].data) continue;
+			memcpy (n->entries[tcount].data, buf + dataofs, s);
+		}
+
+		/* Tag was successfully parsed */
+		++tcount;
 	}
+	/* Store the count of successfully parsed tags */
+	n->count = tcount;
 }
 
 static unsigned int
