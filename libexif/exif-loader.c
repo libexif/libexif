@@ -70,6 +70,8 @@ struct _ExifLoader {
 
 	/*! Small buffer used for detection of format */
 	unsigned char b[12];
+
+	/*! Number of bytes in the small buffer \c b */
 	unsigned char b_len;
 
 	unsigned int size;
@@ -176,6 +178,8 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 			break;
 		}
 		break;
+
+	case EL_READ:
 	default:
 		break;
 	}

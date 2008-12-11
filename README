@@ -120,11 +120,13 @@ Besides the standard arguments, configure takes several specific to libexif:
 Certain specialized applications can reduce the size of the libexif
 binary by setting one or both of the following macros in the CPPFLAGS
 environment variable at configure time.  Each one removes certain kinds of
-text strings from the binary.  Applications which need to access specific,
-known EXIF tags and know in advance the meaning of their data have no need
-of those strings and can save considerable space by eliminating them.
+text strings and constants from the binary.  Applications which need
+to access specific, known EXIF tags and know in advance the meaning of
+their data have no need of those strings and can save considerable space
+by eliminating them.
 
- -DNO_VERBOSE_TAG_STRINGS Names and descriptions of EXIF tags, & debug messages
+ -DNO_VERBOSE_TAG_STRINGS Names and descriptions of EXIF tags, debug messages,
+                          mandatory EXIF fields (disabling auto-tag-fixup)
  -DNO_VERBOSE_TAG_DATA    Names of enumerated tag data contents
 
 

@@ -5,7 +5,9 @@ libexif-0.6.x:
     and when each object allocated by libexif isn't used by more than one
     thread simultaneously
   * Expanded the Doxygen API documentation
-  * Fixed an Olympus MakerNote interpretation
+  * Access to the raw EXIF data through the ExifEntry structure members is
+    now officially documented
+  * Fixed some Olympus/Sanyo MakerNote interpretations
 
 libexif-0.6.17 (2008-11-06):
   * Updated translations: cs, de, pl, sk, vi

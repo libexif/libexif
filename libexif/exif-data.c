@@ -341,6 +341,16 @@ if (data->ifd[(i)]->count) {				\
 	break;						\
 }
 
+/*! Load data for an IFD.
+ *
+ * \param[in/out] data #ExifData
+ * \param[in] ifd IFD to load
+ * \param[in] d pointer to buffer containing raw IFD data
+ * \param[in] ds size of raw data in buffer at \c d
+ * \param[in] offset offset into buffer at \c d at which IFD starts
+ * \param[in] recursion_depth number of times this function has been
+ * recursively called without returning
+ */
 static void
 exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			     const unsigned char *d,

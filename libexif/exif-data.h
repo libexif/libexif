@@ -42,12 +42,15 @@ typedef struct _ExifDataPrivate ExifDataPrivate;
 #include <libexif/exif-mnote-data.h>
 #include <libexif/exif-mem.h>
 
-/*! \internal */
+/*! Represents the entire EXIF data found in an image */
 struct _ExifData
 {
 	ExifContent *ifd[EXIF_IFD_COUNT];
 
+	/*! Pointer to thumbnail image, or NULL if not available */
 	unsigned char *data;
+
+	/*! Number of bytes in thumbnail image at \c data */
 	unsigned int size;
 
 	ExifDataPrivate *priv;
