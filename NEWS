@@ -1,5 +1,5 @@
 libexif-0.6.x:
-  * Updated translations: nl, pl, sk
+  * Updated translations: nl, pl, sk, vi
   * Added some example programs
   * libexif is now thread safe when the underlying C library is thread safe
     and when each object allocated by libexif isn't used by more than one
