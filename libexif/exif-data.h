@@ -45,6 +45,7 @@ typedef struct _ExifDataPrivate ExifDataPrivate;
 /*! Represents the entire EXIF data found in an image */
 struct _ExifData
 {
+	/*! Data for each IFD */
 	ExifContent *ifd[EXIF_IFD_COUNT];
 
 	/*! Pointer to thumbnail image, or NULL if not available */
@@ -222,6 +223,8 @@ void exif_data_dump (ExifData *data);
 void exif_data_log  (ExifData *data, ExifLog *log);
 
 /*! Return an #ExifEntry for the given tag if found in any IFD.
+ * Each IFD is searched in turn and the first containing a tag with
+ * this number is returned.
  *
  * \param[in] d #ExifData
  * \param[in] t #ExifTag

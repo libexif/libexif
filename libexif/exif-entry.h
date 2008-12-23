@@ -130,7 +130,7 @@ void        exif_entry_initialize (ExifEntry *e, ExifTag tag);
  * valid. This may involve, for example, converting an EXIF_FORMAT_LONG into a
  * EXIF_FORMAT_SHORT. If the tag is unknown, its value is untouched.
  *
- * \note Unfortunately, some conversions are to a type with a more resticted
+ * \note Unfortunately, some conversions are to a type with a more restricted
  * range, which could have the side effect that the converted data becomes
  * invalid. This is unlikely as the range of each tag in the standard is
  * designed to encompass all likely data.

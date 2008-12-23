@@ -90,7 +90,7 @@ void         exif_content_fix          (ExifContent *c);
 
 typedef void (* ExifContentForeachEntryFunc) (ExifEntry *, void *user_data);
 
-/*! Executes function on each EXIF tag in turn.
+/*! Executes function on each EXIF tag in this IFD in turn.
  *
  * \param[in,out] content IFD over which to iterate
  * \param[in] func function to call for each entry

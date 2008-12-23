@@ -637,10 +637,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 		if ((e->size >= 8) && !memcmp (e->data, "UNICODE\0", 8)) {
 			strncpy (val, _("Unsupported UNICODE string"), maxlen);
+		/* FIXME: use iconv to convert into the locale encoding */
 			break;
 		}
 		if ((e->size >= 8) && !memcmp (e->data, "JIS\0\0\0\0\0", 8)) {
 			strncpy (val, _("Unsupported JIS string"), maxlen);
+		/* FIXME: use iconv to convert into the locale encoding */
 			break;
 		}
 
@@ -988,7 +990,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_XP_KEYWORDS:
 	case EXIF_TAG_XP_SUBJECT:
 		/* Warning! The texts are converted from UTF16 to UTF8 */
-		/* TODO: use iconv to convert into the locale charmap instead */
+		/* FIXME: use iconv to convert into the locale encoding */
 		exif_convert_utf16_to_utf8(val, (unsigned short*)e->data, MIN(maxlen, e->size));
 		break;
 	case EXIF_TAG_INTEROPERABILITY_VERSION:
