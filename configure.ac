@@ -94,31 +94,45 @@ dnl ---------------------------------------------------------------------------
 dnl Whether -lm is required for our math functions
 dnl ---------------------------------------------------------------------------
 
-# we need sqrt and pow, but checking for sqrt should be sufficient
-AC_ARG_VAR([MATHLIBS],[The libraries required for mathematical functions, e.g. -lm])
-if test "x$MATHLIBS" = "x"; then
-	# We must not compile with -Wall -Werror here:
-	# char *sqrt() conflicts with double sin(const double xx) in any case.
-	CFLAGS_save="$CFLAGS"
-	CPPFLAGS_save="$CPPFLAGS"
-	CPPFLAGS=""
-	CFLAGS=""
-	AC_CHECK_FUNC([sqrt],[
-		MATHLIBS=""
-	],[
-		AC_CHECK_LIB([m],[sqrt],[
-			MATHLIBS="-lm"
-		],[
-			AC_MSG_ERROR([
-*** Could not find sqrt() function
-])
-		])
-	])
-	CFLAGS="$CFLAGS_save"
-	CPPFLAGS="$CPPFLAGS_save"
-fi
-AC_SUBST([MATHLIBS])
+# we need sqrt and pow which may be in libm
+# We cannot use AC_CHECK_FUNC because if CFLAGS contains
+# -Wall -Werror here the check fails because
+# char *sqrt() conflicts with double sqrt(double xx)
 
+# Start by assuming -lm is needed, because it's possible that the little
+# test program below will be optimized to in-line floating point code that
+# doesn't require -lm, whereas the library itself cannot be so optimized
+# (this actually seems to be the case on x86 with gcc 4.2). Assuming the
+# reverse means that -lm could be needed but wouldn't be detected below.
+
+LIBS_orig="$LIBS"
+LIBS="$LIBS -lm"
+AC_MSG_CHECKING([for math functions in libm])
+AC_LINK_IFELSE([
+	#include <math.h>
+	int main() {
+	  double s = sqrt(0);
+	  double p = pow(s,s);
+	  return (int)p;
+	}
+], [AC_MSG_RESULT(yes)], [
+	AC_MSG_RESULT(no)
+	LIBS="$LIBS_orig"
+	AC_MSG_CHECKING([for math functions without libm])
+	AC_LINK_IFELSE([
+		#include <math.h>
+		int main() {
+		  double s = sqrt(0);
+		  double p = pow(s,s);
+		  return (int)p;
+		}
+	], [
+		AC_MSG_RESULT(yes)
+	],[
+		AC_MSG_RESULT(no)
+		AC_MSG_ERROR([*** Could not find sqrt() & pow() functions])
+	])
+])
 
 # doc support
 GP_CHECK_DOC_DIR

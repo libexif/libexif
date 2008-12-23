@@ -8,6 +8,7 @@ libexif-0.6.x:
   * Access to the raw EXIF data through the ExifEntry structure members is
     now officially documented
   * Fixed some Olympus/Sanyo MakerNote interpretations
+  * Fixed bug #1946138 to stop ignoring CFLAGS in the sqrt configure test
 
 libexif-0.6.17 (2008-11-06):
   * Updated translations: cs, de, pl, sk, vi

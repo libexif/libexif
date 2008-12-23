@@ -37,7 +37,6 @@ libexif_la_DEPENDENCIES = \
 	libmnote-olympus.la	\
 	libmnote-pentax.la
 libexif_la_LIBADD =			\
-	$(MATHLIBS)			\
 	$(LTLIBINTL)			\
 	libmnote-canon.la		\
 	libmnote-fuji.la	\
