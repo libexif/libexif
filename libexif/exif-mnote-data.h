@@ -77,15 +77,16 @@ unsigned int exif_mnote_data_get_id          (ExifMnoteData *d, unsigned int n);
  * containing only US-ASCII alphanumeric characters.
  *
  * \param[in] d MakerNote data
- * \param[in] n tag number within the namespace of this type of MakerNote
+ * \param[in] n index of the entry within the MakerNote data
  * \return textual name of the tag
  */
 const char  *exif_mnote_data_get_name        (ExifMnoteData *d, unsigned int n);
 
 /*! Returns textual title of the given MakerNote tag.
+ * The title is a short, localized textual description of the tag.
  *
  * \param[in] d MakerNote data
- * \param[in] n tag number within the namespace of this type of MakerNote
+ * \param[in] n index of the entry within the MakerNote data
  * \return textual name of the tag
  */
 const char  *exif_mnote_data_get_title       (ExifMnoteData *d, unsigned int n);
@@ -93,7 +94,7 @@ const char  *exif_mnote_data_get_title       (ExifMnoteData *d, unsigned int n);
 /*! Returns verbose textual description of the given MakerNote tag.
  *
  * \param[in] d MakerNote data
- * \param[in] n tag number within the namespace of this type of MakerNote
+ * \param[in] n index of the entry within the MakerNote data
  * \return textual description of the tag
  */
 const char  *exif_mnote_data_get_description (ExifMnoteData *d, unsigned int n);
@@ -105,7 +106,7 @@ const char  *exif_mnote_data_get_description (ExifMnoteData *d, unsigned int n);
  *          of the camera.
  *
  * \param[in] d MakerNote data
- * \param[in] n tag number within the namespace of this type of MakerNote
+ * \param[in] n index of the entry within the MakerNote data
  * \param[out] val buffer in which to store value
  * \param[in] maxlen length of the buffer val
  * \return val pointer, or NULL on error

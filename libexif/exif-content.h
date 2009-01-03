@@ -72,6 +72,8 @@ void         exif_content_add_entry    (ExifContent *c, ExifEntry *entry);
 void         exif_content_remove_entry (ExifContent *c, ExifEntry *e);
 
 /*! Return the #ExifEntry in this IFD corresponding to the given tag.
+ * This is a pointer into a member of the #ExifContent array and must NOT be
+ * freed by the caller.
  *
  * \param[in] content EXIF content for an IFD
  * \param[in] tag EXIF tag to return
