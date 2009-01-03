@@ -1,3 +1,8 @@
+2009-01-03  Dan Fandrich <dan@coneharvesters.com>
+
+	* contrib/examples/photographer.c: Added example program to show how
+	  to display EXIF and MakerNote tags
+
 2008-12-22  Dan Fandrich <dan@coneharvesters.com>
 
 	* po/vi.po: Updated Vietnamese translation by Clytie Siddall

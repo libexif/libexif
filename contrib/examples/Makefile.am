@@ -1,5 +1,5 @@
 # Simple example programs
-check_PROGRAMS = thumbnail
+check_PROGRAMS = photographer thumbnail
 
 # Example programs with dependencies other than plain libexif
 COMPLICATED_EXAMPLES = cam_features.c
