@@ -1,3 +1,8 @@
+2009-01-06  Dan Fandrich <dan@coneharvesters.com>
+
+	* libexif/exif-tags.c: Added remaining GPS tags from the EXIF 2.2
+	  spec to the tag table.
+
 2009-01-03  Dan Fandrich <dan@coneharvesters.com>
 
 	* contrib/examples/photographer.c: Added example program to show how
