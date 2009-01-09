@@ -218,7 +218,7 @@ static const struct {
 	 N_("YCbCr Coefficients"),
 	 N_("The matrix coefficients for transformation from RGB to YCbCr "
 	    "image data. No default is given in TIFF; but here the "
-	    "value given in Appendix E, \"Color Space Guidelines\", is used "
+	    "value given in \"Color Space Guidelines\", is used "
 	    "as the default. The color space is declared in a "
 	    "color space information tag, with the default being the value "
 	    "that gives the optimal image characteristics "
@@ -391,7 +391,7 @@ static const struct {
             "during three-dimensional measurement."), ESL_GPS},
 	{EXIF_TAG_GPS_SPEED_REF, "GPSSpeedRef", N_("Speed unit"),
          N_("Indicates the unit used to express the GPS receiver speed "
-            "of movement. 'K' 'M' and 'N' represents kilometers per hour, "
+            "of movement. 'K', 'M' and 'N' represent kilometers per hour, "
             "miles per hour, and knots."), ESL_GPS},
 	{EXIF_TAG_GPS_SPEED, "GPSSpeed", N_("Speed of GPS receiver"),
 	 N_("Indicates the speed of GPS receiver movement."), ESL_GPS},
@@ -447,20 +447,20 @@ static const struct {
             "of values is from 0.00 to 359.99."), ESL_GPS},
 	{EXIF_TAG_GPS_DEST_DISTANCE_REF, "GPSDestDistanceRef", N_("Reference for distance to destination"),
          N_("Indicates the unit used to express the distance to the "
-            "destination point. 'K', 'M' and 'N' represents kilometers, miles "
+            "destination point. 'K', 'M' and 'N' represent kilometers, miles "
             "and knots."), ESL_GPS},
 	{EXIF_TAG_GPS_DEST_DISTANCE, "GPSDestDistance", N_("Distance to destination"),
 	 N_("Indicates the distance to the destination point."), ESL_GPS},
 	{EXIF_TAG_GPS_PROCESSING_METHOD, "GPSProcessingMethod", N_("Name of GPS processing method"),
          N_("A character string recording the name of the method used "
             "for location finding. The first byte indicates the character "
-            "code used (Table 6 Table 7), and this is followed by the name "
+            "code used, and this is followed by the name "
             "of the method. Since the Type is not ASCII, NULL termination is "
             "not necessary."), ESL_GPS},
 	{EXIF_TAG_GPS_AREA_INFORMATION, "GPSAreaInformation", N_("Name of GPS area"),
          N_("A character string recording the name of the GPS area. The "
-            "first byte indicates the character code used (Table 6 Table "
-            "7), and this is followed by the name of the GPS area. Since "
+            "first byte indicates the character code used, "
+            "and this is followed by the name of the GPS area. Since "
             "the Type is not ASCII, NULL termination is not necessary."), ESL_GPS},
 	{EXIF_TAG_GPS_DATE_STAMP, "GPSDateStamp", N_("GPS date"),
          N_("A character string recording date and time information "
@@ -563,18 +563,17 @@ static const struct {
 	    "the tag data area. The unused portion of the area is padded "
 	    "with NULL (\"00.h\"). ID codes are assigned by means of "
 	    "registration. The designation method and references for each "
-	    "character code are given in Table 6. The value of CountN "
-	    "is determined based on the 8 bytes in the character code "
+	    "character code are defined in the specification. The value of "
+	    "CountN is determined based on the 8 bytes in the character code "
 	    "area and the number of bytes in the user comment part. Since "
-	    "the TYPE is not ASCII, NULL termination is not necessary "
-	    "(see Fig. 9). "
+	    "the TYPE is not ASCII, NULL termination is not necessary. "
 	    "The ID code for the <UserComment> area may be a Defined code "
 	    "such as JIS or ASCII, or may be Undefined. The Undefined name "
 	    "is UndefinedText, and the ID code is filled with 8 bytes of all "
 	    "\"NULL\" (\"00.H\"). An Exif reader that reads the "
 	    "<UserComment> tag must have a function for determining the "
 	    "ID code. This function is not required in Exif readers that "
-	    "do not use the <UserComment> tag (see Table 7). "
+	    "do not use the <UserComment> tag. "
 	    "When a <UserComment> area is set aside, it is recommended that "
 	    "the ID code be ASCII and that the following user comment "
 	    "part be filled with blank characters [20.H]."),
@@ -627,8 +626,8 @@ static const struct {
 	    "file is recorded, the valid height of the meaningful image "
 	    "must be recorded in this tag, whether or not there is padding "
 	    "data or a restart marker. This tag should not exist in an "
-	    "uncompressed file. For details see section 2.8.1 and Appendix "
-	    "F. Since data padding is unnecessary in the vertical direction, "
+	    "uncompressed file. "
+	    "Since data padding is unnecessary in the vertical direction, "
 	    "the number of lines recorded in this valid image height tag "
 	    "will in fact be the same as that recorded in the SOF."),
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNM, ESL_NNNN, ESL_NNNN } },
@@ -639,19 +638,18 @@ static const struct {
 	    "recorded here is the Exif audio file name and extension (an "
 	    "ASCII string consisting of 8 characters + '.' + 3 "
 	    "characters). The path is not recorded. Stipulations on audio "
-	    "are given in  section 3.6.3. File naming conventions are "
-	    "given in section 3.7.1. "
+	    "and file naming conventions are defined in the specification. "
 	    "When using this tag, audio files must be recorded in "
 	    "conformance to the Exif audio format. Writers are also allowed "
 	    "to store the data such as Audio within APP2 as FlashPix "
 	    "extension stream data. "
 	    "Audio files must be recorded in conformance to the Exif audio "
 	    "format. The mapping of Exif image files and audio files is done "
-	    "in any of the three ways shown in Table 8. If multiple files "
-	    "are mapped to one file as in [2] or [3] of this table, the above "
+	    "in any of three ways, [1], [2] and [3]. If multiple files "
+	    "are mapped to one file as in [2] or [3], the above "
 	    "format is used to record just one audio file name. If "
 	    "there are multiple audio files, the first recorded file is "
-	    "given. In the case of [3] in Table 8, for example, for the "
+	    "given. In the case of [3], for example, for the "
 	    "Exif image file \"DSC00001.JPG\" only  \"SND00001.WAV\" is "
 	    "given as the related Exif audio file. When there are three "
 	    "Exif audio files \"SND00001.WAV\", \"SND00002.WAV\" and "
