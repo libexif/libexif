@@ -43,7 +43,8 @@ static const struct {
 	const char *name;
 	const char *title;
 	const char *description;
-	ExifSupportLevel esl[EXIF_IFD_COUNT][4];
+	/*! indexed by the types [ExifIfd][ExifDataType] */
+	ExifSupportLevel esl[EXIF_IFD_COUNT][EXIF_DATA_TYPE_COUNT];
 } ExifTagTable[] = {
 #ifndef NO_VERBOSE_TAG_STRINGS
 	{EXIF_TAG_NEW_SUBFILE_TYPE, "NewSubfileType",
@@ -163,7 +164,7 @@ static const struct {
 	 N_("A transfer function for the image, described in tabular style. "
 	    "Normally this tag is not necessary, since color space is "
 	    "specified in the color space information tag (<ColorSpace>)."),
-	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SOFTWARE, "Software", N_("Software"),
 	 N_("This tag records the name and version of the software or "
 	    "firmware of the camera or image input device used to "
@@ -171,29 +172,29 @@ static const struct {
 	    "it is recommended that the example shown below be "
 	    "followed. When the field is left blank, it is treated as "
 	    "unknown."),
-	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_DATE_TIME, "DateTime", N_("Date and Time"),
 	 N_("The date and time of image creation. In this standard "
 	    "(EXIF-2.1) it is the date and time the file was changed."),
-	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_ARTIST, "Artist", N_("Artist"),
 	 N_("This tag records the name of the camera owner, photographer or "
 	    "image creator. The detailed format is not specified, but it is "
 	    "recommended that the information be written as in the example "
 	    "below for ease of Interoperability. When the field is "
 	    "left blank, it is treated as unknown."),
-	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_WHITE_POINT, "WhitePoint", N_("White Point"),
 	 N_("The chromaticity of the white point of the image. Normally "
 	    "this tag is not necessary, since color space is specified "
 	    "in the color space information tag (<ColorSpace>)."),
-	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_PRIMARY_CHROMATICITIES, "PrimaryChromaticities",
 	 N_("Primary Chromaticities"),
 	 N_("The chromaticity of the three primary colors of the image. "
 	    "Normally this tag is not necessary, since color space is "
 	    "specified in the color space information tag (<ColorSpace>)."),
-	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_TRANSFER_RANGE, "TransferRange", N_("Transfer Range"), ""},
 	{EXIF_TAG_SUB_IFDS, "SubIFDs", "SubIFD Offsets", N_("Defined by Adobe Corporation "
 	    "to enable TIFF Trees within a TIFF file.")},
@@ -254,7 +255,7 @@ static const struct {
 	    "in a color space information tag, with the default "
 	    "being the value that gives the optimal image characteristics "
 	    "Interoperability these conditions."),
-	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_XML_PACKET, "XMLPacket", N_("XML Packet"), N_("XMP Metadata")},
 	{EXIF_TAG_RELATED_IMAGE_FILE_FORMAT, "RelatedImageFileFormat",
 	 "RelatedImageFileFormat", ""},
@@ -291,7 +292,7 @@ static const struct {
 	    "by a terminating NULL code, then the editor copyright is given "
 	    "(see example 3). When the field is left blank, it is treated "
 	    "as unknown."),
-	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_EXPOSURE_TIME, "ExposureTime", N_("Exposure Time"),
 	 N_("Exposure time, given in seconds (sec)."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
