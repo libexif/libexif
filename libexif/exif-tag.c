@@ -47,6 +47,7 @@ static const struct {
 	ExifSupportLevel esl[EXIF_IFD_COUNT][EXIF_DATA_TYPE_COUNT];
 } ExifTagTable[] = {
 #ifndef NO_VERBOSE_TAG_STRINGS
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_NEW_SUBFILE_TYPE, "NewSubfileType",
 	 N_("New Subfile Type"), N_("A general indication of the kind of data "
 	    "contained in this subfile.")},
@@ -87,7 +88,9 @@ static const struct {
 	 N_("The pixel composition. In JPEG compressed data a JPEG "
 	    "marker is used instead of this tag."),
 	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_FILL_ORDER, "FillOrder", N_("Fill Order"), ""},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_DOCUMENT_NAME, "DocumentName", N_("Document Name"), ""},
 	{EXIF_TAG_IMAGE_DESCRIPTION, "ImageDescription",
 	 N_("Image Description"),
@@ -103,7 +106,7 @@ static const struct {
 	    "video digitizer or other equipment that generated the "
 	    "image. When the field is left blank, it is treated as "
 	    "unknown."),
-	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN }},
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_MODEL, "Model", N_("Model"),
 	 N_("The model name or model number of the equipment. This is the "
 	    "model name or number of the DSC, scanner, video digitizer "
@@ -195,9 +198,12 @@ static const struct {
 	    "Normally this tag is not necessary, since color space is "
 	    "specified in the color space information tag (<ColorSpace>)."),
 	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_TRANSFER_RANGE, "TransferRange", N_("Transfer Range"), ""},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_SUB_IFDS, "SubIFDs", "SubIFD Offsets", N_("Defined by Adobe Corporation "
 	    "to enable TIFF Trees within a TIFF file.")},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_JPEG_PROC, "JPEGProc", "JPEGProc", ""},
 	{EXIF_TAG_JPEG_INTERCHANGE_FORMAT, "JPEGInterchangeFormat",
 	 N_("JPEG Interchange Format"),
@@ -256,20 +262,27 @@ static const struct {
 	    "being the value that gives the optimal image characteristics "
 	    "Interoperability these conditions."),
 	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_XML_PACKET, "XMLPacket", N_("XML Packet"), N_("XMP Metadata")},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_RELATED_IMAGE_FILE_FORMAT, "RelatedImageFileFormat",
 	 "RelatedImageFileFormat", ""},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_RELATED_IMAGE_WIDTH, "RelatedImageWidth",
 	 "RelatedImageWidth", ""},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_RELATED_IMAGE_LENGTH, "RelatedImageLength",
 	 "RelatedImageLength", ""},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_CFA_REPEAT_PATTERN_DIM, "CFARepeatPatternDim",
 	 "CFARepeatPatternDim", ""},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_CFA_PATTERN, "CFAPattern",
 	 N_("CFA Pattern"),
 	 N_("Indicates the color filter array (CFA) geometric pattern of the "
 	    "image sensor when a one-chip color area sensor is used. "
 	    "It does not apply to all sensing methods.")},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_BATTERY_LEVEL, "BatteryLevel", N_("Battery Level"), ""},
 	{EXIF_TAG_COPYRIGHT, "Copyright", N_("Copyright"),
 	 N_("Copyright information. In this standard the tag is used to "
@@ -299,7 +312,9 @@ static const struct {
 	{EXIF_TAG_FNUMBER, "FNumber", N_("FNumber"),
 	 N_("The F number."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_IPTC_NAA, "IPTC/NAA", "IPTC/NAA", ""},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_IMAGE_RESOURCES, "ImageResources", N_("Image Resources Block"), ""},
 	{EXIF_TAG_EXIF_IFD_POINTER, "ExifIfdPointer", "ExifIFDPointer",
 	 N_("A pointer to the Exif IFD. Interoperability, Exif IFD has the "
@@ -307,6 +322,7 @@ static const struct {
 	    "ordinarily, however, it does not contain image data as in "
 	    "the case of TIFF."),
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_INTER_COLOR_PROFILE, "InterColorProfile",
 	 "InterColorProfile", ""},
 	{EXIF_TAG_EXPOSURE_PROGRAM, "ExposureProgram", N_("Exposure Program"),
@@ -546,7 +562,8 @@ static const struct {
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FLASH, "Flash", N_("Flash"),
 	 N_("This tag is recorded when an image is taken using a strobe "
-	    "light (flash).")},
+	    "light (flash)."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FOCAL_LENGTH, "FocalLength", N_("Focal Length"),
 	 N_("The actual focal length of the lens, in mm. Conversion is not "
 	    "made to the focal length of a 35 mm film camera."),
@@ -578,7 +595,7 @@ static const struct {
 	    "When a <UserComment> area is set aside, it is recommended that "
 	    "the ID code be ASCII and that the following user comment "
 	    "part be filled with blank characters [20.H]."),
-			{ ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SUB_SEC_TIME, "SubsecTime", "SubsecTime",
 	 N_("A tag used to record fractions of seconds for the "
 	    "<DateTime> tag."),
@@ -663,7 +680,7 @@ static const struct {
 	    "NULL. When this tag is used to map audio files, the relation "
 	    "of the audio file to image data must also be indicated on the "
 	    "audio file end."),
-			{ ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_INTEROPERABILITY_IFD_POINTER, "InteroperabilityIFDPointer",
 	 "InteroperabilityIFDPointer",
 	 N_("Interoperability IFD is composed of tags which stores the "
@@ -677,26 +694,31 @@ static const struct {
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FLASH_ENERGY, "FlashEnergy", N_("Flash Energy"),
 	 N_("Indicates the strobe energy at the time the image is "
-	    "captured, as measured in Beam Candle Power Seconds (BCPS).")},
+	    "captured, as measured in Beam Candle Power Seconds (BCPS)."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SPATIAL_FREQUENCY_RESPONSE, "SpatialFrequencyResponse",
 	 N_("Spatial Frequency Response"),
 	 N_("This tag records the camera or input device spatial frequency "
 	    "table and SFR values in the direction of image width, "
 	    "image height, and diagonal direction, as specified in ISO "
-	    "12233.")},
+	    "12233."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FOCAL_PLANE_X_RESOLUTION, "FocalPlaneXResolution",
 	 N_("Focal Plane x-Resolution"),
 	 N_("Indicates the number of pixels in the image width (X) direction "
-	    "per <FocalPlaneResolutionUnit> on the camera focal plane.")},
+	    "per <FocalPlaneResolutionUnit> on the camera focal plane."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FOCAL_PLANE_Y_RESOLUTION, "FocalPlaneYResolution",
 	 N_("Focal Plane y-Resolution"),
 	 N_("Indicates the number of pixels in the image height (V) direction "
-	    "per <FocalPlaneResolutionUnit> on the camera focal plane.")},
+	    "per <FocalPlaneResolutionUnit> on the camera focal plane."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FOCAL_PLANE_RESOLUTION_UNIT, "FocalPlaneResolutionUnit",
 	 N_("Focal Plane Resolution Unit"),
 	 N_("Indicates the unit for measuring <FocalPlaneXResolution> and "
 	    "<FocalPlaneYResolution>. This value is the same as the "
-	    "<ResolutionUnit>.")},
+	    "<ResolutionUnit>."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SUBJECT_LOCATION, "SubjectLocation",
 	 N_("Subject Location"),
 	 N_("Indicates the location of the main subject in the scene. The "
@@ -704,84 +726,106 @@ static const struct {
 	    "main subject relative to the left edge, prior to rotation "
 	    "processing as per the <Rotation> tag. The first value "
 	    "indicates the X column number and the second indicates "
-	    "the Y row number.")},
+	    "the Y row number."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_EXPOSURE_INDEX, "ExposureIndex", N_("Exposure Index"),
 	 N_("Indicates the exposure index selected on the camera or "
-	    "input device at the time the image is captured.")},
+	    "input device at the time the image is captured."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SENSING_METHOD, "SensingMethod", N_("Sensing Method"),
 	 N_("Indicates the image sensor type on the camera or input "
-	    "device.")},
+	    "device."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FILE_SOURCE, "FileSource", N_("File Source"),
 	 N_("Indicates the image source. If a DSC recorded the image, "
 	    "the tag value of this tag always be set to 3, indicating "
-	    "that the image was recorded on a DSC.")},
+	    "that the image was recorded on a DSC."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SCENE_TYPE, "SceneType", N_("Scene Type"),
 	 N_("Indicates the type of scene. If a DSC recorded the image, "
 	    "this tag value must always be set to 1, indicating that the "
-	    "image was directly photographed.")},
+	    "image was directly photographed."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_NEW_CFA_PATTERN, "CFAPattern",
 	 N_("CFA Pattern"),
 	 N_("Indicates the color filter array (CFA) geometric pattern of the "
 	    "image sensor when a one-chip color area sensor is used. "
-	    "It does not apply to all sensing methods.")},
+	    "It does not apply to all sensing methods."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SUBJECT_AREA, "SubjectArea", N_("Subject Area"),
 	 N_("This tag indicates the location and area of the main subject "
-	    "in the overall scene.")},
+	    "in the overall scene."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_TIFF_EP_STANDARD_ID, "TIFF/EPStandardID", N_("TIFF/EP Standard ID"), ""},
 	{EXIF_TAG_CUSTOM_RENDERED, "CustomRendered", N_("Custom Rendered"),
 	 N_("This tag indicates the use of special processing on image "
 	    "data, such as rendering geared to output. When special "
 	    "processing is performed, the reader is expected to disable "
-	    "or minimize any further processing.")},
+	    "or minimize any further processing."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_EXPOSURE_MODE, "ExposureMode", N_("Exposure Mode"),
 	 N_("This tag indicates the exposure mode set when the image was "
 	    "shot. In auto-bracketing mode, the camera shoots a series of "
-	    "frames of the same scene at different exposure settings.")},
+	    "frames of the same scene at different exposure settings."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_WHITE_BALANCE, "WhiteBalance", N_("White Balance"),
 	 N_("This tag indicates the white balance mode set when the image "
-	    "was shot.")},
+	    "was shot."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_DIGITAL_ZOOM_RATIO, "DigitalZoomRatio",
 	 N_("Digital Zoom Ratio"),
 	 N_("This tag indicates the digital zoom ratio when the image was "
 	    "shot. If the numerator of the recorded value is 0, this "
-	    "indicates that digital zoom was not used.")},
+	    "indicates that digital zoom was not used."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FOCAL_LENGTH_IN_35MM_FILM, "FocalLengthIn35mmFilm",
 	 N_("Focal Length In 35mm Film"),
 	 N_("This tag indicates the equivalent focal length assuming a "
 	    "35mm film camera, in mm. A value of 0 means the focal "
 	    "length is unknown. Note that this tag differs from the "
-	    "FocalLength tag.")},
+	    "FocalLength tag."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SCENE_CAPTURE_TYPE, "SceneCaptureType",
 	 N_("Scene Capture Type"),
 	 N_("This tag indicates the type of scene that was shot. It can "
 	    "also be used to record the mode in which the image was "
 	    "shot. Note that this differs from the scene type "
-	    "<SceneType> tag.")},
+	    "<SceneType> tag."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_GAIN_CONTROL, "GainControl", N_("Gain Control"),
 	 N_("This tag indicates the degree of overall image gain "
-	    "adjustment.")},
+	    "adjustment."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_CONTRAST, "Contrast", N_("Contrast"),
 	 N_("This tag indicates the direction of contrast processing "
-	    "applied by the camera when the image was shot.")},
+	    "applied by the camera when the image was shot."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SATURATION, "Saturation", N_("Saturation"),
 	 N_("This tag indicates the direction of saturation processing "
-	    "applied by the camera when the image was shot.")},
+	    "applied by the camera when the image was shot."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SHARPNESS, "Sharpness", N_("Sharpness"),
 	 N_("This tag indicates the direction of sharpness processing "
-	    "applied by the camera when the image was shot.")},
+	    "applied by the camera when the image was shot."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_DEVICE_SETTING_DESCRIPTION, "DeviceSettingDescription",
 	 N_("Device Setting Description"),
 	 N_("This tag indicates information on the picture-taking "
 	    "conditions of a particular camera model. The tag is used "
 	    "only to indicate the picture-taking conditions in the "
-	    "reader.")},
+	    "reader."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SUBJECT_DISTANCE_RANGE, "SubjectDistanceRange",
 	 N_("Subject Distance Range"),
-	 N_("This tag indicates the distance to the subject.")},
+	 N_("This tag indicates the distance to the subject."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_IMAGE_UNIQUE_ID, "ImageUniqueID", N_("Image Unique ID"),
 	 N_("This tag indicates an identifier assigned uniquely to "
 	    "each image. It is recorded as an ASCII string equivalent "
-	    "to hexadecimal notation and 128-bit fixed length.")},
+	    "to hexadecimal notation and 128-bit fixed length."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_GAMMA, "Gamma", N_("Gamma"),
 	 N_("Indicates the value of coefficient gamma.")},
 	{EXIF_TAG_PRINT_IMAGE_MATCHING, "PrintImageMatching", N_("PRINT Image Matching"),
