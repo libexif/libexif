@@ -102,11 +102,13 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	switch (n->version) {
 	case olympusV1:
 	case sanyoV1:
+	case epsonV1:
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
 		if (!*buf) return;
 
 		/* Write the header and the number of entries. */
-		strcpy ((char *)*buf, n->version==sanyoV1?"SANYO":"OLYMP");
+		strcpy ((char *)*buf, n->version==sanyoV1?"SANYO":
+					(n->version==epsonV1?"EPSON":"OLYMP"));
 		exif_set_short (*buf + 6, n->order, (ExifShort) 1);
 		datao = n->offset;
 		break;
@@ -224,6 +226,9 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	 * Sanyo format is identical and uses identical tags except that
 	 * header starts with "SANYO".
 	 *
+	 * Epson format is identical and uses identical tags except that
+	 * header starts with "EPSON".
+	 *
 	 * Nikon headers start with "Nikon" (6 bytes including '\0'), 
 	 * version number (1 or 2).
 	 * 
@@ -235,13 +240,16 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	 * lastly 0x2A.
 	 */
 	if (buf_size - n->offset < 22) return;
-	if (!memcmp (buf + o2, "OLYMP", 6) || !memcmp (buf + o2, "SANYO", 6)) {
+	if (!memcmp (buf + o2, "OLYMP", 6) || !memcmp (buf + o2, "SANYO", 6) ||
+	    !memcmp (buf + o2, "EPSON", 6)) {
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
-			"Parsing Olympus/Sanyo maker note v1...");
+			"Parsing Olympus/Sanyo/Epson maker note v1...");
 
 		/* The number of entries is at position 8. */
 		if (!memcmp (buf + o2, "SANYO", 6))
 			n->version = sanyoV1;
+		else if (!memcmp (buf + o2, "EPSON", 6))
+			n->version = epsonV1;
 		else
 			n->version = olympusV1;
 		if (buf[o2 + 6] == 1)

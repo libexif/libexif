@@ -182,6 +182,11 @@ static const struct {
 	{MNOTE_SANYO_TAG_SCENESELECT, "SceneSelect", N_("Scene Select"), ""},
 	{MNOTE_SANYO_TAG_MANUALFOCUSDISTANCE, "ManualFocusDistance", N_("Manual Focus Distance"), ""},
 	{MNOTE_SANYO_TAG_SEQUENCESHOTINTERVAL, "SequenceShotInterval", N_("Sequence Shot Interval"), ""},
+
+	/* Epson */
+	{MNOTE_EPSON_TAG_IMAGE_WIDTH, "EpsonImageWidth", N_("Epson Image Width"), ""},
+	{MNOTE_EPSON_TAG_IMAGE_HEIGHT, "EpsonImageHeight", N_("Epson Image Height"), ""},
+	{MNOTE_EPSON_TAG_OEM_MODEL, "EpsonOEMModel", N_("OEM Model Name"), ""},
 #endif
 	{0, NULL, NULL, NULL}
 };

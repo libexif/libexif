@@ -244,6 +244,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	char         buf[30];
 	ExifLong     vl;
 	ExifShort    vs = 0;
+	ExifSShort   vss = 0;
 	ExifRational vr, vr2;
 	ExifSRational vsr;
 	int          i, j;
@@ -305,10 +306,13 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_NIKON_TAG_IMAGEADJUSTMENT:
 	case MNOTE_NIKON_TAG_ADAPTER:
 	case MNOTE_NIKON_TAG_SATURATION2:
+	case MNOTE_EPSON_TAG_OEM_MODEL:
 		CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
 		memcpy(v, entry->data, MIN (maxlen, entry->size));
 		break;
 	case MNOTE_NIKON_TAG_TOTALPICTURES:
+	case MNOTE_EPSON_TAG_IMAGE_WIDTH:
+	case MNOTE_EPSON_TAG_IMAGE_HEIGHT:
 		CF (entry->format, EXIF_FORMAT_LONG, v, maxlen);
 		CC (entry->components, 1, v, maxlen);
 		vl =  exif_get_long (entry->data, entry->order);
@@ -577,12 +581,21 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		}
 		break;
 	case MNOTE_OLYMPUS_TAG_LENSDISTORTION:
-		CF (entry->format, EXIF_FORMAT_SSHORT, v, maxlen);
-		CC (entry->components, 6, v, maxlen);
-		for (i=0; i < (int)entry->components; ++i) {
-			vs = exif_get_sshort (entry->data+2*i, entry->order);
-			sprintf (buf, "%hd ", vs);
+		if (entry->format == EXIF_FORMAT_SHORT) {
+			/* Epson uses a single SHORT here */
+			CC (entry->components, 1, v, maxlen);
+			vs = exif_get_short (entry->data, entry->order);
+			sprintf (buf, "%hu", vs);
 			strncat (v, buf, maxlen - strlen (v));
+		} else {
+			/* Others use an array of SSHORT here */
+			CC (entry->components, 6, v, maxlen);
+			CF (entry->format, EXIF_FORMAT_SSHORT, v, maxlen);
+			for (i=0; i < (int)entry->components; ++i) {
+				vss = exif_get_sshort (entry->data+2*i, entry->order);
+				sprintf (buf, "%hd ", vss);
+				strncat (v, buf, maxlen - strlen (v));
+			}
 		}
 		break;
 	case MNOTE_OLYMPUS_TAG_COLORCONTROL:

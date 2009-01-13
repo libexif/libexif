@@ -8,6 +8,7 @@ libexif-0.6.x:
   * Access to the raw EXIF data through the ExifEntry structure members is
     now officially documented
   * Fixed some Olympus/Sanyo MakerNote interpretations
+  * Added support for Epson MakerNotes
   * Fixed bug #1946138 to stop ignoring CFLAGS in the sqrt configure test
   * Added remaining GPS tags from the EXIF 2.2 spec to the tag table
   * Fixed the interpretation of some tags as being optional in IFD 1

@@ -13,9 +13,9 @@ FEATURES
 --------
 
 libexif supports parsing, editing and saving of EXIF data. In addition, it
-has gettext support. All EXIF tags described in EXIF standard 2.1
-are supported.  Many maker notes from Canon, Casio, Fuji, Nikon, Olympus,
-Pentax and Sanyo cameras are also supported.
+has gettext support. All EXIF tags described in EXIF standard 2.1 (and most
+from 2.2) are supported.  Many maker notes from Canon, Casio, Epson,
+Fuji, Nikon, Olympus, Pentax and Sanyo cameras are also supported.
 
 
 REQUIREMENTS

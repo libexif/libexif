@@ -1,3 +1,8 @@
+2009-01-12  Dan Fandrich <dan@coneharvesters.com>
+
+	* Added support for Epson MakerNotes, which have the identical
+	  tag format and namespace of the Olympus ones.
+
 2009-01-06  Dan Fandrich <dan@coneharvesters.com>
 
 	* libexif/exif-tags.c: Added remaining GPS tags from the EXIF 2.2
