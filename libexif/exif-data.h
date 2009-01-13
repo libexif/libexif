@@ -127,6 +127,8 @@ void          exif_data_set_byte_order  (ExifData *data, ExifByteOrder order);
 
 /*! Return the MakerNote data out of the EXIF data.  Only certain
  * MakerNote formats that are recognized by libexif are supported.
+ * The pointer references a member of the #ExifData structure and must NOT be
+ * freed by the caller.
  *
  * \param[in] d EXIF data
  * \return MakerNote data, or NULL if not found or not supported

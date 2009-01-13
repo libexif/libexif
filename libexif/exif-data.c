@@ -171,6 +171,9 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	entry->format     = exif_get_short (d + offset + 2, data->priv->order);
 	entry->components = exif_get_long  (d + offset + 4, data->priv->order);
 
+	/* FIXME: should use exif_tag_get_name_in_ifd here but entry->parent 
+	 * has not been set yet
+	 */
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 		  "Loading entry 0x%x ('%s')...", entry->tag,
 		  exif_tag_get_name (entry->tag));
@@ -398,6 +401,11 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 		case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
 			o = exif_get_long (d + offset + 12 * i + 8,
 					   data->priv->order);
+			/* FIXME: IFD_POINTER tags aren't marked as being in a
+			 * specific IFD, so exif_tag_get_name_in_ifd won't work
+			 */
+			exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+				  "IFD entry 0x%x at %u.", tag, o);
 			switch (tag) {
 			case EXIF_TAG_EXIF_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_EXIF);
