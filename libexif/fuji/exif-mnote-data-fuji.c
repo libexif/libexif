@@ -167,7 +167,11 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 	/* Parse the entries */
 	for (i = 0; i < c; i++) {
 		o = datao + 12 * i;
-		if (datao + 12 > buf_size) return;
+		if (datao + 12 > buf_size) {
+			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				  "ExifMnoteDataFuji", "Short MakerNote");
+			return;
+		}
 
 		t = exif_mem_realloc (en->mem, n->entries,
 				sizeof (MnoteFujiEntry) * (i + 1));
@@ -188,7 +192,12 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 		if (!s) return;
 		o += 8;
 		if (s > 4) o = exif_get_long (buf + o, n->order) + 6 + n->offset;
-		if (o + s > buf_size) return;
+		if (o + s > buf_size) {
+			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteDataFuji",
+					  "Tag data past end of buffer (%u > %u)",
+					  o+s, buf_size);
+			return;
+		}
 
 		/* Sanity check */
 		n->entries[i].data = exif_mem_alloc (en->mem, s);
