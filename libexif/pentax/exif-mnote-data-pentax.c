@@ -28,8 +28,6 @@
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-utils.h>
 
-/* #define DEBUG */
-
 static void
 exif_mnote_data_pentax_clear (ExifMnoteDataPentax *n)
 {
@@ -89,13 +87,19 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 			/* Uses Casio v2 tags */
 			n->version = pentaxV2;
 		}
+		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataPentax",
+			"Parsing Pentax maker note v%d...", (int)n->version);
 		datao += 4 + 2;
 		base = MNOTE_PENTAX2_TAG_BASE;
-	} if (!memcmp(buf + datao, "QVC", 4)) {
+	} else if (!memcmp(buf + datao, "QVC", 4)) {
+		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataPentax",
+			"Parsing Casio maker note v2...");
 		n->version = casioV2;
 		base = MNOTE_CASIO2_TAG_BASE;
 		datao += 4 + 2;
 	} else {
+		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataPentax",
+			"Parsing Pentax maker note v1...");
 		n->version = pentaxV1;
 	}
 	c = exif_get_short (buf + datao, n->order);
@@ -104,13 +108,21 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 
 	for (i = 0; i < c; i++) {
 		o = datao + 2 + 12 * i;
-		if (o + 8 > buf_size) return;
+		if (o + 8 > buf_size) {
+			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				  "ExifMnoteDataPentax", "Short MakerNote");
+			return;
+		}
 
 		n->count = i + 1;
 		n->entries[i].tag        = exif_get_short (buf + o + 0, n->order) + base;
 		n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
 		n->entries[i].components = exif_get_long  (buf + o + 4, n->order);
 		n->entries[i].order      = n->order;
+
+		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnotePentax",
+			  "Loading entry 0x%x ('%s')...", n->entries[i].tag,
+			  mnote_pentax_tag_get_name (n->entries[i].tag));
 
 		/*
 		 * Size? If bigger than 4 bytes, the actual data is not
@@ -127,7 +139,12 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 		if (!s) return;
 		o += 8;
 		if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
-		if (o + s > buf_size) return;
+		if (o + s > buf_size) {
+			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteDataPentax",
+					  "Tag data past end of buffer (%u > %u)",
+					  o+s, buf_size);
+			return;
+		}
                                                                                 
 		/* Sanity check */
 		n->entries[i].data = exif_mem_alloc (en->mem, s);
