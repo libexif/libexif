@@ -82,7 +82,7 @@ static const struct {
 	struct {
 		int index;
 		const char *string;
-	} elem[10];
+	} elem[24];
 } items[] = {
 #ifndef NO_VERBOSE_TAG_DATA
   { MNOTE_NIKON_TAG_LENSTYPE, EXIF_FORMAT_BYTE,
@@ -140,14 +140,29 @@ static const struct {
       {1, N_("Fisheye On")},
       {0, NULL}}},
   { MNOTE_OLYMPUS_TAG_QUALITY, EXIF_FORMAT_SHORT,
-    { {1, N_("SQ")},
-      {2, N_("HQ")},
-      {3, N_("SHQ")},
-      {4, N_("RAW")},
-      {5, N_("SQ1")},
-      {6, N_("SQ2")},
-      {17, N_("Standard")},
-      {529, N_("High")},
+    { {1, N_("normal, SQ")},
+      {2, N_("normal, HQ")},
+      {3, N_("normal, SHQ")},
+      {4, N_("normal, RAW")},
+      {5, N_("normal, SQ1")},
+      {6, N_("normal, SQ2")},
+      {7, N_("normal, super high")},
+      {17, N_("normal, standard")},
+      {0x101, N_("fine, SQ")},
+      {0x102, N_("fine, HQ")},
+      {0x103, N_("fine, SHQ")},
+      {0x104, N_("fine, RAW")},
+      {0x105, N_("fine, SQ1")},
+      {0x106, N_("fine, SQ2")},
+      {0x107, N_("fine, super high")},
+      {0x201, N_("super fine, SQ")},
+      {0x202, N_("super fine, HQ")},
+      {0x203, N_("super fine, SHQ")},
+      {0x204, N_("super fine, RAW")},
+      {0x205, N_("super fine, SQ1")},
+      {0x206, N_("super fine, SQ2")},
+      {0x207, N_("super fine, super high")},
+      {0x211, N_("super fine, high")},
       {0, NULL}}},
   { MNOTE_OLYMPUS_TAG_MACRO, EXIF_FORMAT_SHORT,
     { {0, N_("No")},
