@@ -493,11 +493,14 @@ static const struct {
 	 N_("Indicates the ISO Speed and ISO Latitude of the camera or "
 	    "input device as specified in ISO 12232."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_OECF, "OECF", "OECF",
+	{EXIF_TAG_OECF, "OECF", N_("OECF"),
 	 N_("Indicates the Opto-Electronic Conversion Function (OECF) "
 	    "specified in ISO 14524. <OECF> is the relationship between "
 	    "the camera optical input and the image values."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* Not in EXIF 2.2 */
+	{EXIF_TAG_TIME_ZONE_OFFSET, "TimeZoneOffset", N_("Time Zone Offset"),
+	 N_("Encodes time zone of camera clock relative to GMT.")},
 	{EXIF_TAG_EXIF_VERSION, "ExifVersion", N_("Exif Version"),
 	 N_("The version of this standard supported. Nonexistence of this "
 	    "field is taken to mean nonconformance to the standard."),
