@@ -30,7 +30,12 @@
 
 #define DEBUG
 
-#define EXIF_OVERCOME_SANYO_OFFSET_BUG
+/* Uncomment this to fix a problem with Sanyo MakerNotes. It's probably best
+ * not to in most cases because it seems to only affect the thumbnail tag
+ * which is duplicated in IFD 1, and fixing the offset could actually cause
+ * problems with other software that expects the broken form.
+ */
+/*#define EXIF_OVERCOME_SANYO_OFFSET_BUG */
 
 static void
 exif_mnote_data_olympus_clear (ExifMnoteDataOlympus *n)
@@ -423,7 +428,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 #endif
 			}
 			if (dataofs + s > buf_size)  {
-				exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				exif_log (en->log, EXIF_LOG_CODE_DEBUG,
 					  "ExifMnoteOlympus",
 					  "Tag data past end of buffer (%u > %u)",
 					  dataofs+s, buf_size);
