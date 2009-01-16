@@ -302,25 +302,25 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_NIKON_TAG_ISO:
                 CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
                 CC (entry->components, 2, v, maxlen);
-                //vs = exif_get_short (entry->data, entry->order);
+                /*vs = exif_get_short (entry->data, entry->order);*/
                 vs = exif_get_short (entry->data + 2, entry->order);
                 snprintf (v, maxlen, "ISO %hd", vs);
                 break;
 	case MNOTE_NIKON_TAG_ISO2:
                 CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
                 CC (entry->components, 2, v, maxlen);
-                //vs = exif_get_short (entry->data, entry->order);
+                /*vs = exif_get_short (entry->data, entry->order);*/
                 vs = exif_get_short (entry->data + 2, entry->order);
                 snprintf (v, maxlen, "ISO2 %hd", vs);
                 break;
 	case MNOTE_NIKON_TAG_QUALITY:
                 CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                //CC (entry->components, 8, v, maxlen);
-                //vl =  exif_get_long (entry->data  , entry->order);
-                //printf("-> 0x%04x\n",entry->data);
-                //printf("-> 0x%s<\n",entry->data - 0);
+                /*CC (entry->components, 8, v, maxlen);
+                vl = exif_get_long (entry->data, entry->order);
+                printf("-> 0x%04x\n",entry->data);
+                printf("-> 0x%s<\n",entry->data - 0);*/
                 memcpy(v, entry->data, MIN(maxlen, entry->size));
-                //snprintf (v, maxlen, "%s<",  ( entry->data - 9  );
+                /*snprintf (v, maxlen, "%s<",  ( entry->data - 9  );*/
                 break;
 	case MNOTE_NIKON_TAG_COLORMODE:
 	case MNOTE_NIKON_TAG_COLORMODE1:
@@ -379,7 +379,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		r = (double)vr.numerator / vr.denominator;
 		vr = exif_get_rational (entry->data+8, entry->order);
 		b = (double)vr.numerator / vr.denominator;
-		//printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);
+		/*printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);*/
 		snprintf (v, maxlen, _("Red Correction %f, Blue Correction %f"), r,b);
 		break;
 	case MNOTE_NIKON_TAG_MANUALFOCUSDISTANCE:
@@ -560,7 +560,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			c = (double)vr.numerator / vr.denominator;
 			vr = exif_get_rational (entry->data+24, entry->order);
 			d = (double)vr.numerator / vr.denominator;
-                        //printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);
+                        /*printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);*/
 			snprintf (v, maxlen, "%ld-%ldmm 1:%3.1f - %3.1f",a,b,c,d);
 		}
 		break;
@@ -659,8 +659,8 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		CF (entry->format, EXIF_FORMAT_LONG, v, maxlen);
 		CC (entry->components, 30, v, maxlen);
 		for (i=0; i < (int)entry->components; ++i) {
-			vs = exif_get_long (entry->data+4*i, entry->order);
-			sprintf (buf, "%lu ", vs);
+			vl = exif_get_long (entry->data+4*i, entry->order);
+			sprintf (buf, "%lu ", (unsigned long)vl);
 			strncat (v, buf, maxlen - strlen (v));
 		}
 		break;
