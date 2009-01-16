@@ -118,7 +118,7 @@ static const struct {
 	{MNOTE_OLYMPUS_TAG_ONETOUCHWB, "OneTouchWB", N_("One Touch White Balance"), ""},
 	{MNOTE_OLYMPUS_TAG_WHITEBALANCEBRACKET, "WhiteBalanceBracket", N_("White Balance Bracket"), ""},
 	{MNOTE_OLYMPUS_TAG_WHITEBALANCEBIAS, "WhiteBalanceBias", N_("White Balance Bias"), ""},
-	{MNOTE_OLYMPUS_TAG_UNKNOWN_5, NULL, NULL, NULL},
+	{MNOTE_OLYMPUS_TAG_DATADUMP, "DataDump", N_("Data Dump"), NULL},
 	{MNOTE_OLYMPUS_TAG_UNKNOWN_4, NULL, NULL, NULL},
 	{MNOTE_OLYMPUS_TAG_SHUTTERSPEED, "ShutterSpeed", N_("Shutter Speed"), ""},
 	{MNOTE_OLYMPUS_TAG_ISOVALUE, "ISOValue", N_("ISO Value"), ""},
@@ -170,6 +170,7 @@ static const struct {
 	{MNOTE_SANYO_TAG_SEQUENTIALSHOT, "SequentialShot", N_("Sequential Shot"), ""},
 	{MNOTE_SANYO_TAG_WIDERANGE, "WideRange", N_("Wide Range"), ""},
 	{MNOTE_SANYO_TAG_COLORADJUSTMENTMODE, "ColorAdjustmentMode", N_("Color Adjustment Mode"), ""},
+	{MNOTE_SANYO_TAG_FOCUSMODE, "FocusMode", N_("Focus Mode"), ""},
 	{MNOTE_SANYO_TAG_QUICKSHOT, "QuickShot", N_("Quick Shot"), ""},
 	{MNOTE_SANYO_TAG_SELFTIMER, "SelfTimer", N_("Self Timer"), ""},
 	{MNOTE_SANYO_TAG_VOICEMEMO, "VoiceMemo", N_("Voice Memo"), ""},
@@ -179,6 +180,7 @@ static const struct {
 	{MNOTE_SANYO_TAG_DIGITALZOOM, "DigitalZoom", N_("Digital Zoom"), ""},
 	{MNOTE_SANYO_TAG_LIGHTSOURCESPECIAL, "LightSourceSpecial", N_("Light Source Special"), ""},
 	{MNOTE_SANYO_TAG_RESAVED, "Resaved", N_("Resaved"), ""},
+	{MNOTE_SANYO_TAG_CCDSENSITIVITY, "CCDSensitivity", N_("CCD Sensitivity"), ""},
 	{MNOTE_SANYO_TAG_SCENESELECT, "SceneSelect", N_("Scene Select"), ""},
 	{MNOTE_SANYO_TAG_MANUALFOCUSDISTANCE, "ManualFocusDistance", N_("Manual Focus Distance"), ""},
 	{MNOTE_SANYO_TAG_SEQUENCESHOTINTERVAL, "SequenceShotInterval", N_("Sequence Shot Interval"), ""},
@@ -186,7 +188,7 @@ static const struct {
 	/* Epson */
 	{MNOTE_EPSON_TAG_IMAGE_WIDTH, "EpsonImageWidth", N_("Epson Image Width"), ""},
 	{MNOTE_EPSON_TAG_IMAGE_HEIGHT, "EpsonImageHeight", N_("Epson Image Height"), ""},
-	{MNOTE_EPSON_TAG_OEM_MODEL, "EpsonOEMModel", N_("OEM Model Name"), ""},
+	{MNOTE_EPSON_TAG_SOFTWARE, "EpsonSoftware", N_("Epson Software Version"), ""},
 #endif
 	{0, NULL, NULL, NULL}
 };

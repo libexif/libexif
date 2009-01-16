@@ -637,7 +637,10 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 		if ((e->size >= 8) && !memcmp (e->data, "UNICODE\0", 8)) {
 			strncpy (val, _("Unsupported UNICODE string"), maxlen);
-		/* FIXME: use iconv to convert into the locale encoding */
+		/* FIXME: use iconv to convert into the locale encoding.
+		 * EXIF 2.2 implies (but does not say) that this encoding is
+		 * UCS-2.
+		 */
 			break;
 		}
 		if ((e->size >= 8) && !memcmp (e->data, "JIS\0\0\0\0\0", 8)) {

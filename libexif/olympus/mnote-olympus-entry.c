@@ -121,10 +121,10 @@ static const struct {
       {4, N_("Contrast-")},
       {0, NULL}}},
   { MNOTE_NIKON1_TAG_CCDSENSITIVITY, EXIF_FORMAT_SHORT,
-    { {0, N_("ISO80")},
-      {2, N_("ISO160")},
-      {4, N_("ISO320")},
-      {5, N_("ISO100")},
+    { {0, N_("ISO 80")},
+      {2, N_("ISO 160")},
+      {4, N_("ISO 320")},
+      {5, N_("ISO 100")},
       {0, NULL}}},
   { MNOTE_NIKON1_TAG_WHITEBALANCE, EXIF_FORMAT_SHORT,
     { {0, N_("Auto")},
@@ -220,11 +220,16 @@ static const struct {
     { {0, N_("Interlaced")},
       {1, N_("Progressive")},
       {0, NULL}}},
+
   { MNOTE_SANYO_TAG_SEQUENTIALSHOT, EXIF_FORMAT_SHORT,
     { {0, N_("None")},
       {1, N_("Standard")},
       {2, N_("Best")},
       {3, N_("Adjust Exposure")},
+      {0, NULL}}},
+  { MNOTE_SANYO_TAG_FOCUSMODE, EXIF_FORMAT_SHORT,
+    { {1, N_("Spot Focus")},
+      {2, N_("Normal Focus")},
       {0, NULL}}},
   { MNOTE_SANYO_TAG_RECORDSHUTTERRELEASE, EXIF_FORMAT_SHORT,
     { {0, N_("Record while down")},
@@ -233,6 +238,13 @@ static const struct {
   { MNOTE_SANYO_TAG_RESAVED, EXIF_FORMAT_SHORT,
     { {0, N_("No")},
       {1, N_("Yes")},
+      {0, NULL}}},
+  { MNOTE_SANYO_TAG_CCDSENSITIVITY, EXIF_FORMAT_SHORT,
+    { {0, N_("Auto")},
+      {1, N_("ISO 50")},
+      {3, N_("ISO 100")},
+      {4, N_("ISO 200")},
+      {5, N_("ISO 400")},
       {0, NULL}}},
   { MNOTE_SANYO_TAG_SCENESELECT, EXIF_FORMAT_SHORT,
     { {0, N_("Off")},
@@ -321,7 +333,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_NIKON_TAG_IMAGEADJUSTMENT:
 	case MNOTE_NIKON_TAG_ADAPTER:
 	case MNOTE_NIKON_TAG_SATURATION2:
-	case MNOTE_EPSON_TAG_OEM_MODEL:
+	case MNOTE_EPSON_TAG_SOFTWARE:
 		CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
 		memcpy(v, entry->data, MIN (maxlen, entry->size));
 		break;
@@ -473,8 +485,10 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_OLYMPUS_TAG_PREVIEWIMAGEVALID:
 	case MNOTE_OLYMPUS_TAG_CCDSCANMODE:
 	case MNOTE_SANYO_TAG_SEQUENTIALSHOT:
+	case MNOTE_SANYO_TAG_FOCUSMODE:
 	case MNOTE_SANYO_TAG_RECORDSHUTTERRELEASE:
 	case MNOTE_SANYO_TAG_RESAVED:
+	case MNOTE_SANYO_TAG_CCDSENSITIVITY:
 	case MNOTE_SANYO_TAG_SCENESELECT:
 	case MNOTE_SANYO_TAG_SEQUENCESHOTINTERVAL:
 		CC (entry->components, 1, v, maxlen);
@@ -644,7 +658,11 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_OLYMPUS_TAG_UNKNOWN_4:
 		CF (entry->format, EXIF_FORMAT_LONG, v, maxlen);
 		CC (entry->components, 30, v, maxlen);
-		/* TODO: display me */
+		for (i=0; i < (int)entry->components; ++i) {
+			vs = exif_get_long (entry->data+4*i, entry->order);
+			sprintf (buf, "%lu ", vs);
+			strncat (v, buf, maxlen - strlen (v));
+		}
 		break;
 	case MNOTE_OLYMPUS_TAG_FOCUSDIST:
 		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);

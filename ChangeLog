@@ -1,3 +1,7 @@
+2009-01-15  Dan Fandrich <dan@coneharvesters.com>
+
+	* Interpret more Sanyo MakerNote tags
+
 2009-01-12  Dan Fandrich <dan@coneharvesters.com>
 
 	* Added support for Epson MakerNotes, which have the identical
