@@ -54,7 +54,7 @@ static const struct {
 	{MNOTE_FUJI_TAG_FOCUS_CHECK, "AutoFocusCheck", N_("Auto Focus Check"), ""},
 	{MNOTE_FUJI_TAG_AUTO_EXPOSURE_CHECK, "AutoExposureCheck", N_("Auto Exposure Check"), ""},
 	{MNOTE_FUJI_TAG_DYNAMIC_RANGE, "DynamicRange", N_("Dynamic Range"), ""},
-	{MNOTE_FUJI_TAG_FILM_MODE, "FilmMode", N_("Film simulation Mode"), ""},
+	{MNOTE_FUJI_TAG_FILM_MODE, "FilmMode", N_("Film Simulation Mode"), ""},
 	{MNOTE_FUJI_TAG_DYNAMIC_RANGE_SETTING, "DRangeMode", N_("Dynamic Range Wide Mode"), ""},
 	{MNOTE_FUJI_TAG_DEV_DYNAMIC_RANGE_SETTING, "DevDRangeMode", N_("Development Dynamic Range Wide Mode"), ""},
 	{MNOTE_FUJI_TAG_MIN_FOCAL_LENGTH, "MinFocalLen", N_("Minimum Focal Length"), ""},
