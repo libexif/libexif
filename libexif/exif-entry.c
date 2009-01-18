@@ -556,7 +556,7 @@ static const struct {
 const char *
 exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 {
-	unsigned int i, j, k, l, ts;
+	unsigned int i, j, k;
 	const unsigned char *t;
 	ExifByte v_byte;
 	ExifShort v_short, v_short2, v_short3, v_short4;
@@ -712,10 +712,11 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		/* Second part: Editor. */
 		strncat (val, " - ", maxlen - strlen (val));
 		if (e->size && e->data) {
-		    t = e->data + strlen ((char *) e->data) + 1;
-		    ts = e->data + e->size - t;
-		    if ((ts > 0) && (strspn ((char *)t, " ") != ts))
-			strncat (val, (char *)t, MIN (maxlen - strlen (val), ts));
+			size_t ts;
+			t = e->data + strlen ((char *) e->data) + 1;
+			ts = e->data + e->size - t;
+			if ((ts > 0) && (strspn ((char *)t, " ") != ts))
+				strncat (val, (char *)t, MIN (maxlen - strlen (val), ts));
 		} else {
 			strncat (val, _("[None]"), maxlen - strlen (val));
 		}
@@ -946,11 +947,11 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		/* Find a short enough value */
 		memset (val, 0, maxlen);
 		for (k = 0; list2[i].elem[j].values[k]; k++) {
-		  l = strlen (_(list2[i].elem[j].values[k]));
-		  if ((maxlen > l) && (strlen (val) < l))
-		    strncpy (val, _(list2[i].elem[j].values[k]), maxlen);
+			size_t l = strlen (_(list2[i].elem[j].values[k]));
+			if ((maxlen > l) && (strlen (val) < l))
+				strncpy (val, _(list2[i].elem[j].values[k]), maxlen);
 		}
-		if (!strlen (val)) snprintf (val, maxlen, "%i", v_short);
+		if (!val[0]) snprintf (val, maxlen, "%i", v_short);
 
 		break;
 	case EXIF_TAG_PLANAR_CONFIGURATION:
