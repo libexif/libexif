@@ -52,7 +52,7 @@ static const struct {
 	 N_("New Subfile Type"), N_("A general indication of the kind of data "
 	    "contained in this subfile.")},
 	{EXIF_TAG_INTEROPERABILITY_INDEX, "InteroperabilityIndex",
-	 "InteroperabilityIndex",
+	 N_("Interoperability Index"),
 	 N_("Indicates the identification of the Interoperability rule. "
 	    "Use \"R98\" for stating ExifR98 Rules. Four bytes used "
 	    "including the termination code (NULL). see the separate "
@@ -60,7 +60,7 @@ static const struct {
 	    "for other tags used for ExifR98."),
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_OOOO } },
 	{EXIF_TAG_INTEROPERABILITY_VERSION, "InteroperabilityVersion",
-	 "InteroperabilityVersion", "",
+	 N_("Interoperability Version"), "",
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_OOOO } },
 	{EXIF_TAG_IMAGE_WIDTH, "ImageWidth", N_("Image Width"),
 	 N_("The number of columns of image data, equal to the number of "
@@ -548,7 +548,7 @@ static const struct {
 	 N_("The exposure bias. The units is the APEX value. Ordinarily "
 	    "it is given in the range of -99.99 to 99.99."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_MAX_APERTURE_VALUE, "MaxApertureValue", "MaxApertureValue",
+	{EXIF_TAG_MAX_APERTURE_VALUE, "MaxApertureValue", N_("Maximum Aperture Value"),
 	 N_("The smallest F number of the lens. The unit is the APEX value. "
 	    "Ordinarily it is given in the range of 00.00 to 99.99, "
 	    "but it is not limited to this range."),
