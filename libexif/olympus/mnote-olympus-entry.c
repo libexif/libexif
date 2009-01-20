@@ -1,6 +1,6 @@
 /* mnote-olympus-entry.c
  *
- * Copyright (c) 2002 Lutz Mueller <lutz@users.sourceforge.net>
+ * Copyright (c) 2002-2009 Lutz Mueller <lutz@users.sourceforge.net> et. al.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -314,14 +314,6 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
                 snprintf (v, maxlen, "ISO2 %hd", vs);
                 break;
 	case MNOTE_NIKON_TAG_QUALITY:
-                CF (entry->format, EXIF_FORMAT_ASCII, v, maxlen);
-                /*CC (entry->components, 8, v, maxlen);
-                vl = exif_get_long (entry->data, entry->order);
-                printf("-> 0x%04x\n",entry->data);
-                printf("-> 0x%s<\n",entry->data - 0);*/
-                memcpy(v, entry->data, MIN(maxlen, entry->size));
-                /*snprintf (v, maxlen, "%s<",  ( entry->data - 9  );*/
-                break;
 	case MNOTE_NIKON_TAG_COLORMODE:
 	case MNOTE_NIKON_TAG_COLORMODE1:
 	case MNOTE_NIKON_TAG_WHITEBALANCE:
@@ -379,7 +371,6 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		r = (double)vr.numerator / vr.denominator;
 		vr = exif_get_rational (entry->data+8, entry->order);
 		b = (double)vr.numerator / vr.denominator;
-		/*printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);*/
 		snprintf (v, maxlen, _("Red Correction %f, Blue Correction %f"), r,b);
 		break;
 	case MNOTE_NIKON_TAG_MANUALFOCUSDISTANCE:
@@ -560,7 +551,6 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			c = (double)vr.numerator / vr.denominator;
 			vr = exif_get_rational (entry->data+24, entry->order);
 			d = (double)vr.numerator / vr.denominator;
-                        /*printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator);*/
 			snprintf (v, maxlen, "%ld-%ldmm 1:%3.1f - %3.1f",a,b,c,d);
 		}
 		break;
@@ -673,7 +663,6 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		}
 		else {
 			unsigned long tmp = vr.numerator / vr.denominator;
-			/* printf("numerator %li, denominator %li\n", vr.numerator, vr.denominator); */
 			snprintf (v, maxlen, "%li mm", tmp);
 		}
 		break;
