@@ -937,7 +937,7 @@ typedef const char * (*get_stuff_func) (ExifTag tag, ExifIfd ifd);
 static const char *
 exif_tag_get_stuff (ExifTag tag, get_stuff_func func)
 {
-	static const ExifIfd ifds[5] = {
+	static const ExifIfd ifds[EXIF_IFD_COUNT] = {
 		EXIF_IFD_0,
 		EXIF_IFD_1,
 		EXIF_IFD_EXIF,
@@ -945,7 +945,7 @@ exif_tag_get_stuff (ExifTag tag, get_stuff_func func)
 		EXIF_IFD_GPS
 	};
 	int i;
-	for (i=0; i<5; i++) {
+	for (i=0; i<EXIF_IFD_COUNT; i++) {
 		const char *result = func(tag, ifds[i]);
 		if (result != NULL) {
 			return result;
