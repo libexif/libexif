@@ -251,8 +251,8 @@ exif_content_fix (ExifContent *c)
 {
 	ExifIfd ifd = exif_content_get_ifd (c);
 	ExifDataType dt;
-	ExifTag t;
 	ExifEntry *e;
+	unsigned int i;
 
 	if (!c) return;
 
@@ -265,7 +265,9 @@ exif_content_fix (ExifContent *c)
 	 * Then check for existing tags that are not allowed and for
 	 * non-existing mandatory tags.
 	 */
-	for (t = 0; t <= 0xffff; t++) {
+	for (i = 0; i <= 0xffff; i++) {
+		/* Index using an int because t might only be 16 bits */
+		const ExifTag t = (ExifTag) i;
 		switch (exif_tag_get_support_level_in_ifd (t, ifd, dt)) {
 		case EXIF_SUPPORT_LEVEL_MANDATORY:
 			if (exif_content_get_entry (c, t)) break;
