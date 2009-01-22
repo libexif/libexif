@@ -346,7 +346,7 @@ if (data->ifd[(i)]->count) {				\
 
 /*! Load data for an IFD.
  *
- * \param[in/out] data #ExifData
+ * \param[in,out] data #ExifData
  * \param[in] ifd IFD to load
  * \param[in] d pointer to buffer containing raw IFD data
  * \param[in] ds size of raw data in buffer at \c d
@@ -372,7 +372,7 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 	if (( ((int)ifd) < 0) || ( ((int)ifd) >= EXIF_IFD_COUNT))
 	  return;
 
-	if (recursion_depth > 150) {
+	if (recursion_depth > 30) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
 			  "Deep recursion detected!");
 		return;
@@ -513,7 +513,7 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		if (ifd == data->ifd[i])
 			break;
 	if (i == EXIF_IFD_COUNT)
-		return;
+		return;	/* error */
 
 	/*
 	 * Check if we need some extra entries for pointers or the thumbnail.
