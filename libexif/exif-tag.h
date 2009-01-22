@@ -188,7 +188,7 @@ typedef enum {
 	/*! The meaning of this tag is unknown */
 	EXIF_SUPPORT_LEVEL_UNKNOWN = 0,
 
-	/*! This tag is not found in the given IFD */
+	/*! This tag is not allowed in the given IFD */
 	EXIF_SUPPORT_LEVEL_NOT_RECORDED,
 
 	/*! This tag is mandatory in the given IFD */
@@ -239,6 +239,7 @@ const char      *exif_tag_get_description_in_ifd   (ExifTag tag, ExifIfd ifd);
  * \param[in] tag EXIF tag
  * \param[in] ifd IFD
  * \param[in] t data type
+ * \return the level of support for this tag
  */
 ExifSupportLevel exif_tag_get_support_level_in_ifd (ExifTag tag, ExifIfd ifd,
                                                     ExifDataType t);

@@ -39,6 +39,8 @@
 #define ESL_GPS { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN }
 
 static const struct {
+	/*! Tag ID. There may be duplicate tags when the same number is used for
+	 * different meanings in different IFDs. */
 	ExifTag tag;
 	const char *name;
 	const char *title;
@@ -991,17 +993,70 @@ exif_tag_from_name (const char *name)
 	return result;
 }
 
+/*! Return the support level of a tag in the given IFD with the given data
+ * type. If the tag is not specified in the EXIF standard, this function
+ * returns EXIF_SUPPORT_LEVEL_NOT_RECORDED.
+ *
+ * \param[in] tag EXIF tag
+ * \param[in] ifd a valid IFD (not EXIF_IFD_COUNT)
+ * \param[in] t a valid data type (not EXIF_DATA_TYPE_COUNT)
+ * \return the level of support for this tag
+ */
+static inline ExifSupportLevel
+get_support_level_in_ifd (ExifTag tag, ExifIfd ifd, ExifDataType t)
+{
+	unsigned int i;
+	for (i = 0; ExifTagTable[i].description; i++) {
+		if (ExifTagTable[i].tag == tag)
+			return ExifTagTable[i].esl[ifd][t];
+	}
+	return EXIF_SUPPORT_LEVEL_NOT_RECORDED;
+}
+
+/*! Return the support level of a tag in the given IFD, regardless of the
+ * data type. If the support level varies depending on the data type, this
+ * function returns EXIF_SUPPORT_LEVEL_UNKNOWN. If the tag is not specified
+ * in the EXIF standard, this function returns EXIF_SUPPORT_LEVEL_UNKNOWN.
+ *
+ * \param[in] tag EXIF tag
+ * \param[in] ifd a valid IFD (not EXIF_IFD_COUNT)
+ * \return the level of support for this tag
+ */
+static inline ExifSupportLevel
+get_support_level_any_type (ExifTag tag, ExifIfd ifd)
+{
+	unsigned int i;
+	for (i = 0; ExifTagTable[i].description; i++) {
+		if (ExifTagTable[i].tag == tag) {
+			/*
+			 * Check whether the support level is the same for all possible
+			 * data types and isn't marked not recorded.
+			 */
+			const ExifSupportLevel supp = ExifTagTable[i].esl[ifd][0];
+			if (supp != EXIF_SUPPORT_LEVEL_NOT_RECORDED) {
+				unsigned int dt;
+				for (dt = 0; dt < EXIF_DATA_TYPE_COUNT; ++dt) {
+					if (ExifTagTable[i].esl[ifd][dt] != supp)
+						break;
+				}
+				if (dt == EXIF_DATA_TYPE_COUNT)
+					/* Support level is always the same, so return it */
+					return supp;
+			}
+			/* Keep searching the table for another tag for our IFD */
+		}
+	}
+	return EXIF_SUPPORT_LEVEL_UNKNOWN;
+}
+
 ExifSupportLevel
 exif_tag_get_support_level_in_ifd (ExifTag tag, ExifIfd ifd, ExifDataType t)
 {
-	unsigned int i;
+	if (ifd >= EXIF_IFD_COUNT)
+		return EXIF_SUPPORT_LEVEL_UNKNOWN;
 
-	if (ifd >= EXIF_IFD_COUNT) return EXIF_SUPPORT_LEVEL_UNKNOWN;
-	if (t >= EXIF_DATA_TYPE_COUNT) return EXIF_SUPPORT_LEVEL_UNKNOWN;
+	if (t >= EXIF_DATA_TYPE_COUNT)
+		return get_support_level_any_type (tag, ifd);
 
-	for (i = 0; ExifTagTable[i].description; i++)
-		if ((ExifTagTable[i].tag == tag) &&
-				(ExifTagTable[i].esl[ifd][t] != EXIF_SUPPORT_LEVEL_NOT_RECORDED))
-			return ExifTagTable[i].esl[ifd][t];
-	return EXIF_SUPPORT_LEVEL_NOT_RECORDED;
+	return get_support_level_in_ifd (tag, ifd, t);
 }

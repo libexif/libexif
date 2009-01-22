@@ -1,3 +1,13 @@
+2009-01-21  Dan Fandrich <dan@coneharvesters.com>
+
+	* libexif/exif-entry.c: Initialize the default for EXIF_TAG_COLOR_SPACE
+	  to "Uncalibrated"
+	* libexif/exif-data.c: Reduce the recursion limit
+	* When the data type is not known in exif_tag_get_support_level_in_ifd
+	  check the support level for all data types and if it's all the same,
+	  return that. This means that fixing a new EXIF tag block will
+	  actually create some tags in it now.
+
 2009-01-15  Dan Fandrich <dan@coneharvesters.com>
 
 	* Interpret more Sanyo MakerNote tags

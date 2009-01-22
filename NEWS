@@ -14,6 +14,8 @@ libexif-0.6.x:
   * Fixed the interpretation of some tags as being optional in IFD 1
     (to match the EXIF 2.2 spec) which stops them from being erroneously
     removed from a file
+  * Changed exif_tag_get_support_level_in_ifd() to return a value when possible
+    when the data type for the given tag is unknown
 
 libexif-0.6.17 (2008-11-06):
   * Updated translations: cs, de, pl, sk, vi
