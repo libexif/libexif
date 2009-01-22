@@ -213,10 +213,12 @@ exif_set_srational (unsigned char *buf, ExifByteOrder order,
 	exif_set_slong (buf + 4, order, value.denominator);
 }
 
+/*! This function converts rather UCS-2LE than UTF-16 to UTF-8.
+ * It should really be replaced by iconv().
+ */
 void
 exif_convert_utf16_to_utf8 (char *out, const unsigned short *in, int maxlen)
 {
-	/* This function converts rather UCS2 than UTF16 to UTF8 */
 	if (maxlen <= 0) {
 		return;
 	}

@@ -615,15 +615,30 @@ static const struct {
 	 N_("A tag used to record fractions of seconds for the "
 	    "<DateTimeDigitized> tag."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_XP_TITLE, "XPTitle", N_("XP Title"), "",
+	/* Not in EXIF 2.2 (Microsoft extension) */
+	{EXIF_TAG_XP_TITLE, "XPTitle", N_("XP Title"),
+	 N_("A character string giving the title of the image, encoded in "
+	    "UTF-16LE."),
 	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_XP_COMMENT, "XPComment", N_("XP Comment"), "",
+	/* Not in EXIF 2.2 (Microsoft extension) */
+	{EXIF_TAG_XP_COMMENT, "XPComment", N_("XP Comment"), 
+	 N_("A character string containing a comment about the image, encoded "
+	    "in UTF-16LE."),
 	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_XP_AUTHOR, "XPAuthor", N_("XP Author"), "",
+	/* Not in EXIF 2.2 (Microsoft extension) */
+	{EXIF_TAG_XP_AUTHOR, "XPAuthor", N_("XP Author"), 
+	 N_("A character string containing the name of the image creator, "
+	    "encoded in UTF-16LE."),
 	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_XP_KEYWORDS, "XPKeywords", N_("XP Keywords"), "",
+	/* Not in EXIF 2.2 (Microsoft extension) */
+	{EXIF_TAG_XP_KEYWORDS, "XPKeywords", N_("XP Keywords"), 
+	 N_("A character string containing key words describing the image, "
+	    "encoded in UTF-16LE."),
 	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_XP_SUBJECT, "XPSubject", N_("XP Subject"), "",
+	/* Not in EXIF 2.2 (Microsoft extension) */
+	{EXIF_TAG_XP_SUBJECT, "XPSubject", N_("XP Subject"), 
+	 N_("A character string giving the image subject, encoded in "
+	    "UTF-16LE."),
 	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FLASH_PIX_VERSION, "FlashPixVersion", "FlashPixVersion",
 	 N_("The FlashPix format version supported by a FPXR file."),
@@ -833,6 +848,7 @@ static const struct {
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_GAMMA, "Gamma", N_("Gamma"),
 	 N_("Indicates the value of coefficient gamma.")},
+	/* Not in EXIF 2.2 */
 	{EXIF_TAG_PRINT_IMAGE_MATCHING, "PrintImageMatching", N_("PRINT Image Matching"),
 	 N_("Related to Epson's PRINT Image Matching technology")},
 #endif
@@ -1033,6 +1049,7 @@ get_support_level_any_type (ExifTag tag, ExifIfd ifd)
 			 * data types and isn't marked not recorded.
 			 */
 			const ExifSupportLevel supp = ExifTagTable[i].esl[ifd][0];
+			/* If level is not recorded, keep searching for another */
 			if (supp != EXIF_SUPPORT_LEVEL_NOT_RECORDED) {
 				unsigned int dt;
 				for (dt = 0; dt < EXIF_DATA_TYPE_COUNT; ++dt) {
