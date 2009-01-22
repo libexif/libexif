@@ -1174,7 +1174,6 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_FOCAL_LENGTH_IN_35MM_FILM:
 	case EXIF_TAG_GAIN_CONTROL:
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
-	case EXIF_TAG_COLOR_SPACE:
 	case EXIF_TAG_FLASH:
 
 	/* SHORT, 1 component, default 0 */
@@ -1228,6 +1227,17 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		if (!e->data) break;
 		exif_set_short (e->data, o, 3);
 		break;
+
+	case EXIF_TAG_COLOR_SPACE:
+	/* SHORT, 1 component, default 0xffff */
+		e->components = 1;
+		e->format = EXIF_FORMAT_SHORT;
+		e->size = exif_format_get_size (e->format) * e->components;
+		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
+		exif_set_short (e->data, o, 0xffff);
+		break;
+
 
 	case EXIF_TAG_BITS_PER_SAMPLE:
 		e->components = 3;
