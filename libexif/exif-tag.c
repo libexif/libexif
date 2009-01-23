@@ -1023,8 +1023,12 @@ get_support_level_in_ifd (ExifTag tag, ExifIfd ifd, ExifDataType t)
 {
 	unsigned int i;
 	for (i = 0; ExifTagTable[i].description; i++) {
-		if (ExifTagTable[i].tag == tag)
-			return ExifTagTable[i].esl[ifd][t];
+		if (ExifTagTable[i].tag == tag) {
+			const ExifSupportLevel supp = ExifTagTable[i].esl[ifd][t];
+			if (supp != EXIF_SUPPORT_LEVEL_NOT_RECORDED)
+				return supp;
+			/* Try looking for another entry */
+		}
 	}
 	return EXIF_SUPPORT_LEVEL_NOT_RECORDED;
 }

@@ -234,11 +234,15 @@ const char      *exif_tag_get_title_in_ifd         (ExifTag tag, ExifIfd ifd);
 const char      *exif_tag_get_description_in_ifd   (ExifTag tag, ExifIfd ifd);
 
 /*! Return whether the given tag is mandatory or not in the given IFD and
- * data type according to the EXIF specification.
+ * data type according to the EXIF specification. If the IFD given is
+ * EXIF_IFD_COUNT, the result is EXIF_SUPPORT_LEVEL_UNKNOWN. If the data
+ * type is EXIF_DATA_TYPE_COUNT, the result is
+ * EXIF_SUPPORT_LEVEL_UNKNOWN unless the support level is the same for
+ * all data types.
  *
  * \param[in] tag EXIF tag
- * \param[in] ifd IFD
- * \param[in] t data type
+ * \param[in] ifd IFD or EXIF_IFD_COUNT
+ * \param[in] t data type or EXIF_DATA_TYPE_COUNT
  * \return the level of support for this tag
  */
 ExifSupportLevel exif_tag_get_support_level_in_ifd (ExifTag tag, ExifIfd ifd,
