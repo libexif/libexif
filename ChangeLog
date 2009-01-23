@@ -1,3 +1,10 @@
+2009-01-22  Dan Fandrich <dan@coneharvesters.com>
+
+	* Fix exif_tag_get_support_level_in_ifd() to handle the case where two
+	  tags with the same number exist in different IFDs.
+	* Added test-tagtable to do some tests on the static EXIF tag
+	  information table.
+
 2009-01-21  Dan Fandrich <dan@coneharvesters.com>
 
 	* libexif/exif-entry.c: Initialize the default for EXIF_TAG_COLOR_SPACE
