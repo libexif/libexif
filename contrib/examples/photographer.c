@@ -68,6 +68,7 @@ static void show_mnote_tag(ExifData *d, unsigned tag)
 int main(int argc, char **argv)
 {
     ExifData *ed;
+    ExifEntry *entry;
 
     if (argc < 2) {
         printf("Usage: %s image.jpg\n", argv[0]);
@@ -99,8 +100,7 @@ int main(int argc, char **argv)
      * manufacturer tag to see if this image could have one of the recognized
      * MakerNote tags.
      */
-    ExifEntry *entry = 
-            exif_content_get_entry(ed->ifd[EXIF_IFD_0], EXIF_TAG_MAKE);
+    entry = exif_content_get_entry(ed->ifd[EXIF_IFD_0], EXIF_TAG_MAKE);
     if (entry) {
         char buf[64];
 
@@ -109,13 +109,11 @@ int main(int argc, char **argv)
             trim_spaces(buf);
 
             if (!strcmp(buf, "Canon")) {
-                /* MNOTE_CANON_TAG_OWNER */
-                show_mnote_tag(ed, 9);
+                show_mnote_tag(ed, 9); /* MNOTE_CANON_TAG_OWNER */
 
             } else if (!strcmp(buf, "Asahi Optical Co.,Ltd.") || 
                        !strcmp(buf, "PENTAX Corporation")) {
-                /* MNOTE_PENTAX2_TAG_HOMETOWN_CITY */
-                show_mnote_tag(ed, 0x23);
+                show_mnote_tag(ed, 0x23); /* MNOTE_PENTAX2_TAG_HOMETOWN_CITY */
             }
         }
     }
