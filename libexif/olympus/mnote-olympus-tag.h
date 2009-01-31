@@ -42,7 +42,7 @@ enum _MnoteOlympusTag {
 	MNOTE_NIKON_TAG_UNKNOWN_0X000D          = 0x000d,
 	MNOTE_NIKON_TAG_EXPOSUREDIFF            = 0x000e,
 	MNOTE_NIKON_TAG_ISOSELECTION            = 0x000f,
-	MNOTE_NIKON_TAG_PREVIEWIMAGE            = 0x0011,
+	MNOTE_NIKON_TAG_PREVIEWIMAGE_IFD_POINTER= 0x0011,
 	MNOTE_NIKON_TAG_FLASHEXPCOMPENSATION    = 0x0012,
 	MNOTE_NIKON_TAG_ISO2                    = 0x0013,
 	MNOTE_NIKON_TAG_IMAGEBOUNDARY           = 0x0016,
@@ -163,6 +163,11 @@ enum _MnoteOlympusTag {
 	MNOTE_OLYMPUS_TAG_LIGHTVALUECENTER	= 0x103d,
 	MNOTE_OLYMPUS_TAG_LIGHTVALUEPERIPHERY	= 0x103e,
 
+	/* Epson */
+	MNOTE_EPSON_TAG_IMAGE_WIDTH		= 0x020b,
+	MNOTE_EPSON_TAG_IMAGE_HEIGHT		= 0x020c,
+	MNOTE_EPSON_TAG_SOFTWARE		= 0x020d,
+
 	/* Sanyo */
 	MNOTE_SANYO_TAG_SEQUENTIALSHOT		= 0x020e,
 	MNOTE_SANYO_TAG_WIDERANGE		= 0x020f,
@@ -181,11 +186,6 @@ enum _MnoteOlympusTag {
 	MNOTE_SANYO_TAG_SCENESELECT		= 0x021f,
 	MNOTE_SANYO_TAG_MANUALFOCUSDISTANCE	= 0x0223,
 	MNOTE_SANYO_TAG_SEQUENCESHOTINTERVAL	= 0x0224,
-
-	/* Epson */
-	MNOTE_EPSON_TAG_IMAGE_WIDTH		= 0x020b,
-	MNOTE_EPSON_TAG_IMAGE_HEIGHT		= 0x020c,
-	MNOTE_EPSON_TAG_SOFTWARE		= 0x020d,
 };
 typedef enum _MnoteOlympusTag MnoteOlympusTag;
 
@@ -194,6 +194,7 @@ typedef enum _MnoteOlympusTag MnoteOlympusTag;
 #define MNOTE_OLYMPUS_TAG_UNKNOWN_2	MNOTE_OLYMPUS_TAG_FOCALPLANEDIAGONAL
 #define MNOTE_OLYMPUS_TAG_UNKNOWN_3	MNOTE_OLYMPUS_TAG_LENSDISTORTION
 #define MNOTE_OLYMPUS_TAG_UNKNOWN_5	MNOTE_OLYMPUS_TAG_DATADUMP
+#define MNOTE_NIKON_TAG_PREVIEWIMAGE	MNOTE_NIKON_TAG_PREVIEWIMAGE_IFD_POINTER
 
 /*! Return a textual name of the given tag within the Olympus-style MakerNote.
  * The name is a short, unique, non-localized text string containing only
@@ -217,7 +218,6 @@ const char *mnote_olympus_tag_get_title       (MnoteOlympusTag tag);
  * The description is a verbose, localized description of the tag.
  *
  * \param[in] tag EXIF tag
- * \param[in] ifd IFD
  * \return textual description of the tag, or NULL if the tag is unknown
  */
 const char *mnote_olympus_tag_get_description (MnoteOlympusTag tag);

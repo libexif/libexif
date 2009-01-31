@@ -6,6 +6,12 @@
 	* Fixed some signed vs unsigned formatting errors
 	* Format the EXIF_TAG_GPS_TIME_STAMP & EXIF_TAG_GPS_ALTITUDE_REF tags
 	* Improved the wrong data type fixup
+	* Separated the MNOTE_SANYO_TAG_SELFTIMER 2 sec. case from the other
+	  On/Off cases
+	* Renamed MNOTE_NIKON_TAG_PREVIEWIMAGE_IFD_POINTERS to show that it's 
+	  an IFD. The case of IFDs in MakerNotes needs to be handled better
+	  because right now, those MakerNote IFD tags are corrupted since
+	  the sub-IFDs aren't being read and written.
 
 2009-01-22  Dan Fandrich <dan@coneharvesters.com>
 

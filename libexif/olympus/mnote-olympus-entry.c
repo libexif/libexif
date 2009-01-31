@@ -516,7 +516,6 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_SANYO_TAG_WIDERANGE:
 	case MNOTE_SANYO_TAG_COLORADJUSTMENTMODE:
 	case MNOTE_SANYO_TAG_QUICKSHOT:
-	case MNOTE_SANYO_TAG_SELFTIMER:
 	case MNOTE_SANYO_TAG_VOICEMEMO:
 	case MNOTE_SANYO_TAG_FLICKERREDUCE:
 	case MNOTE_SANYO_TAG_OPTICALZOOM:
@@ -533,7 +532,28 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			strncpy (v, _("On"), maxlen);
 			break;
 		default:
-			strncpy (v, _("Unknown"), maxlen);
+			sprintf (buf, _("Unknown %hu"), vs);
+			strncat (v, buf, maxlen - strlen (v));
+			break;
+		}
+		break;
+	case MNOTE_SANYO_TAG_SELFTIMER:
+		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
+		CC (entry->components, 1, v, maxlen);
+		vs = exif_get_short (entry->data, entry->order);
+		switch (vs) {
+		case 0:
+			strncpy (v, _("Off"), maxlen);
+			break;
+		case 1:
+			strncpy (v, _("On"), maxlen);
+			break;
+		case 2:
+			strncpy (v, _("2 sec."), maxlen);
+			break;
+		default:
+			sprintf (buf, _("Unknown %hu"), vs);
+			strncat (v, buf, maxlen - strlen (v));
 			break;
 		}
 		break;
