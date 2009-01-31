@@ -142,11 +142,18 @@ void        exif_entry_fix        (ExifEntry *entry);
 
 /* For your convenience */
 
-/*! Return a textual representation of the value of the EXIF entry.
+/*! Return a localized textual representation of the value of the EXIF entry.
+ * This is meant for display to the user. The format of each tag is subject
+ * to change between locales and in newer versions of libexif.  Users who
+ * require the tag data in an unambiguous form should access the data members
+ * of the #ExifEntry structure directly.
  *
  * \warning The character set of the returned string may be in
  *          the encoding of the current locale or the native encoding
  *          of the camera.
+ * \bug     The EXIF_TAG_XP_* tags are currently always returned in UTF-8,
+ *          regardless of locale, and code points above U+FFFF are not
+ *          supported.
  *
  * \param[in] entry EXIF entry
  * \param[out] val buffer in which to store value
