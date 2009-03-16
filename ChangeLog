@@ -1,3 +1,9 @@
+2009-03-16  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libexif/canon/exif-mnote-data-canon.c:
+          (exif_mnote_data_canon_load): Fix the coding style in this function
+	  to make it easier to read.
+
 2009-02-02  Dan Fandrich <dan@coneharvesters.com>
 
 	* Added AC_C_INLINE to configure.ac to define the inline keyword

@@ -208,47 +208,46 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 	for (i = 0; i < c; i++) {
 		o = 6 + 2 + n->offset + 12 * i;
 		if (o + 8 > buf_size) {
-				exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
-					  "ExifMnoteCanon",
-					  "Short MakerNote");
-				return;
+			exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				"ExifMnoteCanon", "Short MakerNote");
+			return;
 	        }
 
 		t = exif_mem_realloc (ne->mem, n->entries,
-				sizeof (MnoteCanonEntry) * (i + 1));
+			 sizeof (MnoteCanonEntry) * (i + 1));
 		if (!t) return; /* out of memory */
 		n->count = i + 1;
 		n->entries = t;
 		memset (&n->entries[i], 0, sizeof (MnoteCanonEntry));
-	  n->entries[i].tag        = exif_get_short (buf + o, n->order);
-	  n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
-	  n->entries[i].components = exif_get_long (buf + o + 4, n->order);
-	  n->entries[i].order      = n->order;
+		n->entries[i].tag        = exif_get_short (buf + o, n->order);
+		n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
+		n->entries[i].components = exif_get_long (buf + o + 4, n->order);
+		n->entries[i].order      = n->order;
 
-	  exif_log (ne->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteCanon",
-				"Loading entry 0x%x ('%s')...", n->entries[i].tag,
-                mnote_canon_tag_get_name (n->entries[i].tag));
+		exif_log (ne->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteCanon",
+			"Loading entry 0x%x ('%s')...", n->entries[i].tag,
+			 mnote_canon_tag_get_name (n->entries[i].tag));
 
-	  /*
-	   * Size? If bigger than 4 bytes, the actual data is not
-	   * in the entry but somewhere else (offset).
-	   */
-	  s = exif_format_get_size (n->entries[i].format) * n->entries[i].components;
+		/*
+		 * Size? If bigger than 4 bytes, the actual data is not
+		 * in the entry but somewhere else (offset).
+		 */
+		s = exif_format_get_size (n->entries[i].format) * n->entries[i].components;
 		if (!s) {
-				exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
-					  "ExifMnoteCanon",
-					  "Invalid zero-length tag size");
-				return;
-	    }
+			exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				  "ExifMnoteCanon",
+				  "Invalid zero-length tag size");
+			return;
+		}
 		o += 8;
 		if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
 		if (o + s > buf_size) {
 			exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
-					  "ExifMnoteCanon",
-					  "Tag data past end of buffer (%u > %u)",
-					  o+s, buf_size);
+				"ExifMnoteCanon",
+				"Tag data past end of buffer (%u > %u)",
+				o + s, buf_size);
 			return;
-	     }
+		}
 
 		/* Sanity check */
 		n->entries[i].data = exif_mem_alloc (ne->mem, sizeof (char) * s);
