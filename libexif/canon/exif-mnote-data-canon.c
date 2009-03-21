@@ -241,7 +241,7 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 		}
 		o += 8;
 		if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
-		if (o + s > buf_size) {
+		if ((o + s < s) || (o + s < o) || (o + s > buf_size)) {
 			exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				"ExifMnoteCanon",
 				"Tag data past end of buffer (%u > %u)",

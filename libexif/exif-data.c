@@ -196,9 +196,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 		doff = offset + 8;
 
 	/* Sanity checks */
-	if ((doff + s < doff) || (doff + s < s))
-		return 0;
-	if (size < doff + s)
+	if ((doff + s < doff) || (doff + s < s) || (doff + s > size))
 		return 0;
 
 	entry->data = exif_data_alloc (data, s);
@@ -309,21 +307,24 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 
 static void
 exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
-			       unsigned int ds, ExifLong offset, ExifLong size)
+			       unsigned int ds, ExifLong o, ExifLong s)
 {
-	if ((ds < offset + size) || (offset > ds)) {
+	/* Sanity checks */
+	if ((o + s < o) || (o + s < s) || (o + s > ds) || (o > ds)) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 			  "Bogus thumbnail offset (%u) or size (%u).",
-			  offset, size);
+			  o, s);
 		return;
 	}
+
 	if (data->data) 
 		exif_mem_free (data->priv->mem, data->data);
-	data->size = size;
-	data->data = exif_data_alloc (data, data->size);
-	if (!data->data) 
+	if (!(data->data = exif_data_alloc (data, s))) {
+		data->size = 0;
 		return;
-	memcpy (data->data, d + offset, data->size);
+	}
+	data->size = s;
+	memcpy (data->data, d + o, s);
 }
 
 #undef CHECK_REC

@@ -1,3 +1,19 @@
+2009-03-21  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Meder Kydyraliev <meder.k@gmail.com> suggested to add some sanity
+	checks:
+
+	* libexif/exif-data.c (exif_data_load_entry),
+	  (exif_data_load_data_thumbnail)
+	* libexif/canon/exif_mnote-data-canon.c
+          (exif_mnote_data_canon_load)
+	* libexif/fuji/exif-mnote-data-fuji.c
+	  (exif_mnote_data_fuji_load)
+	* libexif/olympus/exif-mnote-data-olympus.c
+          (exif_mnote_data_olympus_load)
+	* libexif/pentax/exif-mnote-data-pentax.c
+	  (exif_mnote_data_pentax_load)
+
 2009-03-16  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* libexif/canon/exif-mnote-data-canon.c:

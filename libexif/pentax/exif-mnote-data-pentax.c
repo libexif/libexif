@@ -139,10 +139,10 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 		if (!s) return;
 		o += 8;
 		if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
-		if (o + s > buf_size) {
-			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteDataPentax",
-					  "Tag data past end of buffer (%u > %u)",
-					  o+s, buf_size);
+		if ((o + s < o) || (o + s < s) || (o + s > buf_size)) {
+			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			          "ExifMnoteDataPentax", "Tag data past end "
+				  "of buffer (%u > %u)", o + s, buf_size);
 			return;
 		}
                                                                                 

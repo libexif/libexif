@@ -155,11 +155,15 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 	size_t i, o, s, datao = 6 + n->offset;
 	MnoteFujiEntry *t;
 
-	if (!n || !buf || !buf_size || (buf_size < datao + 12)) return;
+	if (!n || !buf || !buf_size || (datao + 12 < datao) ||
+	    (datao + 12 < 12) || (datao + 12 > buf_size))
+		return;
 
 	/* Read the number of entries and remove old ones. */
 	n->order = EXIF_BYTE_ORDER_INTEL;
 	datao += exif_get_long (buf + datao + 8, EXIF_BYTE_ORDER_INTEL);
+	if ((datao + 2 < datao) || (datao + 2 < 2))
+		return;
 	c = exif_get_short (buf + datao, EXIF_BYTE_ORDER_INTEL);
 	datao += 2;
 	exif_mnote_data_fuji_clear (n);
@@ -192,10 +196,10 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 		if (!s) return;
 		o += 8;
 		if (s > 4) o = exif_get_long (buf + o, n->order) + 6 + n->offset;
-		if (o + s > buf_size) {
-			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteDataFuji",
-					  "Tag data past end of buffer (%u > %u)",
-					  o+s, buf_size);
+		if ((o + s < o) || (o + s < s) || (o + s > buf_size)) {
+			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			          "ExifMnoteDataFuji", "Tag data past end of "
+				  "buffer (%u > %u)", o + s, buf_size);
 			return;
 		}
 

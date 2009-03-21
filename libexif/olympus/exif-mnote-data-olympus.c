@@ -380,7 +380,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	/* Parse all c entries, storing ones that are successfully parsed */
 	for (i = c, tcount = 0, o = o2; i; --i, o += 12) {
 		size_t dataofs;
-	    if (o + 12 > buf_size) {
+	    if ((o + 12 < o) || (o + 12 < 12) || (o + 12 > buf_size)) {
 			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifMnoteOlympus", "Short MakerNote");
 			break;
@@ -427,11 +427,12 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 			    }
 #endif
 			}
-			if (dataofs + s > buf_size)  {
+			if ((dataofs + s < dataofs) || (dataofs + s < s) || 
+			    (dataofs + s > buf_size)) {
 				exif_log (en->log, EXIF_LOG_CODE_DEBUG,
 					  "ExifMnoteOlympus",
 					  "Tag data past end of buffer (%u > %u)",
-					  dataofs+s, buf_size);
+					  dataofs + s, buf_size);
 				continue;
 			}
 
