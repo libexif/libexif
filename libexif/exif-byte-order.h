@@ -25,11 +25,18 @@
 extern "C" {
 #endif /* __cplusplus */
 
+/*! Which byte order to use */
 typedef enum {
+	/*! Big-endian byte order */
 	EXIF_BYTE_ORDER_MOTOROLA,
+	/*! Little-endian byte order */
 	EXIF_BYTE_ORDER_INTEL
 } ExifByteOrder;
 
+/*! Return a short, localized, textual name for the given byte order.
+ * \param[in] order byte order
+ * \return localized textual name of the byte order
+ */
 const char *exif_byte_order_get_name (ExifByteOrder order);
 
 #ifdef __cplusplus

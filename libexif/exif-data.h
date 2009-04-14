@@ -57,12 +57,19 @@ struct _ExifData
 	ExifDataPrivate *priv;
 };
 
-/*! Allocate a new, empty #ExifData.
+/*! Allocate a new #ExifData. The #ExifData contains an empty
+ * #ExifContent for each IFD and the default set of options.
  *
  * \return allocated #ExifData, or NULL on error
  */
 ExifData *exif_data_new           (void);
 
+/*! Allocate a new #ExifData using the given memory allocator.
+ * The #ExifData contains an empty #ExifContent for each IFD and the default
+ * set of options.
+ *
+ * \return allocated #ExifData, or NULL on error
+ */
 ExifData *exif_data_new_mem       (ExifMem *);
 
 /*! Allocate a new #ExifData and load EXIF data from a JPEG file.
@@ -85,6 +92,8 @@ ExifData *exif_data_new_from_data (const unsigned char *data,
 /*! Load the #ExifData structure from the raw JPEG or EXIF data in the given
  * memory buffer. If the EXIF data contains a recognized MakerNote, it is
  * loaded and stored as well for later retrieval by #exif_data_get_mnote_data.
+ * If the EXIF_DATA_OPTION_FOLLOW_SPECIFICATION has been set on this #ExifData,
+ * then the tags are fixed after loading.
  *
  * \param[in,out] data EXIF data
  * \param[in] d pointer to raw JPEG or EXIF data
