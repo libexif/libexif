@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: libexif 0.6.17-pre1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-31 15:37-0800\n"
-"PO-Revision-Date: 2007-12-15 16:51+0000\n"
+"PO-Revision-Date: 2009-04-20 11:00+0000\n"
 "Last-Translator: Jan Patera <patera@users.sourceforge.net>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -193,7 +193,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:100 libexif/canon/mnote-canon-entry.c:103
 msgid "Manual focus"
-msgstr "Ruční ostření"
+msgstr "Ruční zaostřování"
 
 #: libexif/canon/mnote-canon-entry.c:104 libexif/canon/mnote-canon-entry.c:132
 #: libexif/canon/mnote-canon-entry.c:187
@@ -1285,7 +1285,6 @@ msgid "%u mm"
 msgstr "%u mm"
 
 #: libexif/canon/mnote-canon-tag.c:35
-#, fuzzy
 msgid "Settings (First Part)"
 msgstr "Nastavení (1. část)"
 
@@ -1295,7 +1294,6 @@ msgid "Focal Length"
 msgstr "Ohnisková vzdálenost"
 
 #: libexif/canon/mnote-canon-tag.c:37
-#, fuzzy
 msgid "Settings (Second Part)"
 msgstr "Nastavení (druhá část)"
 
@@ -1304,7 +1302,6 @@ msgid "Panorama"
 msgstr "Panorama"
 
 #: libexif/canon/mnote-canon-tag.c:39
-#, fuzzy
 msgid "Image Type"
 msgstr "Typ snímku"
 
@@ -1314,12 +1311,10 @@ msgid "Firmware Version"
 msgstr "Verze firmware"
 
 #: libexif/canon/mnote-canon-tag.c:41
-#, fuzzy
 msgid "Image Number"
 msgstr "Číslo snímku"
 
 #: libexif/canon/mnote-canon-tag.c:42
-#, fuzzy
 msgid "Owner Name"
 msgstr "Jméno vlastníka"
 
@@ -1334,12 +1329,10 @@ msgid "Serial Number"
 msgstr "Sériové číslo"
 
 #: libexif/canon/mnote-canon-tag.c:45
-#, fuzzy
 msgid "Custom Functions"
-msgstr "Přechodová funkce"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:56
-#, fuzzy
 msgid "Macro Mode"
 msgstr "Režim makro"
 
@@ -1362,9 +1355,8 @@ msgid "Flash Mode"
 msgstr "Režim blesku"
 
 #: libexif/canon/mnote-canon-tag.c:60 libexif/pentax/mnote-pentax-tag.c:101
-#, fuzzy
 msgid "Drive Mode"
-msgstr "Zelený režim"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:61 libexif/canon/mnote-canon-tag.c:82
 #: libexif/olympus/mnote-olympus-tag.c:43
@@ -1376,7 +1368,6 @@ msgid "Focus Mode"
 msgstr "Režim zaostřování"
 
 #: libexif/canon/mnote-canon-tag.c:62 libexif/pentax/mnote-pentax-tag.c:127
-#, fuzzy
 msgid "Record Mode"
 msgstr "Režim záznamu"
 
@@ -1429,7 +1420,6 @@ msgid "Focus Range"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:72 libexif/canon/mnote-canon-tag.c:105
-#, fuzzy
 msgid "AF Point"
 msgstr "Střed zaostření"
 
@@ -1439,68 +1429,56 @@ msgstr "Režim expozice"
 
 #: libexif/canon/mnote-canon-tag.c:74 libexif/olympus/mnote-olympus-tag.c:61
 #: libexif/pentax/mnote-pentax-tag.c:106
-#, fuzzy
 msgid "Lens Type"
-msgstr "Typ čoček"
+msgstr "Druh čoček"
 
 #: libexif/canon/mnote-canon-tag.c:75
-#, fuzzy
 msgid "Long Focal Length of Lens"
 msgstr "Velká ohnisková vzdálenost"
 
 #: libexif/canon/mnote-canon-tag.c:76
-#, fuzzy
 msgid "Short Focal Length of Lens"
 msgstr "Krátká ohnisková vzdálenost"
 
 #: libexif/canon/mnote-canon-tag.c:77
-#, fuzzy
 msgid "Focal Units per mm"
 msgstr "Ohniskové jednotky na mm"
 
 #: libexif/canon/mnote-canon-tag.c:78
-#, fuzzy
 msgid "Maximal Aperture"
 msgstr "Maximální clona"
 
 #: libexif/canon/mnote-canon-tag.c:79
-#, fuzzy
 msgid "Minimal Aperture"
 msgstr "Minimální clona"
 
 #: libexif/canon/mnote-canon-tag.c:80
-#, fuzzy
 msgid "Flash Activity"
 msgstr "Aktivita blesku"
 
 #: libexif/canon/mnote-canon-tag.c:81
-#, fuzzy
 msgid "Flash Details"
 msgstr "Detaily blesku"
 
 #: libexif/canon/mnote-canon-tag.c:83
-#, fuzzy
 msgid "AE Setting"
-msgstr "Nastavení blesku"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:84
-#, fuzzy
 msgid "Image Stabilization"
 msgstr "Stabilizace obrazu"
 
 #: libexif/canon/mnote-canon-tag.c:85
-#, fuzzy
 msgid "Display Aperture"
-msgstr "Clona"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:86
 msgid "Zoom Source Width"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:87
-#, fuzzy
 msgid "Zoom Target Width"
-msgstr "Šířka obrázku"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:88
 msgid "Photo Effect"
@@ -1511,24 +1489,20 @@ msgid "Manual Flash Output"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:90
-#, fuzzy
 msgid "Color Tone"
-msgstr "Barevný model"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:91
-#, fuzzy
 msgid "Focal Type"
-msgstr "Ohnisková vzdálenost"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:93
-#, fuzzy
 msgid "Focal Plane X Size"
 msgstr "Šířka ohniskové roviny"
 
 #: libexif/canon/mnote-canon-tag.c:94
-#, fuzzy
 msgid "Focal Plane Y Size"
-msgstr "Šířka ohniskové roviny"
+msgstr "Výška ohniskové roviny"
 
 #: libexif/canon/mnote-canon-tag.c:95
 msgid "Auto ISO"
@@ -1543,14 +1517,12 @@ msgid "Measured EV"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:98
-#, fuzzy
 msgid "Target Aperture"
-msgstr "Clona"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:99
-#, fuzzy
 msgid "Target Exposure Time"
-msgstr "Expoziční čas"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:100 libexif/olympus/mnote-olympus-tag.c:129
 #: libexif/pentax/mnote-pentax-tag.c:81
@@ -1566,19 +1538,16 @@ msgid "White Balance"
 msgstr "Vyvážení bílé"
 
 #: libexif/canon/mnote-canon-tag.c:102
-#, fuzzy
 msgid "Slow Shutter"
 msgstr "Pomalá uzávěrka"
 
 #: libexif/canon/mnote-canon-tag.c:103
-#, fuzzy
 msgid "Sequence Number"
-msgstr "Sériové číslo"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:104
-#, fuzzy
 msgid "Flash Guide Number"
-msgstr "Číslo snímku"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:106 libexif/olympus/mnote-olympus-tag.c:52
 #: libexif/pentax/mnote-pentax-tag.c:109
@@ -1598,9 +1567,8 @@ msgid "Focus Distance Upper"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:110
-#, fuzzy
 msgid "Focus Distance Lower"
-msgstr "Režim ostření"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:111 libexif/exif-tag.c:314
 msgid "FNumber"
@@ -1612,43 +1580,36 @@ msgid "Exposure Time"
 msgstr "Expoziční čas"
 
 #: libexif/canon/mnote-canon-tag.c:113
-#, fuzzy
 msgid "Bulb Duration"
-msgstr "Sytost"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:114
-#, fuzzy
 msgid "Camera Type"
 msgstr "Typ fotoaparátu"
 
 #: libexif/canon/mnote-canon-tag.c:115
-#, fuzzy
 msgid "Auto Rotate"
 msgstr "Automatické otočení"
 
 #: libexif/canon/mnote-canon-tag.c:116
-#, fuzzy
 msgid "ND Filter"
-msgstr "Digitální filtr"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:119
-#, fuzzy
 msgid "Panorama Frame"
-msgstr "Panorama"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:120
-#, fuzzy
 msgid "Panorama Direction"
-msgstr "Popis obrázku"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:121
 msgid "Tone Curve"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:122
-#, fuzzy
 msgid "Sharpness Frequency"
-msgstr "Ostrost"
+msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:124
 msgid "Picture Style"
@@ -1718,12 +1679,12 @@ msgstr ""
 "na formát '%s'."
 
 #: libexif/exif-entry.c:255
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Tag '%s' is of format '%s' (which is against specification) but cannot be "
 "changed to format '%s'."
 msgstr ""
-"Značka '%s' měla formát '%s', což odporovalo specifikaci, proto byla změněna "
+"Značka '%s' má formát '%s', což odporuje specifikaci, ale nemuže být změněna "
 "na formát '%s'."
 
 #: libexif/exif-entry.c:338
@@ -1744,15 +1705,13 @@ msgstr ""
 "specifikaci."
 
 #: libexif/exif-entry.c:380
-#, fuzzy
 msgid ""
 "Tag 'UserComment' is not empty but does not start with a format identifier. "
 "This has been fixed."
 msgstr ""
-"Značka 'Komentář' nezačínala identifikátorem typu, což nyní bylo spraveno."
+"Značka 'Komentář' nebyla prázdná a ani nezačínala identifikátorem typu, což nyní bylo spraveno."
 
 #: libexif/exif-entry.c:408
-#, fuzzy
 msgid ""
 "Tag 'UserComment' did not start with a format identifier. This has been "
 "fixed."
@@ -1765,7 +1724,7 @@ msgid "%i bytes undefined data"
 msgstr "%i bajtů neznámých dat"
 
 #: libexif/exif-entry.c:574
-#, fuzzy, c-format
+#, c-format
 msgid "%i bytes unsupported data type"
 msgstr "%i bajtů neznámých dat"
 
@@ -1907,11 +1866,11 @@ msgstr ""
 
 #: libexif/exif-entry.c:654
 msgid "Auto white balance"
-msgstr "Automatické vyvážení"
+msgstr "Automatické vyvážení bílé"
 
 #: libexif/exif-entry.c:654
 msgid "Manual white balance"
-msgstr "Ruční nastavení"
+msgstr "Ruční vyvážení bílé"
 
 #: libexif/exif-entry.c:659
 msgid "Low gain up"
@@ -2124,9 +2083,8 @@ msgid "no flash"
 msgstr "Bez blesku"
 
 #: libexif/exif-entry.c:742
-#, fuzzy
 msgid "Flash fired"
-msgstr "Blesk bleskl."
+msgstr "Blesk bleskl"
 
 #: libexif/exif-entry.c:742
 msgid "flash"
@@ -2141,130 +2099,109 @@ msgid "Yes"
 msgstr "Ano"
 
 #: libexif/exif-entry.c:743
-#, fuzzy
 msgid "Strobe return light not detected"
-msgstr "Blesk bleskl, automatický režim, odraz světla nedetekován."
+msgstr ""
 
 #: libexif/exif-entry.c:743
 msgid "W/o strobe"
 msgstr ""
 
 #: libexif/exif-entry.c:745
-#, fuzzy
 msgid "Strobe return light detected"
-msgstr "Blesk bleskl, automatický režim, odraz světla detekován."
+msgstr ""
 
 #: libexif/exif-entry.c:745
 msgid "W. strobe"
 msgstr ""
 
 #: libexif/exif-entry.c:747
-#, fuzzy
 msgid "Flash fired, compulsory flash mode"
-msgstr "Blesk bleskl, blesk zapnut."
+msgstr "Blesk bleskl, blesk zapnut"
 
 #: libexif/exif-entry.c:748
-#, fuzzy
 msgid "Flash fired, compulsory flash mode, return light not detected"
-msgstr "Blesk bleskl, blesk zapnut, odraz světla nedetekován."
+msgstr "Blesk bleskl, blesk zapnut, odraz světla nedetekován"
 
 #: libexif/exif-entry.c:750
-#, fuzzy
 msgid "Flash fired, compulsory flash mode, return light detected"
-msgstr "Blesk bleskl, blesk zapnut, odraz světla detekován."
+msgstr "Blesk bleskl, blesk zapnut, odraz světla detekován"
 
 #: libexif/exif-entry.c:752
-#, fuzzy
 msgid "Flash did not fire, compulsory flash mode"
-msgstr "Blesk nebleskl, blesk zapnut."
+msgstr "Blesk nebleskl, blesk zapnut"
 
 #: libexif/exif-entry.c:753
-#, fuzzy
 msgid "Flash did not fire, auto mode"
-msgstr "Blesk nebleskl, automatický režim."
+msgstr "Blesk nebleskl, automatický režim"
 
 #: libexif/exif-entry.c:754
-#, fuzzy
 msgid "Flash fired, auto mode"
-msgstr "Blesk bleskl, automatický režim."
+msgstr "Blesk bleskl, automatický režim"
 
 #: libexif/exif-entry.c:755
-#, fuzzy
 msgid "Flash fired, auto mode, return light not detected"
-msgstr "Blesk bleskl, automatický režim, odraz světla nedetekován."
+msgstr "Blesk bleskl, automatický režim, odraz světla nedetekován"
 
 #: libexif/exif-entry.c:757
-#, fuzzy
 msgid "Flash fired, auto mode, return light detected"
-msgstr "Blesk bleskl, automatický režim, odraz světla detekován."
+msgstr "Blesk bleskl, automatický režim, odraz světla detekován"
 
 #: libexif/exif-entry.c:758
-#, fuzzy
 msgid "No flash function"
-msgstr "Bez blesku."
+msgstr "Bez blesku"
 
 #: libexif/exif-entry.c:759
-#, fuzzy
 msgid "Flash fired, red-eye reduction mode"
-msgstr "Blesk bleskl, režim redukce červených očí."
+msgstr "Blesk bleskl, režim redukce červených očí"
 
 #: libexif/exif-entry.c:760
-#, fuzzy
 msgid "Flash fired, red-eye reduction mode, return light not detected"
-msgstr "Blesk bleskl, režim redukce červených očí, odraz světla nedetekován."
+msgstr "Blesk bleskl, režim redukce červených očí, odraz světla nedetekován"
 
 #: libexif/exif-entry.c:762
-#, fuzzy
 msgid "Flash fired, red-eye reduction mode, return light detected"
-msgstr "Blesk bleskl, režim redukce červených očí, odraz světla detekován."
+msgstr "Blesk bleskl, režim redukce červených očí, odraz světla detekován"
 
 #: libexif/exif-entry.c:764
-#, fuzzy
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode"
-msgstr "Blesk bleskl, blesk zapnut, režim redukce červených očí."
+msgstr "Blesk bleskl, blesk zapnut, režim redukce červených očí"
 
 #: libexif/exif-entry.c:766
-#, fuzzy
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
 "detected"
 msgstr ""
 "Blesk bleskl, blesk zapnut, režim redukce červených očí, odraz světla "
-"nedetekován."
+"nedetekován"
 
 #: libexif/exif-entry.c:768
-#, fuzzy
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light "
 "detected"
 msgstr ""
 "Blesk bleskl, blesk zapnut, režim redukce červených očí, odraz světla "
-"detekován."
+"detekován"
 
 #: libexif/exif-entry.c:770
-#, fuzzy
 msgid "Flash did not fire, auto mode, red-eye reduction mode"
-msgstr "Blesk nebleskl, automatický režim, režim redukce červených očí."
+msgstr "Blesk nebleskl, automatický režim, režim redukce červených očí"
 
 #: libexif/exif-entry.c:771
-#, fuzzy
 msgid "Flash fired, auto mode, red-eye reduction mode"
-msgstr "Blesk bleskl, automatický režim, režim redukce červených očí."
+msgstr "Blesk bleskl, automatický režim, režim redukce červených očí"
 
 #: libexif/exif-entry.c:772
-#, fuzzy
 msgid ""
 "Flash fired, auto mode, return light not detected, red-eye reduction mode"
 msgstr ""
 "Blesk bleskl, automatický režim, režim redukce červených očí, odraz světla "
-"nedetekován."
+"nedetekován"
 
 #: libexif/exif-entry.c:774
-#, fuzzy
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode"
 msgstr ""
 "Blesk bleskl, automatický režim, režim redukce červených očí, odraz světla "
-"detekován."
+"detekován"
 
 #: libexif/exif-entry.c:778
 msgid "?"
@@ -2473,9 +2410,9 @@ msgid "Sea level reference"
 msgstr ""
 
 #: libexif/exif-entry.c:1330
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown value %i"
-msgstr "Neznámá hodnota %hi"
+msgstr "Neznámá hodnota %i"
 
 #: libexif/exif-format.c:33
 msgid "Byte"
@@ -3040,9 +2977,8 @@ msgid ""
 msgstr ""
 
 #: libexif/exif-tag.c:330
-#, fuzzy
 msgid "Exposure Program"
-msgstr "Režim expozice"
+msgstr ""
 
 #: libexif/exif-tag.c:331
 msgid ""
@@ -3187,9 +3123,8 @@ msgid ""
 msgstr ""
 
 #: libexif/exif-tag.c:403
-#, fuzzy
 msgid "GPS measurement mode"
-msgstr "Zelený režim"
+msgstr ""
 
 #: libexif/exif-tag.c:404
 msgid ""
@@ -3223,9 +3158,8 @@ msgid "Speed of GPS receiver"
 msgstr ""
 
 #: libexif/exif-tag.c:416
-#, fuzzy
 msgid "Indicates the speed of GPS receiver movement."
-msgstr "Udává hodnotu koeficientu gama korekce."
+msgstr ""
 
 #: libexif/exif-tag.c:417
 msgid "Reference for direction of movement"
@@ -3258,9 +3192,8 @@ msgid ""
 msgstr ""
 
 #: libexif/exif-tag.c:427
-#, fuzzy
 msgid "GPS Img Direction"
-msgstr "Popis obrázku"
+msgstr ""
 
 #: libexif/exif-tag.c:428
 msgid ""
@@ -3285,7 +3218,6 @@ msgid "Reference for latitude of destination"
 msgstr ""
 
 #: libexif/exif-tag.c:436
-#, fuzzy
 msgid ""
 "Indicates whether the latitude of the destination point is north or south "
 "latitude. The ASCII value 'N' indicates north latitude, and 'S' is south "
@@ -3313,7 +3245,6 @@ msgid "Reference for longitude of destination"
 msgstr ""
 
 #: libexif/exif-tag.c:448
-#, fuzzy
 msgid ""
 "Indicates whether the longitude of the destination point is east or west "
 "longitude. ASCII 'E' indicates east longitude, and 'W' is west longitude."
@@ -3370,7 +3301,6 @@ msgid "Distance to destination"
 msgstr ""
 
 #: libexif/exif-tag.c:472
-#, fuzzy
 msgid "Indicates the distance to the destination point."
 msgstr "Vzdálenost fotografovaného objektu."
 
@@ -3439,9 +3369,8 @@ msgid ""
 msgstr ""
 
 #: libexif/exif-tag.c:504
-#, fuzzy
 msgid "Time Zone Offset"
-msgstr "Časové pásmo"
+msgstr ""
 
 #: libexif/exif-tag.c:505
 msgid "Encodes time zone of camera clock relative to GMT."
@@ -3476,7 +3405,6 @@ msgid "Date and Time (digitized)"
 msgstr "Datum a čas digitalizace"
 
 #: libexif/exif-tag.c:518
-#, fuzzy
 msgid "The date and time when the image was stored as digital data."
 msgstr "Datum a čas, kdy byl obrázek uložen v digitální formě."
 
@@ -3546,7 +3474,6 @@ msgstr ""
 "až 99,99."
 
 #: libexif/exif-tag.c:553
-#, fuzzy
 msgid "Maximum Aperture Value"
 msgstr "Maximální clona"
 
@@ -3824,9 +3751,8 @@ msgid ""
 msgstr ""
 
 #: libexif/exif-tag.c:751
-#, fuzzy
 msgid "Exposure Index"
-msgstr "Režim expozice"
+msgstr ""
 
 #: libexif/exif-tag.c:752
 msgid ""
@@ -4399,25 +4325,21 @@ msgid "Contrast-"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:124
-#, fuzzy
 msgid "ISO 80"
-msgstr "ISO80"
+msgstr "ISO 80"
 
 #: libexif/olympus/mnote-olympus-entry.c:125
-#, fuzzy
 msgid "ISO 160"
-msgstr "ISO160"
+msgstr "ISO 160"
 
 #: libexif/olympus/mnote-olympus-entry.c:126
-#, fuzzy
 msgid "ISO 320"
 msgstr "ISO 320"
 
 #: libexif/olympus/mnote-olympus-entry.c:127
 #: libexif/olympus/mnote-olympus-entry.c:245
-#, fuzzy
 msgid "ISO 100"
-msgstr "ISO100"
+msgstr "ISO 100"
 
 #: libexif/olympus/mnote-olympus-entry.c:131
 msgid "Preset"
@@ -4444,34 +4366,28 @@ msgid "Fisheye On"
 msgstr "Rybí oko zapnuto"
 
 #: libexif/olympus/mnote-olympus-entry.c:143
-#, fuzzy
 msgid "Normal, SQ"
-msgstr "Černobílý"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:144
-#, fuzzy
 msgid "Normal, HQ"
-msgstr "Černobílý"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:145
-#, fuzzy
 msgid "Normal, SHQ"
-msgstr "Černobílý"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:146
-#, fuzzy
 msgid "Normal, RAW"
-msgstr "Černobílý"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:147
-#, fuzzy
 msgid "Normal, SQ1"
-msgstr "Černobílý"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:148
-#, fuzzy
 msgid "Normal, SQ2"
-msgstr "Černobílý"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:149
 msgid "Normal, super high"
@@ -4588,9 +4504,8 @@ msgid "Spot Focus"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:232
-#, fuzzy
 msgid "Normal Focus"
-msgstr "Černobílý"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:235
 msgid "Record while down"
@@ -4601,19 +4516,16 @@ msgid "Press start, press stop"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:244
-#, fuzzy
 msgid "ISO 50"
-msgstr "ISO80"
+msgstr "ISO 50"
 
 #: libexif/olympus/mnote-olympus-entry.c:246
-#, fuzzy
 msgid "ISO 200"
-msgstr "ISO 320"
+msgstr "ISO 200"
 
 #: libexif/olympus/mnote-olympus-entry.c:247
-#, fuzzy
 msgid "ISO 400"
-msgstr "ISO 320"
+msgstr "ISO 400"
 
 #: libexif/olympus/mnote-olympus-entry.c:251
 #: libexif/pentax/mnote-pentax-entry.c:168
@@ -4728,14 +4640,13 @@ msgstr "Neznámá hodnota %hi"
 
 #: libexif/olympus/mnote-olympus-entry.c:535
 #: libexif/olympus/mnote-olympus-entry.c:555
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown %hu"
-msgstr "Neznámý"
+msgstr "Neznámá hodnota %hu"
 
 #: libexif/olympus/mnote-olympus-entry.c:552
-#, fuzzy
 msgid "2 sec."
-msgstr " s"
+msgstr "2 s"
 
 #: libexif/olympus/mnote-olympus-entry.c:585
 msgid "normal"
@@ -4820,23 +4731,20 @@ msgid "Flash Setting"
 msgstr "Nastavení blesku"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
-#, fuzzy
 msgid "White Balance Fine Adjustment"
-msgstr "Nastavení vyvážení bílé"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:47
-#, fuzzy
 msgid "White Balance RB"
-msgstr "Vyvážení bílé"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:49
 msgid "ISO Selection"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:50
-#, fuzzy
 msgid "Preview Image IFD"
-msgstr "Náhled"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:51
 msgid "Exposurediff ?"
@@ -4851,9 +4759,8 @@ msgid "Flash Exposure Bracket Value"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:57
-#, fuzzy
 msgid "Exposure Bracket Value"
-msgstr "Expoziční čas"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:58
 #: libexif/olympus/mnote-olympus-tag.c:96
@@ -4861,9 +4768,8 @@ msgid "Image Adjustment"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:59
-#, fuzzy
 msgid "Tone Compensation"
-msgstr "Komprese"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:60
 msgid "Adapter"
@@ -4880,38 +4786,32 @@ msgid "Manual Focus Distance"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:65
-#, fuzzy
 msgid "Flash Used"
 msgstr "Blesk použit"
 
 #: libexif/olympus/mnote-olympus-tag.c:66
-#, fuzzy
 msgid "AF Focus Position"
-msgstr "Střed zaostření"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:67
 msgid "Bracketing"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:69
-#, fuzzy
 msgid "Lens F Stops"
-msgstr "Typ čoček"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:70
-#, fuzzy
 msgid "Contrast Curve"
-msgstr "Kontrast"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:71
 #: libexif/olympus/mnote-olympus-tag.c:95
 #: libexif/pentax/mnote-pentax-tag.c:134
-#, fuzzy
 msgid "Color Mode"
-msgstr "Barevný model"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:72
-#, fuzzy
 msgid "Light Type"
 msgstr "Druh světla"
 
@@ -4928,7 +4828,6 @@ msgid "Sensor Pixel Size"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:82
-#, fuzzy
 msgid "Image Datasize"
 msgstr "Velikost obrazových dat"
 
@@ -4937,7 +4836,6 @@ msgid "Size of compressed image data in bytes."
 msgstr "Velikost komprimovaných obrazových dat v souboru v bajtech."
 
 #: libexif/olympus/mnote-olympus-tag.c:84
-#, fuzzy
 msgid "Total Number of Pictures Taken"
 msgstr "Celkový počet snímků"
 
@@ -5236,19 +5134,16 @@ msgid "Sequence Shot Interval"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:189
-#, fuzzy
 msgid "Epson Image Width"
-msgstr "Šířka obrázku"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:190
-#, fuzzy
 msgid "Epson Image Height"
-msgstr "Výška obrázku - Olympus"
+msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:191
-#, fuzzy
 msgid "Epson Software Version"
-msgstr "Verze firmware"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:78
 #: libexif/pentax/mnote-pentax-entry.c:132
@@ -5532,33 +5427,28 @@ msgid "Daylight Savings"
 msgstr "Letní čas"
 
 #: libexif/pentax/mnote-pentax-tag.c:64
-#, fuzzy
 msgid "Preview Size"
-msgstr "Náhled"
+msgstr "Velikost náhledu"
 
 #: libexif/pentax/mnote-pentax-tag.c:65
-#, fuzzy
 msgid "Preview Length"
-msgstr "Náhled"
+msgstr "Délka náhledu"
 
 #: libexif/pentax/mnote-pentax-tag.c:66 libexif/pentax/mnote-pentax-tag.c:122
-#, fuzzy
 msgid "Preview Start"
-msgstr "Náhled"
+msgstr "Začátek náhledu"
 
 #: libexif/pentax/mnote-pentax-tag.c:67
-#, fuzzy
 msgid "Model Identification"
-msgstr "Dodržovat specifikaci"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:68
 msgid "Date"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:69
-#, fuzzy
 msgid "Time"
-msgstr "Časové pásmo"
+msgstr "Čas"
 
 #: libexif/pentax/mnote-pentax-tag.c:72
 msgid "PictureMode"
@@ -5573,29 +5463,24 @@ msgid "Auto AF Point"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:77
-#, fuzzy
 msgid "Focus Position"
-msgstr "Střed zaostření"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:79
-#, fuzzy
 msgid "F-Number"
-msgstr "Číslo snímku"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:80
-#, fuzzy
 msgid "ISO Number"
-msgstr "Sériové číslo"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:83
-#, fuzzy
 msgid "Auto Bracketing"
-msgstr "Automatické otočení"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:85
-#, fuzzy
 msgid "White Balance Mode"
-msgstr "Vyvážení bílé"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:93
 msgid "World Time Location"
@@ -5614,23 +5499,20 @@ msgid "Hometown DST"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:96
-#, fuzzy
 msgid "Home Daylight Savings Time"
-msgstr "Letní čas"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:97
 msgid "Destination DST"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:97
-#, fuzzy
 msgid "Destination Daylight Savings Time"
-msgstr "Letní čas"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:99
-#, fuzzy
 msgid "Image Processing"
-msgstr "Výška obrázku"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:100
 msgid "Picture Mode (2)"
@@ -5641,58 +5523,48 @@ msgid "Image Area Offset"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:104
-#, fuzzy
 msgid "Raw Image Size"
-msgstr "Velikost obrazových dat"
+msgstr "Velikost syrových obrazových dat"
 
 #: libexif/pentax/mnote-pentax-tag.c:105
-#, fuzzy
 msgid "Autofocus Points Used"
-msgstr "Střed zaostření"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:107
-#, fuzzy
 msgid "Camera Temperature"
-msgstr "Maximální clona"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:110
-#, fuzzy
 msgid "Image Tone"
-msgstr "Číslo snímku"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:111
-#, fuzzy
 msgid "Shake Reduction Info"
-msgstr "Redukce šumu"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:112
-#, fuzzy
 msgid "Black Point"
-msgstr "Černobílý"
+msgstr "Černý bod"
 
 #: libexif/pentax/mnote-pentax-tag.c:114
 msgid "AE Info"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:115
-#, fuzzy
 msgid "Lens Info"
-msgstr "Čočky"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:116
-#, fuzzy
 msgid "Flash Info"
-msgstr "Blesk zapnut"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:117
-#, fuzzy
 msgid "Camera Info"
-msgstr "ID fotoaparátu"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:118
-#, fuzzy
 msgid "Battery Info"
-msgstr "Stav baterie"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:119
 msgid "Hometown City Code"
@@ -5711,14 +5583,12 @@ msgid "Distance of photographed object in millimeters."
 msgstr "Vzdálenost fotografovaného objektu v milimetrech."
 
 #: libexif/pentax/mnote-pentax-tag.c:126
-#, fuzzy
 msgid "Flash Distance"
-msgstr "Blesk použit"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:132
-#, fuzzy
 msgid "Bestshot Mode"
-msgstr "Režim blesku"
+msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:133
 msgid "CCS ISO Sensitivity"
@@ -5729,9 +5599,8 @@ msgid "Enhancement"
 msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:136
-#, fuzzy
 msgid "Finer"
-msgstr "Pevný"
+msgstr ""
 
 # This is a very special string. It is used for test purposes, and
 # we only test the de locale as a proof-of-concept example. There is
@@ -5739,57 +5608,3 @@ msgstr "Pevný"
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
 msgstr ""
-
-#~ msgid "Firmware version"
-#~ msgstr "Verze firmware"
-
-#~ msgid "Serial number"
-#~ msgstr "Sériové číslo"
-
-#~ msgid "Flash mode"
-#~ msgstr "Režim blesku"
-
-#~ msgid "Focus mode"
-#~ msgstr "Režim ostření"
-
-#~ msgid "Digital zoom"
-#~ msgstr "Digitální zvětšení"
-
-#~ msgid "Exposure mode"
-#~ msgstr "Režim expozice"
-
-#~ msgid "Focal plane y size"
-#~ msgstr "Výška ohniskové roviny"
-
-#~ msgid "White balance"
-#~ msgstr "Vyvážení bílé"
-
-#~ msgid "Flash did not fire."
-#~ msgstr "Blesk nebleskl"
-
-#~ msgid "ISO320"
-#~ msgstr "ISO320"
-
-#~ msgid "SQ"
-#~ msgstr "SQ"
-
-#~ msgid "HQ"
-#~ msgstr "HQ"
-
-#~ msgid "SHQ"
-#~ msgstr "SHQ"
-
-#~ msgid "SQ1"
-#~ msgstr "SQ1"
-
-#~ msgid "SQ2"
-#~ msgstr "SQ2"
-
-#~ msgid "Lenstype"
-#~ msgstr "Druh čoček"
-
-#~ msgid "Unknown tag."
-#~ msgstr "Neznámá značka"
-
-#~ msgid "Manual Focus"
-#~ msgstr "Ruční zaostřování"
