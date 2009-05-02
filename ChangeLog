@@ -1,6 +1,7 @@
 2009-05-02  Dan Fandrich <dan@coneharvesters.com>
 
 	* Added contrib/examples/write-exif.c
+	* Create a valid default for EXIF_TAG_COMPONENTS_CONFIGURATION
 
 2009-03-21  Lutz Mueller <lutz@users.sourceforge.net>
 

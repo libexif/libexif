@@ -1675,5 +1675,18 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		if (!e->data) break;
                 memcpy (e->data, "0210", 4);
                 break;
+
+        /* UNDEFINED, 4 components, default 1,2,3,0 */
+        case EXIF_TAG_COMPONENTS_CONFIGURATION:
+                e->components = 4;
+                e->format = EXIF_FORMAT_UNDEFINED;
+                e->size = exif_format_get_size (e->format) * e->components;
+                e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) break;
+		e->data[0] = 1;
+		e->data[1] = 2;
+		e->data[2] = 3;
+		e->data[3] = 0;
+                break;
 	}
 }
