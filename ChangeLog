@@ -1,3 +1,7 @@
+2009-05-02  Dan Fandrich <dan@coneharvesters.com>
+
+	* Added contrib/examples/write-exif.c
+
 2009-03-21  Lutz Mueller <lutz@users.sourceforge.net>
 
 	Meder Kydyraliev <meder.k@gmail.com> suggested to add some sanity
