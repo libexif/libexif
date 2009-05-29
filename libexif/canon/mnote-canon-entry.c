@@ -642,7 +642,7 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		case 5:
 		case 14:
 		case 16:
-			snprintf (val, maxlen, _("%.2f EV"), vs / 32.0);
+			snprintf (val, maxlen, _("%.2f EV"), (ExifSShort)vs / 32.0);
 			break;
 		case 3:
 		case 20:
