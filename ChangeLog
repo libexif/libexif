@@ -1,3 +1,7 @@
+2009-06-03  Dan Fandrich <dan@coneharvesters.com>
+
+	* po/da.po: Added Danish translation by Joe Hansen
+
 2009-05-28  Dan Fandrich <dan@coneharvesters.com>
 
 	* Fixed negative exposure values in Canon makernotes (bug #2797280)
