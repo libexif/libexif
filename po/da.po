@@ -2,13 +2,17 @@
 # Copyright (C) 2009 Lutz Mueller and Joe Hansen.
 # This file is distributed under the same license as the libexif package.
 # Joe Hansen <joedalton2@yahoo.dk>, 2009.
+# Korrekturlæst Lars Christian Jensen 12. juni 2009.
 #
 # Canon EF 50mm f/1.8 -> Canon EF 50mm f/1.8 (der er ikke oversat til dansk mellemrum: 50 mm etc.)
-# Send fejlrapport på at deres forkortelser skal have den fulde betegnelse ovenfor til hjælp for oversætterne.
+# Send fejlrapport på at deres forkortelser skal have den fulde betegnelse ovenfor til 
+# hjælp for oversætterne.
 #
 # konventioner:
 # bracket -> kantparentes
 # brightness -> lysstyrke
+# custom -> tilpasset
+# entry -> post
 # exposure -> belysning
 # flash -> blitz
 # fluorescent -> fluorescerende
@@ -23,7 +27,7 @@ msgstr ""
 "Project-Id-Version: libexif-0.6.17\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-06 00:59-0800\n"
-"PO-Revision-Date: 2009-06-03 01:01I+0200\n"
+"PO-Revision-Date: 2009-06-15 01:01I+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -42,14 +46,14 @@ msgstr "Ugyldigt format '%s', forventede '%s'."
 #: libexif/pentax/mnote-pentax-entry.c:51
 #, c-format
 msgid "Invalid number of components (%i, expected %i)."
-msgstr "Ugyldigt antal af komponenter (%i, forventede %i)."
+msgstr "Ugyldigt antal komponenter (%i, forventede %i)."
 
 #: libexif/canon/mnote-canon-entry.c:61
 #: libexif/olympus/mnote-olympus-entry.c:72
 #: libexif/pentax/mnote-pentax-entry.c:61
 #, c-format
 msgid "Invalid number of components (%i, expected %i or %i)."
-msgstr "Ugyldigt antal af komponenter (%i, forventede %i eller %i)."
+msgstr "Ugyldigt antal komponenter (%i, forventede %i eller %i)."
 
 #: libexif/canon/mnote-canon-entry.c:76 libexif/canon/mnote-canon-entry.c:130
 #: libexif/canon/mnote-canon-entry.c:182 libexif/exif-entry.c:542
@@ -277,6 +281,7 @@ msgstr "Fuldskærm"
 msgid "Full auto"
 msgstr "Fuld auto"
 
+# er det en handling eller en manual. (Manual eller manuelt)
 #: libexif/canon/mnote-canon-entry.c:121 libexif/canon/mnote-canon-entry.c:179
 #: libexif/canon/mnote-canon-entry.c:201 libexif/canon/mnote-canon-entry.c:285
 #: libexif/canon/mnote-canon-entry.c:392 libexif/exif-entry.c:490
@@ -290,7 +295,7 @@ msgstr "Fuld auto"
 #: libexif/pentax/mnote-pentax-entry.c:211
 #: libexif/pentax/mnote-pentax-entry.c:250
 msgid "Manual"
-msgstr "Manual"
+msgstr "Manuelt"
 
 #: libexif/canon/mnote-canon-entry.c:122 libexif/canon/mnote-canon-entry.c:430
 #: libexif/exif-entry.c:419 libexif/exif-entry.c:501
@@ -990,7 +995,7 @@ msgstr "Udglattet"
 #: libexif/canon/mnote-canon-entry.c:393 libexif/canon/mnote-canon-entry.c:406
 #: libexif/fuji/mnote-fuji-entry.c:81 libexif/pentax/mnote-pentax-entry.c:87
 msgid "Custom"
-msgstr "Brugertilpasset"
+msgstr "Tilpasset"
 
 #: libexif/canon/mnote-canon-entry.c:311
 msgid "My color data"
@@ -1343,7 +1348,7 @@ msgstr "Serienummer"
 
 #: libexif/canon/mnote-canon-tag.c:45
 msgid "Custom functions"
-msgstr "Brugertilpasset funktioner"
+msgstr "Tilpasset funktioner"
 
 #: libexif/canon/mnote-canon-tag.c:56 libexif/fuji/mnote-fuji-tag.c:45
 msgid "Macro mode"
@@ -3075,7 +3080,7 @@ msgstr "Scenetype"
 
 #: libexif/exif-tag.c:620
 msgid "Indicates the type of scene. If a DSC recorded the image, this tag value must always be set to 1, indicating that the image was directly photographed."
-msgstr "Indikerer scenetypen. Hvis en DSC optog billedet, skal denne mærkeværdi altid være sat til 1, hvilket viser at billedet blev direkte fotograferet."
+msgstr "Indikerer scenetypen. Hvis en DSC optog billedet, skal denne mærkeværdi altid være sat til 1, hvilket viser at billedet blev fotograferet direkte."
 
 #: libexif/exif-tag.c:628
 msgid "Subject Area"
@@ -3852,11 +3857,11 @@ msgstr "Automatisk"
 #: libexif/olympus/mnote-olympus-entry.c:670
 #, c-format
 msgid "Manual: %liK"
-msgstr "Manual: %liK"
+msgstr "Manuelt: %liK"
 
 #: libexif/olympus/mnote-olympus-entry.c:673
 msgid "Manual: Unknown"
-msgstr "Manual: Ukendt"
+msgstr "Manuel: Ukendt"
 
 #: libexif/olympus/mnote-olympus-entry.c:679
 msgid "One-touch"
