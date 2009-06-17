@@ -27,7 +27,7 @@ msgstr ""
 "Project-Id-Version: libexif-0.6.17\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-06 00:59-0800\n"
-"PO-Revision-Date: 2009-06-15 01:01I+0200\n"
+"PO-Revision-Date: 2009-06-17 01:01I+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -1639,7 +1639,7 @@ msgstr "Følg specifikation"
 
 #: libexif/exif-data.c:1174
 msgid "Add, correct and remove entries to get EXIF data that follows the specification."
-msgstr "Tilføj, ret eller fjern punkter for at få EXIF-data som følger specifikationen."
+msgstr "Tilføj, ret eller fjern poster for at få EXIF-data som følger specifikationen."
 
 #: libexif/exif-data.c:1176
 msgid "Do not change maker note"
@@ -3189,7 +3189,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:686
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 #: libexif/exif-tag.c:687
 msgid "Indicates the value of coefficient gamma."
@@ -3263,7 +3263,7 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:127
 msgid "Sunset"
-msgstr ""
+msgstr "Solnedgang"
 
 #: libexif/fuji/mnote-fuji-entry.c:128 libexif/pentax/mnote-pentax-entry.c:181
 msgid "Museum"
@@ -3861,7 +3861,7 @@ msgstr "Manuelt: %liK"
 
 #: libexif/olympus/mnote-olympus-entry.c:673
 msgid "Manual: Unknown"
-msgstr "Manuel: Ukendt"
+msgstr "Manuelt: Ukendt"
 
 #: libexif/olympus/mnote-olympus-entry.c:679
 msgid "One-touch"
