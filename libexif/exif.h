@@ -15,7 +15,7 @@
  *
  * libexif provides a libexif.pc file for use with pkgconfig on the
  * libexif installation. If you are using libtool to build your
- * package, you can also integrate make use of libexif-uninstalled.pc.
+ * package, you can also make use of libexif-uninstalled.pc.
  *
  * An application using libexif would typically first create an #ExifLoader to
  * load EXIF data into memory. From there, it would extract that data as
@@ -51,7 +51,7 @@
  *
  * \section string_conventions String Conventions
  *
- * Strings of 8 bit characters ("char*"). When libexif is compiled with
+ * Strings are 8 bit characters ("char*"). When libexif is compiled with
  * NLS, character set and encoding are as set in the current locale,
  * except for strings that come directly from the data in EXIF
  * tags which are generally returned in raw form.  Most EXIF strings are

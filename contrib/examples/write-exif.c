@@ -122,10 +122,10 @@ static ExifEntry *init_tag(ExifData *exif, ExifIfd ifd, ExifTag tag)
 	ExifEntry *entry;
 	if (!((entry = exif_content_get_entry (exif->ifd[ifd], tag)))) {
 	    entry = exif_entry_new ();
+	    assert(entry != NULL); /* catch an out of memory condition */
 	    exif_content_add_entry (exif->ifd[ifd], entry);
 	    exif_entry_initialize (entry, tag);
 	}
-	assert(entry != NULL); /* catch an out of memory condition */
 	return entry;
 }
 
@@ -147,7 +147,7 @@ int main(int argc, char **argv)
 	exif_data_set_data_type(exif, EXIF_DATA_TYPE_COMPRESSED);
 	exif_data_set_byte_order(exif, BYTE_ORDER);
 
-	/* Create the mandatory EXIF fields */
+	/* Create the mandatory EXIF fields with default data */
 	exif_data_fix(exif);
 
 	/* All these tags are created with default values by exif_data_fix() */
@@ -164,7 +164,7 @@ int main(int argc, char **argv)
 	/* A good example to give here would be to add a new tag that isn't
 	 * automatically created by exif_data_fix() (such as
 	 * EXIF_TAG_USER_COMMENT) which requires allocating memory in
-	 * entry->data. This isn't so easy, unfortunately.
+	 * entry->data. This isn't so easy to do, unfortunately.
 	 */
 
 	/* Get a pointer to the EXIF data block we just created */
