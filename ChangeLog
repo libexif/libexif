@@ -1,3 +1,11 @@
+2009-08-12  Lutz Mueller <lutz@users.sourceforge.com>
+
+	Patch by Vladimir Petrov <vppetrov@mm-sol.com> plus some whitespace
+        fixes by myself:
+
+	* libexif/exif-entry.c: (exif_entry_[fix,get_value,initialize]): 
+          Support EXIF_TAG_ISO_SPEED_RATINGS.
+
 2009-06-15  Dan Fandrich <dan@coneharvesters.com>
 
 	* po/da.po: Danish translation corrections by Lars Christian Jensen

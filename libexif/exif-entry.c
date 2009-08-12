@@ -217,6 +217,7 @@ exif_entry_fix (ExifEntry *e)
 	case EXIF_TAG_SATURATION:
 	case EXIF_TAG_CONTRAST:
 	case EXIF_TAG_SHARPNESS:
+	case EXIF_TAG_ISO_SPEED_RATINGS:
 		switch (e->format) {
 		case EXIF_FORMAT_LONG:
 		case EXIF_FORMAT_SLONG:
@@ -1310,6 +1311,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_SATURATION:
 	case EXIF_TAG_CONTRAST:
 	case EXIF_TAG_SHARPNESS:
+	case EXIF_TAG_ISO_SPEED_RATINGS:
 		CF (e, EXIF_FORMAT_SHORT, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
@@ -1394,6 +1396,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_GAIN_CONTROL:
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
 	case EXIF_TAG_FLASH:
+	case EXIF_TAG_ISO_SPEED_RATINGS:
 
 	/* SHORT, 1 component, default 0 */
 	case EXIF_TAG_IMAGE_WIDTH:
@@ -1415,9 +1418,9 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		break;
 
 	/* SHORT, 1 component, default 1 */
-    case EXIF_TAG_ORIENTATION:
-    case EXIF_TAG_PLANAR_CONFIGURATION:
-    case EXIF_TAG_YCBCR_POSITIONING:
+	case EXIF_TAG_ORIENTATION:
+	case EXIF_TAG_PLANAR_CONFIGURATION:
+	case EXIF_TAG_YCBCR_POSITIONING:
 		e->components = 1;
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
@@ -1427,7 +1430,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		break;
 
 	/* SHORT, 1 component, default 2 */
-    case EXIF_TAG_RESOLUTION_UNIT:
+	case EXIF_TAG_RESOLUTION_UNIT:
 	case EXIF_TAG_FOCAL_PLANE_RESOLUTION_UNIT:
 		e->components = 1;
 		e->format = EXIF_FORMAT_SHORT;
@@ -1438,7 +1441,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		break;
 
 	/* SHORT, 1 component, default 3 */
-    case EXIF_TAG_SAMPLES_PER_PIXEL:
+	case EXIF_TAG_SAMPLES_PER_PIXEL:
 		e->components = 1;
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
@@ -1457,7 +1460,6 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		exif_set_short (e->data, o, 0xffff);
 		break;
 
-
 	case EXIF_TAG_BITS_PER_SAMPLE:
 		e->components = 3;
 		e->format = EXIF_FORMAT_SHORT;
@@ -1472,6 +1474,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 			e->data + 2 * exif_format_get_size (e->format),
 			o, 8);
 		break;
+
 	case EXIF_TAG_YCBCR_SUB_SAMPLING:
 		e->components = 2;
 		e->format = EXIF_FORMAT_SHORT;
