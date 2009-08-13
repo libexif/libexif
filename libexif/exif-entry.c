@@ -1311,7 +1311,6 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_SATURATION:
 	case EXIF_TAG_CONTRAST:
 	case EXIF_TAG_SHARPNESS:
-	case EXIF_TAG_ISO_SPEED_RATINGS:
 		CF (e, EXIF_FORMAT_SHORT, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
