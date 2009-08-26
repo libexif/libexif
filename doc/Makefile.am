@@ -95,7 +95,7 @@ endif # BUILD_DOCS
 # Common part
 ########################################################################
 
-EXTRA_DIST = Doxyfile.in Doxyfile-internals.in README.apidocs $(HTML_APIDOC_DIR).tar.gz
+EXTRA_DIST = Doxyfile.in Doxyfile-internals.in footer.html README.apidocs $(HTML_APIDOC_DIR).tar.gz
 
 doc_DATA = $(DOXYGEN_FILES)
 
