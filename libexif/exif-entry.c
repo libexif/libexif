@@ -1045,9 +1045,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
 		if (d < 1)
-			snprintf (val, maxlen, _("1/%d"), (int) (0.5 + 1. / d));
+			snprintf (val, maxlen, _("1/%i"), (int) (0.5 + 1. / d));
 		else
-			snprintf (val, maxlen, _("%d"), (int) d);
+			snprintf (val, maxlen, "%i", (int) d);
 		if (maxlen > strlen (val) + strlen (_(" sec.")))
 			strncat (val, _(" sec."), maxlen - strlen (val) - 1);
 		break;

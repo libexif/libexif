@@ -486,9 +486,9 @@ canon_search_table_bitfield (const struct canon_entry_table_t table[],
 		for (i = j; table[i].name && (table[i].subtag == t); i++) {
 			bit = table[i].value;
 			if ((vs >> bit) & 1) {
-				strncat(val, table[i].name, maxlen - strlen (val));
+				strncat(val, _(table[i].name), maxlen - strlen (val));
 				if (bit != lastbit) 
-					strncat (val, N_(", "), maxlen - strlen (val));
+					strncat (val, _(", "), maxlen - strlen (val));
 			}
 		}
 	} else {
@@ -579,7 +579,7 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		case 15:
 			if (((vs & 0xC000) == 0x4000) && (vs != 0x7FFF)) {
 				/* Canon S3 IS - directly specified value */
-				snprintf (val, maxlen, _("%i"), vs & ~0x4000);
+				snprintf (val, maxlen, "%i", vs & ~0x4000);
 			} else {
 				/* Standard Canon - index into lookup table */
 				canon_search_table_value (entries_settings_1, t, vs, val, maxlen);
@@ -652,9 +652,9 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		case 21:
 			d = apex_value_to_shutter_speed ((ExifSShort)vs / 32.0);
 			if (d < 1)
-				snprintf (val, maxlen, _("1/%d"),(int)(1.0 / d));
+				snprintf (val, maxlen, _("1/%i"),(int)(1.0 / d));
 			else
-				snprintf (val, maxlen, _("%d"), (int) d);
+				snprintf (val, maxlen, "%i", (int) d);
 			break;
 		case 8:
 			snprintf (val, maxlen, "%u", vs);

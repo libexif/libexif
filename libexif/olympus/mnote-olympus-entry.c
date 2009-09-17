@@ -594,7 +594,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			strncpy (v, _("panorama"), maxlen);
 			break;
 		default:
-			snprintf (v, maxlen, _("%li"), (long int) vl);
+			snprintf (v, maxlen, "%li", (long int) vl);
 		}
 		vl = exif_get_long (entry->data + 4, entry->order);
 		snprintf (buf, sizeof (buf), "/%li/", (long int) vl);
@@ -614,7 +614,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			strncat (v, _("top to bottom"), maxlen - strlen (v));
 			break;
 		default:
-			snprintf (buf, sizeof (buf), _("%li"),
+			snprintf (buf, sizeof (buf), "%li",
 				  (long int) vl);
 			strncat (v, buf, maxlen - strlen (v));
 		}

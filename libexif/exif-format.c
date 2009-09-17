@@ -31,7 +31,7 @@ static const struct {
         unsigned char size;
 } ExifFormatTable[] = {
         {EXIF_FORMAT_BYTE,      N_("Byte"),      1},
-        {EXIF_FORMAT_ASCII,     N_("Ascii"),     1},
+        {EXIF_FORMAT_ASCII,     N_("ASCII"),     1},
         {EXIF_FORMAT_SHORT,     N_("Short"),     2},
         {EXIF_FORMAT_LONG,      N_("Long"),      4},
         {EXIF_FORMAT_RATIONAL,  N_("Rational"),  8},
