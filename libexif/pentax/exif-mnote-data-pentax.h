@@ -27,7 +27,7 @@
 #include <libexif/pentax/mnote-pentax-entry.h>
 #include <libexif/exif-mem.h>
 
-enum PentaxVersion {pentaxV1 = 1, pentaxV2 = 2, pentaxV3 = 4, casioV2 = 4 };
+enum PentaxVersion {pentaxV1 = 1, pentaxV2 = 2, pentaxV3 = 3, casioV2 = 4 };
 
 typedef struct _ExifMnoteDataPentax ExifMnoteDataPentax;
 

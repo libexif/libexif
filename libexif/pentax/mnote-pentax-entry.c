@@ -415,12 +415,36 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		  strncpy (val, (char *)entry->data, MIN(maxlen, entry->size));
 		  break;
 		case EXIF_FORMAT_SHORT:
-		  vs = exif_get_short (entry->data, entry->order);
-		  snprintf (val, maxlen, "%i", vs);
+		  {
+			const unsigned char *data = entry->data;
+		  	size_t len = strlen(val);
+		  	for(i=0; i<entry->components; i++) {
+				if ((i+1)*2 > entry->size) {
+					// Prevent buffer overflow
+					break;
+				}
+				vs = exif_get_short (data, entry->order);
+				snprintf (val+len, maxlen-len, "%i ", vs);
+				len = strlen(val);
+				data += 2;
+			}
+		  }
 		  break;
 		case EXIF_FORMAT_LONG:
-		  vl = exif_get_long (entry->data, entry->order);
-		  snprintf (val, maxlen, "%li", (long int) vl);
+		  {
+			const unsigned char *data = entry->data;
+		  	size_t len = strlen(val);
+		  	for(i=0; i<entry->components; i++) {
+				if ((i+1)*4 > entry->size) {
+					// Prevent buffer overflow
+					break;
+				}
+				vl = exif_get_long (data, entry->order);
+				snprintf (val+len, maxlen-len, "%li", (long int) vl);
+				len = strlen(val);
+				data += 4;
+			}
+		  }
 		  break;
 		case EXIF_FORMAT_UNDEFINED:
 		default:

@@ -66,6 +66,136 @@ exif_mnote_data_pentax_get_value (ExifMnoteData *d, unsigned int i, char *val, u
 	return mnote_pentax_entry_get_value (&n->entries[i], val, maxlen);
 }
 
+/** 
+ * @brief save the MnoteData from ne to buf
+ * 
+ * @param ne extract the data from this structure 
+ * @param *buf write the mnoteData to this buffer (buffer will be allocated)
+ * @param buf_size the final size of the buffer
+ */
+static void
+exif_mnote_data_pentax_save (ExifMnoteData *ne,
+		unsigned char **buf, unsigned int *buf_size)
+{
+	ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) ne;
+	size_t i,
+	   base = 0,		/* internal MakerNote tag number offset */
+	   o2 = 4 + 2;  	/* offset to first tag entry, past header */
+        size_t datao = n->offset; /* this MakerNote style uses offsets
+        			  based on main IFD, not makernote IFD */
+
+	if (!n || !buf || !buf_size) return;
+
+	/*
+	 * Allocate enough memory for header, the number of entries, entries,
+	 * and next IFD pointer
+	 */
+	*buf_size = o2 + 2 + n->count * 12 + 4;
+	switch (n->version) {
+	case casioV2:
+		base = MNOTE_PENTAX2_TAG_BASE;
+		*buf = exif_mem_alloc (ne->mem, *buf_size);
+		if (!*buf) return;
+
+		/* Write the magic header */
+		strcpy ((char *)*buf, "QVC");
+		exif_set_short (*buf + 4, n->order, (ExifShort) 0);
+
+		break;
+
+	case pentaxV3:
+		base = MNOTE_PENTAX2_TAG_BASE;
+		*buf = exif_mem_alloc (ne->mem, *buf_size);
+		if (!*buf) return;
+
+		/* Write the magic header */
+		strcpy ((char *)*buf, "AOC");
+		exif_set_short (*buf + 4, n->order, (ExifShort) (
+			(n->order == EXIF_BYTE_ORDER_INTEL) ?
+			('I' << 8) | 'I' :
+			('M' << 8) | 'M'));
+		break;
+
+	case pentaxV2:
+		base = MNOTE_PENTAX2_TAG_BASE;
+		*buf = exif_mem_alloc (ne->mem, *buf_size);
+		if (!*buf) return;
+
+		/* Write the magic header */
+		strcpy ((char *)*buf, "AOC");
+		exif_set_short (*buf + 4, n->order, (ExifShort) 0);
+		break;
+
+	case pentaxV1:
+		/* It looks like this format doesn't have a magic header as
+		 * such, just has a fixed number of entries equal to 0x001b */
+		*buf_size -= 6;
+		o2 -= 6;
+		*buf = exif_mem_alloc (ne->mem, *buf_size);
+		if (!*buf) return;
+		break;
+
+	default:
+		/* internal error */
+		return;
+	}
+
+	/* Write the number of entries. */
+	exif_set_short (*buf + o2, n->order, (ExifShort) n->count);
+	o2 += 2;
+
+	/* Save each entry */
+	for (i = 0; i < n->count; i++) {
+		size_t doff;	/* offset to current data portion of tag */
+		size_t s;
+		unsigned char *t;
+		size_t o = o2 + i * 12;   /* current offset into output buffer */
+		exif_set_short (*buf + o + 0, n->order,
+				(ExifShort) (n->entries[i].tag - base));
+		exif_set_short (*buf + o + 2, n->order,
+				(ExifShort) n->entries[i].format);
+		exif_set_long  (*buf + o + 4, n->order,
+				n->entries[i].components);
+		o += 8;
+		s = exif_format_get_size (n->entries[i].format) *
+						n->entries[i].components;
+		if (s > 65536) {
+			/* Corrupt data: EXIF data size is limited to the
+			 * maximum size of a JPEG segment (64 kb).
+			 */
+			continue;
+		}
+		if (s > 4) {
+			size_t ts = *buf_size + s;
+			doff = *buf_size;
+			t = exif_mem_realloc (ne->mem, *buf,
+						 sizeof (char) * ts);
+			if (!t) return;
+			*buf = t;
+			*buf_size = ts;
+			exif_set_long (*buf + o, n->order, datao + doff);
+		} else
+			doff = o;
+
+		/* Write the data. */
+		if (n->entries[i].data) {
+			memcpy (*buf + doff, n->entries[i].data, s);
+		} else {
+			/* Most certainly damaged input file */
+			memset (*buf + doff, 0, s);
+		}
+	}
+
+	/* Sanity check the buffer size */
+	if (*buf_size < (o2 + n->count * 12 + 4)) {
+		exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteDataPentax",
+			"Buffer overflow");
+	}
+
+	/* Reset next IFD pointer */
+	exif_set_long (*buf + o2 + n->count * 12, n->order, 0);
+}
+
 static void
 exif_mnote_data_pentax_load (ExifMnoteData *en,
 		const unsigned char *buf, unsigned int buf_size)
@@ -98,6 +228,7 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 		base = MNOTE_CASIO2_TAG_BASE;
 		datao += 4 + 2;
 	} else {
+		/* probably assert(!memcmp(buf + datao, "\x00\x1b", 2)) */
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataPentax",
 			"Parsing Pentax maker note v1...");
 		n->version = pentaxV1;
@@ -241,6 +372,7 @@ exif_mnote_data_pentax_new (ExifMem *mem)
 	d->methods.set_byte_order  = exif_mnote_data_pentax_set_byte_order;
 	d->methods.set_offset      = exif_mnote_data_pentax_set_offset;
 	d->methods.load            = exif_mnote_data_pentax_load;
+	d->methods.save            = exif_mnote_data_pentax_save;
 	d->methods.count           = exif_mnote_data_pentax_count;
 	d->methods.get_id          = exif_mnote_data_pentax_get_id;
 	d->methods.get_name        = exif_mnote_data_pentax_get_name;
