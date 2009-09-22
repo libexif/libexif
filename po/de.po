@@ -1,4 +1,4 @@
-# translation of de.po to Deutsch
+# translation of de.po to German
 # German Translation
 # Copyright:
 # This file is distributed under the same license as the libexif package.
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: libexif 0.6.18-pre1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-16 22:05-0700\n"
-"PO-Revision-Date: 2009-09-18 10:37+0200\n"
+"PO-Revision-Date: 2009-09-20 18:19+0200\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2717,7 +2717,7 @@ msgstr "YCbCr Positionierung"
 
 #: libexif/exif-tag.c:244
 msgid "The position of chrominance components in relation to the luminance component. This field is designated only for JPEG compressed data or uncompressed YCbCr data. The TIFF default is 1 (centered); but when Y:Cb:Cr = 4:2:2 it is recommended in this standard that 2 (co-sited) be used to record data, in order to improve the image quality when viewed on TV systems. When this field does not exist, the reader shall assume the TIFF default. In the case of Y:Cb:Cr = 4:2:0, the TIFF default (centered) is recommended. If the reader does not have the capability of supporting both kinds of <YCbCrPositioning>, it shall follow the TIFF default regardless of the value in this field. It is preferable that readers be able to support both centered and co-sited positioning."
-msgstr ""
+msgstr "Die Position der Chrominance Komponenten in Relation zur Luminanzkomponente. Dieses Feld ist nur für JPEG komprimierte Daten oder für YCbCr Daten zulässig. Das TIFF Default ist 1 (zentriert), aber wenn Y:Cb:Cr = 4:2:2 verwendet wird schlägt dieser Standard vor das 2 (co-sited) zur Aufzeichnung von Daten verwendet wird, um die Bildqualität auf TV Systemen zu verbessern. Wenn dieses Feld nicht existiert, sollte das Leseprogramm den TIFF Default annehmen. Im Fall von Y:Cb:Cr = 4:2:0 wird der TIFF Default (zentriert) empfohlen. Wenn das Leseprogramm keine der beiden Varianten von <YCBCrPositioning> unterstützt, soll es den TIFF Defaults unabhängig vom Wert in diesem Feld verwenden. Es wird bevorzugt wenn der Leser sowohl zentrierte und co-sited Positionierung unterstützt."
 
 #: libexif/exif-tag.c:259
 msgid "Reference Black/White"
@@ -2765,7 +2765,7 @@ msgstr "Die F Nummer."
 
 #: libexif/exif-tag.c:320
 msgid "Image Resources Block"
-msgstr ""
+msgstr "Bild Resourcen Block"
 
 #: libexif/exif-tag.c:322
 msgid "A pointer to the Exif IFD. Interoperability, Exif IFD has the same structure as that of the IFD specified in TIFF. ordinarily, however, it does not contain image data as in the case of TIFF."
@@ -2861,7 +2861,7 @@ msgstr "GPS Satelliten benutzt für Messung"
 
 #: libexif/exif-tag.c:393
 msgid "Indicates the GPS satellites used for measurements. This tag can be used to describe the number of satellites, their ID number, angle of elevation, azimuth, SNR and other information in ASCII notation. The format is not specified. If the GPS receiver is incapable of taking measurements, value of the tag shall be set to NULL."
-msgstr ""
+msgstr "Gibt die GPS Satelliten an die für die Messung verwendet wurden. Dieses Tag kann zur Angabe der Zahl der Satellitten, deren ID Nummer, Höhenwinkel, Azimuth, SNR und anderer informationen in ASCII verwendet werden. Das Format ist nicht festgelegt. Wenn der GPS Empfänger nicht zu Messungen fähig ist, sollte dieses Tag auf NULL gesetzt werden."
 
 #: libexif/exif-tag.c:399
 msgid "GPS receiver status"
@@ -2941,69 +2941,63 @@ msgstr "Geodätische Survey Daten verwendet"
 
 #: libexif/exif-tag.c:431
 msgid "Indicates the geodetic survey data used by the GPS receiver. If the survey data is restricted to Japan, the value of this tag is 'TOKYO' or 'WGS-84'. If a GPS Info tag is recorded, it is strongly recommended that this tag be recorded."
-msgstr ""
+msgstr "Gibt die geodätischen Survey Daten des GPS Empfängers an. Wenn die Surveydaten auf Japan beschränkt sind, ist der Wert dieses Tags »TOKYO« oder »WGS-84«. Wenn ein GPS Info Tag aufgezeichnet wird, ist es empfohlen dieses Tag aufzuzeichnen."
 
 #: libexif/exif-tag.c:435
 msgid "Reference for latitude of destination"
-msgstr ""
+msgstr "Referenz des Breitengrades des Ziels"
 
 #: libexif/exif-tag.c:436
-#, fuzzy
 msgid "Indicates whether the latitude of the destination point is north or south latitude. The ASCII value 'N' indicates north latitude, and 'S' is south latitude."
 msgstr "Gibt an, ob die Breite in nördlicher oder südlicher Breite angegeben ist. Der ASCII Wert \"N\" gibt nördliche Breite an, der Wert \"S\" ist südliche Breite."
 
 #: libexif/exif-tag.c:439
 msgid "Latitude of destination"
-msgstr ""
+msgstr "Breitengrad des Ziels"
 
 #: libexif/exif-tag.c:440
-#, fuzzy
 msgid "Indicates the latitude of the destination point. The latitude is expressed as three RATIONAL values giving the degrees, minutes, and seconds, respectively. If latitude is expressed as degrees, minutes and seconds, a typical format would be dd/1,mm/1,ss/1. When degrees and minutes are used and, for example, fractions of minutes are given up to two decimal places, the format would be dd/1,mmmm/100,0/1."
-msgstr "Enthält den Breitengrad. Der Breitengrad wird durch drei RATIONAL Werte angegeben, den Grad, die Minuten und die Sekunden. Wenn Grad, Minuten und Sekunden angegeben werden, ist das Format dd/1, mm/1, ss/1. Wenn Grade und Minuten benutzt werden und, z.B., Minutenteil auf 2 Stellen Genauigkeit, dann ist das Format, dd/1, mmmm/100, 0/1."
+msgstr "Enthält den Breitengrad des Zielpunktes. Der Breitengrad wird durch drei RATIONAL Werte angegeben, den Grad, die Minuten und die Sekunden. Wenn Grad, Minuten und Sekunden angegeben werden, ist das Format dd/1, mm/1, ss/1. Wenn Grade und Minuten benutzt werden und, z.B., Minutenteil auf 2 Stellen Genauigkeit, dann ist das Format, dd/1, mmmm/100, 0/1."
 
 #: libexif/exif-tag.c:447
 msgid "Reference for longitude of destination"
-msgstr ""
+msgstr "Referenz des Längengrad des Zieles"
 
 #: libexif/exif-tag.c:448
-#, fuzzy
 msgid "Indicates whether the longitude of the destination point is east or west longitude. ASCII 'E' indicates east longitude, and 'W' is west longitude."
 msgstr "Gibt an, ob die Länge östliche oder westliche Länge ist. ASCII 'E' steht für östliche Länge und 'W' für westliche."
 
 #: libexif/exif-tag.c:451
 msgid "Longitude of destination"
-msgstr ""
+msgstr "Längengrad des Zieles"
 
 #: libexif/exif-tag.c:452
-#, fuzzy
 msgid "Indicates the longitude of the destination point. The longitude is expressed as three RATIONAL values giving the degrees, minutes, and seconds, respectively. If longitude is expressed as degrees, minutes and seconds, a typical format would be ddd/1,mm/1,ss/1. When degrees and minutes are used and, for example, fractions of minutes are given up to two decimal places, the format would be ddd/1,mmmm/100,0/1."
-msgstr "Enthält den Längengrad. Der Längengrad wird durch drei RATIONAL Werte angegeben, den Grad, die Minuten und die Sekunden. Wenn Grad, Minuten und Sekunden angegeben werden, ist das Format dd/1, mm/1, ss/1. Wenn Grade und Minuten benutzt werden und, z.B., Minutenteil auf 2 Stellen Genauigkeit, dann ist das Format, dd/1, mmmm/100, 0/1."
+msgstr "Enthält den Längengrad des Zielpunktes. Der Längengrad wird durch drei RATIONAL Werte angegeben, den Grad, die Minuten und die Sekunden. Wenn Grad, Minuten und Sekunden angegeben werden, ist das Format dd/1, mm/1, ss/1. Wenn Grade und Minuten benutzt werden und, z.B., Minutenteil auf 2 Stellen Genauigkeit, dann ist das Format, dd/1, mmmm/100, 0/1."
 
 #: libexif/exif-tag.c:460
 msgid "Reference for bearing of destination"
-msgstr ""
+msgstr "Referenz für Richtung des Zieles"
 
 #: libexif/exif-tag.c:461
-#, fuzzy
 msgid "Indicates the reference used for giving the bearing to the destination point. 'T' denotes true direction and 'M' is magnetic direction."
-msgstr "Gibt die Referenz für die Richtung des Bildes bei der Aufname an. T gibt die wahre Richtung und M die magnetische Richtung an."
+msgstr "Gibt die Referenz für die Richtung des Zielpunktes bei der Aufname an. T gibt die wahre Richtung und M die magnetische Richtung an."
 
 #: libexif/exif-tag.c:464
 msgid "Bearing of destination"
-msgstr ""
+msgstr "Richtung des Zieles"
 
 #: libexif/exif-tag.c:465
-#, fuzzy
 msgid "Indicates the bearing to the destination point. The range of values is from 0.00 to 359.99."
-msgstr "Gibt die Richtung der Bildaufnahme an. Dieser Wert geht von 0.0 bis 359.99."
+msgstr "Gibt die Richtung der Bildaufnahme auf den Zielpunkts an. Dieser Wert geht von 0.0 bis 359.99."
 
 #: libexif/exif-tag.c:467
 msgid "Reference for distance to destination"
-msgstr ""
+msgstr "Referenz für Entfernung zum Zieles"
 
 #: libexif/exif-tag.c:468
 msgid "Indicates the unit used to express the distance to the destination point. 'K', 'M' and 'N' represent kilometers, miles and knots."
-msgstr ""
+msgstr "Gibt die Einheit der Entfernungsangabe zum Zielpunkts an. »K«, »M« und »N« sind respektive Kilometer, Meilen oder Knoten."
 
 #: libexif/exif-tag.c:471
 msgid "Distance to destination"
@@ -3027,7 +3021,7 @@ msgstr "Name des GPS Bereichs"
 
 #: libexif/exif-tag.c:480
 msgid "A character string recording the name of the GPS area. The first byte indicates the character code used, and this is followed by the name of the GPS area. Since the Type is not ASCII, NULL termination is not necessary."
-msgstr ""
+msgstr "Ein String der den Namen des GPS Gebietss enthält. Das erste Byte gibt den verwendeten Zeichensatz an und wird gefolgt vom Namen des GPS Gebiets. Da der Typ nicht ASCII ist, ist NULL Terminierung nicht nötig."
 
 #: libexif/exif-tag.c:484
 msgid "GPS date"
@@ -3035,7 +3029,7 @@ msgstr "GPS Zeit"
 
 #: libexif/exif-tag.c:485
 msgid "A character string recording date and time information relative to UTC (Coordinated Universal Time). The format is \"YYYY:MM:DD\". The length of the string is 11 bytes including NULL."
-msgstr ""
+msgstr "Ein String der Datum und Zeit relativ zu UTC (Universal Time Coordinated) angibt. Das Format ist »YYYY:MM:DD«. Die Länge des Strings ist 11 Byte inklusive der abschliessenden NULL."
 
 #: libexif/exif-tag.c:489
 msgid "GPS differential correction"
@@ -3231,7 +3225,7 @@ msgstr "XP Stichwörter"
 
 #: libexif/exif-tag.c:635
 msgid "A character string containing key words describing the image, encoded in UTF-16LE."
-msgstr ""
+msgstr "Ein String der Stichwörter die das Bild beschreiben angibt, kodiert in UTF-16LE.y"
 
 #: libexif/exif-tag.c:639
 msgid "XP Subject"
@@ -3239,7 +3233,7 @@ msgstr "XP Überschrift"
 
 #: libexif/exif-tag.c:640
 msgid "A character string giving the image subject, encoded in UTF-16LE."
-msgstr ""
+msgstr "Ein String der die Bildüberschrift angibt, kodiert in UTF-16LE."
 
 #: libexif/exif-tag.c:644
 msgid "The FlashPix format version supported by a FPXR file."
@@ -3404,11 +3398,11 @@ msgstr "Dieser Tag gibt an welche Art von Szene aufgenommen wurde. Er kann auch 
 
 #: libexif/exif-tag.c:816
 msgid "Gain Control"
-msgstr ""
+msgstr "Verstärkungsreglung"
 
 #: libexif/exif-tag.c:817
 msgid "This tag indicates the degree of overall image gain adjustment."
-msgstr ""
+msgstr "Dieses Tag gibt den Grad der Verstärkungsregelung an."
 
 #: libexif/exif-tag.c:821
 msgid "This tag indicates the direction of contrast processing applied by the camera when the image was shot."
