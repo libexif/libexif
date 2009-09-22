@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif 0.6.17.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-16 22:05-0700\n"
+"POT-Creation-Date: 2009-09-21 22:41-0700\n"
 "PO-Revision-Date: 2007-11-12 18:00-0800\n"
 "Last-Translator: Dan Fandrich <dan@coneharvesters.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=US-ASCII\n"
-"Content-Transfer-Encoding: 7bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 
 #: libexif/canon/mnote-canon-entry.c:40 libexif/fuji/mnote-fuji-entry.c:35
@@ -423,11 +423,11 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:154
 msgid "2x"
-msgstr ""
+msgstr "2×"
 
 #: libexif/canon/mnote-canon-entry.c:155
 msgid "4x"
-msgstr ""
+msgstr "4×"
 
 #: libexif/canon/mnote-canon-entry.c:156 libexif/exif-entry.c:686
 #: libexif/exif-entry.c:716
@@ -662,7 +662,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:223
 msgid "Canon MP-E 65mm f/2.8 1-5x Macro Photo"
-msgstr ""
+msgstr "Canon MP-E 65mm f/2.8 1-5× Macro Photo"
 
 #: libexif/canon/mnote-canon-entry.c:224
 msgid "Canon TS-E 24mm f/3.5L"
@@ -1143,7 +1143,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:385
 msgid "2x2 matrix (clockwise)"
-msgstr ""
+msgstr "2×2 matrix (clockwise)"
 
 #: libexif/canon/mnote-canon-entry.c:391 libexif/canon/mnote-canon-entry.c:397
 #: libexif/canon/mnote-canon-entry.c:418 libexif/canon/mnote-canon-entry.c:428
@@ -1253,11 +1253,6 @@ msgstr ""
 msgid "%i (ms)"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:582
-#, c-format
-msgid "%i"
-msgstr ""
-
 #: libexif/canon/mnote-canon-entry.c:621
 #, c-format
 msgid "%.2f mm"
@@ -1270,12 +1265,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:655 libexif/exif-entry.c:1048
 #, c-format
-msgid "1/%d"
-msgstr ""
-
-#: libexif/canon/mnote-canon-entry.c:657 libexif/exif-entry.c:1050
-#, c-format
-msgid "%d"
+msgid "1/%i"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:667
@@ -2305,7 +2295,7 @@ msgstr ""
 #: libexif/exif-entry.c:1087
 #, c-format
 msgid " (%.02f cd/m^2)"
-msgstr ""
+msgstr " (%.02f cd/m²)"
 
 #: libexif/exif-entry.c:1097
 msgid "DSC"
@@ -2398,7 +2388,7 @@ msgid "Byte"
 msgstr ""
 
 #: libexif/exif-format.c:34
-msgid "Ascii"
+msgid "ASCII"
 msgstr ""
 
 #: libexif/exif-format.c:35
@@ -4071,7 +4061,7 @@ msgid "%2.2f mm"
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:298 libexif/pentax/mnote-pentax-entry.c:399
-#: libexif/pentax/mnote-pentax-entry.c:427
+#: libexif/pentax/mnote-pentax-entry.c:451
 #, c-format
 msgid "%i bytes unknown data"
 msgstr ""
@@ -4605,12 +4595,6 @@ msgstr ""
 msgid "panorama"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:597
-#: libexif/olympus/mnote-olympus-entry.c:617
-#, c-format
-msgid "%li"
-msgstr ""
-
 #: libexif/olympus/mnote-olympus-entry.c:605
 msgid "left to right"
 msgstr ""
@@ -5120,15 +5104,15 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:150
 msgid "2560x1920 or 2304x1728"
-msgstr ""
+msgstr "2560×1920 or 2304×1728"
 
 #: libexif/pentax/mnote-pentax-entry.c:156
 msgid "2304x1728 or 2592x1944"
-msgstr ""
+msgstr "2304×1728 or 2592×1944"
 
 #: libexif/pentax/mnote-pentax-entry.c:158
 msgid "2816x2212 or 2816x2112"
-msgstr ""
+msgstr "2816×2212 or 2816×2112"
 
 #: libexif/pentax/mnote-pentax-entry.c:169
 #: libexif/pentax/mnote-pentax-entry.c:295
@@ -5326,7 +5310,7 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:282
 msgid "3008x2008 or 3040x2024"
-msgstr ""
+msgstr "3008×2008 or 3040×2024"
 
 #: libexif/pentax/mnote-pentax-entry.c:293
 msgid "Digital Filter?"
