@@ -1,13 +1,13 @@
 # Czech translation for libexif.
-# Copyright (C) Jan Patera <patera@users.sourceforge.net>, 2007.
+# Copyright (C) Jan Patera <patera@users.sourceforge.net>, 2007-2009.
 # This file is distributed under the same license as the libexif package.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif 0.6.17-pre1\n"
+"Project-Id-Version: libexif 0.6.18-pre1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-31 15:37-0800\n"
-"PO-Revision-Date: 2009-04-20 11:00+0000\n"
+"POT-Creation-Date: 2009-09-16 22:05-0700\n"
+"PO-Revision-Date: 2009-09-22 07:00+0000\n"
 "Last-Translator: Jan Patera <patera@users.sourceforge.net>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-entry.c:39
 #, c-format
 msgid "Invalid format '%s', expected '%s'."
-msgstr "Špatný formát '%s', očekáván je '%s'."
+msgstr "Špatný formát '%s', očekáváno je '%s'."
 
 #: libexif/canon/mnote-canon-entry.c:52 libexif/fuji/mnote-fuji-entry.c:47
 #: libexif/olympus/mnote-olympus-entry.c:62
@@ -36,7 +36,7 @@ msgid "Invalid number of components (%i, expected %i or %i)."
 msgstr "Spatný počet položek (%i, očekáváno %i nebo %i)."
 
 #: libexif/canon/mnote-canon-entry.c:76 libexif/canon/mnote-canon-entry.c:130
-#: libexif/canon/mnote-canon-entry.c:182 libexif/exif-entry.c:779
+#: libexif/canon/mnote-canon-entry.c:182 libexif/exif-entry.c:780
 #: libexif/olympus/mnote-olympus-entry.c:195
 #: libexif/olympus/mnote-olympus-tag.c:108
 #: libexif/pentax/mnote-pentax-entry.c:174
@@ -47,9 +47,9 @@ msgstr "Makro"
 
 #: libexif/canon/mnote-canon-entry.c:77 libexif/canon/mnote-canon-entry.c:79
 #: libexif/canon/mnote-canon-entry.c:157 libexif/canon/mnote-canon-entry.c:160
-#: libexif/canon/mnote-canon-entry.c:163 libexif/exif-entry.c:659
-#: libexif/exif-entry.c:662 libexif/exif-entry.c:663 libexif/exif-entry.c:664
-#: libexif/exif-entry.c:728 libexif/fuji/mnote-fuji-entry.c:64
+#: libexif/canon/mnote-canon-entry.c:163 libexif/exif-entry.c:660
+#: libexif/exif-entry.c:663 libexif/exif-entry.c:664 libexif/exif-entry.c:665
+#: libexif/exif-entry.c:729 libexif/fuji/mnote-fuji-entry.c:64
 #: libexif/olympus/mnote-olympus-entry.c:117
 #: libexif/olympus/mnote-olympus-entry.c:194
 #: libexif/olympus/mnote-olympus-entry.c:202
@@ -162,7 +162,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:93
 msgid "Movie"
-msgstr ""
+msgstr "Film"
 
 #
 #: libexif/canon/mnote-canon-entry.c:94
@@ -254,11 +254,11 @@ msgstr "Střední 3"
 
 #: libexif/canon/mnote-canon-entry.c:118
 msgid "Postcard"
-msgstr ""
+msgstr "Pohlednice"
 
 #: libexif/canon/mnote-canon-entry.c:119
 msgid "Widescreen"
-msgstr ""
+msgstr "Širokoúhlé"
 
 #: libexif/canon/mnote-canon-entry.c:120
 msgid "Full auto"
@@ -266,7 +266,7 @@ msgstr "Plně automatický"
 
 #: libexif/canon/mnote-canon-entry.c:121 libexif/canon/mnote-canon-entry.c:179
 #: libexif/canon/mnote-canon-entry.c:201 libexif/canon/mnote-canon-entry.c:285
-#: libexif/canon/mnote-canon-entry.c:392 libexif/exif-entry.c:727
+#: libexif/canon/mnote-canon-entry.c:392 libexif/exif-entry.c:728
 #: libexif/fuji/mnote-fuji-entry.c:112
 #: libexif/olympus/mnote-olympus-entry.c:90
 #: libexif/olympus/mnote-olympus-entry.c:199
@@ -280,7 +280,7 @@ msgid "Manual"
 msgstr "Ruční"
 
 #: libexif/canon/mnote-canon-entry.c:122 libexif/canon/mnote-canon-entry.c:430
-#: libexif/exif-entry.c:656 libexif/exif-entry.c:738
+#: libexif/exif-entry.c:657 libexif/exif-entry.c:739
 #: libexif/fuji/mnote-fuji-entry.c:121 libexif/pentax/mnote-pentax-entry.c:167
 #: libexif/pentax/mnote-pentax-entry.c:301
 msgid "Landscape"
@@ -288,7 +288,7 @@ msgstr "Na šířku"
 
 #: libexif/canon/mnote-canon-entry.c:123
 msgid "Fast shutter"
-msgstr ""
+msgstr "Rychlá uzávěrka"
 
 #: libexif/canon/mnote-canon-entry.c:124
 msgid "Slow shutter"
@@ -301,15 +301,15 @@ msgstr "Noc"
 
 #: libexif/canon/mnote-canon-entry.c:126
 msgid "Grayscale"
-msgstr ""
+msgstr "Odstíny šedi"
 
 #: libexif/canon/mnote-canon-entry.c:127 libexif/canon/mnote-canon-entry.c:308
 #: libexif/pentax/mnote-pentax-entry.c:128
 msgid "Sepia"
-msgstr ""
+msgstr "Sépie"
 
 #: libexif/canon/mnote-canon-entry.c:128 libexif/canon/mnote-canon-entry.c:429
-#: libexif/exif-entry.c:656 libexif/exif-entry.c:736
+#: libexif/exif-entry.c:657 libexif/exif-entry.c:737
 #: libexif/fuji/mnote-fuji-entry.c:120 libexif/pentax/mnote-pentax-entry.c:166
 #: libexif/pentax/mnote-pentax-entry.c:291
 #: libexif/pentax/mnote-pentax-entry.c:294
@@ -319,7 +319,7 @@ msgstr "Na výšku"
 
 #: libexif/canon/mnote-canon-entry.c:129 libexif/fuji/mnote-fuji-entry.c:122
 msgid "Sports"
-msgstr ""
+msgstr "Sport"
 
 #: libexif/canon/mnote-canon-entry.c:131 libexif/canon/mnote-canon-entry.c:309
 #: libexif/canon/mnote-canon-entry.c:335 libexif/fuji/mnote-fuji-entry.c:89
@@ -328,12 +328,12 @@ msgstr "Černobílý"
 
 #: libexif/canon/mnote-canon-entry.c:133 libexif/canon/mnote-canon-entry.c:305
 msgid "Vivid"
-msgstr ""
+msgstr "Živé"
 
 #: libexif/canon/mnote-canon-entry.c:134 libexif/canon/mnote-canon-entry.c:306
 #: libexif/canon/mnote-canon-entry.c:431
 msgid "Neutral"
-msgstr ""
+msgstr "Neutrální"
 
 #: libexif/canon/mnote-canon-entry.c:135
 #: libexif/pentax/mnote-pentax-entry.c:93
@@ -342,7 +342,7 @@ msgstr "Blesk vypnut"
 
 #: libexif/canon/mnote-canon-entry.c:136
 msgid "Long shutter"
-msgstr ""
+msgstr "Dlouhá uzávěrka"
 
 #: libexif/canon/mnote-canon-entry.c:137 libexif/canon/mnote-canon-entry.c:188
 msgid "Super macro"
@@ -354,7 +354,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:139
 msgid "Indoor"
-msgstr ""
+msgstr "Uvnitř domu"
 
 #: libexif/canon/mnote-canon-entry.c:140 libexif/fuji/mnote-fuji-entry.c:135
 #: libexif/pentax/mnote-pentax-entry.c:175
@@ -363,7 +363,7 @@ msgstr "Ohňostroj"
 
 #: libexif/canon/mnote-canon-entry.c:141 libexif/fuji/mnote-fuji-entry.c:133
 msgid "Beach"
-msgstr ""
+msgstr "Na pláži"
 
 #: libexif/canon/mnote-canon-entry.c:142 libexif/canon/mnote-canon-entry.c:344
 #: libexif/canon/mnote-canon-entry.c:416 libexif/fuji/mnote-fuji-entry.c:136
@@ -387,11 +387,11 @@ msgstr "Noční snímek"
 
 #: libexif/canon/mnote-canon-entry.c:146
 msgid "Digital macro"
-msgstr ""
+msgstr "Digitální makro"
 
 #: libexif/canon/mnote-canon-entry.c:147
 msgid "My colors"
-msgstr ""
+msgstr "Moje barvy"
 
 #: libexif/canon/mnote-canon-entry.c:148
 msgid "Still image"
@@ -407,7 +407,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:151
 msgid "Aquarium"
-msgstr ""
+msgstr "Akvárium"
 
 #: libexif/canon/mnote-canon-entry.c:152
 msgid "ISO 3200"
@@ -430,8 +430,8 @@ msgstr "2x"
 msgid "4x"
 msgstr "4x"
 
-#: libexif/canon/mnote-canon-entry.c:156 libexif/exif-entry.c:685
-#: libexif/exif-entry.c:715
+#: libexif/canon/mnote-canon-entry.c:156 libexif/exif-entry.c:686
+#: libexif/exif-entry.c:716
 msgid "Other"
 msgstr "Jiný"
 
@@ -481,11 +481,11 @@ msgstr ""
 msgid "Default"
 msgstr "Výchozí"
 
-#: libexif/canon/mnote-canon-entry.c:174 libexif/exif-entry.c:681
+#: libexif/canon/mnote-canon-entry.c:174 libexif/exif-entry.c:682
 msgid "Spot"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:175 libexif/exif-entry.c:679
+#: libexif/canon/mnote-canon-entry.c:175 libexif/exif-entry.c:680
 msgid "Average"
 msgstr "Průměrný"
 
@@ -493,9 +493,9 @@ msgstr "Průměrný"
 msgid "Evaluative"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:177 libexif/exif-entry.c:684
+#: libexif/canon/mnote-canon-entry.c:177 libexif/exif-entry.c:685
 msgid "Partial"
-msgstr ""
+msgstr "Částečný"
 
 #: libexif/canon/mnote-canon-entry.c:178
 msgid "Center-weighted average"
@@ -509,7 +509,7 @@ msgstr "Neznámý"
 msgid "Very close"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:184 libexif/exif-entry.c:780
+#: libexif/canon/mnote-canon-entry.c:184 libexif/exif-entry.c:781
 msgid "Close"
 msgstr ""
 
@@ -562,7 +562,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:197
 msgid "Easy shooting"
-msgstr ""
+msgstr "Snadné focení"
 
 #: libexif/canon/mnote-canon-entry.c:198
 #: libexif/pentax/mnote-pentax-entry.c:163
@@ -623,7 +623,7 @@ msgstr "Canon EF 80-200mm f/2.8L"
 
 #: libexif/canon/mnote-canon-entry.c:213
 msgid "Tokina AT-X280AF PRO 28-80mm F2.8 ASPHERICAL"
-msgstr ""
+msgstr "Tokina AT-X280AF PRO 28-80mm F2.8 ASPHERICAL"
 
 #: libexif/canon/mnote-canon-entry.c:214
 msgid "Cosina 100mm f/3.5 Macro AF"
@@ -731,7 +731,7 @@ msgstr "Canon EF 200mm f/2.8L"
 
 #: libexif/canon/mnote-canon-entry.c:240
 msgid "Sigma 10-20mm F4-5.6 or 12-24mm f/4.5-5.6 or 14mm f/2.8"
-msgstr ""
+msgstr "Sigma 10-20mm F4-5.6, 12-24mm f/4.5-5.6 nebo 14mm f/2.8"
 
 #: libexif/canon/mnote-canon-entry.c:241
 msgid "Canon EF 35-350mm f/3.5-5.6L"
@@ -949,7 +949,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:297
 msgid "Exposure compensation"
-msgstr ""
+msgstr "Kompenzace expozice"
 
 #: libexif/canon/mnote-canon-entry.c:298
 msgid "AE lock"
@@ -1008,32 +1008,32 @@ msgid "Sunny"
 msgstr "Slunečný"
 
 #: libexif/canon/mnote-canon-entry.c:330 libexif/canon/mnote-canon-entry.c:402
-#: libexif/exif-entry.c:702 libexif/fuji/mnote-fuji-entry.c:75
+#: libexif/exif-entry.c:703 libexif/fuji/mnote-fuji-entry.c:75
 #: libexif/olympus/mnote-olympus-entry.c:135
 #: libexif/pentax/mnote-pentax-entry.c:255
 msgid "Cloudy"
 msgstr "Oblačný"
 
 #: libexif/canon/mnote-canon-entry.c:331 libexif/canon/mnote-canon-entry.c:403
-#: libexif/exif-entry.c:699 libexif/pentax/mnote-pentax-entry.c:100
+#: libexif/exif-entry.c:700 libexif/pentax/mnote-pentax-entry.c:100
 #: libexif/pentax/mnote-pentax-entry.c:249
 msgid "Tungsten"
 msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:332 libexif/canon/mnote-canon-entry.c:404
-#: libexif/exif-entry.c:698 libexif/pentax/mnote-pentax-entry.c:101
+#: libexif/exif-entry.c:699 libexif/pentax/mnote-pentax-entry.c:101
 #: libexif/pentax/mnote-pentax-entry.c:248
 msgid "Fluorescent"
 msgstr "Světélkující"
 
 #: libexif/canon/mnote-canon-entry.c:333 libexif/canon/mnote-canon-entry.c:405
-#: libexif/exif-entry.c:700 libexif/exif-tag.c:568
+#: libexif/exif-entry.c:701 libexif/exif-tag.c:568
 #: libexif/fuji/mnote-fuji-entry.c:80 libexif/pentax/mnote-pentax-entry.c:254
 msgid "Flash"
 msgstr "Blesk"
 
 #: libexif/canon/mnote-canon-entry.c:336 libexif/canon/mnote-canon-entry.c:408
-#: libexif/exif-entry.c:703 libexif/pentax/mnote-pentax-entry.c:99
+#: libexif/exif-entry.c:704 libexif/pentax/mnote-pentax-entry.c:99
 #: libexif/pentax/mnote-pentax-entry.c:247
 msgid "Shade"
 msgstr "Stín"
@@ -1054,9 +1054,9 @@ msgstr ""
 msgid "PC set 3"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:341 libexif/exif-entry.c:704
+#: libexif/canon/mnote-canon-entry.c:341 libexif/exif-entry.c:705
 msgid "Daylight fluorescent"
-msgstr ""
+msgstr "Světélkující denní světlo"
 
 #: libexif/canon/mnote-canon-entry.c:342 libexif/canon/mnote-canon-entry.c:414
 msgid "Custom 1"
@@ -1066,7 +1066,7 @@ msgstr ""
 msgid "Custom 2"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:346 libexif/exif-entry.c:657
+#: libexif/canon/mnote-canon-entry.c:346 libexif/exif-entry.c:658
 msgid "Night scene"
 msgstr "Noční scéna"
 
@@ -1112,19 +1112,19 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:366
 msgid "Rotate 90 CW"
-msgstr ""
+msgstr "Otočit vpravo o 90st."
 
 #: libexif/canon/mnote-canon-entry.c:367
 msgid "Rotate 180"
-msgstr ""
+msgstr "Otočit o 180st."
 
 #: libexif/canon/mnote-canon-entry.c:368
 msgid "Rotate 270 CW"
-msgstr ""
+msgstr "Otočit vlevo o 90st."
 
 #: libexif/canon/mnote-canon-entry.c:369
 msgid "Rotated by software"
-msgstr ""
+msgstr "Otočeno programově"
 
 #: libexif/canon/mnote-canon-entry.c:381
 msgid "Left to right"
@@ -1148,7 +1148,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:391 libexif/canon/mnote-canon-entry.c:397
 #: libexif/canon/mnote-canon-entry.c:418 libexif/canon/mnote-canon-entry.c:428
-#: libexif/exif-entry.c:656 libexif/fuji/mnote-fuji-entry.c:84
+#: libexif/exif-entry.c:657 libexif/fuji/mnote-fuji-entry.c:84
 #: libexif/fuji/mnote-fuji-entry.c:93 libexif/fuji/mnote-fuji-entry.c:163
 #: libexif/olympus/mnote-olympus-entry.c:226
 msgid "Standard"
@@ -1166,7 +1166,7 @@ msgstr "Nejnižší"
 msgid "Highest"
 msgstr "Nejvyšší"
 
-#: libexif/canon/mnote-canon-entry.c:401 libexif/exif-entry.c:697
+#: libexif/canon/mnote-canon-entry.c:401 libexif/exif-entry.c:698
 #: libexif/fuji/mnote-fuji-entry.c:74
 #: libexif/olympus/mnote-olympus-entry.c:132
 #: libexif/pentax/mnote-pentax-entry.c:98
@@ -1214,15 +1214,15 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:422
 msgid "User Def. 1"
-msgstr ""
+msgstr "Uživatelsky definovaný 1"
 
 #: libexif/canon/mnote-canon-entry.c:423
 msgid "User Def. 2"
-msgstr ""
+msgstr "Uživatelsky definovaný 2"
 
 #: libexif/canon/mnote-canon-entry.c:424
 msgid "User Def. 3"
-msgstr ""
+msgstr "Uživatelsky definovaný 3"
 
 #: libexif/canon/mnote-canon-entry.c:425
 msgid "External 1"
@@ -1269,12 +1269,12 @@ msgstr "%.2f mm"
 msgid "%.2f EV"
 msgstr "%.2f EV"
 
-#: libexif/canon/mnote-canon-entry.c:655 libexif/exif-entry.c:1047
+#: libexif/canon/mnote-canon-entry.c:655 libexif/exif-entry.c:1048
 #, c-format
 msgid "1/%d"
 msgstr "1/%d"
 
-#: libexif/canon/mnote-canon-entry.c:657 libexif/exif-entry.c:1049
+#: libexif/canon/mnote-canon-entry.c:657 libexif/exif-entry.c:1050
 #, c-format
 msgid "%d"
 msgstr "%d"
@@ -1320,7 +1320,7 @@ msgstr "Jméno vlastníka"
 
 #: libexif/canon/mnote-canon-tag.c:43
 msgid "Color Information"
-msgstr ""
+msgstr "Informace o barvě"
 
 #: libexif/canon/mnote-canon-tag.c:44 libexif/fuji/mnote-fuji-tag.c:37
 #: libexif/olympus/mnote-olympus-tag.c:81
@@ -1377,7 +1377,7 @@ msgstr "Velikost obrazových dat"
 
 #: libexif/canon/mnote-canon-tag.c:64
 msgid "Easy Shooting Mode"
-msgstr ""
+msgstr "Režim snadného focení"
 
 #: libexif/canon/mnote-canon-tag.c:65 libexif/olympus/mnote-olympus-tag.c:64
 #: libexif/olympus/mnote-olympus-tag.c:101
@@ -1601,7 +1601,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:120
 msgid "Panorama Direction"
-msgstr ""
+msgstr "Směr panoramatu"
 
 #: libexif/canon/mnote-canon-tag.c:121
 msgid "Tone Curve"
@@ -1623,35 +1623,35 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-data.c:774
+#: libexif/exif-data.c:775
 msgid "Size of data too small to allow for EXIF data."
 msgstr "Příliš málo dat pro EXIF data."
 
-#: libexif/exif-data.c:835
+#: libexif/exif-data.c:836
 msgid "EXIF marker not found."
 msgstr "EXIF marker nebyl nalezen."
 
-#: libexif/exif-data.c:862
+#: libexif/exif-data.c:863
 msgid "EXIF header not found."
 msgstr "Hlavička dat EXIF nebyla nalezena."
 
-#: libexif/exif-data.c:878
+#: libexif/exif-data.c:879
 msgid "Unknown encoding."
 msgstr "Neznámé kódování"
 
-#: libexif/exif-data.c:1190
+#: libexif/exif-data.c:1191
 msgid "Ignore unknown tags"
 msgstr "Ignorovat neznámé značky"
 
-#: libexif/exif-data.c:1191
+#: libexif/exif-data.c:1192
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Ignorovat neznámé značky při načítání EXIF dat."
 
-#: libexif/exif-data.c:1192
+#: libexif/exif-data.c:1193
 msgid "Follow specification"
 msgstr "Dodržovat specifikaci"
 
-#: libexif/exif-data.c:1193
+#: libexif/exif-data.c:1194
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
@@ -1659,35 +1659,35 @@ msgstr ""
 "Dodržovat specifikaci EXIF dat pomocí přidání, opravení nebo odstranění "
 "položek."
 
-#: libexif/exif-data.c:1195
-msgid "Do not change maker note"
-msgstr ""
-
 #: libexif/exif-data.c:1196
+msgid "Do not change maker note"
+msgstr "Neměnit maker note"
+
+#: libexif/exif-data.c:1197
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."
-msgstr ""
+msgstr "Neměnit maker note při načítání a ukládání dat Exif. Konzistence maker note tak ale může být poškozena."
 
-#: libexif/exif-entry.c:228 libexif/exif-entry.c:287 libexif/exif-entry.c:320
+#: libexif/exif-entry.c:229 libexif/exif-entry.c:288 libexif/exif-entry.c:321
 #, c-format
 msgid ""
 "Tag '%s' was of format '%s' (which is against specification) and has been "
 "changed to format '%s'."
 msgstr ""
-"Značka '%s' měla formát '%s', což odporovalo specifikaci, proto byla změněna "
-"na formát '%s'."
+"Značka '%s' měla typ '%s', což odporovalo specifikaci, proto byla změněna "
+"na typ '%s'."
 
-#: libexif/exif-entry.c:255
+#: libexif/exif-entry.c:256
 #, c-format
 msgid ""
 "Tag '%s' is of format '%s' (which is against specification) but cannot be "
 "changed to format '%s'."
 msgstr ""
-"Značka '%s' má formát '%s', což odporuje specifikaci, ale nemuže být změněna "
-"na formát '%s'."
+"Značka '%s' má typ '%s', což odporuje specifikaci, ale nemuže být změněna "
+"na typ '%s'."
 
-#: libexif/exif-entry.c:338
+#: libexif/exif-entry.c:339
 #, c-format
 msgid ""
 "Tag 'UserComment' had invalid format '%s'. Format has been set to "
@@ -1696,7 +1696,7 @@ msgstr ""
 "Značka 'Komentář' měla špatný typ '%s', proto byla změněna na typ "
 "'nedefinováno'."
 
-#: libexif/exif-entry.c:365
+#: libexif/exif-entry.c:366
 msgid ""
 "Tag 'UserComment' has been expanded to at least 8 bytes in order to follow "
 "the specification."
@@ -1704,200 +1704,201 @@ msgstr ""
 "Značka 'Komentář' byla zvětšena na alespoň 8 bajtů, aby odpovídala "
 "specifikaci."
 
-#: libexif/exif-entry.c:380
+#: libexif/exif-entry.c:381
 msgid ""
 "Tag 'UserComment' is not empty but does not start with a format identifier. "
 "This has been fixed."
 msgstr ""
-"Značka 'Komentář' nebyla prázdná a ani nezačínala identifikátorem typu, což nyní bylo spraveno."
+"Značka 'Komentář' nebyla prázdná a ani nezačínala identifikátorem typu, což "
+"bylo nyní spraveno."
 
-#: libexif/exif-entry.c:408
+#: libexif/exif-entry.c:409
 msgid ""
 "Tag 'UserComment' did not start with a format identifier. This has been "
 "fixed."
 msgstr ""
 "Značka 'Komentář' nezačínala identifikátorem typu, což nyní bylo spraveno."
 
-#: libexif/exif-entry.c:446
+#: libexif/exif-entry.c:447
 #, c-format
 msgid "%i bytes undefined data"
 msgstr "%i bajtů neznámých dat"
 
-#: libexif/exif-entry.c:574
+#: libexif/exif-entry.c:575
 #, c-format
 msgid "%i bytes unsupported data type"
-msgstr "%i bajtů neznámých dat"
+msgstr "%i bajtů dat neznámého typu"
 
-#: libexif/exif-entry.c:607
+#: libexif/exif-entry.c:608
 #, c-format
 msgid "The tag '%s' contains data of an invalid format ('%s', expected '%s')."
 msgstr "Značka '%s' obsahuje data špatného typu ('%s', očekáváno '%s')."
 
-#: libexif/exif-entry.c:620
+#: libexif/exif-entry.c:621
 #, c-format
 msgid ""
 "The tag '%s' contains an invalid number of components (%i, expected %i)."
 msgstr "Značka '%s' obsahuje špatný počet položek (%i, očekáváno %i)."
 
-#: libexif/exif-entry.c:634
+#: libexif/exif-entry.c:635
 msgid "chunky format"
 msgstr ""
 
-#: libexif/exif-entry.c:634
+#: libexif/exif-entry.c:635
 msgid "planar format"
 msgstr ""
 
-#: libexif/exif-entry.c:636 libexif/exif-entry.c:726
+#: libexif/exif-entry.c:637 libexif/exif-entry.c:727
 #: test/nls/test-codeset.c:54
 msgid "Not defined"
 msgstr "Nedefinováno"
 
-#: libexif/exif-entry.c:636
+#: libexif/exif-entry.c:637
 msgid "One-chip color area sensor"
 msgstr ""
 
-#: libexif/exif-entry.c:637
+#: libexif/exif-entry.c:638
 msgid "Two-chip color area sensor"
 msgstr ""
 
-#: libexif/exif-entry.c:637
+#: libexif/exif-entry.c:638
 msgid "Three-chip color area sensor"
 msgstr ""
 
-#: libexif/exif-entry.c:638
+#: libexif/exif-entry.c:639
 msgid "Color sequential area sensor"
 msgstr ""
 
-#: libexif/exif-entry.c:638
+#: libexif/exif-entry.c:639
 msgid "Trilinear sensor"
 msgstr ""
 
-#: libexif/exif-entry.c:639
+#: libexif/exif-entry.c:640
 msgid "Color sequential linear sensor"
 msgstr ""
 
-#: libexif/exif-entry.c:641
+#: libexif/exif-entry.c:642
 msgid "top - left"
 msgstr "Nahoře vlevo"
 
-#: libexif/exif-entry.c:641
+#: libexif/exif-entry.c:642
 msgid "top - right"
 msgstr "Nahoře vpravo"
 
-#: libexif/exif-entry.c:641
+#: libexif/exif-entry.c:642
 msgid "bottom - right"
 msgstr "Dole vpravo"
 
-#: libexif/exif-entry.c:642
+#: libexif/exif-entry.c:643
 msgid "bottom - left"
 msgstr "Dole vlevo"
 
-#: libexif/exif-entry.c:642
+#: libexif/exif-entry.c:643
 msgid "left - top"
 msgstr "Vlevo nahoře"
 
-#: libexif/exif-entry.c:642
+#: libexif/exif-entry.c:643
 msgid "right - top"
 msgstr "Vpravo nahoře"
 
-#: libexif/exif-entry.c:643
+#: libexif/exif-entry.c:644
 msgid "right - bottom"
 msgstr "Vpravo dole"
 
-#: libexif/exif-entry.c:643
+#: libexif/exif-entry.c:644
 msgid "left - bottom"
 msgstr "Vlevo dole"
 
-#: libexif/exif-entry.c:645
+#: libexif/exif-entry.c:646
 msgid "centered"
 msgstr "Uprostřed"
 
-#: libexif/exif-entry.c:645
+#: libexif/exif-entry.c:646
 msgid "co-sited"
 msgstr ""
 
-#: libexif/exif-entry.c:647
+#: libexif/exif-entry.c:648
 msgid "Reversed mono"
 msgstr "Negativní černobílý"
 
-#: libexif/exif-entry.c:647
+#: libexif/exif-entry.c:648
 msgid "Normal mono"
 msgstr "Černobílý"
 
-#: libexif/exif-entry.c:647
+#: libexif/exif-entry.c:648
 msgid "RGB"
 msgstr "RGB"
 
-#: libexif/exif-entry.c:647
+#: libexif/exif-entry.c:648
 msgid "Palette"
 msgstr "Paleta"
 
-#: libexif/exif-entry.c:648
+#: libexif/exif-entry.c:649
 msgid "CMYK"
 msgstr "CMYK"
 
-#: libexif/exif-entry.c:648
+#: libexif/exif-entry.c:649
 msgid "YCbCr"
 msgstr "YCbCr"
 
-#: libexif/exif-entry.c:648
+#: libexif/exif-entry.c:649
 msgid "CieLAB"
 msgstr "CieLAB"
 
-#: libexif/exif-entry.c:650
+#: libexif/exif-entry.c:651
 msgid "Normal process"
 msgstr ""
 
-#: libexif/exif-entry.c:650
+#: libexif/exif-entry.c:651
 msgid "Custom process"
 msgstr ""
 
-#: libexif/exif-entry.c:652
+#: libexif/exif-entry.c:653
 msgid "Auto exposure"
 msgstr "Automatická expozice"
 
-#: libexif/exif-entry.c:652 libexif/fuji/mnote-fuji-entry.c:139
+#: libexif/exif-entry.c:653 libexif/fuji/mnote-fuji-entry.c:139
 msgid "Manual exposure"
 msgstr "Ruční expozice"
 
-#: libexif/exif-entry.c:652
+#: libexif/exif-entry.c:653
 msgid "Auto bracket"
 msgstr ""
 
-#: libexif/exif-entry.c:654
+#: libexif/exif-entry.c:655
 msgid "Auto white balance"
 msgstr "Automatické vyvážení bílé"
 
-#: libexif/exif-entry.c:654
+#: libexif/exif-entry.c:655
 msgid "Manual white balance"
 msgstr "Ruční vyvážení bílé"
 
-#: libexif/exif-entry.c:659
+#: libexif/exif-entry.c:660
 msgid "Low gain up"
 msgstr ""
 
-#: libexif/exif-entry.c:659
+#: libexif/exif-entry.c:660
 msgid "High gain up"
 msgstr ""
 
-#: libexif/exif-entry.c:660
+#: libexif/exif-entry.c:661
 msgid "Low gain down"
 msgstr ""
 
-#: libexif/exif-entry.c:660
+#: libexif/exif-entry.c:661
 msgid "High gain down"
 msgstr ""
 
-#: libexif/exif-entry.c:662
+#: libexif/exif-entry.c:663
 msgid "Low saturation"
 msgstr "Nízká sytost"
 
-#: libexif/exif-entry.c:662 test/nls/test-codeset.c:48
+#: libexif/exif-entry.c:663 test/nls/test-codeset.c:48
 #: test/nls/test-codeset.c:61
 msgid "High saturation"
 msgstr "Vysoká sytost"
 
-#: libexif/exif-entry.c:663 libexif/exif-entry.c:664
+#: libexif/exif-entry.c:664 libexif/exif-entry.c:665
 #: libexif/fuji/mnote-fuji-entry.c:63
 #: libexif/olympus/mnote-olympus-entry.c:204
 #: libexif/olympus/mnote-olympus-entry.c:213
@@ -1906,7 +1907,7 @@ msgstr "Vysoká sytost"
 msgid "Soft"
 msgstr ""
 
-#: libexif/exif-entry.c:663 libexif/exif-entry.c:664
+#: libexif/exif-entry.c:664 libexif/exif-entry.c:665
 #: libexif/fuji/mnote-fuji-entry.c:65 libexif/fuji/mnote-fuji-entry.c:95
 #: libexif/olympus/mnote-olympus-entry.c:203
 #: libexif/olympus/mnote-olympus-entry.c:211
@@ -1914,183 +1915,183 @@ msgstr ""
 msgid "Hard"
 msgstr ""
 
-#: libexif/exif-entry.c:678 libexif/exif-entry.c:696 libexif/exif-entry.c:778
+#: libexif/exif-entry.c:679 libexif/exif-entry.c:697 libexif/exif-entry.c:779
 #: libexif/olympus/mnote-olympus-entry.c:682
 #: libexif/olympus/mnote-olympus-entry.c:737
 #: libexif/pentax/mnote-pentax-entry.c:256
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: libexif/exif-entry.c:679
+#: libexif/exif-entry.c:680
 msgid "avg"
 msgstr ""
 
-#: libexif/exif-entry.c:680
+#: libexif/exif-entry.c:681
 msgid "Center-Weighted Average"
 msgstr ""
 
-#: libexif/exif-entry.c:680
+#: libexif/exif-entry.c:681
 msgid "Center-Weight"
 msgstr ""
 
-#: libexif/exif-entry.c:682
+#: libexif/exif-entry.c:683
 msgid "Multi Spot"
 msgstr ""
 
-#: libexif/exif-entry.c:683
+#: libexif/exif-entry.c:684
 msgid "Pattern"
 msgstr "Vzorkování"
 
-#: libexif/exif-entry.c:688
+#: libexif/exif-entry.c:689
 msgid "Uncompressed"
 msgstr "Nekomprimováno"
 
-#: libexif/exif-entry.c:689
+#: libexif/exif-entry.c:690
 msgid "LZW compression"
 msgstr "Komprese LZW"
 
-#: libexif/exif-entry.c:690 libexif/exif-entry.c:691
+#: libexif/exif-entry.c:691 libexif/exif-entry.c:692
 msgid "JPEG compression"
 msgstr "Komprese JPEG"
 
-#: libexif/exif-entry.c:692
+#: libexif/exif-entry.c:693
 msgid "Deflate/ZIP compression"
 msgstr "Komprese Deflate/ZIP"
 
-#: libexif/exif-entry.c:693
+#: libexif/exif-entry.c:694
 msgid "PackBits compression"
 msgstr "Komprese PackBits"
 
-#: libexif/exif-entry.c:699
+#: libexif/exif-entry.c:700
 msgid "Tungsten incandescent light"
 msgstr ""
 
-#: libexif/exif-entry.c:701
+#: libexif/exif-entry.c:702
 msgid "Fine weather"
 msgstr "Pěkné počasí"
 
-#: libexif/exif-entry.c:702
+#: libexif/exif-entry.c:703
 msgid "Cloudy weather"
 msgstr "Oblačné počasí"
 
-#: libexif/exif-entry.c:705
+#: libexif/exif-entry.c:706
 msgid "Day white fluorescent"
 msgstr ""
 
-#: libexif/exif-entry.c:706
+#: libexif/exif-entry.c:707
 msgid "Cool white fluorescent"
 msgstr ""
 
-#: libexif/exif-entry.c:707 libexif/fuji/mnote-fuji-entry.c:78
+#: libexif/exif-entry.c:708 libexif/fuji/mnote-fuji-entry.c:78
 msgid "White fluorescent"
 msgstr ""
 
-#: libexif/exif-entry.c:708
+#: libexif/exif-entry.c:709
 msgid "Standard light A"
 msgstr "Standardní světlo A"
 
-#: libexif/exif-entry.c:709
+#: libexif/exif-entry.c:710
 msgid "Standard light B"
 msgstr "Standardní světlo B"
 
-#: libexif/exif-entry.c:710
+#: libexif/exif-entry.c:711
 msgid "Standard light C"
 msgstr "Standardní světlo C"
 
-#: libexif/exif-entry.c:711
+#: libexif/exif-entry.c:712
 msgid "D55"
 msgstr "D55"
 
-#: libexif/exif-entry.c:712
+#: libexif/exif-entry.c:713
 msgid "D65"
 msgstr "D65"
 
-#: libexif/exif-entry.c:713
+#: libexif/exif-entry.c:714
 msgid "D75"
 msgstr "D75"
 
-#: libexif/exif-entry.c:714
+#: libexif/exif-entry.c:715
 msgid "ISO studio tungsten"
 msgstr ""
 
-#: libexif/exif-entry.c:718 libexif/exif-entry.c:722
+#: libexif/exif-entry.c:719 libexif/exif-entry.c:723
 msgid "Inch"
 msgstr "Palec"
 
-#: libexif/exif-entry.c:718 libexif/exif-entry.c:722
+#: libexif/exif-entry.c:719 libexif/exif-entry.c:723
 msgid "in"
 msgstr "palec"
 
-#: libexif/exif-entry.c:719 libexif/exif-entry.c:723
+#: libexif/exif-entry.c:720 libexif/exif-entry.c:724
 msgid "Centimeter"
 msgstr "cm"
 
-#: libexif/exif-entry.c:719 libexif/exif-entry.c:723
+#: libexif/exif-entry.c:720 libexif/exif-entry.c:724
 msgid "cm"
 msgstr "cm"
 
-#: libexif/exif-entry.c:728
+#: libexif/exif-entry.c:729
 msgid "Normal program"
 msgstr ""
 
-#: libexif/exif-entry.c:729
+#: libexif/exif-entry.c:730
 msgid "Aperture priority"
 msgstr "S předvolbou clony"
 
-#: libexif/exif-entry.c:729 libexif/exif-tag.c:541
+#: libexif/exif-entry.c:730 libexif/exif-tag.c:541
 msgid "Aperture"
 msgstr "Clona"
 
-#: libexif/exif-entry.c:730
+#: libexif/exif-entry.c:731
 msgid "Shutter priority"
 msgstr ""
 
-#: libexif/exif-entry.c:730
+#: libexif/exif-entry.c:731
 msgid "Shutter"
 msgstr "Clona"
 
-#: libexif/exif-entry.c:731
+#: libexif/exif-entry.c:732
 msgid "Creative program (biased toward depth of field)"
 msgstr ""
 
-#: libexif/exif-entry.c:732
+#: libexif/exif-entry.c:733
 msgid "Creative"
 msgstr ""
 
-#: libexif/exif-entry.c:733
+#: libexif/exif-entry.c:734
 msgid "Creative program (biased toward fast shutter speed)"
 msgstr ""
 
-#: libexif/exif-entry.c:734
+#: libexif/exif-entry.c:735
 msgid "Action"
 msgstr ""
 
-#: libexif/exif-entry.c:735
+#: libexif/exif-entry.c:736
 msgid "Portrait mode (for closeup photos with the background out of focus)"
 msgstr "Režim na šířku (pro focení na blízko, bez důrazu na objekty v pozadí)"
 
-#: libexif/exif-entry.c:737
+#: libexif/exif-entry.c:738
 msgid "Landscape mode (for landscape photos with the background in focus)"
 msgstr "Režim na výšku (pro focení na dálku, s důrazem na pozadí)"
 
-#: libexif/exif-entry.c:741 libexif/exif-entry.c:746
+#: libexif/exif-entry.c:742 libexif/exif-entry.c:747
 #: libexif/olympus/mnote-olympus-entry.c:96
 msgid "Flash did not fire"
 msgstr "Blesk nebleskl"
 
-#: libexif/exif-entry.c:741
+#: libexif/exif-entry.c:742
 msgid "no flash"
 msgstr "Bez blesku"
 
-#: libexif/exif-entry.c:742
+#: libexif/exif-entry.c:743
 msgid "Flash fired"
 msgstr "Blesk bleskl"
 
-#: libexif/exif-entry.c:742
+#: libexif/exif-entry.c:743
 msgid "flash"
 msgstr "Blesk"
 
-#: libexif/exif-entry.c:742 libexif/olympus/mnote-olympus-entry.c:169
+#: libexif/exif-entry.c:743 libexif/olympus/mnote-olympus-entry.c:169
 #: libexif/olympus/mnote-olympus-entry.c:174
 #: libexif/olympus/mnote-olympus-entry.c:208
 #: libexif/olympus/mnote-olympus-entry.c:217
@@ -2098,75 +2099,75 @@ msgstr "Blesk"
 msgid "Yes"
 msgstr "Ano"
 
-#: libexif/exif-entry.c:743
+#: libexif/exif-entry.c:744
 msgid "Strobe return light not detected"
 msgstr ""
 
-#: libexif/exif-entry.c:743
+#: libexif/exif-entry.c:744
 msgid "W/o strobe"
 msgstr ""
 
-#: libexif/exif-entry.c:745
+#: libexif/exif-entry.c:746
 msgid "Strobe return light detected"
 msgstr ""
 
-#: libexif/exif-entry.c:745
+#: libexif/exif-entry.c:746
 msgid "W. strobe"
 msgstr ""
 
-#: libexif/exif-entry.c:747
+#: libexif/exif-entry.c:748
 msgid "Flash fired, compulsory flash mode"
 msgstr "Blesk bleskl, blesk zapnut"
 
-#: libexif/exif-entry.c:748
+#: libexif/exif-entry.c:749
 msgid "Flash fired, compulsory flash mode, return light not detected"
 msgstr "Blesk bleskl, blesk zapnut, odraz světla nedetekován"
 
-#: libexif/exif-entry.c:750
+#: libexif/exif-entry.c:751
 msgid "Flash fired, compulsory flash mode, return light detected"
 msgstr "Blesk bleskl, blesk zapnut, odraz světla detekován"
 
-#: libexif/exif-entry.c:752
+#: libexif/exif-entry.c:753
 msgid "Flash did not fire, compulsory flash mode"
 msgstr "Blesk nebleskl, blesk zapnut"
 
-#: libexif/exif-entry.c:753
+#: libexif/exif-entry.c:754
 msgid "Flash did not fire, auto mode"
 msgstr "Blesk nebleskl, automatický režim"
 
-#: libexif/exif-entry.c:754
+#: libexif/exif-entry.c:755
 msgid "Flash fired, auto mode"
 msgstr "Blesk bleskl, automatický režim"
 
-#: libexif/exif-entry.c:755
+#: libexif/exif-entry.c:756
 msgid "Flash fired, auto mode, return light not detected"
 msgstr "Blesk bleskl, automatický režim, odraz světla nedetekován"
 
-#: libexif/exif-entry.c:757
+#: libexif/exif-entry.c:758
 msgid "Flash fired, auto mode, return light detected"
 msgstr "Blesk bleskl, automatický režim, odraz světla detekován"
 
-#: libexif/exif-entry.c:758
+#: libexif/exif-entry.c:759
 msgid "No flash function"
 msgstr "Bez blesku"
 
-#: libexif/exif-entry.c:759
+#: libexif/exif-entry.c:760
 msgid "Flash fired, red-eye reduction mode"
 msgstr "Blesk bleskl, režim redukce červených očí"
 
-#: libexif/exif-entry.c:760
+#: libexif/exif-entry.c:761
 msgid "Flash fired, red-eye reduction mode, return light not detected"
 msgstr "Blesk bleskl, režim redukce červených očí, odraz světla nedetekován"
 
-#: libexif/exif-entry.c:762
+#: libexif/exif-entry.c:763
 msgid "Flash fired, red-eye reduction mode, return light detected"
 msgstr "Blesk bleskl, režim redukce červených očí, odraz světla detekován"
 
-#: libexif/exif-entry.c:764
+#: libexif/exif-entry.c:765
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode"
 msgstr "Blesk bleskl, blesk zapnut, režim redukce červených očí"
 
-#: libexif/exif-entry.c:766
+#: libexif/exif-entry.c:767
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
 "detected"
@@ -2174,7 +2175,7 @@ msgstr ""
 "Blesk bleskl, blesk zapnut, režim redukce červených očí, odraz světla "
 "nedetekován"
 
-#: libexif/exif-entry.c:768
+#: libexif/exif-entry.c:769
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light "
 "detected"
@@ -2182,159 +2183,159 @@ msgstr ""
 "Blesk bleskl, blesk zapnut, režim redukce červených očí, odraz světla "
 "detekován"
 
-#: libexif/exif-entry.c:770
+#: libexif/exif-entry.c:771
 msgid "Flash did not fire, auto mode, red-eye reduction mode"
 msgstr "Blesk nebleskl, automatický režim, režim redukce červených očí"
 
-#: libexif/exif-entry.c:771
+#: libexif/exif-entry.c:772
 msgid "Flash fired, auto mode, red-eye reduction mode"
 msgstr "Blesk bleskl, automatický režim, režim redukce červených očí"
 
-#: libexif/exif-entry.c:772
+#: libexif/exif-entry.c:773
 msgid ""
 "Flash fired, auto mode, return light not detected, red-eye reduction mode"
 msgstr ""
 "Blesk bleskl, automatický režim, režim redukce červených očí, odraz světla "
 "nedetekován"
 
-#: libexif/exif-entry.c:774
+#: libexif/exif-entry.c:775
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode"
 msgstr ""
 "Blesk bleskl, automatický režim, režim redukce červených očí, odraz světla "
 "detekován"
 
-#: libexif/exif-entry.c:778
+#: libexif/exif-entry.c:779
 msgid "?"
 msgstr "?"
 
-#: libexif/exif-entry.c:780
+#: libexif/exif-entry.c:781
 msgid "Close view"
 msgstr "Blízký pohled"
 
-#: libexif/exif-entry.c:781
+#: libexif/exif-entry.c:782
 msgid "Distant view"
 msgstr "Vzdálený pohled"
 
-#: libexif/exif-entry.c:781
+#: libexif/exif-entry.c:782
 msgid "Distant"
 msgstr "Vzdáleno"
 
-#: libexif/exif-entry.c:784
+#: libexif/exif-entry.c:785
 msgid "sRGB"
 msgstr "sRGB"
 
-#: libexif/exif-entry.c:785
+#: libexif/exif-entry.c:786
 msgid "Adobe RGB"
 msgstr "Adobe RGB"
 
-#: libexif/exif-entry.c:786
+#: libexif/exif-entry.c:787
 msgid "Uncalibrated"
 msgstr "Nekalibrovaný"
 
-#: libexif/exif-entry.c:840
+#: libexif/exif-entry.c:841
 #, c-format
 msgid "Invalid size of entry (%i, expected %li x %i)."
 msgstr "Chybná velikost položky (%i, očekáváno %li x %i)"
 
-#: libexif/exif-entry.c:873
+#: libexif/exif-entry.c:874
 msgid "Unsupported UNICODE string"
 msgstr "Nepodporovaný text v Unicode"
 
-#: libexif/exif-entry.c:881
+#: libexif/exif-entry.c:882
 msgid "Unsupported JIS string"
 msgstr "Nepodporaovný text v kódování JIS"
 
-#: libexif/exif-entry.c:897
+#: libexif/exif-entry.c:898
 msgid "Tag UserComment does not comply with standard but contains data."
 msgstr "Značka Komentář neodpovídá specifikaci, avšak obsahuje data."
 
-#: libexif/exif-entry.c:901
+#: libexif/exif-entry.c:902
 #, c-format
 msgid "Byte at position %i: 0x%02x"
 msgstr "Bajt na pozici %i: 0x%02x"
 
-#: libexif/exif-entry.c:910
+#: libexif/exif-entry.c:911
 msgid "Unknown Exif Version"
 msgstr "Neznámá verze Exif"
 
-#: libexif/exif-entry.c:914
+#: libexif/exif-entry.c:915
 #, c-format
 msgid "Exif Version %d.%d"
 msgstr "Exif verze %d.%d"
 
-#: libexif/exif-entry.c:925
+#: libexif/exif-entry.c:926
 msgid "FlashPix Version 1.0"
 msgstr "FlashPix verze 1.0"
 
-#: libexif/exif-entry.c:927
+#: libexif/exif-entry.c:928
 msgid "FlashPix Version 1.01"
 msgstr "FlashPix verze 1.01"
 
-#: libexif/exif-entry.c:929
+#: libexif/exif-entry.c:930
 msgid "Unknown FlashPix Version"
 msgstr "Neznámá verze FlashPix"
 
-#: libexif/exif-entry.c:942 libexif/exif-entry.c:955 libexif/exif-entry.c:1611
-#: libexif/exif-entry.c:1616 libexif/exif-entry.c:1619
-#: libexif/exif-entry.c:1624 libexif/exif-entry.c:1625
+#: libexif/exif-entry.c:943 libexif/exif-entry.c:956 libexif/exif-entry.c:1613
+#: libexif/exif-entry.c:1618 libexif/exif-entry.c:1621
+#: libexif/exif-entry.c:1626 libexif/exif-entry.c:1627
 msgid "[None]"
 msgstr "[Žádný]"
 
-#: libexif/exif-entry.c:944
+#: libexif/exif-entry.c:945
 msgid "(Photographer)"
 msgstr "(Fotograf)"
 
-#: libexif/exif-entry.c:958
+#: libexif/exif-entry.c:959
 msgid "(Editor)"
 msgstr "(Editor)"
 
-#: libexif/exif-entry.c:982
+#: libexif/exif-entry.c:983
 #, c-format
 msgid "%.02lf EV"
 msgstr "%.02lf EV"
 
-#: libexif/exif-entry.c:983
+#: libexif/exif-entry.c:984
 #, c-format
 msgid " (f/%.01f)"
 msgstr " (f/%.01f)"
 
-#: libexif/exif-entry.c:1017
+#: libexif/exif-entry.c:1018
 #, c-format
 msgid " (35 equivalent: %d mm)"
 msgstr " (35 ekvivalent: %d mm)"
 
-#: libexif/exif-entry.c:1050 libexif/exif-entry.c:1051
+#: libexif/exif-entry.c:1051 libexif/exif-entry.c:1052
 msgid " sec."
 msgstr " s"
 
-#: libexif/exif-entry.c:1062 libexif/exif-entry.c:1085
-#: libexif/exif-entry.c:1128
+#: libexif/exif-entry.c:1063 libexif/exif-entry.c:1086
+#: libexif/exif-entry.c:1129
 #, c-format
 msgid "%.02f EV"
 msgstr "%.02f EV"
 
-#: libexif/exif-entry.c:1068
+#: libexif/exif-entry.c:1069
 #, c-format
 msgid " 1/%d sec.)"
 msgstr " 1/%d s)"
 
-#: libexif/exif-entry.c:1070
+#: libexif/exif-entry.c:1071
 #, c-format
 msgid " %d sec.)"
 msgstr " %d s)"
 
-#: libexif/exif-entry.c:1086
+#: libexif/exif-entry.c:1087
 #, c-format
 msgid " (%.02f cd/m^2)"
 msgstr " (%.02f cd/m^2)"
 
-#: libexif/exif-entry.c:1096
+#: libexif/exif-entry.c:1097
 msgid "DSC"
 msgstr "DSC"
 
-#: libexif/exif-entry.c:1098 libexif/exif-entry.c:1137
-#: libexif/exif-entry.c:1224 libexif/exif-entry.c:1275
-#: libexif/exif-entry.c:1284 libexif/exif-entry.c:1320
+#: libexif/exif-entry.c:1099 libexif/exif-entry.c:1138
+#: libexif/exif-entry.c:1225 libexif/exif-entry.c:1276
+#: libexif/exif-entry.c:1285 libexif/exif-entry.c:1321
 #: libexif/fuji/mnote-fuji-entry.c:236 libexif/fuji/mnote-fuji-entry.c:245
 #: libexif/pentax/mnote-pentax-entry.c:350
 #: libexif/pentax/mnote-pentax-entry.c:359
@@ -2342,74 +2343,74 @@ msgstr "DSC"
 msgid "Internal error (unknown value %i)"
 msgstr "Vnitřní chyba (neznámá hodnota %i)"
 
-#: libexif/exif-entry.c:1106
+#: libexif/exif-entry.c:1107
 msgid "-"
 msgstr "-"
 
-#: libexif/exif-entry.c:1107
+#: libexif/exif-entry.c:1108
 msgid "Y"
 msgstr "Y"
 
-#: libexif/exif-entry.c:1108
+#: libexif/exif-entry.c:1109
 msgid "Cb"
 msgstr "Cb"
 
-#: libexif/exif-entry.c:1109
+#: libexif/exif-entry.c:1110
 msgid "Cr"
 msgstr "Cr"
 
-#: libexif/exif-entry.c:1110
+#: libexif/exif-entry.c:1111
 msgid "R"
 msgstr "R"
 
-#: libexif/exif-entry.c:1111
+#: libexif/exif-entry.c:1112
 msgid "G"
 msgstr "G"
 
-#: libexif/exif-entry.c:1112
+#: libexif/exif-entry.c:1113
 msgid "B"
 msgstr "B"
 
-#: libexif/exif-entry.c:1113
+#: libexif/exif-entry.c:1114
 msgid "reserved"
 msgstr "Rezervováno"
 
-#: libexif/exif-entry.c:1135
+#: libexif/exif-entry.c:1136
 msgid "Directly photographed"
 msgstr ""
 
-#: libexif/exif-entry.c:1148
+#: libexif/exif-entry.c:1149
 msgid "YCbCr4:2:2"
 msgstr "YCbCr4:2:2"
 
-#: libexif/exif-entry.c:1150
+#: libexif/exif-entry.c:1151
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:1167
+#: libexif/exif-entry.c:1168
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
 msgstr "Do vzdálenosti %d od (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:1176
+#: libexif/exif-entry.c:1177
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
 msgstr "V obdélníku (šířka %i, výška %i) okolo (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:1182
+#: libexif/exif-entry.c:1183
 #, c-format
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Neočekávaný počet položek (%li, očekáváno 2, 3 nebo 4)."
 
-#: libexif/exif-entry.c:1220
+#: libexif/exif-entry.c:1221
 msgid "Sea level"
 msgstr ""
 
-#: libexif/exif-entry.c:1222
+#: libexif/exif-entry.c:1223
 msgid "Sea level reference"
 msgstr ""
 
-#: libexif/exif-entry.c:1330
+#: libexif/exif-entry.c:1331
 #, c-format
 msgid "Unknown value %i"
 msgstr "Neznámá hodnota %i"
@@ -2545,7 +2546,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:76
 msgid "Bits per Sample"
-msgstr "Pošt bitů na komponentu"
+msgstr "Počet bitů na komponentu"
 
 #: libexif/exif-tag.c:77
 msgid ""
@@ -2637,7 +2638,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:118
 msgid "Strip Offsets"
-msgstr ""
+msgstr "Pozice pásů v souboru"
 
 #: libexif/exif-tag.c:119
 msgid ""
@@ -2831,7 +2832,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:206
 msgid "Defined by Adobe Corporation to enable TIFF Trees within a TIFF file."
-msgstr ""
+msgstr "Definováno společností Adobe pro umožnění TIFF hierarchií uvnitř souboru TIFF."
 
 #: libexif/exif-tag.c:211
 msgid "JPEG Interchange Format"
@@ -2984,7 +2985,7 @@ msgstr ""
 msgid ""
 "The class of the program used by the camera to set exposure when the picture "
 "is taken."
-msgstr ""
+msgstr "Typ programu použitého fotoaparátem pro nastavení expozice pro pořízení tohoto snímku."
 
 #: libexif/exif-tag.c:335
 msgid "Spectral Sensitivity"
@@ -3090,7 +3091,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:388
 msgid "GPS time (atomic clock)"
-msgstr ""
+msgstr "Čas GPS (atomový čas)"
 
 #: libexif/exif-tag.c:389
 msgid ""
@@ -3100,7 +3101,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:392
 msgid "GPS satellites used for measurement"
-msgstr ""
+msgstr "GPS satelity použité pro měření"
 
 #: libexif/exif-tag.c:393
 msgid ""
@@ -3124,7 +3125,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:403
 msgid "GPS measurement mode"
-msgstr ""
+msgstr "Režim měření GPS"
 
 #: libexif/exif-tag.c:404
 msgid ""
@@ -3134,7 +3135,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:407
 msgid "Measurement precision"
-msgstr ""
+msgstr "Přesnost měření"
 
 #: libexif/exif-tag.c:408
 msgid ""
@@ -3145,21 +3146,22 @@ msgstr ""
 
 #: libexif/exif-tag.c:411
 msgid "Speed unit"
-msgstr ""
+msgstr "Jednotka rychlosti"
 
 #: libexif/exif-tag.c:412
 msgid ""
 "Indicates the unit used to express the GPS receiver speed of movement. 'K', "
 "'M' and 'N' represent kilometers per hour, miles per hour, and knots."
-msgstr ""
+msgstr "Jednotka použitá pro rychlost pohybu GPS přijímače. Písmena 'K', "
+"'M' a 'N' udávají kilometry za hodinu, míle za hodinu, resp. uzly."
 
 #: libexif/exif-tag.c:415
 msgid "Speed of GPS receiver"
-msgstr ""
+msgstr "Rychlost GPS přijímače"
 
 #: libexif/exif-tag.c:416
 msgid "Indicates the speed of GPS receiver movement."
-msgstr ""
+msgstr "Rychlost pohybu GPS přijímače."
 
 #: libexif/exif-tag.c:417
 msgid "Reference for direction of movement"
@@ -3173,13 +3175,13 @@ msgstr ""
 
 #: libexif/exif-tag.c:421
 msgid "Direction of movement"
-msgstr ""
+msgstr "Směr pohybu"
 
 #: libexif/exif-tag.c:422
 msgid ""
 "Indicates the direction of GPS receiver movement. The range of values is "
 "from 0.00 to 359.99."
-msgstr ""
+msgstr "Směr pohybu GPS přijímače. Rozsah hodnot je 0 až 359,99."
 
 #: libexif/exif-tag.c:424
 msgid "GPS Img Direction Reference"
@@ -3370,11 +3372,11 @@ msgstr ""
 
 #: libexif/exif-tag.c:504
 msgid "Time Zone Offset"
-msgstr ""
+msgstr "Časová zóna"
 
 #: libexif/exif-tag.c:505
 msgid "Encodes time zone of camera clock relative to GMT."
-msgstr ""
+msgstr "Udává relativní posun vůči greenwichskému času (GMT)."
 
 #: libexif/exif-tag.c:506
 msgid "Exif Version"
@@ -3424,7 +3426,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:532
 msgid "Compressed Bits per Pixel"
-msgstr "Komprimovaných bitů na pixel"
+msgstr "Komprimované bity na pixel"
 
 #: libexif/exif-tag.c:533
 msgid ""
@@ -3515,7 +3517,7 @@ msgid ""
 "The actual focal length of the lens, in mm. Conversion is not made to the "
 "focal length of a 35 mm film camera."
 msgstr ""
-"Skutečná ohnisková vzdálenost čoček. Hodnota není přepočítána pro "
+"Skutečná ohnisková vzdálenost čoček. Hodnota není přepočtena pro "
 "fotoaparáty na 35mm film."
 
 #: libexif/exif-tag.c:576
@@ -3577,7 +3579,7 @@ msgstr "Název (Windows)"
 
 #: libexif/exif-tag.c:620
 msgid "A character string giving the title of the image, encoded in UTF-16LE."
-msgstr ""
+msgstr "Text s popiskem fotografie, uložený v Unicode."
 
 #: libexif/exif-tag.c:624
 msgid "XP Comment"
@@ -3586,7 +3588,7 @@ msgstr "Komentář (Windows)"
 #: libexif/exif-tag.c:625
 msgid ""
 "A character string containing a comment about the image, encoded in UTF-16LE."
-msgstr ""
+msgstr "Text s komentářem k fotografii, uložený v Unicode."
 
 #: libexif/exif-tag.c:629
 msgid "XP Author"
@@ -3596,7 +3598,7 @@ msgstr "Autor (Windows)"
 msgid ""
 "A character string containing the name of the image creator, encoded in UTF-"
 "16LE."
-msgstr ""
+msgstr "Text se jménem autora fotografie, uložený v Unicode."
 
 #: libexif/exif-tag.c:634
 msgid "XP Keywords"
@@ -3606,7 +3608,7 @@ msgstr "Klíčová slova (Windows)"
 msgid ""
 "A character string containing key words describing the image, encoded in UTF-"
 "16LE."
-msgstr ""
+msgstr "Text s klíčovými slovy vztahujícími se k fotografii, uložený v Unicode."
 
 #: libexif/exif-tag.c:639
 msgid "XP Subject"
@@ -3614,7 +3616,7 @@ msgstr "Předmět (Windows)"
 
 #: libexif/exif-tag.c:640
 msgid "A character string giving the image subject, encoded in UTF-16LE."
-msgstr ""
+msgstr "Text popisující předmět fotografie, uložený v Unicode."
 
 #: libexif/exif-tag.c:644
 msgid "The FlashPix format version supported by a FPXR file."
@@ -3854,7 +3856,7 @@ msgid ""
 "in mm. A value of 0 means the focal length is unknown. Note that this tag "
 "differs from the FocalLength tag."
 msgstr ""
-"Ohnisková vzdálenost přepočítaná pro fotoaparáty na 35mm film. Hodnota nula "
+"Ohnisková vzdálenost přepočtená pro fotoaparáty na 35mm film. Hodnota nula "
 "znamená, že ohnisková vzdálenost je neznámá."
 
 #: libexif/exif-tag.c:810
@@ -3943,7 +3945,7 @@ msgstr ""
 #: libexif/exif-tag.c:853
 msgid "Related to Epson's PRINT Image Matching technology"
 msgstr ""
-"Údaj pravděpodobné pro Epson PRINT Image Matching technology, jeho přesný "
+"Údaj pravděpodobně pro Epson PRINT Image Matching technology, jeho přesný "
 "význam není znám."
 
 #: libexif/fuji/mnote-fuji-entry.c:62
@@ -3998,7 +4000,7 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:125
 msgid "Natural photo"
-msgstr ""
+msgstr "Přírodní fotografie"
 
 #: libexif/fuji/mnote-fuji-entry.c:126
 msgid "Vibration reduction"
@@ -4006,7 +4008,7 @@ msgstr "Redukce vibrací"
 
 #: libexif/fuji/mnote-fuji-entry.c:127
 msgid "Sunset"
-msgstr ""
+msgstr "Západ slunce"
 
 #: libexif/fuji/mnote-fuji-entry.c:128 libexif/pentax/mnote-pentax-entry.c:181
 msgid "Museum"
@@ -4014,11 +4016,11 @@ msgstr "Muzeum"
 
 #: libexif/fuji/mnote-fuji-entry.c:129
 msgid "Party"
-msgstr ""
+msgstr "Párty"
 
 #: libexif/fuji/mnote-fuji-entry.c:130
 msgid "Flower"
-msgstr ""
+msgstr "Květina"
 
 #: libexif/fuji/mnote-fuji-entry.c:131 libexif/pentax/mnote-pentax-entry.c:176
 msgid "Text"
@@ -4070,7 +4072,7 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:160
 msgid "Over exposed"
-msgstr ""
+msgstr "Přeexponováno"
 
 #: libexif/fuji/mnote-fuji-entry.c:164
 msgid "Wide"
@@ -4141,7 +4143,7 @@ msgstr "Verze Maker note"
 
 #: libexif/fuji/mnote-fuji-tag.c:37
 msgid "This number is unique, it contains the date of manufacture."
-msgstr ""
+msgstr "Toto číslo je jedinečné, obsahuje datum výroby."
 
 #: libexif/fuji/mnote-fuji-tag.c:41
 msgid "Chromaticity Saturation"
@@ -4242,19 +4244,19 @@ msgstr "Špatný formát '%s', očekáván je '%s' nebo '%s'."
 
 #: libexif/olympus/mnote-olympus-entry.c:89
 msgid "AF non D Lens"
-msgstr ""
+msgstr "Čočky AF jiné než D"
 
 #: libexif/olympus/mnote-olympus-entry.c:91
 msgid "AF-D or AF-S Lens"
-msgstr "AF-D nebo AF-S Lens"
+msgstr "Čočky AF-D nebo AF-S"
 
 #: libexif/olympus/mnote-olympus-entry.c:92
 msgid "AF-D G Lens"
-msgstr ""
+msgstr "Čočky AF-D G"
 
 #: libexif/olympus/mnote-olympus-entry.c:93
 msgid "AF-D VR Lens"
-msgstr ""
+msgstr "Čočky AF-D VR"
 
 #: libexif/olympus/mnote-olympus-entry.c:97
 msgid "Flash unit unknown"
@@ -4487,7 +4489,7 @@ msgstr "Prokládaný"
 
 #: libexif/olympus/mnote-olympus-entry.c:221
 msgid "Progressive"
-msgstr ""
+msgstr "Progresivní"
 
 #: libexif/olympus/mnote-olympus-entry.c:227
 #: libexif/pentax/mnote-pentax-entry.c:85
@@ -4550,19 +4552,19 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:259
 msgid "5 frames/sec"
-msgstr ""
+msgstr "5 snímků/S"
 
 #: libexif/olympus/mnote-olympus-entry.c:260
 msgid "10 frames/sec"
-msgstr ""
+msgstr "10 snímků/S"
 
 #: libexif/olympus/mnote-olympus-entry.c:261
 msgid "15 frames/sec"
-msgstr ""
+msgstr "15 snímků/S"
 
 #: libexif/olympus/mnote-olympus-entry.c:262
 msgid "20 frames/sec"
-msgstr ""
+msgstr "20 snímků/S"
 
 #: libexif/olympus/mnote-olympus-entry.c:374
 #, c-format
@@ -4716,11 +4718,11 @@ msgstr "%i bajtů neznámých dat: "
 #: libexif/olympus/mnote-olympus-tag.c:38
 #: libexif/olympus/mnote-olympus-tag.c:53
 msgid "ISO Setting"
-msgstr ""
+msgstr "Nastavení ISO"
 
 #: libexif/olympus/mnote-olympus-tag.c:39
 msgid "Color Mode (?)"
-msgstr ""
+msgstr "Barevný režim (?)"
 
 #: libexif/olympus/mnote-olympus-tag.c:42
 msgid "Image Sharpening"
@@ -4809,7 +4811,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:95
 #: libexif/pentax/mnote-pentax-tag.c:134
 msgid "Color Mode"
-msgstr ""
+msgstr "Barevný režim"
 
 #: libexif/olympus/mnote-olympus-tag.c:72
 msgid "Light Type"
@@ -4858,7 +4860,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:97
 #: libexif/olympus/mnote-olympus-tag.c:183
 msgid "CCD Sensitivity"
-msgstr ""
+msgstr "Citlivost CCD"
 
 #: libexif/olympus/mnote-olympus-tag.c:99
 msgid "Focus"
@@ -4870,7 +4872,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:105
 msgid "Thumbnail Image"
-msgstr ""
+msgstr "Náhled"
 
 #: libexif/olympus/mnote-olympus-tag.c:106
 msgid "Speed/Sequence/Panorama Direction"
@@ -4878,7 +4880,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:109
 msgid "B&W Mode"
-msgstr ""
+msgstr "Černobílý režim"
 
 #: libexif/olympus/mnote-olympus-tag.c:111
 msgid "Focal Plane Diagonal"
@@ -4927,7 +4929,7 @@ msgstr "Rychlost uzávěrky"
 
 #: libexif/olympus/mnote-olympus-tag.c:124
 msgid "ISO Value"
-msgstr ""
+msgstr "Hodnota ISO"
 
 #: libexif/olympus/mnote-olympus-tag.c:125
 msgid "Aperture Value"
@@ -5135,15 +5137,15 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:189
 msgid "Epson Image Width"
-msgstr ""
+msgstr "Šířka obrázku - Epson"
 
 #: libexif/olympus/mnote-olympus-tag.c:190
 msgid "Epson Image Height"
-msgstr ""
+msgstr "Výška obrázku - Epson"
 
 #: libexif/olympus/mnote-olympus-tag.c:191
 msgid "Epson Software Version"
-msgstr ""
+msgstr "Verze software Epson"
 
 #: libexif/pentax/mnote-pentax-entry.c:78
 #: libexif/pentax/mnote-pentax-entry.c:132
@@ -5179,15 +5181,15 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:150
 msgid "2560x1920 or 2304x1728"
-msgstr ""
+msgstr "2560x1920 nebo 2304x1728"
 
 #: libexif/pentax/mnote-pentax-entry.c:156
 msgid "2304x1728 or 2592x1944"
-msgstr ""
+msgstr "2304x1728 nebo 2592x1944"
 
 #: libexif/pentax/mnote-pentax-entry.c:158
 msgid "2816x2212 or 2816x2112"
-msgstr ""
+msgstr "2816x2212 nebo 2816x2112"
 
 #: libexif/pentax/mnote-pentax-entry.c:169
 #: libexif/pentax/mnote-pentax-entry.c:295
@@ -5200,7 +5202,7 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:172
 msgid "Sunset or Candlelight"
-msgstr ""
+msgstr "Západ slunce nebo světlo svíčky"
 
 #: libexif/pentax/mnote-pentax-entry.c:173
 msgid "Autumn"
@@ -5385,11 +5387,11 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:282
 msgid "3008x2008 or 3040x2024"
-msgstr ""
+msgstr "3008x2008 nebo 3040x2024"
 
 #: libexif/pentax/mnote-pentax-entry.c:293
 msgid "Digital Filter?"
-msgstr ""
+msgstr "Digitální filtr (?)"
 
 #: libexif/pentax/mnote-pentax-entry.c:374
 #: libexif/pentax/mnote-pentax-entry.c:383
@@ -5404,7 +5406,7 @@ msgstr ""
 #: libexif/pentax/mnote-pentax-tag.c:36 libexif/pentax/mnote-pentax-tag.c:70
 #: libexif/pentax/mnote-pentax-tag.c:129
 msgid "Quality Level"
-msgstr ""
+msgstr "Úroveň kvality"
 
 #: libexif/pentax/mnote-pentax-tag.c:54
 msgid "ISOSpeed"
