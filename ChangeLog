@@ -1,3 +1,10 @@
+2009-09-23  Dan Fandrich <dan@coneharvesters.com>
+
+	* Removed bogus "APEX" value from shutter speed display (thanks to
+	  Jef Driesen for confirming this)
+	* Fixed a couple of off-by-one unnecessary string truncations
+	* Define M_PI for those systems that don't have it
+
 2009-09-23  Jan Patera <patera@users.sourceforge.net>
 
 	* po/cs.po: Updated Czech translation by Jan Patera

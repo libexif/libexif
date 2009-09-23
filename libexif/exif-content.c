@@ -289,6 +289,7 @@ exif_content_fix (ExifContent *c)
 			exif_content_remove_entry (c, e);
 			break;
 		case EXIF_SUPPORT_LEVEL_OPTIONAL:
+		case EXIF_SUPPORT_LEVEL_UNKNOWN:
 		default:
 			break;
 		}

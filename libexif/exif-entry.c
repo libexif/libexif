@@ -32,6 +32,10 @@
 #include <time.h>
 #include <math.h>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 struct _ExifEntryPrivate
 {
 	unsigned int ref_count;
@@ -983,7 +987,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		snprintf (val, maxlen, _("%.02lf EV"), d);
 		snprintf (b, sizeof (b), _(" (f/%.01f)"), pow (2, d / 2.));
 		if (maxlen > strlen (val) + strlen (b))
-			strncat (val, b, maxlen - strlen (val) - 1);
+			strncat (val, b, maxlen - strlen (val));
 		break;
 	case EXIF_TAG_FOCAL_LENGTH:
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
@@ -1022,7 +1026,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
 		snprintf (val, maxlen, "%.1lf mm", d);
 		if (maxlen > strlen (val) + strlen (b))
-			strncat (val, b, maxlen - strlen (val) - 1);
+			strncat (val, b, maxlen - strlen (val));
 		break;
 	case EXIF_TAG_SUBJECT_DISTANCE:
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
@@ -1049,7 +1053,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		else
 			snprintf (val, maxlen, "%i", (int) d);
 		if (maxlen > strlen (val) + strlen (_(" sec.")))
-			strncat (val, _(" sec."), maxlen - strlen (val) - 1);
+			strncat (val, _(" sec."), maxlen - strlen (val));
 		break;
 	case EXIF_TAG_SHUTTER_SPEED_VALUE:
 		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
@@ -1061,18 +1065,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 		d = (double) v_srat.numerator / (double) v_srat.denominator;
 		snprintf (val, maxlen, _("%.02f EV"), d);
-		snprintf (b, sizeof (b), " (APEX: %i)", (int) pow (sqrt(2), d));
-		if (maxlen > strlen (val) + strlen (b))
-			strncat (val, b, maxlen - strlen (val) - 1);
 		d = 1. / pow (2, d);
 		if (d < 1)
-		  snprintf (b, sizeof (b), _(" 1/%d sec.)"), (int) (1. / d));
+		  snprintf (b, sizeof (b), _(" (1/%d sec.)"), (int) (1. / d));
 		else
-		  snprintf (b, sizeof (b), _(" %d sec.)"), (int) d);
-		if (maxlen > strlen (val) + strlen (b)) {
-		  val[strlen (val) - 1] = ',';
-		  strncat (val, b, maxlen - strlen (val) - 1);
-		}
+		  snprintf (b, sizeof (b), _(" (%d sec.)"), (int) d);
+		strncat (val, b, maxlen - strlen (val));
 		break;
 	case EXIF_TAG_BRIGHTNESS_VALUE:
 		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
@@ -1087,7 +1085,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		snprintf (b, sizeof (b), _(" (%.02f cd/m^2)"),
 			1. / (M_PI * 0.3048 * 0.3048) * pow (2, d));
 		if (maxlen > strlen (val) + strlen (b))
-			strncat (val, b, maxlen - strlen (val) - 1);
+			strncat (val, b, maxlen - strlen (val));
 		break;
 	case EXIF_TAG_FILE_SOURCE:
 		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
@@ -1114,7 +1112,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			default: c = _("reserved"); break;
 			}
 			strncat (val, c, maxlen - strlen (val));
-			if (i < 3) strncat (val, " ", maxlen - strlen (val));
+			if (i < 3)
+				strncat (val, " ", maxlen - strlen (val));
 		}
 		break;
 	case EXIF_TAG_EXPOSURE_BIAS_VALUE:
