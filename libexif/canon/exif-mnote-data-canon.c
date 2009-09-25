@@ -201,10 +201,15 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 {
 	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) ne;
 	ExifShort c;
-	size_t i, tcount, o, datao = 6 + n->offset;
+	size_t i, tcount, o, datao;
 
-	if (!n || !buf || !buf_size || (datao + 2 < datao) ||
-	    (datao + 2 < 2) || (datao + 2 > buf_size)) {
+	if (!n || !buf || !buf_size) {
+		exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			  "ExifMnoteCanon", "Short MakerNote");
+		return;
+	}
+	datao = 6 + n->offset;
+	if ((datao + 2 < datao) || (datao + 2 < 2) || (datao + 2 > buf_size)) {
 		exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteCanon", "Short MakerNote");
 		return;

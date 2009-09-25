@@ -228,11 +228,15 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 {
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) en;
 	ExifShort c;
-	size_t i, tcount, o, o2 = 6 + n->offset, /* Start of interesting data */
-	       datao = 6, base = 0;
+	size_t i, tcount, o, o2, datao = 6, base = 0;
 
-	if (!n || !buf || !buf_size || (n->offset + 22 < n->offset) ||
-	    (n->offset + 22 < 22) || (n->offset + 22 > buf_size)) {
+	if (!n || !buf || !buf_size) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			  "ExifMnoteDataOlympus", "Short MakerNote");
+		return;
+	}
+	o2 = 6 + n->offset; /* Start of interesting data */
+	if ((o2 + 10 < o2) || (o2 + 10 < 10) || (o2 + 10 > buf_size)) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataOlympus", "Short MakerNote");
 		return;

@@ -152,10 +152,15 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 {
 	ExifMnoteDataFuji *n = (ExifMnoteDataFuji*) en;
 	ExifLong c;
-	size_t i, tcount, o, datao = 6 + n->offset;
+	size_t i, tcount, o, datao;
 
-	if (!n || !buf || !buf_size || (datao + 12 < datao) ||
-	    (datao + 12 < 12) || (datao + 12 > buf_size)) {
+	if (!n || !buf || !buf_size) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			  "ExifMnoteDataFuji", "Short MakerNote");
+		return;
+	}
+	datao = 6 + n->offset;
+	if ((datao + 12 < datao) || (datao + 12 < 12) || (datao + 12 > buf_size)) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataFuji", "Short MakerNote");
 		return;

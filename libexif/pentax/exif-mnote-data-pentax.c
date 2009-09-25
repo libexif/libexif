@@ -215,17 +215,22 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 		const unsigned char *buf, unsigned int buf_size)
 {
 	ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) en;
-	size_t i, tcount, o, datao = 6 + n->offset, base = 0;
+	size_t i, tcount, o, datao, base = 0;
 	ExifShort c;
 
-	if (!n || !buf || !buf_size || (datao + 8 < datao) ||
-	    (datao + 8 < 8) || (datao + 8 > buf_size)) {
+	if (!n || !buf || !buf_size) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			  "ExifMnoteDataPentax", "Short MakerNote");
+		return;
+	}
+	datao = 6 + n->offset;
+	if ((datao + 8 < datao) || (datao + 8 < 8) || (datao + 8 > buf_size)) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataPentax", "Short MakerNote");
 		return;
 	}
 
-	/* Detect varient of Pentax/Casio MakerNote found */
+	/* Detect variant of Pentax/Casio MakerNote found */
 	if (!memcmp(buf + datao, "AOC", 4)) {
 		if ((buf[datao + 4] == 'I') && (buf[datao + 5] == 'I')) {
 			n->version = pentaxV3;
