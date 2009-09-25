@@ -95,8 +95,10 @@ exif_mnote_data_pentax_save (ExifMnoteData *ne,
 	case casioV2:
 		base = MNOTE_PENTAX2_TAG_BASE;
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
-		if (!*buf) return;
-
+		if (!*buf) {
+			EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteDataPentax", *buf_size);
+			return;
+		}
 		/* Write the magic header */
 		strcpy ((char *)*buf, "QVC");
 		exif_set_short (*buf + 4, n->order, (ExifShort) 0);
@@ -106,7 +108,10 @@ exif_mnote_data_pentax_save (ExifMnoteData *ne,
 	case pentaxV3:
 		base = MNOTE_PENTAX2_TAG_BASE;
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
-		if (!*buf) return;
+		if (!*buf) {
+			EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteDataPentax", *buf_size);
+			return;
+		}
 
 		/* Write the magic header */
 		strcpy ((char *)*buf, "AOC");
@@ -119,7 +124,10 @@ exif_mnote_data_pentax_save (ExifMnoteData *ne,
 	case pentaxV2:
 		base = MNOTE_PENTAX2_TAG_BASE;
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
-		if (!*buf) return;
+		if (!*buf) {
+			EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteDataPentax", *buf_size);
+			return;
+		}
 
 		/* Write the magic header */
 		strcpy ((char *)*buf, "AOC");
@@ -132,7 +140,10 @@ exif_mnote_data_pentax_save (ExifMnoteData *ne,
 		*buf_size -= 6;
 		o2 -= 6;
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
-		if (!*buf) return;
+		if (!*buf) {
+			EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteDataPentax", *buf_size);
+			return;
+		}
 		break;
 
 	default:
@@ -170,7 +181,10 @@ exif_mnote_data_pentax_save (ExifMnoteData *ne,
 			doff = *buf_size;
 			t = exif_mem_realloc (ne->mem, *buf,
 						 sizeof (char) * ts);
-			if (!t) return;
+			if (!t) {
+				EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteDataPentax", ts);
+				return;
+			}
 			*buf = t;
 			*buf_size = ts;
 			exif_set_long (*buf + o, n->order, datao + doff);
@@ -201,11 +215,17 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 		const unsigned char *buf, unsigned int buf_size)
 {
 	ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) en;
-	size_t i, o, s, datao = 6 + n->offset, base = 0;
+	size_t i, tcount, o, datao = 6 + n->offset, base = 0;
 	ExifShort c;
 
-	/* Number of entries */
-	if (buf_size < datao + (4 + 2) + 2) return;
+	if (!n || !buf || !buf_size || (datao + 8 < datao) ||
+	    (datao + 8 < 8) || (datao + 8 > buf_size)) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			  "ExifMnoteDataPentax", "Short MakerNote");
+		return;
+	}
+
+	/* Detect varient of Pentax/Casio MakerNote found */
 	if (!memcmp(buf + datao, "AOC", 4)) {
 		if ((buf[datao + 4] == 'I') && (buf[datao + 5] == 'I')) {
 			n->version = pentaxV3;
@@ -233,56 +253,73 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 			"Parsing Pentax maker note v1...");
 		n->version = pentaxV1;
 	}
-	c = exif_get_short (buf + datao, n->order);
-	n->entries = exif_mem_alloc (en->mem, sizeof (MnotePentaxEntry) * c);
-	if (!n->entries) return;
 
-	for (i = 0; i < c; i++) {
-		o = datao + 2 + 12 * i;
-		if (o + 8 > buf_size) {
+	/* Read the number of tags */
+	c = exif_get_short (buf + datao, n->order);
+	datao += 2;
+
+	/* Remove any old entries */
+	exif_mnote_data_pentax_clear (n);
+
+	/* Reserve enough space for all the possible MakerNote tags */
+	n->entries = exif_mem_alloc (en->mem, sizeof (MnotePentaxEntry) * c);
+	if (!n->entries) {
+		EXIF_LOG_NO_MEMORY(en->log, "ExifMnoteDataPentax", sizeof (MnotePentaxEntry) * c);
+		return;
+	}
+
+	/* Parse all c entries, storing ones that are successfully parsed */
+	tcount = 0;
+	for (i = c, o = datao; i; --i, o += 12) {
+		size_t s;
+		if ((o + 12 < o) || (o + 12 < 12) || (o + 12 > buf_size)) {
 			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifMnoteDataPentax", "Short MakerNote");
-			return;
+			break;
 		}
 
-		n->count = i + 1;
-		n->entries[i].tag        = exif_get_short (buf + o + 0, n->order) + base;
-		n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
-		n->entries[i].components = exif_get_long  (buf + o + 4, n->order);
-		n->entries[i].order      = n->order;
+		n->entries[tcount].tag        = exif_get_short (buf + o + 0, n->order) + base;
+		n->entries[tcount].format     = exif_get_short (buf + o + 2, n->order);
+		n->entries[tcount].components = exif_get_long  (buf + o + 4, n->order);
+		n->entries[tcount].order      = n->order;
 
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnotePentax",
-			  "Loading entry 0x%x ('%s')...", n->entries[i].tag,
-			  mnote_pentax_tag_get_name (n->entries[i].tag));
+			  "Loading entry 0x%x ('%s')...", n->entries[tcount].tag,
+			  mnote_pentax_tag_get_name (n->entries[tcount].tag));
 
 		/*
 		 * Size? If bigger than 4 bytes, the actual data is not
 		 * in the entry but somewhere else (offset).
 		 */
-		s = exif_format_get_size (n->entries[i].format) *
-                                      n->entries[i].components;
-		if (s > 65536) {
-			/* Corrupt data: EXIF data size is limited to the
-			 * maximum size of a JPEG segment (64 kb). 
-			 */
-			continue;
+		s = exif_format_get_size (n->entries[tcount].format) *
+                                      n->entries[tcount].components;
+		n->entries[tcount].size = s;
+		if (s) {
+			size_t dataofs = o + 8;
+			if (s > 4)
+				/* The data in this case is merely a pointer */
+			   	dataofs = exif_get_long (buf + dataofs, n->order) + 6;
+			if ((dataofs + s < dataofs) || (dataofs + s < s) ||
+				(dataofs + s > buf_size)) {
+				exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+						  "ExifMnoteDataPentax", "Tag data past end "
+					  "of buffer (%u > %u)", dataofs + s, buf_size);
+				continue;
+			}
+
+			n->entries[tcount].data = exif_mem_alloc (en->mem, s);
+			if (!n->entries[tcount].data) {
+				EXIF_LOG_NO_MEMORY(en->log, "ExifMnoteDataPentax", s);
+				continue;
+			}
+			memcpy (n->entries[tcount].data, buf + dataofs, s);
 		}
-		if (!s) return;
-		o += 8;
-		if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
-		if ((o + s < o) || (o + s < s) || (o + s > buf_size)) {
-			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
-			          "ExifMnoteDataPentax", "Tag data past end "
-				  "of buffer (%u > %u)", o + s, buf_size);
-			return;
-		}
-                                                                                
-		/* Sanity check */
-		n->entries[i].data = exif_mem_alloc (en->mem, s);
-		if (!n->entries[i].data) return;
-		n->entries[i].size = s;
-		memcpy (n->entries[i].data, buf + o, s);
-        }
+
+		/* Tag was successfully parsed */
+		++tcount;
+	}
+	/* Store the count of successfully parsed tags */
+	n->count = tcount;
 }
 
 static unsigned int

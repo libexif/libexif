@@ -1,6 +1,6 @@
 libexif-0.6.x:
-  * Updated translations: nl, pl, sk, vi
   * New translation: da
+  * Updated translations: cs, de, en_CA, nl, pl, sk, sv, vi
   * Added some example programs
   * libexif is now thread safe when the underlying C library is thread safe
     and when each object allocated by libexif isn't used by more than one
@@ -17,6 +17,11 @@ libexif-0.6.x:
     removed from a file
   * Changed exif_tag_get_support_level_in_ifd() to return a value when possible
     when the data type for the given tag is unknown
+  * Added support for writing Pentax and Casio type2 MakerNotes
+  * Improved display of Pentax and Casio type2 MakerNotes
+  * Completely fixed bug #1617997 to display APEX values correctly
+  * Stopped some crashes due to read-beyond-buffer accesses in MakerNotes
+  * Don't abort MakerNote parsing after the first invalid tag
 
 libexif-0.6.17 (2008-11-06):
   * Updated translations: cs, de, pl, sk, vi
@@ -114,7 +119,7 @@ General remarks:
   * This file contains changes visible to users.
 
   * Small bug fixes (typos, memory leaks, ...) and feature
-    enhancements (new tag types, ...) are not mentionened
+    enhancements (new tag types, ...) are not mentioned
     explicitly.
 
   * Apart from that, I would like to ask committers to update this

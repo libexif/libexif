@@ -152,63 +152,89 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 {
 	ExifMnoteDataFuji *n = (ExifMnoteDataFuji*) en;
 	ExifLong c;
-	size_t i, o, s, datao = 6 + n->offset;
-	MnoteFujiEntry *t;
+	size_t i, tcount, o, datao = 6 + n->offset;
 
 	if (!n || !buf || !buf_size || (datao + 12 < datao) ||
-	    (datao + 12 < 12) || (datao + 12 > buf_size))
+	    (datao + 12 < 12) || (datao + 12 > buf_size)) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			  "ExifMnoteDataFuji", "Short MakerNote");
 		return;
+	}
 
-	/* Read the number of entries and remove old ones. */
 	n->order = EXIF_BYTE_ORDER_INTEL;
 	datao += exif_get_long (buf + datao + 8, EXIF_BYTE_ORDER_INTEL);
-	if ((datao + 2 < datao) || (datao + 2 < 2))
+	if ((datao + 2 < datao) || (datao + 2 < 2) ||
+	    (datao + 2 > buf_size)) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			  "ExifMnoteDataFuji", "Short MakerNote");
 		return;
+	}
+
+	/* Read the number of tags */
 	c = exif_get_short (buf + datao, EXIF_BYTE_ORDER_INTEL);
 	datao += 2;
+
+	/* Remove any old entries */
 	exif_mnote_data_fuji_clear (n);
 
-	/* Parse the entries */
-	for (i = 0; i < c; i++) {
-		o = datao + 12 * i;
-		if (datao + 12 > buf_size) {
+	/* Reserve enough space for all the possible MakerNote tags */
+	n->entries = exif_mem_alloc (en->mem, sizeof (MnoteFujiEntry) * c);
+	if (!n->entries) {
+		EXIF_LOG_NO_MEMORY(en->log, "ExifMnoteDataFuji", sizeof (MnoteFujiEntry) * c);
+		return;
+	}
+
+	/* Parse all c entries, storing ones that are successfully parsed */
+	tcount = 0;
+	for (i = c, o = datao; i; --i, o += 12) {
+		size_t s;
+		if ((o + 12 < o) || (o + 12 < 12) || (o + 12 > buf_size)) {
 			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifMnoteDataFuji", "Short MakerNote");
-			return;
+			break;
 		}
 
-		t = exif_mem_realloc (en->mem, n->entries,
-				sizeof (MnoteFujiEntry) * (i + 1));
-		if (!t) return;
-		n->count = i + 1;
-		n->entries = t;
-		memset (&n->entries[i], 0, sizeof (MnoteFujiEntry));
-		n->entries[i].tag        = exif_get_short (buf + o, n->order);
-		n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
-		n->entries[i].components = exif_get_long (buf + o + 4, n->order);
-		n->entries[i].order      = n->order;
+		n->entries[tcount].tag        = exif_get_short (buf + o, n->order);
+		n->entries[tcount].format     = exif_get_short (buf + o + 2, n->order);
+		n->entries[tcount].components = exif_get_long (buf + o + 4, n->order);
+		n->entries[tcount].order      = n->order;
+
+		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataFuji",
+			  "Loading entry 0x%x ('%s')...", n->entries[tcount].tag,
+			  mnote_fuji_tag_get_name (n->entries[tcount].tag));
 
 		/*
 		 * Size? If bigger than 4 bytes, the actual data is not
 		 * in the entry but somewhere else (offset).
 		 */
-		s = exif_format_get_size (n->entries[i].format) * n->entries[i].components;
-		if (!s) return;
-		o += 8;
-		if (s > 4) o = exif_get_long (buf + o, n->order) + 6 + n->offset;
-		if ((o + s < o) || (o + s < s) || (o + s > buf_size)) {
-			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
-			          "ExifMnoteDataFuji", "Tag data past end of "
-				  "buffer (%u > %u)", o + s, buf_size);
-			return;
+		s = exif_format_get_size (n->entries[tcount].format) * n->entries[tcount].components;
+		n->entries[tcount].size = s;
+		if (s) {
+			size_t dataofs = o + 8;
+			if (s > 4)
+				/* The data in this case is merely a pointer */
+				dataofs = exif_get_long (buf + dataofs, n->order) + 6 + n->offset;
+			if ((dataofs + s < dataofs) || (dataofs + s < s) ||
+				(dataofs + s >= buf_size)) {
+				exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+						  "ExifMnoteDataFuji", "Tag data past end of "
+					  "buffer (%u >= %u)", dataofs + s, buf_size);
+				continue;
+			}
+
+			n->entries[tcount].data = exif_mem_alloc (en->mem, s);
+			if (!n->entries[tcount].data) {
+				EXIF_LOG_NO_MEMORY(en->log, "ExifMnoteDataFuji", s);
+				continue;
+			}
+			memcpy (n->entries[tcount].data, buf + dataofs, s);
 		}
 
-		/* Sanity check */
-		n->entries[i].data = exif_mem_alloc (en->mem, s);
-		if (!n->entries[i].data) return;
-		n->entries[i].size = s;
-		memcpy (n->entries[i].data, buf + o, s);
+		/* Tag was successfully parsed */
+		++tcount;
 	}
+	/* Store the count of successfully parsed tags */
+	n->count = tcount;
 }
 
 static unsigned int

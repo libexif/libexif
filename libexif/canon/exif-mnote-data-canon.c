@@ -130,7 +130,10 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 	 */
 	*buf_size = 2 + n->count * 12 + 4;
 	*buf = exif_mem_alloc (ne->mem, sizeof (char) * *buf_size);
-	if (!*buf) return;
+	if (!*buf) {
+		EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteCanon", *buf_size);
+		return;
+	}
 
 	/* Save the number of entries */
 	exif_set_short (*buf, n->order, (ExifShort) n->count);
@@ -158,7 +161,10 @@ exif_mnote_data_canon_save (ExifMnoteData *ne,
 			if (s & 1) ts += 1;
 			t = exif_mem_realloc (ne->mem, *buf,
 						 sizeof (char) * ts);
-			if (!t) return;
+			if (!t) {
+				EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteCanon", ts);
+				return;
+			}
 			*buf = t;
 			*buf_size = ts;
 			doff = *buf_size - s;
@@ -195,66 +201,85 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 {
 	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) ne;
 	ExifShort c;
-	size_t i, o, s;
-	MnoteCanonEntry *t;
+	size_t i, tcount, o, datao = 6 + n->offset;
 
-	if (!n || !buf || !buf_size || (buf_size < 6 + n->offset + 2)) return;
+	if (!n || !buf || !buf_size || (datao + 2 < datao) ||
+	    (datao + 2 < 2) || (datao + 2 > buf_size)) {
+		exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			  "ExifMnoteCanon", "Short MakerNote");
+		return;
+	}
 
-	/* Read the number of entries and remove old ones. */
-	c = exif_get_short (buf + 6 + n->offset, n->order);
+	/* Read the number of tags */
+	c = exif_get_short (buf + datao, n->order);
+	datao += 2;
+
+	/* Remove any old entries */
 	exif_mnote_data_canon_clear (n);
 
+	/* Reserve enough space for all the possible MakerNote tags */
+	n->entries = exif_mem_alloc (ne->mem, sizeof (MnoteCanonEntry) * c);
+	if (!n->entries) {
+		EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteCanon", sizeof (MnoteCanonEntry) * c);
+		return;
+	}
+
 	/* Parse the entries */
-	for (i = 0; i < c; i++) {
-		o = 6 + 2 + n->offset + 12 * i;
-		if (o + 8 > buf_size) {
+	tcount = 0;
+	for (i = c, o = datao; i; --i, o += 12) {
+		size_t s;
+		if ((o + 12 < o) || (o + 12 < 12) || (o + 12 > buf_size)) {
 			exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				"ExifMnoteCanon", "Short MakerNote");
-			return;
+			break;
 	        }
 
-		t = exif_mem_realloc (ne->mem, n->entries,
-			 sizeof (MnoteCanonEntry) * (i + 1));
-		if (!t) return; /* out of memory */
-		n->count = i + 1;
-		n->entries = t;
-		memset (&n->entries[i], 0, sizeof (MnoteCanonEntry));
-		n->entries[i].tag        = exif_get_short (buf + o, n->order);
-		n->entries[i].format     = exif_get_short (buf + o + 2, n->order);
-		n->entries[i].components = exif_get_long (buf + o + 4, n->order);
-		n->entries[i].order      = n->order;
+		n->entries[tcount].tag        = exif_get_short (buf + o, n->order);
+		n->entries[tcount].format     = exif_get_short (buf + o + 2, n->order);
+		n->entries[tcount].components = exif_get_long (buf + o + 4, n->order);
+		n->entries[tcount].order      = n->order;
 
 		exif_log (ne->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteCanon",
-			"Loading entry 0x%x ('%s')...", n->entries[i].tag,
-			 mnote_canon_tag_get_name (n->entries[i].tag));
+			"Loading entry 0x%x ('%s')...", n->entries[tcount].tag,
+			 mnote_canon_tag_get_name (n->entries[tcount].tag));
 
 		/*
 		 * Size? If bigger than 4 bytes, the actual data is not
 		 * in the entry but somewhere else (offset).
 		 */
-		s = exif_format_get_size (n->entries[i].format) * n->entries[i].components;
+		s = exif_format_get_size (n->entries[tcount].format) * 
+								  n->entries[tcount].components;
+		n->entries[tcount].size = s;
 		if (!s) {
 			exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifMnoteCanon",
 				  "Invalid zero-length tag size");
-			return;
-		}
-		o += 8;
-		if (s > 4) o = exif_get_long (buf + o, n->order) + 6;
-		if ((o + s < s) || (o + s < o) || (o + s > buf_size)) {
-			exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
-				"ExifMnoteCanon",
-				"Tag data past end of buffer (%u > %u)",
-				o + s, buf_size);
-			return;
+			continue;
+
+		} else {
+			size_t dataofs = o + 8;
+			if (s > 4) dataofs = exif_get_long (buf + dataofs, n->order) + 6;
+			if ((dataofs + s < s) || (dataofs + s < dataofs) || (dataofs + s > buf_size)) {
+				exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
+					"ExifMnoteCanon",
+					"Tag data past end of buffer (%u > %u)",
+					dataofs + s, buf_size);
+				continue;
+			}
+
+			n->entries[tcount].data = exif_mem_alloc (ne->mem, s);
+			if (!n->entries[tcount].data) {
+				EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteCanon", s);
+				continue;
+			}
+			memcpy (n->entries[tcount].data, buf + dataofs, s);
 		}
 
-		/* Sanity check */
-		n->entries[i].data = exif_mem_alloc (ne->mem, sizeof (char) * s);
-		if (!n->entries[i].data) return; /* out of memory */
-		n->entries[i].size = s;
-		memcpy (n->entries[i].data, buf + o, s);
+		/* Tag was successfully parsed */
+		++tcount;
 	}
+	/* Store the count of successfully parsed tags */
+	n->count = tcount;
 }
 
 static unsigned int
@@ -325,7 +350,8 @@ exif_mnote_data_canon_new (ExifMem *mem, ExifDataOption o)
 	if (!mem) return NULL;
 
 	d = exif_mem_alloc (mem, sizeof (ExifMnoteDataCanon));
-	if (!d) return NULL;
+	if (!d)
+		return NULL;
 
 	exif_mnote_data_construct (d, mem);
 

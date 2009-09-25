@@ -109,7 +109,10 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	case sanyoV1:
 	case epsonV1:
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
-		if (!*buf) return;
+		if (!*buf) {
+			EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteDataOlympus", *buf_size);
+			return;
+		}
 
 		/* Write the header and the number of entries. */
 		strcpy ((char *)*buf, n->version==sanyoV1?"SANYO":
@@ -120,7 +123,10 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 	case olympusV2:
 		*buf_size += 8-6 + 4;
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
-		if (!*buf) return;
+		if (!*buf) {
+			EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteDataOlympus", *buf_size);
+			return;
+		}
 
 		/* Write the header and the number of entries. */
 		strcpy ((char *)*buf, "OLYMPUS");
@@ -143,7 +149,10 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		*buf_size += 8 + 2;
 		*buf_size += 4; /* Next IFD pointer */
 		*buf = exif_mem_alloc (ne->mem, *buf_size);
-		if (!*buf) return;
+		if (!*buf) {
+			EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteDataOlympus", *buf_size);
+			return;
+		}
 
 		/* Write the header and the number of entries. */
 		strcpy ((char *)*buf, "Nikon");
@@ -193,7 +202,10 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 			ts = *buf_size + s;
 			t = exif_mem_realloc (ne->mem, *buf,
 						 sizeof (char) * ts);
-			if (!t) return;
+			if (!t) {
+				EXIF_LOG_NO_MEMORY(ne->log, "ExifMnoteDataOlympus", ts);
+				return;
+			}
 			*buf = t;
 			*buf_size = ts;
 			exif_set_long (*buf + o, n->order, datao + doff);
@@ -216,12 +228,15 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 {
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) en;
 	ExifShort c;
-	size_t i, tcount, s, o, o2 = 0, datao = 6, base = 0;
+	size_t i, tcount, o, o2 = 6 + n->offset, /* Start of interesting data */
+	       datao = 6, base = 0;
 
-	if (!n || !buf) return;
-
-	/* Start of interesting data */
-	o2 = 6 + n->offset;
+	if (!n || !buf || !buf_size || (n->offset + 22 < n->offset) ||
+	    (n->offset + 22 < 22) || (n->offset + 22 > buf_size)) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			  "ExifMnoteDataOlympus", "Short MakerNote");
+		return;
+	}
 
 	/*
 	 * Olympus headers start with "OLYMP" and need to have at least
@@ -244,7 +259,6 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	 * two unknown bytes (0), "MM" or "II", another byte 0 and 
 	 * lastly 0x2A.
 	 */
-	if (buf_size - n->offset < 22) return;
 	if (!memcmp (buf + o2, "OLYMP", 6) || !memcmp (buf + o2, "SANYO", 6) ||
 	    !memcmp (buf + o2, "EPSON", 6)) {
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
@@ -262,7 +276,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		else if (buf[o2 + 6 + 1] == 1)
 			n->order = EXIF_BYTE_ORDER_MOTOROLA;
 		o2 += 8;
-		if (o2 >= buf_size) return;
+		if (o2 + 2 > buf_size) return;
 		c = exif_get_short (buf + o2, n->order);
 		if ((!(c & 0xFF)) && (c > 0x500)) {
 			if (n->order == EXIF_BYTE_ORDER_INTEL) {
@@ -309,7 +323,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 
 			base = MNOTE_NIKON1_TAG_BASE;
 			/* Fix endianness, if needed */
-			if (o2 >= buf_size) return;
+			if (o2 + 2 > buf_size) return;
 			c = exif_get_short (buf + o2, n->order);
 			if ((!(c & 0xFF)) && (c > 0x500)) {
 				if (n->order == EXIF_BYTE_ORDER_INTEL) {
@@ -348,7 +362,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 			o2 += 2;
 
 			/* Go to where the number of entries is. */
-			if (o2 >= buf_size) return;
+			if (o2 + 4 > buf_size) return;
 			o2 = datao + exif_get_long (buf + o2, n->order);
 			break;
 
@@ -366,21 +380,32 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		return;
 	}
 
-	/* Number of entries */
-	if (o2 >= buf_size) return;
+	/* Sanity check the offset */
+	if ((o2 + 2 < o2) || (o2 + 2 < 2) || (o2 + 2 > buf_size)) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+			  "ExifMnoteOlympus", "Short MakerNote");
+		return;
+	}
+
+	/* Read the number of tags */
 	c = exif_get_short (buf + o2, n->order);
 	o2 += 2;
 
-	/* Read the number of entries and remove old ones. */
+	/* Remove any old entries */
 	exif_mnote_data_olympus_clear (n);
 
+	/* Reserve enough space for all the possible MakerNote tags */
 	n->entries = exif_mem_alloc (en->mem, sizeof (MnoteOlympusEntry) * c);
-	if (!n->entries) return;
+	if (!n->entries) {
+		EXIF_LOG_NO_MEMORY(en->log, "ExifMnoteOlympus", sizeof (MnoteOlympusEntry) * c);
+		return;
+	}
 
 	/* Parse all c entries, storing ones that are successfully parsed */
-	for (i = c, tcount = 0, o = o2; i; --i, o += 12) {
-		size_t dataofs;
-	    if ((o + 12 < o) || (o + 12 < 12) || (o + 12 > buf_size)) {
+	tcount = 0;
+	for (i = c, o = o2; i; --i, o += 12) {
+		size_t s;
+		if ((o + 12 < o) || (o + 12 < 12) || (o + 12 > buf_size)) {
 			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifMnoteOlympus", "Short MakerNote");
 			break;
@@ -394,12 +419,12 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	    exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteOlympus",
 		      "Loading entry 0x%x ('%s')...", n->entries[tcount].tag,
 		      mnote_olympus_tag_get_name (n->entries[tcount].tag));
-	    exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteOlympus",
+/*	    exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteOlympus",
 			    "0x%x %d %ld*(%d)",
 		    n->entries[tcount].tag,
 		    n->entries[tcount].format,
 		    n->entries[tcount].components,
-		    (int)exif_format_get_size(n->entries[tcount].format));
+		    (int)exif_format_get_size(n->entries[tcount].format)); */
 
 	    /*
 	     * Size? If bigger than 4 bytes, the actual data is not
@@ -409,8 +434,9 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		   			 n->entries[tcount].components;
 		n->entries[tcount].size = s;
 		if (s) {
-			dataofs = o + 8;
+			size_t dataofs = o + 8;
 			if (s > 4) {
+				/* The data in this case is merely a pointer */
 				dataofs = exif_get_long (buf + dataofs, n->order) + datao;
 #ifdef EXIF_OVERCOME_SANYO_OFFSET_BUG
 				/* Some Sanyo models (e.g. VPC-C5, C40) suffer from a bug when
@@ -436,9 +462,11 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 				continue;
 			}
 
-			/* Sanity check */
 			n->entries[tcount].data = exif_mem_alloc (en->mem, s);
-			if (!n->entries[tcount].data) continue;
+			if (!n->entries[tcount].data) {
+				EXIF_LOG_NO_MEMORY(en->log, "ExifMnoteOlympus", s);
+				continue;
+			}
 			memcpy (n->entries[tcount].data, buf + dataofs, s);
 		}
 
