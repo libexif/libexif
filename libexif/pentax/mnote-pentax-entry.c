@@ -417,7 +417,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		case EXIF_FORMAT_SHORT:
 		  {
 			const unsigned char *data = entry->data;
-		  	size_t len = strlen(val);
+		  	size_t i, len = strlen(val);
 		  	for(i=0; i<entry->components; i++) {
 				if ((i+1)*2 > entry->size) {
 					// Prevent buffer overflow
@@ -433,7 +433,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		case EXIF_FORMAT_LONG:
 		  {
 			const unsigned char *data = entry->data;
-		  	size_t len = strlen(val);
+		  	size_t i, len = strlen(val);
 		  	for(i=0; i<entry->components; i++) {
 				if ((i+1)*4 > entry->size) {
 					// Prevent buffer overflow
