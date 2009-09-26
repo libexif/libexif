@@ -181,11 +181,10 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	/* {0,1,2,4,8} x { 0x00000000 .. 0xffffffff } 
 	 *   -> { 0x000000000 .. 0x7fffffff8 } */
 	s = exif_format_get_size(entry->format) * entry->components;
-	if (s < entry->components) {
+	if ((s < entry->components) || (s == 0)){
 		return 0;
 	}
-	if (0 == s)
-		return 0;
+
 	/*
 	 * Size? If bigger than 4 bytes, the actual data is not
 	 * in the entry but somewhere else (offset).
@@ -196,8 +195,11 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 		doff = offset + 8;
 
 	/* Sanity checks */
-	if ((doff + s < doff) || (doff + s < s) || (doff + s > size))
+	if ((doff + s < doff) || (doff + s < s) || (doff + s > size)) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+				  "Tag data past end of buffer (%u > %u)", doff+s, size);	
 		return 0;
+	}
 
 	entry->data = exif_data_alloc (data, s);
 	if (entry->data) {
@@ -211,9 +213,8 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	/* If this is the MakerNote, remember the offset */
 	if (entry->tag == EXIF_TAG_MAKER_NOTE) {
 		if (!entry->data) {
-			exif_log (data->priv->log,
-                                               EXIF_LOG_CODE_DEBUG, "ExifData",
-                                               "MakerNote found with NULL data");	
+			exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+					  "MakerNote found with empty data");	
 		} else if (entry->size > 6) {
 			exif_log (data->priv->log,
 					       EXIF_LOG_CODE_DEBUG, "ExifData",
@@ -320,6 +321,7 @@ exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 	if (data->data) 
 		exif_mem_free (data->priv->mem, data->data);
 	if (!(data->data = exif_data_alloc (data, s))) {
+		EXIF_LOG_NO_MEMORY (data->priv->log, "ExifData", s);
 		data->size = 0;
 		return;
 	}
@@ -370,7 +372,7 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 		return;
 
 	/* check for valid ExifIfd enum range */
-	if (( ((int)ifd) < 0) || ( ((int)ifd) >= EXIF_IFD_COUNT))
+	if ((((int)ifd) < 0) || ( ((int)ifd) >= EXIF_IFD_COUNT))
 	  return;
 
 	if (recursion_depth > 30) {
@@ -380,16 +382,22 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 	}
 
 	/* Read the number of entries */
-	if (offset >= ds - 1) 
+	if ((offset + 2 < offset) || (offset + 2 < 2) || (offset + 2 > ds)) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
+			  "Tag data past end of buffer (%u > %u)", offset+2, ds);
 		return;
+	}
 	n = exif_get_short (d + offset, data->priv->order);
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-	          "Loading %i entries...", n);
+	          "Loading %hu entries...", n);
 	offset += 2;
 
 	/* Check if we have enough data. */
-	if (offset + 12 * n > ds) 
+	if (offset + 12 * n > ds) {
 		n = (ds - offset) / 12;
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+				  "Short data; only loading %hu entries...", n);
+	}
 
 	for (i = 0; i < n; i++) {
 
@@ -448,17 +456,17 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			if (!exif_tag_get_name_in_ifd (tag, ifd)) {
 
 				/*
-				 * Special case: Tag and format 0. That's against specification.
-				 * At least up to 2.2. But Photoshop writes it anyways.
+				 * Special case: Tag and format 0. That's against specification
+				 * (at least up to 2.2). But Photoshop writes it anyways.
 				 */
 				if (!memcmp (d + offset + 12 * i, "\0\0\0\0", 4)) {
 					exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-						  "Skipping empty entry at position %i in '%s'.", i, 
+						  "Skipping empty entry at position %u in '%s'.", i, 
 						  exif_ifd_get_name (ifd));
 					break;
 				}
 				exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-					  "Unknown tag 0x%04x (entry %i in '%s'). Please report this tag "
+					  "Unknown tag 0x%04x (entry %u in '%s'). Please report this tag "
 					  "to <libexif-devel@lists.sourceforge.net>.", tag, i,
 					  exif_ifd_get_name (ifd));
 				if (data->priv->options & EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS)
