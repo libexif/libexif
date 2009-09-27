@@ -1,7 +1,9 @@
-2009-09-25  Dan Fandrich <dan@coneharvesters.com>
+2009-09-26  Dan Fandrich <dan@coneharvesters.com>
 
 	* libexif/exif-data.c: Added more error log messages and improved
 	  a few data boundary checks.
+	* Sped up exif_content_fix() considerably by splitting the one giant
+	  loop into two much smaller & faster loops.
 
 2009-09-24  Dan Fandrich <dan@coneharvesters.com>
 

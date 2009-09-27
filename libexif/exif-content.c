@@ -246,31 +246,71 @@ fix_func (ExifEntry *e, void *UNUSED(data))
 	exif_entry_fix (e);
 }
 
+/*!
+ * Check if this entry is unknown and if so, delete it.
+ * \note Be careful calling this function in a loop. Deleting an entry from
+ * an ExifContent changes the index of subsequent entries, as well as the
+ * total size of the entries array.
+ */
+static void
+remove_not_recorded (ExifEntry *e, void *UNUSED(data))
+{
+	ExifIfd ifd = exif_entry_get_ifd(e) ;
+	ExifContent *c = e->parent;
+	ExifDataType dt = exif_data_get_data_type (c->parent);
+	ExifTag t = e->tag;
+
+	if (exif_tag_get_support_level_in_ifd (t, ifd, dt) ==
+			 EXIF_SUPPORT_LEVEL_NOT_RECORDED) {
+		exif_log (c->priv->log, EXIF_LOG_CODE_DEBUG, "exif-content",
+				"Tag 0x%04x is not recorded in IFD '%s' and has therefore been "
+				"removed.", t, exif_ifd_get_name (ifd));
+		exif_content_remove_entry (c, e);
+	}
+
+}
+
 void
 exif_content_fix (ExifContent *c)
 {
 	ExifIfd ifd = exif_content_get_ifd (c);
 	ExifDataType dt;
 	ExifEntry *e;
-	unsigned int i;
+	unsigned int i, num;
 
-	if (!c) return;
+	if (!c)
+		return;
 
 	dt = exif_data_get_data_type (c->parent);
 
-	/* First of all, fix all existing entries. */
+	/*
+	 * First of all, fix all existing entries.
+	 */
 	exif_content_foreach_entry (c, fix_func, NULL);
 
 	/*
-	 * Then check for existing tags that are not allowed and for
-	 * non-existing mandatory tags.
+	 * Go through each tag and if it's not recorded, remove it. If one
+	 * is removed, exif_content_foreach_entry() will skip the next entry,
+	 * so do the loop again from the beginning if this happens to ensure
+	 * they're all checked. This could be avoided if we stop relying on
+	 * exif_content_foreach_entry.
 	 */
-	for (i = 0; i <= 0xffff; i++) {
-		/* Index using an int because t might only be 16 bits */
-		const ExifTag t = (ExifTag) i;
-		switch (exif_tag_get_support_level_in_ifd (t, ifd, dt)) {
-		case EXIF_SUPPORT_LEVEL_MANDATORY:
-			if (exif_content_get_entry (c, t)) break;
+	do {
+		num = c->count;
+		exif_content_foreach_entry (c, remove_not_recorded, NULL);
+	} while (num != c->count);
+
+	/*
+	 * Then check for non-existing mandatory tags and create them if needed
+	 */
+	num = exif_tag_table_count();
+	for (i = 0; i < num; ++i) {
+		const ExifTag t = exif_tag_table_get_tag (i);
+		if (exif_tag_get_support_level_in_ifd (t, ifd, dt) ==
+			EXIF_SUPPORT_LEVEL_MANDATORY) {
+			if (exif_content_get_entry (c, t))
+				/* This tag already exists */
+				continue;
 			exif_log (c->priv->log, EXIF_LOG_CODE_DEBUG, "exif-content",
 					"Tag '%s' is mandatory in IFD '%s' and has therefore been added.",
 					exif_tag_get_name_in_ifd (t, ifd), exif_ifd_get_name (ifd));
@@ -278,20 +318,6 @@ exif_content_fix (ExifContent *c)
 			exif_content_add_entry (c, e);
 			exif_entry_initialize (e, t);
 			exif_entry_unref (e);
-			break;
-		case EXIF_SUPPORT_LEVEL_NOT_RECORDED:
-			e = exif_content_get_entry (c, t);
-			if (!e) break;
-			exif_log (c->priv->log, EXIF_LOG_CODE_DEBUG, "exif-content",
-					"Tag '%s' is not recorded in IFD '%s' and has therefore been "
-					"removed.", exif_tag_get_name_in_ifd (t, ifd),
-					exif_ifd_get_name (ifd));
-			exif_content_remove_entry (c, e);
-			break;
-		case EXIF_SUPPORT_LEVEL_OPTIONAL:
-		case EXIF_SUPPORT_LEVEL_UNKNOWN:
-		default:
-			break;
 		}
 	}
 }

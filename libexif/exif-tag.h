@@ -259,6 +259,19 @@ const char     *exif_tag_get_title       (ExifTag tag);
 /*! \deprecated Use #exif_tag_get_description_in_ifd instead */
 const char     *exif_tag_get_description (ExifTag tag);
 
+
+/* For now, do not use these functions. */
+
+/*! \internal */
+ExifTag      exif_tag_table_get_tag  (unsigned int n);
+
+/*! \internal */
+const char  *exif_tag_table_get_name (unsigned int n);
+
+/*! \internal */
+unsigned int exif_tag_table_count    (void);
+
+
 /* Don't use these definitions. They are here for compatibility only. */
 
 /*! \deprecated Use EXIF_TAG_PRINT_IMAGE_MATCHING instead. */
