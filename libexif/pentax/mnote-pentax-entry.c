@@ -400,10 +400,6 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			entry->size);
 		break;
 	case MNOTE_PENTAX_TAG_TZ_CITY:
-		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		CC (entry->components, 4, val, maxlen);
-		strncpy (val, (char*)entry->data, MIN(maxlen, entry->size));
-		break;
 	case MNOTE_PENTAX_TAG_TZ_DST:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (entry->components, 4, val, maxlen);
@@ -417,12 +413,8 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		case EXIF_FORMAT_SHORT:
 		  {
 			const unsigned char *data = entry->data;
-		  	size_t i, len = strlen(val);
-		  	for(i=0; i<entry->components; i++) {
-				if ((i+1)*2 > entry->size) {
-					// Prevent buffer overflow
-					break;
-				}
+		  	size_t k, len = strlen(val);
+		  	for(k=0; k<entry->components; k++) {
 				vs = exif_get_short (data, entry->order);
 				snprintf (val+len, maxlen-len, "%i ", vs);
 				len = strlen(val);
@@ -433,12 +425,8 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		case EXIF_FORMAT_LONG:
 		  {
 			const unsigned char *data = entry->data;
-		  	size_t i, len = strlen(val);
-		  	for(i=0; i<entry->components; i++) {
-				if ((i+1)*4 > entry->size) {
-					// Prevent buffer overflow
-					break;
-				}
+		  	size_t k, len = strlen(val);
+		  	for(k=0; k<entry->components; k++) {
 				vl = exif_get_long (data, entry->order);
 				snprintf (val+len, maxlen-len, "%li", (long int) vl);
 				len = strlen(val);
