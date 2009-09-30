@@ -25,12 +25,18 @@
 extern "C" {
 #endif /* __cplusplus */
 
+/*! Represents the type of image data to which the EXIF data applies.
+ * The EXIF tags have different constraints depending on the type of
+ * image data.
+ */
 typedef enum {
 	EXIF_DATA_TYPE_UNCOMPRESSED_CHUNKY = 0,
 	EXIF_DATA_TYPE_UNCOMPRESSED_PLANAR,
 	EXIF_DATA_TYPE_UNCOMPRESSED_YCC,
 	EXIF_DATA_TYPE_COMPRESSED,
-	EXIF_DATA_TYPE_COUNT
+	EXIF_DATA_TYPE_COUNT,
+
+	EXIF_DATA_TYPE_UNKNOWN = EXIF_DATA_TYPE_COUNT
 } ExifDataType;
 
 #ifdef __cplusplus

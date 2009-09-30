@@ -1006,7 +1006,7 @@ exif_tag_from_name (const char *name)
  *
  * \param[in] tag EXIF tag
  * \param[in] ifd a valid IFD (not EXIF_IFD_COUNT)
- * \param[in] t a valid data type (not EXIF_DATA_TYPE_COUNT)
+ * \param[in] t a valid data type (not EXIF_DATA_TYPE_UNKNOWN)
  * \return the level of support for this tag
  */
 static inline ExifSupportLevel

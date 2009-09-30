@@ -58,7 +58,9 @@ struct _ExifData
 };
 
 /*! Allocate a new #ExifData. The #ExifData contains an empty
- * #ExifContent for each IFD and the default set of options.
+ * #ExifContent for each IFD and the default set of options,
+ * which has #EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS
+ * and #EXIF_DATA_OPTION_FOLLOW_SPECIFICATION set.
  *
  * \return allocated #ExifData, or NULL on error
  */
@@ -66,7 +68,8 @@ ExifData *exif_data_new           (void);
 
 /*! Allocate a new #ExifData using the given memory allocator.
  * The #ExifData contains an empty #ExifContent for each IFD and the default
- * set of options.
+ * set of options, which has #EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS and
+ * #EXIF_DATA_OPTION_FOLLOW_SPECIFICATION set.
  *
  * \return allocated #ExifData, or NULL on error
  */
@@ -215,7 +218,7 @@ void         exif_data_set_data_type (ExifData *d, ExifDataType dt);
 /*! Return the data type for the given #ExifData.
  *
  * \param[in] d EXIF data
- * \return data type, or #EXIF_DATA_TYPE_COUNT on error
+ * \return data type, or #EXIF_DATA_TYPE_UNKNOWN on error
  */
 ExifDataType exif_data_get_data_type (ExifData *d);
 
