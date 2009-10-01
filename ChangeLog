@@ -1,3 +1,10 @@
+2009-09-30  Dan Fandrich <dan@coneharvesters.com>
+
+	* Added a new public API function, exif_loader_get_buf(), which
+	  returns a pointer to the raw data in the ExifLoader. Without this,
+	  the only way to get the ExifLoader data out was as an
+	  ExifData and using only the default set of ExifDataOptions.
+
 2009-09-29  Dan Fandrich <dan@coneharvesters.com>
 
 	* Added EXIF_DATA_TYPE_UNKNOWN as a backwards-compatible

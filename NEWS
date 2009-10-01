@@ -17,14 +17,16 @@ libexif-0.6.x:
     removed from a file when EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS is set
   * Changed exif_tag_get_support_level_in_ifd() to return a value when possible
     when the data type for the given EXIF data is unknown. This will cause
-    tags to be added or deleted when tag fixup is requested without a data
-    type being set.
+    tags to be added or deleted when tag fixup is requested even, without a
+    data type being set.
   * Added support for writing Pentax and Casio type2 MakerNotes
   * Improved display of Pentax and Casio type2 MakerNotes
   * Completely fixed bug #1617997 to display APEX values correctly
   * Stopped some crashes due to read-beyond-buffer accesses in MakerNotes
   * Don't abort MakerNote parsing after the first invalid tag
   * Sped up exif_content_fix()
+  * Fixed negative exposure values in Canon makernotes (bug #2797280)
+  * New API entry point: exif_loader_get_buf()
 
 libexif-0.6.17 (2008-11-06):
   * Updated translations: cs, de, pl, sk, vi

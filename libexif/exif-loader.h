@@ -95,7 +95,24 @@ void          exif_loader_reset (ExifLoader *loader);
  */
 ExifData     *exif_loader_get_data (ExifLoader *loader);
 
-void exif_loader_log (ExifLoader *, ExifLog *);
+/*! Return the data read by the loader.  The returned pointer is only
+ * guaranteed to be valid until the next call to a function modifying
+ * this #ExifLoader.  Either or both of buf and buf_size may be NULL on
+ * entry, in which case that value is not returned.
+ *
+ * \param[in] loader the loader
+ * \param[out] buf read-only pointer to the data read by the loader, or NULL
+ *                 in case of error
+ * \param[out] buf_size size of the data at buf, or 0 in case of error
+ */
+void exif_loader_get_buf (ExifLoader *loader, const unsigned char **buf,
+						  unsigned int *buf_size);
+
+/*! Set the log message object used by this #ExifLoader.
+ * \param[in] loader the loader
+ * \param[in] log #ExifLog
+ */
+void exif_loader_log (ExifLoader *loader, ExifLog *log);
 
 #ifdef __cplusplus
 }

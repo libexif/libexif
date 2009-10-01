@@ -126,3 +126,4 @@ mnote_pentax_entry_get_value
 mnote_pentax_tag_get_description
 mnote_pentax_tag_get_name
 mnote_pentax_tag_get_title
+exif_loader_get_buf
