@@ -60,7 +60,7 @@ libexifinclude_HEADERS = 	\
 	exif-utils.h		\
 	_stdint.h
 
-EXTRA_DIST += exif-system.h
+EXTRA_DIST += exif-system.h exif.h
 
 EXTRA_DIST += libexif.sym
 

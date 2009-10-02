@@ -2,6 +2,8 @@
 
 	* Bumped the library minor version number because of the addition
 	  of exif_loader_get_buf()
+	* Added exif.h to the source tarball so users can generate full
+	  Doxygen documentation.
 
 2009-09-30  Dan Fandrich <dan@coneharvesters.com>
 
