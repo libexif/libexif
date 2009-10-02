@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([EXIF library], [0.6.17.1], [libexif-devel@lists.sourceforge.net], [libexif])
+AC_INIT([EXIF library], [0.6.17.2], [libexif-devel@lists.sourceforge.net], [libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
@@ -27,7 +27,7 @@ GP_CONFIG_MSG([Source code location],[${srcdir}])
 dnl ---------------------------------------------------------------------------
 dnl Advanced information about versioning:
 dnl   * "Writing shared libraries" by Mike Hearn
-dnl         http://navi.cx/~mike/writing-shared-libraries.html
+dnl         http://plan99.net/~mike/writing-shared-libraries.html
 dnl   * libtool.info chapter "Versioning"
 dnl   * libtool.info chapter "Updating library version information"
 dnl ---------------------------------------------------------------------------
@@ -51,9 +51,10 @@ dnl 12:0:1   0.6.13
 dnl 13:1:0   added EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE (for 0.6.14)
 dnl 14:2:0   added XP_ WinXP tags (for 0.6.15)
 dnl 14:2:1   0.6.17
-LIBEXIF_CURRENT=14
-LIBEXIF_AGE=2
-LIBEXIF_REVISION=1
+dnl 15:3:0   added exif_loader_get_buf (for 0.6.18)
+LIBEXIF_CURRENT=15
+LIBEXIF_AGE=3
+LIBEXIF_REVISION=0
 AC_SUBST([LIBEXIF_AGE])
 AC_SUBST([LIBEXIF_REVISION])
 AC_SUBST([LIBEXIF_CURRENT])

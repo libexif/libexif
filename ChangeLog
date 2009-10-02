@@ -1,3 +1,8 @@
+2009-10-01  Dan Fandrich <dan@coneharvesters.com>
+
+	* Bumped the library minor version number because of the addition
+	  of exif_loader_get_buf()
+
 2009-09-30  Dan Fandrich <dan@coneharvesters.com>
 
 	* Added a new public API function, exif_loader_get_buf(), which
