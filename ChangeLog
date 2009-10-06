@@ -1,3 +1,8 @@
+2009-10-05  Dan Fandrich <dan@coneharvesters.com>
+
+	* Updated translations from Translation Project members to the
+	  latest & hopefully final .pot file before release
+
 2009-10-01  Dan Fandrich <dan@coneharvesters.com>
 
 	* Bumped the library minor version number because of the addition
