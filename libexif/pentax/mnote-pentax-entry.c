@@ -410,12 +410,12 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		CC (entry->components, 4, val, maxlen);
 		/* Note: format is UNDEFINED, not SHORT -> order is fixed: MOTOROLA */
 		vs = exif_get_short (entry->data, EXIF_BYTE_ORDER_MOTOROLA);
-		snprintf (val, maxlen, "%i:%#02i:%#02i", vs, entry->data[2], entry->data[3]);
+		snprintf (val, maxlen, "%i:%02i:%02i", vs, entry->data[2], entry->data[3]);
 		break;
 	case MNOTE_PENTAX2_TAG_TIME:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC2 (entry->components, 3, 4, val, maxlen);
-		snprintf (val, maxlen, "%#02i:%#02i:%#02i", entry->data[0], entry->data[1], entry->data[2]);
+		snprintf (val, maxlen, "%02i:%02i:%02i", entry->data[0], entry->data[1], entry->data[2]);
 		break;
 	default:
 		switch (entry->format) {
