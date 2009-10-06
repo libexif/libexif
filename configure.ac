@@ -4,6 +4,7 @@ AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
 AM_INIT_AUTOMAKE([-Wall gnu 1.9 dist-bzip2 dist-zip check-news])
+AM_MAINTAINER_MODE
 
 if test ! -d "$srcdir/m4m"; then
 AC_MSG_ERROR([

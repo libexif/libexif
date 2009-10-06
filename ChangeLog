@@ -1,3 +1,8 @@
+2009-10-06  Dan Fandrich <dan@coneharvesters.com>
+
+	* Added --enable-maintainer-mode in configure and made the SourceForge
+	  logo appear in the Doxygen documentation only when it's enabled.
+
 2009-10-05  Dan Fandrich <dan@coneharvesters.com>
 
 	* Updated translations from Translation Project members to the
