@@ -28,6 +28,7 @@ libexif-0.6.18 (2009-10-08):
   * Fixed negative exposure values in Canon makernotes (bug #2797280)
   * New API entry point: exif_loader_get_buf()
 
+
 libexif-0.6.17 (2008-11-06):
   * Updated translations: cs, de, pl, sk, vi
   * New translations: nl, sv, en_CA
