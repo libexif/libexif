@@ -1,3 +1,12 @@
+2009-10-09  Dan Fandrich <dan@coneharvesters.com>
+
+	* Released 0.6.18
+
+2009-10-09  Dan Fandrich <dan@coneharvesters.com>
+
+	* po/sr.po: Added Serbian translation by Marko Uskokovic
+	* po/pt_BR.po: Added Portuguese (Brazil) translation by André Gondi
+
 2009-10-08  Dan Fandrich <dan@coneharvesters.com>
 
 	* Demoted from EXIF_LOG_CODE_CORRUPT_DATA to EXIF_LOG_CODE_DEBUG the
@@ -7,7 +16,6 @@
 	  such a log message is found, but these kinds of errors are
 	  far too common (and practically unavoidable) to handle them
 	  this way.
-	* Released 0.6.18
 
 2009-10-06  Dan Fandrich <dan@coneharvesters.com>
 

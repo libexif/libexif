@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([EXIF library], [0.6.18.1], [libexif-devel@lists.sourceforge.net], [libexif])
+AC_INIT([EXIF library], [0.6.18], [libexif-devel@lists.sourceforge.net], [libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
@@ -170,7 +170,7 @@ AM_CONDITIONAL([ENABLE_INTERNAL_DOCS], [test "x${set_enable_internal_docs}" = "x
 # ---------------------------------------------------------------------------
 # i18n support
 # ---------------------------------------------------------------------------
-ALL_LINGUAS="cs da de en_CA es fr nl pl ru sk sv vi"
+ALL_LINGUAS="cs da de en_CA es fr nl pl pt_BR ru sk sr sv vi"
 AM_PO_SUBDIRS
 GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT_MIN}],
                 [Lutz Mueller and others])
