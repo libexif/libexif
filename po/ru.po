@@ -153,7 +153,6 @@ msgstr "Вкл + подавление эффекта красных глаз"
 
 #: libexif/canon/mnote-canon-entry.c:90
 msgid "External flash"
-msgstr "Встроенная вспышка"
 msgstr "Внешняя вспышка"
 
 #: libexif/canon/mnote-canon-entry.c:91 libexif/canon/mnote-canon-entry.c:101
