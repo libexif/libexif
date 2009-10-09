@@ -306,7 +306,7 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 			   	dataofs = exif_get_long (buf + dataofs, n->order) + 6;
 			if ((dataofs + s < dataofs) || (dataofs + s < s) ||
 				(dataofs + s > buf_size)) {
-				exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				exif_log (en->log, EXIF_LOG_CODE_DEBUG,
 						  "ExifMnoteDataPentax", "Tag data past end "
 					  "of buffer (%u > %u)", dataofs + s, buf_size);
 				continue;

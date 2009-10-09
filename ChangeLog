@@ -1,5 +1,12 @@
 2009-10-08  Dan Fandrich <dan@coneharvesters.com>
 
+	* Demoted from EXIF_LOG_CODE_CORRUPT_DATA to EXIF_LOG_CODE_DEBUG the
+	  MakerNote log messages that would result if a MakerNote were
+	  rewritten by an application without rebasing the internal data
+	  offsets.  The exif front end (at least) aborts processing if
+	  such a log message is found, but these kinds of errors are
+	  far too common (and practically unavoidable) to handle them
+	  this way.
 	* Released 0.6.18
 
 2009-10-06  Dan Fandrich <dan@coneharvesters.com>
