@@ -1,3 +1,7 @@
+2009-10-08  Dan Fandrich <dan@coneharvesters.com>
+
+	* Released 0.6.18
+
 2009-10-06  Dan Fandrich <dan@coneharvesters.com>
 
 	* Added --enable-maintainer-mode in configure and made the SourceForge
