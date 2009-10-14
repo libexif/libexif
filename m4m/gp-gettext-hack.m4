@@ -31,6 +31,8 @@ AC_SUBST([GETTEXT_PACKAGE])
 sed_cmds="s|^DOMAIN.*|DOMAIN = ${GETTEXT_PACKAGE}|"
 m4_if([$2],[],[],[sed_cmds="${sed_cmds};s|^COPYRIGHT_HOLDER.*|COPYRIGHT_HOLDER = $2|"])
 m4_ifval([$3],[
+sed_mb="$3"
+],[
 if test -n "$PACKAGE_BUGREPORT"; then
    sed_mb="${PACKAGE_BUGREPORT}"
 else
@@ -41,8 +43,6 @@ else
 ***
 ])
 fi
-],[
-sed_mb="$3"
 ])
 sed_cmds="${sed_cmds};s|^MSGID_BUGS_ADDRESS.*|MSGID_BUGS_ADDRESS = ${sed_mb}|"
 # Not so sure whether this hack is all *that* evil...
