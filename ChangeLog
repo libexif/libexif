@@ -4,6 +4,8 @@
 	* po/vi.po: Updated Vietnamese translation by Clytie Siddall
 	* Fixed an inverted logic condition that prevented the bug
 	  report address from appearing in the .pot file
+	* Ensure that ExifTagTable[] is sorted by tag to allow for future
+	  more efficient searching.
 
 2009-10-09  Dan Fandrich <dan@coneharvesters.com>
 
