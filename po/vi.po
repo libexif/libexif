@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif 0.6.18-pre2\n"
+"Project-Id-Version: libexif 0.6.18\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 22:54-0700\n"
-"PO-Revision-Date: 2009-10-03 21:25+0930\n"
+"POT-Creation-Date: 2009-10-09 14:52-0700\n"
+"PO-Revision-Date: 2009-10-11 17:35+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -3639,7 +3639,7 @@ msgid "%2.2f mm"
 msgstr "%2.2f mm"
 
 #: libexif/fuji/mnote-fuji-entry.c:298 libexif/pentax/mnote-pentax-entry.c:399
-#: libexif/pentax/mnote-pentax-entry.c:439
+#: libexif/pentax/mnote-pentax-entry.c:451
 #, c-format
 msgid "%i bytes unknown data"
 msgstr "%i byte dữ liệu lạ"
