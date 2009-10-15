@@ -1,4 +1,5 @@
 libexif-0.6.x:
+  * Now using a binary search to make searching through the tag table faster
 
 
 libexif-0.6.18 (2009-10-09):

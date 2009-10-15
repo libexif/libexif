@@ -47,7 +47,7 @@
  * The entries MUST be sorted in tag order.
  * The name and title are mandatory, but the description may be NULL.
  */
-static const struct {
+static const struct TagEntry {
 	/*! Tag ID. There may be duplicate tags when the same number is used for
 	 * different meanings in different IFDs. */
 	ExifTag tag;
@@ -877,10 +877,55 @@ exif_tag_table_get_name (unsigned int n)
 	return (n < exif_tag_table_count ()) ? ExifTagTable[n].name : NULL;
 }
 
+/*!
+ * Return the number of entries in the EXIF tag table, including the
+ * terminating NULL entry.
+ */
 unsigned int
 exif_tag_table_count (void)
 {
 	return sizeof (ExifTagTable) / sizeof (ExifTagTable[0]);
+}
+
+
+/*!
+ * Compares the tag with that in entry.
+ * \param[in] tag pointer to integer tag value
+ * \param[in] entry pointer to a struct TagEntry
+ * \return 0 if tags are equal, <0 if tag < entry, >0 if tag > entry
+ */
+static int
+match_tag(const void *tag, const void *entry)
+{
+	return *(int*)tag - ((struct TagEntry *)entry)->tag;
+}
+
+
+/*!
+ * Finds the first entry in the EXIF tag table with the given tag number
+ * using a binary search.
+ * \param[in] tag to find
+ * \return index into table, or -1 if not found
+ */
+static int
+exif_tag_table_first(ExifTag tag)
+{
+	int i;
+	struct TagEntry *entry = bsearch(&tag, ExifTagTable,
+			exif_tag_table_count()-1, sizeof(struct TagEntry), match_tag);
+	if (!entry)
+			return -1;	/* Not found */
+
+	/* Calculate index of found entry */
+	i = entry - ExifTagTable;
+
+	/* There may be other entries with the same tag number, so search
+	 * backwards to find the first
+	 */
+	while ((i > 0) && (ExifTagTable[i-1].tag == tag)) {
+		--i;
+	}
+	return i;
 }
 
 #define RECORDED \
@@ -893,9 +938,14 @@ const char *
 exif_tag_get_name_in_ifd (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;
+	int first;
 
-	if (ifd >= EXIF_IFD_COUNT) return NULL;
-	for (i = 0; ExifTagTable[i].name; i++)
+	if (ifd >= EXIF_IFD_COUNT)
+		return NULL;
+	first = exif_tag_table_first(tag);
+	if (first < 0)
+		return NULL;
+	for (i = first; ExifTagTable[i].name; i++)
 		if ((ExifTagTable[i].tag == tag) && RECORDED) break;
 	return ExifTagTable[i].name;
 }
@@ -904,6 +954,7 @@ const char *
 exif_tag_get_title_in_ifd (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;
+	int first;
 
 	/* FIXME: This belongs to somewhere else. */
 	/* libexif should use the default system locale.
@@ -913,8 +964,12 @@ exif_tag_get_title_in_ifd (ExifTag tag, ExifIfd ifd)
 	 * bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	 */
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-	if (ifd >= EXIF_IFD_COUNT) return NULL;
-	for (i = 0; ExifTagTable[i].title; i++)
+	if (ifd >= EXIF_IFD_COUNT)
+		return NULL;
+	first = exif_tag_table_first(tag);
+	if (first < 0)
+		return NULL;
+	for (i = first; ExifTagTable[i].title; i++)
 		if ((ExifTagTable[i].tag == tag) && RECORDED) break;
 	return _(ExifTagTable[i].title);
 }
@@ -923,6 +978,7 @@ const char *
 exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;
+	int first;
 
 	/* libexif should use the default system locale.
 	 * If an application specifically requires UTF-8, then we
@@ -932,7 +988,11 @@ exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 	 */
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
-	if (ifd >= EXIF_IFD_COUNT) return NULL;
+	if (ifd >= EXIF_IFD_COUNT)
+		return NULL;
+	first = exif_tag_table_first(tag);
+	if (first < 0)
+		return NULL;
 	for (i = 0; ExifTagTable[i].description; i++)
 		if ((ExifTagTable[i].tag == tag) && RECORDED) {
 			/* GNU gettext acts strangely when given an empty string */
@@ -987,7 +1047,7 @@ exif_tag_get_title (ExifTag tag)
 const char *
 exif_tag_get_description (ExifTag tag)
 {
-	return exif_tag_get_stuff (tag, exif_tag_get_description_in_ifd);
+	return exif_tag_get_stuff(tag, exif_tag_get_description_in_ifd);
 }
 
 
@@ -1021,12 +1081,17 @@ static inline ExifSupportLevel
 get_support_level_in_ifd (ExifTag tag, ExifIfd ifd, ExifDataType t)
 {
 	unsigned int i;
-	for (i = 0; ExifTagTable[i].description; i++) {
+	int first = exif_tag_table_first(tag);
+	if (first < 0)
+		return EXIF_SUPPORT_LEVEL_NOT_RECORDED;
+	for (i = first; ExifTagTable[i].name; i++) {
 		if (ExifTagTable[i].tag == tag) {
 			const ExifSupportLevel supp = ExifTagTable[i].esl[ifd][t];
 			if (supp != EXIF_SUPPORT_LEVEL_NOT_RECORDED)
 				return supp;
 			/* Try looking for another entry */
+		} else {
+			break; /* We've reached the end of the matching tags */
 		}
 	}
 	return EXIF_SUPPORT_LEVEL_NOT_RECORDED;
@@ -1045,7 +1110,11 @@ static inline ExifSupportLevel
 get_support_level_any_type (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;
-	for (i = 0; ExifTagTable[i].description; i++) {
+	int first = exif_tag_table_first(tag);
+	if (first < 0)
+		return EXIF_SUPPORT_LEVEL_UNKNOWN;
+
+	for (i = first; ExifTagTable[i].name; i++) {
 		if (ExifTagTable[i].tag == tag) {
 			/*
 			 * Check whether the support level is the same for all possible
@@ -1064,6 +1133,8 @@ get_support_level_any_type (ExifTag tag, ExifIfd ifd)
 					return supp;
 			}
 			/* Keep searching the table for another tag for our IFD */
+		} else {
+			break; /* We've reached the end of the matching tags */
 		}
 	}
 	return EXIF_SUPPORT_LEVEL_UNKNOWN;
