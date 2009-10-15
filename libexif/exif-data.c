@@ -414,7 +414,7 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			 * specific IFD, so exif_tag_get_name_in_ifd won't work
 			 */
 			exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-				  "IFD entry 0x%x at %u.", tag, o);
+				  "Sub-IFD entry 0x%x at %u.", tag, o);
 			switch (tag) {
 			case EXIF_TAG_EXIF_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_EXIF);

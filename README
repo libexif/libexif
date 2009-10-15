@@ -133,17 +133,17 @@ by eliminating them.
 INTERNATIONALIZATION
 --------------------
 
-All translations for libexif, except cs, ru and en_CA, are coordinated by
-the Translation Project at http://translationproject.org/.  This means
-that ALL changes to the .po files (except those few exceptions) MUST be
-made through the TP web site, or they will be eventually overwritten
-and lost.  If you are interested in translating libexif into a new
-language, simply join TP and start!  A translation disclaimer is NOT
-required for libexif; by making a translation, you agree implicitly to
-provide it under the same license terms as the rest of libexif (LGPL).
-When a new version of libexif is available for translation, a libexif
-maintainer will contact the Translation Project and all interested TP
-members will be automatically notified.
+All translations for libexif, except cr, cs, pt_BR, ru and en_CA, are
+coordinated by the Translation Project at http://translationproject.org/.
+This means that ALL changes to the .po files (except those few
+exceptions) MUST be made through the TP web site, or they will be
+eventually overwritten and lost.  If you are interested in translating
+libexif into a new language, simply join TP and start!  A translation
+disclaimer is NOT required for libexif; by making a translation, you
+agree implicitly to provide it under the same license terms as the rest
+of libexif (LGPL).  When a new version of libexif is available for
+translation, a libexif maintainer will contact the Translation Project
+and all interested TP members will be automatically notified.
 
 
 AUTHORS
