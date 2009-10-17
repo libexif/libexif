@@ -74,7 +74,7 @@
  * \section thread_safety Thread Safety
  * 
  * libexif is thread safe when the underlying C library is also thread safe.
- * Some libraries may require defining a special macro (like _REENTRANT)
+ * Some C libraries may require defining a special macro (like _REENTRANT)
  * to ensure this, or may require linking to a special thread-safe version of
  * the library.
  *

@@ -61,7 +61,7 @@ struct _ExifEntry {
         unsigned int size;
 
 	/*! #ExifContent containing this entry. 
-	 * \see #exif_entry_get_ifd */
+	 * \see exif_entry_get_ifd */
 	ExifContent *parent;
 
 	/*! Internal data to be used by libexif itself */

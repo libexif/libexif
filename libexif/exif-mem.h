@@ -1,6 +1,6 @@
 /*! \file exif-mem.h
  *  \brief Define the ExifMem data type and the associated functions.
- *  ExifMem defines the memory management functions used by the ExifLoader.
+ *  ExifMem defines the memory management functions used within libexif.
  */
 /* exif-mem.h
  *
@@ -77,9 +77,9 @@ void *exif_mem_alloc   (ExifMem *m, ExifLong s);
 void *exif_mem_realloc (ExifMem *m, void *p, ExifLong s);
 void  exif_mem_free    (ExifMem *m, void *p);
 
-/*! The default ExifMem for your convenience
+/*! Create a new ExifMem with default values for your convenience
  *
- * \return return the default ExifMem
+ * \return return a new default ExifMem
  */
 ExifMem *exif_mem_new_default (void);
 
