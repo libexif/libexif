@@ -162,8 +162,12 @@ exif_content_remove_entry (ExifContent *c, ExifEntry *e)
 	if (!c || !c->priv || !e || (e->parent != c)) return;
 
 	/* Search the entry */
-	for (i = 0; i < c->count; i++) if (c->entries[i] == e) break;
-	if (i == c->count) return;
+	for (i = 0; i < c->count; i++)
+			if (c->entries[i] == e)
+					break;
+
+	if (i == c->count)
+			return;
 
 	/* Remove the entry */
 	temp = c->entries[c->count-1];
@@ -291,9 +295,9 @@ exif_content_fix (ExifContent *c)
 	/*
 	 * Go through each tag and if it's not recorded, remove it. If one
 	 * is removed, exif_content_foreach_entry() will skip the next entry,
-	 * so do the loop again from the beginning if this happens to ensure
+	 * so if this happens do the loop again from the beginning to ensure
 	 * they're all checked. This could be avoided if we stop relying on
-	 * exif_content_foreach_entry.
+	 * exif_content_foreach_entry but loop intelligently here.
 	 */
 	do {
 		num = c->count;
