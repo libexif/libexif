@@ -1,3 +1,8 @@
+2009-10-27  Dan Fandrich <dan@coneharvesters.com>
+
+	* Improved tag table lookup performance by optimally ordering IFD
+	  search and aborting searches early if the tag is not found.
+
 2009-10-14  Dan Fandrich <dan@coneharvesters.com>
 
 	* Changed the various functions searching for tags in ExifTagTable[]

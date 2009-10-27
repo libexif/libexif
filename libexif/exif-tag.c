@@ -45,7 +45,8 @@
  * When there are such duplicate entries, there must be no overlap in their
  * support levels.
  * The entries MUST be sorted in tag order.
- * The name and title are mandatory, but the description may be NULL.
+ * The name and title are mandatory, but the description may be an empty
+ * string. None of the entries may be NULL except the final array terminator.
  */
 static const struct TagEntry {
 	/*! Tag ID. There may be duplicate tags when the same number is used for
@@ -945,8 +946,14 @@ exif_tag_get_name_in_ifd (ExifTag tag, ExifIfd ifd)
 	first = exif_tag_table_first(tag);
 	if (first < 0)
 		return NULL;
-	for (i = first; ExifTagTable[i].name; i++)
-		if ((ExifTagTable[i].tag == tag) && RECORDED) break;
+
+	for (i = first; ExifTagTable[i].name; i++) {
+		if (ExifTagTable[i].tag == tag) {
+		   if (RECORDED)
+			   break;
+		} else
+			return NULL; /* Recorded tag not found in the table */
+	}
 	return ExifTagTable[i].name;
 }
 
@@ -969,8 +976,14 @@ exif_tag_get_title_in_ifd (ExifTag tag, ExifIfd ifd)
 	first = exif_tag_table_first(tag);
 	if (first < 0)
 		return NULL;
-	for (i = first; ExifTagTable[i].title; i++)
-		if ((ExifTagTable[i].tag == tag) && RECORDED) break;
+
+	for (i = first; ExifTagTable[i].name; i++) {
+		if (ExifTagTable[i].tag == tag) {
+		   if (RECORDED)
+			   break;
+		} else
+			return NULL; /* Recorded tag not found in the table */
+	}
 	return _(ExifTagTable[i].title);
 }
 
@@ -993,14 +1006,19 @@ exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 	first = exif_tag_table_first(tag);
 	if (first < 0)
 		return NULL;
-	for (i = 0; ExifTagTable[i].description; i++)
-		if ((ExifTagTable[i].tag == tag) && RECORDED) {
-			/* GNU gettext acts strangely when given an empty string */
-			if (!*ExifTagTable[i].description)
-				return "";
-			return _(ExifTagTable[i].description);
-		}
-	return NULL;
+
+	for (i = 0; ExifTagTable[i].name; i++) {
+		if (ExifTagTable[i].tag == tag) {
+			if (RECORDED)
+				break;
+		} else
+			return NULL; /* Recorded tag not found in the table */
+	}
+
+	/* GNU gettext acts strangely when given an empty string */
+	if (!ExifTagTable[i].description || !*ExifTagTable[i].description)
+		return "";
+	return _(ExifTagTable[i].description);
 }
 
 
@@ -1014,10 +1032,11 @@ typedef const char * (*get_stuff_func) (ExifTag tag, ExifIfd ifd);
 static const char *
 exif_tag_get_stuff (ExifTag tag, get_stuff_func func)
 {
+	/* Search IFDs in this order, in decreasing order of number of valid tags */
 	static const ExifIfd ifds[EXIF_IFD_COUNT] = {
+		EXIF_IFD_EXIF,
 		EXIF_IFD_0,
 		EXIF_IFD_1,
-		EXIF_IFD_EXIF,
 		EXIF_IFD_INTEROPERABILITY,
 		EXIF_IFD_GPS
 	};
@@ -1084,6 +1103,7 @@ get_support_level_in_ifd (ExifTag tag, ExifIfd ifd, ExifDataType t)
 	int first = exif_tag_table_first(tag);
 	if (first < 0)
 		return EXIF_SUPPORT_LEVEL_NOT_RECORDED;
+
 	for (i = first; ExifTagTable[i].name; i++) {
 		if (ExifTagTable[i].tag == tag) {
 			const ExifSupportLevel supp = ExifTagTable[i].esl[ifd][t];
