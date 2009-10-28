@@ -866,6 +866,17 @@ static const struct TagEntry {
 
 /* For now, do not use these functions. */
 
+/*!
+ * Return the number of entries in the EXIF tag table, including the
+ * terminating NULL entry.
+ */
+inline unsigned int
+exif_tag_table_count (void)
+{
+	return sizeof (ExifTagTable) / sizeof (ExifTagTable[0]);
+}
+
+
 ExifTag
 exif_tag_table_get_tag (unsigned int n)
 {
@@ -877,17 +888,6 @@ exif_tag_table_get_name (unsigned int n)
 {
 	return (n < exif_tag_table_count ()) ? ExifTagTable[n].name : NULL;
 }
-
-/*!
- * Return the number of entries in the EXIF tag table, including the
- * terminating NULL entry.
- */
-unsigned int
-exif_tag_table_count (void)
-{
-	return sizeof (ExifTagTable) / sizeof (ExifTagTable[0]);
-}
-
 
 /*!
  * Compares the tag with that in entry.
@@ -913,9 +913,9 @@ exif_tag_table_first(ExifTag tag)
 {
 	int i;
 	struct TagEntry *entry = bsearch(&tag, ExifTagTable,
-			exif_tag_table_count()-1, sizeof(struct TagEntry), match_tag);
+		exif_tag_table_count()-1, sizeof(struct TagEntry), match_tag);
 	if (!entry)
-			return -1;	/* Not found */
+		return -1;	/* Not found */
 
 	/* Calculate index of found entry */
 	i = entry - ExifTagTable;
