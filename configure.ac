@@ -170,7 +170,7 @@ AM_CONDITIONAL([ENABLE_INTERNAL_DOCS], [test "x${set_enable_internal_docs}" = "x
 # ---------------------------------------------------------------------------
 # i18n support
 # ---------------------------------------------------------------------------
-ALL_LINGUAS="cs da de en_CA es fr nl pl pt_BR ru sk sr sv vi"
+ALL_LINGUAS="be cs da de en_CA en_GB es fr it ja nl pl pt pt_BR ru sk sq sr sv vi zh_CN"
 AM_PO_SUBDIRS
 GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT_MIN}],
                 [Lutz Mueller and others])

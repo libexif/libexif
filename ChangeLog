@@ -1,3 +1,19 @@
+2009-11-05  Dan Fandrich <dan@coneharvesters.com>
+
+	* Added a bunch of new translations from launchpad.net
+	* po/be.po: Added Belarusian translation by Iryna Nikanchuk 
+	* po/en_GB.po: Added English (United Kingdom) translation by Bruce
+	  Cowan 
+	* po/it.po: Added Italian translation by Sergio Zanchetta 
+	* po/ja.po: Added Japanese translation by Shushi Kurose 
+	* po/pt.po: Added Portuguese translation by nglnx 
+	* po/sq.po: Added Albanian translation by Vilson Gjeci 
+	* po/zh_CN.po: Added Chinese (simplified) translation by Tao Wei 
+
+2009-11-03  Dan Fandrich <dan@coneharvesters.com>
+
+	* po/da.po: Updated Danish translation by Joe Hansen
+
 2009-10-27  Dan Fandrich <dan@coneharvesters.com>
 
 	* Improved tag table lookup performance by optimally ordering IFD
