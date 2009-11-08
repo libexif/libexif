@@ -1007,7 +1007,7 @@ exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 	if (first < 0)
 		return NULL;
 
-	for (i = 0; ExifTagTable[i].name; i++) {
+	for (i = first; ExifTagTable[i].name; i++) {
 		if (ExifTagTable[i].tag == tag) {
 			if (RECORDED)
 				break;
