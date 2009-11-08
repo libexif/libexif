@@ -1,3 +1,8 @@
+2009-11-07  Dan Fandrich <dan@coneharvesters.com>
+
+	* Sorted ExifFormatTable[] in approximate decreasing order of
+	  popularity to decrease the total average lookup time.
+
 2009-11-05  Dan Fandrich <dan@coneharvesters.com>
 
 	* Added a bunch of new translations from launchpad.net

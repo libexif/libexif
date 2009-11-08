@@ -25,23 +25,27 @@
 
 #include <stdlib.h>
 
+/*! Table of data format types, descriptions and sizes.
+ * This table should be sorted in decreasing order of popularity in order
+ * to decrease the total average lookup time.
+ */
 static const struct {
         ExifFormat format;
 	const char *name;
         unsigned char size;
 } ExifFormatTable[] = {
-        {EXIF_FORMAT_BYTE,      N_("Byte"),      1},
-        {EXIF_FORMAT_ASCII,     N_("ASCII"),     1},
         {EXIF_FORMAT_SHORT,     N_("Short"),     2},
-        {EXIF_FORMAT_LONG,      N_("Long"),      4},
         {EXIF_FORMAT_RATIONAL,  N_("Rational"),  8},
+        {EXIF_FORMAT_SRATIONAL, N_("SRational"), 8},
+        {EXIF_FORMAT_UNDEFINED, N_("Undefined"), 1},
+        {EXIF_FORMAT_ASCII,     N_("ASCII"),     1},
+        {EXIF_FORMAT_LONG,      N_("Long"),      4},
+        {EXIF_FORMAT_BYTE,      N_("Byte"),      1},
 	{EXIF_FORMAT_SBYTE,     N_("SByte"),     1},
 	{EXIF_FORMAT_SSHORT,    N_("SShort"),    2},
         {EXIF_FORMAT_SLONG,     N_("SLong"),     4},
-        {EXIF_FORMAT_SRATIONAL, N_("SRational"), 8},
 	{EXIF_FORMAT_FLOAT,     N_("Float"),     4},
 	{EXIF_FORMAT_DOUBLE,    N_("Double"),    8},
-        {EXIF_FORMAT_UNDEFINED, N_("Undefined"), 1},
         {0, NULL, 0}
 };
 
