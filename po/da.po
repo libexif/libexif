@@ -22,9 +22,10 @@
 # focal -> brændpunkt, brændpunkts-
 # focal length -> brændvidde
 # focal point -> brændpunkt
+# hue -> farvetone
 # incandescence -> hvidglødende
 # shutter -> lukketid
-# still image -> fastbillede
+# still image -> stillbillede
 # strobe light -> stroboskoplys
 # top -> øverst 
 # tag -> mærke
@@ -34,7 +35,7 @@ msgstr ""
 "Project-Id-Version: libexif-0.6.18\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-09 14:52-0700\n"
-"PO-Revision-Date: 2009-11-01 01:01I+0200\n"
+"PO-Revision-Date: 2009-11-12 01:01I+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -420,9 +421,10 @@ msgstr "Digital makro"
 msgid "My colors"
 msgstr "Mine farver"
 
+# Stillbillede fremgår af RO
 #: libexif/canon/mnote-canon-entry.c:148
 msgid "Still image"
-msgstr "Fastbillede"
+msgstr "Stillbillede"
 
 #: libexif/canon/mnote-canon-entry.c:149
 msgid "Color accent"
@@ -556,7 +558,7 @@ msgstr "Uendeligt"
 
 #: libexif/canon/mnote-canon-entry.c:190
 msgid "Manual AF point selection"
-msgstr "Manuel AF-pointudvælgelse"
+msgstr "Manuel AF-punktudvælgelse"
 
 #: libexif/canon/mnote-canon-entry.c:191 libexif/canon/mnote-canon-entry.c:349
 msgid "None (MF)"
@@ -586,7 +588,7 @@ msgstr "Venstre"
 
 #: libexif/canon/mnote-canon-entry.c:196
 msgid "Auto AF point selection"
-msgstr "Auto AF-pointudvælgelse"
+msgstr "Auto AF-punktudvælgelse"
 
 #: libexif/canon/mnote-canon-entry.c:197
 msgid "Easy shooting"
@@ -951,7 +953,7 @@ msgstr "E-TTL"
 
 #: libexif/canon/mnote-canon-entry.c:289
 msgid "FP sync enabled"
-msgstr "FP synkronisering slået til"
+msgstr "FP-synkronisering slået til"
 
 #: libexif/canon/mnote-canon-entry.c:290
 msgid "2nd-curtain sync used"
@@ -1070,17 +1072,18 @@ msgstr "Skygge"
 msgid "Manual temperature (Kelvin)"
 msgstr "Manuel temperatur (Kelvin)"
 
+# pc sb., pc'en, pc'er. jævnfør RO
 #: libexif/canon/mnote-canon-entry.c:338
 msgid "PC set 1"
-msgstr "PC sæt 1"
+msgstr "Pc sæt 1"
 
 #: libexif/canon/mnote-canon-entry.c:339
 msgid "PC set 2"
-msgstr "PC sæt 3"
+msgstr "Pc sæt 3"
 
 #: libexif/canon/mnote-canon-entry.c:340
 msgid "PC set 3"
-msgstr "PC sæt 3"
+msgstr "Pc sæt 3"
 
 #: libexif/canon/mnote-canon-entry.c:341 libexif/exif-entry.c:709
 msgid "Daylight fluorescent"
@@ -1128,7 +1131,7 @@ msgstr "Tændt (billed 3)"
 
 #: libexif/canon/mnote-canon-entry.c:362
 msgid "EOS high-end"
-msgstr "EOS høj-ende"
+msgstr "EOS høj kvalitet"
 
 #: libexif/canon/mnote-canon-entry.c:363
 msgid "Compact"
@@ -1136,7 +1139,7 @@ msgstr "Kompakt"
 
 #: libexif/canon/mnote-canon-entry.c:364
 msgid "EOS mid-range"
-msgstr "EOS midt-interval"
+msgstr "EOS mellem kvalitet"
 
 #: libexif/canon/mnote-canon-entry.c:366
 msgid "Rotate 90 CW"
@@ -1214,15 +1217,15 @@ msgstr "Manuel temperatur (Kelvin)"
 
 #: libexif/canon/mnote-canon-entry.c:410
 msgid "PC Set1"
-msgstr "PC Sæt1"
+msgstr "Pc Sæt1"
 
 #: libexif/canon/mnote-canon-entry.c:411
 msgid "PC Set2"
-msgstr "PC Sæt2"
+msgstr "Pc Sæt2"
 
 #: libexif/canon/mnote-canon-entry.c:412
 msgid "PC Set3"
-msgstr "PC Sæt3"
+msgstr "Pc Sæt3"
 
 #: libexif/canon/mnote-canon-entry.c:413
 #: libexif/pentax/mnote-pentax-entry.c:251
@@ -1429,10 +1432,11 @@ msgstr "Skarphed"
 msgid "ISO"
 msgstr "ISO"
 
+# Målingstilstand
 #: libexif/canon/mnote-canon-tag.c:70 libexif/exif-tag.c:562
 #: libexif/pentax/mnote-pentax-tag.c:82
 msgid "Metering Mode"
-msgstr "Målingstilstand"
+msgstr "Måletilstand"
 
 #: libexif/canon/mnote-canon-tag.c:71 libexif/olympus/mnote-olympus-tag.c:133
 msgid "Focus Range"
@@ -1744,15 +1748,15 @@ msgstr "Ikke defineret"
 
 #: libexif/exif-entry.c:641
 msgid "One-chip color area sensor"
-msgstr "En chip, farveområdesensor"
+msgstr "En områdefarvesensor med en chip"
 
 #: libexif/exif-entry.c:642
 msgid "Two-chip color area sensor"
-msgstr "To chip, farveområdesensor"
+msgstr "En områdefarvesensor med to chip"
 
 #: libexif/exif-entry.c:642
 msgid "Three-chip color area sensor"
-msgstr "Tre chip, farveområdesensor"
+msgstr "En områdefarvesenor med tre chip"
 
 #: libexif/exif-entry.c:643
 msgid "Color sequential area sensor"
@@ -1922,11 +1926,11 @@ msgstr "Centrumvægtet gennemsnit"
 
 #: libexif/exif-entry.c:685
 msgid "Center-Weight"
-msgstr "Centervægtet"
+msgstr "Centrumvægtet"
 
 #: libexif/exif-entry.c:687
 msgid "Multi Spot"
-msgstr "Mange punktet"
+msgstr "Flerpunktet"
 
 #: libexif/exif-entry.c:688
 msgid "Pattern"
@@ -2491,7 +2495,7 @@ msgstr "Indikerer identifikationen af interoperabilityreglen. Brug »R98« for a
 
 #: libexif/exif-tag.c:65
 msgid "Interoperability Version"
-msgstr "Interoperability version"
+msgstr "Interoperabilitet version"
 
 #: libexif/exif-tag.c:67
 msgid "Image Width"
@@ -2667,7 +2671,7 @@ msgstr "Kunstner"
 
 #: libexif/exif-tag.c:186
 msgid "This tag records the name of the camera owner, photographer or image creator. The detailed format is not specified, but it is recommended that the information be written as in the example below for ease of Interoperability. When the field is left blank, it is treated as unknown."
-msgstr "Dette mærke viser navnet på kameraejeren, fotografen eller personen der oprettede billedet. Det detaljerede format er ikke angivet, men det anbefales at informatione skrives som vist i eksemplet nedenfor for at lette interoperabiliteten. Når feltet er uudfyldt, opfattes det som ukendt."
+msgstr "Dette mærke viser navnet på kameraejeren, fotografen eller personen der oprettede billedet. Det detaljerede format er ikke angivet, men det anbefales at informationerne skrives som vist i eksemplet nedenfor for at lette interoperabiliteten. Når feltet er uudfyldt, opfattes det som ukendt."
 
 #: libexif/exif-tag.c:192 libexif/pentax/mnote-pentax-tag.c:113
 msgid "White Point"
@@ -3163,7 +3167,7 @@ msgstr "Distancen til emnet, angivet i meter."
 
 #: libexif/exif-tag.c:563
 msgid "The metering mode."
-msgstr "Målningstilstanden."
+msgstr "Måletilstanden."
 
 #: libexif/exif-tag.c:565
 msgid "Light Source"
@@ -3171,7 +3175,7 @@ msgstr "Lyskilde"
 
 #: libexif/exif-tag.c:566
 msgid "The kind of light source."
-msgstr "Arten af lyskilden."
+msgstr "Lyskildetype."
 
 #: libexif/exif-tag.c:569
 msgid "This tag is recorded when an image is taken using a strobe light (flash)."
@@ -4216,6 +4220,7 @@ msgstr "Manuelt: %liK"
 msgid "Manual: Unknown"
 msgstr "Manuelt: Ukendt"
 
+# Enkeltryk
 #: libexif/olympus/mnote-olympus-entry.c:734
 msgid "One-touch"
 msgstr "Et tryk"
@@ -4334,7 +4339,7 @@ msgstr "Lystype"
 
 #: libexif/olympus/mnote-olympus-tag.c:74
 msgid "Hue Adjustment"
-msgstr "Hue-justering"
+msgstr "Farvetonejustering"
 
 #: libexif/olympus/mnote-olympus-tag.c:76
 msgid "Noisereduction"
@@ -4354,7 +4359,7 @@ msgstr "Størrelse på komprimeret billeddata i byte."
 
 #: libexif/olympus/mnote-olympus-tag.c:84
 msgid "Total Number of Pictures Taken"
-msgstr "Samlet antal billeder skudt"
+msgstr "Samlet antal billeder taget"
 
 #: libexif/olympus/mnote-olympus-tag.c:86
 msgid "Optimize Image"
@@ -4862,7 +4867,7 @@ msgstr "Fast centrum"
 
 #: libexif/pentax/mnote-pentax-entry.c:232
 msgid "Multiple"
-msgstr "Fler"
+msgstr "Flere"
 
 #: libexif/pentax/mnote-pentax-entry.c:233
 msgid "Top-left"
