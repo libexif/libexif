@@ -1,3 +1,8 @@
+2009-11-12  Dan Fandrich <dan@coneharvesters.com>
+
+	* Fixed a heap buffer overflow during tag format conversion.
+	* Released 0.6.19
+
 2009-11-07  Dan Fandrich <dan@coneharvesters.com>
 
 	* Sorted ExifFormatTable[] in approximate decreasing order of
