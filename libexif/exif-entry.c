@@ -195,7 +195,8 @@ exif_get_short_convert (const unsigned char *buf, ExifFormat format,
 void
 exif_entry_fix (ExifEntry *e)
 {
-	unsigned int i;
+	unsigned int i, newsize;
+	unsigned char *newdata;
 	ExifByteOrder o;
 	ExifRational r;
 	ExifSRational sr;
@@ -237,20 +238,30 @@ exif_entry_fix (ExifEntry *e)
 							exif_entry_get_ifd(e)),
 				exif_format_get_name (e->format),
 				exif_format_get_name (EXIF_FORMAT_SHORT));
+
 			o = exif_data_get_byte_order (e->parent->parent);
+			newsize = e->components * exif_format_get_size (EXIF_FORMAT_SHORT);
+			newdata = exif_entry_alloc (e, newsize);
+			if (!newdata) {
+				exif_entry_log (e, EXIF_LOG_CODE_NO_MEMORY,
+					"Could not allocate %lu byte(s).", (unsigned long)newsize);
+				break;
+			}
+
 			for (i = 0; i < e->components; i++)
 				exif_set_short (
-					e->data + i *
+					newdata + i *
 					exif_format_get_size (
 					 EXIF_FORMAT_SHORT), o,
 					 exif_get_short_convert (
 					  e->data + i *
 					  exif_format_get_size (e->format),
 					  e->format, o));
+
+			exif_mem_free (e->priv->mem, e->data);
+			e->data = newdata;
+			e->size = newsize;
 			e->format = EXIF_FORMAT_SHORT;
-			e->size = e->components *
-				exif_format_get_size (e->format);
-			e->data = exif_entry_realloc (e, e->data, e->size);
 			break;
 		case EXIF_FORMAT_SHORT:
 			/* No conversion necessary */
