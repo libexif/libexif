@@ -1,3 +1,7 @@
+2009-11-16  Dan Fandrich <dan@coneharvesters.com>
+
+	* po/ja.po: Updated Japanese translation by Tadashi Jokagi
+
 2009-11-12  Dan Fandrich <dan@coneharvesters.com>
 
 	* Fixed a heap buffer overflow during tag format conversion.
