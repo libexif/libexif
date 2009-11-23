@@ -1,3 +1,7 @@
+2009-11-23  Dan Fandrich <dan@coneharvesters.com>
+
+	* Include README-Win32.txt in all source distributions
+
 2009-11-16  Dan Fandrich <dan@coneharvesters.com>
 
 	* po/ja.po: Updated Japanese translation by Tadashi Jokagi
