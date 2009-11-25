@@ -1459,8 +1459,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		exif_set_short (e->data, o, 3);
 		break;
 
-	case EXIF_TAG_COLOR_SPACE:
 	/* SHORT, 1 component, default 0xffff */
+	case EXIF_TAG_COLOR_SPACE:
 		e->components = 1;
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
@@ -1469,6 +1469,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		exif_set_short (e->data, o, 0xffff);
 		break;
 
+	/* SHORT, 3 components, default 8 8 8 */
 	case EXIF_TAG_BITS_PER_SAMPLE:
 		e->components = 3;
 		e->format = EXIF_FORMAT_SHORT;
@@ -1484,6 +1485,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 			o, 8);
 		break;
 
+	/* SHORT, 2 components, default 2 1 */
 	case EXIF_TAG_YCBCR_SUB_SAMPLING:
 		e->components = 2;
 		e->format = EXIF_FORMAT_SHORT;
@@ -1615,6 +1617,8 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->size = 0;
 		e->data = NULL;
 		break;
+
+	/* ASCII, default "[None]" */
 	case EXIF_TAG_IMAGE_DESCRIPTION:
 	case EXIF_TAG_MAKE:
 	case EXIF_TAG_MODEL:
@@ -1627,6 +1631,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		if (!e->data) break;
 		strncpy ((char *)e->data, _("[None]"), e->size);
 		break;
+	/* ASCII, default "[None]\0[None]\0" */
 	case EXIF_TAG_COPYRIGHT:
 		e->components = (strlen (_("[None]")) + 1) * 2;
 		e->format = EXIF_FORMAT_ASCII;
@@ -1635,17 +1640,6 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		if (!e->data) break;
 		strcpy (((char *)e->data) + 0, _("[None]"));
 		strcpy (((char *)e->data) + strlen (_("[None]")) + 1, _("[None]"));
-		break;
-
-	/* UNDEFINED, no components, no default */
-	/* Use this if the tag is otherwise unsupported */
-	case EXIF_TAG_MAKER_NOTE:
-	case EXIF_TAG_USER_COMMENT:
-	default:
-		e->components = 0;
-		e->format = EXIF_FORMAT_UNDEFINED;
-		e->size = 0;
-		e->data = NULL;
 		break;
 
 	/* UNDEFINED, 1 component, default 1 */
@@ -1668,7 +1662,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->data[0] = 0x03;
 		break;
 
-	/* UNDEFINED, 4 components, default 0 1 0 0 */
+	/* UNDEFINED, 4 components, default 48 49 48 48 */
         case EXIF_TAG_FLASH_PIX_VERSION:
                 e->components = 4;
                 e->format = EXIF_FORMAT_UNDEFINED;
@@ -1678,7 +1672,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
                 memcpy (e->data, "0100", 4);
                 break;
 
-        /* UNDEFINED, 4 components, default 0 2 1 0 */
+        /* UNDEFINED, 4 components, default 48 50 49 48 */
         case EXIF_TAG_EXIF_VERSION:
                 e->components = 4;
                 e->format = EXIF_FORMAT_UNDEFINED;
@@ -1688,7 +1682,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
                 memcpy (e->data, "0210", 4);
                 break;
 
-        /* UNDEFINED, 4 components, default 1,2,3,0 */
+        /* UNDEFINED, 4 components, default 1 2 3 0 */
         case EXIF_TAG_COMPONENTS_CONFIGURATION:
                 e->components = 4;
                 e->format = EXIF_FORMAT_UNDEFINED;
@@ -1700,5 +1694,16 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->data[2] = 3;
 		e->data[3] = 0;
                 break;
+
+	/* UNDEFINED, no components, no default */
+	/* Use this if the tag is otherwise unsupported */
+	case EXIF_TAG_MAKER_NOTE:
+	case EXIF_TAG_USER_COMMENT:
+	default:
+		e->components = 0;
+		e->format = EXIF_FORMAT_UNDEFINED;
+		e->size = 0;
+		e->data = NULL;
+		break;
 	}
 }
