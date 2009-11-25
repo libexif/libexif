@@ -963,14 +963,6 @@ exif_tag_get_title_in_ifd (ExifTag tag, ExifIfd ifd)
 	unsigned int i;
 	int first;
 
-	/* FIXME: This belongs to somewhere else. */
-	/* libexif should use the default system locale.
-	 * If an application specifically requires UTF-8, then we
-	 * must give the application a way to tell libexif that.
-	 * 
-	 * bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	 */
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	if (ifd >= EXIF_IFD_COUNT)
 		return NULL;
 	first = exif_tag_table_first(tag);
@@ -984,6 +976,14 @@ exif_tag_get_title_in_ifd (ExifTag tag, ExifIfd ifd)
 		} else
 			return NULL; /* Recorded tag not found in the table */
 	}
+	/* FIXME: This belongs to somewhere else. */
+	/* libexif should use the default system locale.
+	 * If an application specifically requires UTF-8, then we
+	 * must give the application a way to tell libexif that.
+	 * 
+	 * bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	 */
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	return _(ExifTagTable[i].title);
 }
 
@@ -992,14 +992,6 @@ exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;
 	int first;
-
-	/* libexif should use the default system locale.
-	 * If an application specifically requires UTF-8, then we
-	 * must give the application a way to tell libexif that.
-	 * 
-	 * bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	 */
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
 	if (ifd >= EXIF_IFD_COUNT)
 		return NULL;
@@ -1018,6 +1010,14 @@ exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 	/* GNU gettext acts strangely when given an empty string */
 	if (!ExifTagTable[i].description || !*ExifTagTable[i].description)
 		return "";
+
+	/* libexif should use the default system locale.
+	 * If an application specifically requires UTF-8, then we
+	 * must give the application a way to tell libexif that.
+	 * 
+	 * bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	 */
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	return _(ExifTagTable[i].description);
 }
 
