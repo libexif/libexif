@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: libexif 0.6.19\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-11-12 22:15-0800\n"
-"PO-Revision-Date: 2009-11-17 01:44+0900\n"
+"PO-Revision-Date: 2009-11-25 11:06+0900\n"
 "Last-Translator: Tadashi Jokagi <elf2000@users.sourceforge.net>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -947,7 +947,7 @@ msgstr "通常 AE"
 
 #: libexif/canon/mnote-canon-entry.c:297
 msgid "Exposure compensation"
-msgstr ""
+msgstr "露出補正"
 
 #: libexif/canon/mnote-canon-entry.c:298
 msgid "AE lock"
@@ -955,7 +955,7 @@ msgstr "AE ロック"
 
 #: libexif/canon/mnote-canon-entry.c:299
 msgid "AE lock + Exposure compensation"
-msgstr ""
+msgstr "AE ロック + 露出補正"
 
 #: libexif/canon/mnote-canon-entry.c:300
 msgid "No AE"
@@ -1003,14 +1003,14 @@ msgstr "ズーム"
 
 #: libexif/canon/mnote-canon-entry.c:329
 msgid "Sunny"
-msgstr ""
+msgstr "晴天"
 
 #: libexif/canon/mnote-canon-entry.c:330 libexif/canon/mnote-canon-entry.c:402
 #: libexif/exif-entry.c:718 libexif/fuji/mnote-fuji-entry.c:75
 #: libexif/olympus/mnote-olympus-entry.c:135
 #: libexif/pentax/mnote-pentax-entry.c:255
 msgid "Cloudy"
-msgstr ""
+msgstr "曇天"
 
 #: libexif/canon/mnote-canon-entry.c:331 libexif/canon/mnote-canon-entry.c:403
 #: libexif/exif-entry.c:715 libexif/pentax/mnote-pentax-entry.c:100
@@ -1022,7 +1022,7 @@ msgstr ""
 #: libexif/exif-entry.c:714 libexif/pentax/mnote-pentax-entry.c:101
 #: libexif/pentax/mnote-pentax-entry.c:248
 msgid "Fluorescent"
-msgstr ""
+msgstr "蛍光灯"
 
 #: libexif/canon/mnote-canon-entry.c:333 libexif/canon/mnote-canon-entry.c:405
 #: libexif/exif-entry.c:716 libexif/exif-tag.c:577
@@ -1042,15 +1042,15 @@ msgstr "マニュアル温度 (Kelvin)"
 
 #: libexif/canon/mnote-canon-entry.c:338
 msgid "PC set 1"
-msgstr "PC セット 1"
+msgstr "PC 設定 1"
 
 #: libexif/canon/mnote-canon-entry.c:339
 msgid "PC set 2"
-msgstr "PC セット 2"
+msgstr "PC 設定 2"
 
 #: libexif/canon/mnote-canon-entry.c:340
 msgid "PC set 3"
-msgstr "PC セット 3"
+msgstr "PC 設定 3"
 
 #: libexif/canon/mnote-canon-entry.c:341 libexif/exif-entry.c:720
 msgid "Daylight fluorescent"
@@ -1434,11 +1434,11 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:78
 msgid "Maximal Aperture"
-msgstr ""
+msgstr "最大絞り"
 
 #: libexif/canon/mnote-canon-tag.c:79
 msgid "Minimal Aperture"
-msgstr ""
+msgstr "最小絞り"
 
 #: libexif/canon/mnote-canon-tag.c:80
 msgid "Flash Activity"
@@ -1482,7 +1482,7 @@ msgstr "色トーン"
 
 #: libexif/canon/mnote-canon-tag.c:91
 msgid "Focal Type"
-msgstr ""
+msgstr "焦点の種類"
 
 #: libexif/canon/mnote-canon-tag.c:93
 msgid "Focal Plane X Size"
@@ -1565,7 +1565,7 @@ msgstr "F 値"
 #: libexif/canon/mnote-canon-tag.c:112 libexif/exif-tag.c:466
 #: libexif/pentax/mnote-pentax-tag.c:78
 msgid "Exposure Time"
-msgstr "開放時間"
+msgstr "露出時間"
 
 #: libexif/canon/mnote-canon-tag.c:113
 msgid "Bulb Duration"
@@ -1849,12 +1849,12 @@ msgstr "ハイ ゲインを下げる"
 
 #: libexif/exif-entry.c:678
 msgid "Low saturation"
-msgstr ""
+msgstr "低彩度"
 
 #: libexif/exif-entry.c:678 test/nls/test-codeset.c:48
 #: test/nls/test-codeset.c:61
 msgid "High saturation"
-msgstr ""
+msgstr "高彩度"
 
 #: libexif/exif-entry.c:679 libexif/exif-entry.c:680
 #: libexif/fuji/mnote-fuji-entry.c:63
@@ -2075,35 +2075,35 @@ msgstr "ストロボあり"
 
 #: libexif/exif-entry.c:763
 msgid "Flash fired, compulsory flash mode"
-msgstr ""
+msgstr "フラッシュあり、強制フラッシュ モード"
 
 #: libexif/exif-entry.c:764
 msgid "Flash fired, compulsory flash mode, return light not detected"
-msgstr ""
+msgstr "フラッシュあり、強制フラッシュモード、光の返り検出なし"
 
 #: libexif/exif-entry.c:766
 msgid "Flash fired, compulsory flash mode, return light detected"
-msgstr ""
+msgstr "フラッシュあり、強制フラッシュモード、光の返り検出あり"
 
 #: libexif/exif-entry.c:768
 msgid "Flash did not fire, compulsory flash mode"
-msgstr ""
+msgstr "フラッシュなし、強制フラッシュ モード"
 
 #: libexif/exif-entry.c:769
 msgid "Flash did not fire, auto mode"
-msgstr ""
+msgstr "フラッシュなし、自動モード"
 
 #: libexif/exif-entry.c:770
 msgid "Flash fired, auto mode"
-msgstr ""
+msgstr "フラッシュあり、自動モード"
 
 #: libexif/exif-entry.c:771
 msgid "Flash fired, auto mode, return light not detected"
-msgstr ""
+msgstr "フラッシュあり、自動モード、光の返り検出なし"
 
 #: libexif/exif-entry.c:773
 msgid "Flash fired, auto mode, return light detected"
-msgstr ""
+msgstr "フラッシュあり、自動モード、光の返り検出あり"
 
 #: libexif/exif-entry.c:774
 msgid "No flash function"
@@ -2111,43 +2111,43 @@ msgstr "フラッシュ機能なし"
 
 #: libexif/exif-entry.c:775
 msgid "Flash fired, red-eye reduction mode"
-msgstr ""
+msgstr "フラッシュあり、赤目軽減あり"
 
 #: libexif/exif-entry.c:776
 msgid "Flash fired, red-eye reduction mode, return light not detected"
-msgstr ""
+msgstr "フラッシュあり、赤目軽減あり、光の返り検出なし"
 
 #: libexif/exif-entry.c:778
 msgid "Flash fired, red-eye reduction mode, return light detected"
-msgstr ""
+msgstr "フラッシュあり、赤目軽減あり、光の返り検出あり"
 
 #: libexif/exif-entry.c:780
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode"
-msgstr ""
+msgstr "フラッシュあり、強制フラッシュ モード、赤目軽減モード"
 
 #: libexif/exif-entry.c:782
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected"
-msgstr ""
+msgstr "フラッシュあり、強制フラッシュ モード、赤目軽減モード、光の返り検出なし"
 
 #: libexif/exif-entry.c:784
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode, return light detected"
-msgstr ""
+msgstr "フラッシュあり、強制フラッシュ モード、赤目軽減モード、光の返り検出あり"
 
 #: libexif/exif-entry.c:786
 msgid "Flash did not fire, auto mode, red-eye reduction mode"
-msgstr ""
+msgstr "フラッシュなし、自動モード、赤目軽減モード"
 
 #: libexif/exif-entry.c:787
 msgid "Flash fired, auto mode, red-eye reduction mode"
-msgstr ""
+msgstr "フラッシュモード、自動モード、赤目軽減モード"
 
 #: libexif/exif-entry.c:788
 msgid "Flash fired, auto mode, return light not detected, red-eye reduction mode"
-msgstr ""
+msgstr "フラッシュあり、自動モード、光の返り検出なし、赤目軽減モード"
 
 #: libexif/exif-entry.c:790
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode"
-msgstr ""
+msgstr "フラッシュあり、自動モード、光の返り検出あり、赤目軽減モード"
 
 #: libexif/exif-entry.c:794
 msgid "?"
@@ -2527,7 +2527,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:125
 msgid "GPS receiver status"
-msgstr ""
+msgstr "GPS レシーバーの状態"
 
 #: libexif/exif-tag.c:126
 msgid "Indicates the status of the GPS receiver when the image is recorded. 'A' means measurement is in progress, and 'V' means the measurement is Interoperability."
@@ -2535,7 +2535,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:129
 msgid "GPS measurement mode"
-msgstr ""
+msgstr "GPS 測定モード"
 
 #: libexif/exif-tag.c:130
 msgid "Indicates the GPS measurement mode. '2' means two-dimensional measurement and '3' means three-dimensional measurement is in progress."
@@ -2727,7 +2727,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:231
 msgid "Bits per Sample"
-msgstr ""
+msgstr "サンプル毎ビット"
 
 #: libexif/exif-tag.c:232
 msgid "The number of bits per image component. In this standard each component of the image is 8 bits, so the value for this tag is 8. See also <SamplesPerPixel>. In JPEG compressed data a JPEG marker is used instead of this tag."
@@ -2735,7 +2735,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:237
 msgid "Compression"
-msgstr ""
+msgstr "圧縮"
 
 #: libexif/exif-tag.c:238
 msgid "The compression scheme used for the image data. When a primary image is JPEG compressed, this designation is not necessary and is omitted. When thumbnails use JPEG compression, this tag value is set to 6."
@@ -2767,7 +2767,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:260
 msgid "Manufacturer"
-msgstr ""
+msgstr "製造"
 
 #: libexif/exif-tag.c:261
 msgid "The manufacturer of the recording equipment. This is the manufacturer of the DSC, scanner, video digitizer or other equipment that generated the image. When the field is left blank, it is treated as unknown."
@@ -2823,7 +2823,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:301
 msgid "x-Resolution"
-msgstr ""
+msgstr "X 解像度"
 
 #: libexif/exif-tag.c:302
 msgid "The number of pixels per <ResolutionUnit> in the <ImageWidth> direction. When the image resolution is unknown, 72 [dpi] is designated."
@@ -2831,7 +2831,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:306
 msgid "y-Resolution"
-msgstr ""
+msgstr "Y 解像度"
 
 #: libexif/exif-tag.c:307
 msgid "The number of pixels per <ResolutionUnit> in the <ImageLength> direction. The same value as <XResolution> is designated."
@@ -2839,7 +2839,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:311
 msgid "Planar Configuration"
-msgstr ""
+msgstr "プランナー設定"
 
 #: libexif/exif-tag.c:312
 msgid "Indicates whether pixel components are recorded in a chunky or planar format. In JPEG compressed files a JPEG marker is used instead of this tag. If this field does not exist, the TIFF default of 1 (chunky) is assumed."
@@ -2847,7 +2847,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:317
 msgid "Resolution Unit"
-msgstr ""
+msgstr "解像度の単位"
 
 #: libexif/exif-tag.c:318
 msgid "The unit for measuring <XResolution> and <YResolution>. The same unit is used for both <XResolution> and <YResolution>. If the image resolution is unknown, 2 (inches) is designated."
@@ -2987,7 +2987,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:467
 msgid "Exposure time, given in seconds (sec)."
-msgstr ""
+msgstr "露出時間を秒で指定します。"
 
 #: libexif/exif-tag.c:470
 msgid "The F number."
@@ -2995,7 +2995,7 @@ msgstr "F 値です。"
 
 #: libexif/exif-tag.c:475
 msgid "Image Resources Block"
-msgstr ""
+msgstr "画像リソースのブロック"
 
 #: libexif/exif-tag.c:477
 msgid "A pointer to the Exif IFD. Interoperability, Exif IFD has the same structure as that of the IFD specified in TIFF. ordinarily, however, it does not contain image data as in the case of TIFF."
@@ -3003,7 +3003,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:485
 msgid "Exposure Program"
-msgstr ""
+msgstr "露出プログラム"
 
 #: libexif/exif-tag.c:486
 msgid "The class of the program used by the camera to set exposure when the picture is taken."
@@ -3023,7 +3023,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:503
 msgid "ISO Speed Ratings"
-msgstr ""
+msgstr "ISO 速度評価"
 
 #: libexif/exif-tag.c:504
 msgid "Indicates the ISO Speed and ISO Latitude of the camera or input device as specified in ISO 12232."
@@ -3071,7 +3071,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:530
 msgid "Components Configuration"
-msgstr ""
+msgstr "コンポーネント設定"
 
 #: libexif/exif-tag.c:531
 msgid "Information specific to compressed data. The channels of each component are arranged in order from the 1st component to the 4th. For uncompressed data the data arrangement is given in the <PhotometricInterpretation> tag. However, since <PhotometricInterpretation> can only express the order of Y, Cb and Cr, this tag is provided for cases when compressed data uses components other than Y, Cb, and Cr and to enable support of other sequences."
@@ -3107,7 +3107,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:558
 msgid "Exposure Bias"
-msgstr ""
+msgstr "露出バイアス"
 
 #: libexif/exif-tag.c:559
 msgid "The exposure bias. The units is the APEX value. Ordinarily it is given in the range of -99.99 to 99.99."
@@ -3135,7 +3135,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:574
 msgid "Light Source"
-msgstr ""
+msgstr "光源"
 
 #: libexif/exif-tag.c:575
 msgid "The kind of light source."
@@ -3355,7 +3355,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:806
 msgid "Digital Zoom Ratio"
-msgstr ""
+msgstr "デジタル ズーム率"
 
 #: libexif/exif-tag.c:807
 msgid "This tag indicates the digital zoom ratio when the image was shot. If the numerator of the recorded value is 0, this indicates that digital zoom was not used."
@@ -3399,7 +3399,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:842
 msgid "Device Setting Description"
-msgstr ""
+msgstr "デバイス設定の説明"
 
 #: libexif/exif-tag.c:843
 msgid "This tag indicates information on the picture-taking conditions of a particular camera model. The tag is used only to indicate the picture-taking conditions in the reader."
@@ -3493,7 +3493,7 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:126
 msgid "Vibration reduction"
-msgstr ""
+msgstr "手振れ軽減"
 
 #: libexif/fuji/mnote-fuji-entry.c:127
 msgid "Sunset"
@@ -3737,15 +3737,15 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:91
 msgid "AF-D or AF-S Lens"
-msgstr ""
+msgstr "AF-D または AF-S レンズ"
 
 #: libexif/olympus/mnote-olympus-entry.c:92
 msgid "AF-D G Lens"
-msgstr ""
+msgstr "AF-D G レンズ"
 
 #: libexif/olympus/mnote-olympus-entry.c:93
 msgid "AF-D VR Lens"
-msgstr ""
+msgstr "AF-D VR レンズ"
 
 #: libexif/olympus/mnote-olympus-entry.c:97
 msgid "Flash unit unknown"
@@ -3970,7 +3970,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:191
 msgid "Internal + External"
-msgstr ""
+msgstr "内部 + 外部"
 
 #: libexif/olympus/mnote-olympus-entry.c:220
 msgid "Interlaced"
@@ -3978,7 +3978,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:221
 msgid "Progressive"
-msgstr ""
+msgstr "プログレッシブ"
 
 #: libexif/olympus/mnote-olympus-entry.c:227
 #: libexif/pentax/mnote-pentax-entry.c:85
@@ -4004,7 +4004,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:236
 msgid "Press start, press stop"
-msgstr ""
+msgstr "押して開始、押して停止"
 
 #: libexif/olympus/mnote-olympus-entry.c:244
 msgid "ISO 50"
@@ -4213,23 +4213,23 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:44
 msgid "Flash Setting"
-msgstr ""
+msgstr "フラッシュ設定"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
 msgid "White Balance Fine Adjustment"
-msgstr ""
+msgstr "ホワイト バランス微調整"
 
 #: libexif/olympus/mnote-olympus-tag.c:47
 msgid "White Balance RB"
-msgstr ""
+msgstr "ホワイト バランス RB"
 
 #: libexif/olympus/mnote-olympus-tag.c:49
 msgid "ISO Selection"
-msgstr ""
+msgstr "ISO 選択"
 
 #: libexif/olympus/mnote-olympus-tag.c:50
 msgid "Preview Image IFD"
-msgstr ""
+msgstr "プレビュー画像 IFD"
 
 #: libexif/olympus/mnote-olympus-tag.c:51
 msgid "Exposurediff ?"
@@ -4250,7 +4250,7 @@ msgstr ""
 #: libexif/olympus/mnote-olympus-tag.c:58
 #: libexif/olympus/mnote-olympus-tag.c:96
 msgid "Image Adjustment"
-msgstr ""
+msgstr "画像調整"
 
 #: libexif/olympus/mnote-olympus-tag.c:59
 msgid "Tone Compensation"
@@ -4258,11 +4258,11 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:60
 msgid "Adapter"
-msgstr ""
+msgstr "アダプター"
 
 #: libexif/olympus/mnote-olympus-tag.c:62
 msgid "Lens"
-msgstr ""
+msgstr "レンズ"
 
 #: libexif/olympus/mnote-olympus-tag.c:63
 #: libexif/olympus/mnote-olympus-tag.c:135
@@ -4288,13 +4288,13 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:70
 msgid "Contrast Curve"
-msgstr ""
+msgstr "コントラスト カーブ"
 
 #: libexif/olympus/mnote-olympus-tag.c:71
 #: libexif/olympus/mnote-olympus-tag.c:95
 #: libexif/pentax/mnote-pentax-tag.c:134
 msgid "Color Mode"
-msgstr ""
+msgstr "色モード"
 
 #: libexif/olympus/mnote-olympus-tag.c:72
 msgid "Light Type"
@@ -4326,7 +4326,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:86
 msgid "Optimize Image"
-msgstr ""
+msgstr "画像最適化"
 
 #: libexif/olympus/mnote-olympus-tag.c:88
 msgid "Vari Program"
@@ -4334,11 +4334,11 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:89
 msgid "Capture Editor Data"
-msgstr ""
+msgstr "エディター データの取り込み"
 
 #: libexif/olympus/mnote-olympus-tag.c:90
 msgid "Capture Editor Version"
-msgstr ""
+msgstr "エディター バージョンの取り込み"
 
 #: libexif/olympus/mnote-olympus-tag.c:97
 #: libexif/olympus/mnote-olympus-tag.c:183
@@ -4347,7 +4347,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:99
 msgid "Focus"
-msgstr ""
+msgstr "フォーカス"
 
 #: libexif/olympus/mnote-olympus-tag.c:102
 msgid "Converter"
@@ -4416,7 +4416,7 @@ msgstr "ISO 値"
 
 #: libexif/olympus/mnote-olympus-tag.c:125
 msgid "Aperture Value"
-msgstr ""
+msgstr "開放値"
 
 #: libexif/olympus/mnote-olympus-tag.c:126
 msgid "Brightness Value"
@@ -4530,7 +4530,7 @@ msgstr "シーン検出"
 
 #: libexif/olympus/mnote-olympus-tag.c:159
 msgid "Compression Ratio"
-msgstr ""
+msgstr "圧縮率"
 
 #: libexif/olympus/mnote-olympus-tag.c:160
 msgid "Preview Image Valid"
@@ -4664,7 +4664,7 @@ msgstr "TIFF"
 
 #: libexif/pentax/mnote-pentax-entry.c:150
 msgid "2560x1920 or 2304x1728"
-msgstr ""
+msgstr "2560×1920 または 2304×1728"
 
 #: libexif/pentax/mnote-pentax-entry.c:156
 msgid "2304x1728 or 2592x1944"
@@ -4693,11 +4693,11 @@ msgstr "冬"
 
 #: libexif/pentax/mnote-pentax-entry.c:178
 msgid "Self Portrait"
-msgstr ""
+msgstr "自画像"
 
 #: libexif/pentax/mnote-pentax-entry.c:179
 msgid "Illustrations"
-msgstr ""
+msgstr "イラスト"
 
 #: libexif/pentax/mnote-pentax-entry.c:180
 msgid "Digital Filter"
@@ -4705,11 +4705,11 @@ msgstr "デジタル フィルター"
 
 #: libexif/pentax/mnote-pentax-entry.c:182
 msgid "Food"
-msgstr ""
+msgstr "食品"
 
 #: libexif/pentax/mnote-pentax-entry.c:183
 msgid "Green Mode"
-msgstr ""
+msgstr "緑モード"
 
 #: libexif/pentax/mnote-pentax-entry.c:184
 msgid "Light Pet"
@@ -4913,27 +4913,27 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:64
 msgid "Preview Size"
-msgstr ""
+msgstr "プレビューの大きさ"
 
 #: libexif/pentax/mnote-pentax-tag.c:65
 msgid "Preview Length"
-msgstr ""
+msgstr "プレビューの長さ"
 
 #: libexif/pentax/mnote-pentax-tag.c:66 libexif/pentax/mnote-pentax-tag.c:122
 msgid "Preview Start"
-msgstr ""
+msgstr "プレビュー開始"
 
 #: libexif/pentax/mnote-pentax-tag.c:67
 msgid "Model Identification"
-msgstr ""
+msgstr "モデル識別"
 
 #: libexif/pentax/mnote-pentax-tag.c:68
 msgid "Date"
-msgstr ""
+msgstr "日付"
 
 #: libexif/pentax/mnote-pentax-tag.c:69
 msgid "Time"
-msgstr ""
+msgstr "時間"
 
 #: libexif/pentax/mnote-pentax-tag.c:72
 msgid "PictureMode"
