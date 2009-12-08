@@ -1,12 +1,12 @@
 libexif-0.6.x:
-  * Updated translations: ja
+  * Updated translations: da, ja
 
 
 libexif-0.6.19 (2009-11-12):
   * New translations: be, en_GB, it, ja, pt, sq, zh_CN
   * Updated translations: da, sv, vi
   * Now using a binary search to make searching through the tag table faster
-  * Fixed a heap buffer overflow during tag format conversion
+  * Fixed a heap buffer overflow during tag format conversion (CVE-2009-3895)
 
 
 libexif-0.6.18 (2009-10-09):
