@@ -1,3 +1,8 @@
+2009-12-08  Dan Fandrich <dan@coneharvesters.com>
+
+	* Fixed some memory leaks in the write-exif.c example program and
+	  added some examples of allocating a new tag.
+
 2009-11-27  Dan Fandrich <dan@coneharvesters.com>
 
 	* po/ja.po: Updated Japanese translation by Tadashi Jokagi
