@@ -504,7 +504,7 @@ static const struct TagEntry {
 	 N_("Indicates the ISO Speed and ISO Latitude of the camera or "
 	    "input device as specified in ISO 12232."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_OECF, "OECF", N_("OECF"),
+	{EXIF_TAG_OECF, "OECF", N_("Opto-Electronic Conversion Function"),
 	 N_("Indicates the Opto-Electronic Conversion Function (OECF) "
 	    "specified in ISO 14524. <OECF> is the relationship between "
 	    "the camera optical input and the image values."),

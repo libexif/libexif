@@ -107,7 +107,8 @@ void      exif_data_load_data (ExifData *data, const unsigned char *d,
 
 /*! Store raw EXIF data representing the #ExifData structure into a memory
  * buffer. The buffer is allocated by this function and must subsequently be
- * freed by the caller.
+ * freed by the caller using the matching free function as used by the #ExifMem
+ * in use by this #ExifData.
  *
  * \param[in] data EXIF data
  * \param[out] d pointer to buffer pointer containing raw EXIF data on return

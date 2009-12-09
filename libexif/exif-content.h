@@ -42,7 +42,7 @@ struct _ExifContent
         ExifEntry **entries;
         unsigned int count;
 
-	/* Data containing this content */
+	/*! Data containing this content */
 	ExifData *parent;
 
 	ExifContentPrivate *priv;
@@ -57,6 +57,7 @@ void         exif_content_free    (ExifContent *content);
 
 /*! Add an EXIF tag to an IFD.
  * If this tag already exists in the IFD, this function does nothing.
+ * \pre The "tag" member of the entry must be set on entry.
  *
  * \param[out] c IFD
  * \param[in] entry EXIF entry to add
@@ -73,7 +74,7 @@ void         exif_content_remove_entry (ExifContent *c, ExifEntry *e);
 
 /*! Return the #ExifEntry in this IFD corresponding to the given tag.
  * This is a pointer into a member of the #ExifContent array and must NOT be
- * freed by the caller.
+ * freed or unrefed by the caller.
  *
  * \param[in] content EXIF content for an IFD
  * \param[in] tag EXIF tag to return
