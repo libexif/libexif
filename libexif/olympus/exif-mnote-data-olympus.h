@@ -46,8 +46,7 @@ struct _ExifMnoteDataOlympus {
 
 	ExifByteOrder order;
 	unsigned int offset;
-	/* 0: Olympus; 1: Nikon v1; 2: Nikon v2 */
-	int version;
+	enum OlympusVersion version;
 };
 
 ExifMnoteData *exif_mnote_data_olympus_new (ExifMem *);
