@@ -860,6 +860,14 @@ static const struct TagEntry {
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_PRINT_IMAGE_MATCHING, "PrintImageMatching", N_("PRINT Image Matching"),
 	 N_("Related to Epson's PRINT Image Matching technology")},
+	/* Not in EXIF 2.2 (from the Microsoft HD Photo specification) */
+	{EXIF_TAG_PADDING, "Padding", N_("Padding"),
+	 N_("This tag reserves space that can be reclaimed later when "
+            "additional metadata are added. New metadata can be written "
+            "in place by replacing this tag with a smaller data element "
+            "and using the reclaimed space to store the new or expanded "
+            "metadata tags."),
+	 { ESL_OOOO, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 #endif
 	{0, NULL, NULL, NULL}
 };

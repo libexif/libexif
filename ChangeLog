@@ -1,3 +1,8 @@
+2009-12-11  Dan Fandrich <dan@coneharvesters.com>
+
+	* Added tag 0xEA1C, the Padding tag from the Microsoft HD Photo
+	  specification.
+
 2009-12-08  Dan Fandrich <dan@coneharvesters.com>
 
 	* Fixed some memory leaks in the write-exif.c example program and
