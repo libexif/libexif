@@ -236,9 +236,9 @@ exif_content_get_ifd (ExifContent *c)
 	if (!c || !c->parent) return EXIF_IFD_COUNT;
 
 	return 
+		((c)->parent->ifd[EXIF_IFD_EXIF] == (c)) ? EXIF_IFD_EXIF :
 		((c)->parent->ifd[EXIF_IFD_0] == (c)) ? EXIF_IFD_0 :
 		((c)->parent->ifd[EXIF_IFD_1] == (c)) ? EXIF_IFD_1 :
-		((c)->parent->ifd[EXIF_IFD_EXIF] == (c)) ? EXIF_IFD_EXIF :
 		((c)->parent->ifd[EXIF_IFD_GPS] == (c)) ? EXIF_IFD_GPS :
 		((c)->parent->ifd[EXIF_IFD_INTEROPERABILITY] == (c)) ? EXIF_IFD_INTEROPERABILITY :
 		EXIF_IFD_COUNT;
