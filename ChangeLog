@@ -1,3 +1,9 @@
+2009-12-15  Dan Fandrich <dan@coneharvesters.com>
+
+	* libexif.pc.in: Move -lm flag into Libs.private since it's only
+	  needed when statically linking. A future enhancement would be to
+	  make even this dependent on the check for -lm done in configure.
+
 2009-12-11  Dan Fandrich <dan@coneharvesters.com>
 
 	* Added tag 0xEA1C, the Padding tag from the Microsoft HD Photo
