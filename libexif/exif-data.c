@@ -1255,7 +1255,7 @@ fix_func (ExifContent *c, void *UNUSED(data))
 	case EXIF_IFD_1:
 		if (c->parent->data)
 			exif_content_fix (c);
-		else {
+		else if (c->count) {
 			exif_log (c->parent->priv->log, EXIF_LOG_CODE_DEBUG, "exif-data",
 				  "No thumbnail but entries on thumbnail. These entries have been "
 				  "removed.");

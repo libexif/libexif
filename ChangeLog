@@ -1,3 +1,8 @@
+2009-12-17  Dan Fandrich <dan@coneharvesters.com>
+
+	* Don't warn "No thumbnail but entries on thumbnail." unless
+	  there actually are entries.
+
 2009-12-15  Dan Fandrich <dan@coneharvesters.com>
 
 	* libexif.pc.in: Move -lm flag into Libs.private since it's only
