@@ -1,5 +1,7 @@
 libexif-0.6.x:
-  * Updated translations: da, ja
+  * Updated translations: da, ja, sk, sv
+  * Fixed some problems in the write-exif.c example program
+  * Stop listing -lm as a required library for dynamic linking in libexif.pc
 
 
 libexif-0.6.19 (2009-11-12):

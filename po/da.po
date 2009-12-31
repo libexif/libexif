@@ -24,6 +24,7 @@
 # focal point -> brændpunkt
 # hue -> farvetone
 # incandescence -> hvidglødende
+# Interoperability -> (uafklaret; Erklæringen om brugsret?)
 # shutter -> lukketid
 # still image -> stillbillede
 # strobe light -> stroboskoplys
@@ -35,7 +36,7 @@ msgstr ""
 "Project-Id-Version: libexif-0.6.19\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-11-12 22:15-0800\n"
-"PO-Revision-Date: 2009-11-24 01:01I+0200\n"
+"PO-Revision-Date: 2009-11-30 01:01I+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -2552,6 +2553,9 @@ msgid "GPS time (atomic clock)"
 msgstr "GPS-tid (atomur)"
 
 # oversætter man UTC til dansk KUT ?
+# Det ville ingen forstå. Det er meningen at forkortelsen UTC skal være
+# gældende for alle sprog. På DRs tekst-tv kalder man det "Universal time
+# coordinated". Ifølge da.wikipedia kaldes det også "universel tid".
 #: libexif/exif-tag.c:115
 msgid "Indicates the time as UTC (Coordinated Universal Time). TimeStamp is expressed as three RATIONAL values giving the hour, minute, and second."
 msgstr "Indikerer tiden som UTC (Koordineret universel tid). TimeStamp udtrykkes som tre RATIONAL-værdier i form af time, minut og sekund."
@@ -2563,11 +2567,11 @@ msgstr "GPS-satellitter brugt til måling"
 # hvad er SNR?
 #: libexif/exif-tag.c:119
 msgid "Indicates the GPS satellites used for measurements. This tag can be used to describe the number of satellites, their ID number, angle of elevation, azimuth, SNR and other information in ASCII notation. The format is not specified. If the GPS receiver is incapable of taking measurements, value of the tag shall be set to NULL."
-msgstr "Indikerer GPS-satellitterne brugt til måling. Dette mærke kan bruges til at beskrive antallet af satellitter, deres id-nummer, vinkel for målinger, azimut, SNR og anden information med ASCII-notation. Formatet er ikke angivet. Hvis GPS-modtageren er i stand til at opmåle, vil værdien af mærket være angivet som NULL."
+msgstr "Indikerer GPS-satellitterne brugt til måling. Dette mærke kan bruges til at beskrive antallet af satellitter, deres id-nummer, vinkel for målinger, azimut, SNR og anden information med ASCII-notation. Formatet er ikke angivet. Hvis GPS-modtageren er ude af stand til at måle, vil værdien af mærket være angivet som NULL."
 
 #: libexif/exif-tag.c:125
 msgid "GPS receiver status"
-msgstr "GPS-modtagerstatus"
+msgstr "Status for GPS-modtager"
 
 # Nogen forslag til Interoperability?
 #: libexif/exif-tag.c:126
@@ -2588,19 +2592,19 @@ msgstr "Målingspræcision"
 
 #: libexif/exif-tag.c:134
 msgid "Indicates the GPS DOP (data degree of precision). An HDOP value is written during two-dimensional measurement, and PDOP during three-dimensional measurement."
-msgstr "Indikerer GPS DOP'en (datagrad af præcision). En HDOP-værdi skrives via 2-dimensionel måling, og PDOP under 3-dimensionel måling."
+msgstr "Indikerer DOP (grad af præcision for data) for GPS-modtageren. En HDOP-værdi skrives via 2-dimensionel måling, og PDOP under 3-dimensionel måling."
 
 #: libexif/exif-tag.c:137
 msgid "Speed unit"
-msgstr "Hastighedsenhed"
+msgstr "Enhed for hastighed"
 
 #: libexif/exif-tag.c:138
 msgid "Indicates the unit used to express the GPS receiver speed of movement. 'K', 'M' and 'N' represent kilometers per hour, miles per hour, and knots."
-msgstr "Indikerer enheden brugt til at udtrykke GPS-modtagerens bevægelseshastighed. 'K', 'M' og 'N' repræsenterer kilometre per time, mil per time og knop."
+msgstr "Indikerer enheden brugt til at udtrykke GPS-modtagerens bevægelseshastighed. 'K', 'M' og 'N' repræsenterer kilometer per time, mil per time og knop."
 
 #: libexif/exif-tag.c:141
 msgid "Speed of GPS receiver"
-msgstr "Hastighed på GPS-modtager"
+msgstr "GPS-modtagerens hastighed"
 
 #: libexif/exif-tag.c:142
 msgid "Indicates the speed of GPS receiver movement."
@@ -2608,7 +2612,7 @@ msgstr "Indikerer hastigheden på GPS-modtagerens bevægelse."
 
 #: libexif/exif-tag.c:143
 msgid "Reference for direction of movement"
-msgstr "Reference for retning på bevægelse"
+msgstr "Reference for bevægelsesretning"
 
 #: libexif/exif-tag.c:144
 msgid "Indicates the reference for giving the direction of GPS receiver movement. 'T' denotes true direction and 'M' is magnetic direction."
@@ -2616,7 +2620,7 @@ msgstr "Indikerer referencen for retningen på GPS-modtagerens bevægelse. 'T' m
 
 #: libexif/exif-tag.c:147
 msgid "Direction of movement"
-msgstr "Retning på bevægelse"
+msgstr "Bevægelsesretning"
 
 #: libexif/exif-tag.c:148
 msgid "Indicates the direction of GPS receiver movement. The range of values is from 0.00 to 359.99."
@@ -2644,39 +2648,41 @@ msgstr "Anvendte geodæiske undersøgelsesdata"
 
 #: libexif/exif-tag.c:157
 msgid "Indicates the geodetic survey data used by the GPS receiver. If the survey data is restricted to Japan, the value of this tag is 'TOKYO' or 'WGS-84'. If a GPS Info tag is recorded, it is strongly recommended that this tag be recorded."
-msgstr "Indikerer de geodæiske undersøgelsesdata der bruges af GPS-modtageren. Hvis undersøgelsesdataene er begrænset til Japan er værdien af mærket 'TOKYO' eller 'WGS-84'. Hvis et GPS-infomærke er optaget, anbefales det stærkt at dette mærke registreres."
+msgstr "Indikerer de geodæiske undersøgelsesdata der bruges af GPS-modtageren. Hvis undersøgelsesdataene er begrænset til Japan er værdien af mærket 'TOKYO' eller 'WGS-84'. Hvis et GPS-infomærke er optaget, anbefales det kraftigt, at dette mærke registreres."
 
+# "Reference for ankomststedets breddegrad"
+# Kan man skrive /stedets/ isf. ankomststedets?
 #: libexif/exif-tag.c:161
 msgid "Reference for latitude of destination"
-msgstr "Reference for breddegrad på ankomststed"
+msgstr "Reference for ankomststedets breddegrad"
 
 #: libexif/exif-tag.c:162
 msgid "Indicates whether the latitude of the destination point is north or south latitude. The ASCII value 'N' indicates north latitude, and 'S' is south latitude."
-msgstr "Indikerer hvorvidt breddegraden på ankomststedet er nordlig eller sydlig breddegrad. ASCII-værdien 'N' indikerer nordlig breddegrad, og 'S' er sydlig breddegrad."
+msgstr "Indikerer om breddegraden på ankomststedet er nordlig eller sydlig breddegrad. ASCII-værdien 'N' indikerer nordlig breddegrad, og 'S' er sydlig breddegrad."
 
 #: libexif/exif-tag.c:165
 msgid "Latitude of destination"
-msgstr "Breddegrad på ankomststed"
+msgstr "Ankomststedets breddegrad"
 
 #: libexif/exif-tag.c:166
 msgid "Indicates the latitude of the destination point. The latitude is expressed as three RATIONAL values giving the degrees, minutes, and seconds, respectively. If latitude is expressed as degrees, minutes and seconds, a typical format would be dd/1,mm/1,ss/1. When degrees and minutes are used and, for example, fractions of minutes are given up to two decimal places, the format would be dd/1,mmmm/100,0/1."
-msgstr "Indikerer breddegraden på ankomststedet. Breddegraden er udtrykt som tre RATIONAL-værdier i form af grader, minutter og sekunder, henholdsvis. Hvis breddegrad er udtrykt som grader, minutter og sekunder vil et typisk format være dd/1,mm/1,ss/1. Når grader og minutter bruges og, for eksempel, fraktioner af minutter er angivet med op til to decimaler, vil formatet være dd/1,mmmm/100,0/1."
+msgstr "Indikerer breddegraden på ankomststedet. Breddegraden er udtrykt som tre RATIONAL-værdier, der angiver grader, minutter og sekunder. Hvis breddegrad er udtrykt som grader, minutter og sekunder, vil et typisk format være dd/1,mm/1,ss/1. Når der for eksempel bruges grader, minutter og dele af minutter med op til to decimaler, vil formatet være dd/1,mmmm/100,0/1."
 
 #: libexif/exif-tag.c:173
 msgid "Reference for longitude of destination"
-msgstr "Reference for længdegrad på ankomststed"
+msgstr "Reference for ankomststedets længdegrad"
 
 #: libexif/exif-tag.c:174
 msgid "Indicates whether the longitude of the destination point is east or west longitude. ASCII 'E' indicates east longitude, and 'W' is west longitude."
-msgstr "Indikerer hvorvidt længdegraden på ankomststedet er østlig eller vestlig længdegrad. ASCII-værdien 'E' indikerer østlig breddegrad, og 'W' er vestlig længdegrad."
+msgstr "Indikerer om længdegraden på ankomststedet er østlig eller vestlig længdegrad. ASCII-værdien 'E' indikerer østlig breddegrad, og 'W' er vestlig længdegrad."
 
 #: libexif/exif-tag.c:177
 msgid "Longitude of destination"
-msgstr "Længdegrad på ankomststed"
+msgstr "Ankomststedets længdegrad"
 
 #: libexif/exif-tag.c:178
 msgid "Indicates the longitude of the destination point. The longitude is expressed as three RATIONAL values giving the degrees, minutes, and seconds, respectively. If longitude is expressed as degrees, minutes and seconds, a typical format would be ddd/1,mm/1,ss/1. When degrees and minutes are used and, for example, fractions of minutes are given up to two decimal places, the format would be ddd/1,mmmm/100,0/1."
-msgstr "Indikerer længdegraden på ankomststedet. Længdegraden er udtrykt som tre RATIONAL-værdier angivet som grader, minutter og sekunder, henholdsvis. Hvis længdegrad er udtrykt som grader, minutter og sekunder, et typisk format vil være ddd/1,mm/1,ss/1. Når grader og minutter bruges og, for eksempel, fraktioner af minutter er anført med op til to decimaler, vil formatet være ddd/1,mmmm/100,0/1."
+msgstr "Indikerer længdegraden på ankomststedet. Længdegraden er udtrykt som tre RATIONAL-værdier, der angiver grader, minutter og sekunder. Hvis længdegrad er udtrykt som grader, minutter og sekunder, vil et typisk format være ddd/1,mm/1,ss/1. Når der for eksempel bruges grader, minutter og dele af minutter med op til to decimaler, vil formatet være ddd/1,mmmm/100,0/1."
 
 #: libexif/exif-tag.c:186
 msgid "Reference for bearing of destination"
@@ -2952,7 +2958,7 @@ msgstr "Transferinterval"
 
 #: libexif/exif-tag.c:366
 msgid "JPEG Interchange Format"
-msgstr ""
+msgstr "JPEG-udvekslingsformat"
 
 #: libexif/exif-tag.c:367
 msgid "The offset to the start byte (SOI) of JPEG compressed thumbnail data. This is not used for primary image JPEG data."
@@ -2964,7 +2970,7 @@ msgstr "JPEG-udvekslingsformatlængde"
 
 #: libexif/exif-tag.c:373
 msgid "The number of bytes of JPEG compressed thumbnail data. This is not used for primary image JPEG data. JPEG thumbnails are not divided but are recorded as a continuous JPEG bitstream from SOI to EOI. Appn and COM markers should not be recorded. Compressed thumbnails must be recorded in no more than 64 Kbytes, including all other data to be recorded in APP1."
-msgstr ""
+msgstr "Antallet af byte i JPEG-komprimeret miniaturedata. Dette bruges ikke til primære billed-JPEG-data. JPEG-miniaturebilleder er ikke opdelt, men er optaget som en fortsættende JPEG-bitstrøm fra SOI til EOI. Appn- og COM-markører bør ikke optages. Komprimeret miniaturebilleder skal optages i ikke mere end 64 Kbyte, inklusiv alle andre data der optages i APP1."
 
 #: libexif/exif-tag.c:382
 msgid "YCbCr Coefficients"
@@ -3024,7 +3030,7 @@ msgstr "Ophavsret"
 
 #: libexif/exif-tag.c:445
 msgid "Copyright information. In this standard the tag is used to indicate both the photographer and editor copyrights. It is the copyright notice of the person or organization claiming rights to the image. The Interoperability copyright statement including date and rights should be written in this field; e.g., \"Copyright, John Smith, 19xx. All rights reserved.\". In this standard the field records both the photographer and editor copyrights, with each recorded in a separate part of the statement. When there is a clear distinction between the photographer and editor copyrights, these are to be written in the order of photographer followed by editor copyright, separated by NULL (in this case, since the statement also ends with a NULL, there are two NULL codes) (see example 1). When only the photographer is given, it is terminated by one NULL code (see example 2). When only the editor copyright is given, the photographer copyright part consists of one space followed by a terminating NULL code, then the editor copyright is given (see example 3). When the field is left blank, it is treated as unknown."
-msgstr "Information om ophavsret. I dette standardmærke angives både fotografens og redaktørens ophavsret. Det er ophavsretsoplysningen på personen eller organisationen som hævder at have rettighederne til billedet. Interoperabilityerklæringen for ophavsret inklusiv dato og rettigheder bør skrives i dette felt; for eksempel, »Ophavsret, Kaj Jensen, 19xx. Alle rettigheder forbeholdes.«. Med denne standard registreres både fotografen og redaktøren, hvor hver registreres i en separat del af udsagnet. Når der er en klar adskillelse mellem fotografens og redaktørens ophavsret, skal de skrives i rækkefølge med fotografen først efterfulgt af redaktørens ophavsret, adskilt af NULL (i dette tilfælde, da udsagnet også afsluttes med NULL, er der to NULL-koder) (se eksempel 1). Når kun fotografen er angivet, afsluttes med en NULL-kode (se eksempel 2). Når kun redaktørens rettighed er angivet, består fotografens ophavsretdel af et mellemrum efterfulgt af en afsluttende NULL-kode, derefter er redaktørens ophavsret angivet (se eksempel 3). Når feltet efterlades blankt, behandles oplysningen som ukendt."
+msgstr "Information om ophavsret. I denne standard angives både fotografens og redaktørens ophavsret i samme mærke. Her angives  ophavsretsoplysningen for personen eller organisationen som hævder at have rettighederne til billedet. Interoperabilityerklæringen for ophavsret inklusive dato og rettigheder bør skrives i dette felt; for eksempel, »Ophavsret, Kaj Jensen, 19xx. Alle rettigheder forbeholdes.«. I denne standard registreres både fotografen og redaktøren i samme felt. Når der er en klar forskel på fotografens og redaktørens ophavsret, skal de skrives i rækkefølge med fotografen først efterfulgt af redaktørens ophavsret, adskilt af NULL (da udsagnet også afsluttes med NULL, er der i dette tilfælde to NULL-koder) (se eksempel 1). Når kun fotografen er angivet, afsluttes med en NULL-kode (se eksempel 2). Når kun redaktørens rettighed er angivet, består fotografens ophavsretdel af et mellemrum efterfulgt af en afsluttende NULL-kode, hvorefter redaktørens ophavsret er angivet (se eksempel 3). Når feltet efterlades blankt, behandles oplysningen som ukendt."
 
 #: libexif/exif-tag.c:467
 msgid "Exposure time, given in seconds (sec)."
@@ -3578,7 +3584,7 @@ msgstr "F-Chrome"
 
 #: libexif/fuji/mnote-fuji-entry.c:148
 msgid "F-B&W"
-msgstr "F-S&H"
+msgstr "F-S/H"
 
 #: libexif/fuji/mnote-fuji-entry.c:151
 msgid "No blur"
@@ -3592,10 +3598,12 @@ msgstr "Sløringsadvarsel"
 msgid "Focus good"
 msgstr "God fokus"
 
+# ikke i fokus, ufokuseret
 #: libexif/fuji/mnote-fuji-entry.c:156
 msgid "Out of focus"
-msgstr "Ikke i fokus"
+msgstr "Ude af fokus"
 
+# automatisk eksponenering
 #: libexif/fuji/mnote-fuji-entry.c:159
 msgid "AE good"
 msgstr "God AE"
@@ -3693,11 +3701,11 @@ msgstr "Fokuseringstilstand"
 
 #: libexif/fuji/mnote-fuji-tag.c:47
 msgid "Focus Point"
-msgstr ""
+msgstr "Fokuspunkt"
 
 #: libexif/fuji/mnote-fuji-tag.c:48
 msgid "Slow Synchro Mode"
-msgstr ""
+msgstr "Langsom synkroniseringstilstand"
 
 #: libexif/fuji/mnote-fuji-tag.c:49
 msgid "Picture Mode"
@@ -3705,15 +3713,15 @@ msgstr "Billedtilstand"
 
 #: libexif/fuji/mnote-fuji-tag.c:50
 msgid "Continuous Taking"
-msgstr ""
+msgstr "Fortsat fotografering"
 
 #: libexif/fuji/mnote-fuji-tag.c:51
 msgid "Continuous Sequence Number"
-msgstr ""
+msgstr "Fortsættende sekvensnummer"
 
 #: libexif/fuji/mnote-fuji-tag.c:52
 msgid "FinePix Color"
-msgstr ""
+msgstr "FinePix-farve"
 
 #: libexif/fuji/mnote-fuji-tag.c:53
 msgid "Blur Check"
@@ -3729,19 +3737,19 @@ msgstr "Autobelysningstjek"
 
 #: libexif/fuji/mnote-fuji-tag.c:56
 msgid "Dynamic Range"
-msgstr ""
+msgstr "Dynamisk afstand"
 
 #: libexif/fuji/mnote-fuji-tag.c:57
 msgid "Film Simulation Mode"
-msgstr ""
+msgstr "Filmsimulationtilstand"
 
 #: libexif/fuji/mnote-fuji-tag.c:58
 msgid "Dynamic Range Wide Mode"
-msgstr ""
+msgstr "Dynamisk afstand - bredtilstand"
 
 #: libexif/fuji/mnote-fuji-tag.c:59
 msgid "Development Dynamic Range Wide Mode"
-msgstr ""
+msgstr "Udvikling - dynamisk afstand - bredtilstand"
 
 #: libexif/fuji/mnote-fuji-tag.c:60
 msgid "Minimum Focal Length"
@@ -3765,7 +3773,7 @@ msgstr "Ordrenummer"
 
 #: libexif/fuji/mnote-fuji-tag.c:66 libexif/pentax/mnote-pentax-tag.c:98
 msgid "Frame Number"
-msgstr ""
+msgstr "Rammenummer"
 
 #: libexif/olympus/mnote-olympus-entry.c:49
 #, c-format
@@ -3774,19 +3782,19 @@ msgstr "Ugyldig format '%s', forventede '%s' eller '%s'."
 
 #: libexif/olympus/mnote-olympus-entry.c:89
 msgid "AF non D Lens"
-msgstr ""
+msgstr "Linser - AF ikke D"
 
 #: libexif/olympus/mnote-olympus-entry.c:91
 msgid "AF-D or AF-S Lens"
-msgstr ""
+msgstr "Linser - AF-D eller AF-S"
 
 #: libexif/olympus/mnote-olympus-entry.c:92
 msgid "AF-D G Lens"
-msgstr ""
+msgstr "Linser - AF-D G"
 
 #: libexif/olympus/mnote-olympus-entry.c:93
 msgid "AF-D VR Lens"
-msgstr ""
+msgstr "Linser - AF-D VR"
 
 #: libexif/olympus/mnote-olympus-entry.c:97
 msgid "Flash unit unknown"
@@ -3802,39 +3810,39 @@ msgstr "Blitz er på et kamera"
 
 #: libexif/olympus/mnote-olympus-entry.c:102
 msgid "VGA Basic"
-msgstr ""
+msgstr "VGA - basis"
 
 #: libexif/olympus/mnote-olympus-entry.c:103
 msgid "VGA Normal"
-msgstr ""
+msgstr "VGA - normal"
 
 #: libexif/olympus/mnote-olympus-entry.c:104
 msgid "VGA Fine"
-msgstr ""
+msgstr "VGA - fin"
 
 #: libexif/olympus/mnote-olympus-entry.c:105
 msgid "SXGA Basic"
-msgstr ""
+msgstr "SXGA - basis"
 
 #: libexif/olympus/mnote-olympus-entry.c:106
 msgid "SXGA Normal"
-msgstr ""
+msgstr "SXGA - normal"
 
 #: libexif/olympus/mnote-olympus-entry.c:107
 msgid "SXGA Fine"
-msgstr ""
+msgstr "SXGA - fin"
 
 #: libexif/olympus/mnote-olympus-entry.c:108
 msgid "2 MPixel Basic"
-msgstr ""
+msgstr "2 MPixel - basis"
 
 #: libexif/olympus/mnote-olympus-entry.c:109
 msgid "2 MPixel Normal"
-msgstr ""
+msgstr "2 MPixel - normal"
 
 #: libexif/olympus/mnote-olympus-entry.c:110
 msgid "2 MPixel Fine"
-msgstr ""
+msgstr "2 Mpixel - fin"
 
 #: libexif/olympus/mnote-olympus-entry.c:113
 msgid "Color"
@@ -3842,11 +3850,11 @@ msgstr "Farve"
 
 #: libexif/olympus/mnote-olympus-entry.c:118
 msgid "Bright+"
-msgstr ""
+msgstr "Klar+"
 
 #: libexif/olympus/mnote-olympus-entry.c:119
 msgid "Bright-"
-msgstr ""
+msgstr "Klar-"
 
 #: libexif/olympus/mnote-olympus-entry.c:120
 msgid "Contrast+"
@@ -4601,7 +4609,7 @@ msgstr "Tæt på linsetrin"
 
 #: libexif/olympus/mnote-olympus-tag.c:166
 msgid "Light Value Center"
-msgstr ""
+msgstr "Let værdicenter"
 
 #: libexif/olympus/mnote-olympus-tag.c:167
 msgid "Light Value Periphery"
@@ -4774,13 +4782,14 @@ msgstr "Levende lys"
 msgid "Natural Skin Tone"
 msgstr "Naturlig hudfarve"
 
+# er vist et navn
 #: libexif/pentax/mnote-pentax-entry.c:190
 msgid "Synchro Sound Record"
-msgstr ""
+msgstr "Synchro Sound Record"
 
 #: libexif/pentax/mnote-pentax-entry.c:191
 msgid "Frame Composite"
-msgstr ""
+msgstr "Rammesammensat"
 
 #: libexif/pentax/mnote-pentax-entry.c:194
 msgid "Auto, Did not fire"
@@ -4820,7 +4829,7 @@ msgstr "Tændt, langsom synkronisering, rødøjereduktion"
 
 #: libexif/pentax/mnote-pentax-entry.c:205
 msgid "On, Trailing-curtain Sync"
-msgstr ""
+msgstr "Tændt, efterfølgende gardinsynkronisering"
 
 #: libexif/pentax/mnote-pentax-entry.c:212
 msgid "Pan Focus"
@@ -5011,7 +5020,7 @@ msgstr "Hvidbalancetilstand"
 
 #: libexif/pentax/mnote-pentax-tag.c:93
 msgid "World Time Location"
-msgstr ""
+msgstr "Placering af verdenstid"
 
 #: libexif/pentax/mnote-pentax-tag.c:94
 msgid "Hometown City"
@@ -5021,21 +5030,22 @@ msgstr "Hjemmeby"
 msgid "Destination City"
 msgstr "Destinationsby"
 
+# Er der en forkortelse for sommertid på dansk?
 #: libexif/pentax/mnote-pentax-tag.c:96
 msgid "Hometown DST"
-msgstr ""
+msgstr "Sommertid hjemme"
 
 #: libexif/pentax/mnote-pentax-tag.c:96
 msgid "Home Daylight Savings Time"
-msgstr ""
+msgstr "Sommertid hjemme"
 
 #: libexif/pentax/mnote-pentax-tag.c:97
 msgid "Destination DST"
-msgstr ""
+msgstr "Sommertid destination"
 
 #: libexif/pentax/mnote-pentax-tag.c:97
 msgid "Destination Daylight Savings Time"
-msgstr ""
+msgstr "Sommertid på destination"
 
 #: libexif/pentax/mnote-pentax-tag.c:99
 msgid "Image Processing"
@@ -5115,7 +5125,7 @@ msgstr "Blitzafstand"
 
 #: libexif/pentax/mnote-pentax-tag.c:132
 msgid "Bestshot Mode"
-msgstr ""
+msgstr "Optimal tilstand"
 
 #: libexif/pentax/mnote-pentax-tag.c:133
 msgid "CCS ISO Sensitivity"
@@ -5123,7 +5133,7 @@ msgstr "CCS ISO-følsomhed"
 
 #: libexif/pentax/mnote-pentax-tag.c:135
 msgid "Enhancement"
-msgstr ""
+msgstr "Forbedring"
 
 #: libexif/pentax/mnote-pentax-tag.c:136
 msgid "Finer"
