@@ -91,6 +91,7 @@ static const struct {
       {2, N_("AF-D or AF-S Lens")},
       {6, N_("AF-D G Lens")},
       {10, N_("AF-D VR Lens")},
+      {14, N_("AF-D G VR Lens")},
       {0, NULL}}},
   { MNOTE_NIKON_TAG_FLASHUSED, EXIF_FORMAT_BYTE,
     { {0, N_("Flash did not fire")},
@@ -446,10 +447,10 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		if (entry->format == EXIF_FORMAT_RATIONAL) {
 			CC (entry->components, 1, v, maxlen);
 			vr = exif_get_rational (entry->data, entry->order);
-			r = (double)vr.numerator / vr.denominator;
 			if (!vr.numerator) {
 				strncpy (v, _("None"), maxlen);
 			} else {
+				r = (double)vr.numerator / vr.denominator;
 				snprintf (v, maxlen, "%2.2f", r);
 			}
 			break;
