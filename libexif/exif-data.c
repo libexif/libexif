@@ -235,7 +235,6 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 			   unsigned int offset)
 {
 	unsigned int doff, s;
-	unsigned char *t;
 	unsigned int ts;
 
 	if (!data || !data->priv) 
@@ -253,6 +252,7 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	if (!(data->priv->options & EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE)) {
 		/* If this is the maker note tag, update it. */
 		if ((e->tag == EXIF_TAG_MAKER_NOTE) && data->priv->md) {
+			/* TODO: this is using the wrong ExifMem to free e->data */
 			exif_mem_free (data->priv->mem, e->data);
 			e->data = NULL;
 			e->size = 0;
@@ -271,6 +271,7 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	 */
 	s = exif_format_get_size (e->format) * e->components;
 	if (s > 4) {
+		unsigned char *t;
 		doff = *ds - 6;
 		ts = *ds + s;
 
@@ -779,6 +780,47 @@ exif_data_get_type_maker_note (ExifData *d)
 	return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
 }
 
+/*! If MakerNote is recognized, load it.
+ *
+ * \param[in,out] data #ExifData
+ * \param[in] d pointer to raw EXIF data
+ * \param[in] ds length of data at d
+ */
+static void
+interpret_maker_note(ExifData *data, const unsigned char *d, unsigned int ds)
+{
+	switch (exif_data_get_type_maker_note (data)) {
+	case EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS:
+	case EXIF_DATA_TYPE_MAKER_NOTE_NIKON:
+		data->priv->md = exif_mnote_data_olympus_new (data->priv->mem);
+		break;
+	case EXIF_DATA_TYPE_MAKER_NOTE_PENTAX:
+	case EXIF_DATA_TYPE_MAKER_NOTE_CASIO:
+		data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
+		break;
+	case EXIF_DATA_TYPE_MAKER_NOTE_CANON:
+		data->priv->md = exif_mnote_data_canon_new (data->priv->mem, data->priv->options);
+		break;
+	case EXIF_DATA_TYPE_MAKER_NOTE_FUJI:
+		data->priv->md = exif_mnote_data_fuji_new (data->priv->mem);
+		break;
+	default:
+		break;
+	}
+
+	/* 
+	 * If we are able to interpret the maker note, do so.
+	 */
+	if (data->priv->md) {
+		exif_mnote_data_log (data->priv->md, data->priv->log);
+		exif_mnote_data_set_byte_order (data->priv->md,
+						data->priv->order);
+		exif_mnote_data_set_offset (data->priv->md,
+					    data->priv->offset_mnote);
+		exif_mnote_data_load (data->priv->md, d, ds);
+	}
+}
+
 #define LOG_TOO_SMALL \
 exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData", \
 		_("Size of data too small to allow for EXIF data."));
@@ -929,37 +971,9 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	 * space between IFDs. Here is the only place where we have access
 	 * to that data.
 	 */
-	switch (exif_data_get_type_maker_note (data)) {
-	case EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS:
-	case EXIF_DATA_TYPE_MAKER_NOTE_NIKON:
-		data->priv->md = exif_mnote_data_olympus_new (data->priv->mem);
-		break;
-	case EXIF_DATA_TYPE_MAKER_NOTE_PENTAX:
-	case EXIF_DATA_TYPE_MAKER_NOTE_CASIO:
-		data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
-		break;
-	case EXIF_DATA_TYPE_MAKER_NOTE_CANON:
-		data->priv->md = exif_mnote_data_canon_new (data->priv->mem, data->priv->options);
-		break;
-	case EXIF_DATA_TYPE_MAKER_NOTE_FUJI:
-		data->priv->md = exif_mnote_data_fuji_new (data->priv->mem);
-		break;
-	default:
-		break;
-	}
+	interpret_maker_note(data, d, ds);
 
-	/* 
-	 * If we are able to interpret the maker note, do so.
-	 */
-	if (data->priv->md) {
-		exif_mnote_data_log (data->priv->md, data->priv->log);
-		exif_mnote_data_set_byte_order (data->priv->md,
-						data->priv->order);
-		exif_mnote_data_set_offset (data->priv->md,
-					    data->priv->offset_mnote);
-		exif_mnote_data_load (data->priv->md, d, ds);
-	}
-
+	/* Fixup tags if requested */
 	if (data->priv->options & EXIF_DATA_OPTION_FOLLOW_SPECIFICATION)
 		exif_data_fix (data);
 }
