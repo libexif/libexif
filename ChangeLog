@@ -1,3 +1,7 @@
+2010-01-25  Dan Fandrich <dan@coneharvesters.com>
+
+	* configure.ac: Turned on the --enable-silent-rules configure option
+
 2009-12-30  Dan Fandrich <dan@coneharvesters.com>
 
 	* po/da.po: Updated Danish translation by Joe Hansen

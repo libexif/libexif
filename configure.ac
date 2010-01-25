@@ -6,6 +6,10 @@ AC_CONFIG_MACRO_DIR([auto-m4])
 AM_INIT_AUTOMAKE([-Wall gnu 1.9 dist-bzip2 dist-zip check-news])
 AM_MAINTAINER_MODE
 
+# Use the silent-rules feature when possible.
+m4_ifndef([AM_SILENT_RULES], [m4_define([AM_SILENT_RULES],[])])
+AM_SILENT_RULES([no])
+
 if test ! -d "$srcdir/m4m"; then
 AC_MSG_ERROR([
 You are missing the m4m/ directory in your top
