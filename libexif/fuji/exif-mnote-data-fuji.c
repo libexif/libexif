@@ -67,9 +67,11 @@ exif_mnote_data_fuji_get_value (ExifMnoteData *d, unsigned int i, char *val, uns
 
 	if (!d || !val) return NULL;
 	if (i > n->count -1) return NULL;
+/*
 	exif_log (d->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataFuji",
 		  "Querying value for tag '%s'...",
 		  mnote_fuji_tag_get_name (n->entries[i].tag));
+*/
 	return mnote_fuji_entry_get_value (&n->entries[i], val, maxlen);
 }
 

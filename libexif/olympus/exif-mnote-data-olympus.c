@@ -72,9 +72,11 @@ exif_mnote_data_olympus_get_value (ExifMnoteData *d, unsigned int i, char *val, 
 
 	if (!d || !val) return NULL;
 	if (i > n->count -1) return NULL;
+/*
 	exif_log (d->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
 		  "Querying value for tag '%s'...",
 		  mnote_olympus_tag_get_name (n->entries[i].tag));
+*/
 	return mnote_olympus_entry_get_value (&n->entries[i], val, maxlen);
 }
 
@@ -355,7 +357,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 				n->order = EXIF_BYTE_ORDER_MOTOROLA;
 			else {
 				exif_log (en->log, EXIF_LOG_CODE_DEBUG,
-					"ExifMnoteDatalympus", "Unknown "
+					"ExifMnoteDataOlympus", "Unknown "
 					"byte order '%c%c'", buf[o2],
 					buf[o2 + 1]);
 				return;
@@ -372,8 +374,8 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 
 		default:
 			exif_log (en->log, EXIF_LOG_CODE_DEBUG,
-				"ExifMnoteDataOlympus", "Unknown version "
-				"number %i.", n->version);
+				"ExifMnoteDataOlympus", "Unknown Nikon "
+				"version number %i.", n->version);
 			return;
 		}
 	} else if (!memcmp (buf + o2, "\0\x1b", 2)) {
