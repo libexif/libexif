@@ -34,7 +34,7 @@ static const struct {
 } table[] = {
 #ifndef NO_VERBOSE_TAG_STRINGS
 	{MNOTE_FUJI_TAG_VERSION, "Version", N_("Maker Note Version"), ""},
-	{MNOTE_FUJI_TAG_SERIAL_NUMBER, "SerialNumber", N_("Serial Number"), N_("This number is unique, it contains the date of manufacture.")},
+	{MNOTE_FUJI_TAG_SERIAL_NUMBER, "SerialNumber", N_("Serial Number"), N_("This number is unique and based on the date of manufacture.")},
 	{MNOTE_FUJI_TAG_QUALITY, "Quality", N_("Quality"), ""},
 	{MNOTE_FUJI_TAG_SHARPNESS, "Sharpness", N_("Sharpness"), ""},
 	{MNOTE_FUJI_TAG_WHITE_BALANCE, "WhiteBalance", N_("White Balance"), ""},
@@ -42,7 +42,7 @@ static const struct {
 	{MNOTE_FUJI_TAG_TONE, "Contrast", N_("Contrast"), ""},
 	{MNOTE_FUJI_TAG_FLASH_MODE, "FlashMode", N_("Flash Mode"), ""},
 	{MNOTE_FUJI_TAG_FLASH_STRENGTH, "FlashStrength", N_("Flash Firing Strength Compensation"), ""},
-	{MNOTE_FUJI_TAG_MACRO, "MacroMode", N_("Macro mode"), ""},
+	{MNOTE_FUJI_TAG_MACRO, "MacroMode", N_("Macro Mode"), ""},
 	{MNOTE_FUJI_TAG_FOCUS_MODE, "FocusingMode", N_("Focusing Mode"), ""},
 	{MNOTE_FUJI_TAG_FOCUS_POINT, "FocusPoint", N_("Focus Point"), ""},
 	{MNOTE_FUJI_TAG_SLOW_SYNC, "SlowSynchro", N_("Slow Synchro Mode"), ""},

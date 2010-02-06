@@ -59,7 +59,7 @@ static const struct TagEntry {
 	ExifSupportLevel esl[EXIF_IFD_COUNT][EXIF_DATA_TYPE_COUNT];
 } ExifTagTable[] = {
 #ifndef NO_VERBOSE_TAG_STRINGS
-	{EXIF_TAG_GPS_VERSION_ID, "GPSVersionID", N_("GPS tag version"),
+	{EXIF_TAG_GPS_VERSION_ID, "GPSVersionID", N_("GPS Tag Version"),
 	 N_("Indicates the version of <GPSInfoIFD>. The version is given "
 	    "as 2.0.0.0. This tag is mandatory when <GPSInfo> tag is "
 	    "present. (Note: The <GPSVersionID> tag is given in bytes, "
@@ -100,7 +100,7 @@ static const struct TagEntry {
 	    "used and, for example, fractions of minutes are given up to "
 	    "two decimal places, the format is ddd/1,mmmm/100,0/1."),
 	 ESL_GPS},
-	{EXIF_TAG_GPS_ALTITUDE_REF, "GPSAltitudeRef", N_("Altitude reference"),
+	{EXIF_TAG_GPS_ALTITUDE_REF, "GPSAltitudeRef", N_("Altitude Reference"),
 	 N_("Indicates the altitude used as the reference altitude. If the "
 	    "reference is sea level and the altitude is above sea level, 0 "
 	    "is given. If the altitude is below sea level, a value of 1 is given "
@@ -111,58 +111,58 @@ static const struct TagEntry {
 	 N_("Indicates the altitude based on the reference in GPSAltitudeRef. "
 	    "Altitude is expressed as one RATIONAL value. The reference unit "
 	    "is meters."), ESL_GPS},
-	{EXIF_TAG_GPS_TIME_STAMP, "GPSTimeStamp", N_("GPS time (atomic clock)"),
+	{EXIF_TAG_GPS_TIME_STAMP, "GPSTimeStamp", N_("GPS Time (Atomic Clock)"),
          N_("Indicates the time as UTC (Coordinated Universal Time). "
 	    "TimeStamp is expressed as three RATIONAL values giving "
             "the hour, minute, and second."), ESL_GPS},
-	{EXIF_TAG_GPS_SATELLITES, "GPSSatellites", N_("GPS satellites used for measurement"),
+	{EXIF_TAG_GPS_SATELLITES, "GPSSatellites", N_("GPS Satellites"),
          N_("Indicates the GPS satellites used for measurements. This "
             "tag can be used to describe the number of satellites, their ID "
             "number, angle of elevation, azimuth, SNR and other information "
             "in ASCII notation. The format is not specified. If the GPS "
             "receiver is incapable of taking measurements, value of the tag "
             "shall be set to NULL."), ESL_GPS},
-	{EXIF_TAG_GPS_STATUS, "GPSStatus", N_("GPS receiver status"),
+	{EXIF_TAG_GPS_STATUS, "GPSStatus", N_("GPS Receiver Status"),
          N_("Indicates the status of the GPS receiver when the image is "
             "recorded. 'A' means measurement is in progress, and 'V' means "
             "the measurement is Interoperability."), ESL_GPS},
-	{EXIF_TAG_GPS_MEASURE_MODE, "GPSMeasureMode", N_("GPS measurement mode"),
+	{EXIF_TAG_GPS_MEASURE_MODE, "GPSMeasureMode", N_("GPS Measurement Mode"),
          N_("Indicates the GPS measurement mode. '2' means "
             "two-dimensional measurement and '3' means three-dimensional "
             "measurement is in progress."), ESL_GPS},
-	{EXIF_TAG_GPS_DOP, "GPSDOP", N_("Measurement precision"),
+	{EXIF_TAG_GPS_DOP, "GPSDOP", N_("Measurement Precision"),
          N_("Indicates the GPS DOP (data degree of precision). An HDOP "
             "value is written during two-dimensional measurement, and PDOP "
             "during three-dimensional measurement."), ESL_GPS},
-	{EXIF_TAG_GPS_SPEED_REF, "GPSSpeedRef", N_("Speed unit"),
+	{EXIF_TAG_GPS_SPEED_REF, "GPSSpeedRef", N_("Speed Unit"),
          N_("Indicates the unit used to express the GPS receiver speed "
             "of movement. 'K', 'M' and 'N' represent kilometers per hour, "
             "miles per hour, and knots."), ESL_GPS},
-	{EXIF_TAG_GPS_SPEED, "GPSSpeed", N_("Speed of GPS receiver"),
+	{EXIF_TAG_GPS_SPEED, "GPSSpeed", N_("Speed of GPS Receiver"),
 	 N_("Indicates the speed of GPS receiver movement."), ESL_GPS},
 	{EXIF_TAG_GPS_TRACK_REF, "GPSTrackRef", N_("Reference for direction of movement"),
          N_("Indicates the reference for giving the direction of GPS "
             "receiver movement. 'T' denotes true direction and 'M' is "
             "magnetic direction."), ESL_GPS},
-	{EXIF_TAG_GPS_TRACK, "GPSTrack", N_("Direction of movement"),
+	{EXIF_TAG_GPS_TRACK, "GPSTrack", N_("Direction of Movement"),
          N_("Indicates the direction of GPS receiver movement. The range "
             "of values is from 0.00 to 359.99."), ESL_GPS},
-	{EXIF_TAG_GPS_IMG_DIRECTION_REF, "GPSImgDirectionRef", N_("GPS Img Direction Reference"),
+	{EXIF_TAG_GPS_IMG_DIRECTION_REF, "GPSImgDirectionRef", N_("GPS Image Direction Reference"),
 	 N_("Indicates the reference for giving the direction of the image when it is captured. "
 	    "'T' denotes true direction and 'M' is magnetic direction."), ESL_GPS},
-	{EXIF_TAG_GPS_IMG_DIRECTION, "GPSImgDirection", N_("GPS Img Direction"),
+	{EXIF_TAG_GPS_IMG_DIRECTION, "GPSImgDirection", N_("GPS Image Direction"),
 	 N_("Indicates the direction of the image when it was captured. The range of values is "
 	    "from 0.00 to 359.99."), ESL_GPS},
-	{EXIF_TAG_GPS_MAP_DATUM, "GPSMapDatum", N_("Geodetic survey data used"),
+	{EXIF_TAG_GPS_MAP_DATUM, "GPSMapDatum", N_("Geodetic Survey Data Used"),
          N_("Indicates the geodetic survey data used by the GPS "
             "receiver. If the survey data is restricted to Japan, the value "
             "of this tag is 'TOKYO' or 'WGS-84'. If a GPS Info tag is "
             "recorded, it is strongly recommended that this tag be recorded."), ESL_GPS},
-	{EXIF_TAG_GPS_DEST_LATITUDE_REF, "GPSDestLatitudeRef", N_("Reference for latitude of destination"),
+	{EXIF_TAG_GPS_DEST_LATITUDE_REF, "GPSDestLatitudeRef", N_("Reference For Latitude of Destination"),
          N_("Indicates whether the latitude of the destination point is "
             "north or south latitude. The ASCII value 'N' indicates north "
             "latitude, and 'S' is south latitude."), ESL_GPS},
-	{EXIF_TAG_GPS_DEST_LATITUDE, "GPSDestLatitude", N_("Latitude of destination"),
+	{EXIF_TAG_GPS_DEST_LATITUDE, "GPSDestLatitude", N_("Latitude of Destination"),
          N_("Indicates the latitude of the destination point. The "
             "latitude is expressed as three RATIONAL values giving the "
             "degrees, minutes, and seconds, respectively. If latitude is "
@@ -170,11 +170,11 @@ static const struct TagEntry {
             "would be dd/1,mm/1,ss/1. When degrees and minutes are used and, "
             "for example, fractions of minutes are given up to two decimal "
             "places, the format would be dd/1,mmmm/100,0/1."), ESL_GPS},
-	{EXIF_TAG_GPS_DEST_LONGITUDE_REF, "GPSDestLongitudeRef", N_("Reference for longitude of destination"),
+	{EXIF_TAG_GPS_DEST_LONGITUDE_REF, "GPSDestLongitudeRef", N_("Reference for Longitude of Destination"),
          N_("Indicates whether the longitude of the destination point is "
             "east or west longitude. ASCII 'E' indicates east longitude, and "
             "'W' is west longitude."), ESL_GPS},
-	{EXIF_TAG_GPS_DEST_LONGITUDE, "GPSDestLongitude", N_("Longitude of destination"),
+	{EXIF_TAG_GPS_DEST_LONGITUDE, "GPSDestLongitude", N_("Longitude of Destination"),
          N_("Indicates the longitude of the destination point. The "
             "longitude is expressed as three RATIONAL values giving the "
             "degrees, minutes, and seconds, respectively. If longitude is "
@@ -183,36 +183,36 @@ static const struct TagEntry {
             "and, for example, fractions of minutes are given up to two "
             "decimal places, the format would be ddd/1,mmmm/100,0/1."),
          ESL_GPS},
-	{EXIF_TAG_GPS_DEST_BEARING_REF, "GPSDestBearingRef", N_("Reference for bearing of destination"),
+	{EXIF_TAG_GPS_DEST_BEARING_REF, "GPSDestBearingRef", N_("Reference for Bearing of Destination"),
          N_("Indicates the reference used for giving the bearing to "
             "the destination point. 'T' denotes true direction and 'M' is "
             "magnetic direction."), ESL_GPS},
-	{EXIF_TAG_GPS_DEST_BEARING, "GPSDestBearing", N_("Bearing of destination"),
+	{EXIF_TAG_GPS_DEST_BEARING, "GPSDestBearing", N_("Bearing of Destination"),
          N_("Indicates the bearing to the destination point. The range "
             "of values is from 0.00 to 359.99."), ESL_GPS},
-	{EXIF_TAG_GPS_DEST_DISTANCE_REF, "GPSDestDistanceRef", N_("Reference for distance to destination"),
+	{EXIF_TAG_GPS_DEST_DISTANCE_REF, "GPSDestDistanceRef", N_("Reference for Distance to Destination"),
          N_("Indicates the unit used to express the distance to the "
             "destination point. 'K', 'M' and 'N' represent kilometers, miles "
             "and knots."), ESL_GPS},
-	{EXIF_TAG_GPS_DEST_DISTANCE, "GPSDestDistance", N_("Distance to destination"),
+	{EXIF_TAG_GPS_DEST_DISTANCE, "GPSDestDistance", N_("Distance to Destination"),
 	 N_("Indicates the distance to the destination point."), ESL_GPS},
-	{EXIF_TAG_GPS_PROCESSING_METHOD, "GPSProcessingMethod", N_("Name of GPS processing method"),
+	{EXIF_TAG_GPS_PROCESSING_METHOD, "GPSProcessingMethod", N_("Name of GPS Processing Method"),
          N_("A character string recording the name of the method used "
             "for location finding. The first byte indicates the character "
             "code used, and this is followed by the name "
             "of the method. Since the Type is not ASCII, NULL termination is "
             "not necessary."), ESL_GPS},
-	{EXIF_TAG_GPS_AREA_INFORMATION, "GPSAreaInformation", N_("Name of GPS area"),
+	{EXIF_TAG_GPS_AREA_INFORMATION, "GPSAreaInformation", N_("Name of GPS Area"),
          N_("A character string recording the name of the GPS area. The "
             "first byte indicates the character code used, "
             "and this is followed by the name of the GPS area. Since "
             "the Type is not ASCII, NULL termination is not necessary."), ESL_GPS},
-	{EXIF_TAG_GPS_DATE_STAMP, "GPSDateStamp", N_("GPS date"),
+	{EXIF_TAG_GPS_DATE_STAMP, "GPSDateStamp", N_("GPS Date"),
          N_("A character string recording date and time information "
             "relative to UTC (Coordinated Universal Time). The format is "
             "\"YYYY:MM:DD\". The length of the string is 11 bytes including "
             "NULL."), ESL_GPS},
-	{EXIF_TAG_GPS_DIFFERENTIAL, "GPSDifferential", N_("GPS differential correction"),
+	{EXIF_TAG_GPS_DIFFERENTIAL, "GPSDifferential", N_("GPS Differential Correction"),
          N_("Indicates whether differential correction is applied to the "
             "GPS receiver."), ESL_GPS},
 	/* Not in EXIF 2.2 */
@@ -298,12 +298,12 @@ static const struct TagEntry {
 	 N_("The total number of bytes in each strip. With JPEG compressed "
 	    "data this designation is not needed and is omitted."),
 	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_X_RESOLUTION, "XResolution", N_("x-Resolution"),
+	{EXIF_TAG_X_RESOLUTION, "XResolution", N_("X-Resolution"),
 	 N_("The number of pixels per <ResolutionUnit> in the <ImageWidth> "
 	    "direction. When the image resolution is unknown, 72 [dpi] "
 	    "is designated."),
 	 { ESL_MMMM, ESL_MMMM, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_Y_RESOLUTION, "YResolution", N_("y-Resolution"),
+	{EXIF_TAG_Y_RESOLUTION, "YResolution", N_("Y-Resolution"),
 	 N_("The number of pixels per <ResolutionUnit> in the <ImageLength> "
 	    "direction. The same value as <XResolution> is designated."),
 	 { ESL_MMMM, ESL_MMMM, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
@@ -466,7 +466,7 @@ static const struct TagEntry {
 	{EXIF_TAG_EXPOSURE_TIME, "ExposureTime", N_("Exposure Time"),
 	 N_("Exposure time, given in seconds (sec)."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_FNUMBER, "FNumber", N_("FNumber"),
+	{EXIF_TAG_FNUMBER, "FNumber", N_("F-Number"),
 	 N_("The F number."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
@@ -493,7 +493,7 @@ static const struct TagEntry {
 	    "with the standard developed by the ASTM Technical Committee."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_GPS_INFO_IFD_POINTER, "GPSInfoIFDPointer", 
-	 "GPSInfoIFDPointer",
+	 N_("GPS Info IFD Pointer"),
 	 N_("A pointer to the GPS Info IFD. The "
 	    "Interoperability structure of the GPS Info IFD, like that of "
 	    "Exif IFD, has no image data."),
@@ -517,13 +517,13 @@ static const struct TagEntry {
 	    "field is taken to mean nonconformance to the standard."),
 	 { ESL_NNNN, ESL_NNNN, ESL_MMMM, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_DATE_TIME_ORIGINAL, "DateTimeOriginal",
-	 N_("Date and Time (original)"),
+	 N_("Date and Time (Original)"),
 	 N_("The date and time when the original image data was generated. "
 	    "For a digital still camera "
 	    "the date and time the picture was taken are recorded."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_DATE_TIME_DIGITIZED, "DateTimeDigitized",
-	 N_("Date and Time (digitized)"),
+	 N_("Date and Time (Digitized)"),
 	 N_("The date and time when the image was stored as digital data."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_COMPONENTS_CONFIGURATION, "ComponentsConfiguration",
@@ -543,7 +543,7 @@ static const struct TagEntry {
 	    "used for a compressed image is indicated in unit bits "
 	    "per pixel."),
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNO, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_SHUTTER_SPEED_VALUE, "ShutterSpeedValue", N_("Shutter speed"),
+	{EXIF_TAG_SHUTTER_SPEED_VALUE, "ShutterSpeedValue", N_("Shutter Speed"),
 	 N_("Shutter speed. The unit is the APEX (Additive System of "
 	    "Photographic Exposure) setting."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
@@ -616,17 +616,17 @@ static const struct TagEntry {
 	    "the ID code be ASCII and that the following user comment "
 	    "part be filled with blank characters [20.H]."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_SUB_SEC_TIME, "SubsecTime", "SubsecTime",
+	{EXIF_TAG_SUB_SEC_TIME, "SubsecTime", N_("Sub-second Time"),
 	 N_("A tag used to record fractions of seconds for the "
 	    "<DateTime> tag."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SUB_SEC_TIME_ORIGINAL, "SubSecTimeOriginal",
-	 "SubSecTimeOriginal",
+	 N_("Sub-second Time (Original)"),
 	 N_("A tag used to record fractions of seconds for the "
 	    "<DateTimeOriginal> tag."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_SUB_SEC_TIME_DIGITIZED, "SubSecTimeDigitized",
-	 "SubSecTimeDigitized",
+	 N_("Sub-second Time (Digitized)"),
 	 N_("A tag used to record fractions of seconds for the "
 	    "<DateTimeDigitized> tag."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
@@ -667,14 +667,14 @@ static const struct TagEntry {
 	    "recorded as Uncalibrated can be treated as sRGB when it is "
 	    "converted to FlashPix."),
 	 { ESL_NNNN, ESL_NNNN, ESL_MMMM, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_PIXEL_X_DIMENSION, "PixelXDimension", "PixelXDimension",
+	{EXIF_TAG_PIXEL_X_DIMENSION, "PixelXDimension", N_("Pixel X Dimension"),
 	 N_("Information specific to compressed data. When a "
 	    "compressed file is recorded, the valid width of the "
 	    "meaningful image must be recorded in this tag, whether or "
 	    "not there is padding data or a restart marker. This tag "
 	    "should not exist in an uncompressed file."),
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNM, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_PIXEL_Y_DIMENSION, "PixelYDimension", "PixelYDimension",
+	{EXIF_TAG_PIXEL_Y_DIMENSION, "PixelYDimension", N_("Pixel Y Dimension"),
 	 N_("Information specific to compressed data. When a compressed "
 	    "file is recorded, the valid height of the meaningful image "
 	    "must be recorded in this tag, whether or not there is padding "
@@ -685,7 +685,7 @@ static const struct TagEntry {
 	    "will in fact be the same as that recorded in the SOF."),
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNM, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_RELATED_SOUND_FILE, "RelatedSoundFile",
-	 "RelatedSoundFile",
+	 N_("Related Sound File"),
 	 N_("This tag is used to record the name of an audio file related "
 	    "to the image data. The only relational information "
 	    "recorded here is the Exif audio file name and extension (an "
@@ -717,7 +717,7 @@ static const struct TagEntry {
 	    "audio file end."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_INTEROPERABILITY_IFD_POINTER, "InteroperabilityIFDPointer",
-	 "InteroperabilityIFDPointer",
+	 N_("Interoperability IFD Pointer"),
 	 N_("Interoperability IFD is composed of tags which stores the "
 	    "information to ensure the Interoperability and pointed "
 	    "by the following tag located in Exif IFD. "
@@ -739,12 +739,12 @@ static const struct TagEntry {
 	    "12233."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FOCAL_PLANE_X_RESOLUTION, "FocalPlaneXResolution",
-	 N_("Focal Plane x-Resolution"),
+	 N_("Focal Plane X-Resolution"),
 	 N_("Indicates the number of pixels in the image width (X) direction "
 	    "per <FocalPlaneResolutionUnit> on the camera focal plane."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FOCAL_PLANE_Y_RESOLUTION, "FocalPlaneYResolution",
-	 N_("Focal Plane y-Resolution"),
+	 N_("Focal Plane Y-Resolution"),
 	 N_("Indicates the number of pixels in the image height (V) direction "
 	    "per <FocalPlaneResolutionUnit> on the camera focal plane."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
@@ -809,7 +809,7 @@ static const struct TagEntry {
 	    "indicates that digital zoom was not used."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_FOCAL_LENGTH_IN_35MM_FILM, "FocalLengthIn35mmFilm",
-	 N_("Focal Length In 35mm Film"),
+	 N_("Focal Length in 35mm Film"),
 	 N_("This tag indicates the equivalent focal length assuming a "
 	    "35mm film camera, in mm. A value of 0 means the focal "
 	    "length is unknown. Note that this tag differs from the "

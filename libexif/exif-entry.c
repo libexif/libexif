@@ -647,18 +647,18 @@ static const struct {
 } list[] = {
 #ifndef NO_VERBOSE_TAG_DATA
   { EXIF_TAG_PLANAR_CONFIGURATION,
-    { N_("chunky format"), N_("planar format"), NULL}},
+    { N_("Chunky format"), N_("Planar format"), NULL}},
   { EXIF_TAG_SENSING_METHOD,
     { "", N_("Not defined"), N_("One-chip color area sensor"),
       N_("Two-chip color area sensor"), N_("Three-chip color area sensor"),
       N_("Color sequential area sensor"), "", N_("Trilinear sensor"),
       N_("Color sequential linear sensor"), NULL}},
   { EXIF_TAG_ORIENTATION,
-    { "", N_("top - left"), N_("top - right"), N_("bottom - right"),
-      N_("bottom - left"), N_("left - top"), N_("right - top"),
-      N_("right - bottom"), N_("left - bottom"), NULL}},
+    { "", N_("Top-left"), N_("Top-right"), N_("Bottom-right"),
+      N_("Bottom-left"), N_("Left-top"), N_("Right-top"),
+      N_("Right-bottom"), N_("Left-bottom"), NULL}},
   { EXIF_TAG_YCBCR_POSITIONING,
-    { "", N_("centered"), N_("co-sited"), NULL}},
+    { "", N_("Centered"), N_("Co-sited"), NULL}},
   { EXIF_TAG_PHOTOMETRIC_INTERPRETATION,
     { N_("Reversed mono"), N_("Normal mono"), N_("RGB"), N_("Palette"), "",
       N_("CMYK"), N_("YCbCr"), "", N_("CieLAB"), NULL}},
@@ -686,16 +686,18 @@ static const struct {
   ExifTag tag;
   struct {
     int index;
-    const char *values[4];
+    const char *values[4]; /*!< list of progressively shorter string
+			    descriptions; the longest one that fits will be
+			    selected */
   } elem[25];
 } list2[] = {
 #ifndef NO_VERBOSE_TAG_DATA
   { EXIF_TAG_METERING_MODE,
     { {  0, {N_("Unknown"), NULL}},
-      {  1, {N_("Average"), N_("avg"), NULL}},
-      {  2, {N_("Center-Weighted Average"), N_("Center-Weight"), NULL}},
+      {  1, {N_("Average"), N_("Avg"), NULL}},
+      {  2, {N_("Center-weighted average"), N_("Center-weight"), NULL}},
       {  3, {N_("Spot"), NULL}},
-      {  4, {N_("Multi Spot"), NULL}},
+      {  4, {N_("Multi spot"), NULL}},
       {  5, {N_("Pattern"), NULL}},
       {  6, {N_("Partial"), NULL}},
       {255, {N_("Other"), NULL}},
@@ -754,11 +756,11 @@ static const struct {
 	      "in focus)"), N_("Landscape"), NULL}},
       {0, {NULL}}}},
   { EXIF_TAG_FLASH,
-    { {0x0000, {N_("Flash did not fire"), N_("no flash"), NULL}},
-      {0x0001, {N_("Flash fired"), N_("flash"), N_("Yes"), NULL}},
-      {0x0005, {N_("Strobe return light not detected"), N_("W/o strobe"),
+    { {0x0000, {N_("Flash did not fire"), N_("No flash"), NULL}},
+      {0x0001, {N_("Flash fired"), N_("Flash"), N_("Yes"), NULL}},
+      {0x0005, {N_("Strobe return light not detected"), N_("Without strobe"),
 		NULL}},
-      {0x0007, {N_("Strobe return light detected"), N_("W. strobe"), NULL}},
+      {0x0007, {N_("Strobe return light detected"), N_("With strobe"), NULL}},
       {0x0008, {N_("Flash did not fire"), NULL}}, /* Olympus E-330 */
       {0x0009, {N_("Flash fired, compulsory flash mode"), NULL}},
       {0x000d, {N_("Flash fired, compulsory flash mode, return light "
@@ -1120,7 +1122,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			case 4: c = _("R"); break;
 			case 5: c = _("G"); break;
 			case 6: c = _("B"); break;
-			default: c = _("reserved"); break;
+			default: c = _("Reserved"); break;
 			}
 			strncat (val, c, maxlen - strlen (val));
 			if (i < 3)

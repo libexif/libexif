@@ -1,3 +1,10 @@
+2010-02-05  Dan Fandrich <dan@coneharvesters.com>
+
+	* Made the case of text output be more consistent. Now, tag titles
+	  have each word capitalized (like a title) and tag values
+	  are always lower case, except the first word which is capitalized
+	  (more like a sentence).
+
 2010-01-25  Dan Fandrich <dan@coneharvesters.com>
 
 	* configure.ac: Turned on the --enable-silent-rules configure option
