@@ -1,3 +1,11 @@
+2010-02-18  Dan Fandrich <dan@coneharvesters.com>
+
+	* po/da.po: Updated Danish translation by Joe Hansen
+	* po/de.po: Updated German translation by Marcus Meissner
+	* po/ja.po: Updated Japanese translation by Tadashi Jokagi
+	* po/pl.po: Updated Polish translation by Jakub Bogusz
+	* po/vi.po: Updated Vietnamese translation by Clytie Siddall
+
 2010-02-05  Dan Fandrich <dan@coneharvesters.com>
 
 	* Made the case of text output be more consistent. Now, tag titles
