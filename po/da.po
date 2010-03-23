@@ -36,7 +36,7 @@ msgstr ""
 "Project-Id-Version: libexif-0.6.20-pre1\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-02-05 16:15-0800\n"
-"PO-Revision-Date: 2010-02-09 01:01I+0200\n"
+"PO-Revision-Date: 2010-03-09 01:01I+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -2565,7 +2565,7 @@ msgstr "Status for GPS-modtager"
 # Nogen forslag til Interoperability?
 #: libexif/exif-tag.c:126
 msgid "Indicates the status of the GPS receiver when the image is recorded. 'A' means measurement is in progress, and 'V' means the measurement is Interoperability."
-msgstr "Indikerer status på GPS-modtageren når billedet optages. 'A' betyder at måling er i gang, og 'V' betyder at målingen er interoperability"
+msgstr "Indikerer status på GPS-modtageren når billedet optages. 'A' betyder at måling er i gang, og 'V' betyder at målingen er interoperability."
 
 #: libexif/exif-tag.c:129
 msgid "GPS Measurement Mode"
@@ -2731,11 +2731,11 @@ msgstr "En tegnstreng der registrerer dato- og tidsinformation i forhold til UTC
 
 #: libexif/exif-tag.c:215
 msgid "GPS Differential Correction"
-msgstr ""
+msgstr "GPS-differentiel korrektion"
 
 #: libexif/exif-tag.c:216
 msgid "Indicates whether differential correction is applied to the GPS receiver."
-msgstr ""
+msgstr "Indikerer hvorvidt differentiel korrektion anvendes på GPS-modtageren."
 
 #: libexif/exif-tag.c:220
 msgid "New Subfile Type"
@@ -2971,11 +2971,16 @@ msgstr "Matrikskoefficienterne for omdannelse fra RGB til YCbCr-billeddata. Inge
 
 #: libexif/exif-tag.c:392
 msgid "YCbCr Sub-Sampling"
-msgstr ""
+msgstr "YCbCr undersampling"
 
+# fra engelske wikipedia: Chrominance(chroma for short), is the signal
+# used in videosystems to convey the color information of the picture,
+# separately from the accompanying lumasignal.
+# Luminance is a photometricmeasure of the luminous intensity per unit
+# area of lighttravelling in a given direction. 
 #: libexif/exif-tag.c:393
 msgid "The sampling ratio of chrominance components in relation to the luminance component. In JPEG compressed data a JPEG marker is used instead of this tag."
-msgstr ""
+msgstr "Samplingsforholdet på chrominance-komponenter i forhold til lysstyrkekomponenten. I JPEG-komprimeret data bruges en JPEG-markør i steden for dette mærke."
 
 #: libexif/exif-tag.c:398
 msgid "YCbCr Positioning"
@@ -2983,7 +2988,7 @@ msgstr "YCBCr-positionering"
 
 #: libexif/exif-tag.c:399
 msgid "The position of chrominance components in relation to the luminance component. This field is designated only for JPEG compressed data or uncompressed YCbCr data. The TIFF default is 1 (centered); but when Y:Cb:Cr = 4:2:2 it is recommended in this standard that 2 (co-sited) be used to record data, in order to improve the image quality when viewed on TV systems. When this field does not exist, the reader shall assume the TIFF default. In the case of Y:Cb:Cr = 4:2:0, the TIFF default (centered) is recommended. If the reader does not have the capability of supporting both kinds of <YCbCrPositioning>, it shall follow the TIFF default regardless of the value in this field. It is preferable that readers be able to support both centered and co-sited positioning."
-msgstr ""
+msgstr "Placeringen af chrominance-komponenterne i forhold til lysstyrkekomponenten. Dette felt er kun designet til brug for JPEG-komprimeret data eller ukomprimeret YCbCr-data. TIFF-værdien er 1 (centreret); men når Y:Cb:Cr = 4:2;2 er det anbefalet i denne standard at 2 (co-placeret) bruges til at optage data med, for at forbedre billedkvaliteten ved visning på tv. Når dette felt ikke eksisterer vil læseren antage TIFF-standarden. I tilfældet med Y:Cb:Cr = 4:2;0 anbefales TIFF-standarden (centreret). Hvis læseren ikke har kapacitet til at understøtte begge slags <YCbCrPositioning> skal den følge TIFF-standarden uanset værdien i dette felt. Det er at foretrække hvis læserne kan understøtte både centreret og co-placeret positionering."
 
 #: libexif/exif-tag.c:414
 msgid "Reference Black/White"
@@ -3220,7 +3225,7 @@ msgstr "Brugerkommentar"
 
 #: libexif/exif-tag.c:596
 msgid "A tag for Exif users to write keywords or comments on the image besides those in <ImageDescription>, and without the character code limitations of the <ImageDescription> tag. The character code used in the <UserComment> tag is identified based on an ID code in a fixed 8-byte area at the start of the tag data area. The unused portion of the area is padded with NULL (\"00.h\"). ID codes are assigned by means of registration. The designation method and references for each character code are defined in the specification. The value of CountN is determined based on the 8 bytes in the character code area and the number of bytes in the user comment part. Since the TYPE is not ASCII, NULL termination is not necessary. The ID code for the <UserComment> area may be a Defined code such as JIS or ASCII, or may be Undefined. The Undefined name is UndefinedText, and the ID code is filled with 8 bytes of all \"NULL\" (\"00.H\"). An Exif reader that reads the <UserComment> tag must have a function for determining the ID code. This function is not required in Exif readers that do not use the <UserComment> tag. When a <UserComment> area is set aside, it is recommended that the ID code be ASCII and that the following user comment part be filled with blank characters [20.H]."
-msgstr ""
+msgstr "Et mærke hvor Exifbrugere kan skrive nøgleord eller kommentarer på billederne udover dem i <ImageDescription>, og uden begrænsningerne på tegnkoden i dette mærke. Tegnkoden brugt i mærket <UserComment> identificeres på grundlag af en id-kode i et fast 8-byte område i starten af mærkets dataområde. Den ubrugte del af området fyldt med NULL (00.h). Id-koder tildeles ved brug af registrering. Betegnelsesmetoden og referencer for hver tegnkode defineres i specifikationen. Værdien af CountN afgøres på grundlag af de 8 byte i tegnkodeområdet og antallet af byte i brugerkommenteringsdelen. Da TYPEN ikke er ASCII, er NULL-terminering ikke nødvendig. Id-koden for området <UserComment> kan være en defineret kode som JIS eller ASCII, eller kan være udefineret. Det udefinerede navn er Udefineret tekst, og id-koden fyldes med 8 byte af alle NULL (00.H). En Exiflæser som læser mærket <UserComment> skal have en funktion der kan aflæse id-koden. Denne funktion er ikke krævet hvis Exiflæseren ikke bruger mærket <UserComment>. Når et <UserComment>-område reserveres anbefales det af id-koden er i ASCII-format og at den følgende brugerkommenteringsplads fyldes med blanke tegn [20.H]"
 
 #: libexif/exif-tag.c:619
 msgid "Sub-second Time"
@@ -3304,7 +3309,7 @@ msgstr "Billedpunktets x-dimension"
 
 #: libexif/exif-tag.c:671
 msgid "Information specific to compressed data. When a compressed file is recorded, the valid width of the meaningful image must be recorded in this tag, whether or not there is padding data or a restart marker. This tag should not exist in an uncompressed file."
-msgstr ""
+msgstr "Specifik information for komprimerede data. Når en komprimeret fil optages, skal den gyldige bredde på det meningsfulde billede optages i dette mærke, uanset om der er fylddata eller en genstartsmarkør. Dette mærke bør ikke eksistere i en ukomprimeret fil."
 
 #: libexif/exif-tag.c:677
 msgid "Pixel Y Dimension"
@@ -3312,11 +3317,11 @@ msgstr "Billedpunktets y-dimension"
 
 #: libexif/exif-tag.c:678
 msgid "Information specific to compressed data. When a compressed file is recorded, the valid height of the meaningful image must be recorded in this tag, whether or not there is padding data or a restart marker. This tag should not exist in an uncompressed file. Since data padding is unnecessary in the vertical direction, the number of lines recorded in this valid image height tag will in fact be the same as that recorded in the SOF."
-msgstr ""
+msgstr "Specifik information for komprimerede data. Når en komprimeret fil optages, skal den den gyldige højde på det meningsfulde billede optages i dette mærke, uanset om der er fyldningsdata eller en genstartsmarkør. Dette mærke bør ikke eksistere i en ukomprimeret fil. Da datafyldning er unødvendigt lodret, vil antallet af linjer optaget i dette gyldige billedhøjdemærke være det samme som optaget i SOF'en."
 
 #: libexif/exif-tag.c:688
 msgid "Related Sound File"
-msgstr ""
+msgstr "Forbundet lydfil"
 
 #: libexif/exif-tag.c:689
 msgid "This tag is used to record the name of an audio file related to the image data. The only relational information recorded here is the Exif audio file name and extension (an ASCII string consisting of 8 characters + '.' + 3 characters). The path is not recorded. Stipulations on audio and file naming conventions are defined in the specification. When using this tag, audio files must be recorded in conformance to the Exif audio format. Writers are also allowed to store the data such as Audio within APP2 as FlashPix extension stream data. Audio files must be recorded in conformance to the Exif audio format. The mapping of Exif image files and audio files is done in any of three ways, [1], [2] and [3]. If multiple files are mapped to one file as in [2] or [3], the above format is used to record just one audio file name. If there are multiple audio files, the first recorded file is given. In the case of [3], for example, for the Exif image file \"DSC00001.JPG\" only  \"SND00001.WAV\" is given as the related Exif audio file. When there are three Exif audio files \"SND00001.WAV\", \"SND00002.WAV\" and \"SND00003.WAV\", the Exif image file name for each of them, \"DSC00001.JPG\", is indicated. By combining multiple relational information, a variety of playback possibilities can be supported. The method of using relational information is left to the implementation on the playback side. Since this information is an ASCII character string, it is terminated by NULL. When this tag is used to map audio files, the relation of the audio file to image data must also be indicated on the audio file end."
@@ -3328,7 +3333,7 @@ msgstr "Interoperability IFD-peger"
 
 #: libexif/exif-tag.c:721
 msgid "Interoperability IFD is composed of tags which stores the information to ensure the Interoperability and pointed by the following tag located in Exif IFD. The Interoperability structure of Interoperability IFD is the same as TIFF defined IFD structure but does not contain the image data characteristically compared with normal TIFF IFD."
-msgstr ""
+msgstr "Interoperabilitet-IFD består af mærker som gemmer informationen der sikrer interoperabilitet og og vejledt af det følgende mærke placeret i Exif-IFD. Interoperabilitetsstrukturen på interoperabilitet-IFD er den samme som TIFF defineret IFD-struktur men indeholder ikke billeddatakarakteristika sammenlignet med normal TIFF-IFD."
 
 #: libexif/exif-tag.c:730
 msgid "Flash Energy"
@@ -3376,7 +3381,7 @@ msgstr "Emnelokalitet"
 
 #: libexif/exif-tag.c:759
 msgid "Indicates the location of the main subject in the scene. The value of this tag represents the pixel at the center of the main subject relative to the left edge, prior to rotation processing as per the <Rotation> tag. The first value indicates the X column number and the second indicates the Y row number."
-msgstr ""
+msgstr "Indikerer placeringen af hovedement i scenen. Værdien af dette mærke repræsenterer billedpunktet i centrum af hovedement set relativt i forhold til det venstre hjørne, før rotationsproces som fremgår af mærket <Rotation>. Den første værdi indikerer tallet for x-kolonnen og det andet indikerer tallet for y-kolonnen."
 
 #: libexif/exif-tag.c:766
 msgid "Exposure Index"
@@ -3388,11 +3393,11 @@ msgstr "Indikerer belysningsindekset valgt på kameraet eller inddataenheden på
 
 #: libexif/exif-tag.c:770
 msgid "Sensing Method"
-msgstr ""
+msgstr "Sensormetode"
 
 #: libexif/exif-tag.c:771
 msgid "Indicates the image sensor type on the camera or input device."
-msgstr ""
+msgstr "Indikerer billedsensortypen på kameraet eller inddataenheden."
 
 #: libexif/exif-tag.c:774 libexif/fuji/mnote-fuji-tag.c:64
 msgid "File Source"
@@ -3412,11 +3417,11 @@ msgstr "Indikerer scenetypen. Hvis en DSC optog billedet, skal denne mærkeværd
 
 #: libexif/exif-tag.c:790
 msgid "Custom Rendered"
-msgstr ""
+msgstr "Brugerrenderet"
 
 #: libexif/exif-tag.c:791
 msgid "This tag indicates the use of special processing on image data, such as rendering geared to output. When special processing is performed, the reader is expected to disable or minimize any further processing."
-msgstr ""
+msgstr "Dette mærke indikerer brugen af speciel behandling på billeddataene, såsom rendering forbeholdt uddata. Når der udføres speciel behandling forventer læseren at slå  yderligere behandling fra eller minimere den."
 
 #: libexif/exif-tag.c:797
 msgid "This tag indicates the exposure mode set when the image was shot. In auto-bracketing mode, the camera shoots a series of frames of the same scene at different exposure settings."
@@ -3432,7 +3437,7 @@ msgstr "Digitalt zoomforhold"
 
 #: libexif/exif-tag.c:807
 msgid "This tag indicates the digital zoom ratio when the image was shot. If the numerator of the recorded value is 0, this indicates that digital zoom was not used."
-msgstr ""
+msgstr "Dette mærke indikerer forholdt for den digitale zoom da billedet blev taget. Hvis det optaget tal er 0, indikerer det at digital zoom ikke blev brugt."
 
 #: libexif/exif-tag.c:812
 msgid "Focal Length in 35mm Film"
@@ -3461,31 +3466,31 @@ msgstr ""
 
 #: libexif/exif-tag.c:830
 msgid "This tag indicates the direction of contrast processing applied by the camera when the image was shot."
-msgstr ""
+msgstr "Dette mærke indikerer retningen på kontrastbehandlingen brugt af kameraet da billedet blev taget."
 
 #: libexif/exif-tag.c:834
 msgid "This tag indicates the direction of saturation processing applied by the camera when the image was shot."
-msgstr ""
+msgstr "Dette mærke indikerer retningen på farvemætningsbehandlingen brugt af kameraet, da billedet blev taget."
 
 #: libexif/exif-tag.c:838
 msgid "This tag indicates the direction of sharpness processing applied by the camera when the image was shot."
-msgstr ""
+msgstr "Dette mærke indikerer retniningen for behandlingen af skarpheden brugt af kameraet, da billedet blev taget."
 
 #: libexif/exif-tag.c:842
 msgid "Device Setting Description"
-msgstr ""
+msgstr "Beskrivelse af enhedsopsætningen"
 
 #: libexif/exif-tag.c:843
 msgid "This tag indicates information on the picture-taking conditions of a particular camera model. The tag is used only to indicate the picture-taking conditions in the reader."
-msgstr ""
+msgstr "Dette mærke indikerer information om de billedtagende betingelser for en speciel kameramodel. Mærket bruges kun til at indikere de billedtagende betingelser i læseren."
 
 #: libexif/exif-tag.c:849
 msgid "Subject Distance Range"
-msgstr ""
+msgstr "Afstand til emnet"
 
 #: libexif/exif-tag.c:850
 msgid "This tag indicates the distance to the subject."
-msgstr ""
+msgstr "Dette mærke indikerer afstanden til emnet."
 
 #: libexif/exif-tag.c:852
 msgid "Image Unique ID"
@@ -3505,19 +3510,19 @@ msgstr "Indikerer værdien på koefficientgamma."
 
 #: libexif/exif-tag.c:861
 msgid "PRINT Image Matching"
-msgstr ""
+msgstr "PRINT Image Matching"
 
 #: libexif/exif-tag.c:862
 msgid "Related to Epson's PRINT Image Matching technology"
-msgstr ""
+msgstr "Forbundet med Epsons PRINT Image Matching technology"
 
 #: libexif/exif-tag.c:864
 msgid "Padding"
-msgstr ""
+msgstr "Udfyldelse med nuller (datafyld)"
 
 #: libexif/exif-tag.c:865
 msgid "This tag reserves space that can be reclaimed later when additional metadata are added. New metadata can be written in place by replacing this tag with a smaller data element and using the reclaimed space to store the new or expanded metadata tags."
-msgstr ""
+msgstr "Dette mærke reserverer plads som kan bruges senere når yderligere metadata tilføjes. Nye metadata kan skrives på plads ved at erstatte dette mærke med et lille dataelement og bruge pladsen til at gemme de nye eller udvidede metadatamærker."
 
 #: libexif/fuji/mnote-fuji-entry.c:62
 msgid "Softest"
@@ -3712,7 +3717,7 @@ msgstr "Dette nummer er unikt og baseret på fremstillingsdatoen."
 
 #: libexif/fuji/mnote-fuji-tag.c:41
 msgid "Chromaticity Saturation"
-msgstr ""
+msgstr "Kromaticitetsfarvemætning"
 
 #: libexif/fuji/mnote-fuji-tag.c:44
 msgid "Flash Firing Strength Compensation"
@@ -5069,9 +5074,12 @@ msgstr "Forbedring"
 msgid "Finer"
 msgstr "Finere"
 
+# This is a very special string. It is used for test purposes, and
+# we only test the de locale as a proof-of-concept example. There is
+# no need for anybody to translate it.
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
-msgstr ""
+msgstr "[DO_NOT_TRANSLATE_THIS_MARKER_da]"
 
 #~ msgid "On + Red-eye reduction"
 #~ msgstr "Tændt + Rødøjereduktion"
