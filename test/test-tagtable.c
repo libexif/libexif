@@ -2,7 +2,7 @@
  *
  * Test various functions that involve the tag table.
  *
- * Copyright © 2009 Dan Fandrich <dan@coneharvesters.com>
+ * Copyright (c) 2009 Dan Fandrich <dan@coneharvesters.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
