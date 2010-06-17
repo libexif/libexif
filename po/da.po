@@ -12,9 +12,10 @@
 # konventioner:
 # aperture -> blændetal
 # bottom -> nederst
-# bracket -> kantparentes
+# bracket -> sammenstilling (det er ikke kantparentes)
 # brightness -> lysstyrke
 # custom -> tilpasset
+# distance -> afstand
 # entry -> post
 # exposure -> belysning
 # flash -> blitz
@@ -25,6 +26,8 @@
 # hue -> farvetone
 # incandescence -> hvidglødende
 # Interoperability -> (uafklaret; Erklæringen om brugsret?)
+# lens -> linse (men kunne vel også være objektiv)
+# matrix -> matrice (alternativ matrix)
 # shutter -> lukketid
 # still image -> stillbillede
 # strobe light -> stroboskoplys
@@ -36,7 +39,7 @@ msgstr ""
 "Project-Id-Version: libexif-0.6.20-pre1\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-02-05 16:15-0800\n"
-"PO-Revision-Date: 2010-03-09 01:01I+0200\n"
+"PO-Revision-Date: 2010-04-30 01:01I+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -1114,6 +1117,7 @@ msgstr "Tilpasset 2"
 msgid "Night scene"
 msgstr "Natscene"
 
+# Evt. Centrum-højre
 #: libexif/canon/mnote-canon-entry.c:352
 msgid "Center-right"
 msgstr "Centrum mod højre"
@@ -1193,7 +1197,7 @@ msgstr "Øverst til nederst"
 
 #: libexif/canon/mnote-canon-entry.c:385
 msgid "2x2 matrix (clockwise)"
-msgstr "2x2 matriks (med uret)"
+msgstr "2x2 matrice (med uret)"
 
 #: libexif/canon/mnote-canon-entry.c:391 libexif/canon/mnote-canon-entry.c:397
 #: libexif/canon/mnote-canon-entry.c:418 libexif/canon/mnote-canon-entry.c:428
@@ -1345,7 +1349,7 @@ msgstr "Serielnummer"
 
 #: libexif/canon/mnote-canon-tag.c:45
 msgid "Custom Functions"
-msgstr "Tilpasset funktioner"
+msgstr "Tilpassede funktioner"
 
 #: libexif/canon/mnote-canon-tag.c:56 libexif/fuji/mnote-fuji-tag.c:45
 msgid "Macro Mode"
@@ -1452,11 +1456,11 @@ msgstr "Linsetype"
 
 #: libexif/canon/mnote-canon-tag.c:75
 msgid "Long Focal Length of Lens"
-msgstr "Lang brændvidde på linser"
+msgstr "Lang brændvidde på linse"
 
 #: libexif/canon/mnote-canon-tag.c:76
 msgid "Short Focal Length of Lens"
-msgstr "Kort brændvidde på linser"
+msgstr "Kort brændvidde på linse"
 
 #: libexif/canon/mnote-canon-tag.c:77
 msgid "Focal Units per mm"
@@ -1574,21 +1578,26 @@ msgstr "Vejledningsnummer for blitz"
 msgid "Flash Exposure Compensation"
 msgstr "Belysningskompensation for blitz"
 
+# Exposure bracketing is a simple technique professional 
+# photographers use to ensure they properly expose their 
+# pictures, especially in challenging lighting situations.
+# der tages et billede før og efter med under og overeksponering af lys.
+# Derfor ikke kantparenteser, måske omklamring eller sammenstilling.
 #: libexif/canon/mnote-canon-tag.c:107
 msgid "AE Bracketing"
-msgstr "AE-kantparenteser"
+msgstr "AE-sammenstilling"
 
 #: libexif/canon/mnote-canon-tag.c:108
 msgid "AE Bracket Value"
-msgstr "AE-kantparentesværdi"
+msgstr "AE-sammenstilingsværdi"
 
 #: libexif/canon/mnote-canon-tag.c:109
 msgid "Focus Distance Upper"
-msgstr "Fokus - Distance - Oppe"
+msgstr "Fokus - Afstand - Oppe"
 
 #: libexif/canon/mnote-canon-tag.c:110
 msgid "Focus Distance Lower"
-msgstr "Fokus - Distance - Lavt"
+msgstr "Fokus - Afstand - Lavt"
 
 #: libexif/canon/mnote-canon-tag.c:111
 msgid "FNumber"
@@ -1718,7 +1727,7 @@ msgstr "%i byte udefinerede data"
 #: libexif/exif-entry.c:590
 #, c-format
 msgid "%i bytes unsupported data type"
-msgstr "%i byte ikkesupporteret datatype"
+msgstr "%i byte datatype der ikke er understøttet"
 
 #: libexif/exif-entry.c:623
 #, c-format
@@ -1854,7 +1863,7 @@ msgstr "Manuel belysning"
 
 #: libexif/exif-entry.c:668
 msgid "Auto bracket"
-msgstr "Kantparenteser på auto"
+msgstr "Sammenstilling på auto"
 
 #: libexif/exif-entry.c:670
 msgid "Auto white balance"
@@ -2363,7 +2372,7 @@ msgstr "YCbCr4:2:0"
 #: libexif/exif-entry.c:1180
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
-msgstr "Indenfor distance %i af (x,y) = (%i,%i)"
+msgstr "Indenfor afstand %i af (x,y) = (%i,%i)"
 
 #: libexif/exif-entry.c:1189
 #, c-format
@@ -2633,11 +2642,11 @@ msgstr "Indikerer retningen på billedet da det blev optaget. Værdierne kan gå
 
 #: libexif/exif-tag.c:156
 msgid "Geodetic Survey Data Used"
-msgstr "Anvendte geodæiske undersøgelsesdata"
+msgstr "Anvendte geodætiske undersøgelsesdata"
 
 #: libexif/exif-tag.c:157
 msgid "Indicates the geodetic survey data used by the GPS receiver. If the survey data is restricted to Japan, the value of this tag is 'TOKYO' or 'WGS-84'. If a GPS Info tag is recorded, it is strongly recommended that this tag be recorded."
-msgstr "Indikerer de geodæiske undersøgelsesdata der bruges af GPS-modtageren. Hvis undersøgelsesdataene er begrænset til Japan er værdien af mærket 'TOKYO' eller 'WGS-84'. Hvis et GPS-infomærke er optaget, anbefales det kraftigt, at dette mærke registreres."
+msgstr "Indikerer de geodætiske undersøgelsesdata der bruges af GPS-modtageren. Hvis undersøgelsesdataene er begrænset til Japan er værdien af mærket 'TOKYO' eller 'WGS-84'. Hvis et GPS-infomærke er optaget, anbefales det kraftigt, at dette mærke registreres."
 
 # "Reference for ankomststedets breddegrad"
 # Kan man skrive /stedets/ isf. ankomststedets?
@@ -2711,7 +2720,7 @@ msgstr "Navn på GPS-behandlingsmetoden"
 
 #: libexif/exif-tag.c:200
 msgid "A character string recording the name of the method used for location finding. The first byte indicates the character code used, and this is followed by the name of the method. Since the Type is not ASCII, NULL termination is not necessary."
-msgstr "En tegnstreng der registerer navnet på metoden brugt til lokalisering af placering. Den første byte indikerer den anvendte tegnkode, og dette efterfølges af navnet på metoden. Da typen ikke er ASCII, er NULL-terminering ikke nødvendig."
+msgstr "En tegnstreng der angiver navnet på metoden der bruges til stedbestemmelse. Den første byte indikerer den anvendte tegnkode, og dette efterfølges af navnet på metoden. Da typen ikke er ASCII, er NULL-terminering ikke nødvendig."
 
 #: libexif/exif-tag.c:205
 msgid "Name of GPS Area"
@@ -2727,7 +2736,7 @@ msgstr "GPS-dato"
 
 #: libexif/exif-tag.c:211
 msgid "A character string recording date and time information relative to UTC (Coordinated Universal Time). The format is \"YYYY:MM:DD\". The length of the string is 11 bytes including NULL."
-msgstr "En tegnstreng der registrerer dato- og tidsinformation i forhold til UTC (Koordineret universel tid). Formatet er »ÅÅÅÅ:MM:DD«. Længden på strengen er 11 byte inklusiv NULL."
+msgstr "En tegnstreng der registrerer dato- og tidsinformation i forhold til UTC (Koordineret universel tid). Formatet er »ÅÅÅÅ:MM:DD«. Længden på strengen er 11 byte inklusive NULL."
 
 #: libexif/exif-tag.c:215
 msgid "GPS Differential Correction"
@@ -2925,6 +2934,7 @@ msgstr "Dette mærke viser navnet på kameraejeren, fotografen eller personen de
 msgid "White Point"
 msgstr "Hvidpunkt"
 
+# Kromaticiteten for billedets hvidpunkt
 #: libexif/exif-tag.c:348
 msgid "The chromaticity of the white point of the image. Normally this tag is not necessary, since color space is specified in the color space information tag (<ColorSpace>)."
 msgstr "Kromaticiteten på det hvide punkt i billedet. Normalt er dette mærke ikke nødvendigt, da farverum er angivet i informationsmærket for farverum (<ColorSpace>)."
@@ -2959,15 +2969,15 @@ msgstr "JPEG-udvekslingsformatlængde"
 
 #: libexif/exif-tag.c:373
 msgid "The number of bytes of JPEG compressed thumbnail data. This is not used for primary image JPEG data. JPEG thumbnails are not divided but are recorded as a continuous JPEG bitstream from SOI to EOI. Appn and COM markers should not be recorded. Compressed thumbnails must be recorded in no more than 64 Kbytes, including all other data to be recorded in APP1."
-msgstr "Antallet af byte i JPEG-komprimeret miniaturedata. Dette bruges ikke til primære billed-JPEG-data. JPEG-miniaturebilleder er ikke opdelt, men er optaget som en fortsættende JPEG-bitstrøm fra SOI til EOI. Appn- og COM-markører bør ikke optages. Komprimeret miniaturebilleder skal optages i ikke mere end 64 Kbyte, inklusiv alle andre data der optages i APP1."
+msgstr "Antallet af byte i JPEG-komprimeret miniaturedata. Dette bruges ikke til primære billed-JPEG-data. JPEG-miniaturebilleder opdeles ikke, men optages som en fortsættende JPEG-bitstrøm fra SOI til EOI. Appn- og COM-markører bør ikke optages. Komprimeret miniaturebilleder skal optages i ikke mere end 64 Kbyte, inklusive alle andre data der optages i APP1."
 
 #: libexif/exif-tag.c:382
 msgid "YCbCr Coefficients"
-msgstr "YCbCr-koefficiente"
+msgstr "YCbCr-koefficienter"
 
 #: libexif/exif-tag.c:383
 msgid "The matrix coefficients for transformation from RGB to YCbCr image data. No default is given in TIFF; but here the value given in \"Color Space Guidelines\", is used as the default. The color space is declared in a color space information tag, with the default being the value that gives the optimal image characteristics Interoperability this condition."
-msgstr "Matrikskoefficienterne for omdannelse fra RGB til YCbCr-billeddata. Ingen standard er angivet i TIFF; men her er værdien angivet i »Color Space Guidelines« brugt som standard. Farverummet er deklareret i informationsmærket for farverum, hvor standarden er værdien som giver denne betingelse den optimale billedkarakteristiske interoperabilitet."
+msgstr "Matricekoefficienterne for omdannelse fra RGB- til YCbCr-billeddata. Ingen standard er angivet i TIFF; men her bruges værdien angivet i »Color Space Guidelines« som standard. Farverummet er deklareret i informationsmærket for farverum, hvor standarden er værdien som giver denne betingelse den optimale billedkarakteristiske interoperabilitet."
 
 #: libexif/exif-tag.c:392
 msgid "YCbCr Sub-Sampling"
@@ -2984,7 +2994,7 @@ msgstr "Samplingsforholdet på chrominance-komponenter i forhold til lysstyrkeko
 
 #: libexif/exif-tag.c:398
 msgid "YCbCr Positioning"
-msgstr "YCBCr-positionering"
+msgstr "YCbCr-placering"
 
 #: libexif/exif-tag.c:399
 msgid "The position of chrominance components in relation to the luminance component. This field is designated only for JPEG compressed data or uncompressed YCbCr data. The TIFF default is 1 (centered); but when Y:Cb:Cr = 4:2:2 it is recommended in this standard that 2 (co-sited) be used to record data, in order to improve the image quality when viewed on TV systems. When this field does not exist, the reader shall assume the TIFF default. In the case of Y:Cb:Cr = 4:2:0, the TIFF default (centered) is recommended. If the reader does not have the capability of supporting both kinds of <YCbCrPositioning>, it shall follow the TIFF default regardless of the value in this field. It is preferable that readers be able to support both centered and co-sited positioning."
@@ -2994,6 +3004,7 @@ msgstr "Placeringen af chrominance-komponenterne i forhold til lysstyrkekomponen
 msgid "Reference Black/White"
 msgstr "Reference for sort/hvid"
 
+# evt. noget med "sort- og hvidpunkt."
 #: libexif/exif-tag.c:415
 msgid "The reference black point value and reference white point value. No defaults are given in TIFF, but the values below are given as defaults here. The color space is declared in a color space information tag, with the default being the value that gives the optimal image characteristics Interoperability these conditions."
 msgstr "Referenceværdien for det sorte og hvide punkt. Ingen standarder er angivet i TIFF, men værdierne nedenfor er angivet som standarder her. Farverummet er angivet i et informationsmærke for farverum, hvor standarden er værdien som giver denne betingelse den optimale billedkarakteristiske interoperabilitet."
@@ -3012,7 +3023,7 @@ msgstr "CFA-mønster"
 
 #: libexif/exif-tag.c:439 libexif/exif-tag.c:786
 msgid "Indicates the color filter array (CFA) geometric pattern of the image sensor when a one-chip color area sensor is used. It does not apply to all sensing methods."
-msgstr "Indikerer det geometriske mønster for farvefiltertabellen (CFA) på billedsensoren når en farveområdesensor med en chip bruges. Mønsteret gælder ikke for alle sensormetoder."
+msgstr "Indikerer det geometriske mønster for farvefiltertabellen (CFA) på billedsensoren når en farveområdesensor med én chip bruges. Mønsteret gælder ikke for alle sensormetoder."
 
 #: libexif/exif-tag.c:443
 msgid "Battery Level"
@@ -3045,7 +3056,7 @@ msgstr "Billedressourceblok"
 # engelsk fejl, lille o.
 #: libexif/exif-tag.c:477
 msgid "A pointer to the Exif IFD. Interoperability, Exif IFD has the same structure as that of the IFD specified in TIFF. ordinarily, however, it does not contain image data as in the case of TIFF."
-msgstr "En peger for Exif IFD'en. Interoperability, Exif IFD har den samme struktur som den af IFD angivet i TIFF. Normalt indeholder den dog ikke billeddata som i tilfældet med TIFF."
+msgstr "En peger til Exif IFD'en. Interoperability, Exif IFD har den samme struktur som den af IFD angivet i TIFF. Normalt indeholder den dog ikke billeddata som i tilfældet med TIFF."
 
 #: libexif/exif-tag.c:485
 msgid "Exposure Program"
@@ -3069,7 +3080,7 @@ msgstr "IFD-peger for GPS-info"
 
 #: libexif/exif-tag.c:497
 msgid "A pointer to the GPS Info IFD. The Interoperability structure of the GPS Info IFD, like that of Exif IFD, has no image data."
-msgstr "En peger for GPS Info IFD'en. Interoperabilitystrukturen på GPS Info IFD'en, har som Exif IFD ingen billeddata."
+msgstr "En peger for GPS Info IFD'en. Interoperabilitystrukturen på GPS Info IFD'en har som Exif IFD ingen billeddata."
 
 #: libexif/exif-tag.c:503
 msgid "ISO Speed Ratings"
@@ -3133,7 +3144,7 @@ msgstr "Komprimerede bit per billedpunkt"
 
 #: libexif/exif-tag.c:542
 msgid "Information specific to compressed data. The compression mode used for a compressed image is indicated in unit bits per pixel."
-msgstr "Information specifik for komprimerede data. Kompressionstilstanden brugt for et komprimeret billede er indikeret i enheden bit per billedpunkt."
+msgstr "Information specifik for komprimerede data. Komprimeringstilstanden brugt for et komprimeret billede er indikeret i enheden bit per billedpunkt."
 
 #: libexif/exif-tag.c:546 libexif/olympus/mnote-olympus-tag.c:123
 msgid "Shutter Speed"
@@ -3145,7 +3156,7 @@ msgstr "Lukketidshastighed. Denne enhed er APEX-indstillingen (Additive System o
 
 #: libexif/exif-tag.c:551
 msgid "The lens aperture. The unit is the APEX value."
-msgstr "Linsernes blændetal. Enheden er APEX-værdien."
+msgstr "Linsens blændetal. Enheden er APEX-værdien."
 
 #: libexif/exif-tag.c:553
 msgid "Brightness"
@@ -3161,7 +3172,7 @@ msgstr "Belysningsbias"
 
 #: libexif/exif-tag.c:559
 msgid "The exposure bias. The units is the APEX value. Ordinarily it is given in the range of -99.99 to 99.99."
-msgstr "Belysningsbiasesn. Enhederne er i APEX-værdien. Normalt angives den i intervallet -99.99 til 99.99."
+msgstr "Belysningsbiasesn. Enheden er APEX-værdien. Normalt angives den i intervallet -99.99 til 99.99."
 
 #: libexif/exif-tag.c:562
 msgid "Maximum Aperture Value"
@@ -3169,15 +3180,15 @@ msgstr "Maksimal blændetalsværdi"
 
 #: libexif/exif-tag.c:563
 msgid "The smallest F number of the lens. The unit is the APEX value. Ordinarily it is given in the range of 00.00 to 99.99, but it is not limited to this range."
-msgstr "Den mindste F-tal for linserne. Enheden er APEX-værdien. Normalt angives den i intervallet 00.00 til 99.99, men den er ikke begrænset til dette interval."
+msgstr "Linsens mindste F-tal. Enheden er APEX-værdien. Normalt angives den i intervallet 00.00 til 99.99, men den er ikke begrænset til dette interval."
 
 #: libexif/exif-tag.c:568
 msgid "Subject Distance"
-msgstr "Emnedistance"
+msgstr "Emneafstand"
 
 #: libexif/exif-tag.c:569
 msgid "The distance to the subject, given in meters."
-msgstr "Distancen til emnet, angivet i meter."
+msgstr "Afstanden til emnet, angivet i meter."
 
 #: libexif/exif-tag.c:572
 msgid "The metering mode."
@@ -3197,7 +3208,7 @@ msgstr "Dette mærke optages, når et billede bliver taget med brug af strobosko
 
 #: libexif/exif-tag.c:582
 msgid "The actual focal length of the lens, in mm. Conversion is not made to the focal length of a 35 mm film camera."
-msgstr "Den aktuelle brændvidde på linserne, i mm. Konvertering er ikke foretaget på brændvidden på et 35 mm filmkamera."
+msgstr "Den faktiske brændvidde på linsen, i mm. Konvertering er ikke foretaget på brændvidden på et 35 mm filmkamera."
 
 #: libexif/exif-tag.c:585
 msgid "Subject Area"
@@ -3229,27 +3240,27 @@ msgstr "Et mærke hvor Exifbrugere kan skrive nøgleord eller kommentarer på bi
 
 #: libexif/exif-tag.c:619
 msgid "Sub-second Time"
-msgstr "Undersekund tid"
+msgstr "Delsekundtid"
 
 #: libexif/exif-tag.c:620
 msgid "A tag used to record fractions of seconds for the <DateTime> tag."
-msgstr "Et mærke brugt til at registrere sekundfraktioner for mærket <DateTime>."
+msgstr "Et mærke brugt til at registrere delsekunder for mærket <DateTime>."
 
 #: libexif/exif-tag.c:624
 msgid "Sub-second Time (Original)"
-msgstr "Undersekund tid (oprindelig)"
+msgstr "Delsekundtid (oprindelig)"
 
 #: libexif/exif-tag.c:625
 msgid "A tag used to record fractions of seconds for the <DateTimeOriginal> tag."
-msgstr "Et mærke brugt til at registrere sekundfraktioner for mærket <DateTimeOriginal>."
+msgstr "Et mærke brugt til at registrere delsekunder for mærket <DateTimeOriginal>."
 
 #: libexif/exif-tag.c:629
 msgid "Sub-second Time (Digitized)"
-msgstr "Undersekund tid (digitaliseret)"
+msgstr "Delsekundtid (digitaliseret)"
 
 #: libexif/exif-tag.c:630
 msgid "A tag used to record fractions of seconds for the <DateTimeDigitized> tag."
-msgstr "Et mærke brugt til at registrere sekundfraktioner for mærket <DateTimeDigitized>."
+msgstr "Et mærke brugt til at registrere delsekunder for mærket <DateTimeDigitized>."
 
 #: libexif/exif-tag.c:634
 msgid "XP Title"
@@ -3343,13 +3354,14 @@ msgstr "Blitzenergi"
 msgid "Indicates the strobe energy at the time the image is captured, as measured in Beam Candle Power Seconds (BCPS)."
 msgstr "Indikerer stroboskopenergien da billedet blev optaget, som målt i Beam Candle Power Seconds (BCPS)."
 
+# ups noget med hvor meget man kan udskille små ting og så forstørre dem op
 #: libexif/exif-tag.c:735
 msgid "Spatial Frequency Response"
-msgstr ""
+msgstr "Rumlig frekvenssvar (SFR)"
 
 #: libexif/exif-tag.c:736
 msgid "This tag records the camera or input device spatial frequency table and SFR values in the direction of image width, image height, and diagonal direction, as specified in ISO 12233."
-msgstr ""
+msgstr "Dette mærke viser kameraets eller inddataenhedens rumlige frekvenssvartabel og SFR-værdier i forhold til billedets bredde, billedets højde og diagonale retning, som angivet i ISO 12233."
 
 #: libexif/exif-tag.c:742
 msgid "Focal Plane X-Resolution"
@@ -3425,7 +3437,7 @@ msgstr "Dette mærke indikerer brugen af speciel behandling på billeddataene, s
 
 #: libexif/exif-tag.c:797
 msgid "This tag indicates the exposure mode set when the image was shot. In auto-bracketing mode, the camera shoots a series of frames of the same scene at different exposure settings."
-msgstr "Dette mærke indikerer indstillingen for belysningstilstanden da billedet blev taget. I automatisk kantparentestilstand, optager kameraet en serie af billeder over den samme scene ved forskellige belysningsopsætninger."
+msgstr "Dette mærke indikerer indstillingen for belysningstilstanden da billedet blev taget. I automatisk sammenstillingstilstand, optager kameraet en serie af billeder over den samme scene ved forskellige belysningsopsætninger."
 
 #: libexif/exif-tag.c:802
 msgid "This tag indicates the white balance mode set when the image was shot."
@@ -3454,15 +3466,15 @@ msgstr "Sceneoptagelsestype"
 
 #: libexif/exif-tag.c:820
 msgid "This tag indicates the type of scene that was shot. It can also be used to record the mode in which the image was shot. Note that this differs from the scene type <SceneType> tag."
-msgstr "Dette mærke indikerer typen af scene som blev optaget. Den kan også bruges til at optage tilstanden som billedet blev optaget i. Bemærk at dette er forskelligt fra mærket scenetype <SceneType>."
+msgstr "Dette mærke indikerer typen af scene som blev optaget. Det kan også bruges til at optage tilstanden som billedet blev optaget i. Bemærk at dette er forskelligt fra mærket scenetype <SceneType>."
 
 #: libexif/exif-tag.c:825
 msgid "Gain Control"
-msgstr ""
+msgstr "Forstærkningskontrol"
 
 #: libexif/exif-tag.c:826
 msgid "This tag indicates the degree of overall image gain adjustment."
-msgstr ""
+msgstr "Dette mærke indikerer graden af samlet billedforstærkningsjustering."
 
 #: libexif/exif-tag.c:830
 msgid "This tag indicates the direction of contrast processing applied by the camera when the image was shot."
@@ -3543,7 +3555,7 @@ msgstr "Mellem hård"
 #: libexif/fuji/mnote-fuji-entry.c:69 libexif/fuji/mnote-fuji-entry.c:90
 #: libexif/fuji/mnote-fuji-entry.c:98 libexif/fuji/mnote-fuji-entry.c:182
 msgid "Film simulation mode"
-msgstr "Filmsimulationtilstand"
+msgstr "Filmsimulationstilstand"
 
 #: libexif/fuji/mnote-fuji-entry.c:79
 msgid "Incandescent"
@@ -3810,23 +3822,23 @@ msgstr "Ugyldig format '%s', forventede '%s' eller '%s'."
 
 #: libexif/olympus/mnote-olympus-entry.c:89
 msgid "AF non D lens"
-msgstr "Linser - AF ikke D"
+msgstr "Linse - AF ikke D"
 
 #: libexif/olympus/mnote-olympus-entry.c:91
 msgid "AF-D or AF-S lens"
-msgstr "Linser - AF-D eller AF-S"
+msgstr "Linse - AF-D eller AF-S"
 
 #: libexif/olympus/mnote-olympus-entry.c:92
 msgid "AF-D G lens"
-msgstr "Linser - AF-D G"
+msgstr "Linse - AF-D G"
 
 #: libexif/olympus/mnote-olympus-entry.c:93
 msgid "AF-D VR lens"
-msgstr "Linser - AF-D VR"
+msgstr "Linse - AF-D VR"
 
 #: libexif/olympus/mnote-olympus-entry.c:94
 msgid "AF-D G VR lens"
-msgstr "Linser - AF-D G VR"
+msgstr "Linse - AF-D G VR"
 
 #: libexif/olympus/mnote-olympus-entry.c:98
 msgid "Flash unit unknown"
@@ -4291,11 +4303,11 @@ msgstr "Billedgrænse"
 
 #: libexif/olympus/mnote-olympus-tag.c:56
 msgid "Flash Exposure Bracket Value"
-msgstr "Kantparentesværdi for blitzbelysning"
+msgstr "Sammenstillingsværdi for blitzbelysning"
 
 #: libexif/olympus/mnote-olympus-tag.c:57
 msgid "Exposure Bracket Value"
-msgstr "Kantparentesværdi for belysning"
+msgstr "Sammenstillingsværdi for belysning"
 
 #: libexif/olympus/mnote-olympus-tag.c:58
 #: libexif/olympus/mnote-olympus-tag.c:96
@@ -4312,7 +4324,7 @@ msgstr "Adapter"
 
 #: libexif/olympus/mnote-olympus-tag.c:62
 msgid "Lens"
-msgstr "Linser"
+msgstr "Linse"
 
 #: libexif/olympus/mnote-olympus-tag.c:63
 #: libexif/olympus/mnote-olympus-tag.c:135
@@ -4330,7 +4342,7 @@ msgstr "AF-fokusposition"
 
 #: libexif/olympus/mnote-olympus-tag.c:67
 msgid "Bracketing"
-msgstr "Parenteser"
+msgstr "Sammenstilling"
 
 #: libexif/olympus/mnote-olympus-tag.c:69
 msgid "Lens F Stops"
@@ -4448,7 +4460,7 @@ msgstr "Et tryks hvidbalance"
 
 #: libexif/olympus/mnote-olympus-tag.c:119
 msgid "White Balance Bracket"
-msgstr "Hvidbalanceparentes"
+msgstr "Hvidbalancesammenstilling"
 
 #: libexif/olympus/mnote-olympus-tag.c:120
 #: libexif/pentax/mnote-pentax-tag.c:123
@@ -4505,7 +4517,7 @@ msgstr "Blitzens opladningsniveau"
 
 #: libexif/olympus/mnote-olympus-tag.c:140
 msgid "Color Matrix"
-msgstr "Farvematrix"
+msgstr "Farvematrice"
 
 #: libexif/olympus/mnote-olympus-tag.c:141
 msgid "Black Level"
@@ -4527,7 +4539,7 @@ msgstr "Blåbalance"
 
 #: libexif/olympus/mnote-olympus-tag.c:145
 msgid "Color Matrix Number"
-msgstr "Nummer på farvematrix"
+msgstr "Nummer på farvematrice"
 
 #: libexif/olympus/mnote-olympus-tag.c:147
 msgid "Flash Exposure Comp"
@@ -4603,7 +4615,7 @@ msgstr "Tæt på linsetrin"
 
 #: libexif/olympus/mnote-olympus-tag.c:166
 msgid "Light Value Center"
-msgstr "Let værdicenter"
+msgstr "Midtpunkt for lysværdi"
 
 #: libexif/olympus/mnote-olympus-tag.c:167
 msgid "Light Value Periphery"
@@ -4762,6 +4774,8 @@ msgstr "Naturlig hudfarve"
 msgid "Synchro sound record"
 msgstr "Synchro sound record"
 
+# Jeg har aldrig helt forstået hvordan ordet composite bruges på
+# engelsk.  Måske Rammekomposit
 #: libexif/pentax/mnote-pentax-entry.c:191
 msgid "Frame composite"
 msgstr "Rammesammensat"
@@ -4786,9 +4800,10 @@ msgstr "Auto, brugt, reduktion af røde øjne"
 msgid "On, wireless"
 msgstr "Tændt, trådløs"
 
+# blidt eller blødt
 #: libexif/pentax/mnote-pentax-entry.c:202
 msgid "On, soft"
-msgstr "Tændt, blidt"
+msgstr "Tændt, blødt"
 
 #: libexif/pentax/mnote-pentax-entry.c:203
 msgid "On, slow-sync"
@@ -4947,19 +4962,20 @@ msgstr "ISO-nummer"
 
 #: libexif/pentax/mnote-pentax-tag.c:83
 msgid "Auto Bracketing"
-msgstr "Kantparenteser på auto"
+msgstr "Automatisk sammenstilling"
 
 #: libexif/pentax/mnote-pentax-tag.c:85
 msgid "White Balance Mode"
 msgstr "Hvidbalancetilstand"
 
+# Mystisk, man skulle tro at 'world time' var uafhængig af placeringer...
 #: libexif/pentax/mnote-pentax-tag.c:93
 msgid "World Time Location"
 msgstr "Placering af verdenstid"
 
 #: libexif/pentax/mnote-pentax-tag.c:94
 msgid "Hometown City"
-msgstr "Hjemmeby"
+msgstr "Hjemby"
 
 #: libexif/pentax/mnote-pentax-tag.c:95
 msgid "Destination City"
@@ -5000,7 +5016,7 @@ msgstr "Raw-billedstørrelse"
 
 #: libexif/pentax/mnote-pentax-tag.c:105
 msgid "Autofocus Points Used"
-msgstr "Autofokuspoint brugt"
+msgstr "Autofokuspunkter brugt"
 
 #: libexif/pentax/mnote-pentax-tag.c:107
 msgid "Camera Temperature"
@@ -5052,7 +5068,7 @@ msgstr "Objektafstand"
 
 #: libexif/pentax/mnote-pentax-tag.c:125
 msgid "Distance of photographed object in millimeters."
-msgstr "Afstand på fotograferet objekt i millimeter."
+msgstr "Afstand til fotograferet objekt i millimeter."
 
 #: libexif/pentax/mnote-pentax-tag.c:126
 msgid "Flash Distance"
