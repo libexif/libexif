@@ -992,7 +992,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_rat = exif_get_rational (e->data, o);
-		if (!v_rat.denominator) {
+		if (!v_rat.denominator || (0x80000000 == v_rat.numerator)) {
 			exif_entry_format_value(e, val, maxlen);
 			break;
 		}
