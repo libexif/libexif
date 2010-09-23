@@ -4,7 +4,7 @@ libexif-0.6.x:
   * Stop listing -lm as a required library for dynamic linking in libexif.pc
   * Turned on the --enable-silent-rules configure option
   * Changed a lot of strings to make the case of the text more consistent
-
+  * exif_entry_dump() now displays the correct tag name for GPS tags
 
 libexif-0.6.19 (2009-11-12):
   * New translations: be, en_GB, it, ja, pt, sq, zh_CN

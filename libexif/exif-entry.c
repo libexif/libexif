@@ -608,7 +608,7 @@ exif_entry_dump (ExifEntry *e, unsigned int indent)
 		return;
 
 	printf ("%sTag: 0x%x ('%s')\n", buf, e->tag,
-		exif_tag_get_name (e->tag));
+		exif_tag_get_name_in_ifd (e->tag, exif_entry_get_ifd(e)));
 	printf ("%s  Format: %i ('%s')\n", buf, e->format,
 		exif_format_get_name (e->format));
 	printf ("%s  Components: %i\n", buf, (int) e->components);
