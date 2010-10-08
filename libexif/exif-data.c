@@ -39,10 +39,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#if defined(__WATCOMC__) || defined(_MSC_VER)
-#      define strncasecmp strnicmp
-#endif
-
 #undef JPEG_MARKER_SOI
 #define JPEG_MARKER_SOI  0xd8
 #undef JPEG_MARKER_APP0
