@@ -346,6 +346,16 @@ exif_mnote_data_canon_get_description (ExifMnoteData *note, unsigned int i)
 	return mnote_canon_tag_get_description (dc->entries[m].tag);
 }
 
+int
+exif_mnote_data_canon_identify (const ExifData *ed, const ExifEntry *e)
+{
+	char value[8];
+	ExifEntry *em = exif_data_get_entry (ed, EXIF_TAG_MAKE);
+	if (!em) 
+		return 0;
+	return !strcmp (exif_entry_get_value (em, value, sizeof (value)), "Canon");
+}
+
 ExifMnoteData *
 exif_mnote_data_canon_new (ExifMem *mem, ExifDataOption o)
 {

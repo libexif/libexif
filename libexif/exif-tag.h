@@ -202,7 +202,9 @@ typedef enum {
 /*! Return the tag ID given its unique textual name.
  *
  * \param[in] name tag name
- * \return tag ID
+ * \return tag ID, or 0 if tag not found
+ * \note The tag not found value cannot be distinguished from a legitimate
+ *   tag number 0.
  */
 ExifTag          exif_tag_from_name                (const char *name);
 

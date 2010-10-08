@@ -146,7 +146,7 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		datao += n->offset + 10;
 		/* subtract the size here, so the increment in the next case will not harm us */
 		*buf_size -= 8 + 2;
-		/* Fall through */
+		/* Fall through to nikonV2 handler */
 	case nikonV2: 
 		*buf_size += 8 + 2;
 		*buf_size += 4; /* Next IFD pointer */
@@ -552,6 +552,49 @@ exif_mnote_data_olympus_set_offset (ExifMnoteData *n, unsigned int o)
 {
 	if (n) ((ExifMnoteDataOlympus *) n)->offset = o;
 }
+
+int
+exif_mnote_data_olympus_identify (const ExifData *ed, const ExifEntry *e)
+{
+	/* Olympus, Nikon, Sanyo, Epson */
+	if (e->size >= 8) {
+		/* Match the terminating NUL character, too */
+		if (!memcmp (e->data, "OLYMPUS", 8))
+		       return olympusV2;
+		else if (!memcmp (e->data, "OLYMP", 6))
+		       return olympusV1;
+		else if (!memcmp (e->data, "SANYO", 6))
+		       return sanyoV1;
+		else if (!memcmp (e->data, "EPSON", 6))
+		       return epsonV1;
+		else if (!memcmp (e->data, "Nikon", 6)) {
+			switch (e->data[6]) {
+				case 1:  return nikonV1;
+				case 2:  return nikonV2;
+				default: return 0; /* Unrecognized Nikon variant */
+			}
+		}
+	}
+
+	/* Another variant of Nikon */
+	if ((e->size >= 2) && (e->data[0] == 0x00) && (e->data[1] == 0x1b)) {
+		char value[5];
+		ExifEntry *em = exif_data_get_entry (ed, EXIF_TAG_MAKE);
+
+		if (em) {
+			const char *v = exif_entry_get_value (em, value, sizeof(value));
+			if (v && (!strncmp (v, "Nikon", sizeof(value)) || 
+					  !strncmp (v, "NIKON", sizeof(value)) ))
+				/* When saved, this variant will be written out like the
+				 * alternative nikonV2 form above instead
+				 */
+				return nikonV2;
+		}
+	}
+
+	return 0;
+}
+
 
 ExifMnoteData *
 exif_mnote_data_olympus_new (ExifMem *mem)

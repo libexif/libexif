@@ -729,57 +729,6 @@ typedef enum {
 	EXIF_DATA_TYPE_MAKER_NOTE_FUJI 		= 6
 } ExifDataTypeMakerNote;
 
-static ExifDataTypeMakerNote
-exif_data_get_type_maker_note (ExifData *d)
-{
-	ExifEntry *e, *em;
-	char value[1024];
-
-	if (!d) 
-		return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
-	
-	e = exif_data_get_entry (d, EXIF_TAG_MAKER_NOTE);
-	if (!e) 
-		return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
-
-	/* Olympus & Nikon & Sanyo */
-	if ((e->size >= 8) && ( !memcmp (e->data, "OLYMP", 6) ||
-				!memcmp (e->data, "OLYMPUS", 8) ||
-				!memcmp (e->data, "SANYO", 6) ||
-				!memcmp (e->data, "EPSON", 6) ||
-				!memcmp (e->data, "Nikon", 6)))
-		return EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS;
-
-	em = exif_data_get_entry (d, EXIF_TAG_MAKE);
-	if (!em) 
-		return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
-
-	/* Canon */
-	if (!strcmp (exif_entry_get_value (em, value, sizeof (value)), "Canon"))
-		return EXIF_DATA_TYPE_MAKER_NOTE_CANON;
-
-	/* Pentax & some variant of Nikon */
-	if ((e->size >= 2) && (e->data[0] == 0x00) && (e->data[1] == 0x1b)) {
-		if (!strncasecmp (
-			    exif_entry_get_value (em, value, sizeof(value)),
-			    "Nikon", 5))
-			return EXIF_DATA_TYPE_MAKER_NOTE_NIKON;
-		else
-			return EXIF_DATA_TYPE_MAKER_NOTE_PENTAX;
-	}
-	if ((e->size >= 8) && !memcmp (e->data, "AOC", 4)) {
-		return EXIF_DATA_TYPE_MAKER_NOTE_PENTAX;
-	}
-	if ((e->size >= 8) && !memcmp (e->data, "QVC", 4)) {
-		return EXIF_DATA_TYPE_MAKER_NOTE_CASIO;
-	}
-	if ((e->size >= 12) && !memcmp (e->data, "FUJIFILM", 8)) {
-		return EXIF_DATA_TYPE_MAKER_NOTE_FUJI;
-	}
-
-	return EXIF_DATA_TYPE_MAKER_NOTE_NONE;
-}
-
 /*! If MakerNote is recognized, load it.
  *
  * \param[in,out] data #ExifData
@@ -789,23 +738,32 @@ exif_data_get_type_maker_note (ExifData *d)
 static void
 interpret_maker_note(ExifData *data, const unsigned char *d, unsigned int ds)
 {
-	switch (exif_data_get_type_maker_note (data)) {
-	case EXIF_DATA_TYPE_MAKER_NOTE_OLYMPUS:
-	case EXIF_DATA_TYPE_MAKER_NOTE_NIKON:
+	int mnoteid;
+	ExifEntry* e = exif_data_get_entry (data, EXIF_TAG_MAKER_NOTE);
+	if (!e)
+		return;
+	
+	if ((mnoteid = exif_mnote_data_olympus_identify (data, e)) != 0) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
+			"ExifData", "Olympus MakerNote variant type %d", mnoteid);
 		data->priv->md = exif_mnote_data_olympus_new (data->priv->mem);
-		break;
-	case EXIF_DATA_TYPE_MAKER_NOTE_PENTAX:
-	case EXIF_DATA_TYPE_MAKER_NOTE_CASIO:
-		data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
-		break;
-	case EXIF_DATA_TYPE_MAKER_NOTE_CANON:
+
+	} else if ((mnoteid = exif_mnote_data_canon_identify (data, e)) != 0) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
+			"ExifData", "Canon MakerNote variant type %d", mnoteid);
 		data->priv->md = exif_mnote_data_canon_new (data->priv->mem, data->priv->options);
-		break;
-	case EXIF_DATA_TYPE_MAKER_NOTE_FUJI:
+
+	} else if ((mnoteid = exif_mnote_data_fuji_identify (data, e)) != 0) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
+			"ExifData", "Fuji MakerNote variant type %d", mnoteid);
 		data->priv->md = exif_mnote_data_fuji_new (data->priv->mem);
-		break;
-	default:
-		break;
+
+	/* NOTE: Must do Pentax detection last because some of the
+	 * heuristics are pretty general. */
+	} else if ((mnoteid = exif_mnote_data_pentax_identify (data, e)) != 0) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
+			"ExifData", "Pentax MakerNote variant type %d", mnoteid);
+		data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
 	}
 
 	/* 
