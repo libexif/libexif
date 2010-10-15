@@ -503,13 +503,13 @@ exif_entry_format_value(ExifEntry *e, char *val, size_t maxlen)
 		break;
 	case EXIF_FORMAT_LONG:
 		v_long = exif_get_long (e->data, o);
-		snprintf (val, maxlen, "%lu", (long int) v_long);
+		snprintf (val, maxlen, "%lu", (unsigned long) v_long);
 		maxlen -= strlen (val);
 		for (i = 1; i < e->components; i++) {
 			v_long = exif_get_long (e->data +
 				exif_format_get_size (e->format) *
 				i, o);
-			snprintf (b, sizeof (b), ", %lu", (long int) v_long);
+			snprintf (b, sizeof (b), ", %lu", (unsigned long) v_long);
 			strncat (val, b, maxlen);
 			maxlen -= strlen (b);
 			if ((signed)maxlen <= 0) break;
@@ -534,7 +534,7 @@ exif_entry_format_value(ExifEntry *e, char *val, size_t maxlen)
 	case EXIF_FORMAT_RATIONAL:
 		v_rat = exif_get_rational (e->data, o);
 		if (v_rat.denominator)
-			snprintf (val, maxlen, "%2.2lf",
+			snprintf (val, maxlen, "%2.2f",
 				  (double) v_rat.numerator /
 				  (double) v_rat.denominator);
 		else
@@ -546,7 +546,7 @@ exif_entry_format_value(ExifEntry *e, char *val, size_t maxlen)
 			v_rat = exif_get_rational (
 				e->data + 8 * i, o);
 			if (v_rat.denominator)
-				snprintf (b, sizeof (b), ", %2.2lf",
+				snprintf (b, sizeof (b), ", %2.2f",
 					  (double) v_rat.numerator /
 					  (double) v_rat.denominator);
 			else
@@ -985,7 +985,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			break;
 		}
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
-		snprintf (val, maxlen, "f/%.01lf", d);
+		snprintf (val, maxlen, "f/%.01f", d);
 		break;
 	case EXIF_TAG_APERTURE_VALUE:
 	case EXIF_TAG_MAX_APERTURE_VALUE:
@@ -997,7 +997,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			break;
 		}
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
-		snprintf (val, maxlen, _("%.02lf EV"), d);
+		snprintf (val, maxlen, _("%.02f EV"), d);
 		snprintf (b, sizeof (b), _(" (f/%.01f)"), pow (2, d / 2.));
 		if (maxlen > strlen (val) + strlen (b))
 			strncat (val, b, maxlen - strlen (val));
@@ -1037,7 +1037,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 				  	     (double) v_rat.denominator));
 
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
-		snprintf (val, maxlen, "%.1lf mm", d);
+		snprintf (val, maxlen, "%.1f mm", d);
 		if (maxlen > strlen (val) + strlen (b))
 			strncat (val, b, maxlen - strlen (val));
 		break;
@@ -1050,7 +1050,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			break;
 		}
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
-		snprintf (val, maxlen, "%.1lf m", d);
+		snprintf (val, maxlen, "%.1f m", d);
 		break;
 	case EXIF_TAG_EXPOSURE_TIME:
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
