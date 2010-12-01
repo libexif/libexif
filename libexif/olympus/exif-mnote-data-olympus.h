@@ -28,12 +28,14 @@
 #include <libexif/exif-mem.h>
 
 enum OlympusVersion {
+	unrecognized = 0,
 	nikonV1 = 1,
 	nikonV2 = 2,
 	olympusV1 = 3,
 	olympusV2 = 4,
 	sanyoV1 = 5,
-	epsonV1 = 6
+	epsonV1 = 6,
+	nikonV0 = 7
 };
 
 
