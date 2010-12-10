@@ -1,3 +1,11 @@
+2010-12-10  Dan Fandrich <dan@coneharvesters.com>
+
+	* Changed the display of rational numbers to estimate the number of
+	  significant figures (based on the size of the denominator) and show
+	  that number of decimal places.  This simplifies the output in the
+	  case of integers (e.g. resolution), and shows all the available
+	  accuracy in the case of rationals (e.g. latitude & longitude).
+
 2010-10-14  Dan Fandrich <dan@coneharvesters.com>
 
 	* Fixed some invalid format specifiers and typecasts. This caused a

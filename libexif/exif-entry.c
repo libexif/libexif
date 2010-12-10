@@ -532,25 +532,27 @@ exif_entry_format_value(ExifEntry *e, char *val, size_t maxlen)
 		strncpy (val, (char *) e->data, MIN (maxlen, e->size));
 		break;
 	case EXIF_FORMAT_RATIONAL:
-		v_rat = exif_get_rational (e->data, o);
-		if (v_rat.denominator)
-			snprintf (val, maxlen, "%2.2f",
-				  (double) v_rat.numerator /
-				  (double) v_rat.denominator);
-		else
-			snprintf (val, maxlen, "%lu/%lu",
-				  (unsigned long) v_rat.numerator,
-				  (unsigned long) v_rat.denominator);
-		maxlen -= strlen (val);
-		for (i = 1; i < e->components; i++) {
+		for (i = 0; i < e->components; i++) {
+			if (i > 0) {
+				strncat (val, ", ", maxlen);
+				maxlen -= 2;
+			}
 			v_rat = exif_get_rational (
 				e->data + 8 * i, o);
-			if (v_rat.denominator)
-				snprintf (b, sizeof (b), ", %2.2f",
+			if (v_rat.denominator) {
+				/*
+				 * Choose the number of significant digits to
+				 * display based on the size of the denominator.
+				 * It is scaled so that denominators within the
+				 * range 13..120 will show 2 decimal points.
+				 */
+				int decimals = (int)(log10(v_rat.denominator)-0.08+1.0);
+				snprintf (b, sizeof (b), "%2.*f",
+					  decimals,
 					  (double) v_rat.numerator /
 					  (double) v_rat.denominator);
-			else
-				snprintf (b, sizeof (b), ", %lu/%lu",
+			} else
+				snprintf (b, sizeof (b), "%lu/%lu",
 				  (unsigned long) v_rat.numerator,
 				  (unsigned long) v_rat.denominator);
 			strncat (val, b, maxlen);
@@ -559,26 +561,23 @@ exif_entry_format_value(ExifEntry *e, char *val, size_t maxlen)
 		}
 		break;
 	case EXIF_FORMAT_SRATIONAL:
-		v_srat = exif_get_srational (e->data, o);
-		if (v_srat.denominator) {
-			snprintf (val, maxlen, "%2.2f",
-				  (double)v_srat.numerator / v_srat.denominator);
-		} else {
-			snprintf (val, maxlen, "%li/%li",
-				  (long) v_srat.numerator,
-				  (long) v_srat.denominator);
-		}
-		maxlen -= strlen (val);
-		for (i = 1; i < e->components; i++) {
+		for (i = 0; i < e->components; i++) {
+			if (i > 0) {
+				strncat (val, ", ", maxlen);
+				maxlen -= 2;
+			}
 			v_srat = exif_get_srational (
 				e->data + 8 * i, o);
-			if (v_srat.denominator)
-				snprintf (b, sizeof (b), ", %2.2f",
-					  (double)v_srat.numerator / v_srat.denominator);
-			else
-				snprintf (b, sizeof (b), ", %li/%li",
-					  (long) v_srat.numerator,
-					  (long) v_srat.denominator);
+			if (v_srat.denominator) {
+				int decimals = (int)(log10(fabs(v_srat.denominator))-0.08+1.0);
+				snprintf (b, sizeof (b), "%2.*f",
+					  decimals,
+					  (double) v_srat.numerator /
+					  (double) v_srat.denominator);
+			} else
+				snprintf (b, sizeof (b), "%li/%li",
+				  (long) v_srat.numerator,
+				  (long) v_srat.denominator);
 			strncat (val, b, maxlen);
 			maxlen -= strlen (b);
 			if ((signed) maxlen <= 0) break;
