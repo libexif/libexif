@@ -28,7 +28,10 @@
 # Interoperability -> (uafklaret; Erklæringen om brugsret?)
 # lens -> linse (men kunne vel også være objektiv)
 # matrix -> matrice (alternativ matrix)
-# shutter -> lukketid
+# shutter -> lukker
+#            http://da.wikipedia.org/wiki/Lukker 
+# shutter speed -> lukkertid
+#                  http://da.wikipedia.org/wiki/Lukkertid            
 # still image -> stillbillede
 # strobe light -> stroboskoplys
 # top -> øverst 
@@ -39,7 +42,7 @@ msgstr ""
 "Project-Id-Version: libexif-0.6.20-pre1\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-02-05 16:15-0800\n"
-"PO-Revision-Date: 2010-04-30 01:01I+0200\n"
+"PO-Revision-Date: 2010-10-27 01:01I+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -324,11 +327,11 @@ msgstr "Landskab"
 
 #: libexif/canon/mnote-canon-entry.c:123
 msgid "Fast shutter"
-msgstr "Hurtig lukketid"
+msgstr "Hurtig lukker"
 
 #: libexif/canon/mnote-canon-entry.c:124
 msgid "Slow shutter"
-msgstr "Langsom lukketid"
+msgstr "Langsom lukker"
 
 #: libexif/canon/mnote-canon-entry.c:125 libexif/fuji/mnote-fuji-entry.c:123
 #: libexif/olympus/mnote-olympus-entry.c:254
@@ -379,7 +382,7 @@ msgstr "Blitz slukket"
 
 #: libexif/canon/mnote-canon-entry.c:136
 msgid "Long shutter"
-msgstr "Lang lukketid"
+msgstr "Lang lukker"
 
 #: libexif/canon/mnote-canon-entry.c:137 libexif/canon/mnote-canon-entry.c:188
 #: libexif/olympus/mnote-olympus-entry.c:171
@@ -1089,7 +1092,7 @@ msgstr "Pc sæt 1"
 
 #: libexif/canon/mnote-canon-entry.c:339 libexif/canon/mnote-canon-entry.c:411
 msgid "PC set 2"
-msgstr "Pc sæt 3"
+msgstr "Pc sæt 2"
 
 #: libexif/canon/mnote-canon-entry.c:340 libexif/canon/mnote-canon-entry.c:412
 msgid "PC set 3"
@@ -1563,7 +1566,7 @@ msgstr "Hvidbalance"
 
 #: libexif/canon/mnote-canon-tag.c:102
 msgid "Slow Shutter"
-msgstr "Langsom lukketid"
+msgstr "Langsom lukker"
 
 #: libexif/canon/mnote-canon-tag.c:103
 msgid "Sequence Number"
@@ -2043,11 +2046,11 @@ msgstr "Blændetal"
 
 #: libexif/exif-entry.c:748
 msgid "Shutter priority"
-msgstr "Prioriteret lukketid"
+msgstr "Lukkerprioritet"
 
 #: libexif/exif-entry.c:748
 msgid "Shutter"
-msgstr "Lukketid"
+msgstr "Lukker"
 
 #: libexif/exif-entry.c:749
 msgid "Creative program (biased toward depth of field)"
@@ -2059,7 +2062,7 @@ msgstr "Kreativt"
 
 #: libexif/exif-entry.c:751
 msgid "Creative program (biased toward fast shutter speed)"
-msgstr "Kreativt program (med henblik på hurtig lukketid)"
+msgstr "Kreativt program (med henblik på hurtig lukkertid)"
 
 #: libexif/exif-entry.c:752
 msgid "Action"
@@ -3092,7 +3095,7 @@ msgstr "Indikerer ISO Speed og ISO Latitude på kameraet eller inddataenheden so
 
 #: libexif/exif-tag.c:507
 msgid "Opto-Electronic Conversion Function"
-msgstr ""
+msgstr "Opto-Electronic konversionsfunktion"
 
 #: libexif/exif-tag.c:508
 msgid "Indicates the Opto-Electronic Conversion Function (OECF) specified in ISO 14524. <OECF> is the relationship between the camera optical input and the image values."
@@ -3136,7 +3139,7 @@ msgstr "Komponentkonfiguration"
 
 #: libexif/exif-tag.c:531
 msgid "Information specific to compressed data. The channels of each component are arranged in order from the 1st component to the 4th. For uncompressed data the data arrangement is given in the <PhotometricInterpretation> tag. However, since <PhotometricInterpretation> can only express the order of Y, Cb and Cr, this tag is provided for cases when compressed data uses components other than Y, Cb, and Cr and to enable support of other sequences."
-msgstr ""
+msgstr "Information specifik for komprimerede data. Kanalerne på hver komponent er arrangeret i rækkefølge fra den første komponent til den fjerde. For ukomprimerede data er dataarrangementet angivet i mærket <PhotometricInterpretation>. Da <PhotometricInterpretation> dog kun kan udtrykke rækkefølgen af Y, Cb og Cr, tilbydes dette mærke til tilfælde hvor komprimerede data bruger komponenter udover Y, Cb og Cr og for at aktivere understøttelse af andre sekvenser."
 
 #: libexif/exif-tag.c:541
 msgid "Compressed Bits per Pixel"
@@ -3148,11 +3151,11 @@ msgstr "Information specifik for komprimerede data. Komprimeringstilstanden brug
 
 #: libexif/exif-tag.c:546 libexif/olympus/mnote-olympus-tag.c:123
 msgid "Shutter Speed"
-msgstr "Lukketidshastighed"
+msgstr "Lukkertid"
 
 #: libexif/exif-tag.c:547
 msgid "Shutter speed. The unit is the APEX (Additive System of Photographic Exposure) setting."
-msgstr "Lukketidshastighed. Denne enhed er APEX-indstillingen (Additive System of Photographic Exposure)."
+msgstr "Lukkertid. Denne enhed er APEX-indstillingen (Additive System of Photographic Exposure)."
 
 #: libexif/exif-tag.c:551
 msgid "The lens aperture. The unit is the APEX value."
@@ -3236,7 +3239,7 @@ msgstr "Brugerkommentar"
 
 #: libexif/exif-tag.c:596
 msgid "A tag for Exif users to write keywords or comments on the image besides those in <ImageDescription>, and without the character code limitations of the <ImageDescription> tag. The character code used in the <UserComment> tag is identified based on an ID code in a fixed 8-byte area at the start of the tag data area. The unused portion of the area is padded with NULL (\"00.h\"). ID codes are assigned by means of registration. The designation method and references for each character code are defined in the specification. The value of CountN is determined based on the 8 bytes in the character code area and the number of bytes in the user comment part. Since the TYPE is not ASCII, NULL termination is not necessary. The ID code for the <UserComment> area may be a Defined code such as JIS or ASCII, or may be Undefined. The Undefined name is UndefinedText, and the ID code is filled with 8 bytes of all \"NULL\" (\"00.H\"). An Exif reader that reads the <UserComment> tag must have a function for determining the ID code. This function is not required in Exif readers that do not use the <UserComment> tag. When a <UserComment> area is set aside, it is recommended that the ID code be ASCII and that the following user comment part be filled with blank characters [20.H]."
-msgstr "Et mærke hvor Exifbrugere kan skrive nøgleord eller kommentarer på billederne udover dem i <ImageDescription>, og uden begrænsningerne på tegnkoden i dette mærke. Tegnkoden brugt i mærket <UserComment> identificeres på grundlag af en id-kode i et fast 8-byte område i starten af mærkets dataområde. Den ubrugte del af området fyldt med NULL (00.h). Id-koder tildeles ved brug af registrering. Betegnelsesmetoden og referencer for hver tegnkode defineres i specifikationen. Værdien af CountN afgøres på grundlag af de 8 byte i tegnkodeområdet og antallet af byte i brugerkommenteringsdelen. Da TYPEN ikke er ASCII, er NULL-terminering ikke nødvendig. Id-koden for området <UserComment> kan være en defineret kode som JIS eller ASCII, eller kan være udefineret. Det udefinerede navn er Udefineret tekst, og id-koden fyldes med 8 byte af alle NULL (00.H). En Exiflæser som læser mærket <UserComment> skal have en funktion der kan aflæse id-koden. Denne funktion er ikke krævet hvis Exiflæseren ikke bruger mærket <UserComment>. Når et <UserComment>-område reserveres anbefales det af id-koden er i ASCII-format og at den følgende brugerkommenteringsplads fyldes med blanke tegn [20.H]"
+msgstr "Et mærke hvor Exifbrugere kan skrive nøgleord eller kommentarer på billederne udover dem i <ImageDescription>, og uden begrænsningerne på tegnkoden i dette mærke. Tegnkoden brugt i mærket <UserComment> identificeres på grundlag af en id-kode i et fast 8-byte område i starten af mærkets dataområde. Den ubrugte del af området fyldt med NULL (00.h). Id-koder tildeles ved brug af registrering. Betegnelsesmetoden og referencer for hver tegnkode defineres i specifikationen. Værdien af CountN afgøres på grundlag af de 8 byte i tegnkodeområdet og antallet af byte i brugerkommenteringsdelen. Da TYPEN ikke er ASCII, er NULL-terminering ikke nødvendig. Id-koden for området <UserComment> kan være en defineret kode som JIS eller ASCII, eller kan være udefineret. Det udefinerede navn er Udefineret tekst, og id-koden fyldes med 8 byte af alle NULL (00.H). En Exiflæser som læser mærket <UserComment> skal have en funktion der kan aflæse id-koden. Denne funktion er ikke krævet hvis Exiflæseren ikke bruger mærket <UserComment>. Når et <UserComment>-område reserveres anbefales det af id-koden er i ASCII-format og at den følgende brugerkommenteringsplads fyldes med blanke tegn [20.H]."
 
 #: libexif/exif-tag.c:619
 msgid "Sub-second Time"
@@ -3328,7 +3331,7 @@ msgstr "Billedpunktets y-dimension"
 
 #: libexif/exif-tag.c:678
 msgid "Information specific to compressed data. When a compressed file is recorded, the valid height of the meaningful image must be recorded in this tag, whether or not there is padding data or a restart marker. This tag should not exist in an uncompressed file. Since data padding is unnecessary in the vertical direction, the number of lines recorded in this valid image height tag will in fact be the same as that recorded in the SOF."
-msgstr "Specifik information for komprimerede data. Når en komprimeret fil optages, skal den den gyldige højde på det meningsfulde billede optages i dette mærke, uanset om der er fyldningsdata eller en genstartsmarkør. Dette mærke bør ikke eksistere i en ukomprimeret fil. Da datafyldning er unødvendigt lodret, vil antallet af linjer optaget i dette gyldige billedhøjdemærke være det samme som optaget i SOF'en."
+msgstr "Specifik information for komprimerede data. Når en komprimeret fil optages, skal den gyldige højde på det meningsfulde billede optages i dette mærke, uanset om der er fyldningsdata eller en genstartsmarkør. Dette mærke bør ikke eksistere i en ukomprimeret fil. Da datafyldning er unødvendigt lodret, vil antallet af linjer optaget i dette gyldige billedhøjdemærke være det samme som optaget i SOF'en."
 
 #: libexif/exif-tag.c:688
 msgid "Related Sound File"
@@ -3336,7 +3339,7 @@ msgstr "Forbundet lydfil"
 
 #: libexif/exif-tag.c:689
 msgid "This tag is used to record the name of an audio file related to the image data. The only relational information recorded here is the Exif audio file name and extension (an ASCII string consisting of 8 characters + '.' + 3 characters). The path is not recorded. Stipulations on audio and file naming conventions are defined in the specification. When using this tag, audio files must be recorded in conformance to the Exif audio format. Writers are also allowed to store the data such as Audio within APP2 as FlashPix extension stream data. Audio files must be recorded in conformance to the Exif audio format. The mapping of Exif image files and audio files is done in any of three ways, [1], [2] and [3]. If multiple files are mapped to one file as in [2] or [3], the above format is used to record just one audio file name. If there are multiple audio files, the first recorded file is given. In the case of [3], for example, for the Exif image file \"DSC00001.JPG\" only  \"SND00001.WAV\" is given as the related Exif audio file. When there are three Exif audio files \"SND00001.WAV\", \"SND00002.WAV\" and \"SND00003.WAV\", the Exif image file name for each of them, \"DSC00001.JPG\", is indicated. By combining multiple relational information, a variety of playback possibilities can be supported. The method of using relational information is left to the implementation on the playback side. Since this information is an ASCII character string, it is terminated by NULL. When this tag is used to map audio files, the relation of the audio file to image data must also be indicated on the audio file end."
-msgstr ""
+msgstr "Dette mærke bruges til at optage navnet på en lydfil som hænger sammen med billeddataene. Den eneste relationelle information optaget her er lydfilnavnet i Exif og filendelsen (en ASCII-streng bestående af 8 tegn + '.' + 3 tegn). Stien optages ikke. Stipulationer på lyd- og filnavnskonventioner er definerede i specifikationerne. Under brug af dette mærke, skal lydfiler optages i overensstemmelse med Exifs lydformat. Forfattere kan også gemme data som lyd indenfor APP2 som FlashPix-udvidelsesstrømdata. Lydfiler skal optages i overensstemmelse med Exifs lydformat. Mapningen af Exifs billedfiler og lydfiler gøres på en af følgende tre måder: [1], [2] og [3]. Hvis flere filer mappes til en fil som i [2] eller [3], bruges ovenstående format til at optage netop et lydfilnavn. Hvis der er flere lydfiler, angives den først optaget fil. I tilfældet [3] er for eksemplet »DSC00001.JPG« kun angivet »SND00001.WAV« som den forbundne Exif-lydfil. Når der er tre Exif-lydfiler »SND00001.WAV«, »SND00002.WAV« og »SND00003.WAV«, indikeres Exifs billedfilnavn for hvert af dem »DSC00001.JPG«. Ved at kombinere flere forbundne informationer, kan et bredt udvalg af afspilningsmuligheder understøttes. Metoden med at bruge forbundne informationer er overladt til implementationen på afspilningssiden. Da denne information er i ASCII-tegnstreng, afsluttes den med NULL. Når dette mærke brugers til at kortlægge lydfiler, skal relationen i lydfilen til billedet også angives ved lydfilens afslutning."
 
 #: libexif/exif-tag.c:720
 msgid "Interoperability IFD Pointer"
@@ -3344,7 +3347,7 @@ msgstr "Interoperability IFD-peger"
 
 #: libexif/exif-tag.c:721
 msgid "Interoperability IFD is composed of tags which stores the information to ensure the Interoperability and pointed by the following tag located in Exif IFD. The Interoperability structure of Interoperability IFD is the same as TIFF defined IFD structure but does not contain the image data characteristically compared with normal TIFF IFD."
-msgstr "Interoperabilitet-IFD består af mærker som gemmer informationen der sikrer interoperabilitet og og vejledt af det følgende mærke placeret i Exif-IFD. Interoperabilitetsstrukturen på interoperabilitet-IFD er den samme som TIFF defineret IFD-struktur men indeholder ikke billeddatakarakteristika sammenlignet med normal TIFF-IFD."
+msgstr "Interoperabilitet-IFD består af mærker som gemmer informationen, der sikrer interoperabilitet og vejledt af det følgende mærke placeret i Exif-IFD. Interoperabilitetsstrukturen på interoperabilitet-IFD er den samme som TIFF defineret IFD-struktur, men indeholder ikke billeddatakarakteristika sammenlignet med normal TIFF-IFD."
 
 #: libexif/exif-tag.c:730
 msgid "Flash Energy"
@@ -3486,7 +3489,7 @@ msgstr "Dette mærke indikerer retningen på farvemætningsbehandlingen brugt af
 
 #: libexif/exif-tag.c:838
 msgid "This tag indicates the direction of sharpness processing applied by the camera when the image was shot."
-msgstr "Dette mærke indikerer retniningen for behandlingen af skarpheden brugt af kameraet, da billedet blev taget."
+msgstr "Dette mærke indikerer retningen for behandlingen af skarpheden brugt af kameraet, da billedet blev taget."
 
 #: libexif/exif-tag.c:842
 msgid "Device Setting Description"
@@ -3616,7 +3619,7 @@ msgstr "Blændetalsprioritet AE"
 
 #: libexif/fuji/mnote-fuji-entry.c:138
 msgid "Shutter priority AE"
-msgstr "Lukketidsprioritet AE"
+msgstr "Lukkerprioritet AE"
 
 #: libexif/fuji/mnote-fuji-entry.c:146
 msgid "F-Standard"
@@ -4643,7 +4646,7 @@ msgstr "Stemmememo"
 
 #: libexif/olympus/mnote-olympus-tag.c:177
 msgid "Record Shutter Release"
-msgstr "Optag lukketidsudløsning"
+msgstr "Optag lukkerudløsning"
 
 #: libexif/olympus/mnote-olympus-tag.c:178
 msgid "Flicker Reduce"
@@ -5096,123 +5099,3 @@ msgstr "Finere"
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
 msgstr "[DO_NOT_TRANSLATE_THIS_MARKER_da]"
-
-#~ msgid "On + Red-eye reduction"
-#~ msgstr "Tændt + Rødøjereduktion"
-
-#~ msgid "Center + Right"
-#~ msgstr "Centrum + højre"
-
-#~ msgid "Left + Right"
-#~ msgstr "Venstre + højre"
-
-#~ msgid "Manual Temperature (Kelvin)"
-#~ msgstr "Manuel temperatur (Kelvin)"
-
-#~ msgid "PC Set1"
-#~ msgstr "Pc Sæt1"
-
-#~ msgid "PC Set2"
-#~ msgstr "Pc Sæt2"
-
-#~ msgid "PC Set3"
-#~ msgstr "Pc Sæt3"
-
-#~ msgid "Daylight Fluorescent"
-#~ msgstr "Fluorescerende dagslys"
-
-#~ msgid "top - left"
-#~ msgstr "øverst - venstre"
-
-#~ msgid "top - right"
-#~ msgstr "øverst - højre"
-
-#~ msgid "bottom - right"
-#~ msgstr "nederst - højre"
-
-#~ msgid "bottom - left"
-#~ msgstr "nederst - venstre"
-
-#~ msgid "Center-Weighted Average"
-#~ msgstr "Centrumvægtet gennemsnit"
-
-#~ msgid "flash"
-#~ msgstr "blitz"
-
-#~ msgid "GPS satellites used for measurement"
-#~ msgstr "GPS-satellitter brugt til måling"
-
-#~ msgid "y-Resolution"
-#~ msgstr "y-opløsning"
-
-#~ msgid "OECF"
-#~ msgstr "OECF"
-
-#~ msgid "Shutter speed"
-#~ msgstr "Lukketidshastighed"
-
-#~ msgid "Focal Plane y-Resolution"
-#~ msgstr "Brændpunktsplan y-opløsning"
-
-#~ msgid "Daylight-color fluorescent"
-#~ msgstr "Fluorescerende dagslysfarve"
-
-#~ msgid "DayWhite-color fluorescent"
-#~ msgstr "Fluorescerende daghvidfarve"
-
-#~ msgid "Macro mode"
-#~ msgstr "Makrotilstand"
-
-#~ msgid "Super Macro"
-#~ msgstr "Supermakro"
-
-#~ msgid "normal"
-#~ msgstr "normal"
-
-#~ msgid "unknown"
-#~ msgstr "ukendt"
-
-#~ msgid "panorama"
-#~ msgstr "panorama"
-
-#~ msgid "left to right"
-#~ msgstr "venstre mod højre"
-
-#~ msgid "right to left"
-#~ msgstr "højre mod venstre"
-
-#~ msgid "bottom to top"
-#~ msgstr "nederst til øverst"
-
-#~ msgid "top to bottom"
-#~ msgstr "øverst til nederst"
-
-#~ msgid "Noisereduction"
-#~ msgstr "Støjreduktion"
-
-#~ msgid "B&W Mode"
-#~ msgstr "S&H-tilstand"
-
-#~ msgid "Self Timer"
-#~ msgstr "Selvudløser"
-
-#~ msgid "Night-scene"
-#~ msgstr "Natscene"
-
-#~ msgid "Red-eye Reduction"
-#~ msgstr "Rødøjereduktion"
-
-#~ msgid "Night Scene"
-#~ msgstr "Natscene"
-
-#~ msgid "Pan Focus"
-#~ msgstr "Panfokus"
-
-#~ msgid "Daywhite Fluorescent"
-#~ msgstr "Fluorescerende daghvid"
-
-#~ msgid "White Fluorescent"
-#~ msgstr "Fluorescerende hvid"
-
-#~ msgid "PictureMode"
-#~ msgstr "Billedtilstand"
