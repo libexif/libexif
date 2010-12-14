@@ -3,6 +3,8 @@
 	* po/da.po: Updated Danish translation by Joe Hansen
 	* Updated non-TP translations from launchpad.net:
 	  be.po en_GB.po pt_BR.po pt.po ru.po sq.po sr.po zh_CN.po
+	* po/bs.po: Added Bosnian translation from launchpad.net
+	* po/tr.po: Added Turkish translation from launchpad.net
 
 2010-12-10  Dan Fandrich <dan@coneharvesters.com>
 
