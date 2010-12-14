@@ -1,6 +1,8 @@
 2010-12-13  Dan Fandrich <dan@coneharvesters.com>
 
 	* po/da.po: Updated Danish translation by Joe Hansen
+	* Updated non-TP translations from launchpad.net:
+	  be.po en_GB.po pt_BR.po pt.po ru.po sq.po sr.po zh_CN.po
 
 2010-12-10  Dan Fandrich <dan@coneharvesters.com>
 
@@ -48,6 +50,7 @@
 	* po/ja.po: Updated Japanese translation by Tadashi Jokagi
 	* po/pl.po: Updated Polish translation by Jakub Bogusz
 	* po/vi.po: Updated Vietnamese translation by Clytie Siddall
+	* po/en_CA.po: Updated Canadian English translation
 
 2010-02-05  Dan Fandrich <dan@coneharvesters.com>
 
