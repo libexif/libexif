@@ -47,7 +47,7 @@ static const struct {
 	{MNOTE_NIKON_TAG_WHITEBALANCERB,  "WhiteBalanceRB", N_("White Balance RB"), ""},
 	{MNOTE_NIKON_TAG_UNKNOWN_0X000D,  NULL, NULL, NULL},
 	{MNOTE_NIKON_TAG_ISOSELECTION,    "ISOSelection", N_("ISO Selection"), ""},
-	{MNOTE_NIKON_TAG_PREVIEWIMAGE_IFD_POINTER, "PreviewImage", N_("Preview Image IFD"), ""},
+	{MNOTE_NIKON_TAG_PREVIEWIMAGE_IFD_POINTER, "PreviewImage", N_("Preview Image IFD"), N_("Offset of the preview image directory (IFD) inside the file.")},
 	{MNOTE_NIKON_TAG_EXPOSUREDIFF,    "ExposureDiff", N_("Exposurediff ?"), ""},
 	{MNOTE_NIKON_TAG_FLASHEXPCOMPENSATION, "FlashExpCompensation", N_("Flash Exposure Compensation"), ""},
 	{MNOTE_NIKON_TAG_ISO2,            "ISO", N_("ISO Setting"), ""},
