@@ -1,4 +1,4 @@
-﻿# Czech translation for libexif.
+# Czech translation for libexif.
 # Copyright (C) Jan Patera <patera@users.sourceforge.net>, 2007-2010.
 # This file is distributed under the same license as the libexif package.
 #
