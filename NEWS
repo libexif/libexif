@@ -1,5 +1,7 @@
-libexif-0.6.x:
-  * Updated translations: da, de, en_CA, it, ja, nl, pl, sk, sv, vi
+libexif-0.6.20 (2010-12-15):
+  * New translations: bs, tr
+  * Updated translations: be, cs, da, de, en_GB, en_CA, it, ja, nl, pl, pt_BR,
+    pt, ru, sk, sq, sr, sv, vi, zh_CN
   * Fixed some problems in the write-exif.c example program
   * Stop listing -lm as a required library for dynamic linking in libexif.pc
   * Turned on the --enable-silent-rules configure option
