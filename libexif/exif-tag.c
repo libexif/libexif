@@ -193,7 +193,7 @@ static const struct TagEntry {
 	{EXIF_TAG_GPS_DEST_DISTANCE_REF, "GPSDestDistanceRef", N_("Reference for Distance to Destination"),
          N_("Indicates the unit used to express the distance to the "
             "destination point. 'K', 'M' and 'N' represent kilometers, miles "
-            "and knots."), ESL_GPS},
+            "and nautical miles."), ESL_GPS},
 	{EXIF_TAG_GPS_DEST_DISTANCE, "GPSDestDistance", N_("Distance to Destination"),
 	 N_("Indicates the distance to the destination point."), ESL_GPS},
 	{EXIF_TAG_GPS_PROCESSING_METHOD, "GPSProcessingMethod", N_("Name of GPS Processing Method"),

@@ -1,3 +1,8 @@
+2011-02-16  Dan Fandrich <dan@coneharvesters.com>
+
+	* Changed "knots" to more clear "nautical miles" (Ubuntu Launchpad bug
+	  https://bugs.launchpad.net/bugs/712115 reported by Daniel Thibault).
+
 2010-12-15  Dan Fandrich <dan@coneharvesters.com>
 
 	* Released 0.6.20
