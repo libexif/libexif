@@ -287,6 +287,9 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	if ((!entry->data) && (entry->components > 0)) 
 		return (v);
 
+	if ((!entry->data) && (entry->size > 0))
+		return NULL;  /* internal inconsistency error */
+
 	switch (entry->tag) {
 	
 	/* Nikon */
