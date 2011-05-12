@@ -283,6 +283,7 @@ static const struct canon_entry_table_t {
   {21, 238, N_("Canon EF 70-300mm F4-5.6 IS USM")},
   {21, 241, N_("Canon EF 50mm F1.2L USM")},
   {21, 242, N_("Canon EF 70-200mm f/4L IS USM")},
+  {21, 251, N_("Canon EF 70-200mm f/2.8L IS II USM")},
   {28, 0, N_("Manual")},
   {28, 1, N_("TTL")},
   {28, 2, N_("A-TTL")},
