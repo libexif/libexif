@@ -192,7 +192,7 @@ mnote_canon_tag_get_description (MnoteCanonTag t)
 
 	for (i = 0; i < sizeof (table) / sizeof (table[0]); i++)
 		if (table[i].tag == t) {
-			if (!*table[i].description)
+			if (!table[i].description || !*table[i].description)
 				return "";
 			bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 			return _(table[i].description);

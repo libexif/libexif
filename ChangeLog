@@ -1,3 +1,13 @@
+2011-07-11  Dan Fandrich <dan@coneharvesters.com>
+
+	* Made mnote_fuji_tag_get_description and
+	  mnote_canon_tag_get_descripton more robust should any NULL
+	  descriptions be added to the table (bug #3307219)
+
+2011-05-12  Dan Fandrich <dan@coneharvesters.com>
+
+	* Added more Canon lenses (from Adrian von Bidder and drochner)
+
 2011-02-16  Dan Fandrich <dan@coneharvesters.com>
 
 	* Changed "knots" to more clear "nautical miles" (Ubuntu Launchpad bug
