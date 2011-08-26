@@ -1,13 +1,14 @@
 # Czech translation for libexif.
 # Copyright (C) Jan Patera <patera@users.sourceforge.net>, 2007-2010.
 # This file is distributed under the same license as the libexif package.
-#
+# Jan Patera <patera@users.sourceforge.net>, 2007-2010
+#  libexif 0.6.18-pre1 just merged with latest 0.6.20 .pot file, nothing else
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif 0.6.18-pre1\n"
+"Project-Id-Version: libexif 0.6.20\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-12-13 23:17-0800\n"
-"PO-Revision-Date: 2010-12-15 07:00+0100\n"
+"POT-Creation-Date: 2010-12-15 22:14-0800\n"
+"PO-Revision-Date: 2010-12-16 22:23+0000\n"
 "Last-Translator: Jan Patera <patera@users.sourceforge.net>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1636,74 +1637,43 @@ msgid "Follow specification"
 msgstr "Dodržovat specifikaci"
 
 #: libexif/exif-data.c:1171
-msgid ""
-"Add, correct and remove entries to get EXIF data that follows the "
-"specification."
-msgstr ""
-"Dodržovat specifikaci EXIF dat pomocí přidání, opravení nebo odstranění "
-"položek."
+msgid "Add, correct and remove entries to get EXIF data that follows the specification."
+msgstr "Dodržovat specifikaci EXIF dat pomocí přidání, opravení nebo odstranění položek."
 
 #: libexif/exif-data.c:1173
 msgid "Do not change maker note"
 msgstr "Neměnit maker note"
 
 #: libexif/exif-data.c:1174
-msgid ""
-"When loading and resaving Exif data, save the maker note unmodified. Be "
-"aware that the maker note can get corrupted."
-msgstr ""
-"Neměnit maker note při načítání a ukládání dat Exif. Konzistence maker note "
-"tak ale může být poškozena."
+msgid "When loading and resaving Exif data, save the maker note unmodified. Be aware that the maker note can get corrupted."
+msgstr "Neměnit maker note při načítání a ukládání dat Exif. Konzistence maker note tak ale může být poškozena."
 
 #: libexif/exif-entry.c:234 libexif/exif-entry.c:303 libexif/exif-entry.c:336
 #, c-format
-msgid ""
-"Tag '%s' was of format '%s' (which is against specification) and has been "
-"changed to format '%s'."
-msgstr ""
-"Značka '%s' měla typ '%s', což odporovalo specifikaci, proto byla změněna na "
-"typ '%s'."
+msgid "Tag '%s' was of format '%s' (which is against specification) and has been changed to format '%s'."
+msgstr "Značka '%s' měla typ '%s', což odporovalo specifikaci, proto byla změněna na typ '%s'."
 
 #: libexif/exif-entry.c:271
 #, c-format
-msgid ""
-"Tag '%s' is of format '%s' (which is against specification) but cannot be "
-"changed to format '%s'."
-msgstr ""
-"Značka '%s' má typ '%s', což odporuje specifikaci, ale nemuže být změněna na "
-"typ '%s'."
+msgid "Tag '%s' is of format '%s' (which is against specification) but cannot be changed to format '%s'."
+msgstr "Značka '%s' má typ '%s', což odporuje specifikaci, ale nemuže být změněna na typ '%s'."
 
 #: libexif/exif-entry.c:354
 #, c-format
-msgid ""
-"Tag 'UserComment' had invalid format '%s'. Format has been set to "
-"'undefined'."
-msgstr ""
-"Značka 'Komentář' měla špatný typ '%s', proto byla změněna na typ "
-"'nedefinováno'."
+msgid "Tag 'UserComment' had invalid format '%s'. Format has been set to 'undefined'."
+msgstr "Značka 'Komentář' měla špatný typ '%s', proto byla změněna na typ 'nedefinováno'."
 
 #: libexif/exif-entry.c:381
-msgid ""
-"Tag 'UserComment' has been expanded to at least 8 bytes in order to follow "
-"the specification."
-msgstr ""
-"Značka 'Komentář' byla zvětšena na alespoň 8 bajtů, aby odpovídala "
-"specifikaci."
+msgid "Tag 'UserComment' has been expanded to at least 8 bytes in order to follow the specification."
+msgstr "Značka 'Komentář' byla zvětšena na alespoň 8 bajtů, aby odpovídala specifikaci."
 
 #: libexif/exif-entry.c:396
-msgid ""
-"Tag 'UserComment' is not empty but does not start with a format identifier. "
-"This has been fixed."
-msgstr ""
-"Značka 'Komentář' nebyla prázdná a ani nezačínala identifikátorem typu, což "
-"bylo nyní spraveno."
+msgid "Tag 'UserComment' is not empty but does not start with a format identifier. This has been fixed."
+msgstr "Značka 'Komentář' nebyla prázdná a ani nezačínala identifikátorem typu, což bylo nyní spraveno."
 
 #: libexif/exif-entry.c:424
-msgid ""
-"Tag 'UserComment' did not start with a format identifier. This has been "
-"fixed."
-msgstr ""
-"Značka 'Komentář' nezačínala identifikátorem typu, což nyní bylo spraveno."
+msgid "Tag 'UserComment' did not start with a format identifier. This has been fixed."
+msgstr "Značka 'Komentář' nezačínala identifikátorem typu, což nyní bylo spraveno."
 
 #: libexif/exif-entry.c:462
 #, c-format
@@ -1722,8 +1692,7 @@ msgstr "Značka '%s' obsahuje data špatného typu ('%s', očekáváno '%s')."
 
 #: libexif/exif-entry.c:635
 #, c-format
-msgid ""
-"The tag '%s' contains an invalid number of components (%i, expected %i)."
+msgid "The tag '%s' contains an invalid number of components (%i, expected %i)."
 msgstr "Značka '%s' obsahuje špatný počet položek (%i, očekáváno %i)."
 
 #: libexif/exif-entry.c:649
@@ -2149,20 +2118,12 @@ msgid "Flash fired, compulsory flash mode, red-eye reduction mode"
 msgstr "Blesk bleskl, blesk zapnut, režim redukce červených očí"
 
 #: libexif/exif-entry.c:783
-msgid ""
-"Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
-"detected"
-msgstr ""
-"Blesk bleskl, blesk zapnut, režim redukce červených očí, odraz světla "
-"nedetekován"
+msgid "Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected"
+msgstr "Blesk bleskl, blesk zapnut, režim redukce červených očí, odraz světla nedetekován"
 
 #: libexif/exif-entry.c:785
-msgid ""
-"Flash fired, compulsory flash mode, red-eye reduction mode, return light "
-"detected"
-msgstr ""
-"Blesk bleskl, blesk zapnut, režim redukce červených očí, odraz světla "
-"detekován"
+msgid "Flash fired, compulsory flash mode, red-eye reduction mode, return light detected"
+msgstr "Blesk bleskl, blesk zapnut, režim redukce červených očí, odraz světla detekován"
 
 #: libexif/exif-entry.c:787
 msgid "Flash did not fire, auto mode, red-eye reduction mode"
@@ -2173,17 +2134,12 @@ msgid "Flash fired, auto mode, red-eye reduction mode"
 msgstr "Blesk bleskl, automatický režim, režim redukce červených očí"
 
 #: libexif/exif-entry.c:789
-msgid ""
-"Flash fired, auto mode, return light not detected, red-eye reduction mode"
-msgstr ""
-"Blesk bleskl, automatický režim, režim redukce červených očí, odraz světla "
-"nedetekován"
+msgid "Flash fired, auto mode, return light not detected, red-eye reduction mode"
+msgstr "Blesk bleskl, automatický režim, režim redukce červených očí, odraz světla nedetekován"
 
 #: libexif/exif-entry.c:791
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode"
-msgstr ""
-"Blesk bleskl, automatický režim, režim redukce červených očí, odraz světla "
-"detekován"
+msgstr "Blesk bleskl, automatický režim, režim redukce červených očí, odraz světla detekován"
 
 #: libexif/exif-entry.c:795
 msgid "?"
@@ -2477,11 +2433,7 @@ msgid "GPS Tag Version"
 msgstr "Verze značky GPS"
 
 #: libexif/exif-tag.c:63
-msgid ""
-"Indicates the version of <GPSInfoIFD>. The version is given as 2.0.0.0. This "
-"tag is mandatory when <GPSInfo> tag is present. (Note: The <GPSVersionID> "
-"tag is given in bytes, unlike the <ExifVersion> tag. When the version is "
-"2.0.0.0, the tag value is 02000000.H)."
+msgid "Indicates the version of <GPSInfoIFD>. The version is given as 2.0.0.0. This tag is mandatory when <GPSInfo> tag is present. (Note: The <GPSVersionID> tag is given in bytes, unlike the <ExifVersion> tag. When the version is 2.0.0.0, the tag value is 02000000.H)."
 msgstr ""
 
 #: libexif/exif-tag.c:69
@@ -2489,11 +2441,7 @@ msgid "Interoperability Index"
 msgstr ""
 
 #: libexif/exif-tag.c:70
-msgid ""
-"Indicates the identification of the Interoperability rule. Use \"R98\" for "
-"stating ExifR98 Rules. Four bytes used including the termination code "
-"(NULL). see the separate volume of Recommended Exif Interoperability Rules "
-"(ExifR98) for other tags used for ExifR98."
+msgid "Indicates the identification of the Interoperability rule. Use \"R98\" for stating ExifR98 Rules. Four bytes used including the termination code (NULL). see the separate volume of Recommended Exif Interoperability Rules (ExifR98) for other tags used for ExifR98."
 msgstr ""
 
 #: libexif/exif-tag.c:76
@@ -2501,12 +2449,8 @@ msgid "North or South Latitude"
 msgstr "Směr zeměpisné šířky"
 
 #: libexif/exif-tag.c:77
-msgid ""
-"Indicates whether the latitude is north or south latitude. The ASCII value "
-"'N' indicates north latitude, and 'S' is south latitude."
-msgstr ""
-"Určuje, zda zeměpisná šířka je severní nebo jižní. Znak 'N' určuje severní "
-"šířku, znak 'S' určuje jižní šířku."
+msgid "Indicates whether the latitude is north or south latitude. The ASCII value 'N' indicates north latitude, and 'S' is south latitude."
+msgstr "Určuje, zda zeměpisná šířka je severní nebo jižní. Znak 'N' určuje severní šířku, znak 'S' určuje jižní šířku."
 
 #: libexif/exif-tag.c:81
 msgid "Interoperability Version"
@@ -2517,12 +2461,7 @@ msgid "Latitude"
 msgstr "Zeměpisná šířka"
 
 #: libexif/exif-tag.c:84
-msgid ""
-"Indicates the latitude. The latitude is expressed as three RATIONAL values "
-"giving the degrees, minutes, and seconds, respectively. When degrees, "
-"minutes and seconds are expressed, the format is dd/1,mm/1,ss/1. When "
-"degrees and minutes are used and, for example, fractions of minutes are "
-"given up to two decimal places, the format is dd/1,mmmm/100,0/1."
+msgid "Indicates the latitude. The latitude is expressed as three RATIONAL values giving the degrees, minutes, and seconds, respectively. When degrees, minutes and seconds are expressed, the format is dd/1,mm/1,ss/1. When degrees and minutes are used and, for example, fractions of minutes are given up to two decimal places, the format is dd/1,mmmm/100,0/1."
 msgstr ""
 
 #: libexif/exif-tag.c:91
@@ -2530,24 +2469,15 @@ msgid "East or West Longitude"
 msgstr "Směr zeměpisné délky"
 
 #: libexif/exif-tag.c:92
-msgid ""
-"Indicates whether the longitude is east or west longitude. ASCII 'E' "
-"indicates east longitude, and 'W' is west longitude."
-msgstr ""
-"Určuje, zda zeměpisná délka je západní nebo východní. Znak 'W' určuje "
-"západní délku, znak 'E' určuje východní délku."
+msgid "Indicates whether the longitude is east or west longitude. ASCII 'E' indicates east longitude, and 'W' is west longitude."
+msgstr "Určuje, zda zeměpisná délka je západní nebo východní. Znak 'W' určuje západní délku, znak 'E' určuje východní délku."
 
 #: libexif/exif-tag.c:95
 msgid "Longitude"
 msgstr "Zeměpisná délka"
 
 #: libexif/exif-tag.c:96
-msgid ""
-"Indicates the longitude. The longitude is expressed as three RATIONAL values "
-"giving the degrees, minutes, and seconds, respectively. When degrees, "
-"minutes and seconds are expressed, the format is ddd/1,mm/1,ss/1. When "
-"degrees and minutes are used and, for example, fractions of minutes are "
-"given up to two decimal places, the format is ddd/1,mmmm/100,0/1."
+msgid "Indicates the longitude. The longitude is expressed as three RATIONAL values giving the degrees, minutes, and seconds, respectively. When degrees, minutes and seconds are expressed, the format is ddd/1,mm/1,ss/1. When degrees and minutes are used and, for example, fractions of minutes are given up to two decimal places, the format is ddd/1,mmmm/100,0/1."
 msgstr ""
 
 #: libexif/exif-tag.c:103
@@ -2555,12 +2485,7 @@ msgid "Altitude Reference"
 msgstr ""
 
 #: libexif/exif-tag.c:104
-msgid ""
-"Indicates the altitude used as the reference altitude. If the reference is "
-"sea level and the altitude is above sea level, 0 is given. If the altitude "
-"is below sea level, a value of 1 is given and the altitude is indicated as "
-"an absolute value in the GSPAltitude tag. The reference unit is meters. Note "
-"that this tag is BYTE type, unlike other reference tags."
+msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GSPAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
 msgstr ""
 
 #: libexif/exif-tag.c:110
@@ -2568,9 +2493,7 @@ msgid "Altitude"
 msgstr ""
 
 #: libexif/exif-tag.c:111
-msgid ""
-"Indicates the altitude based on the reference in GPSAltitudeRef. Altitude is "
-"expressed as one RATIONAL value. The reference unit is meters."
+msgid "Indicates the altitude based on the reference in GPSAltitudeRef. Altitude is expressed as one RATIONAL value. The reference unit is meters."
 msgstr ""
 
 #: libexif/exif-tag.c:114
@@ -2578,9 +2501,7 @@ msgid "GPS Time (Atomic Clock)"
 msgstr "Čas GPS (atomový čas)"
 
 #: libexif/exif-tag.c:115
-msgid ""
-"Indicates the time as UTC (Coordinated Universal Time). TimeStamp is "
-"expressed as three RATIONAL values giving the hour, minute, and second."
+msgid "Indicates the time as UTC (Coordinated Universal Time). TimeStamp is expressed as three RATIONAL values giving the hour, minute, and second."
 msgstr ""
 
 #: libexif/exif-tag.c:118
@@ -2588,12 +2509,7 @@ msgid "GPS Satellites"
 msgstr ""
 
 #: libexif/exif-tag.c:119
-msgid ""
-"Indicates the GPS satellites used for measurements. This tag can be used to "
-"describe the number of satellites, their ID number, angle of elevation, "
-"azimuth, SNR and other information in ASCII notation. The format is not "
-"specified. If the GPS receiver is incapable of taking measurements, value of "
-"the tag shall be set to NULL."
+msgid "Indicates the GPS satellites used for measurements. This tag can be used to describe the number of satellites, their ID number, angle of elevation, azimuth, SNR and other information in ASCII notation. The format is not specified. If the GPS receiver is incapable of taking measurements, value of the tag shall be set to NULL."
 msgstr ""
 
 #: libexif/exif-tag.c:125
@@ -2601,10 +2517,7 @@ msgid "GPS Receiver Status"
 msgstr ""
 
 #: libexif/exif-tag.c:126
-msgid ""
-"Indicates the status of the GPS receiver when the image is recorded. 'A' "
-"means measurement is in progress, and 'V' means the measurement is "
-"Interoperability."
+msgid "Indicates the status of the GPS receiver when the image is recorded. 'A' means measurement is in progress, and 'V' means the measurement is Interoperability."
 msgstr ""
 
 #: libexif/exif-tag.c:129
@@ -2612,9 +2525,7 @@ msgid "GPS Measurement Mode"
 msgstr "Režim měření GPS"
 
 #: libexif/exif-tag.c:130
-msgid ""
-"Indicates the GPS measurement mode. '2' means two-dimensional measurement "
-"and '3' means three-dimensional measurement is in progress."
+msgid "Indicates the GPS measurement mode. '2' means two-dimensional measurement and '3' means three-dimensional measurement is in progress."
 msgstr ""
 
 #: libexif/exif-tag.c:133
@@ -2622,10 +2533,7 @@ msgid "Measurement Precision"
 msgstr "Přesnost měření"
 
 #: libexif/exif-tag.c:134
-msgid ""
-"Indicates the GPS DOP (data degree of precision). An HDOP value is written "
-"during two-dimensional measurement, and PDOP during three-dimensional "
-"measurement."
+msgid "Indicates the GPS DOP (data degree of precision). An HDOP value is written during two-dimensional measurement, and PDOP during three-dimensional measurement."
 msgstr ""
 
 #: libexif/exif-tag.c:137
@@ -2633,12 +2541,8 @@ msgid "Speed Unit"
 msgstr "Jednotka rychlosti"
 
 #: libexif/exif-tag.c:138
-msgid ""
-"Indicates the unit used to express the GPS receiver speed of movement. 'K', "
-"'M' and 'N' represent kilometers per hour, miles per hour, and knots."
-msgstr ""
-"Jednotka použitá pro rychlost pohybu GPS přijímače. Písmena 'K', 'M' a 'N' "
-"udávají kilometry za hodinu, míle za hodinu, resp. uzly."
+msgid "Indicates the unit used to express the GPS receiver speed of movement. 'K', 'M' and 'N' represent kilometers per hour, miles per hour, and knots."
+msgstr "Jednotka použitá pro rychlost pohybu GPS přijímače. Písmena 'K', 'M' a 'N' udávají kilometry za hodinu, míle za hodinu, resp. uzly."
 
 #: libexif/exif-tag.c:141
 msgid "Speed of GPS Receiver"
@@ -2653,9 +2557,7 @@ msgid "Reference for direction of movement"
 msgstr ""
 
 #: libexif/exif-tag.c:144
-msgid ""
-"Indicates the reference for giving the direction of GPS receiver movement. "
-"'T' denotes true direction and 'M' is magnetic direction."
+msgid "Indicates the reference for giving the direction of GPS receiver movement. 'T' denotes true direction and 'M' is magnetic direction."
 msgstr ""
 
 #: libexif/exif-tag.c:147
@@ -2663,9 +2565,7 @@ msgid "Direction of Movement"
 msgstr "Směr pohybu"
 
 #: libexif/exif-tag.c:148
-msgid ""
-"Indicates the direction of GPS receiver movement. The range of values is "
-"from 0.00 to 359.99."
+msgid "Indicates the direction of GPS receiver movement. The range of values is from 0.00 to 359.99."
 msgstr "Směr pohybu GPS přijímače. Rozsah hodnot je 0 až 359,99."
 
 #: libexif/exif-tag.c:150
@@ -2673,9 +2573,7 @@ msgid "GPS Image Direction Reference"
 msgstr ""
 
 #: libexif/exif-tag.c:151
-msgid ""
-"Indicates the reference for giving the direction of the image when it is "
-"captured. 'T' denotes true direction and 'M' is magnetic direction."
+msgid "Indicates the reference for giving the direction of the image when it is captured. 'T' denotes true direction and 'M' is magnetic direction."
 msgstr ""
 
 #: libexif/exif-tag.c:153
@@ -2683,9 +2581,7 @@ msgid "GPS Image Direction"
 msgstr "Směr obrazu GPS"
 
 #: libexif/exif-tag.c:154
-msgid ""
-"Indicates the direction of the image when it was captured. The range of "
-"values is from 0.00 to 359.99."
+msgid "Indicates the direction of the image when it was captured. The range of values is from 0.00 to 359.99."
 msgstr ""
 
 #: libexif/exif-tag.c:156
@@ -2693,11 +2589,7 @@ msgid "Geodetic Survey Data Used"
 msgstr ""
 
 #: libexif/exif-tag.c:157
-msgid ""
-"Indicates the geodetic survey data used by the GPS receiver. If the survey "
-"data is restricted to Japan, the value of this tag is 'TOKYO' or 'WGS-84'. "
-"If a GPS Info tag is recorded, it is strongly recommended that this tag be "
-"recorded."
+msgid "Indicates the geodetic survey data used by the GPS receiver. If the survey data is restricted to Japan, the value of this tag is 'TOKYO' or 'WGS-84'. If a GPS Info tag is recorded, it is strongly recommended that this tag be recorded."
 msgstr ""
 
 #: libexif/exif-tag.c:161
@@ -2705,26 +2597,15 @@ msgid "Reference For Latitude of Destination"
 msgstr ""
 
 #: libexif/exif-tag.c:162
-msgid ""
-"Indicates whether the latitude of the destination point is north or south "
-"latitude. The ASCII value 'N' indicates north latitude, and 'S' is south "
-"latitude."
-msgstr ""
-"Určuje, zda zeměpisná šířka je severní nebo jižní. Znak 'N' určuje severní "
-"šířku, znak 'S' určuje jižní šířku."
+msgid "Indicates whether the latitude of the destination point is north or south latitude. The ASCII value 'N' indicates north latitude, and 'S' is south latitude."
+msgstr "Určuje, zda zeměpisná šířka je severní nebo jižní. Znak 'N' určuje severní šířku, znak 'S' určuje jižní šířku."
 
 #: libexif/exif-tag.c:165
 msgid "Latitude of Destination"
 msgstr ""
 
 #: libexif/exif-tag.c:166
-msgid ""
-"Indicates the latitude of the destination point. The latitude is expressed "
-"as three RATIONAL values giving the degrees, minutes, and seconds, "
-"respectively. If latitude is expressed as degrees, minutes and seconds, a "
-"typical format would be dd/1,mm/1,ss/1. When degrees and minutes are used "
-"and, for example, fractions of minutes are given up to two decimal places, "
-"the format would be dd/1,mmmm/100,0/1."
+msgid "Indicates the latitude of the destination point. The latitude is expressed as three RATIONAL values giving the degrees, minutes, and seconds, respectively. If latitude is expressed as degrees, minutes and seconds, a typical format would be dd/1,mm/1,ss/1. When degrees and minutes are used and, for example, fractions of minutes are given up to two decimal places, the format would be dd/1,mmmm/100,0/1."
 msgstr ""
 
 #: libexif/exif-tag.c:173
@@ -2732,25 +2613,15 @@ msgid "Reference for Longitude of Destination"
 msgstr ""
 
 #: libexif/exif-tag.c:174
-msgid ""
-"Indicates whether the longitude of the destination point is east or west "
-"longitude. ASCII 'E' indicates east longitude, and 'W' is west longitude."
-msgstr ""
-"Určuje, zda zeměpisná délka je západní nebo východní. Znak 'W' určuje "
-"západní délku, znak 'E' určuje východní délku."
+msgid "Indicates whether the longitude of the destination point is east or west longitude. ASCII 'E' indicates east longitude, and 'W' is west longitude."
+msgstr "Určuje, zda zeměpisná délka je západní nebo východní. Znak 'W' určuje západní délku, znak 'E' určuje východní délku."
 
 #: libexif/exif-tag.c:177
 msgid "Longitude of Destination"
 msgstr ""
 
 #: libexif/exif-tag.c:178
-msgid ""
-"Indicates the longitude of the destination point. The longitude is expressed "
-"as three RATIONAL values giving the degrees, minutes, and seconds, "
-"respectively. If longitude is expressed as degrees, minutes and seconds, a "
-"typical format would be ddd/1,mm/1,ss/1. When degrees and minutes are used "
-"and, for example, fractions of minutes are given up to two decimal places, "
-"the format would be ddd/1,mmmm/100,0/1."
+msgid "Indicates the longitude of the destination point. The longitude is expressed as three RATIONAL values giving the degrees, minutes, and seconds, respectively. If longitude is expressed as degrees, minutes and seconds, a typical format would be ddd/1,mm/1,ss/1. When degrees and minutes are used and, for example, fractions of minutes are given up to two decimal places, the format would be ddd/1,mmmm/100,0/1."
 msgstr ""
 
 #: libexif/exif-tag.c:186
@@ -2758,9 +2629,7 @@ msgid "Reference for Bearing of Destination"
 msgstr ""
 
 #: libexif/exif-tag.c:187
-msgid ""
-"Indicates the reference used for giving the bearing to the destination "
-"point. 'T' denotes true direction and 'M' is magnetic direction."
+msgid "Indicates the reference used for giving the bearing to the destination point. 'T' denotes true direction and 'M' is magnetic direction."
 msgstr ""
 
 #: libexif/exif-tag.c:190
@@ -2768,9 +2637,7 @@ msgid "Bearing of Destination"
 msgstr ""
 
 #: libexif/exif-tag.c:191
-msgid ""
-"Indicates the bearing to the destination point. The range of values is from "
-"0.00 to 359.99."
+msgid "Indicates the bearing to the destination point. The range of values is from 0.00 to 359.99."
 msgstr ""
 
 #: libexif/exif-tag.c:193
@@ -2778,9 +2645,7 @@ msgid "Reference for Distance to Destination"
 msgstr ""
 
 #: libexif/exif-tag.c:194
-msgid ""
-"Indicates the unit used to express the distance to the destination point. "
-"'K', 'M' and 'N' represent kilometers, miles and knots."
+msgid "Indicates the unit used to express the distance to the destination point. 'K', 'M' and 'N' represent kilometers, miles and knots."
 msgstr ""
 
 #: libexif/exif-tag.c:197
@@ -2796,11 +2661,7 @@ msgid "Name of GPS Processing Method"
 msgstr ""
 
 #: libexif/exif-tag.c:200
-msgid ""
-"A character string recording the name of the method used for location "
-"finding. The first byte indicates the character code used, and this is "
-"followed by the name of the method. Since the Type is not ASCII, NULL "
-"termination is not necessary."
+msgid "A character string recording the name of the method used for location finding. The first byte indicates the character code used, and this is followed by the name of the method. Since the Type is not ASCII, NULL termination is not necessary."
 msgstr ""
 
 #: libexif/exif-tag.c:205
@@ -2808,10 +2669,7 @@ msgid "Name of GPS Area"
 msgstr ""
 
 #: libexif/exif-tag.c:206
-msgid ""
-"A character string recording the name of the GPS area. The first byte "
-"indicates the character code used, and this is followed by the name of the "
-"GPS area. Since the Type is not ASCII, NULL termination is not necessary."
+msgid "A character string recording the name of the GPS area. The first byte indicates the character code used, and this is followed by the name of the GPS area. Since the Type is not ASCII, NULL termination is not necessary."
 msgstr ""
 
 #: libexif/exif-tag.c:210
@@ -2819,10 +2677,7 @@ msgid "GPS Date"
 msgstr ""
 
 #: libexif/exif-tag.c:211
-msgid ""
-"A character string recording date and time information relative to UTC "
-"(Coordinated Universal Time). The format is \"YYYY:MM:DD\". The length of "
-"the string is 11 bytes including NULL."
+msgid "A character string recording date and time information relative to UTC (Coordinated Universal Time). The format is \"YYYY:MM:DD\". The length of the string is 11 bytes including NULL."
 msgstr ""
 
 #: libexif/exif-tag.c:215
@@ -2830,8 +2685,7 @@ msgid "GPS Differential Correction"
 msgstr ""
 
 #: libexif/exif-tag.c:216
-msgid ""
-"Indicates whether differential correction is applied to the GPS receiver."
+msgid "Indicates whether differential correction is applied to the GPS receiver."
 msgstr ""
 
 #: libexif/exif-tag.c:220
@@ -2847,66 +2701,40 @@ msgid "Image Width"
 msgstr "Šířka obrázku"
 
 #: libexif/exif-tag.c:223
-msgid ""
-"The number of columns of image data, equal to the number of pixels per row. "
-"In JPEG compressed data a JPEG marker is used instead of this tag."
-msgstr ""
-"Počet sloupečků v obrázku, neboli počet pixelů na řádek. V komprimovaných "
-"datech typu JPEG se používá speciální JPEG marker místo této značky."
+msgid "The number of columns of image data, equal to the number of pixels per row. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgstr "Počet sloupečků v obrázku, neboli počet pixelů na řádek. V komprimovaných datech typu JPEG se používá speciální JPEG marker místo této značky."
 
 #: libexif/exif-tag.c:227
 msgid "Image Length"
 msgstr "Výška obrázku"
 
 #: libexif/exif-tag.c:228
-msgid ""
-"The number of rows of image data. In JPEG compressed data a JPEG marker is "
-"used instead of this tag."
-msgstr ""
-"Počet řádků v obrázku. V komprimovaných datech typu JPEG se používá "
-"speciální JPEG marker místo této značky."
+msgid "The number of rows of image data. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgstr "Počet řádků v obrázku. V komprimovaných datech typu JPEG se používá speciální JPEG marker místo této značky."
 
 #: libexif/exif-tag.c:231
 msgid "Bits per Sample"
 msgstr "Počet bitů na komponentu"
 
 #: libexif/exif-tag.c:232
-msgid ""
-"The number of bits per image component. In this standard each component of "
-"the image is 8 bits, so the value for this tag is 8. See also "
-"<SamplesPerPixel>. In JPEG compressed data a JPEG marker is used instead of "
-"this tag."
-msgstr ""
-"Počet bitů na jednu barevnou složku. Pro digitální fotografie se obvykle "
-"používá 8 bitů. Viz též 'Počet komponent'. V komprimovaných datech typu JPEG "
-"se používá speciální JPEG marker místo této značky."
+msgid "The number of bits per image component. In this standard each component of the image is 8 bits, so the value for this tag is 8. See also <SamplesPerPixel>. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgstr "Počet bitů na jednu barevnou složku. Pro digitální fotografie se obvykle používá 8 bitů. Viz též 'Počet komponent'. V komprimovaných datech typu JPEG se používá speciální JPEG marker místo této značky."
 
 #: libexif/exif-tag.c:237
 msgid "Compression"
 msgstr "Komprese"
 
 #: libexif/exif-tag.c:238
-msgid ""
-"The compression scheme used for the image data. When a primary image is JPEG "
-"compressed, this designation is not necessary and is omitted. When "
-"thumbnails use JPEG compression, this tag value is set to 6."
-msgstr ""
-"Kompresní schéma použité pro obrazoví data. Pokud primární obrázek je JPEG, "
-"pak se tato značka pro něj nepoužívá, neboť nemá význam. Nicméně se používá "
-"pro náhled, který obvykle bývá komprimován také metodou JPEG."
+msgid "The compression scheme used for the image data. When a primary image is JPEG compressed, this designation is not necessary and is omitted. When thumbnails use JPEG compression, this tag value is set to 6."
+msgstr "Kompresní schéma použité pro obrazoví data. Pokud primární obrázek je JPEG, pak se tato značka pro něj nepoužívá, neboť nemá význam. Nicméně se používá pro náhled, který obvykle bývá komprimován také metodou JPEG."
 
 #: libexif/exif-tag.c:244
 msgid "Photometric Interpretation"
 msgstr "Interpretace barev"
 
 #: libexif/exif-tag.c:245
-msgid ""
-"The pixel composition. In JPEG compressed data a JPEG marker is used instead "
-"of this tag."
-msgstr ""
-"Určuje barevný model obrázku nebo sadu inkoustů pro tisk. Např. RGB, CMYK, "
-"CieLAB. V komprimovaných datech typu JPEG se používá speciální JPEG marker "
-"místo této značky."
+msgid "The pixel composition. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgstr "Určuje barevný model obrázku nebo sadu inkoustů pro tisk. Např. RGB, CMYK, CieLAB. V komprimovaných datech typu JPEG se používá speciální JPEG marker místo této značky."
 
 #: libexif/exif-tag.c:249
 msgid "Fill Order"
@@ -2921,53 +2749,31 @@ msgid "Image Description"
 msgstr "Popis obrázku"
 
 #: libexif/exif-tag.c:254
-msgid ""
-"A character string giving the title of the image. It may be a comment such "
-"as \"1988 company picnic\" or the like. Two-bytes character codes cannot be "
-"used. When a 2-bytes code is necessary, the Exif Private tag <UserComment> "
-"is to be used."
-msgstr ""
-"Textový komentář popisující obrázek, např. \"firemní večírek\". Vícebajtové "
-"znakové sady (čínština, japonština, korejština) zde nemohou být použity, pro "
-"ně je určena soukromá EXIF značka 'Komentář uživatele'."
+msgid "A character string giving the title of the image. It may be a comment such as \"1988 company picnic\" or the like. Two-bytes character codes cannot be used. When a 2-bytes code is necessary, the Exif Private tag <UserComment> is to be used."
+msgstr "Textový komentář popisující obrázek, např. \"firemní večírek\". Vícebajtové znakové sady (čínština, japonština, korejština) zde nemohou být použity, pro ně je určena soukromá EXIF značka 'Komentář uživatele'."
 
 #: libexif/exif-tag.c:260
 msgid "Manufacturer"
 msgstr "Výrobce"
 
 #: libexif/exif-tag.c:261
-msgid ""
-"The manufacturer of the recording equipment. This is the manufacturer of the "
-"DSC, scanner, video digitizer or other equipment that generated the image. "
-"When the field is left blank, it is treated as unknown."
-msgstr ""
-"Výrobce zařízení, které zaznamenalo obrazová data. Tj. výrobce fotoaparátu, "
-"skeneru, digitizéru apod. Je-li tato položka prázdná, pak je výrobce neznámý."
+msgid "The manufacturer of the recording equipment. This is the manufacturer of the DSC, scanner, video digitizer or other equipment that generated the image. When the field is left blank, it is treated as unknown."
+msgstr "Výrobce zařízení, které zaznamenalo obrazová data. Tj. výrobce fotoaparátu, skeneru, digitizéru apod. Je-li tato položka prázdná, pak je výrobce neznámý."
 
 #: libexif/exif-tag.c:267
 msgid "Model"
 msgstr ""
 
 #: libexif/exif-tag.c:268
-msgid ""
-"The model name or model number of the equipment. This is the model name or "
-"number of the DSC, scanner, video digitizer or other equipment that "
-"generated the image. When the field is left blank, it is treated as unknown."
-msgstr ""
-"Model nebo typová řada zařízení, které zaznamenalo obrazová data. Tj. "
-"výrobce fotoaparátu, skeneru, digitizéru apod. Je-li tato položka prázdná, "
-"pak je výrobce neznámý."
+msgid "The model name or model number of the equipment. This is the model name or number of the DSC, scanner, video digitizer or other equipment that generated the image. When the field is left blank, it is treated as unknown."
+msgstr "Model nebo typová řada zařízení, které zaznamenalo obrazová data. Tj. výrobce fotoaparátu, skeneru, digitizéru apod. Je-li tato položka prázdná, pak je výrobce neznámý."
 
 #: libexif/exif-tag.c:273
 msgid "Strip Offsets"
 msgstr "Pozice pásů v souboru"
 
 #: libexif/exif-tag.c:274
-msgid ""
-"For each strip, the byte offset of that strip. It is recommended that this "
-"be selected so the number of strip bytes does not exceed 64 Kbytes. With "
-"JPEG compressed data this designation is not needed and is omitted. See also "
-"<RowsPerStrip> and <StripByteCounts>."
+msgid "For each strip, the byte offset of that strip. It is recommended that this be selected so the number of strip bytes does not exceed 64 Kbytes. With JPEG compressed data this designation is not needed and is omitted. See also <RowsPerStrip> and <StripByteCounts>."
 msgstr ""
 
 #: libexif/exif-tag.c:280
@@ -2976,115 +2782,70 @@ msgstr "Orientace"
 
 #: libexif/exif-tag.c:281
 msgid "The image orientation viewed in terms of rows and columns."
-msgstr ""
-"Určuje, z kterého rohu a kterým směrem se má obrázek vykreslovat při "
-"postupném čtení ze souboru."
+msgstr "Určuje, z kterého rohu a kterým směrem se má obrázek vykreslovat při postupném čtení ze souboru."
 
 #: libexif/exif-tag.c:284
 msgid "Samples per Pixel"
 msgstr "Počet komponent"
 
 #: libexif/exif-tag.c:285
-msgid ""
-"The number of components per pixel. Since this standard applies to RGB and "
-"YCbCr images, the value set for this tag is 3. In JPEG compressed data a "
-"JPEG marker is used instead of this tag."
-msgstr ""
-"Počet barevných komponent na pixel. Pro digitální fotografie, jež se obvykle "
-"ukládájí v YCbCr nebo RGB barvách, je tato hodnota 3. Pro černobílé náhledy "
-"bývá 1. V komprimovaných datech typu JPEG se používá speciální JPEG marker "
-"místo této značky."
+msgid "The number of components per pixel. Since this standard applies to RGB and YCbCr images, the value set for this tag is 3. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgstr "Počet barevných komponent na pixel. Pro digitální fotografie, jež se obvykle ukládájí v YCbCr nebo RGB barvách, je tato hodnota 3. Pro černobílé náhledy bývá 1. V komprimovaných datech typu JPEG se používá speciální JPEG marker místo této značky."
 
 #: libexif/exif-tag.c:290
 msgid "Rows per Strip"
 msgstr "Počet řádek na pás"
 
 #: libexif/exif-tag.c:291
-msgid ""
-"The number of rows per strip. This is the number of rows in the image of one "
-"strip when an image is divided into strips. With JPEG compressed data this "
-"designation is not needed and is omitted. See also <StripOffsets> and "
-"<StripByteCounts>."
-msgstr ""
-"Počet řádků v jednom pásu (rows per strip). Pro snadnější manipulaci obvykle "
-"bývá obrázek rozdělen do pásů o stejné výšce, která je uvedena v této "
-"značce. Viz též 'Strip offsets' a 'Počet bajtů na pás'."
+msgid "The number of rows per strip. This is the number of rows in the image of one strip when an image is divided into strips. With JPEG compressed data this designation is not needed and is omitted. See also <StripOffsets> and <StripByteCounts>."
+msgstr "Počet řádků v jednom pásu (rows per strip). Pro snadnější manipulaci obvykle bývá obrázek rozdělen do pásů o stejné výšce, která je uvedena v této značce. Viz též 'Strip offsets' a 'Počet bajtů na pás'."
 
 #: libexif/exif-tag.c:297
 msgid "Strip Byte Count"
 msgstr "Počet bajtů na pás"
 
 #: libexif/exif-tag.c:298
-msgid ""
-"The total number of bytes in each strip. With JPEG compressed data this "
-"designation is not needed and is omitted."
-msgstr ""
-"Počty bajtů v jednotlivých pásech (strip byte count), jak jsou "
-"(komprimované) uložené na disku. Údajů je tolik, kolik pásu. Díky kompresi "
-"se jednotlivé údaje mohou lišit."
+msgid "The total number of bytes in each strip. With JPEG compressed data this designation is not needed and is omitted."
+msgstr "Počty bajtů v jednotlivých pásech (strip byte count), jak jsou (komprimované) uložené na disku. Údajů je tolik, kolik pásu. Díky kompresi se jednotlivé údaje mohou lišit."
 
 #: libexif/exif-tag.c:301
 msgid "X-Resolution"
 msgstr "Horizontální rozlišení"
 
 #: libexif/exif-tag.c:302
-msgid ""
-"The number of pixels per <ResolutionUnit> in the <ImageWidth> direction. "
-"When the image resolution is unknown, 72 [dpi] is designated."
-msgstr ""
-"Počet pixelů na 'Jednotku rozlišení' ve směru 'Šířka obrázku'. Je-li "
-"rozlišení neznámé, obvykle se použije hodnota 72 dpi (pixelů na palec)."
+msgid "The number of pixels per <ResolutionUnit> in the <ImageWidth> direction. When the image resolution is unknown, 72 [dpi] is designated."
+msgstr "Počet pixelů na 'Jednotku rozlišení' ve směru 'Šířka obrázku'. Je-li rozlišení neznámé, obvykle se použije hodnota 72 dpi (pixelů na palec)."
 
 #: libexif/exif-tag.c:306
 msgid "Y-Resolution"
 msgstr "Vertikální rozlišení"
 
 #: libexif/exif-tag.c:307
-msgid ""
-"The number of pixels per <ResolutionUnit> in the <ImageLength> direction. "
-"The same value as <XResolution> is designated."
-msgstr ""
-"Počet pixelů na 'Jednotku rozlišení' ve směru 'Výška obrázku'. Je-li "
-"rozlišení neznámé, obvykle se použije hodnota 72 dpi (pixelů na palec)."
+msgid "The number of pixels per <ResolutionUnit> in the <ImageLength> direction. The same value as <XResolution> is designated."
+msgstr "Počet pixelů na 'Jednotku rozlišení' ve směru 'Výška obrázku'. Je-li rozlišení neznámé, obvykle se použije hodnota 72 dpi (pixelů na palec)."
 
 #: libexif/exif-tag.c:311
 msgid "Planar Configuration"
 msgstr ""
 
 #: libexif/exif-tag.c:312
-msgid ""
-"Indicates whether pixel components are recorded in a chunky or planar "
-"format. In JPEG compressed files a JPEG marker is used instead of this tag. "
-"If this field does not exist, the TIFF default of 1 (chunky) is assumed."
-msgstr ""
-"Určuje, jakým způsobem jsou jednotlivé pixely a řádky uloženy, zda "
-"prokládaně či nikoli. Buď mohou být všechny komponenty jednoho pixelu "
-"uloženy vedle (RGBRGBRGB) sebe nebo naopak 1 komponenta všech pixelů celého "
-"řádku vedle sebe následována další komponentou všech pixelů celého řádku "
-"(RRRGGGBBB)."
+msgid "Indicates whether pixel components are recorded in a chunky or planar format. In JPEG compressed files a JPEG marker is used instead of this tag. If this field does not exist, the TIFF default of 1 (chunky) is assumed."
+msgstr "Určuje, jakým způsobem jsou jednotlivé pixely a řádky uloženy, zda prokládaně či nikoli. Buď mohou být všechny komponenty jednoho pixelu uloženy vedle (RGBRGBRGB) sebe nebo naopak 1 komponenta všech pixelů celého řádku vedle sebe následována další komponentou všech pixelů celého řádku (RRRGGGBBB)."
 
 #: libexif/exif-tag.c:317
 msgid "Resolution Unit"
 msgstr "Jednotka rozlišení"
 
 #: libexif/exif-tag.c:318
-msgid ""
-"The unit for measuring <XResolution> and <YResolution>. The same unit is "
-"used for both <XResolution> and <YResolution>. If the image resolution is "
-"unknown, 2 (inches) is designated."
-msgstr ""
-"Jednotka pro hodnoty 'Horizontální rozlišení' a 'Vertikální rozlišení'. Není-"
-"li jednotka specifikována, použije se hodnota palec (inch)."
+msgid "The unit for measuring <XResolution> and <YResolution>. The same unit is used for both <XResolution> and <YResolution>. If the image resolution is unknown, 2 (inches) is designated."
+msgstr "Jednotka pro hodnoty 'Horizontální rozlišení' a 'Vertikální rozlišení'. Není-li jednotka specifikována, použije se hodnota palec (inch)."
 
 #: libexif/exif-tag.c:323
 msgid "Transfer Function"
 msgstr "Přechodová funkce"
 
 #: libexif/exif-tag.c:324
-msgid ""
-"A transfer function for the image, described in tabular style. Normally this "
-"tag is not necessary, since color space is specified in the color space "
-"information tag (<ColorSpace>)."
+msgid "A transfer function for the image, described in tabular style. Normally this tag is not necessary, since color space is specified in the color space information tag (<ColorSpace>)."
 msgstr ""
 
 #: libexif/exif-tag.c:328
@@ -3092,38 +2853,23 @@ msgid "Software"
 msgstr "Software"
 
 #: libexif/exif-tag.c:329
-msgid ""
-"This tag records the name and version of the software or firmware of the "
-"camera or image input device used to generate the image. The detailed format "
-"is not specified, but it is recommended that the example shown below be "
-"followed. When the field is left blank, it is treated as unknown."
-msgstr ""
-"Udává software (nebo firmware zařízení) a jeho verzi, které soubor "
-"vygenerovalo. Formát tohoto údaje je zcela libovolný. Prázdný údaj znamená, "
-"že není známo."
+msgid "This tag records the name and version of the software or firmware of the camera or image input device used to generate the image. The detailed format is not specified, but it is recommended that the example shown below be followed. When the field is left blank, it is treated as unknown."
+msgstr "Udává software (nebo firmware zařízení) a jeho verzi, které soubor vygenerovalo. Formát tohoto údaje je zcela libovolný. Prázdný údaj znamená, že není známo."
 
 #: libexif/exif-tag.c:336
 msgid "Date and Time"
 msgstr "Datum a čas"
 
 #: libexif/exif-tag.c:337
-msgid ""
-"The date and time of image creation. In this standard (EXIF-2.1) it is the "
-"date and time the file was changed."
-msgstr ""
-"Datum a čas vytvoření obrázku. Standard EXIF udává, že se jedná o okamžik "
-"poslední modifikace souboru."
+msgid "The date and time of image creation. In this standard (EXIF-2.1) it is the date and time the file was changed."
+msgstr "Datum a čas vytvoření obrázku. Standard EXIF udává, že se jedná o okamžik poslední modifikace souboru."
 
 #: libexif/exif-tag.c:340
 msgid "Artist"
 msgstr "Umělec"
 
 #: libexif/exif-tag.c:341
-msgid ""
-"This tag records the name of the camera owner, photographer or image "
-"creator. The detailed format is not specified, but it is recommended that "
-"the information be written as in the example below for ease of "
-"Interoperability. When the field is left blank, it is treated as unknown."
+msgid "This tag records the name of the camera owner, photographer or image creator. The detailed format is not specified, but it is recommended that the information be written as in the example below for ease of Interoperability. When the field is left blank, it is treated as unknown."
 msgstr ""
 
 #: libexif/exif-tag.c:347 libexif/pentax/mnote-pentax-tag.c:113
@@ -3131,10 +2877,7 @@ msgid "White Point"
 msgstr "Bílý bod"
 
 #: libexif/exif-tag.c:348
-msgid ""
-"The chromaticity of the white point of the image. Normally this tag is not "
-"necessary, since color space is specified in the color space information tag "
-"(<ColorSpace>)."
+msgid "The chromaticity of the white point of the image. Normally this tag is not necessary, since color space is specified in the color space information tag (<ColorSpace>)."
 msgstr ""
 
 #: libexif/exif-tag.c:353
@@ -3142,17 +2885,12 @@ msgid "Primary Chromaticities"
 msgstr ""
 
 #: libexif/exif-tag.c:354
-msgid ""
-"The chromaticity of the three primary colors of the image. Normally this tag "
-"is not necessary, since color space is specified in the color space "
-"information tag (<ColorSpace>)."
+msgid "The chromaticity of the three primary colors of the image. Normally this tag is not necessary, since color space is specified in the color space information tag (<ColorSpace>)."
 msgstr ""
 
 #: libexif/exif-tag.c:359
 msgid "Defined by Adobe Corporation to enable TIFF Trees within a TIFF file."
-msgstr ""
-"Definováno společností Adobe pro umožnění TIFF hierarchií uvnitř souboru "
-"TIFF."
+msgstr "Definováno společností Adobe pro umožnění TIFF hierarchií uvnitř souboru TIFF."
 
 #: libexif/exif-tag.c:362
 msgid "Transfer Range"
@@ -3163,9 +2901,7 @@ msgid "JPEG Interchange Format"
 msgstr "JPEG Interchange Format"
 
 #: libexif/exif-tag.c:367
-msgid ""
-"The offset to the start byte (SOI) of JPEG compressed thumbnail data. This "
-"is not used for primary image JPEG data."
+msgid "The offset to the start byte (SOI) of JPEG compressed thumbnail data. This is not used for primary image JPEG data."
 msgstr ""
 
 #: libexif/exif-tag.c:372
@@ -3173,12 +2909,7 @@ msgid "JPEG Interchange Format Length"
 msgstr "Délka dat JPEG Interchange Format"
 
 #: libexif/exif-tag.c:373
-msgid ""
-"The number of bytes of JPEG compressed thumbnail data. This is not used for "
-"primary image JPEG data. JPEG thumbnails are not divided but are recorded as "
-"a continuous JPEG bitstream from SOI to EOI. Appn and COM markers should not "
-"be recorded. Compressed thumbnails must be recorded in no more than 64 "
-"Kbytes, including all other data to be recorded in APP1."
+msgid "The number of bytes of JPEG compressed thumbnail data. This is not used for primary image JPEG data. JPEG thumbnails are not divided but are recorded as a continuous JPEG bitstream from SOI to EOI. Appn and COM markers should not be recorded. Compressed thumbnails must be recorded in no more than 64 Kbytes, including all other data to be recorded in APP1."
 msgstr ""
 
 #: libexif/exif-tag.c:382
@@ -3186,12 +2917,7 @@ msgid "YCbCr Coefficients"
 msgstr "Koeficienty YCbCr"
 
 #: libexif/exif-tag.c:383
-msgid ""
-"The matrix coefficients for transformation from RGB to YCbCr image data. No "
-"default is given in TIFF; but here the value given in \"Color Space "
-"Guidelines\", is used as the default. The color space is declared in a color "
-"space information tag, with the default being the value that gives the "
-"optimal image characteristics Interoperability this condition."
+msgid "The matrix coefficients for transformation from RGB to YCbCr image data. No default is given in TIFF; but here the value given in \"Color Space Guidelines\", is used as the default. The color space is declared in a color space information tag, with the default being the value that gives the optimal image characteristics Interoperability this condition."
 msgstr ""
 
 #: libexif/exif-tag.c:392
@@ -3199,9 +2925,7 @@ msgid "YCbCr Sub-Sampling"
 msgstr ""
 
 #: libexif/exif-tag.c:393
-msgid ""
-"The sampling ratio of chrominance components in relation to the luminance "
-"component. In JPEG compressed data a JPEG marker is used instead of this tag."
+msgid "The sampling ratio of chrominance components in relation to the luminance component. In JPEG compressed data a JPEG marker is used instead of this tag."
 msgstr ""
 
 #: libexif/exif-tag.c:398
@@ -3209,18 +2933,7 @@ msgid "YCbCr Positioning"
 msgstr ""
 
 #: libexif/exif-tag.c:399
-msgid ""
-"The position of chrominance components in relation to the luminance "
-"component. This field is designated only for JPEG compressed data or "
-"uncompressed YCbCr data. The TIFF default is 1 (centered); but when Y:Cb:Cr "
-"= 4:2:2 it is recommended in this standard that 2 (co-sited) be used to "
-"record data, in order to improve the image quality when viewed on TV "
-"systems. When this field does not exist, the reader shall assume the TIFF "
-"default. In the case of Y:Cb:Cr = 4:2:0, the TIFF default (centered) is "
-"recommended. If the reader does not have the capability of supporting both "
-"kinds of <YCbCrPositioning>, it shall follow the TIFF default regardless of "
-"the value in this field. It is preferable that readers be able to support "
-"both centered and co-sited positioning."
+msgid "The position of chrominance components in relation to the luminance component. This field is designated only for JPEG compressed data or uncompressed YCbCr data. The TIFF default is 1 (centered); but when Y:Cb:Cr = 4:2:2 it is recommended in this standard that 2 (co-sited) be used to record data, in order to improve the image quality when viewed on TV systems. When this field does not exist, the reader shall assume the TIFF default. In the case of Y:Cb:Cr = 4:2:0, the TIFF default (centered) is recommended. If the reader does not have the capability of supporting both kinds of <YCbCrPositioning>, it shall follow the TIFF default regardless of the value in this field. It is preferable that readers be able to support both centered and co-sited positioning."
 msgstr ""
 
 #: libexif/exif-tag.c:414
@@ -3228,12 +2941,7 @@ msgid "Reference Black/White"
 msgstr ""
 
 #: libexif/exif-tag.c:415
-msgid ""
-"The reference black point value and reference white point value. No defaults "
-"are given in TIFF, but the values below are given as defaults here. The "
-"color space is declared in a color space information tag, with the default "
-"being the value that gives the optimal image characteristics "
-"Interoperability these conditions."
+msgid "The reference black point value and reference white point value. No defaults are given in TIFF, but the values below are given as defaults here. The color space is declared in a color space information tag, with the default being the value that gives the optimal image characteristics Interoperability these conditions."
 msgstr ""
 
 #: libexif/exif-tag.c:423
@@ -3249,10 +2957,7 @@ msgid "CFA Pattern"
 msgstr "CFA Pattern"
 
 #: libexif/exif-tag.c:439 libexif/exif-tag.c:785
-msgid ""
-"Indicates the color filter array (CFA) geometric pattern of the image sensor "
-"when a one-chip color area sensor is used. It does not apply to all sensing "
-"methods."
+msgid "Indicates the color filter array (CFA) geometric pattern of the image sensor when a one-chip color area sensor is used. It does not apply to all sensing methods."
 msgstr ""
 
 #: libexif/exif-tag.c:443
@@ -3264,22 +2969,7 @@ msgid "Copyright"
 msgstr "Copyright"
 
 #: libexif/exif-tag.c:445
-msgid ""
-"Copyright information. In this standard the tag is used to indicate both the "
-"photographer and editor copyrights. It is the copyright notice of the person "
-"or organization claiming rights to the image. The Interoperability copyright "
-"statement including date and rights should be written in this field; e.g., "
-"\"Copyright, John Smith, 19xx. All rights reserved.\". In this standard the "
-"field records both the photographer and editor copyrights, with each "
-"recorded in a separate part of the statement. When there is a clear "
-"distinction between the photographer and editor copyrights, these are to be "
-"written in the order of photographer followed by editor copyright, separated "
-"by NULL (in this case, since the statement also ends with a NULL, there are "
-"two NULL codes) (see example 1). When only the photographer is given, it is "
-"terminated by one NULL code (see example 2). When only the editor copyright "
-"is given, the photographer copyright part consists of one space followed by "
-"a terminating NULL code, then the editor copyright is given (see example 3). "
-"When the field is left blank, it is treated as unknown."
+msgid "Copyright information. In this standard the tag is used to indicate both the photographer and editor copyrights. It is the copyright notice of the person or organization claiming rights to the image. The Interoperability copyright statement including date and rights should be written in this field; e.g., \"Copyright, John Smith, 19xx. All rights reserved.\". In this standard the field records both the photographer and editor copyrights, with each recorded in a separate part of the statement. When there is a clear distinction between the photographer and editor copyrights, these are to be written in the order of photographer followed by editor copyright, separated by NULL (in this case, since the statement also ends with a NULL, there are two NULL codes) (see example 1). When only the photographer is given, it is terminated by one NULL code (see example 2). When only the editor copyright is given, the photographer copyright part consists of one space followed by a terminating NULL code, then the editor copyright is given (see example 3). When the field is left blank, it is treated as unknown."
 msgstr ""
 
 #: libexif/exif-tag.c:467
@@ -3299,10 +2989,7 @@ msgid "Image Resources Block"
 msgstr ""
 
 #: libexif/exif-tag.c:477
-msgid ""
-"A pointer to the Exif IFD. Interoperability, Exif IFD has the same structure "
-"as that of the IFD specified in TIFF. ordinarily, however, it does not "
-"contain image data as in the case of TIFF."
+msgid "A pointer to the Exif IFD. Interoperability, Exif IFD has the same structure as that of the IFD specified in TIFF. ordinarily, however, it does not contain image data as in the case of TIFF."
 msgstr ""
 
 #: libexif/exif-tag.c:485
@@ -3310,22 +2997,15 @@ msgid "Exposure Program"
 msgstr "Program expozice"
 
 #: libexif/exif-tag.c:486
-msgid ""
-"The class of the program used by the camera to set exposure when the picture "
-"is taken."
-msgstr ""
-"Typ programu použitého fotoaparátem pro nastavení expozice pro pořízení "
-"tohoto snímku."
+msgid "The class of the program used by the camera to set exposure when the picture is taken."
+msgstr "Typ programu použitého fotoaparátem pro nastavení expozice pro pořízení tohoto snímku."
 
 #: libexif/exif-tag.c:490
 msgid "Spectral Sensitivity"
 msgstr ""
 
 #: libexif/exif-tag.c:491
-msgid ""
-"Indicates the spectral sensitivity of each channel of the camera used. The "
-"tag value is an ASCII string compatible with the standard developed by the "
-"ASTM Technical Committee."
+msgid "Indicates the spectral sensitivity of each channel of the camera used. The tag value is an ASCII string compatible with the standard developed by the ASTM Technical Committee."
 msgstr ""
 
 #: libexif/exif-tag.c:496
@@ -3333,9 +3013,7 @@ msgid "GPS Info IFD Pointer"
 msgstr ""
 
 #: libexif/exif-tag.c:497
-msgid ""
-"A pointer to the GPS Info IFD. The Interoperability structure of the GPS "
-"Info IFD, like that of Exif IFD, has no image data."
+msgid "A pointer to the GPS Info IFD. The Interoperability structure of the GPS Info IFD, like that of Exif IFD, has no image data."
 msgstr ""
 
 #: libexif/exif-tag.c:503
@@ -3343,9 +3021,7 @@ msgid "ISO Speed Ratings"
 msgstr ""
 
 #: libexif/exif-tag.c:504
-msgid ""
-"Indicates the ISO Speed and ISO Latitude of the camera or input device as "
-"specified in ISO 12232."
+msgid "Indicates the ISO Speed and ISO Latitude of the camera or input device as specified in ISO 12232."
 msgstr ""
 
 #: libexif/exif-tag.c:507
@@ -3353,10 +3029,7 @@ msgid "Opto-Electronic Conversion Function"
 msgstr ""
 
 #: libexif/exif-tag.c:508
-msgid ""
-"Indicates the Opto-Electronic Conversion Function (OECF) specified in ISO "
-"14524. <OECF> is the relationship between the camera optical input and the "
-"image values."
+msgid "Indicates the Opto-Electronic Conversion Function (OECF) specified in ISO 14524. <OECF> is the relationship between the camera optical input and the image values."
 msgstr ""
 
 #: libexif/exif-tag.c:513
@@ -3372,24 +3045,16 @@ msgid "Exif Version"
 msgstr "Verze Exif"
 
 #: libexif/exif-tag.c:516
-msgid ""
-"The version of this standard supported. Nonexistence of this field is taken "
-"to mean nonconformance to the standard."
-msgstr ""
-"Verze standardu, které odpovídá tento soubor. Chybějící označení verze by "
-"bylo v rozporu se standardem."
+msgid "The version of this standard supported. Nonexistence of this field is taken to mean nonconformance to the standard."
+msgstr "Verze standardu, které odpovídá tento soubor. Chybějící označení verze by bylo v rozporu se standardem."
 
 #: libexif/exif-tag.c:520
 msgid "Date and Time (Original)"
 msgstr "Datum a čas pořízení"
 
 #: libexif/exif-tag.c:521
-msgid ""
-"The date and time when the original image data was generated. For a digital "
-"still camera the date and time the picture was taken are recorded."
-msgstr ""
-"Datum a čas, kdy byla vytvořena původní obrazová data. V případě digitálních "
-"fotografií se jedná o okamžik vyfotografování."
+msgid "The date and time when the original image data was generated. For a digital still camera the date and time the picture was taken are recorded."
+msgstr "Datum a čas, kdy byla vytvořena původní obrazová data. V případě digitálních fotografií se jedná o okamžik vyfotografování."
 
 #: libexif/exif-tag.c:526
 msgid "Date and Time (Digitized)"
@@ -3404,13 +3069,7 @@ msgid "Components Configuration"
 msgstr ""
 
 #: libexif/exif-tag.c:531
-msgid ""
-"Information specific to compressed data. The channels of each component are "
-"arranged in order from the 1st component to the 4th. For uncompressed data "
-"the data arrangement is given in the <PhotometricInterpretation> tag. "
-"However, since <PhotometricInterpretation> can only express the order of Y, "
-"Cb and Cr, this tag is provided for cases when compressed data uses "
-"components other than Y, Cb, and Cr and to enable support of other sequences."
+msgid "Information specific to compressed data. The channels of each component are arranged in order from the 1st component to the 4th. For uncompressed data the data arrangement is given in the <PhotometricInterpretation> tag. However, since <PhotometricInterpretation> can only express the order of Y, Cb and Cr, this tag is provided for cases when compressed data uses components other than Y, Cb, and Cr and to enable support of other sequences."
 msgstr ""
 
 #: libexif/exif-tag.c:541
@@ -3418,24 +3077,16 @@ msgid "Compressed Bits per Pixel"
 msgstr "Komprimované bity na pixel"
 
 #: libexif/exif-tag.c:542
-msgid ""
-"Information specific to compressed data. The compression mode used for a "
-"compressed image is indicated in unit bits per pixel."
-msgstr ""
-"Informace o vlastních komprimovaných datech. Udává kompresní poměr pro "
-"komprimovaná obrazová data jako přibližný počet bitů na pixel."
+msgid "Information specific to compressed data. The compression mode used for a compressed image is indicated in unit bits per pixel."
+msgstr "Informace o vlastních komprimovaných datech. Udává kompresní poměr pro komprimovaná obrazová data jako přibližný počet bitů na pixel."
 
 #: libexif/exif-tag.c:546 libexif/olympus/mnote-olympus-tag.c:123
 msgid "Shutter Speed"
 msgstr "Rychlost uzávěrky"
 
 #: libexif/exif-tag.c:547
-msgid ""
-"Shutter speed. The unit is the APEX (Additive System of Photographic "
-"Exposure) setting."
-msgstr ""
-"Rychlost uzávěrky, uložená v jednotkách APEX (Additive System of "
-"Photographic Exposure)."
+msgid "Shutter speed. The unit is the APEX (Additive System of Photographic Exposure) setting."
+msgstr "Rychlost uzávěrky, uložená v jednotkách APEX (Additive System of Photographic Exposure)."
 
 #: libexif/exif-tag.c:551
 msgid "The lens aperture. The unit is the APEX value."
@@ -3446,35 +3097,24 @@ msgid "Brightness"
 msgstr "Jas"
 
 #: libexif/exif-tag.c:554
-msgid ""
-"The value of brightness. The unit is the APEX value. Ordinarily it is given "
-"in the range of -99.99 to 99.99."
-msgstr ""
-"Úroveň jasu, v jednotkách APEX. Obvykle se nachází v rozsahu -99,99 až 99,99."
+msgid "The value of brightness. The unit is the APEX value. Ordinarily it is given in the range of -99.99 to 99.99."
+msgstr "Úroveň jasu, v jednotkách APEX. Obvykle se nachází v rozsahu -99,99 až 99,99."
 
 #: libexif/exif-tag.c:558
 msgid "Exposure Bias"
 msgstr "Kompenzace expozice"
 
 #: libexif/exif-tag.c:559
-msgid ""
-"The exposure bias. The units is the APEX value. Ordinarily it is given in "
-"the range of -99.99 to 99.99."
-msgstr ""
-"Kompenzace expozice, v jednotkách APEX. Obvykle se nachází v rozsahu -99,99 "
-"až 99,99."
+msgid "The exposure bias. The units is the APEX value. Ordinarily it is given in the range of -99.99 to 99.99."
+msgstr "Kompenzace expozice, v jednotkách APEX. Obvykle se nachází v rozsahu -99,99 až 99,99."
 
 #: libexif/exif-tag.c:562
 msgid "Maximum Aperture Value"
 msgstr "Maximální clona"
 
 #: libexif/exif-tag.c:563
-msgid ""
-"The smallest F number of the lens. The unit is the APEX value. Ordinarily it "
-"is given in the range of 00.00 to 99.99, but it is not limited to this range."
-msgstr ""
-"Nejmenší číslo F čoček, v jednotkách APEX. Obvykle se nachází v rozsahu -"
-"99,99 až 99,99, ale není to podmínkou."
+msgid "The smallest F number of the lens. The unit is the APEX value. Ordinarily it is given in the range of 00.00 to 99.99, but it is not limited to this range."
+msgstr "Nejmenší číslo F čoček, v jednotkách APEX. Obvykle se nachází v rozsahu -99,99 až 99,99, ale není to podmínkou."
 
 #: libexif/exif-tag.c:568
 msgid "Subject Distance"
@@ -3497,26 +3137,19 @@ msgid "The kind of light source."
 msgstr "Typ zdroje světla."
 
 #: libexif/exif-tag.c:578
-msgid ""
-"This tag is recorded when an image is taken using a strobe light (flash)."
+msgid "This tag is recorded when an image is taken using a strobe light (flash)."
 msgstr "Tento údaj se zaznamenává při použití blesku."
 
 #: libexif/exif-tag.c:582
-msgid ""
-"The actual focal length of the lens, in mm. Conversion is not made to the "
-"focal length of a 35 mm film camera."
-msgstr ""
-"Skutečná ohnisková vzdálenost čoček. Hodnota není přepočtena pro fotoaparáty "
-"na 35mm film."
+msgid "The actual focal length of the lens, in mm. Conversion is not made to the focal length of a 35 mm film camera."
+msgstr "Skutečná ohnisková vzdálenost čoček. Hodnota není přepočtena pro fotoaparáty na 35mm film."
 
 #: libexif/exif-tag.c:585
 msgid "Subject Area"
 msgstr ""
 
 #: libexif/exif-tag.c:586
-msgid ""
-"This tag indicates the location and area of the main subject in the overall "
-"scene."
+msgid "This tag indicates the location and area of the main subject in the overall scene."
 msgstr "Udává pozici a velikost hlavního objektu ve fotografované scéně."
 
 #: libexif/exif-tag.c:590
@@ -3528,38 +3161,15 @@ msgid "Maker Note"
 msgstr "Maker note"
 
 #: libexif/exif-tag.c:592
-msgid ""
-"A tag for manufacturers of Exif writers to record any desired information. "
-"The contents are up to the manufacturer."
-msgstr ""
-"Do této sekce zapisují různí výrobci fotoaparátů různé doplňkové informace, "
-"které se mohou lišit i typ od typu fotoaparátu. Každý výrobce ukládá tyto "
-"informace jiným způsobem."
+msgid "A tag for manufacturers of Exif writers to record any desired information. The contents are up to the manufacturer."
+msgstr "Do této sekce zapisují různí výrobci fotoaparátů různé doplňkové informace, které se mohou lišit i typ od typu fotoaparátu. Každý výrobce ukládá tyto informace jiným způsobem."
 
 #: libexif/exif-tag.c:595
 msgid "User Comment"
 msgstr "Komentář"
 
 #: libexif/exif-tag.c:596
-msgid ""
-"A tag for Exif users to write keywords or comments on the image besides "
-"those in <ImageDescription>, and without the character code limitations of "
-"the <ImageDescription> tag. The character code used in the <UserComment> tag "
-"is identified based on an ID code in a fixed 8-byte area at the start of the "
-"tag data area. The unused portion of the area is padded with NULL (\"00.h"
-"\"). ID codes are assigned by means of registration. The designation method "
-"and references for each character code are defined in the specification. The "
-"value of CountN is determined based on the 8 bytes in the character code "
-"area and the number of bytes in the user comment part. Since the TYPE is not "
-"ASCII, NULL termination is not necessary. The ID code for the <UserComment> "
-"area may be a Defined code such as JIS or ASCII, or may be Undefined. The "
-"Undefined name is UndefinedText, and the ID code is filled with 8 bytes of "
-"all \"NULL\" (\"00.H\"). An Exif reader that reads the <UserComment> tag "
-"must have a function for determining the ID code. This function is not "
-"required in Exif readers that do not use the <UserComment> tag. When a "
-"<UserComment> area is set aside, it is recommended that the ID code be ASCII "
-"and that the following user comment part be filled with blank characters [20."
-"H]."
+msgid "A tag for Exif users to write keywords or comments on the image besides those in <ImageDescription>, and without the character code limitations of the <ImageDescription> tag. The character code used in the <UserComment> tag is identified based on an ID code in a fixed 8-byte area at the start of the tag data area. The unused portion of the area is padded with NULL (\"00.h\"). ID codes are assigned by means of registration. The designation method and references for each character code are defined in the specification. The value of CountN is determined based on the 8 bytes in the character code area and the number of bytes in the user comment part. Since the TYPE is not ASCII, NULL termination is not necessary. The ID code for the <UserComment> area may be a Defined code such as JIS or ASCII, or may be Undefined. The Undefined name is UndefinedText, and the ID code is filled with 8 bytes of all \"NULL\" (\"00.H\"). An Exif reader that reads the <UserComment> tag must have a function for determining the ID code. This function is not required in Exif readers that do not use the <UserComment> tag. When a <UserComment> area is set aside, it is recommended that the ID code be ASCII and that the following user comment part be filled with blank characters [20.H]."
 msgstr ""
 
 #: libexif/exif-tag.c:619
@@ -3575,8 +3185,7 @@ msgid "Sub-second Time (Original)"
 msgstr "Zlomky vteřin času pořízení"
 
 #: libexif/exif-tag.c:625
-msgid ""
-"A tag used to record fractions of seconds for the <DateTimeOriginal> tag."
+msgid "A tag used to record fractions of seconds for the <DateTimeOriginal> tag."
 msgstr "Zlomky sekundy z údaje 'Datum a čas pořízení'."
 
 #: libexif/exif-tag.c:629
@@ -3584,8 +3193,7 @@ msgid "Sub-second Time (Digitized)"
 msgstr "Zlomky vteřin času digitalizace"
 
 #: libexif/exif-tag.c:630
-msgid ""
-"A tag used to record fractions of seconds for the <DateTimeDigitized> tag."
+msgid "A tag used to record fractions of seconds for the <DateTimeDigitized> tag."
 msgstr "Zlomky sekundy z údaje 'Datum a čas digitalizace'."
 
 #: libexif/exif-tag.c:634
@@ -3601,8 +3209,7 @@ msgid "XP Comment"
 msgstr "Komentář (Windows)"
 
 #: libexif/exif-tag.c:640
-msgid ""
-"A character string containing a comment about the image, encoded in UTF-16LE."
+msgid "A character string containing a comment about the image, encoded in UTF-16LE."
 msgstr "Text s komentářem k fotografii, uložený v Unicode."
 
 #: libexif/exif-tag.c:644
@@ -3610,9 +3217,7 @@ msgid "XP Author"
 msgstr "Autor (Windows)"
 
 #: libexif/exif-tag.c:645
-msgid ""
-"A character string containing the name of the image creator, encoded in UTF-"
-"16LE."
+msgid "A character string containing the name of the image creator, encoded in UTF-16LE."
 msgstr "Text se jménem autora fotografie, uložený v Unicode."
 
 #: libexif/exif-tag.c:649
@@ -3620,11 +3225,8 @@ msgid "XP Keywords"
 msgstr "Klíčová slova (Windows)"
 
 #: libexif/exif-tag.c:650
-msgid ""
-"A character string containing key words describing the image, encoded in UTF-"
-"16LE."
-msgstr ""
-"Text s klíčovými slovy vztahujícími se k fotografii, uložený v Unicode."
+msgid "A character string containing key words describing the image, encoded in UTF-16LE."
+msgstr "Text s klíčovými slovy vztahujícími se k fotografii, uložený v Unicode."
 
 #: libexif/exif-tag.c:654
 msgid "XP Subject"
@@ -3643,12 +3245,7 @@ msgid "Color Space"
 msgstr "Barevný model"
 
 #: libexif/exif-tag.c:662
-msgid ""
-"The color space information tag is always recorded as the color space "
-"specifier. Normally sRGB (=1) is used to define the color space based on the "
-"PC monitor conditions and environment. If a color space other than sRGB is "
-"used, Uncalibrated (=FFFF.H) is set. Image data recorded as Uncalibrated can "
-"be treated as sRGB when it is converted to FlashPix."
+msgid "The color space information tag is always recorded as the color space specifier. Normally sRGB (=1) is used to define the color space based on the PC monitor conditions and environment. If a color space other than sRGB is used, Uncalibrated (=FFFF.H) is set. Image data recorded as Uncalibrated can be treated as sRGB when it is converted to FlashPix."
 msgstr ""
 
 #: libexif/exif-tag.c:670
@@ -3656,11 +3253,7 @@ msgid "Pixel X Dimension"
 msgstr ""
 
 #: libexif/exif-tag.c:671
-msgid ""
-"Information specific to compressed data. When a compressed file is recorded, "
-"the valid width of the meaningful image must be recorded in this tag, "
-"whether or not there is padding data or a restart marker. This tag should "
-"not exist in an uncompressed file."
+msgid "Information specific to compressed data. When a compressed file is recorded, the valid width of the meaningful image must be recorded in this tag, whether or not there is padding data or a restart marker. This tag should not exist in an uncompressed file."
 msgstr ""
 
 #: libexif/exif-tag.c:677
@@ -3668,13 +3261,7 @@ msgid "Pixel Y Dimension"
 msgstr ""
 
 #: libexif/exif-tag.c:678
-msgid ""
-"Information specific to compressed data. When a compressed file is recorded, "
-"the valid height of the meaningful image must be recorded in this tag, "
-"whether or not there is padding data or a restart marker. This tag should "
-"not exist in an uncompressed file. Since data padding is unnecessary in the "
-"vertical direction, the number of lines recorded in this valid image height "
-"tag will in fact be the same as that recorded in the SOF."
+msgid "Information specific to compressed data. When a compressed file is recorded, the valid height of the meaningful image must be recorded in this tag, whether or not there is padding data or a restart marker. This tag should not exist in an uncompressed file. Since data padding is unnecessary in the vertical direction, the number of lines recorded in this valid image height tag will in fact be the same as that recorded in the SOF."
 msgstr ""
 
 #: libexif/exif-tag.c:688
@@ -3682,28 +3269,7 @@ msgid "Related Sound File"
 msgstr ""
 
 #: libexif/exif-tag.c:689
-msgid ""
-"This tag is used to record the name of an audio file related to the image "
-"data. The only relational information recorded here is the Exif audio file "
-"name and extension (an ASCII string consisting of 8 characters + '.' + 3 "
-"characters). The path is not recorded. Stipulations on audio and file naming "
-"conventions are defined in the specification. When using this tag, audio "
-"files must be recorded in conformance to the Exif audio format. Writers are "
-"also allowed to store the data such as Audio within APP2 as FlashPix "
-"extension stream data. The mapping of Exif image files and audio files is "
-"done in any of three ways, [1], [2] and [3]. If multiple files are mapped to "
-"one file as in [2] or [3], the above format is used to record just one audio "
-"file name. If there are multiple audio files, the first recorded file is "
-"given. In the case of [3], for example, for the Exif image file \"DSC00001."
-"JPG\" only  \"SND00001.WAV\" is given as the related Exif audio file. When "
-"there are three Exif audio files \"SND00001.WAV\", \"SND00002.WAV\" and "
-"\"SND00003.WAV\", the Exif image file name for each of them, \"DSC00001.JPG"
-"\", is indicated. By combining multiple relational information, a variety of "
-"playback possibilities can be supported. The method of using relational "
-"information is left to the implementation on the playback side. Since this "
-"information is an ASCII character string, it is terminated by NULL. When "
-"this tag is used to map audio files, the relation of the audio file to image "
-"data must also be indicated on the audio file end."
+msgid "This tag is used to record the name of an audio file related to the image data. The only relational information recorded here is the Exif audio file name and extension (an ASCII string consisting of 8 characters + '.' + 3 characters). The path is not recorded. Stipulations on audio and file naming conventions are defined in the specification. When using this tag, audio files must be recorded in conformance to the Exif audio format. Writers are also allowed to store the data such as Audio within APP2 as FlashPix extension stream data. The mapping of Exif image files and audio files is done in any of three ways, [1], [2] and [3]. If multiple files are mapped to one file as in [2] or [3], the above format is used to record just one audio file name. If there are multiple audio files, the first recorded file is given. In the case of [3], for example, for the Exif image file \"DSC00001.JPG\" only  \"SND00001.WAV\" is given as the related Exif audio file. When there are three Exif audio files \"SND00001.WAV\", \"SND00002.WAV\" and \"SND00003.WAV\", the Exif image file name for each of them, \"DSC00001.JPG\", is indicated. By combining multiple relational information, a variety of playback possibilities can be supported. The method of using relational information is left to the implementation on the playback side. Since this information is an ASCII character string, it is terminated by NULL. When this tag is used to map audio files, the relation of the audio file to image data must also be indicated on the audio file end."
 msgstr ""
 
 #: libexif/exif-tag.c:719
@@ -3711,12 +3277,7 @@ msgid "Interoperability IFD Pointer"
 msgstr ""
 
 #: libexif/exif-tag.c:720
-msgid ""
-"Interoperability IFD is composed of tags which stores the information to "
-"ensure the Interoperability and pointed by the following tag located in Exif "
-"IFD. The Interoperability structure of Interoperability IFD is the same as "
-"TIFF defined IFD structure but does not contain the image data "
-"characteristically compared with normal TIFF IFD."
+msgid "Interoperability IFD is composed of tags which stores the information to ensure the Interoperability and pointed by the following tag located in Exif IFD. The Interoperability structure of Interoperability IFD is the same as TIFF defined IFD structure but does not contain the image data characteristically compared with normal TIFF IFD."
 msgstr ""
 
 #: libexif/exif-tag.c:729
@@ -3724,9 +3285,7 @@ msgid "Flash Energy"
 msgstr "Energie blesku"
 
 #: libexif/exif-tag.c:730
-msgid ""
-"Indicates the strobe energy at the time the image is captured, as measured "
-"in Beam Candle Power Seconds (BCPS)."
+msgid "Indicates the strobe energy at the time the image is captured, as measured in Beam Candle Power Seconds (BCPS)."
 msgstr ""
 
 #: libexif/exif-tag.c:734
@@ -3734,10 +3293,7 @@ msgid "Spatial Frequency Response"
 msgstr ""
 
 #: libexif/exif-tag.c:735
-msgid ""
-"This tag records the camera or input device spatial frequency table and SFR "
-"values in the direction of image width, image height, and diagonal "
-"direction, as specified in ISO 12233."
+msgid "This tag records the camera or input device spatial frequency table and SFR values in the direction of image width, image height, and diagonal direction, as specified in ISO 12233."
 msgstr ""
 
 #: libexif/exif-tag.c:741
@@ -3745,9 +3301,7 @@ msgid "Focal Plane X-Resolution"
 msgstr "Horizontální rozlišení ohniskové roviny"
 
 #: libexif/exif-tag.c:742
-msgid ""
-"Indicates the number of pixels in the image width (X) direction per "
-"<FocalPlaneResolutionUnit> on the camera focal plane."
+msgid "Indicates the number of pixels in the image width (X) direction per <FocalPlaneResolutionUnit> on the camera focal plane."
 msgstr ""
 
 #: libexif/exif-tag.c:746
@@ -3755,9 +3309,7 @@ msgid "Focal Plane Y-Resolution"
 msgstr "Vertikální rozlišení ohniskové roviny"
 
 #: libexif/exif-tag.c:747
-msgid ""
-"Indicates the number of pixels in the image height (V) direction per "
-"<FocalPlaneResolutionUnit> on the camera focal plane."
+msgid "Indicates the number of pixels in the image height (V) direction per <FocalPlaneResolutionUnit> on the camera focal plane."
 msgstr ""
 
 #: libexif/exif-tag.c:751
@@ -3765,9 +3317,7 @@ msgid "Focal Plane Resolution Unit"
 msgstr "Jednotky rozlišení ohniskové roviny"
 
 #: libexif/exif-tag.c:752
-msgid ""
-"Indicates the unit for measuring <FocalPlaneXResolution> and "
-"<FocalPlaneYResolution>. This value is the same as the <ResolutionUnit>."
+msgid "Indicates the unit for measuring <FocalPlaneXResolution> and <FocalPlaneYResolution>. This value is the same as the <ResolutionUnit>."
 msgstr ""
 
 #: libexif/exif-tag.c:757
@@ -3775,12 +3325,7 @@ msgid "Subject Location"
 msgstr "Umístění objektu"
 
 #: libexif/exif-tag.c:758
-msgid ""
-"Indicates the location of the main subject in the scene. The value of this "
-"tag represents the pixel at the center of the main subject relative to the "
-"left edge, prior to rotation processing as per the <Rotation> tag. The first "
-"value indicates the X column number and the second indicates the Y row "
-"number."
+msgid "Indicates the location of the main subject in the scene. The value of this tag represents the pixel at the center of the main subject relative to the left edge, prior to rotation processing as per the <Rotation> tag. The first value indicates the X column number and the second indicates the Y row number."
 msgstr ""
 
 #: libexif/exif-tag.c:765
@@ -3788,9 +3333,7 @@ msgid "Exposure Index"
 msgstr ""
 
 #: libexif/exif-tag.c:766
-msgid ""
-"Indicates the exposure index selected on the camera or input device at the "
-"time the image is captured."
+msgid "Indicates the exposure index selected on the camera or input device at the time the image is captured."
 msgstr ""
 
 #: libexif/exif-tag.c:769
@@ -3799,52 +3342,35 @@ msgstr ""
 
 #: libexif/exif-tag.c:770
 msgid "Indicates the image sensor type on the camera or input device."
-msgstr ""
-"Udává typ obrazového senzoru na fotoaparátu resp. jiném vstupním zařízení."
+msgstr "Udává typ obrazového senzoru na fotoaparátu resp. jiném vstupním zařízení."
 
 #: libexif/exif-tag.c:773 libexif/fuji/mnote-fuji-tag.c:64
 msgid "File Source"
 msgstr "Zdroj souboru"
 
 #: libexif/exif-tag.c:774
-msgid ""
-"Indicates the image source. If a DSC recorded the image, the tag value of "
-"this tag always be set to 3, indicating that the image was recorded on a DSC."
-msgstr ""
-"Určuje zdroj obrazových dat. Pro fotoaparáty (Digital Still Camera) se "
-"používá hodnota DSC."
+msgid "Indicates the image source. If a DSC recorded the image, the tag value of this tag always be set to 3, indicating that the image was recorded on a DSC."
+msgstr "Určuje zdroj obrazových dat. Pro fotoaparáty (Digital Still Camera) se používá hodnota DSC."
 
 #: libexif/exif-tag.c:778
 msgid "Scene Type"
 msgstr "Typ scény"
 
 #: libexif/exif-tag.c:779
-msgid ""
-"Indicates the type of scene. If a DSC recorded the image, this tag value "
-"must always be set to 1, indicating that the image was directly photographed."
-msgstr ""
-"Určuje typ scény. Pokud obrázek byl vyfotografován, musí být hodnota 1 "
-"určující, že obrázek byl pořízen fotografováním."
+msgid "Indicates the type of scene. If a DSC recorded the image, this tag value must always be set to 1, indicating that the image was directly photographed."
+msgstr "Určuje typ scény. Pokud obrázek byl vyfotografován, musí být hodnota 1 určující, že obrázek byl pořízen fotografováním."
 
 #: libexif/exif-tag.c:789
 msgid "Custom Rendered"
 msgstr ""
 
 #: libexif/exif-tag.c:790
-msgid ""
-"This tag indicates the use of special processing on image data, such as "
-"rendering geared to output. When special processing is performed, the reader "
-"is expected to disable or minimize any further processing."
+msgid "This tag indicates the use of special processing on image data, such as rendering geared to output. When special processing is performed, the reader is expected to disable or minimize any further processing."
 msgstr ""
 
 #: libexif/exif-tag.c:796
-msgid ""
-"This tag indicates the exposure mode set when the image was shot. In auto-"
-"bracketing mode, the camera shoots a series of frames of the same scene at "
-"different exposure settings."
-msgstr ""
-"Udává režim expozice při pořizování snímků. V režimu auto bracket fotoaparát "
-"pořizuje sekvenci snímků s různým nastavením expozice."
+msgid "This tag indicates the exposure mode set when the image was shot. In auto-bracketing mode, the camera shoots a series of frames of the same scene at different exposure settings."
+msgstr "Udává režim expozice při pořizování snímků. V režimu auto bracket fotoaparát pořizuje sekvenci snímků s různým nastavením expozice."
 
 #: libexif/exif-tag.c:801
 msgid "This tag indicates the white balance mode set when the image was shot."
@@ -3855,39 +3381,24 @@ msgid "Digital Zoom Ratio"
 msgstr "Faktor digitálního zvětšení"
 
 #: libexif/exif-tag.c:806
-msgid ""
-"This tag indicates the digital zoom ratio when the image was shot. If the "
-"numerator of the recorded value is 0, this indicates that digital zoom was "
-"not used."
-msgstr ""
-"Udává poměr digitálního zvětšení při pořízování snímku. Hodnota nula v "
-"čitateli znamená, že digitální zvětšení nebylo použito."
+msgid "This tag indicates the digital zoom ratio when the image was shot. If the numerator of the recorded value is 0, this indicates that digital zoom was not used."
+msgstr "Udává poměr digitálního zvětšení při pořízování snímku. Hodnota nula v čitateli znamená, že digitální zvětšení nebylo použito."
 
 #: libexif/exif-tag.c:811
 msgid "Focal Length in 35mm Film"
 msgstr "Ohnisková vzdálenost pro 35mm film"
 
 #: libexif/exif-tag.c:812
-msgid ""
-"This tag indicates the equivalent focal length assuming a 35mm film camera, "
-"in mm. A value of 0 means the focal length is unknown. Note that this tag "
-"differs from the FocalLength tag."
-msgstr ""
-"Ohnisková vzdálenost přepočtená pro fotoaparáty na 35mm film. Hodnota nula "
-"znamená, že ohnisková vzdálenost je neznámá."
+msgid "This tag indicates the equivalent focal length assuming a 35mm film camera, in mm. A value of 0 means the focal length is unknown. Note that this tag differs from the FocalLength tag."
+msgstr "Ohnisková vzdálenost přepočtená pro fotoaparáty na 35mm film. Hodnota nula znamená, že ohnisková vzdálenost je neznámá."
 
 #: libexif/exif-tag.c:818
 msgid "Scene Capture Type"
 msgstr ""
 
 #: libexif/exif-tag.c:819
-msgid ""
-"This tag indicates the type of scene that was shot. It can also be used to "
-"record the mode in which the image was shot. Note that this differs from the "
-"scene type <SceneType> tag."
-msgstr ""
-"Udává typ fotografované scény. Někdy se též používá pro zaznamenání způsobu, "
-"jakým byla fotografie pořízena. Tato značka má jiný význam než 'Typ scény'."
+msgid "This tag indicates the type of scene that was shot. It can also be used to record the mode in which the image was shot. Note that this differs from the scene type <SceneType> tag."
+msgstr "Udává typ fotografované scény. Někdy se též používá pro zaznamenání způsobu, jakým byla fotografie pořízena. Tato značka má jiný význam než 'Typ scény'."
 
 #: libexif/exif-tag.c:824
 msgid "Gain Control"
@@ -3898,21 +3409,15 @@ msgid "This tag indicates the degree of overall image gain adjustment."
 msgstr ""
 
 #: libexif/exif-tag.c:829
-msgid ""
-"This tag indicates the direction of contrast processing applied by the "
-"camera when the image was shot."
+msgid "This tag indicates the direction of contrast processing applied by the camera when the image was shot."
 msgstr "Udává směr zpracování kontrastu fotoaparátem při pořizování snímku."
 
 #: libexif/exif-tag.c:833
-msgid ""
-"This tag indicates the direction of saturation processing applied by the "
-"camera when the image was shot."
+msgid "This tag indicates the direction of saturation processing applied by the camera when the image was shot."
 msgstr "Udává směr zpracování sytosti fotoaparátem při pořizování snímku."
 
 #: libexif/exif-tag.c:837
-msgid ""
-"This tag indicates the direction of sharpness processing applied by the "
-"camera when the image was shot."
+msgid "This tag indicates the direction of sharpness processing applied by the camera when the image was shot."
 msgstr "Udává směr zpracování ostrosti fotoaparátem při pořizování snímku."
 
 #: libexif/exif-tag.c:841
@@ -3920,10 +3425,7 @@ msgid "Device Setting Description"
 msgstr ""
 
 #: libexif/exif-tag.c:842
-msgid ""
-"This tag indicates information on the picture-taking conditions of a "
-"particular camera model. The tag is used only to indicate the picture-taking "
-"conditions in the reader."
+msgid "This tag indicates information on the picture-taking conditions of a particular camera model. The tag is used only to indicate the picture-taking conditions in the reader."
 msgstr ""
 
 #: libexif/exif-tag.c:848
@@ -3939,13 +3441,8 @@ msgid "Image Unique ID"
 msgstr "Jednoznačné ID obrázku"
 
 #: libexif/exif-tag.c:852
-msgid ""
-"This tag indicates an identifier assigned uniquely to each image. It is "
-"recorded as an ASCII string equivalent to hexadecimal notation and 128-bit "
-"fixed length."
-msgstr ""
-"Jednoznačný identifikátor obrázku. Jedná se o 128-bitové číslo uložené v "
-"hexadecimálním zápisu jako ASCII řetězec."
+msgid "This tag indicates an identifier assigned uniquely to each image. It is recorded as an ASCII string equivalent to hexadecimal notation and 128-bit fixed length."
+msgstr "Jednoznačný identifikátor obrázku. Jedná se o 128-bitové číslo uložené v hexadecimálním zápisu jako ASCII řetězec."
 
 #: libexif/exif-tag.c:857
 msgid "Gamma"
@@ -3961,20 +3458,14 @@ msgstr ""
 
 #: libexif/exif-tag.c:861
 msgid "Related to Epson's PRINT Image Matching technology"
-msgstr ""
-"Údaj pravděpodobně pro Epson PRINT Image Matching technology, jeho přesný "
-"význam není znám."
+msgstr "Údaj pravděpodobně pro Epson PRINT Image Matching technology, jeho přesný význam není znám."
 
 #: libexif/exif-tag.c:863
 msgid "Padding"
 msgstr ""
 
 #: libexif/exif-tag.c:864
-msgid ""
-"This tag reserves space that can be reclaimed later when additional metadata "
-"are added. New metadata can be written in place by replacing this tag with a "
-"smaller data element and using the reclaimed space to store the new or "
-"expanded metadata tags."
+msgid "This tag reserves space that can be reclaimed later when additional metadata are added. New metadata can be written in place by replacing this tag with a smaller data element and using the reclaimed space to store the new or expanded metadata tags."
 msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:62
@@ -4584,6 +4075,7 @@ msgid "20 frames/sec"
 msgstr "20 snímků/S"
 
 #: libexif/olympus/mnote-olympus-entry.c:375
+#, c-format
 msgid "Red Correction %f, blue Correction %f"
 msgstr "Červená korekce %f, modrá korekce %f"
 
@@ -4730,6 +4222,7 @@ msgstr ""
 msgid "Preview Image IFD"
 msgstr "Poloha IFD náhledu"
 
+#: libexif/olympus/mnote-olympus-tag.c:50
 msgid "Offset of the preview image directory (IFD) inside the file."
 msgstr "Poloha adresáře IFD s údaji o náhledu v souboru."
 

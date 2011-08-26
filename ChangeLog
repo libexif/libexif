@@ -1,3 +1,12 @@
+2011-08-26  Dan Fandrich <dan@coneharvesters.com>
+
+	* po/cs.po: Updated Czech translation by Jan Patera
+	* po/da.po: Updated Danish translation by Joe Hansen
+	* po/nl.po: Updated Dutch translation by Erwin Poeze
+	* po/pl.po: Updated Polish translation by Jakub Bogusz
+	* po/sk.po: Updated Slovak translation by Ivan Masár
+	* po/sv.po: Updated Swedish translation by Daniel Nylander
+
 2011-07-11  Dan Fandrich <dan@coneharvesters.com>
 
 	* Made mnote_fuji_tag_get_description and
