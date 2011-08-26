@@ -433,9 +433,10 @@ exif_entry_fix (ExifEntry *e)
 }
 
 /*! Format the value of an ExifEntry for human display in a generic way.
- * The output is localized. The formatting is independent of the tag number.
+ * The output is localized. The formatting is independent of the tag number
+ * and is based entirely on the data type.
  * \pre The buffer at val is entirely cleared to 0. This guarantees that the
- *      resulting string will be NUL terminated.
+ *      resulting string will be NUL terminated. FIXME: relax this requirement
  * \pre The ExifEntry is already a member of an ExifData.
  * \param[in] e EXIF entry
  * \param[out] val buffer in which to store value

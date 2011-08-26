@@ -95,8 +95,9 @@ ExifData *exif_data_new_from_data (const unsigned char *data,
 /*! Load the #ExifData structure from the raw JPEG or EXIF data in the given
  * memory buffer. If the EXIF data contains a recognized MakerNote, it is
  * loaded and stored as well for later retrieval by #exif_data_get_mnote_data.
- * If the EXIF_DATA_OPTION_FOLLOW_SPECIFICATION has been set on this #ExifData,
- * then the tags are fixed after loading.
+ * If the #EXIF_DATA_OPTION_FOLLOW_SPECIFICATION option has been set on this
+ * #ExifData, then the tags are automatically fixed after loading (by calling
+ * #exif_data_fix).
  *
  * \param[in,out] data EXIF data
  * \param[in] d pointer to raw JPEG or EXIF data
