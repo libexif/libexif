@@ -136,7 +136,7 @@ The libexif translations are made by volunteers working on their own,
 either directly with the libexif project or through one of two translation
 coordination sites, the Translation Project
 <http://translationproject.org/domain/libexif.html> and Launchpad
-<https://translations.edge.launchpad.net/ubuntu/karmic/+source/libexif>.
+<https://translations.edge.launchpad.net/ubuntu/oneiric/+source/libexif/+pots/libexif-12>.
 Any updates to language translations coordinated by the Translation Project
 must be made through their web site, but all other languages can be
 updated either through Launchpad (preferred) or by sending updates to
