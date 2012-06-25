@@ -2897,7 +2897,7 @@ msgid ""
 "GPS area. Since the Type is not ASCII, NULL termination is not necessary."
 msgstr ""
 "String znakova koji sprema ime GPD područja. Prvi bajt označava znakovni kod "
-"koji je korišten, a ovo je praćeno imenom GPS\r\n"
+"koji je korišten, a ovo je praćeno imenom GPS "
 "područja. Budući da tip nije ASCII, NULL terminacija nije neophodna."
 
 #: libexif/exif-tag.c:210
@@ -2911,7 +2911,7 @@ msgid ""
 "the string is 11 bytes including NULL."
 msgstr ""
 "String znakova koji sprema datum i vrijeme relativno u odnosu na UTC. Format "
-"je \"YYYY:MM:DD\". Dužina stringa je\r\n"
+"je \"YYYY:MM:DD\". Dužina stringa je "
 "11 bajta uključujući NULL."
 
 #: libexif/exif-tag.c:215
@@ -3234,7 +3234,7 @@ msgid ""
 "(<ColorSpace>)."
 msgstr ""
 "Kromacititet bijele tačke slike. Normalno, ovaj tag nije neophodan, budući "
-"da je prostor boje specificiran u tagu za prostor boju\r\n"
+"da je prostor boje specificiran u tagu za prostor boju "
 "(<ColorSpace>)."
 
 #: libexif/exif-tag.c:353
