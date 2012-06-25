@@ -2765,13 +2765,12 @@ msgid "Reference for Distance to Destination"
 msgstr ""
 
 #: libexif/exif-tag.c:194
-#, fuzzy
 msgid ""
 "Indicates the unit used to express the distance to the destination point. "
 "'K', 'M' and 'N' represent kilometers, miles and nautical miles."
 msgstr ""
 "Indicates the unit used to express the distance to the destination point. "
-"'K', 'M' and 'N' represent kilometres, miles and knots."
+"'K', 'M' and 'N' represent kilometres, miles and nautical miles."
 
 #: libexif/exif-tag.c:197
 msgid "Distance to Destination"
@@ -5472,40 +5471,3 @@ msgstr ""
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
 msgstr ""
-
-#~ msgid "Daylight-color fluorescent"
-#~ msgstr "Daylight-colour fluorescent"
-
-#~ msgid "DayWhite-color fluorescent"
-#~ msgstr "DayWhite-colour fluorescent"
-
-#, fuzzy
-#~ msgid "Daywhite fluorescent"
-#~ msgstr "DayWhite-colour fluorescent"
-
-#, fuzzy
-#~ msgid "Top - left"
-#~ msgstr "Top-centre"
-
-#, fuzzy
-#~ msgid "Bottom - left"
-#~ msgstr "Bottom-centre"
-
-#, fuzzy
-#~ msgid "center-weighted average"
-#~ msgstr "Centre-weighted average"
-
-#, fuzzy
-#~ msgid "fluorescent"
-#~ msgstr "Colour accent"
-
-#, fuzzy
-#~ msgid "daylight fluorescent"
-#~ msgstr "Daylight-colour fluorescent"
-
-#, fuzzy
-#~ msgid "white fluorescent"
-#~ msgstr "DayWhite-colour fluorescent"
-
-#~ msgid "Center-Weighted Average"
-#~ msgstr "Centre-Weighted Average"

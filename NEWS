@@ -1,6 +1,6 @@
 libexif-0.6.x:
   * New translations: en_AU, uk
-  * Updated translations: cs, da, de, nl, pl, sk, sv, vi
+  * Updated translations: cs, da, de, en_CA, nl, pl, sk, sv, vi
   * Added more supported lens in Canon MakerNote
   * Added some defensive NULL pointer checks
 

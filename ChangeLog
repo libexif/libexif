@@ -8,6 +8,7 @@
 	* po/uk.po: Added Ukrainian translation by Yuri Chornoivan
 	* po/bs.po: Removed some erroneous embedded \r\n in the translations
 	* Updated non-TP translations to the latest strings in the source code
+	* po/en_CA.po: Updated Canadian English translation
 
 2012-05-16  Dan Fandrich <dan@coneharvesters.com>
 
