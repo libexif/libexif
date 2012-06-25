@@ -912,8 +912,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		 * Print as much as possible.
 		 */
 		exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
-			_("Tag UserComment does not comply "
-			"with standard but contains data."));
+			_("Tag UserComment contains data but is "
+			  "against specification."));
 		for (; (i < e->size)  && (strlen (val) < maxlen - 1); i++) {
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
 				_("Byte at position %i: 0x%02x"), i, e->data[i]);
