@@ -7,6 +7,7 @@
 	* po/en_AU.po: Added English (Australian) translation by Joel Pickett
 	* po/uk.po: Added Ukrainian translation by Yuri Chornoivan
 	* po/bs.po: Removed some erroneous embedded \r\n in the translations
+	* Updated non-TP translations to the latest strings in the source code
 
 2012-05-16  Dan Fandrich <dan@coneharvesters.com>
 
