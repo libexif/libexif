@@ -221,6 +221,7 @@ static const struct canon_entry_table_t {
   {21,  40, N_("Canon EF 28-80mm f/3.5-5.6")},
   {21,  43, N_("Canon EF 28-105mm f/4-5.6")},
   {21,  45, N_("Canon EF-S 18-55mm f/3.5-5.6")},
+  {21,  52, N_("Canon EF-S 18-55mm f/3.5-5.6 IS II")},
   {21, 124, N_("Canon MP-E 65mm f/2.8 1-5x Macro Photo")},
   {21, 125, N_("Canon TS-E 24mm f/3.5L")},
   {21, 126, N_("Canon TS-E 45mm f/2.8")},
