@@ -43,11 +43,11 @@ The short test programs in the test directory illustrates how to create
 valid EXIF data from scratch, how to save EXIF data and how to load EXIF
 data from data in memory. There are also a few simple example programs
 available in the contrib/examples/ directory.  Don't hesitate to contact
-us at <libexif-devel@lists.sourceforge.net> if you've got any questions
+us at <libexif-devel@lists.sourceforge.net> if you have any questions
 on how to use libexif.
 
 To link to libexif into your own package, we recommend using the
-pkgconfig utility (cf. http://pkg-config.freedesktop.org/wiki/). For
+pkgconfig utility (cf. http://www.freedesktop.org/wiki/Software/pkg-config/ For
 your convenience, libexif both provides libexif-uninstalled.pc and
 installs libexif.pc.
 
@@ -62,7 +62,7 @@ Right now, I know of the following frontends to libexif:
              (http://www.sourceforge.net/projects/libexif).
  - gphoto2:  A command-line frontend to libgphoto2, a library to access a 
              wide range of digital cameras (http://www.gphoto.org).
- - gtkam:    A GTK+ frontend to libgphoto2 (http://www.topfrose.de).
+ - gtkam:    A GTK+ frontend to libgphoto2 (http://www.gphoto.org).
  - thirdeye: Digital photos organizer and driver for eComStation
              (http://ecomstation.ru/thirdeye).
  - digikam:  digital photo management application for KDE
@@ -136,7 +136,7 @@ The libexif translations are made by volunteers working on their own,
 either directly with the libexif project or through one of two translation
 coordination sites, the Translation Project
 <http://translationproject.org/domain/libexif.html> and Launchpad
-<https://translations.edge.launchpad.net/ubuntu/oneiric/+source/libexif/+pots/libexif-12>.
+<https://translations.edge.launchpad.net/ubuntu/precise/+source/libexif/+pots/libexif-12>.
 Any updates to language translations coordinated by the Translation Project
 must be made through their web site, but all other languages can be
 updated either through Launchpad (preferred) or by sending updates to
@@ -158,7 +158,8 @@ AUTHORS
 libexif has originally been written by Curtis Galloway
 <curtisg@users.sourceforge.net>. Because of the original design not
 supporting editing and saving, Lutz Mueller <lutz@users.sourceforge.net>
-rewrote libexif from scratch.
+rewrote libexif from scratch. Since then, many more people have contributed
+to libexif.
 
 
 LINKS
@@ -168,10 +169,6 @@ Some links you might want to check out if you are interested in further
 information about EXIF.
 
  - http://drewnoakes.com/code/exif: metadata extraction framework in Java
- - http://www.pima.net: This is where I got the exif standard from. Site is
-   down as of 2002/12/31.
- - http://www.jeida.or.jp: Can't remember any more. Site is down as of
-   2002/12/31.
  - http://www.exif.org: information about the EXIF standard.
  - http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/index.html: Looks
    like libexif in Perl. Seems to support a lot of MakerNotes.
