@@ -1,3 +1,9 @@
+2012-06-25  Dan Fandrich <dan@coneharvesters.com>
+
+	* Updated non-TP translations from launchpad.net's "precise"
+	  translations:
+	 be.po bs.po en_GB.po pt.po pt_BR.po ru.po sq.po sr.po tr.po zh_CN.po
+
 2012-05-16  Dan Fandrich <dan@coneharvesters.com>
 
 	* po/vi.po: Updated Vietnamese translation by Trần Ngọc Quân
