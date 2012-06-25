@@ -3,6 +3,9 @@
 	* Updated non-TP translations from launchpad.net's "precise"
 	  translations:
 	 be.po bs.po en_GB.po pt.po pt_BR.po ru.po sq.po sr.po tr.po zh_CN.po
+	* Added new translations from launchpad.net's "precise" translations:
+	* po/en_AU.po: Added English (Australian) translation by Joel Pickett
+	* po/uk.po: Added Ukrainian translation by Yuri Chornoivan
 
 2012-05-16  Dan Fandrich <dan@coneharvesters.com>
 
