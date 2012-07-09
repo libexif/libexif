@@ -1,8 +1,18 @@
+2012-07-09  Dan Fandrich <dan@coneharvesters.com>
+
+	* po/da.po: Updated Danish translation by Joe Hansen
+	* po/de.po: Updated German translation by Christian Kirbach
+	* po/pl.po: Updated Polish translation by Jakub Bogusz
+	* po/sk.po: Updated Slovak translation by Ivan Masár
+	* po/uk.po: Updated Ukrainian translation by Yuri Chornoivan
+	* po/vi.po: Updated Vietnamese translation by Trần Ngọc Quân
+	* Mention that uk.po must now be updated through translationproject.org
+
 2012-06-25  Dan Fandrich <dan@coneharvesters.com>
 
 	* Updated non-TP translations from launchpad.net's "precise"
 	  translations:
-	 be.po bs.po en_GB.po pt.po pt_BR.po ru.po sq.po sr.po tr.po zh_CN.po
+	  be.po bs.po en_GB.po pt.po pt_BR.po ru.po sq.po sr.po tr.po zh_CN.po
 	* Added new translations from launchpad.net's "precise" translations:
 	* po/en_AU.po: Added English (Australian) translation by Joel Pickett
 	* po/uk.po: Added Ukrainian translation by Yuri Chornoivan
