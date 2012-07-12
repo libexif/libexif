@@ -3,6 +3,11 @@ libexif-0.6.21 (2012-07-12):
   * Updated translations: cs, da, de, en_CA, nl, pl, sk, sv, vi
   * Added more supported lens in Canon MakerNote
   * Added some defensive NULL pointer checks
+  * Fixed a number of security and stability issues due to buffer overflows,
+    bad pointer dereferences and division-by-zero including bug #3434540
+    and bug #3434545 (CVE-2012-2812, CVE-2012-2813, CVE-2012-2814,
+    CVE-2012-2836, CVE-2012-2837, CVE-2012-2840, CVE-2012-2841,
+    CVE-2012-2845)
 
 libexif-0.6.20 (2010-12-15):
   * New translations: bs, tr
