@@ -76,6 +76,9 @@
 	}                                                               \
 }
 
+#define R2L(n) ((n).denominator ? (long)(n).numerator/(n).denominator : 0L)
+#define R2D(n) ((n).denominator ? (double)(n).numerator/(n).denominator : 0.0)
+
 static const struct {
 	ExifTag tag;
 	ExifFormat fmt;
@@ -372,20 +375,20 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
 		CC (entry->components, 4, v, maxlen);
 		vr = exif_get_rational (entry->data, entry->order);
-		r = (double)vr.numerator / vr.denominator;
+		r = R2D(vr);
 		vr = exif_get_rational (entry->data+8, entry->order);
-		b = (double)vr.numerator / vr.denominator;
+		b = R2D(vr);
 		snprintf (v, maxlen, _("Red Correction %f, blue Correction %f"), r,b);
 		break;
 	case MNOTE_NIKON_TAG_MANUALFOCUSDISTANCE:
 		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
 		CC (entry->components, 1, v, maxlen);
 		vr = exif_get_rational (entry->data, entry->order);
-		if (vr.numerator) {
-			r = (double)vr.numerator / vr.denominator;
-			snprintf (v, maxlen, _("%2.2f meters"), r);
-		} else {
+		if (!vr.numerator || !vr.denominator) {
 			strncpy (v, _("No manual focus selection"), maxlen);
+		} else {
+			r = R2D(vr);
+			snprintf (v, maxlen, _("%2.2f meters"), r);
 		}
 		break;
 	case MNOTE_NIKON_TAG_SENSORPIXELSIZE:
@@ -393,8 +396,8 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		CC (entry->components, 2, v, maxlen);
 		vr = exif_get_rational (entry->data, entry->order);
 		vr2 = exif_get_rational (entry->data+8, entry->order);
-		r = (double)vr.numerator / vr.denominator;
-		b = (double)vr2.numerator / vr2.denominator;
+		r = R2D(vr);
+		b = R2D(vr2);
 		snprintf (v, maxlen, "%2.2f x %2.2f um", r, b);
 		break;
 	case MNOTE_NIKON_TAG_BRACKETING:
@@ -450,10 +453,10 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		if (entry->format == EXIF_FORMAT_RATIONAL) {
 			CC (entry->components, 1, v, maxlen);
 			vr = exif_get_rational (entry->data, entry->order);
-			if (!vr.numerator) {
+			if (!vr.numerator || !vr.denominator) {
 				strncpy (v, _("None"), maxlen);
 			} else {
-				r = (double)vr.numerator / vr.denominator;
+				r = R2D(vr);
 				snprintf (v, maxlen, "%2.2f", r);
 			}
 			break;
@@ -568,13 +571,13 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			double c,d;
 			unsigned long a,b;
 			vr = exif_get_rational (entry->data, entry->order);
-			a = vr.numerator / vr.denominator;
+			a = R2L(vr);
 			vr = exif_get_rational (entry->data+8, entry->order);
-			b = vr.numerator / vr.denominator;
+			b = R2L(vr);
 			vr = exif_get_rational (entry->data+16, entry->order);
-			c = (double)vr.numerator / vr.denominator;
+			c = R2D(vr);
 			vr = exif_get_rational (entry->data+24, entry->order);
-			d = (double)vr.numerator / vr.denominator;
+			d = R2D(vr);
 			snprintf (v, maxlen, "%ld-%ldmm 1:%3.1f - %3.1f",a,b,c,d);
 		}
 		break;
@@ -682,7 +685,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
 		CC (entry->components, 1, v, maxlen);
 		vr = exif_get_rational (entry->data, entry->order);
-		if (vr.numerator == 0) {
+		if (!vr.numerator || !vr.denominator) {
 			strncpy (v, _("Unknown"), maxlen);
 		}
 		else {
@@ -793,7 +796,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			if (!vr.denominator) {
 				strncpy (v, _("Infinite"), maxlen);
 			} else {
-				r = (double)vr.numerator / vr.denominator;
+				r = R2D(vr);
 				snprintf (v, maxlen, "%2.3f", r);
 			}
 			break;
@@ -803,7 +806,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			if (!vsr.denominator) {
 				strncpy (v, _("Infinite"), maxlen);
 			} else {
-				r = (double)vsr.numerator / vsr.denominator;
+				r = R2D(vsr);
 				snprintf (v, maxlen, "%2.3f", r);
 			}
 			break;
