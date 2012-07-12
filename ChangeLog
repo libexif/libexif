@@ -1,3 +1,37 @@
+2012-07-12  Dan Fandrich <dan@coneharvesters.com>
+
+	* Fixed some buffer overflows in exif_entry_format_value()
+	  This fixes CVE-2012-2814.  Reported by Mateusz Jurczyk of
+	  Google Security Team
+	* Fixed an off-by-one error in exif_convert_utf16_to_utf8()
+	  This can cause a one-byte NUL write past the end of the buffer.
+	  This fixes CVE-2012-2840
+	* Don't read past the end of a tag when converting from UTF-16
+	  This fixes CVE-2012-2813. Reported by Mateusz Jurczyk of
+	  Google Security Team
+	* Fixed an out of bounds read on corrupted input
+	  The EXIF_TAG_COPYRIGHT tag ought to be, but perhaps is not,
+	  NUL-terminated.
+	  This fixes CVE-2012-2812. Reported by Mateusz Jurczyk of
+	  Google Security Team
+	* Fixed a buffer overflow problem in exif_entry_get_value
+	  If the application passed in a buffer length of 0, then it would
+	  be treated as the buffer had unlimited length.
+	  This fixes CVE-2012-2841
+	* Fix a buffer overflow on corrupt EXIF data.
+	  This fixes bug #3434540 and fixes part of CVE-2012-2836
+	  Reported by Yunho Kim
+	* Fix a buffer overflow on corrupted JPEG data
+	  An unsigned data length might wrap around when decremented
+	  below zero, bypassing sanity checks on length.
+	  This code path can probably only occur if exif_data_load_data()
+	  is called directly by the application on data that wasn't parsed
+	  by libexif itself.
+	  This solves the other part of CVE-2012-2836
+	* Fixed some possible division-by-zeros in Olympus-style makernotes
+	  This fixes bug #3434545, a.k.a. CVE-2012-2837
+	  Reported by Yunho Kim
+
 2012-07-09  Dan Fandrich <dan@coneharvesters.com>
 
 	* po/da.po: Updated Danish translation by Joe Hansen
