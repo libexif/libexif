@@ -807,21 +807,21 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 			  "Found EXIF header.");
 	} else {
-		while (1) {
-			while ((d[0] == 0xff) && ds) {
+		while (ds >= 3) {
+			while (ds && (d[0] == 0xff)) {
 				d++;
 				ds--;
 			}
 
 			/* JPEG_MARKER_SOI */
-			if (d[0] == JPEG_MARKER_SOI) {
+			if (ds && d[0] == JPEG_MARKER_SOI) {
 				d++;
 				ds--;
 				continue;
 			}
 
 			/* JPEG_MARKER_APP0 */
-			if (d[0] == JPEG_MARKER_APP0) {
+			if (ds >= 3 && d[0] == JPEG_MARKER_APP0) {
 				d++;
 				ds--;
 				l = (d[0] << 8) | d[1];
@@ -833,7 +833,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			}
 
 			/* JPEG_MARKER_APP1 */
-			if (d[0] == JPEG_MARKER_APP1)
+			if (ds && d[0] == JPEG_MARKER_APP1)
 				break;
 
 			/* Unknown marker or data. Give up. */
@@ -841,12 +841,12 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 				  "ExifData", _("EXIF marker not found."));
 			return;
 		}
-		d++;
-		ds--;
-		if (ds < 2) {
+		if (ds < 3) {
 			LOG_TOO_SMALL;
 			return;
 		}
+		d++;
+		ds--;
 		len = (d[0] << 8) | d[1];
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 			  "We have to deal with %i byte(s) of EXIF data.",
