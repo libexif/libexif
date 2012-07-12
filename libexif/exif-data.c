@@ -781,15 +781,15 @@ exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData", \
 
 void
 exif_data_load_data (ExifData *data, const unsigned char *d_orig,
-		     unsigned int ds_orig)
+		     unsigned int ds)
 {
 	unsigned int l;
 	ExifLong offset;
 	ExifShort n;
 	const unsigned char *d = d_orig;
-	unsigned int ds = ds_orig, len;
+	unsigned int len, fullds;
 
-	if (!data || !data->priv || !d || !ds) 
+	if (!data || !data->priv || !d || !ds)
 		return;
 
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
@@ -872,9 +872,18 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 		  "Found EXIF header.");
 
-	/* Byte order (offset 6, length 2) */
+	/* Sanity check the data length */
 	if (ds < 14)
 		return;
+
+	/* The JPEG APP1 section can be no longer than 64 KiB (including a
+	   16-bit length), so cap the data length to protect against overflow
+	   in future offset calculations */
+	fullds = ds;
+	if (ds > 0xfffe)
+		ds = 0xfffe;
+
+	/* Byte order (offset 6, length 2) */
 	if (!memcmp (d + 6, "II", 2))
 		data->priv->order = EXIF_BYTE_ORDER_INTEL;
 	else if (!memcmp (d + 6, "MM", 2))
@@ -894,24 +903,25 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData", 
 		  "IFD 0 at %i.", (int) offset);
 
+	/* Sanity check the offset, being careful about overflow */
+	if (offset > ds || offset + 6 + 2 > ds)
+		return;
+
 	/* Parse the actual exif data (usually offset 14 from start) */
 	exif_data_load_data_content (data, EXIF_IFD_0, d + 6, ds - 6, offset, 0);
 
 	/* IFD 1 offset */
-	if (offset + 6 + 2 > ds) {
-		return;
-	}
 	n = exif_get_short (d + 6 + offset, data->priv->order);
-	if (offset + 6 + 2 + 12 * n + 4 > ds) {
+	if (offset + 6 + 2 + 12 * n + 4 > ds)
 		return;
-	}
+
 	offset = exif_get_long (d + 6 + offset + 2 + 12 * n, data->priv->order);
 	if (offset) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 			  "IFD 1 at %i.", (int) offset);
 
 		/* Sanity check. */
-		if (offset > ds - 6) {
+		if (offset > ds || offset + 6 > ds) {
 			exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifData", "Bogus offset of IFD1.");
 		} else {
@@ -925,7 +935,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	 * space between IFDs. Here is the only place where we have access
 	 * to that data.
 	 */
-	interpret_maker_note(data, d, ds);
+	interpret_maker_note(data, d, fullds);
 
 	/* Fixup tags if requested */
 	if (data->priv->options & EXIF_DATA_OPTION_FOLLOW_SPECIFICATION)
