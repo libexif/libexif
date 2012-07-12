@@ -239,7 +239,7 @@ exif_convert_utf16_to_utf8 (char *out, const unsigned short *in, int maxlen)
 				break;
 			}
 		} else {
-			if (maxlen > 2) {
+			if (maxlen > 3) {
 				*out++ = ((*in >> 12) & 0x0F) | 0xE0;
 				*out++ = ((*in >> 6) & 0x3F) | 0x80;
 				*out++ = (*in++ & 0x3F) | 0x80;
