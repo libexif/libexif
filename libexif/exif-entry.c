@@ -862,14 +862,15 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	 */
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
+	if (!e || !e->parent || !e->parent->parent || !maxlen)
+		return val;
+
 	/* make sure the returned string is zero terminated */
 	memset (val, 0, maxlen);
 	maxlen--;
 	memset (b, 0, sizeof (b));
 
 	/* We need the byte order */
-	if (!e || !e->parent || !e->parent->parent)
-		return val;
 	o = exif_data_get_byte_order (e->parent->parent);
 
 	/* Sanity check */
@@ -927,17 +928,16 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 
 		/*
 		 * If we reach this point, the tag does not
-		 * comply with the standard and seems to contain data.
+ 		 * comply with the standard but seems to contain data.
 		 * Print as much as possible.
 		 */
 		exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
 			_("Tag UserComment contains data but is "
 			  "against specification."));
-		for (; (i < e->size)  && (strlen (val) < maxlen - 1); i++) {
+ 		for (j = 0; (i < e->size) && (j < maxlen); i++, j++) {
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
 				_("Byte at position %i: 0x%02x"), i, e->data[i]);
-			val[strlen (val)] =
-				isprint (e->data[i]) ? e->data[i] : '.';
+ 			val[j] = isprint (e->data[i]) ? e->data[i] : '.';
 		}
 		break;
 
