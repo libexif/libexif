@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([EXIF library], [0.6.20.1], [libexif-devel@lists.sourceforge.net], [libexif])
+AC_INIT([EXIF library], [0.6.21], [libexif-devel@lists.sourceforge.net], [libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
@@ -59,9 +59,10 @@ dnl 14:2:1   0.6.17
 dnl 15:3:0   added exif_loader_get_buf (for 0.6.18)
 dnl 15:3:1   0.6.19
 dnl 15:3:2   0.6.20
+dnl 15:3:3   0.6.21
 LIBEXIF_CURRENT=15
 LIBEXIF_AGE=3
-LIBEXIF_REVISION=2
+LIBEXIF_REVISION=3
 AC_SUBST([LIBEXIF_AGE])
 AC_SUBST([LIBEXIF_REVISION])
 AC_SUBST([LIBEXIF_CURRENT])
