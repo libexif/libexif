@@ -108,7 +108,7 @@ static const struct {
 	{MNOTE_CANON_TAG_SETTINGS_2, 16, N_("AE Bracket Value")},
 	{MNOTE_CANON_TAG_SETTINGS_2, 18, N_("Focus Distance Upper")},
 	{MNOTE_CANON_TAG_SETTINGS_2, 19, N_("Focus Distance Lower")},
-	{MNOTE_CANON_TAG_SETTINGS_2, 20, N_("FNumber")},
+	{MNOTE_CANON_TAG_SETTINGS_2, 20, N_("F-Number")},
 	{MNOTE_CANON_TAG_SETTINGS_2, 21, N_("Exposure Time")},
 	{MNOTE_CANON_TAG_SETTINGS_2, 23, N_("Bulb Duration")},
 	{MNOTE_CANON_TAG_SETTINGS_2, 25, N_("Camera Type")},
