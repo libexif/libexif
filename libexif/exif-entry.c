@@ -1375,12 +1375,14 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_XP_KEYWORDS:
 	case EXIF_TAG_XP_SUBJECT:
 	{
+		unsigned short *utf16;
+
 		/* Sanity check the size to prevent overflow */
 		if (e->size+sizeof(unsigned short) < e->size) break;
 
 		/* The tag may not be U+0000-terminated , so make a local
 		   U+0000-terminated copy before converting it */
-		unsigned short *utf16 = exif_mem_alloc (e->priv->mem, e->size+sizeof(unsigned short));
+		utf16 = exif_mem_alloc (e->priv->mem, e->size+sizeof(unsigned short));
 		if (!utf16) break;
 		memcpy(utf16, e->data, e->size);
 		utf16[e->size/sizeof(unsigned short)] = 0;
