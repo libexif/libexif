@@ -1,5 +1,6 @@
 libexif-0.6.x:
-  *
+  * Updated translations: da, de, fr, pl, uk
+  * Fixed C89 compatibility
 
 libexif-0.6.21 (2012-07-12):
   * New translations: en_AU, uk

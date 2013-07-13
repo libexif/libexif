@@ -1,3 +1,12 @@
+2013-07-13  Dan Fandrich <dan@coneharvesters.com>
+
+	* Fixed a C89 compatibility issue (bug #117 reported by
+	  Guenter Knauf)
+	* po/da.po: Updated Danish translation by Joe Hansen
+	* po/de.po: Updated German translation by Christian Kirbach
+	* po/fr.po: Updated French translation by Frédéric Marchal
+	* po/uk.po: Updated Ukrainian translation by Yuri Chornoivan
+
 2013-02-23  Dan Fandrich <dan@coneharvesters.com>
 
 	* po/pl.po: Updated Polish translation by Jakub Bogusz
