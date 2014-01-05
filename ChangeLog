@@ -1,3 +1,7 @@
+2014-01-05  Dan Fandrich <dan@coneharvesters.com>
+
+	* po/es.po: Updated Spanish translation by Antonio Ceballos
+
 2013-07-13  Dan Fandrich <dan@coneharvesters.com>
 
 	* Fixed a C89 compatibility issue (bug #117 reported by
