@@ -78,6 +78,7 @@ AM_PROG_LIBTOOL
 AM_CPPFLAGS="$CPPFLAGS"
 GP_CONFIG_MSG([Compiler],[${CC}])
 
+AC_SYS_LARGEFILE
 
 dnl Create a stdint.h-like file containing size-specific integer definitions
 dnl that will always be available
