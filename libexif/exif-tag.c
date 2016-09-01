@@ -105,7 +105,7 @@ static const struct TagEntry {
 	    "reference is sea level and the altitude is above sea level, 0 "
 	    "is given. If the altitude is below sea level, a value of 1 is given "
 	    "and the altitude is indicated as an absolute value in the "
-	    "GSPAltitude tag. The reference unit is meters. Note that this tag "
+	    "GPSAltitude tag. The reference unit is meters. Note that this tag "
 	    "is BYTE type, unlike other reference tags."), ESL_GPS},
 	{EXIF_TAG_GPS_ALTITUDE, "GPSAltitude", N_("Altitude"),
 	 N_("Indicates the altitude based on the reference in GPSAltitudeRef. "

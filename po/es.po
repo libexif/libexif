@@ -2495,7 +2495,7 @@ msgid "Altitude Reference"
 msgstr "Referencia de altitud"
 
 #: libexif/exif-tag.c:104
-msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GSPAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
+msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GPSAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
 msgstr "Indica la altitud utilizada como altitud de referencia. Si la referencia es el nivel del mar y la altitud está por encima del mar, se pone 0. Si la altitud está por debajo del nivel del mar, se pone el valor 1 y la altitud se indica como un valor absoluto en la etiqueta GPSAltitude. La unidad de referencia es el metro. Adviértase que esta etiqueta es de tipo BYTE, a diferencia de otras etiquetas de referencia."
 
 #: libexif/exif-tag.c:110

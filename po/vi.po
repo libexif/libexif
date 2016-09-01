@@ -2511,7 +2511,7 @@ msgid "Altitude Reference"
 msgstr "Tham chiếu cao độ"
 
 #: libexif/exif-tag.c:104
-msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GSPAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
+msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GPSAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
 msgstr "Cho biết cao độ được dùng là cao độ tham chiếu. Nếu tham chiếu là mặt biển và cao độ trên mặt biển, đưa ra 0. Nếu cao độ dưới mặt biển, đưa ra 1, và cao độ được cho biết là giá trị tuyệt đối trong thẻ <cao độ GSP>. Đơn vị tham chiếu là mét. Ghi chú rằng thẻ này là kiểu BYTE, khác với các thẻ tham chiếu khác."
 
 #: libexif/exif-tag.c:110
