@@ -1,6 +1,8 @@
 libexif-0.6.x:
-  * Updated translations: da, de, fr, pl, uk
+  * New translations: ms
+  * Updated translations for most languages
   * Fixed C89 compatibility
+  * Fixed warnings on recent versions of autoconf
 
 libexif-0.6.21 (2012-07-12):
   * New translations: en_AU, uk
