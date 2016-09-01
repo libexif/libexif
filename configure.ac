@@ -3,7 +3,7 @@ AC_INIT([EXIF library], [0.6.21.1], [libexif-devel@lists.sourceforge.net], [libe
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
-AM_INIT_AUTOMAKE([-Wall gnu 1.9 dist-bzip2 dist-zip check-news])
+AM_INIT_AUTOMAKE([-Wall gnu 1.9 dist-bzip2 dist-zip check-news subdir-objects])
 AM_MAINTAINER_MODE
 
 # Use the silent-rules feature when possible.
@@ -70,10 +70,11 @@ AC_SUBST([LIBEXIF_CURRENT_MIN],[`expr $LIBEXIF_CURRENT - $LIBEXIF_AGE`])
 LIBEXIF_VERSION_INFO="$LIBEXIF_CURRENT:$LIBEXIF_REVISION:$LIBEXIF_AGE"
 AC_SUBST([LIBEXIF_VERSION_INFO])
 
-AC_PROG_CC
+AM_PROG_CC_C_O
 AC_C_CONST
 AC_C_INLINE
 dnl FIXME: AC_LIBTOOL_WIN32_DLL
+AM_PROG_AR
 AM_PROG_LIBTOOL
 AM_CPPFLAGS="$CPPFLAGS"
 GP_CONFIG_MSG([Compiler],[${CC}])
@@ -119,25 +120,23 @@ dnl ---------------------------------------------------------------------------
 LIBS_orig="$LIBS"
 LIBS="$LIBS -lm"
 AC_MSG_CHECKING([for math functions in libm])
-AC_LINK_IFELSE([
-	#include <math.h>
-	int main() {
-	  double s = sqrt(0);
-	  double p = pow(s,s);
-	  return (int)p;
-	}
-], [AC_MSG_RESULT(yes)], [
+AC_LINK_IFELSE([AC_LANG_PROGRAM([
+	  #include <math.h>
+	  ],[
+	    double s = sqrt(0);
+	    double p = pow(s,s);
+	  ])],
+	[AC_MSG_RESULT(yes)], [
 	AC_MSG_RESULT(no)
 	LIBS="$LIBS_orig"
 	AC_MSG_CHECKING([for math functions without libm])
-	AC_LINK_IFELSE([
+	AC_LINK_IFELSE([AC_LANG_PROGRAM([
 		#include <math.h>
-		int main() {
+		],[
 		  double s = sqrt(0);
 		  double p = pow(s,s);
-		  return (int)p;
-		}
-	], [
+		])],
+	[
 		AC_MSG_RESULT(yes)
 	],[
 		AC_MSG_RESULT(no)
