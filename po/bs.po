@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-12 20:41+0200\n"
+"POT-Creation-Date: 2016-09-01 23:00+0200\n"
 "PO-Revision-Date: 2016-06-23 10:30+0000\n"
 "Last-Translator: Rockworld <sumoisrock@gmail.com>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -654,7 +654,7 @@ msgstr "Canon EF 24mm f/2.8 or Sigma 15mm f/2.8 EX Fisheye"
 
 #: libexif/canon/mnote-canon-entry.c:219
 msgid "Canon EF 35-80mm f/4-5.6"
-msgstr ""
+msgstr "Canon EF 35-80mm f/4-5.6"
 
 #: libexif/canon/mnote-canon-entry.c:220
 msgid "Canon EF 75-300mm f/4-5.6"
@@ -674,7 +674,7 @@ msgstr "Canon EF-S 18-55mm f/3.5-5.6"
 
 #: libexif/canon/mnote-canon-entry.c:224
 msgid "Canon EF-S 18-55mm f/3.5-5.6 IS II"
-msgstr ""
+msgstr "Canon EF-S 18-55mm f/3.5-5.6 IS II"
 
 #: libexif/canon/mnote-canon-entry.c:225
 msgid "Canon MP-E 65mm f/2.8 1-5x Macro Photo"
@@ -926,7 +926,7 @@ msgstr "Canon EF 70-200mm f/4L IS USM"
 
 #: libexif/canon/mnote-canon-entry.c:287
 msgid "Canon EF 70-200mm f/2.8L IS II USM"
-msgstr ""
+msgstr "Canon EF 70-200mm f/2.8L IS II USM"
 
 #: libexif/canon/mnote-canon-entry.c:289
 msgid "TTL"
@@ -1567,9 +1567,10 @@ msgstr "Gornja udaljenost fokusa"
 msgid "Focus Distance Lower"
 msgstr "Donja udaljenost fokusa"
 
-#: libexif/canon/mnote-canon-tag.c:111
-msgid "FNumber"
-msgstr "FBroj"
+#: libexif/canon/mnote-canon-tag.c:111 libexif/exif-tag.c:469
+#: libexif/pentax/mnote-pentax-tag.c:79
+msgid "F-Number"
+msgstr "F-Broj"
 
 #: libexif/canon/mnote-canon-tag.c:112 libexif/exif-tag.c:466
 #: libexif/pentax/mnote-pentax-tag.c:78
@@ -1731,8 +1732,7 @@ msgstr "%i bajta nepodržanog tipa podataka"
 
 #: libexif/exif-entry.c:642
 #, c-format
-msgid ""
-"The tag '%s' contains data of an invalid format ('%s', expected '%s')."
+msgid "The tag '%s' contains data of an invalid format ('%s', expected '%s')."
 msgstr ""
 "Etiketa '%s' sadrži podatke u neispravnom obliku ( '%s', a traži se '%s')."
 
@@ -2279,9 +2279,9 @@ msgstr "FlashPix verzija 1.01"
 msgid "Unknown FlashPix Version"
 msgstr "Nepoznata verzija FlashPix"
 
-#: libexif/exif-entry.c:979 libexif/exif-entry.c:998 libexif/exif-entry.c:1666
-#: libexif/exif-entry.c:1671 libexif/exif-entry.c:1675
-#: libexif/exif-entry.c:1680 libexif/exif-entry.c:1681
+#: libexif/exif-entry.c:979 libexif/exif-entry.c:998 libexif/exif-entry.c:1668
+#: libexif/exif-entry.c:1673 libexif/exif-entry.c:1677
+#: libexif/exif-entry.c:1682 libexif/exif-entry.c:1683
 msgid "[None]"
 msgstr "[Ništa]"
 
@@ -2508,8 +2508,8 @@ msgid ""
 msgstr ""
 "Označava verziju od <GPSInfoIFD>. Ovo je verzija 2.0.0.0. Ova etiketa je "
 "obavezna kad je prisutna etiketa <GPSInfo>. (Primjedba: Etiketa "
-"<GPSVersionID> se izražava u bajtovima, za razliku od etikete "
-"<ExifVersion>.Ako je verzija 2.0.0.0, vrijednost etikete je 02000000.H)."
+"<GPSVersionID> se izražava u bajtovima, za razliku od etikete <ExifVersion>."
+"Ako je verzija 2.0.0.0, vrijednost etikete je 02000000.H)."
 
 #: libexif/exif-tag.c:69
 msgid "Interoperability Index"
@@ -2558,8 +2558,8 @@ msgstr ""
 "Označava geogr. širinu. Ona se mjeri u stepenima, minutima i sekundama i "
 "zapisuje u racionalnim brojevima. Ako su izraženi i stepeni, minuti i "
 "sekunde, koristi se oblik dd/1,mm/1,ss/1. Ako je izraženo samo u stepenima i "
-"minutima, i minuti su, recimo, izraženi u dvije decimale, oblik je "
-"dd/1,mmmm/100,0/1."
+"minutima, i minuti su, recimo, izraženi u dvije decimale, oblik je dd/1,"
+"mmmm/100,0/1."
 
 #: libexif/exif-tag.c:91
 msgid "East or West Longitude"
@@ -2588,8 +2588,8 @@ msgstr ""
 "Označava geogr. dužinu. Ona se mjeri u stepenima, minutima i sekundama i "
 "zapisuje u racionalnim brojevima. Ako su izraženi i stepeni, minuti i "
 "sekunde, koristi se oblik dd/1,mm/1,ss/1. Ako je izraženo samo u stepenima i "
-"minutima, i minuti su, recimo, izraženi u dvije decimale, oblik je "
-"dd/1,mmmm/100,0/1."
+"minutima, i minuti su, recimo, izraženi u dvije decimale, oblik je dd/1,"
+"mmmm/100,0/1."
 
 #: libexif/exif-tag.c:103
 msgid "Altitude Reference"
@@ -2600,13 +2600,13 @@ msgid ""
 "Indicates the altitude used as the reference altitude. If the reference is "
 "sea level and the altitude is above sea level, 0 is given. If the altitude "
 "is below sea level, a value of 1 is given and the altitude is indicated as "
-"an absolute value in the GSPAltitude tag. The reference unit is meters. Note "
+"an absolute value in the GPSAltitude tag. The reference unit is meters. Note "
 "that this tag is BYTE type, unlike other reference tags."
 msgstr ""
 "Označava visinu u odnosu na obilježivač visine. Ako se mjeri u odnosu na "
 "nivo mora, i visina je iznad nivoa mora, postavlja se 0. Ako je visina ispod "
 "nivoa mora, postavlja se 1 i na visinu se gleda kao na apsolutnu vrijednost "
-"u etiketi GSPAltitude. Jedinica su metri. Ova etiketa je tipa BYTE, za "
+"u etiketi GPSAltitude. Jedinica su metri. Ova etiketa je tipa BYTE, za "
 "razliku od drugih etiketa upućivača."
 
 #: libexif/exif-tag.c:110
@@ -3444,10 +3444,6 @@ msgstr ""
 msgid "Exposure time, given in seconds (sec)."
 msgstr "Vrijeme osvjetljenja u sekundama (sec)."
 
-#: libexif/exif-tag.c:469 libexif/pentax/mnote-pentax-tag.c:79
-msgid "F-Number"
-msgstr "F-Broj"
-
 #: libexif/exif-tag.c:470
 msgid "The F number."
 msgstr "F broj."
@@ -3725,20 +3721,20 @@ msgid ""
 "those in <ImageDescription>, and without the character code limitations of "
 "the <ImageDescription> tag. The character code used in the <UserComment> tag "
 "is identified based on an ID code in a fixed 8-byte area at the start of the "
-"tag data area. The unused portion of the area is padded with NULL "
-"(\"00.h\"). ID codes are assigned by means of registration. The designation "
-"method and references for each character code are defined in the "
-"specification. The value of CountN is determined based on the 8 bytes in the "
-"character code area and the number of bytes in the user comment part. Since "
-"the TYPE is not ASCII, NULL termination is not necessary. The ID code for "
-"the <UserComment> area may be a Defined code such as JIS or ASCII, or may be "
-"Undefined. The Undefined name is UndefinedText, and the ID code is filled "
-"with 8 bytes of all \"NULL\" (\"00.H\"). An Exif reader that reads the "
-"<UserComment> tag must have a function for determining the ID code. This "
-"function is not required in Exif readers that do not use the <UserComment> "
-"tag. When a <UserComment> area is set aside, it is recommended that the ID "
-"code be ASCII and that the following user comment part be filled with blank "
-"characters [20.H]."
+"tag data area. The unused portion of the area is padded with NULL (\"00.h"
+"\"). ID codes are assigned by means of registration. The designation method "
+"and references for each character code are defined in the specification. The "
+"value of CountN is determined based on the 8 bytes in the character code "
+"area and the number of bytes in the user comment part. Since the TYPE is not "
+"ASCII, NULL termination is not necessary. The ID code for the <UserComment> "
+"area may be a Defined code such as JIS or ASCII, or may be Undefined. The "
+"Undefined name is UndefinedText, and the ID code is filled with 8 bytes of "
+"all \"NULL\" (\"00.H\"). An Exif reader that reads the <UserComment> tag "
+"must have a function for determining the ID code. This function is not "
+"required in Exif readers that do not use the <UserComment> tag. When a "
+"<UserComment> area is set aside, it is recommended that the ID code be ASCII "
+"and that the following user comment part be filled with blank characters [20."
+"H]."
 msgstr ""
 "Tag za exif korisnike da mogu pista ključne riječi u komentarima na slici "
 "pored onih u <ImageDescription>, i bez ograničenja koda znakova u "
@@ -3789,8 +3785,7 @@ msgid "XP Title"
 msgstr "XP naslov"
 
 #: libexif/exif-tag.c:635
-msgid ""
-"A character string giving the title of the image, encoded in UTF-16LE."
+msgid "A character string giving the title of the image, encoded in UTF-16LE."
 msgstr "String znakova koji daje naziv slike, enkodiran u UTF-16LE."
 
 #: libexif/exif-tag.c:639
@@ -3907,16 +3902,16 @@ msgid ""
 "done in any of three ways, [1], [2] and [3]. If multiple files are mapped to "
 "one file as in [2] or [3], the above format is used to record just one audio "
 "file name. If there are multiple audio files, the first recorded file is "
-"given. In the case of [3], for example, for the Exif image file "
-"\"DSC00001.JPG\" only  \"SND00001.WAV\" is given as the related Exif audio "
-"file. When there are three Exif audio files \"SND00001.WAV\", "
-"\"SND00002.WAV\" and \"SND00003.WAV\", the Exif image file name for each of "
-"them, \"DSC00001.JPG\", is indicated. By combining multiple relational "
-"information, a variety of playback possibilities can be supported. The "
-"method of using relational information is left to the implementation on the "
-"playback side. Since this information is an ASCII character string, it is "
-"terminated by NULL. When this tag is used to map audio files, the relation "
-"of the audio file to image data must also be indicated on the audio file end."
+"given. In the case of [3], for example, for the Exif image file \"DSC00001."
+"JPG\" only  \"SND00001.WAV\" is given as the related Exif audio file. When "
+"there are three Exif audio files \"SND00001.WAV\", \"SND00002.WAV\" and "
+"\"SND00003.WAV\", the Exif image file name for each of them, \"DSC00001.JPG"
+"\", is indicated. By combining multiple relational information, a variety of "
+"playback possibilities can be supported. The method of using relational "
+"information is left to the implementation on the playback side. Since this "
+"information is an ASCII character string, it is terminated by NULL. When "
+"this tag is used to map audio files, the relation of the audio file to image "
+"data must also be indicated on the audio file end."
 msgstr ""
 "Ovaj tag se koristi da spremi ime audio fajla povezanog sa podacima o slici. "
 "Jedina relaciona informacija spremljena je ovdje u imenu exif audio datoteke "
@@ -3930,9 +3925,9 @@ msgstr ""
 "jednu kao u [2] ili [3], gornji format je korišten da spremi samo ime audio "
 "datoteke. Ako postoji više audio datoteka, prvi snimljeni fajl je vraćen. U "
 "slučaju [3], npr, za Exif sliku \"DSC000001.JPG\" samo \"SND00001.WAV\" je "
-"dan kao povezani audio fajl. Kada postoje 3 povezana audio fajla "
-"\"SND00001.WAV\", \"SND000002.WAV\" i \"SND00003.WAV\", Exif ime slike za "
-"svakog od njih je prikazano: \"DSC00001.JPG\". Kombiniranjem više relacionih "
+"dan kao povezani audio fajl. Kada postoje 3 povezana audio fajla \"SND00001."
+"WAV\", \"SND000002.WAV\" i \"SND00003.WAV\", Exif ime slike za svakog od "
+"njih je prikazano: \"DSC00001.JPG\". Kombiniranjem više relacionih "
 "informacija, raznolike mogučnosti reproduciranja su podržane. Metoda "
 "korištenja relacionih informacija je ostavljena implementaciji reprodukcije. "
 "Budući da je ova informacija string ASCII znakova, NULL je terminirana. Kada "
@@ -4106,10 +4101,8 @@ msgstr ""
 "postavkama izloženosti."
 
 #: libexif/exif-tag.c:801
-msgid ""
-"This tag indicates the white balance mode set when the image was shot."
-msgstr ""
-"Ova etiketa označava vrijednost moda ravnoteže bele kada je uslikano."
+msgid "This tag indicates the white balance mode set when the image was shot."
+msgstr "Ova etiketa označava vrijednost moda ravnoteže bele kada je uslikano."
 
 #: libexif/exif-tag.c:805
 msgid "Digital Zoom Ratio"
@@ -5801,3 +5794,6 @@ msgstr "Finije"
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
 msgstr "[DO_NOT_TRANSLATE_THIS_MARKER]"
+
+#~ msgid "FNumber"
+#~ msgstr "FBroj"
