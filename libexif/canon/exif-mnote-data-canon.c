@@ -30,8 +30,6 @@
 #include <libexif/exif-utils.h>
 #include <libexif/exif-data.h>
 
-#define DEBUG
-
 static void
 exif_mnote_data_canon_clear (ExifMnoteDataCanon *n)
 {

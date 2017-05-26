@@ -28,8 +28,6 @@
 #include <libexif/exif-utils.h>
 #include <libexif/exif-data.h>
 
-#define DEBUG
-
 /* Uncomment this to fix a problem with Sanyo MakerNotes. It's probably best
  * not to in most cases because it seems to only affect the thumbnail tag
  * which is duplicated in IFD 1, and fixing the offset could actually cause
