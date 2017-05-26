@@ -346,11 +346,11 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 		break;
 	case MNOTE_NIKON_TAG_LENS_FSTOPS:
 	case MNOTE_NIKON_TAG_EXPOSUREDIFF: {
-		unsigned char a,b,c,d;
+		unsigned char a,b,c;
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, v, maxlen);
 		CC (entry->components, 4, v, maxlen);
 		vl =  exif_get_long (entry->data, entry->order);
-		a = (vl>>24)&0xff; b = (vl>>16)&0xff; c = (vl>>8)&0xff; d = (vl)&0xff;
+		a = (vl>>24)&0xff; b = (vl>>16)&0xff; c = (vl>>8)&0xff;
 		snprintf (v, maxlen, "%.1f",  c?(float)a*((float)b/(float)c):0 );
 		break;
 	}
