@@ -266,7 +266,7 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 				exif_log (ne->log, EXIF_LOG_CODE_DEBUG,
 					"ExifMnoteCanon",
 					"Tag data past end of buffer (%u > %u)",
-					dataofs + s, buf_size);
+					(unsigned)(dataofs + s), buf_size);
 				continue;
 			}
 

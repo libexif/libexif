@@ -481,7 +481,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 				exif_log (en->log, EXIF_LOG_CODE_DEBUG,
 					  "ExifMnoteOlympus",
 					  "Tag data past end of buffer (%u > %u)",
-					  dataofs + s, buf_size);
+					  (unsigned)(dataofs + s), buf_size);
 				continue;
 			}
 
