@@ -80,7 +80,7 @@
 #define R2D(n) ((n).denominator ? (double)(n).numerator/(n).denominator : 0.0)
 
 static const struct {
-	ExifTag tag;
+	MnoteOlympusTag tag;
 	ExifFormat fmt;
 	struct {
 		int index;

@@ -66,7 +66,7 @@
 }
 
 static const struct {
-	ExifTag tag;
+	MnotePentaxTag tag;
 	struct {
 		int index;
 		const char *string;
@@ -266,7 +266,7 @@ static const struct {
 
 /* Two-component values */
 static const struct {
-	ExifTag tag;
+	MnotePentaxTag tag;
 	struct {
 		int index1, index2;
 		const char *string;

@@ -51,7 +51,7 @@
 }
 
 static const struct {
-	ExifTag tag;
+	MnoteFujiTag tag;
 	struct {
 		int index;
 		const char *string;
