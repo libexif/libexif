@@ -84,7 +84,8 @@ test_exif_data (ExifData *d)
 		fprintf (stdout, "  Description: '%s'\n",
 				exif_mnote_data_get_description (md, i));
 		p = exif_mnote_data_get_value (md, i, v, sizeof (v));
-		if (p) { fprintf (stdout, "  Value: '%s'\n", v); }
+		if (!p) break;
+		fprintf (stdout, "  Value: '%s'\n", v);
 	}
 
 	return 0;
