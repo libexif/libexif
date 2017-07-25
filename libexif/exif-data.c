@@ -255,6 +255,12 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 			exif_mnote_data_set_offset (data->priv->md, *ds - 6);
 			exif_mnote_data_save (data->priv->md, &e->data, &e->size);
 			e->components = e->size;
+			if (exif_format_get_size (e->format) != 1) {
+				/* e->format is taken from input code,
+				 * but we need to make sure it is a 1 byte
+				 * entity due to the multiplication below. */
+				e->format = EXIF_FORMAT_UNDEFINED;
+			}
 		}
 	}
 
