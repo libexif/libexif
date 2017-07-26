@@ -34,17 +34,18 @@
 void content_foreach_func(ExifEntry *entry, void *callback_data);
 void content_foreach_func(ExifEntry *entry, void *UNUSED(callback_data))
 {
-  char buf[2000];
-  exif_entry_get_value(entry, buf, sizeof(buf));
-  printf("    Entry %p: %s (%s)\n"
-	 "      Size, Comps: %d, %d\n"
-	 "      Value: %s\n", 
-	 entry,
-	 exif_tag_get_name(entry->tag),
-	 exif_format_get_name(entry->format),
-	 entry->size,
-	 (int)(entry->components),
-	 exif_entry_get_value(entry, buf, sizeof(buf)));
+	char buf[2000];
+
+	exif_entry_get_value(entry, buf, sizeof(buf));
+	printf("    Entry %p: %s (%s)\n"
+		 "      Size, Comps: %d, %d\n"
+		 "      Value: %s\n", 
+		 entry,
+		 exif_tag_get_name(entry->tag),
+		 exif_format_get_name(entry->format),
+		 entry->size,
+		 (int)(entry->components),
+		 exif_entry_get_value(entry, buf, sizeof(buf)));
 }
 
 
@@ -52,8 +53,8 @@ void content_foreach_func(ExifEntry *entry, void *UNUSED(callback_data))
 void data_foreach_func(ExifContent *content, void *callback_data);
 void data_foreach_func(ExifContent *content, void *callback_data)
 {
-  printf("  Content %p: ifd=%d\n", content, exif_content_get_ifd(content));
-  exif_content_foreach_entry(content, content_foreach_func, callback_data);
+	printf("  Content %p: ifd=%d\n", content, exif_content_get_ifd(content));
+	exif_content_foreach_entry(content, content_foreach_func, callback_data);
 }
 static int
 test_exif_data (ExifData *d)
@@ -84,8 +85,7 @@ test_exif_data (ExifData *d)
 		fprintf (stdout, "  Description: '%s'\n",
 				exif_mnote_data_get_description (md, i));
 		p = exif_mnote_data_get_value (md, i, v, sizeof (v));
-		if (!p) break;
-		fprintf (stdout, "  Value: '%s'\n", v);
+		if (p) fprintf (stdout, "  Value: '%s'\n", v);
 	}
 
 	return 0;
@@ -97,10 +97,24 @@ test_exif_data (ExifData *d)
 static void test_parse(const char *filename, void *callback_data)
 {
 	ExifData *d;
+	unsigned int buf_size;
+	unsigned char *buf;
 
 	d = exif_data_new_from_file(filename);
 	exif_data_foreach_content(d, data_foreach_func, callback_data);
 	test_exif_data (d);
+
+	buf = NULL;
+	exif_data_save_data (d, &buf, &buf_size);
+	free (buf);
+
+	exif_data_set_byte_order(d, EXIF_BYTE_ORDER_INTEL);
+
+	buf = NULL;
+	exif_data_save_data (d, &buf, &buf_size);
+	free (buf);
+
+
 	exif_data_unref(d);
 }
 
