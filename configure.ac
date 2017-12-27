@@ -10,21 +10,6 @@ AM_MAINTAINER_MODE
 m4_ifndef([AM_SILENT_RULES], [m4_define([AM_SILENT_RULES],[])])
 AM_SILENT_RULES([no])
 
-if test ! -d "$srcdir/m4m"; then
-AC_MSG_ERROR([
-You are missing the m4m/ directory in your top
-$PACKAGE_TARNAME source directory.
-
-You are probably using an ill-maintained CVS tree.
-Running
-
-    cd $srcdir
-    cvs co m4m
-
-and re-running autogen.sh might help.
-])
-fi
-
 GP_CHECK_SHELL_ENVIRONMENT
 GP_CONFIG_MSG([Build])
 GP_CONFIG_MSG([Source code location],[${srcdir}])

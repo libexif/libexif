@@ -59,5 +59,4 @@ stamp-h.in
 conftest
 conftest.c
 ABOUT-NLS
-ChangeLog.cvs
-cvs2cl.usermap
+ChangeLog.git
