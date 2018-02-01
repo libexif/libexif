@@ -438,7 +438,7 @@ exif_entry_fix (ExifEntry *e)
  * \pre The ExifEntry is already a member of an ExifData.
  * \param[in] e EXIF entry
  * \param[out] val buffer in which to store value
- * \param[in] maxlen one less than the length of the buffer val
+ * \param[in] maxlen the length of the buffer val
  */
 static void
 exif_entry_format_value(ExifEntry *e, char *val, size_t maxlen)
@@ -456,7 +456,6 @@ exif_entry_format_value(ExifEntry *e, char *val, size_t maxlen)
 
 	if (!e->size || !maxlen)
 		return;
-	++maxlen; /* include the terminating NUL */
 	switch (e->format) {
 	case EXIF_FORMAT_UNDEFINED:
 		snprintf (val, maxlen, _("%i bytes undefined data"), e->size);
@@ -866,9 +865,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		return val;
 
 	/* make sure the returned string is zero terminated */
+	/* FIXME: this is inefficient in the case of long buffers and should
+	 * instead be taken care of on each write instead. */
 	memset (val, 0, maxlen);
-	maxlen--;
-	memset (b, 0, sizeof (b));
 
 	/* We need the byte order */
 	o = exif_data_get_byte_order (e->parent->parent);
@@ -904,11 +903,11 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		 * NULL terminated.
 		 */
 		if ((e->size >= 8) && !memcmp (e->data, "ASCII\0\0\0", 8)) {
-			strncpy (val, (char *) e->data + 8, MIN (e->size - 8, maxlen));
+			strncpy (val, (char *) e->data + 8, MIN (e->size - 8, maxlen-1));
 			break;
 		}
 		if ((e->size >= 8) && !memcmp (e->data, "UNICODE\0", 8)) {
-			strncpy (val, _("Unsupported UNICODE string"), maxlen);
+			strncpy (val, _("Unsupported UNICODE string"), maxlen-1);
 		/* FIXME: use iconv to convert into the locale encoding.
 		 * EXIF 2.2 implies (but does not say) that this encoding is
 		 * UCS-2.
@@ -916,7 +915,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			break;
 		}
 		if ((e->size >= 8) && !memcmp (e->data, "JIS\0\0\0\0\0", 8)) {
-			strncpy (val, _("Unsupported JIS string"), maxlen);
+			strncpy (val, _("Unsupported JIS string"), maxlen-1);
 		/* FIXME: use iconv to convert into the locale encoding */
 			break;
 		}
@@ -944,7 +943,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_EXIF_VERSION:
 		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (e, 4, val, maxlen);
-		strncpy (val, _("Unknown Exif Version"), maxlen);
+		strncpy (val, _("Unknown Exif Version"), maxlen-1);
 		for (i = 0; *versions[i].label; i++) {
 			if (!memcmp (e->data, versions[i].label, 4)) {
     				snprintf (val, maxlen,
@@ -959,11 +958,11 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (e, 4, val, maxlen);
 		if (!memcmp (e->data, "0100", 4))
-			strncpy (val, _("FlashPix Version 1.0"), maxlen);
+			strncpy (val, _("FlashPix Version 1.0"), maxlen-1);
 		else if (!memcmp (e->data, "0101", 4))
-			strncpy (val, _("FlashPix Version 1.01"), maxlen);
+			strncpy (val, _("FlashPix Version 1.01"), maxlen-1);
 		else
-			strncpy (val, _("Unknown FlashPix Version"), maxlen);
+			strncpy (val, _("Unknown FlashPix Version"), maxlen-1);
 		break;
 	case EXIF_TAG_COPYRIGHT:
 		CF (e, EXIF_FORMAT_ASCII, val, maxlen);
@@ -974,14 +973,14 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		 * Remember that a corrupted tag might not be NUL-terminated
 		 */
 		if (e->size && e->data && match_repeated_char(e->data, ' ', e->size))
-			strncpy (val, (char *) e->data, MIN (maxlen, e->size));
+			strncpy (val, (char *) e->data, MIN (maxlen-1, e->size));
 		else
-			strncpy (val, _("[None]"), maxlen);
-		strncat (val, " ", maxlen - strlen (val));
-		strncat (val, _("(Photographer)"), maxlen - strlen (val));
+			strncpy (val, _("[None]"), maxlen-1);
+		strncat (val, " ", maxlen-1 - strlen (val));
+		strncat (val, _("(Photographer)"), maxlen-1 - strlen (val));
 
 		/* Second part: Editor. */
-		strncat (val, " - ", maxlen - strlen (val));
+		strncat (val, " - ", maxlen-1 - strlen (val));
 		k = 0;
 		if (e->size && e->data) {
 			const unsigned char *tagdata = memchr(e->data, 0, e->size);
@@ -989,15 +988,15 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 				int editor_ofs = tagdata - e->data;
 				int remaining = e->size - editor_ofs;
 				if (match_repeated_char(tagdata, ' ', remaining)) {
-					strncat (val, (const char*)tagdata, MIN (maxlen - strlen (val), remaining));
+					strncat (val, (const char*)tagdata, MIN (maxlen-1 - strlen (val), remaining));
 					++k;
 				}
 			}
 		}
 		if (!k)
-			strncat (val, _("[None]"), maxlen - strlen (val));
-		strncat (val, " ", maxlen - strlen (val));
-		strncat (val, _("(Editor)"), maxlen - strlen (val));
+			strncat (val, _("[None]"), maxlen-1 - strlen (val));
+		strncat (val, " ", maxlen-1 - strlen (val));
+		strncat (val, _("(Editor)"), maxlen-1 - strlen (val));
 
 		break;
 	case EXIF_TAG_FNUMBER:
@@ -1023,8 +1022,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
 		snprintf (val, maxlen, _("%.02f EV"), d);
 		snprintf (b, sizeof (b), _(" (f/%.01f)"), pow (2, d / 2.));
-		if (maxlen > strlen (val) + strlen (b))
-			strncat (val, b, maxlen - strlen (val));
+		strncat (val, b, maxlen-1 - strlen (val));
 		break;
 	case EXIF_TAG_FOCAL_LENGTH:
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
@@ -1059,11 +1057,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			snprintf (b, sizeof (b), _(" (35 equivalent: %d mm)"),
 				  (int) (d * (double) v_rat.numerator /
 				  	     (double) v_rat.denominator));
+		else
+			b[0] = 0;
 
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
 		snprintf (val, maxlen, "%.1f mm", d);
-		if (maxlen > strlen (val) + strlen (b))
-			strncat (val, b, maxlen - strlen (val));
+		strncat (val, b, maxlen-1 - strlen (val));
 		break;
 	case EXIF_TAG_SUBJECT_DISTANCE:
 		CF (e, EXIF_FORMAT_RATIONAL, val, maxlen);
@@ -1089,8 +1088,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			snprintf (val, maxlen, _("1/%i"), (int) (0.5 + 1. / d));
 		else
 			snprintf (val, maxlen, "%i", (int) d);
-		if (maxlen > strlen (val) + strlen (_(" sec.")))
-			strncat (val, _(" sec."), maxlen - strlen (val));
+		strncat (val, _(" sec."), maxlen-1 - strlen (val));
 		break;
 	case EXIF_TAG_SHUTTER_SPEED_VALUE:
 		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
@@ -1107,7 +1105,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		  snprintf (b, sizeof (b), _(" (1/%d sec.)"), (int) (1. / d));
 		else
 		  snprintf (b, sizeof (b), _(" (%d sec.)"), (int) d);
-		strncat (val, b, maxlen - strlen (val));
+		strncat (val, b, maxlen-1 - strlen (val));
 		break;
 	case EXIF_TAG_BRIGHTNESS_VALUE:
 		CF (e, EXIF_FORMAT_SRATIONAL, val, maxlen);
@@ -1121,15 +1119,14 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		snprintf (val, maxlen, _("%.02f EV"), d);
 		snprintf (b, sizeof (b), _(" (%.02f cd/m^2)"),
 			1. / (M_PI * 0.3048 * 0.3048) * pow (2, d));
-		if (maxlen > strlen (val) + strlen (b))
-			strncat (val, b, maxlen - strlen (val));
+		strncat (val, b, maxlen-1 - strlen (val));
 		break;
 	case EXIF_TAG_FILE_SOURCE:
 		CF (e, EXIF_FORMAT_UNDEFINED, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_byte = e->data[0];
 		if (v_byte == 3)
-			strncpy (val, _("DSC"), maxlen);
+			strncpy (val, _("DSC"), maxlen-1);
 		else
 			snprintf (val, maxlen, _("Internal error (unknown "
 				  "value %i)"), v_byte);
@@ -1148,9 +1145,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			case 6: c = _("B"); break;
 			default: c = _("Reserved"); break;
 			}
-			strncat (val, c, maxlen - strlen (val));
+			strncat (val, c, maxlen-1 - strlen (val));
 			if (i < 3)
-				strncat (val, " ", maxlen - strlen (val));
+				strncat (val, " ", maxlen-1 - strlen (val));
 		}
 		break;
 	case EXIF_TAG_EXPOSURE_BIAS_VALUE:
@@ -1169,7 +1166,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e, 1, val, maxlen);
 		v_byte = e->data[0];
 		if (v_byte == 1)
-			strncpy (val, _("Directly photographed"), maxlen);
+			strncpy (val, _("Directly photographed"), maxlen-1);
 		else
 			snprintf (val, maxlen, _("Internal error (unknown "
 				  "value %i)"), v_byte);
@@ -1182,9 +1179,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			e->data + exif_format_get_size (e->format),
 			o);
 		if ((v_short == 2) && (v_short2 == 1))
-			strncpy (val, _("YCbCr4:2:2"), maxlen);
+			strncpy (val, _("YCbCr4:2:2"), maxlen-1);
 		else if ((v_short == 2) && (v_short2 == 2))
-			strncpy (val, _("YCbCr4:2:0"), maxlen);
+			strncpy (val, _("YCbCr4:2:0"), maxlen-1);
 		else
 			snprintf (val, maxlen, "%u, %u", v_short, v_short2);
 		break;
@@ -1227,20 +1224,17 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e, 4, val, maxlen);
 		v_byte = e->data[0];
 		snprintf (val, maxlen, "%u", v_byte);
-		maxlen -= strlen (val);
 		for (i = 1; i < e->components; i++) {
 			v_byte = e->data[i];
 			snprintf (b, sizeof (b), ".%u", v_byte);
-			strncat (val, b, maxlen);
-			maxlen -= strlen (b);
-			if ((signed)maxlen <= 0) break;
+			strncat (val, b, maxlen-1 - strlen (val));
 		}
 		break;
 	case EXIF_TAG_INTEROPERABILITY_VERSION:
 	/* a.k.a. case EXIF_TAG_GPS_LATITUDE: */
 		/* This tag occurs in EXIF_IFD_INTEROPERABILITY */
 		if (e->format == EXIF_FORMAT_UNDEFINED) {
-			strncpy (val, (char *) e->data, MIN (maxlen, e->size));
+			strncpy (val, (char *) e->data, MIN (maxlen-1, e->size));
 			break;
 		}
 		/* EXIF_TAG_GPS_LATITUDE is the same numerically as
@@ -1254,9 +1248,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		CC (e, 1, val, maxlen);
 		v_byte = e->data[0];
 		if (v_byte == 0)
-			strncpy (val, _("Sea level"), maxlen);
+			strncpy (val, _("Sea level"), maxlen-1);
 		else if (v_byte == 1)
-			strncpy (val, _("Sea level reference"), maxlen);
+			strncpy (val, _("Sea level reference"), maxlen-1);
 		else
 			snprintf (val, maxlen, _("Internal error (unknown "
 				  "value %i)"), v_byte);
@@ -1328,7 +1322,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		for (k = 0; list2[i].elem[j].values[k]; k++) {
 			size_t l = strlen (_(list2[i].elem[j].values[k]));
 			if ((maxlen > l) && (strlen (val) < l))
-				strncpy (val, _(list2[i].elem[j].values[k]), maxlen);
+				strncpy (val, _(list2[i].elem[j].values[k]), maxlen-1);
 		}
 		if (!val[0]) snprintf (val, maxlen, "%i", v_short);
 
@@ -1366,7 +1360,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		else if (!*list[i].strings[j])
 			snprintf (val, maxlen, _("Unknown value %i"), v_short);
 		else
-			strncpy (val, _(list[i].strings[j]), maxlen);
+			strncpy (val, _(list[i].strings[j]), maxlen-1);
 		break;
 
 	case EXIF_TAG_XP_TITLE:
