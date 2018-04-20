@@ -378,7 +378,7 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 	if ((((int)ifd) < 0) || ( ((int)ifd) >= EXIF_IFD_COUNT))
 	  return;
 
-	if (recursion_depth > 30) {
+	if (recursion_depth > 12) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
 			  "Deep recursion detected!");
 		return;
