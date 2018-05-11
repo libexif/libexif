@@ -811,7 +811,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	}
 	if (!memcmp (d, ExifHeader, 6)) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-			  "Found EXIF header.");
+			  "Found EXIF header at start.");
 	} else {
 		while (ds >= 3) {
 			while (ds && (d[0] == 0xff)) {
