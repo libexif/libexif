@@ -1378,6 +1378,10 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		utf16 = exif_mem_alloc (e->priv->mem, e->size+sizeof(unsigned short));
 		if (!utf16) break;
 		memcpy(utf16, e->data, e->size);
+
+		/* NUL terminate the string. If the size is odd (which isn't possible
+		 * for a UTF16 string), then this will overwrite the final garbage byte.
+		 */
 		utf16[e->size/sizeof(unsigned short)] = 0;
 
 		/* Warning! The texts are converted from UTF16 to UTF8 */
