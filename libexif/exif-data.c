@@ -835,7 +835,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			   is only relevant for files that are nonconformant to the EXIF
 			   specification. For conformant files, the APP1 code path above will be
 			   taken. */
-			if (ds >= 3 && d[0] >= 0xe0 && d[0] <= 0xef) {  // JPEG_MARKER_APPn
+			if (ds >= 3 && d[0] >= 0xe0 && d[0] <= 0xef) {  /* JPEG_MARKER_APPn */
 				d++;
 				ds--;
 				l = (d[0] << 8) | d[1];
