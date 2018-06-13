@@ -193,7 +193,7 @@ static ExifEntry *create_tag(ExifData *exif, ExifIfd ifd, ExifTag tag, size_t le
 	return entry;
 }
 
-int main(int argc, char **argv)
+int main ()
 {
 	int rc = 1;
 	FILE *f;

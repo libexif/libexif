@@ -350,6 +350,8 @@ int
 exif_mnote_data_canon_identify (const ExifData *ed, const ExifEntry *e)
 {
 	char value[8];
+
+	(void) e;  /* unused */
 	ExifEntry *em = exif_data_get_entry (ed, EXIF_TAG_MAKE);
 	if (!em) 
 		return 0;

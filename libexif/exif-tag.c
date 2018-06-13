@@ -36,7 +36,9 @@
 #define ESL_NNMM { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_MANDATORY, EXIF_SUPPORT_LEVEL_MANDATORY }
 #define ESL_NNNM { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_MANDATORY }
 #define ESL_NNNO { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_OPTIONAL }
+#define ESL_UUUU { EXIF_SUPPORT_LEVEL_UNKNOWN, EXIF_SUPPORT_LEVEL_UNKNOWN, EXIF_SUPPORT_LEVEL_UNKNOWN, EXIF_SUPPORT_LEVEL_UNKNOWN }
 #define ESL_GPS { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN }
+#define ESL_UNKNOWN { ESL_UUUU, ESL_UUUU, ESL_UUUU, ESL_UUUU, ESL_UUUU }
 
 /*!
  * Table giving information about each EXIF tag.
@@ -218,7 +220,8 @@ static const struct TagEntry {
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_NEW_SUBFILE_TYPE, "NewSubfileType",
 	 N_("New Subfile Type"), N_("A general indication of the kind of data "
-	    "contained in this subfile.")},
+	    "contained in this subfile."),
+	 ESL_UNKNOWN},
 	{EXIF_TAG_IMAGE_WIDTH, "ImageWidth", N_("Image Width"),
 	 N_("The number of columns of image data, equal to the number of "
 	    "pixels per row. In JPEG compressed data a JPEG marker is "
@@ -246,9 +249,10 @@ static const struct TagEntry {
 	    "marker is used instead of this tag."),
 	 { ESL_MMMN, ESL_MMMN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
-	{EXIF_TAG_FILL_ORDER, "FillOrder", N_("Fill Order"), ""},
+	{EXIF_TAG_FILL_ORDER, "FillOrder", N_("Fill Order"), "", ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
-	{EXIF_TAG_DOCUMENT_NAME, "DocumentName", N_("Document Name"), ""},
+	{EXIF_TAG_DOCUMENT_NAME, "DocumentName", N_("Document Name"), "",
+	 ESL_UNKNOWN},
 	{EXIF_TAG_IMAGE_DESCRIPTION, "ImageDescription",
 	 N_("Image Description"),
 	 N_("A character string giving the title of the image. It may be "
@@ -357,11 +361,12 @@ static const struct TagEntry {
 	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_SUB_IFDS, "SubIFDs", "SubIFD Offsets", N_("Defined by Adobe Corporation "
-	    "to enable TIFF Trees within a TIFF file.")},
+	    "to enable TIFF Trees within a TIFF file."), ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
-	{EXIF_TAG_TRANSFER_RANGE, "TransferRange", N_("Transfer Range"), ""},
+	{EXIF_TAG_TRANSFER_RANGE, "TransferRange", N_("Transfer Range"), "",
+	 ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
-	{EXIF_TAG_JPEG_PROC, "JPEGProc", "JPEGProc", ""},
+	{EXIF_TAG_JPEG_PROC, "JPEGProc", "JPEGProc", "", ESL_UNKNOWN},
 	{EXIF_TAG_JPEG_INTERCHANGE_FORMAT, "JPEGInterchangeFormat",
 	 N_("JPEG Interchange Format"),
 	 N_("The offset to the start byte (SOI) of JPEG compressed "
@@ -420,27 +425,29 @@ static const struct TagEntry {
 	    "Interoperability these conditions."),
 	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
-	{EXIF_TAG_XML_PACKET, "XMLPacket", N_("XML Packet"), N_("XMP Metadata")},
+	{EXIF_TAG_XML_PACKET, "XMLPacket", N_("XML Packet"), N_("XMP Metadata"),
+	 ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_RELATED_IMAGE_FILE_FORMAT, "RelatedImageFileFormat",
-	 "RelatedImageFileFormat", ""},
+	 "RelatedImageFileFormat", "", ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_RELATED_IMAGE_WIDTH, "RelatedImageWidth",
-	 "RelatedImageWidth", ""},
+	 "RelatedImageWidth", "", ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_RELATED_IMAGE_LENGTH, "RelatedImageLength",
-	 "RelatedImageLength", ""},
+	 "RelatedImageLength", "", ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_CFA_REPEAT_PATTERN_DIM, "CFARepeatPatternDim",
-	 "CFARepeatPatternDim", ""},
+	 "CFARepeatPatternDim", "", ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_CFA_PATTERN, "CFAPattern",
 	 N_("CFA Pattern"),
 	 N_("Indicates the color filter array (CFA) geometric pattern of the "
 	    "image sensor when a one-chip color area sensor is used. "
-	    "It does not apply to all sensing methods.")},
+	    "It does not apply to all sensing methods."), ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
-	{EXIF_TAG_BATTERY_LEVEL, "BatteryLevel", N_("Battery Level"), ""},
+	{EXIF_TAG_BATTERY_LEVEL, "BatteryLevel", N_("Battery Level"), "",
+	 ESL_UNKNOWN},
 	{EXIF_TAG_COPYRIGHT, "Copyright", N_("Copyright"),
 	 N_("Copyright information. In this standard the tag is used to "
 	    "indicate both the photographer and editor copyrights. It is "
@@ -470,9 +477,10 @@ static const struct TagEntry {
 	 N_("The F number."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
-	{EXIF_TAG_IPTC_NAA, "IPTC/NAA", "IPTC/NAA", ""},
+	{EXIF_TAG_IPTC_NAA, "IPTC/NAA", "IPTC/NAA", "", ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
-	{EXIF_TAG_IMAGE_RESOURCES, "ImageResources", N_("Image Resources Block"), ""},
+	{EXIF_TAG_IMAGE_RESOURCES, "ImageResources", N_("Image Resources Block"), "",
+	 ESL_UNKNOWN},
 	{EXIF_TAG_EXIF_IFD_POINTER, "ExifIfdPointer", "ExifIFDPointer",
 	 N_("A pointer to the Exif IFD. Interoperability, Exif IFD has the "
 	    "same structure as that of the IFD specified in TIFF. "
@@ -481,7 +489,7 @@ static const struct TagEntry {
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_INTER_COLOR_PROFILE, "InterColorProfile",
-	 "InterColorProfile", ""},
+	 "InterColorProfile", "", ESL_UNKNOWN},
 	{EXIF_TAG_EXPOSURE_PROGRAM, "ExposureProgram", N_("Exposure Program"),
 	 N_("The class of the program used by the camera to set exposure "
 	    "when the picture is taken."),
@@ -511,7 +519,8 @@ static const struct TagEntry {
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_TIME_ZONE_OFFSET, "TimeZoneOffset", N_("Time Zone Offset"),
-	 N_("Encodes time zone of camera clock relative to GMT.")},
+	 N_("Encodes time zone of camera clock relative to GMT."),
+	 ESL_UNKNOWN},
 	{EXIF_TAG_EXIF_VERSION, "ExifVersion", N_("Exif Version"),
 	 N_("The version of this standard supported. Nonexistence of this "
 	    "field is taken to mean nonconformance to the standard."),
@@ -587,7 +596,8 @@ static const struct TagEntry {
 	    "in the overall scene."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
-	{EXIF_TAG_TIFF_EP_STANDARD_ID, "TIFF/EPStandardID", N_("TIFF/EP Standard ID"), ""},
+	{EXIF_TAG_TIFF_EP_STANDARD_ID, "TIFF/EPStandardID", N_("TIFF/EP Standard ID"), "",
+	 ESL_UNKNOWN},
 	{EXIF_TAG_MAKER_NOTE, "MakerNote", N_("Maker Note"),
 	 N_("A tag for manufacturers of Exif writers to record any desired "
 	    "information. The contents are up to the manufacturer."),
@@ -855,10 +865,12 @@ static const struct TagEntry {
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_GAMMA, "Gamma", N_("Gamma"),
-	 N_("Indicates the value of coefficient gamma.")},
+	 N_("Indicates the value of coefficient gamma."),
+	 ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_PRINT_IMAGE_MATCHING, "PrintImageMatching", N_("PRINT Image Matching"),
-	 N_("Related to Epson's PRINT Image Matching technology")},
+	 N_("Related to Epson's PRINT Image Matching technology"),
+	 ESL_UNKNOWN},
 	/* Not in EXIF 2.2 (from the Microsoft HD Photo specification) */
 	{EXIF_TAG_PADDING, "Padding", N_("Padding"),
 	 N_("This tag reserves space that can be reclaimed later when "
@@ -868,7 +880,7 @@ static const struct TagEntry {
             "metadata tags."),
 	 { ESL_OOOO, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 #endif
-	{0, NULL, NULL, NULL}
+	{0, NULL, NULL, NULL, ESL_UNKNOWN}
 };
 
 /* For now, do not use these functions. */

@@ -402,6 +402,7 @@ exif_mnote_data_pentax_set_byte_order (ExifMnoteData *d, ExifByteOrder o)
 int
 exif_mnote_data_pentax_identify (const ExifData *ed, const ExifEntry *e)
 {
+	(void) ed;  /* unused */
 	if ((e->size >= 8) && !memcmp (e->data, "AOC", 4)) {
 		if (((e->data[4] == 'I') && (e->data[5] == 'I')) ||
 		    ((e->data[4] == 'M') && (e->data[5] == 'M')))

@@ -985,8 +985,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		if (e->size && e->data) {
 			const unsigned char *tagdata = memchr(e->data, 0, e->size);
 			if (tagdata++) {
-				int editor_ofs = tagdata - e->data;
-				int remaining = e->size - editor_ofs;
+				unsigned int editor_ofs = tagdata - e->data;
+				unsigned int remaining = e->size - editor_ofs;
 				if (match_repeated_char(tagdata, ' ', remaining)) {
 					strncat (val, (const char*)tagdata, MIN (maxlen-1 - strlen (val), remaining));
 					++k;

@@ -319,6 +319,7 @@ exif_mnote_data_fuji_set_offset (ExifMnoteData *n, unsigned int o)
 int
 exif_mnote_data_fuji_identify (const ExifData *ed, const ExifEntry *e)
 {
+	(void) ed;  /* unused */
 	return ((e->size >= 12) && !memcmp (e->data, "FUJIFILM", 8));
 }
 
