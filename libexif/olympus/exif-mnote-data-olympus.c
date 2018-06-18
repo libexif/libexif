@@ -286,7 +286,6 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		else if (buf[o2 + 6 + 1] == 1)
 			n->order = EXIF_BYTE_ORDER_MOTOROLA;
 		o2 += 8;
-		if (o2 + 2 > buf_size) return;
 		c = exif_get_short (buf + o2, n->order);
 		if ((!(c & 0xFF)) && (c > 0x500)) {
 			if (n->order == EXIF_BYTE_ORDER_INTEL) {
@@ -301,9 +300,10 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		/* Olympus S760, S770 */
 		datao = o2;
 		o2 += 8;
+		if ((o2 + 4 < o2) || (o2 + 4 < 4) || (o2 + 4 > buf_size)) return;
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
 			"Parsing Olympus maker note v2 (0x%02x, %02x, %02x, %02x)...",
-			buf[o2], buf[o2 + 1], buf[o2 + 2], buf[o2 + 3]);
+			buf[o2 + 0], buf[o2 + 1], buf[o2 + 2], buf[o2 + 3]);
 
 		if ((buf[o2] == 'I') && (buf[o2 + 1] == 'I'))
 			n->order = EXIF_BYTE_ORDER_INTEL;
@@ -316,12 +316,10 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 
 	case nikonV1:
 		o2 += 6;
-		if (o2 >= buf_size) return;
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
 			"Parsing Nikon maker note v1 (0x%02x, %02x, %02x, "
-			"%02x, %02x, %02x, %02x, %02x)...",
-			buf[o2 + 0], buf[o2 + 1], buf[o2 + 2], buf[o2 + 3], 
-			buf[o2 + 4], buf[o2 + 5], buf[o2 + 6], buf[o2 + 7]);
+			"%02x)...",
+			buf[o2 + 0], buf[o2 + 1], buf[o2 + 2], buf[o2 + 3]);
 
 		/* Skip version number */
 		o2 += 1;
@@ -331,7 +329,6 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 
 		base = MNOTE_NIKON1_TAG_BASE;
 		/* Fix endianness, if needed */
-		if (o2 + 2 > buf_size) return;
 		c = exif_get_short (buf + o2, n->order);
 		if ((!(c & 0xFF)) && (c > 0x500)) {
 			if (n->order == EXIF_BYTE_ORDER_INTEL) {
@@ -344,11 +341,11 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 
 	case nikonV2:
 		o2 += 6;
-		if (o2 + 8 >= buf_size) return;
+		if ((o2 + 12 < o2) || (o2 + 12 < 12) || (o2 + 12 > buf_size)) return;
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
 			"Parsing Nikon maker note v2 (0x%02x, %02x, %02x, "
 			"%02x, %02x, %02x, %02x, %02x)...",
-			buf[o2 + 0], buf[o2 + 1], buf[o2 + 2], buf[o2 + 3], 
+			buf[o2 + 0], buf[o2 + 1], buf[o2 + 2], buf[o2 + 3],
 			buf[o2 + 4], buf[o2 + 5], buf[o2 + 6], buf[o2 + 7]);
 
 		/* Skip version number */
@@ -365,7 +362,6 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		 * gets calculated.
 		 */
 		datao = o2;
-		if (o2 >= buf_size) return;
 		if (!strncmp ((char *)&buf[o2], "II", 2))
 			n->order = EXIF_BYTE_ORDER_INTEL;
 		else if (!strncmp ((char *)&buf[o2], "MM", 2))
@@ -383,7 +379,6 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		o2 += 2;
 
 		/* Go to where the number of entries is. */
-		if (o2 + 4 > buf_size) return;
 		o2 = datao + exif_get_long (buf + o2, n->order);
 		break;
 
@@ -396,7 +391,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		/* 00 1b is # of entries in Motorola order - the rest should also be in MM order */
 		n->order = EXIF_BYTE_ORDER_MOTOROLA;
 		break;
-	
+
 	default:
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
 			"Unknown Olympus variant %i.", n->version);
