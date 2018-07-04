@@ -1040,12 +1040,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		d = 0.;
 		entry = exif_content_get_entry (
 			e->parent->parent->ifd[EXIF_IFD_0], EXIF_TAG_MAKE);
-		if (entry && entry->data &&
+		if (entry && entry->data && entry->size >= 7 &&
 		    !strncmp ((char *)entry->data, "Minolta", 7)) {
 			entry = exif_content_get_entry (
 					e->parent->parent->ifd[EXIF_IFD_0],
 					EXIF_TAG_MODEL);
-			if (entry && entry->data) {
+			if (entry && entry->data && entry->size >= 8) {
 				if (!strncmp ((char *)entry->data, "DiMAGE 7", 8))
 					d = 3.9;
 				else if (!strncmp ((char *)entry->data, "DiMAGE 5", 8))
