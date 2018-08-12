@@ -16,6 +16,7 @@ msgstr ""
 "Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2507,7 +2508,7 @@ msgid "Altitude Reference"
 msgstr "Höhenreferenz"
 
 #: libexif/exif-tag.c:104
-msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GPSAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
+msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GSPAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
 msgstr "Gibt die Referenzhöhe an. Wenn die Referenz der Meeresspiegel ist, und die Höhe ist über dem Meeresspiegel, dann ist dieser Wert 0. Wenn sie unter dem Meeresspiegel ist, dann ist hier ein Wert von 1 und die Höhe ist als absoluter Wert im GPSAltitude-Tag angegeben. Die verwendete Einheit ist Meter. Beachten Sie, dass dieses Tag den Typ BYTE hat."
 
 #: libexif/exif-tag.c:110

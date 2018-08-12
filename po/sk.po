@@ -12,6 +12,7 @@ msgstr ""
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "Language: sk\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2589,8 +2590,8 @@ msgid "Altitude Reference"
 msgstr "referencia nadmorskej výšky"
 
 #: libexif/exif-tag.c:104
-msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GPSAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
-msgstr "Označuje nadmorskú výšku, ktorá sa použije ako referenčná. Ak je referenčnou hodnotou úroveň hladiny mora a nadmorská výška je nad hladinou mora, udáva sa 0. Ak je nadmorská výška pod hladinou mora, udáva sa hodnota 0 a nadmorská výška sa uvedie ako absolútna hodnota v štítku GPSAltitude. Referenčná jednotka sú metre. Všimnite si, že tento štítok je typy BAJT na rozdiel od iných referenčných štítkov."
+msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GSPAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
+msgstr "Označuje nadmorskú výšku, ktorá sa použije ako referenčná. Ak je referenčnou hodnotou úroveň hladiny mora a nadmorská výška je nad hladinou mora, udáva sa 0. Ak je nadmorská výška pod hladinou mora, udáva sa hodnota 0 a nadmorská výška sa uvedie ako absolútna hodnota v štítku GSPAltitude. Referenčná jednotka sú metre. Všimnite si, že tento štítok je typy BAJT na rozdiel od iných referenčných štítkov."
 
 # exif-gpsaltitude
 #: libexif/exif-tag.c:110

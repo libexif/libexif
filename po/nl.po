@@ -12,6 +12,7 @@ msgstr ""
 "PO-Revision-Date: 2010-12-16 15:50+0100\n"
 "Last-Translator: Erwin Poeze <erwin.poeze@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2485,7 +2486,7 @@ msgid "Altitude Reference"
 msgstr "Hoogtereferentie"
 
 #: libexif/exif-tag.c:104
-msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GPSAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
+msgid "Indicates the altitude used as the reference altitude. If the reference is sea level and the altitude is above sea level, 0 is given. If the altitude is below sea level, a value of 1 is given and the altitude is indicated as an absolute value in the GSPAltitude tag. The reference unit is meters. Note that this tag is BYTE type, unlike other reference tags."
 msgstr "Geeft de hoogte aan die gebruikt wordt als referentiehoogte. Als de referentie het zeeniveau is de hoogte is boven zeeniveau, dan wordt 0 gegeven. Als de hoogte onder zeeniveau is, wordt een waarde van 1 gegeven en de hoogte is weergegeven als een absolute waarde in het GPSAltitude-label. De referentieeenheid is meters. Merk op dat dit label van het BYTE-soort is, dit in tegenstelling tot andere referentielabels."
 
 #: libexif/exif-tag.c:110

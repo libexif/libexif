@@ -1,7 +1,7 @@
 # Danish translation libexif.
-# Copyright (C) 2012 Lutz Mueller og nedenstående oversættere.
+# Copyright (C) 2016 Lutz Mueller og nedenstående oversættere.
 # This file is distributed under the same license as the libexif package.
-# Joe Hansen <joedalton2@yahoo.dk>, 2009, 2010, 2012.
+# Joe Hansen <joedalton2@yahoo.dk>, 2009, 2010, 2012, 2016.
 # Korrekturlæst Lars Christian Jensen 2009.
 # Korrekturlæst Torben Grøn Helligsø, 2010. 
 #
@@ -46,13 +46,14 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif-0.6.21\n"
+"Project-Id-Version: libexif-0.6.22-pre1\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-12 20:41+0200\n"
-"PO-Revision-Date: 2012-10-06 01:01I+0200\n"
+"POT-Creation-Date: 2016-09-02 00:46+0200\n"
+"PO-Revision-Date: 2016-09-04 01:01I+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1648,10 +1649,11 @@ msgstr "Fokus - Afstand - Øvre"
 msgid "Focus Distance Lower"
 msgstr "Fokus - Afstand - Nedre"
 
-# Skal det være Blændetal?
-#: libexif/canon/mnote-canon-tag.c:111
-msgid "FNumber"
-msgstr "FNummer"
+# Blændetal?
+#: libexif/canon/mnote-canon-tag.c:111 libexif/exif-tag.c:469
+#: libexif/pentax/mnote-pentax-tag.c:79
+msgid "F-Number"
+msgstr "F-nummer"
 
 #: libexif/canon/mnote-canon-tag.c:112 libexif/exif-tag.c:466
 #: libexif/pentax/mnote-pentax-tag.c:78
@@ -2312,9 +2314,9 @@ msgstr "FlashPix version 1.01"
 msgid "Unknown FlashPix Version"
 msgstr "Ukendt FlashPix version"
 
-#: libexif/exif-entry.c:979 libexif/exif-entry.c:998 libexif/exif-entry.c:1666
-#: libexif/exif-entry.c:1671 libexif/exif-entry.c:1675
-#: libexif/exif-entry.c:1680 libexif/exif-entry.c:1681
+#: libexif/exif-entry.c:979 libexif/exif-entry.c:998 libexif/exif-entry.c:1668
+#: libexif/exif-entry.c:1673 libexif/exif-entry.c:1677
+#: libexif/exif-entry.c:1682 libexif/exif-entry.c:1683
 msgid "[None]"
 msgstr "[Ingen]"
 
@@ -3090,11 +3092,6 @@ msgstr "Information om ophavsret. I denne standard angives både fotografens og 
 #: libexif/exif-tag.c:467
 msgid "Exposure time, given in seconds (sec)."
 msgstr "Belysningstid, opgivet i sekunder (sek)."
-
-# Blændetal?
-#: libexif/exif-tag.c:469 libexif/pentax/mnote-pentax-tag.c:79
-msgid "F-Number"
-msgstr "F-nummer"
 
 # Blændetallet?
 #: libexif/exif-tag.c:470
@@ -5171,6 +5168,10 @@ msgstr "Finere"
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
 msgstr "[DO_NOT_TRANSLATE_THIS_MARKER_da]"
+
+# Skal det være Blændetal?
+#~ msgid "FNumber"
+#~ msgstr "FNummer"
 
 #~ msgid "Tag UserComment does not comply with standard but contains data."
 #~ msgstr "Mærke Brugerkommentar overholder ikke standard, men indeholder data."

@@ -5,16 +5,17 @@
 # Antonio Ceballos <aceballos@gmail.com>, 2014, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif 0.6.21\n"
+"Project-Id-Version: libexif 0.6.22-pre1\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-12 20:41+0200\n"
-"PO-Revision-Date: 2015-08-07 19:24+0200\n"
+"POT-Creation-Date: 2016-09-02 00:46+0200\n"
+"PO-Revision-Date: 2016-09-27 08:20+0200\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 
 #: libexif/canon/mnote-canon-entry.c:40 libexif/fuji/mnote-fuji-entry.c:35
 #: libexif/olympus/mnote-olympus-entry.c:37
@@ -1565,8 +1566,9 @@ msgstr "Distancia focal mayor"
 msgid "Focus Distance Lower"
 msgstr "Distancia focal menor"
 
-#: libexif/canon/mnote-canon-tag.c:111
-msgid "FNumber"
+#: libexif/canon/mnote-canon-tag.c:111 libexif/exif-tag.c:469
+#: libexif/pentax/mnote-pentax-tag.c:79
+msgid "F-Number"
 msgstr "Número F"
 
 #: libexif/canon/mnote-canon-tag.c:112 libexif/exif-tag.c:466
@@ -2222,9 +2224,9 @@ msgstr "Versión FlashPix 1.01"
 msgid "Unknown FlashPix Version"
 msgstr "Versión FlashPix desconocida"
 
-#: libexif/exif-entry.c:979 libexif/exif-entry.c:998 libexif/exif-entry.c:1666
-#: libexif/exif-entry.c:1671 libexif/exif-entry.c:1675
-#: libexif/exif-entry.c:1680 libexif/exif-entry.c:1681
+#: libexif/exif-entry.c:979 libexif/exif-entry.c:998 libexif/exif-entry.c:1668
+#: libexif/exif-entry.c:1673 libexif/exif-entry.c:1677
+#: libexif/exif-entry.c:1682 libexif/exif-entry.c:1683
 msgid "[None]"
 msgstr "(Ninguno)"
 
@@ -2985,10 +2987,6 @@ msgstr "Información del Copyright. En este estándar la etiqueta se utiliza par
 #: libexif/exif-tag.c:467
 msgid "Exposure time, given in seconds (sec)."
 msgstr "Tiempo de exposición, dado en segundos (seg)."
-
-#: libexif/exif-tag.c:469 libexif/pentax/mnote-pentax-tag.c:79
-msgid "F-Number"
-msgstr "Número F"
 
 #: libexif/exif-tag.c:470
 msgid "The F number."
@@ -5033,3 +5031,6 @@ msgstr "Más fino"
 #: test/nls/test-nls.c:20 test/nls/test-nls.c:23 test/nls/test-nls.c:24
 msgid "[DO_NOT_TRANSLATE_THIS_MARKER]"
 msgstr "[DO_NOT_TRANSLATE_THIS_MARKER]"
+
+#~ msgid "FNumber"
+#~ msgstr "Número F"

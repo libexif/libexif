@@ -1,17 +1,18 @@
 # Polish translation for libexif.
 # Copyright (C) 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libexif package.
-# Jakub Bogusz <qboosh@pld-linux.org>, 2005-2012.
+# Jakub Bogusz <qboosh@pld-linux.org>, 2005-2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif 0.6.21\n"
+"Project-Id-Version: libexif 0.6.22-pre1\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-12 20:41+0200\n"
-"PO-Revision-Date: 2012-11-29 21:25+0100\n"
+"POT-Creation-Date: 2016-09-02 00:46+0200\n"
+"PO-Revision-Date: 2016-09-02 21:33+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1565,8 +1566,9 @@ msgstr "Górna odległość ogniska"
 msgid "Focus Distance Lower"
 msgstr "Dolna odległość ogniska"
 
-#: libexif/canon/mnote-canon-tag.c:111
-msgid "FNumber"
+#: libexif/canon/mnote-canon-tag.c:111 libexif/exif-tag.c:469
+#: libexif/pentax/mnote-pentax-tag.c:79
+msgid "F-Number"
 msgstr "Liczba F"
 
 #: libexif/canon/mnote-canon-tag.c:112 libexif/exif-tag.c:466
@@ -2222,9 +2224,9 @@ msgstr "FlashPIx w wersji 1.01"
 msgid "Unknown FlashPix Version"
 msgstr "Nieznana wersja FlashPix"
 
-#: libexif/exif-entry.c:979 libexif/exif-entry.c:998 libexif/exif-entry.c:1666
-#: libexif/exif-entry.c:1671 libexif/exif-entry.c:1675
-#: libexif/exif-entry.c:1680 libexif/exif-entry.c:1681
+#: libexif/exif-entry.c:979 libexif/exif-entry.c:998 libexif/exif-entry.c:1668
+#: libexif/exif-entry.c:1673 libexif/exif-entry.c:1677
+#: libexif/exif-entry.c:1682 libexif/exif-entry.c:1683
 msgid "[None]"
 msgstr "[Brak]"
 
@@ -2985,10 +2987,6 @@ msgstr "Informacje o prawach autorskich. Jest to standardowy znacznik używany d
 #: libexif/exif-tag.c:467
 msgid "Exposure time, given in seconds (sec)."
 msgstr "Czas ekspozycji podany w sekundach (sek)."
-
-#: libexif/exif-tag.c:469 libexif/pentax/mnote-pentax-tag.c:79
-msgid "F-Number"
-msgstr "Liczba F"
 
 #: libexif/exif-tag.c:470
 msgid "The F number."
