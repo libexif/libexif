@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-07-12 20:41+0200\n"
-"PO-Revision-Date: 2013-01-24 06:33+0000\n"
-"Last-Translator: Aleksey Kabanov <Unknown>\n"
+"PO-Revision-Date: 2017-02-12 11:02+0000\n"
+"Last-Translator: Eugene Roskin <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-09-01 20:32+0000\n"
-"X-Generator: Launchpad (build 18179)\n"
+"X-Launchpad-Export-Date: 2018-08-13 00:12+0000\n"
+"X-Generator: Launchpad (build 18747)\n"
 "Language: ru\n"
 
 #: libexif/canon/mnote-canon-entry.c:40 libexif/fuji/mnote-fuji-entry.c:35
@@ -147,12 +147,12 @@ msgstr "Медленная синхронизация"
 
 #: libexif/canon/mnote-canon-entry.c:88
 msgid "Auto, red-eye reduction"
-msgstr ""
+msgstr "Авто, уменьшение красноты глаз"
 
 #: libexif/canon/mnote-canon-entry.c:89
 #: libexif/pentax/mnote-pentax-entry.c:200
 msgid "On, red-eye reduction"
-msgstr ""
+msgstr "Включено, уменьшение красноты глаз"
 
 #: libexif/canon/mnote-canon-entry.c:90
 msgid "External flash"
@@ -161,28 +161,28 @@ msgstr "Внешняя вспышка"
 #: libexif/canon/mnote-canon-entry.c:91 libexif/canon/mnote-canon-entry.c:101
 #: libexif/canon/mnote-canon-entry.c:297
 msgid "Single"
-msgstr ""
+msgstr "Одиночная"
 
 #: libexif/canon/mnote-canon-entry.c:92 libexif/canon/mnote-canon-entry.c:102
 #: libexif/canon/mnote-canon-entry.c:298
 msgid "Continuous"
-msgstr ""
+msgstr "Непрерывная"
 
 #: libexif/canon/mnote-canon-entry.c:93
 msgid "Movie"
-msgstr ""
+msgstr "Видео"
 
 #: libexif/canon/mnote-canon-entry.c:94
 msgid "Continuous, speed priority"
-msgstr ""
+msgstr "Продолжительный, приоритет скорости"
 
 #: libexif/canon/mnote-canon-entry.c:95
 msgid "Continuous, low"
-msgstr ""
+msgstr "Продолжительный, низкий приоритет"
 
 #: libexif/canon/mnote-canon-entry.c:96
 msgid "Continuous, high"
-msgstr ""
+msgstr "Продолжительный, высокий приоритет"
 
 #: libexif/canon/mnote-canon-entry.c:97
 msgid "One-shot AF"
@@ -294,11 +294,11 @@ msgstr "Альбом"
 
 #: libexif/canon/mnote-canon-entry.c:123
 msgid "Fast shutter"
-msgstr ""
+msgstr "Быстрый затвор"
 
 #: libexif/canon/mnote-canon-entry.c:124
 msgid "Slow shutter"
-msgstr ""
+msgstr "Медленный затвор"
 
 #: libexif/canon/mnote-canon-entry.c:125 libexif/fuji/mnote-fuji-entry.c:123
 #: libexif/olympus/mnote-olympus-entry.c:257
@@ -349,7 +349,7 @@ msgstr "Без вспышки"
 
 #: libexif/canon/mnote-canon-entry.c:136
 msgid "Long shutter"
-msgstr ""
+msgstr "Длительный затвор"
 
 #: libexif/canon/mnote-canon-entry.c:137 libexif/canon/mnote-canon-entry.c:188
 #: libexif/olympus/mnote-olympus-entry.c:174
@@ -523,16 +523,16 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:185
 msgid "Middle range"
-msgstr ""
+msgstr "Средний диапазон"
 
 #: libexif/canon/mnote-canon-entry.c:186
 msgid "Far range"
-msgstr ""
+msgstr "Дальний диапазон"
 
 #: libexif/canon/mnote-canon-entry.c:189
 #: libexif/pentax/mnote-pentax-entry.c:210
 msgid "Infinity"
-msgstr ""
+msgstr "Бесконечность"
 
 #: libexif/canon/mnote-canon-entry.c:190
 msgid "Manual AF point selection"
@@ -570,7 +570,7 @@ msgstr "Автоматический выбор точки автофокуси�
 
 #: libexif/canon/mnote-canon-entry.c:197
 msgid "Easy shooting"
-msgstr ""
+msgstr "Лёгкая съёмка"
 
 #: libexif/canon/mnote-canon-entry.c:198
 #: libexif/pentax/mnote-pentax-entry.c:163
@@ -655,7 +655,7 @@ msgstr "Canon EF 24mm f/2.8 или Sigma 15mm f/2.8 EX Fisheye"
 
 #: libexif/canon/mnote-canon-entry.c:219
 msgid "Canon EF 35-80mm f/4-5.6"
-msgstr ""
+msgstr "Canon EF 35-80mm f/4-5.6"
 
 #: libexif/canon/mnote-canon-entry.c:220
 msgid "Canon EF 75-300mm f/4-5.6"
@@ -675,7 +675,7 @@ msgstr "Canon EF-S 18-55mm f/3.5-5.6"
 
 #: libexif/canon/mnote-canon-entry.c:224
 msgid "Canon EF-S 18-55mm f/3.5-5.6 IS II"
-msgstr ""
+msgstr "Canon EF-S 18-55mm f/3.5-5.6 IS II"
 
 #: libexif/canon/mnote-canon-entry.c:225
 msgid "Canon MP-E 65mm f/2.8 1-5x Macro Photo"
@@ -927,7 +927,7 @@ msgstr "Canon EF 70-200mm f/4L IS USM"
 
 #: libexif/canon/mnote-canon-entry.c:287
 msgid "Canon EF 70-200mm f/2.8L IS II USM"
-msgstr ""
+msgstr "Canon EF 70-200mm f/2.8L IS II USM"
 
 #: libexif/canon/mnote-canon-entry.c:289
 msgid "TTL"
@@ -965,7 +965,7 @@ msgstr "Внешняя"
 
 #: libexif/canon/mnote-canon-entry.c:299
 msgid "Normal AE"
-msgstr ""
+msgstr "Нормальная АЭ"
 
 #: libexif/canon/mnote-canon-entry.c:300
 msgid "Exposure compensation"
@@ -973,15 +973,15 @@ msgstr "Компенсация экспозиции"
 
 #: libexif/canon/mnote-canon-entry.c:301
 msgid "AE lock"
-msgstr ""
+msgstr "Фиксация АЭ"
 
 #: libexif/canon/mnote-canon-entry.c:302
 msgid "AE lock + exposure compensation"
-msgstr ""
+msgstr "Фиксация автоэкспозиции + компенсация экспозиции"
 
 #: libexif/canon/mnote-canon-entry.c:303
 msgid "No AE"
-msgstr ""
+msgstr "Без автоэкспозиции"
 
 #: libexif/canon/mnote-canon-entry.c:306
 msgid "On, shot only"
@@ -1134,23 +1134,23 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-entry.c:367
 msgid "EOS mid-range"
-msgstr ""
+msgstr "EOS среднего диапазона"
 
 #: libexif/canon/mnote-canon-entry.c:369
 msgid "Rotate 90 CW"
-msgstr ""
+msgstr "Поворот на 90° ↷"
 
 #: libexif/canon/mnote-canon-entry.c:370
 msgid "Rotate 180"
-msgstr ""
+msgstr "Поворот на 180°"
 
 #: libexif/canon/mnote-canon-entry.c:371
 msgid "Rotate 270 CW"
-msgstr ""
+msgstr "Поворот на 270° ↷"
 
 #: libexif/canon/mnote-canon-entry.c:372
 msgid "Rotated by software"
-msgstr ""
+msgstr "Программный поворот"
 
 #: libexif/canon/mnote-canon-entry.c:384
 #: libexif/olympus/mnote-olympus-entry.c:612
@@ -1174,7 +1174,7 @@ msgstr "Сверху вниз"
 
 #: libexif/canon/mnote-canon-entry.c:388
 msgid "2x2 matrix (clockwise)"
-msgstr ""
+msgstr "2x2 матрица (↷)"
 
 #: libexif/canon/mnote-canon-entry.c:394 libexif/canon/mnote-canon-entry.c:400
 #: libexif/canon/mnote-canon-entry.c:421 libexif/canon/mnote-canon-entry.c:431
@@ -1251,7 +1251,7 @@ msgstr "Монохромный"
 
 #: libexif/canon/mnote-canon-entry.c:494
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: libexif/canon/mnote-canon-entry.c:580 libexif/canon/mnote-canon-entry.c:677
 #, c-format
@@ -1375,7 +1375,7 @@ msgstr "Размер изображения"
 
 #: libexif/canon/mnote-canon-tag.c:64
 msgid "Easy Shooting Mode"
-msgstr ""
+msgstr "Режим Easy Shooting"
 
 #: libexif/canon/mnote-canon-tag.c:65 libexif/olympus/mnote-olympus-tag.c:64
 #: libexif/olympus/mnote-olympus-tag.c:101
@@ -1436,11 +1436,11 @@ msgstr "Длиннофокусный объектив"
 
 #: libexif/canon/mnote-canon-tag.c:76
 msgid "Short Focal Length of Lens"
-msgstr ""
+msgstr "Короткофокусные линзы"
 
 #: libexif/canon/mnote-canon-tag.c:77
 msgid "Focal Units per mm"
-msgstr ""
+msgstr "Фокусные единицы на каждый мм"
 
 #: libexif/canon/mnote-canon-tag.c:78
 msgid "Maximal Aperture"
@@ -1480,11 +1480,11 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:88
 msgid "Photo Effect"
-msgstr ""
+msgstr "Фотографический эффект"
 
 #: libexif/canon/mnote-canon-tag.c:89 libexif/canon/mnote-canon-tag.c:118
 msgid "Manual Flash Output"
-msgstr ""
+msgstr "Настраиваемая мощность вспышки"
 
 #: libexif/canon/mnote-canon-tag.c:90
 msgid "Color Tone"
@@ -1504,7 +1504,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:95
 msgid "Auto ISO"
-msgstr ""
+msgstr "Автоматическое значение ISO"
 
 #: libexif/canon/mnote-canon-tag.c:96
 msgid "Shot ISO"
@@ -1512,20 +1512,20 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:97
 msgid "Measured EV"
-msgstr ""
+msgstr "Измеренная экспозиция EV"
 
 #: libexif/canon/mnote-canon-tag.c:98
 msgid "Target Aperture"
-msgstr ""
+msgstr "Назначенная диафрагма"
 
 #: libexif/canon/mnote-canon-tag.c:99
 msgid "Target Exposure Time"
-msgstr ""
+msgstr "Время назначенной экспозиции"
 
 #: libexif/canon/mnote-canon-tag.c:100 libexif/olympus/mnote-olympus-tag.c:129
 #: libexif/pentax/mnote-pentax-tag.c:81
 msgid "Exposure Compensation"
-msgstr ""
+msgstr "Компенсация экспозиции"
 
 #: libexif/canon/mnote-canon-tag.c:101 libexif/canon/mnote-canon-tag.c:123
 #: libexif/exif-tag.c:800 libexif/fuji/mnote-fuji-tag.c:40
@@ -1550,7 +1550,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-tag.c:106 libexif/olympus/mnote-olympus-tag.c:52
 #: libexif/pentax/mnote-pentax-tag.c:109
 msgid "Flash Exposure Compensation"
-msgstr ""
+msgstr "Компенсация экспозиции вспышки"
 
 #: libexif/canon/mnote-canon-tag.c:107
 msgid "AE Bracketing"
@@ -1562,11 +1562,11 @@ msgstr "Значение брэкетинга AE"
 
 #: libexif/canon/mnote-canon-tag.c:109
 msgid "Focus Distance Upper"
-msgstr ""
+msgstr "Фокусное расстояние верхнее"
 
 #: libexif/canon/mnote-canon-tag.c:110
 msgid "Focus Distance Lower"
-msgstr ""
+msgstr "Фокусное расстояние нижнее"
 
 #: libexif/canon/mnote-canon-tag.c:111
 msgid "FNumber"
@@ -1587,7 +1587,7 @@ msgstr "Тип камеры"
 
 #: libexif/canon/mnote-canon-tag.c:115
 msgid "Auto Rotate"
-msgstr ""
+msgstr "Автоматический поворот"
 
 #: libexif/canon/mnote-canon-tag.c:116
 msgid "ND Filter"
@@ -1599,7 +1599,7 @@ msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:120
 msgid "Panorama Direction"
-msgstr ""
+msgstr "Направление панорамы"
 
 #: libexif/canon/mnote-canon-tag.c:121
 msgid "Tone Curve"
@@ -1666,6 +1666,8 @@ msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."
 msgstr ""
+"При загрузке и повторном сохранении данных Exif, сохраните заметку автора "
+"неизменной. Имейте ввиду, что заметка автора может быть повреждена."
 
 #: libexif/exif-entry.c:234 libexif/exif-entry.c:303 libexif/exif-entry.c:336
 #, c-format
@@ -1673,6 +1675,8 @@ msgid ""
 "Tag '%s' was of format '%s' (which is against specification) and has been "
 "changed to format '%s'."
 msgstr ""
+"Метка'%s' имела формат '%s' (не соответствующий спецификации) и была "
+"преобразована в формат '%s'."
 
 #: libexif/exif-entry.c:271
 #, c-format
@@ -1769,7 +1773,7 @@ msgstr ""
 
 #: libexif/exif-entry.c:673
 msgid "Trilinear sensor"
-msgstr ""
+msgstr "Трёхлинейный сенсор"
 
 #: libexif/exif-entry.c:674
 msgid "Color sequential linear sensor"
@@ -1829,7 +1833,7 @@ msgstr "RGB"
 
 #: libexif/exif-entry.c:682
 msgid "Palette"
-msgstr ""
+msgstr "Палитра"
 
 #: libexif/exif-entry.c:683
 msgid "CMYK"
@@ -1873,19 +1877,19 @@ msgstr "Ручной баланс белого"
 
 #: libexif/exif-entry.c:694
 msgid "Low gain up"
-msgstr ""
+msgstr "Небольшое усиление"
 
 #: libexif/exif-entry.c:694
 msgid "High gain up"
-msgstr ""
+msgstr "Значительное усиление"
 
 #: libexif/exif-entry.c:695
 msgid "Low gain down"
-msgstr ""
+msgstr "Небольшое ослабление"
 
 #: libexif/exif-entry.c:695
 msgid "High gain down"
-msgstr ""
+msgstr "Значительное ослабление"
 
 #: libexif/exif-entry.c:697
 msgid "Low saturation"
@@ -1923,11 +1927,11 @@ msgstr "Неизвестно"
 
 #: libexif/exif-entry.c:716
 msgid "Avg"
-msgstr ""
+msgstr "Усреднённый"
 
 #: libexif/exif-entry.c:717
 msgid "Center-weight"
-msgstr ""
+msgstr "Центрально-взвешенный"
 
 #: libexif/exif-entry.c:719
 msgid "Multi spot"
@@ -1976,7 +1980,7 @@ msgstr "Белая лампа дневного света"
 
 #: libexif/exif-entry.c:743
 msgid "Cool white fluorescent"
-msgstr ""
+msgstr "Холодный белый флюоресцентный"
 
 #: libexif/exif-entry.c:744 libexif/fuji/mnote-fuji-entry.c:78
 #: libexif/pentax/mnote-pentax-entry.c:253
@@ -2095,19 +2099,19 @@ msgstr "Да"
 
 #: libexif/exif-entry.c:780
 msgid "Strobe return light not detected"
-msgstr ""
+msgstr "Возвратный свет строба не обнаружен"
 
 #: libexif/exif-entry.c:780
 msgid "Without strobe"
-msgstr ""
+msgstr "Без строба"
 
 #: libexif/exif-entry.c:782
 msgid "Strobe return light detected"
-msgstr ""
+msgstr "Возвратный свет строба обнаружен"
 
 #: libexif/exif-entry.c:782
 msgid "With strobe"
-msgstr ""
+msgstr "Имеется строб"
 
 #: libexif/exif-entry.c:784
 msgid "Flash fired, compulsory flash mode"
@@ -2116,10 +2120,12 @@ msgstr "Вспышка сработала, режим компенсации в�
 #: libexif/exif-entry.c:785
 msgid "Flash fired, compulsory flash mode, return light not detected"
 msgstr ""
+"Вспышка сработала, режим компенсации вспышки, отраженный свет не обнаружен"
 
 #: libexif/exif-entry.c:787
 msgid "Flash fired, compulsory flash mode, return light detected"
 msgstr ""
+"Вспышка сработала, режим компенсации вспышки, отраженный свет обнаружен"
 
 #: libexif/exif-entry.c:789
 msgid "Flash did not fire, compulsory flash mode"
@@ -2143,35 +2149,45 @@ msgstr "Вспышка сработала, автоматический режи
 
 #: libexif/exif-entry.c:795
 msgid "No flash function"
-msgstr ""
+msgstr "Нет функции вспышки"
 
 #: libexif/exif-entry.c:796
 msgid "Flash fired, red-eye reduction mode"
-msgstr ""
+msgstr "Вспышка сработала, режим уменьшения эффекта красных глаз"
 
 #: libexif/exif-entry.c:797
 msgid "Flash fired, red-eye reduction mode, return light not detected"
 msgstr ""
+"Вспышка сработала, режим уменьшения эффекта красных глаз, отраженный свет не "
+"обнаружен"
 
 #: libexif/exif-entry.c:799
 msgid "Flash fired, red-eye reduction mode, return light detected"
 msgstr ""
+"Вспышка сработала, режим уменьшения эффекта красных глаз, отраженный свет "
+"обнаружен"
 
 #: libexif/exif-entry.c:801
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode"
 msgstr ""
+"Вспышка сработала, принудительный режим вспышки, режим уменьшения эффекта "
+"красных глаз"
 
 #: libexif/exif-entry.c:803
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
 "detected"
 msgstr ""
+"Вспышка сработала, режим компенсации вспышки, режим уменьшения эффекта "
+"красных глаз, отраженный свет не обнаружен"
 
 #: libexif/exif-entry.c:805
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light "
 "detected"
 msgstr ""
+"Вспышка сработала, режим компенсации вспышки, режим уменьшения эффекта "
+"красных глаз, отраженный свет обнаружен"
 
 #: libexif/exif-entry.c:807
 msgid "Flash did not fire, auto mode, red-eye reduction mode"
@@ -2187,10 +2203,14 @@ msgstr ""
 msgid ""
 "Flash fired, auto mode, return light not detected, red-eye reduction mode"
 msgstr ""
+"Вспышка сработала, автоматический режим, отраженный свет не обнаружен, режим "
+"уменьшения эффекта красных глаз"
 
 #: libexif/exif-entry.c:811
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode"
 msgstr ""
+"Вспышка сработала, автоматический режим, отраженный свет обнаружен, режим "
+"уменьшения эффекта красных глаз"
 
 #: libexif/exif-entry.c:815
 msgid "?"
@@ -2236,6 +2256,7 @@ msgstr "Неподдерживаемая строка JIS"
 #: libexif/exif-entry.c:935
 msgid "Tag UserComment contains data but is against specification."
 msgstr ""
+"Метка UserComment, содержит данные, но они не соответствуют спецификации."
 
 #: libexif/exif-entry.c:939
 #, c-format
@@ -2286,7 +2307,7 @@ msgstr "%.02f EV"
 #: libexif/exif-entry.c:1025
 #, c-format
 msgid " (f/%.01f)"
-msgstr ""
+msgstr " (f/%.01f)"
 
 #: libexif/exif-entry.c:1059
 #, c-format
@@ -2356,11 +2377,11 @@ msgstr "B"
 
 #: libexif/exif-entry.c:1149
 msgid "Reserved"
-msgstr ""
+msgstr "Зарезервировано"
 
 #: libexif/exif-entry.c:1172
 msgid "Directly photographed"
-msgstr ""
+msgstr "Сфотографировано напрямую"
 
 #: libexif/exif-entry.c:1185
 msgid "YCbCr4:2:2"
@@ -2391,7 +2412,7 @@ msgstr "Уровень моря"
 
 #: libexif/exif-entry.c:1259
 msgid "Sea level reference"
-msgstr ""
+msgstr "Референсное значение уровня моря"
 
 #: libexif/exif-entry.c:1367
 #, c-format
@@ -2573,20 +2594,20 @@ msgstr ""
 
 #: libexif/exif-tag.c:103
 msgid "Altitude Reference"
-msgstr ""
+msgstr "Референсное значение высоты"
 
 #: libexif/exif-tag.c:104
 msgid ""
 "Indicates the altitude used as the reference altitude. If the reference is "
 "sea level and the altitude is above sea level, 0 is given. If the altitude "
 "is below sea level, a value of 1 is given and the altitude is indicated as "
-"an absolute value in the GPSAltitude tag. The reference unit is meters. Note "
+"an absolute value in the GSPAltitude tag. The reference unit is meters. Note "
 "that this tag is BYTE type, unlike other reference tags."
 msgstr ""
 "Отображает высоту, используемую в качестве эталона. Если эталоном является "
 "уровень моря, а высота выше его, то указывается 0. Если высота ниже уровня "
 "моря, то указывается 1, а высота отображается как абсолютное значение в тэге "
-"<GPSAltitude>. Эталонной единицей измерения является метр. Помните, что этот "
+"<GSPAltitude>. Эталонной единицей измерения является метр. Помните, что этот "
 "тэг в отличие от других \"эталонных\" тэгов имеет тип BYTE."
 
 #: libexif/exif-tag.c:110
@@ -2777,6 +2798,11 @@ msgid ""
 "and, for example, fractions of minutes are given up to two decimal places, "
 "the format would be dd/1,mmmm/100,0/1."
 msgstr ""
+"Отображает широту конечной точки. Широта выражается тремя РАЦИОНАЛЬНЫМИ "
+"значениями задающими градусы, минуты и секунды соответственно. Если широта "
+"выражается в градусах, минутах и секундах, то типичный формат будет "
+"dd/1,mm/1,ss/1. Когда градусы и минуты используются и к примеру, доли минут "
+"дают до двух знаков после запятой, формат будет dd/1,mmmm/100,0/1."
 
 #: libexif/exif-tag.c:173
 msgid "Reference for Longitude of Destination"
@@ -2821,6 +2847,7 @@ msgid ""
 "Indicates the bearing to the destination point. The range of values is from "
 "0.00 to 359.99."
 msgstr ""
+"Указывает азимут на точку назначения. Диапазон значений от 0.00 до 359.99."
 
 #: libexif/exif-tag.c:193
 msgid "Reference for Distance to Destination"
@@ -2834,7 +2861,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:197
 msgid "Distance to Destination"
-msgstr ""
+msgstr "Расстояние до объекта"
 
 #: libexif/exif-tag.c:198
 msgid "Indicates the distance to the destination point."
@@ -2876,12 +2903,13 @@ msgstr ""
 
 #: libexif/exif-tag.c:215
 msgid "GPS Differential Correction"
-msgstr ""
+msgstr "Дифференциальная коррекция GPS"
 
 #: libexif/exif-tag.c:216
 msgid ""
 "Indicates whether differential correction is applied to the GPS receiver."
 msgstr ""
+"Показывает, применялась ли дифференциальная коррекция к GPS-приёмнику."
 
 #: libexif/exif-tag.c:220
 msgid "New Subfile Type"
@@ -3067,7 +3095,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:301
 msgid "X-Resolution"
-msgstr ""
+msgstr "Разрешение по X"
 
 #: libexif/exif-tag.c:302
 msgid ""
@@ -3079,7 +3107,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:306
 msgid "Y-Resolution"
-msgstr ""
+msgstr "Разрешение по Y"
 
 #: libexif/exif-tag.c:307
 msgid ""
@@ -3183,10 +3211,13 @@ msgid ""
 "necessary, since color space is specified in the color space information tag "
 "(<ColorSpace>)."
 msgstr ""
+"Качество цветности белой точки изображения. Обычно в этой метке нет "
+"необходимости, так как цветовое пространство задано в метке сведений о "
+"цветовом пространстве (<ColorSpace>)."
 
 #: libexif/exif-tag.c:353
 msgid "Primary Chromaticities"
-msgstr ""
+msgstr "Цветность основных цветов"
 
 #: libexif/exif-tag.c:354
 msgid ""
@@ -3194,6 +3225,9 @@ msgid ""
 "is not necessary, since color space is specified in the color space "
 "information tag (<ColorSpace>)."
 msgstr ""
+"Качество цветности трёх основных цветов изображения. Обычно в этой метке нет "
+"необходимости, так как цветовое пространство задаётся в метке сведений о "
+"цветовом пространстве (<ColorSpace>)."
 
 #: libexif/exif-tag.c:359
 msgid "Defined by Adobe Corporation to enable TIFF Trees within a TIFF file."
@@ -3364,7 +3398,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:485
 msgid "Exposure Program"
-msgstr ""
+msgstr "Программа экспозиции"
 
 #: libexif/exif-tag.c:486
 msgid ""
@@ -3396,7 +3430,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:503
 msgid "ISO Speed Ratings"
-msgstr ""
+msgstr "Светочувствительность ISO"
 
 #: libexif/exif-tag.c:504
 msgid ""
@@ -3406,7 +3440,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:507
 msgid "Opto-Electronic Conversion Function"
-msgstr ""
+msgstr "Коэффициент оптоэлектронного преобразования"
 
 #: libexif/exif-tag.c:508
 msgid ""
@@ -3417,11 +3451,11 @@ msgstr ""
 
 #: libexif/exif-tag.c:513
 msgid "Time Zone Offset"
-msgstr ""
+msgstr "Смещение часового пояса"
 
 #: libexif/exif-tag.c:514
 msgid "Encodes time zone of camera clock relative to GMT."
-msgstr ""
+msgstr "Часовой пояс часов камеры относительно GMT."
 
 #: libexif/exif-tag.c:515
 msgid "Exif Version"
@@ -3437,7 +3471,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:520
 msgid "Date and Time (Original)"
-msgstr ""
+msgstr "Дата и время (Исходные)"
 
 #: libexif/exif-tag.c:521
 msgid ""
@@ -3449,7 +3483,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:526
 msgid "Date and Time (Digitized)"
-msgstr ""
+msgstr "Дата и время (Цифровые)"
 
 #: libexif/exif-tag.c:527
 msgid "The date and time when the image was stored as digital data."
@@ -3530,7 +3564,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:562
 msgid "Maximum Aperture Value"
-msgstr ""
+msgstr "Максимальное значение диафрагмы"
 
 #: libexif/exif-tag.c:563
 msgid ""
@@ -3673,6 +3707,7 @@ msgstr ""
 msgid ""
 "A character string containing a comment about the image, encoded in UTF-16LE."
 msgstr ""
+"Строка символов в кодировке UTF-16LE, содержащая комментарий к изображению."
 
 #: libexif/exif-tag.c:644
 msgid "XP Author"
@@ -3683,6 +3718,7 @@ msgid ""
 "A character string containing the name of the image creator, encoded in UTF-"
 "16LE."
 msgstr ""
+"Строка символов в кодировке UTF-16LE, содержащая имя создателя изображения."
 
 #: libexif/exif-tag.c:649
 msgid "XP Keywords"
@@ -3693,6 +3729,8 @@ msgid ""
 "A character string containing key words describing the image, encoded in UTF-"
 "16LE."
 msgstr ""
+"Строка символов в кодировке UTF-16LE с ключевыми словами, описывающими "
+"изображение."
 
 #: libexif/exif-tag.c:654
 msgid "XP Subject"
@@ -3753,7 +3791,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:688
 msgid "Related Sound File"
-msgstr ""
+msgstr "Связанный звуковой файл"
 
 #: libexif/exif-tag.c:689
 msgid ""
@@ -3836,7 +3874,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:751
 msgid "Focal Plane Resolution Unit"
-msgstr ""
+msgstr "Единица измерения разрешения в фокальной плоскости"
 
 #: libexif/exif-tag.c:752
 msgid ""
@@ -3863,7 +3901,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:765
 msgid "Exposure Index"
-msgstr ""
+msgstr "Индекс экспозиции"
 
 #: libexif/exif-tag.c:766
 msgid ""
@@ -3958,7 +3996,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:818
 msgid "Scene Capture Type"
-msgstr ""
+msgstr "Тип места действия при съёмке"
 
 #: libexif/exif-tag.c:819
 msgid ""
@@ -3969,11 +4007,12 @@ msgstr ""
 
 #: libexif/exif-tag.c:824
 msgid "Gain Control"
-msgstr ""
+msgstr "Управление усилением"
 
 #: libexif/exif-tag.c:825
 msgid "This tag indicates the degree of overall image gain adjustment."
 msgstr ""
+"Эта метка показывает степень общего усиления применённого к изображению."
 
 #: libexif/exif-tag.c:829
 msgid ""
@@ -3998,7 +4037,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:841
 msgid "Device Setting Description"
-msgstr ""
+msgstr "Описание настроек устройства"
 
 #: libexif/exif-tag.c:842
 msgid ""
@@ -4013,7 +4052,7 @@ msgstr ""
 
 #: libexif/exif-tag.c:849
 msgid "This tag indicates the distance to the subject."
-msgstr ""
+msgstr "Эта метка показывает расстояние до объекта."
 
 #: libexif/exif-tag.c:851
 msgid "Image Unique ID"
@@ -4028,11 +4067,11 @@ msgstr ""
 
 #: libexif/exif-tag.c:857
 msgid "Gamma"
-msgstr ""
+msgstr "Гамма"
 
 #: libexif/exif-tag.c:858
 msgid "Indicates the value of coefficient gamma."
-msgstr ""
+msgstr "Показывает значение коэффициента гаммы."
 
 #: libexif/exif-tag.c:860
 msgid "PRINT Image Matching"
@@ -4073,7 +4112,7 @@ msgstr ""
 #: libexif/fuji/mnote-fuji-entry.c:69 libexif/fuji/mnote-fuji-entry.c:90
 #: libexif/fuji/mnote-fuji-entry.c:98 libexif/fuji/mnote-fuji-entry.c:182
 msgid "Film simulation mode"
-msgstr ""
+msgstr "Режим имитации плёнки"
 
 #: libexif/fuji/mnote-fuji-entry.c:79
 msgid "Incandescent"
@@ -4094,35 +4133,35 @@ msgstr ""
 #: libexif/fuji/mnote-fuji-entry.c:124 libexif/pentax/mnote-pentax-entry.c:164
 #: libexif/pentax/mnote-pentax-entry.c:299
 msgid "Program AE"
-msgstr ""
+msgstr "Программная автоэкспозиция"
 
 #: libexif/fuji/mnote-fuji-entry.c:125
 msgid "Natural photo"
-msgstr ""
+msgstr "Естественное фото"
 
 #: libexif/fuji/mnote-fuji-entry.c:126
 msgid "Vibration reduction"
-msgstr ""
+msgstr "Подавление вибраций"
 
 #: libexif/fuji/mnote-fuji-entry.c:127
 msgid "Sunset"
-msgstr ""
+msgstr "Закат"
 
 #: libexif/fuji/mnote-fuji-entry.c:128 libexif/pentax/mnote-pentax-entry.c:181
 msgid "Museum"
-msgstr ""
+msgstr "Музей"
 
 #: libexif/fuji/mnote-fuji-entry.c:129
 msgid "Party"
-msgstr ""
+msgstr "Вечеринка"
 
 #: libexif/fuji/mnote-fuji-entry.c:130
 msgid "Flower"
-msgstr ""
+msgstr "Цветок"
 
 #: libexif/fuji/mnote-fuji-entry.c:131 libexif/pentax/mnote-pentax-entry.c:176
 msgid "Text"
-msgstr ""
+msgstr "Текст"
 
 #: libexif/fuji/mnote-fuji-entry.c:132
 msgid "NP & flash"
@@ -4130,11 +4169,11 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:137
 msgid "Aperture priority AE"
-msgstr ""
+msgstr "Автоэкспозиция с приоритетом диафрагмы"
 
 #: libexif/fuji/mnote-fuji-entry.c:138
 msgid "Shutter priority AE"
-msgstr ""
+msgstr "Автоэкспозиция с приоритетом выдержки"
 
 #: libexif/fuji/mnote-fuji-entry.c:146
 msgid "F-Standard"
@@ -4150,27 +4189,27 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:151
 msgid "No blur"
-msgstr ""
+msgstr "Без размытия"
 
 #: libexif/fuji/mnote-fuji-entry.c:152
 msgid "Blur warning"
-msgstr ""
+msgstr "Предупреждение о размытости"
 
 #: libexif/fuji/mnote-fuji-entry.c:155
 msgid "Focus good"
-msgstr ""
+msgstr "Хорошая фокусировка"
 
 #: libexif/fuji/mnote-fuji-entry.c:156
 msgid "Out of focus"
-msgstr ""
+msgstr "Вне фокуса"
 
 #: libexif/fuji/mnote-fuji-entry.c:159
 msgid "AE good"
-msgstr ""
+msgstr "Хорошая автоэкспозиция"
 
 #: libexif/fuji/mnote-fuji-entry.c:160
 msgid "Over exposed"
-msgstr ""
+msgstr "Переэкспонировано"
 
 #: libexif/fuji/mnote-fuji-entry.c:164
 msgid "Wide"
@@ -4178,47 +4217,47 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-entry.c:167
 msgid "F0/Standard"
-msgstr ""
+msgstr "F0/Стандартный"
 
 #: libexif/fuji/mnote-fuji-entry.c:168
 msgid "F1/Studio portrait"
-msgstr ""
+msgstr "F1/Студийный портрет"
 
 #: libexif/fuji/mnote-fuji-entry.c:169
 msgid "F1a/Professional portrait"
-msgstr ""
+msgstr "F1a/Профессиональный портрет"
 
 #: libexif/fuji/mnote-fuji-entry.c:170
 msgid "F1b/Professional portrait"
-msgstr ""
+msgstr "F1b/Профессиональный портрет"
 
 #: libexif/fuji/mnote-fuji-entry.c:171
 msgid "F1c/Professional portrait"
-msgstr ""
+msgstr "F1c/Профессиональный портрет"
 
 #: libexif/fuji/mnote-fuji-entry.c:172
 msgid "F2/Fujichrome"
-msgstr ""
+msgstr "F2/Fujichrome"
 
 #: libexif/fuji/mnote-fuji-entry.c:173
 msgid "F3/Studio portrait Ex"
-msgstr ""
+msgstr "F3/Студийный портрет Ex"
 
 #: libexif/fuji/mnote-fuji-entry.c:174
 msgid "F4/Velvia"
-msgstr ""
+msgstr "F4/Velvia"
 
 #: libexif/fuji/mnote-fuji-entry.c:177
 msgid "Auto (100-400%)"
-msgstr ""
+msgstr "Авто (100-400%)"
 
 #: libexif/fuji/mnote-fuji-entry.c:179
 msgid "Standard (100%)"
-msgstr ""
+msgstr "Стандарт (100%)"
 
 #: libexif/fuji/mnote-fuji-entry.c:180
 msgid "Wide1 (230%)"
-msgstr ""
+msgstr "Wide1 (230%)"
 
 #: libexif/fuji/mnote-fuji-entry.c:181
 msgid "Wide2 (400%)"
@@ -4241,11 +4280,11 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:37
 msgid "This number is unique and based on the date of manufacture."
-msgstr ""
+msgstr "Этот номер уникален и основан на дате производства."
 
 #: libexif/fuji/mnote-fuji-tag.c:41
 msgid "Chromaticity Saturation"
-msgstr ""
+msgstr "Насыщенность цветности"
 
 #: libexif/fuji/mnote-fuji-tag.c:44
 msgid "Flash Firing Strength Compensation"
@@ -4281,15 +4320,15 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:53
 msgid "Blur Check"
-msgstr ""
+msgstr "Проверка размытия"
 
 #: libexif/fuji/mnote-fuji-tag.c:54
 msgid "Auto Focus Check"
-msgstr ""
+msgstr "Проверка автофокуса"
 
 #: libexif/fuji/mnote-fuji-tag.c:55
 msgid "Auto Exposure Check"
-msgstr ""
+msgstr "Проверка автоэкспозиции"
 
 #: libexif/fuji/mnote-fuji-tag.c:56
 msgid "Dynamic Range"
@@ -4297,7 +4336,7 @@ msgstr "Динамический диапазон"
 
 #: libexif/fuji/mnote-fuji-tag.c:57
 msgid "Film Simulation Mode"
-msgstr ""
+msgstr "Режим имитации плёнки"
 
 #: libexif/fuji/mnote-fuji-tag.c:58
 msgid "Dynamic Range Wide Mode"
@@ -4309,19 +4348,19 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:60
 msgid "Minimum Focal Length"
-msgstr ""
+msgstr "Минимальное фокусное расстояние"
 
 #: libexif/fuji/mnote-fuji-tag.c:61
 msgid "Maximum Focal Length"
-msgstr ""
+msgstr "Максимальное фокусное расстояние"
 
 #: libexif/fuji/mnote-fuji-tag.c:62
 msgid "Maximum Aperture at Minimum Focal"
-msgstr ""
+msgstr "Максимальная диафрагма при минимальном фокусном расстоянии"
 
 #: libexif/fuji/mnote-fuji-tag.c:63
 msgid "Maximum Aperture at Maximum Focal"
-msgstr ""
+msgstr "Максимальная диафрагма при максимальном фокусном расстоянии"
 
 #: libexif/fuji/mnote-fuji-tag.c:65
 msgid "Order Number"
@@ -4329,7 +4368,7 @@ msgstr ""
 
 #: libexif/fuji/mnote-fuji-tag.c:66 libexif/pentax/mnote-pentax-tag.c:98
 msgid "Frame Number"
-msgstr ""
+msgstr "Номер кадра"
 
 #: libexif/olympus/mnote-olympus-entry.c:49
 #, c-format
@@ -4342,19 +4381,19 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:94
 msgid "AF-D or AF-S lens"
-msgstr ""
+msgstr "Объектив AF-D или AF-S"
 
 #: libexif/olympus/mnote-olympus-entry.c:95
 msgid "AF-D G lens"
-msgstr ""
+msgstr "Объектив AF-D G"
 
 #: libexif/olympus/mnote-olympus-entry.c:96
 msgid "AF-D VR lens"
-msgstr ""
+msgstr "Объектив AF-D VR"
 
 #: libexif/olympus/mnote-olympus-entry.c:97
 msgid "AF-D G VR lens"
-msgstr ""
+msgstr "Объектив AF-D G VR"
 
 #: libexif/olympus/mnote-olympus-entry.c:101
 msgid "Flash unit unknown"
@@ -4579,11 +4618,11 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:224
 msgid "Interlaced"
-msgstr ""
+msgstr "Чересстрочная"
 
 #: libexif/olympus/mnote-olympus-entry.c:225
 msgid "Progressive"
-msgstr ""
+msgstr "Прогрессивная"
 
 #: libexif/olympus/mnote-olympus-entry.c:231
 #: libexif/pentax/mnote-pentax-entry.c:85
@@ -4593,11 +4632,11 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-entry.c:232
 msgid "Adjust exposure"
-msgstr ""
+msgstr "Регулировка экспозиции"
 
 #: libexif/olympus/mnote-olympus-entry.c:235
 msgid "Spot focus"
-msgstr ""
+msgstr "Точечный фокус"
 
 #: libexif/olympus/mnote-olympus-entry.c:236
 msgid "Normal focus"
@@ -4663,7 +4702,7 @@ msgstr "20 кадров/с."
 #: libexif/olympus/mnote-olympus-entry.c:381
 #, c-format
 msgid "Red Correction %f, blue Correction %f"
-msgstr ""
+msgstr "Исправление красного %f, исправление синего %f"
 
 #: libexif/olympus/mnote-olympus-entry.c:388
 msgid "No manual focus selection"
@@ -4676,47 +4715,47 @@ msgstr "%2.2f метров"
 
 #: libexif/olympus/mnote-olympus-entry.c:417
 msgid "AF position: center"
-msgstr ""
+msgstr "Позиция взятия автофокуса: по-центру"
 
 #: libexif/olympus/mnote-olympus-entry.c:418
 msgid "AF position: top"
-msgstr ""
+msgstr "Позиция взятия автофокуса: сверху"
 
 #: libexif/olympus/mnote-olympus-entry.c:419
 msgid "AF position: bottom"
-msgstr ""
+msgstr "Позиция взятия автофокуса: снизу"
 
 #: libexif/olympus/mnote-olympus-entry.c:420
 msgid "AF position: left"
-msgstr ""
+msgstr "Позиция взятия автофокуса: слева"
 
 #: libexif/olympus/mnote-olympus-entry.c:421
 msgid "AF position: right"
-msgstr ""
+msgstr "Позиция взятия автофокуса: справа"
 
 #: libexif/olympus/mnote-olympus-entry.c:422
 msgid "AF position: upper-left"
-msgstr ""
+msgstr "Позиция взятия автофокуса: сверху-слева"
 
 #: libexif/olympus/mnote-olympus-entry.c:423
 msgid "AF position: upper-right"
-msgstr ""
+msgstr "Позиция взятия автофокуса: сверху-справа"
 
 #: libexif/olympus/mnote-olympus-entry.c:424
 msgid "AF position: lower-left"
-msgstr ""
+msgstr "Позиция взятия автофокуса: снизу-слева"
 
 #: libexif/olympus/mnote-olympus-entry.c:425
 msgid "AF position: lower-right"
-msgstr ""
+msgstr "Позиция взятия автофокуса: снизу-справа"
 
 #: libexif/olympus/mnote-olympus-entry.c:426
 msgid "AF position: far left"
-msgstr ""
+msgstr "Позиция взятия автофокуса: крайне-левая"
 
 #: libexif/olympus/mnote-olympus-entry.c:427
 msgid "AF position: far right"
-msgstr ""
+msgstr "Позиция взятия автофокуса: крайне-правая"
 
 #: libexif/olympus/mnote-olympus-entry.c:428
 msgid "Unknown AF position"
@@ -4790,7 +4829,7 @@ msgstr "Резкость изображения"
 
 #: libexif/olympus/mnote-olympus-tag.c:44
 msgid "Flash Setting"
-msgstr ""
+msgstr "Настройка вспышки"
 
 #: libexif/olympus/mnote-olympus-tag.c:46
 msgid "White Balance Fine Adjustment"
@@ -4802,7 +4841,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:49
 msgid "ISO Selection"
-msgstr ""
+msgstr "Выбор ISO"
 
 #: libexif/olympus/mnote-olympus-tag.c:50
 msgid "Preview Image IFD"
@@ -4818,7 +4857,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:54
 msgid "Image Boundary"
-msgstr ""
+msgstr "Границы изображения"
 
 #: libexif/olympus/mnote-olympus-tag.c:56
 msgid "Flash Exposure Bracket Value"
@@ -4835,7 +4874,7 @@ msgstr "Подстройка изображения"
 
 #: libexif/olympus/mnote-olympus-tag.c:59
 msgid "Tone Compensation"
-msgstr ""
+msgstr "Компенсация яркости цвета"
 
 #: libexif/olympus/mnote-olympus-tag.c:60
 msgid "Adapter"
@@ -4857,7 +4896,7 @@ msgstr "Вспышка сработала"
 
 #: libexif/olympus/mnote-olympus-tag.c:66
 msgid "AF Focus Position"
-msgstr ""
+msgstr "Положение автофокуса"
 
 #: libexif/olympus/mnote-olympus-tag.c:67
 msgid "Bracketing"
@@ -4875,11 +4914,11 @@ msgstr "Кривая контраста"
 #: libexif/olympus/mnote-olympus-tag.c:95
 #: libexif/pentax/mnote-pentax-tag.c:134
 msgid "Color Mode"
-msgstr ""
+msgstr "Цветовой режим"
 
 #: libexif/olympus/mnote-olympus-tag.c:72
 msgid "Light Type"
-msgstr ""
+msgstr "Тип освещения"
 
 #: libexif/olympus/mnote-olympus-tag.c:74
 msgid "Hue Adjustment"
@@ -4893,7 +4932,7 @@ msgstr "Подавление шума"
 
 #: libexif/olympus/mnote-olympus-tag.c:79
 msgid "Sensor Pixel Size"
-msgstr ""
+msgstr "Размер сенсора в пикселях"
 
 #: libexif/olympus/mnote-olympus-tag.c:82
 msgid "Image Data Size"
@@ -4917,11 +4956,11 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:89
 msgid "Capture Editor Data"
-msgstr ""
+msgstr "Данные редактора захвата изображения"
 
 #: libexif/olympus/mnote-olympus-tag.c:90
 msgid "Capture Editor Version"
-msgstr ""
+msgstr "Версия редактора захвата изображения"
 
 #: libexif/olympus/mnote-olympus-tag.c:97
 #: libexif/olympus/mnote-olympus-tag.c:183
@@ -4938,7 +4977,7 @@ msgstr "Преобразователь"
 
 #: libexif/olympus/mnote-olympus-tag.c:105
 msgid "Thumbnail Image"
-msgstr ""
+msgstr "Уменьшенное изображение"
 
 #: libexif/olympus/mnote-olympus-tag.c:106
 msgid "Speed/Sequence/Panorama Direction"
@@ -4946,11 +4985,11 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:109
 msgid "Black & White Mode"
-msgstr ""
+msgstr "Чёрно-белый режим"
 
 #: libexif/olympus/mnote-olympus-tag.c:111
 msgid "Focal Plane Diagonal"
-msgstr ""
+msgstr "Диагональ фокальной плоскости"
 
 #: libexif/olympus/mnote-olympus-tag.c:112
 msgid "Lens Distortion Parameters"
@@ -4974,7 +5013,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:118
 msgid "One Touch White Balance"
-msgstr ""
+msgstr "Баланс белого одним нажатием"
 
 #: libexif/olympus/mnote-olympus-tag.c:119
 msgid "White Balance Bracket"
@@ -4987,7 +5026,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:121
 msgid "Data Dump"
-msgstr ""
+msgstr "Вывод данных"
 
 #: libexif/olympus/mnote-olympus-tag.c:124
 msgid "ISO Value"
@@ -5031,11 +5070,11 @@ msgstr "Настройка резкости"
 
 #: libexif/olympus/mnote-olympus-tag.c:139
 msgid "Flash Charge Level"
-msgstr ""
+msgstr "Уровень заряда вспышки"
 
 #: libexif/olympus/mnote-olympus-tag.c:140
 msgid "Color Matrix"
-msgstr ""
+msgstr "Цветовая матрица"
 
 #: libexif/olympus/mnote-olympus-tag.c:141
 msgid "Black Level"
@@ -5105,7 +5144,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:158
 msgid "Scene Detect"
-msgstr ""
+msgstr "Определение места действия"
 
 #: libexif/olympus/mnote-olympus-tag.c:159
 msgid "Compression Ratio"
@@ -5149,7 +5188,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:172
 msgid "Color Adjustment Mode"
-msgstr ""
+msgstr "Режим регулировки цветов"
 
 #: libexif/olympus/mnote-olympus-tag.c:174
 msgid "Quick Shot"
@@ -5157,7 +5196,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:176
 msgid "Voice Memo"
-msgstr ""
+msgstr "Голосовая заметка"
 
 #: libexif/olympus/mnote-olympus-tag.c:177
 msgid "Record Shutter Release"
@@ -5165,11 +5204,11 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:178
 msgid "Flicker Reduce"
-msgstr ""
+msgstr "Уменьшение мерцания"
 
 #: libexif/olympus/mnote-olympus-tag.c:179
 msgid "Optical Zoom"
-msgstr ""
+msgstr "Оптический трансфокатор"
 
 #: libexif/olympus/mnote-olympus-tag.c:181
 msgid "Light Source Special"
@@ -5181,7 +5220,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:184
 msgid "Scene Select"
-msgstr ""
+msgstr "Выбор места действия"
 
 #: libexif/olympus/mnote-olympus-tag.c:186
 msgid "Sequence Shot Interval"
@@ -5197,7 +5236,7 @@ msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:191
 msgid "Epson Software Version"
-msgstr ""
+msgstr "Версия ПО Epson"
 
 #: libexif/pentax/mnote-pentax-entry.c:80
 #: libexif/pentax/mnote-pentax-entry.c:134
@@ -5216,11 +5255,11 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:92
 msgid "Flash on"
-msgstr ""
+msgstr "Вспышка вкючена"
 
 #: libexif/pentax/mnote-pentax-entry.c:140
 msgid "TIFF"
-msgstr ""
+msgstr "TIFF"
 
 #: libexif/pentax/mnote-pentax-entry.c:150
 msgid "2560x1920 or 2304x1728"
@@ -5240,7 +5279,7 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:172
 msgid "Sunset or candlelight"
-msgstr ""
+msgstr "Закат или при свечах"
 
 #: libexif/pentax/mnote-pentax-entry.c:173
 msgid "Autumn"
@@ -5248,7 +5287,7 @@ msgstr "Осень"
 
 #: libexif/pentax/mnote-pentax-entry.c:178
 msgid "Self portrait"
-msgstr ""
+msgstr "Автопортрет"
 
 #: libexif/pentax/mnote-pentax-entry.c:179
 msgid "Illustrations"
@@ -5305,11 +5344,11 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:197
 msgid "Auto, fired"
-msgstr ""
+msgstr "Автоматически, вспышка сработала"
 
 #: libexif/pentax/mnote-pentax-entry.c:199
 msgid "Auto, fired, red-eye reduction"
-msgstr ""
+msgstr "Автоматически, вспышка сработала, уменьшение эффекта красных глаз"
 
 #: libexif/pentax/mnote-pentax-entry.c:201
 msgid "On, wireless"
@@ -5333,11 +5372,11 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:213
 msgid "AF-S"
-msgstr ""
+msgstr "AF-S (автофокус для статичных сцен)"
 
 #: libexif/pentax/mnote-pentax-entry.c:214
 msgid "AF-C"
-msgstr ""
+msgstr "AF-C (следящий автофокус)"
 
 #: libexif/pentax/mnote-pentax-entry.c:217
 msgid "Upper-left"
@@ -5393,11 +5432,11 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:282
 msgid "3008x2008 or 3040x2024"
-msgstr ""
+msgstr "3008x2008 или 3040x2024"
 
 #: libexif/pentax/mnote-pentax-entry.c:293
 msgid "Digital filter?"
-msgstr ""
+msgstr "Цифровой фильтр?"
 
 #: libexif/pentax/mnote-pentax-entry.c:374
 #: libexif/pentax/mnote-pentax-entry.c:383
@@ -5432,7 +5471,7 @@ msgstr "Часовая зона"
 
 #: libexif/pentax/mnote-pentax-tag.c:61
 msgid "Daylight Savings"
-msgstr ""
+msgstr "Летнее время"
 
 #: libexif/pentax/mnote-pentax-tag.c:64
 msgid "Preview Size"
@@ -5488,11 +5527,11 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:94
 msgid "Hometown City"
-msgstr ""
+msgstr "Город постоянного проживания"
 
 #: libexif/pentax/mnote-pentax-tag.c:95
 msgid "Destination City"
-msgstr ""
+msgstr "Город назначения"
 
 #: libexif/pentax/mnote-pentax-tag.c:96
 msgid "Hometown DST"
@@ -5512,7 +5551,7 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:99
 msgid "Image Processing"
-msgstr ""
+msgstr "Обработка изображения"
 
 #: libexif/pentax/mnote-pentax-tag.c:100
 msgid "Picture Mode (2)"
@@ -5524,15 +5563,15 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:104
 msgid "Raw Image Size"
-msgstr ""
+msgstr "Размер необработанного изображения"
 
 #: libexif/pentax/mnote-pentax-tag.c:105
 msgid "Autofocus Points Used"
-msgstr ""
+msgstr "Использовались точки автофокусировки"
 
 #: libexif/pentax/mnote-pentax-tag.c:107
 msgid "Camera Temperature"
-msgstr ""
+msgstr "Температура камеры"
 
 #: libexif/pentax/mnote-pentax-tag.c:110
 msgid "Image Tone"
@@ -5540,7 +5579,7 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:111
 msgid "Shake Reduction Info"
-msgstr ""
+msgstr "Сведения стабилизатора"
 
 #: libexif/pentax/mnote-pentax-tag.c:112
 msgid "Black Point"
@@ -5548,11 +5587,11 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:114
 msgid "AE Info"
-msgstr ""
+msgstr "Сведения автоэкспозиции"
 
 #: libexif/pentax/mnote-pentax-tag.c:115
 msgid "Lens Info"
-msgstr ""
+msgstr "Сведения объектива"
 
 #: libexif/pentax/mnote-pentax-tag.c:116
 msgid "Flash Info"
@@ -5568,11 +5607,11 @@ msgstr "Сведения о батарее"
 
 #: libexif/pentax/mnote-pentax-tag.c:119
 msgid "Hometown City Code"
-msgstr ""
+msgstr "Код города проживания"
 
 #: libexif/pentax/mnote-pentax-tag.c:120
 msgid "Destination City Code"
-msgstr ""
+msgstr "Код города назначения"
 
 #: libexif/pentax/mnote-pentax-tag.c:125
 msgid "Object Distance"
@@ -5580,11 +5619,11 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-tag.c:125
 msgid "Distance of photographed object in millimeters."
-msgstr ""
+msgstr "Расстояние до сфотографированного объекта в миллиметрах."
 
 #: libexif/pentax/mnote-pentax-tag.c:126
 msgid "Flash Distance"
-msgstr ""
+msgstr "Расстояние вспышки"
 
 #: libexif/pentax/mnote-pentax-tag.c:132
 msgid "Bestshot Mode"
