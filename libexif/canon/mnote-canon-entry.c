@@ -552,7 +552,9 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 {
 	char buf[128];
 	ExifLong vl;
+	ExifSLong vsl;
 	ExifShort vs, n;
+	ExifSShort vss;
 	unsigned char *data;
 	size_t	size;
 	double d;
@@ -643,51 +645,51 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		if (t >= n) return NULL;
 		CC (entry->components, n, val, maxlen);
 		if (size < 2 + t*2 + 2) return NULL;
-		vs = exif_get_short (data + 2 + t * 2, entry->order);
+		vss = exif_get_sshort (data + 2 + t * 2, entry->order);
 		switch (t) {
 		case 0:
-			snprintf (val, maxlen, "%.3f", pow (2, (ExifSShort)vs / 32.0));
+			snprintf (val, maxlen, "%.3f", pow (2, vss / 32.0));
 			break;
 		case 1:
-			snprintf (val, maxlen, "%.0f", apex_value_to_iso_speed ((ExifSShort)vs / 32.0));
+			snprintf (val, maxlen, "%.0f", apex_value_to_iso_speed (vss / 32.0));
 			break;
 		case 2:
 		case 5:
 		case 14:
 		case 16:
-			snprintf (val, maxlen, _("%.2f EV"), (ExifSShort)vs / 32.0);
+			snprintf (val, maxlen, _("%.2f EV"), vss / 32.0);
 			break;
 		case 3:
 		case 20:
-			snprintf (val, maxlen, "%.2f", apex_value_to_aperture (vs / 32.0));
+			snprintf (val, maxlen, "%.2f", apex_value_to_aperture (vss / 32.0));
 			break;
 		case 4:
 		case 21:
-			d = apex_value_to_shutter_speed ((ExifSShort)vs / 32.0);
+			d = apex_value_to_shutter_speed (vss / 32.0);
 			if (d < 1)
 				snprintf (val, maxlen, _("1/%i"),(int)(1.0 / d));
 			else
 				snprintf (val, maxlen, "%i", (int) d);
 			break;
 		case 8:
-			snprintf (val, maxlen, "%u", vs);
+			snprintf (val, maxlen, "%u", vss);
 			break;
 		case 12:
-			snprintf (val, maxlen, "%.2f", vs / 32.0);
+			snprintf (val, maxlen, "%.2f", vss / 32.0);
 			break;
 		case 18:
 		case 19:
-			snprintf (val, maxlen, _("%u mm"), vs);
+			snprintf (val, maxlen, _("%u mm"), vss);
 			break;
 		case 28:
-			if ((ExifSShort)vs <= 0) {
+			if (vss <= 0) {
 				strncpy(val, _("Off"), maxlen);
 				break;
 			}
-			snprintf (val, maxlen, _("%i (ms)"), vs * 100);
+			snprintf (val, maxlen, _("%i (ms)"), vss * 100);
 			break;
 		default:
-			canon_search_table_value (entries_settings_2, t, vs, val, maxlen);
+			canon_search_table_value (entries_settings_2, t, vss, val, maxlen);
 		}
 		break;
 
@@ -754,28 +756,68 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		break;
 
 	default:
-#ifdef DEBUG
-	  {
-		int i;
-		if (entry->format == EXIF_FORMAT_SHORT) {
-			if (size < entry->components * 2) return NULL;
-			for(i=0;i<entry->components;i++) {
+		switch (entry->format) {
+		case EXIF_FORMAT_SHORT:
+		  {
+			size_t i, len = strlen(val);
+			for(i=0; i<entry->components; i++) {
+				if (size < 2)
+					break;
 				vs = exif_get_short (data, entry->order);
-				data+=2;
-				printf ("Value%d=%d\n", i, vs);
+				snprintf (val+len, maxlen-len, "%hu ", vs);
+				len = strlen(val);
+				data += 2;
+				size -= 2;
 			}
-		} else if (entry->format == EXIF_FORMAT_LONG) {
-			if (size < entry->components * 4) return NULL;
-			for(i=0;i<entry->components;i++) {
+		  }
+		  break;
+		case EXIF_FORMAT_SSHORT:
+		  {
+			size_t i, len = strlen(val);
+			for(i=0; i<entry->components; i++) {
+				if (size < 2)
+					break;
+				vss = exif_get_sshort (data, entry->order);
+				snprintf (val+len, maxlen-len, "%hi ", vss);
+				data += 2;
+				size -= 2;
+			}
+		  }
+		  break;
+		case EXIF_FORMAT_LONG:
+		  {
+			size_t i, len = strlen(val);
+			for(i=0; i<entry->components; i++) {
+				if (size < 4)
+					break;
 				vl = exif_get_long (data, entry->order);
-				data+=4;
-				printf ("Value%d=%d\n", i, vs);
+				snprintf (val+len, maxlen-len, "%lu ", (long unsigned) vl);
+				data += 4;
+				size -= 4;
 			}
+		  }
+		  break;
+		case EXIF_FORMAT_SLONG:
+		  {
+			size_t i, len = strlen(val);
+			for(i=0; i<entry->components; i++) {
+				if (size < 4)
+					break;
+				vsl = exif_get_slong (data, entry->order);
+				snprintf (val+len, maxlen-len, "%li ", (long int) vsl);
+				data += 4;
+				size -= 4;
+			}
+		  }
+		  break;
+		case EXIF_FORMAT_ASCII:
+			strncpy (val, (char *)data, MIN (entry->size, maxlen));
+			break;
+		default:
+		  snprintf (val, maxlen, _("%i bytes unknown data"),
+			  entry->size);
+		  break;
 		}
-		else if (entry->format == EXIF_FORMAT_ASCII)
-		    strncpy (val, data, MIN (entry->size, maxlen));
-	  }
-#endif
 		break;
 	}
 	return val;
