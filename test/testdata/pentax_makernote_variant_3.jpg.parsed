@@ -142,11 +142,11 @@ File pentax_makernote_variant_3.jpg
     Entry 1: 16386, Preview Size
       Size: 8
     Entry 2: 16387, Preview Length
-      Size: 1
+      Size: 2
     Entry 3: 16388, Preview Start
-      Size: 4
-    Entry 4: 16389, Model Identification
       Size: 5
+    Entry 4: 16389, Model Identification
+      Size: 6
     Entry 5: 16390, Date
       Size: 10
     Entry 6: 16391, Time
@@ -168,7 +168,7 @@ File pentax_makernote_variant_3.jpg
     Entry 14: 16400, Focus Position
       Size: 5
     Entry 15: 16402, Exposure Time
-      Size: 6
+      Size: 7
     Entry 16: 16403, F-Number
       Size: 3
     Entry 17: 16404, ISO Number
@@ -188,7 +188,7 @@ File pentax_makernote_variant_3.jpg
     Entry 24: 16412, Red Balance
       Size: 2
     Entry 25: 16413, Focal Length
-      Size: 2
+      Size: 3
     Entry 26: 16414, Digital Zoom
       Size: 4
     Entry 27: 16415, Saturation
@@ -210,7 +210,7 @@ File pentax_makernote_variant_3.jpg
     Entry 35: 16423, (unknown)
       Size: 20
     Entry 36: 16425, Frame Number
-      Size: 1
+      Size: 2
     Entry 37: 16434, Image Processing
       Size: 20
     Entry 38: 16449, (unknown)

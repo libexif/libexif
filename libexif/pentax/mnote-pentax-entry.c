@@ -309,7 +309,9 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			      char *val, unsigned int maxlen)
 {
 	ExifLong vl;
+	ExifSLong vsl;
 	ExifShort vs, vs2;
+	ExifSShort vss;
 	int i = 0, j = 0;
 
 	if (!entry) return (NULL);
@@ -347,7 +349,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			for (i = 0; (items[i].tag && items[i].tag != entry->tag); i++);
 			if (!items[i].tag) {
 				snprintf (val, maxlen,
-					  _("Internal error (unknown value %i)"), vs);
+					  _("Internal error (unknown value %hu)"), vs);
 			  	break;
 			}
 
@@ -356,7 +358,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			    (items[i].elem[j].index < vs); j++);
 			if (items[i].elem[j].index != vs) {
 				snprintf (val, maxlen,
-					  _("Internal error (unknown value %i)"), vs);
+					  _("Internal error (unknown value %hu)"), vs);
 				break;
 			}
 			strncpy (val, _(items[i].elem[j].string), maxlen);
@@ -371,7 +373,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			for (i = 0; (items2[i].tag && items2[i].tag != entry->tag); i++);
 			if (!items2[i].tag) {
 				snprintf (val, maxlen,
-					  _("Internal error (unknown value %i %i)"), vs, vs2);
+					  _("Internal error (unknown value %hu %hu)"), vs, vs2);
 			  	break;
 			}
 
@@ -380,7 +382,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 				|| ((items2[i].elem[j].index2 == vs2) && (items2[i].elem[j].index1 < vs))); j++);
 			if ((items2[i].elem[j].index1 != vs) || (items2[i].elem[j].index2 != vs2)) {
 				snprintf (val, maxlen,
-					  _("Internal error (unknown value %i %i)"), vs, vs2);
+					  _("Internal error (unknown value %hi %hi)"), vs, vs2);
 				break;
 			}
 			strncpy (val, _(items2[i].elem[j].string), maxlen);
@@ -391,7 +393,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		CF (entry->format, EXIF_FORMAT_LONG, val, maxlen);
 		CC (entry->components, 1, val, maxlen);
 		vl = exif_get_long (entry->data, entry->order);
-		snprintf (val, maxlen, "%li", (long int) vl);
+		snprintf (val, maxlen, "%lu", (long unsigned) vl);
 		break;
 	case MNOTE_PENTAX_TAG_PRINTIM:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
@@ -410,7 +412,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		CC (entry->components, 4, val, maxlen);
 		/* Note: format is UNDEFINED, not SHORT -> order is fixed: MOTOROLA */
 		vs = exif_get_short (entry->data, EXIF_BYTE_ORDER_MOTOROLA);
-		snprintf (val, maxlen, "%i:%02i:%02i", vs, entry->data[2], entry->data[3]);
+		snprintf (val, maxlen, "%hi:%02i:%02i", vs, entry->data[2], entry->data[3]);
 		break;
 	case MNOTE_PENTAX2_TAG_TIME:
 		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
@@ -425,14 +427,31 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		case EXIF_FORMAT_SHORT:
 		  {
 			const unsigned char *data = entry->data;
-		  	size_t k, len = strlen(val), sizeleft;
+			size_t k, len = strlen(val), sizeleft;
 
 			sizeleft = entry->size;
-		  	for(k=0; k<entry->components; k++) {
+			for(k=0; k<entry->components; k++) {
 				if (sizeleft < 2)
 					break;
 				vs = exif_get_short (data, entry->order);
-				snprintf (val+len, maxlen-len, "%i ", vs);
+				snprintf (val+len, maxlen-len, "%hu ", vs);
+				len = strlen(val);
+				data += 2;
+				sizeleft -= 2;
+			}
+		  }
+		  break;
+		case EXIF_FORMAT_SSHORT:
+		  {
+			const unsigned char *data = entry->data;
+			size_t k, len = strlen(val), sizeleft;
+
+			sizeleft = entry->size;
+			for(k=0; k<entry->components; k++) {
+				if (sizeleft < 2)
+					break;
+				vss = exif_get_sshort (data, entry->order);
+				snprintf (val+len, maxlen-len, "%hi ", vss);
 				len = strlen(val);
 				data += 2;
 				sizeleft -= 2;
@@ -442,14 +461,31 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		case EXIF_FORMAT_LONG:
 		  {
 			const unsigned char *data = entry->data;
-		  	size_t k, len = strlen(val), sizeleft;
+			size_t k, len = strlen(val), sizeleft;
 
 			sizeleft = entry->size;
-		  	for(k=0; k<entry->components; k++) {
+			for(k=0; k<entry->components; k++) {
 				if (sizeleft < 4)
 					break;
 				vl = exif_get_long (data, entry->order);
-				snprintf (val+len, maxlen-len, "%li", (long int) vl);
+				snprintf (val+len, maxlen-len, "%lu ", (long unsigned) vl);
+				len = strlen(val);
+				data += 4;
+				sizeleft -= 4;
+			}
+		  }
+		  break;
+		case EXIF_FORMAT_SLONG:
+		  {
+			const unsigned char *data = entry->data;
+			size_t k, len = strlen(val), sizeleft;
+
+			sizeleft = entry->size;
+			for(k=0; k<entry->components; k++) {
+				if (sizeleft < 4)
+					break;
+				vsl = exif_get_slong (data, entry->order);
+				snprintf (val+len, maxlen-len, "%li ", (long int) vsl);
 				len = strlen(val);
 				data += 4;
 				sizeleft -= 4;

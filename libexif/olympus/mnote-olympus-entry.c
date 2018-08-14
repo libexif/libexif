@@ -274,6 +274,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 {
 	char         buf[30];
 	ExifLong     vl;
+	ExifSLong    vsl;
 	ExifShort    vs = 0;
 	ExifSShort   vss = 0;
 	ExifRational vr, vr2;
@@ -785,10 +786,20 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			vs = exif_get_short (entry->data, entry->order);
 			snprintf (v, maxlen, "%hu", vs);
 			break;
+		case EXIF_FORMAT_SSHORT:
+			CC (entry->components, 1, v, maxlen);
+			vss = exif_get_sshort (entry->data, entry->order);
+			snprintf (v, maxlen, "%hi", vss);
+			break;
 		case EXIF_FORMAT_LONG:
 			CC (entry->components, 1, v, maxlen);
 			vl = exif_get_long (entry->data, entry->order);
-			snprintf (v, maxlen, "%li", (long int) vl);
+			snprintf (v, maxlen, "%lu", (long unsigned) vl);
+			break;
+		case EXIF_FORMAT_SLONG:
+			CC (entry->components, 1, v, maxlen);
+			vsl = exif_get_slong (entry->data, entry->order);
+			snprintf (v, maxlen, "%li", (long int) vsl);
 			break;
 		case EXIF_FORMAT_RATIONAL:
 			CC (entry->components, 1, v, maxlen);

@@ -193,6 +193,7 @@ mnote_fuji_entry_get_value (MnoteFujiEntry *entry,
 	ExifLong  vl;
 	ExifSLong vsl;
 	ExifShort vs, vs2;
+	ExifSShort vss;
 	ExifRational vr;
 	ExifSRational vsr;
 	int i, j;
@@ -271,7 +272,11 @@ mnote_fuji_entry_get_value (MnoteFujiEntry *entry,
 		  break;
 		case EXIF_FORMAT_SHORT:
 		  vs = exif_get_short (entry->data, entry->order);
-		  snprintf (val, maxlen, "%i", vs);
+		  snprintf (val, maxlen, "%hu", vs);
+		  break;
+		case EXIF_FORMAT_SSHORT:
+		  vss = exif_get_sshort (entry->data, entry->order);
+		  snprintf (val, maxlen, "%hi", vss);
 		  break;
 		case EXIF_FORMAT_LONG:
 		  vl = exif_get_long (entry->data, entry->order);
