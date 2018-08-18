@@ -1,0 +1,20 @@
+# Travis CI configuration file
+
+sudo: false
+
+language: c
+
+script:
+  - autoreconf -sivf
+  - ./configure --prefix="${HOME}"
+  - make
+  - make check
+  - make install
+
+compiler:
+  - clang
+  - gcc
+
+os:
+  - linux
+  - osx
