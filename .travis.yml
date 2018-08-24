@@ -10,10 +10,21 @@ addons:
     packages:
     - autopoint
 
+env:
+  matrix:
+    - CONFIG=normal
+    - CONFIG=c90
+    - CONFIG=stackprotect
+  global:
+    - MAKEFLAGS='-j 2'
+
 script:
   # Ensure brew gettext is in the PATH so autopoint is found on OS X
   - PATH="$PATH:/usr/local/opt/gettext/bin" autoreconf -sivf
-  - ./configure --prefix="${HOME}"
+  - if [ "$CONFIG" = "normal" ] ; then CFLAGS='-Wall -Wextra -O3'; fi
+  - if [ "$CONFIG" = "c90" ] ; then CFLAGS='-std=iso9899:1990 -D_XOPEN_SOURCE=500 -Wall -Wextra -O3'; fi
+  - if [ "$CONFIG" = "stackprotect" ] ; then CFLAGS='-g -O0 -fstack-protector-all'; fi
+  - ./configure --prefix="${HOME}" CFLAGS="$CFLAGS" || { tail -300 config.log; false; }
   - make
   - make check
   - make install
