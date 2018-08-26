@@ -5,10 +5,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2016-09-01 23:00+0200\n"
+"POT-Creation-Date: 2018-08-26 12:22+0200\n"
 "PO-Revision-Date: 2010-04-24 08:59+0000\n"
 "Last-Translator: Marko Uskokovic <Unknown>\n"
 "Language-Team: Serbian <sr@li.org>\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,7 +38,7 @@ msgid "Invalid number of components (%i, expected %i or %i)."
 msgstr "Неисправан број елемената (%i, очекивао сам %i или %i)."
 
 #: libexif/canon/mnote-canon-entry.c:76 libexif/canon/mnote-canon-entry.c:130
-#: libexif/canon/mnote-canon-entry.c:182 libexif/exif-entry.c:816
+#: libexif/canon/mnote-canon-entry.c:182 libexif/exif-entry.c:815
 #: libexif/olympus/mnote-olympus-entry.c:199
 #: libexif/olympus/mnote-olympus-tag.c:108
 #: libexif/pentax/mnote-pentax-entry.c:174
@@ -48,14 +49,14 @@ msgstr "Макро"
 
 #: libexif/canon/mnote-canon-entry.c:77 libexif/canon/mnote-canon-entry.c:79
 #: libexif/canon/mnote-canon-entry.c:157 libexif/canon/mnote-canon-entry.c:160
-#: libexif/canon/mnote-canon-entry.c:163 libexif/exif-entry.c:694
-#: libexif/exif-entry.c:697 libexif/exif-entry.c:698 libexif/exif-entry.c:699
-#: libexif/exif-entry.c:765 libexif/fuji/mnote-fuji-entry.c:64
+#: libexif/canon/mnote-canon-entry.c:163 libexif/exif-entry.c:693
+#: libexif/exif-entry.c:696 libexif/exif-entry.c:697 libexif/exif-entry.c:698
+#: libexif/exif-entry.c:764 libexif/fuji/mnote-fuji-entry.c:64
 #: libexif/olympus/mnote-olympus-entry.c:121
 #: libexif/olympus/mnote-olympus-entry.c:198
 #: libexif/olympus/mnote-olympus-entry.c:206
 #: libexif/olympus/mnote-olympus-entry.c:216
-#: libexif/olympus/mnote-olympus-entry.c:592
+#: libexif/olympus/mnote-olympus-entry.c:593
 #: libexif/pentax/mnote-pentax-entry.c:105
 #: libexif/pentax/mnote-pentax-entry.c:110
 #: libexif/pentax/mnote-pentax-entry.c:115
@@ -84,15 +85,15 @@ msgstr "Супер фино"
 #: libexif/canon/mnote-canon-entry.c:307 libexif/canon/mnote-canon-entry.c:315
 #: libexif/canon/mnote-canon-entry.c:348 libexif/canon/mnote-canon-entry.c:360
 #: libexif/canon/mnote-canon-entry.c:373 libexif/canon/mnote-canon-entry.c:375
-#: libexif/canon/mnote-canon-entry.c:577 libexif/canon/mnote-canon-entry.c:674
+#: libexif/canon/mnote-canon-entry.c:586 libexif/canon/mnote-canon-entry.c:686
 #: libexif/fuji/mnote-fuji-entry.c:70 libexif/fuji/mnote-fuji-entry.c:103
 #: libexif/fuji/mnote-fuji-entry.c:107 libexif/fuji/mnote-fuji-entry.c:115
 #: libexif/fuji/mnote-fuji-entry.c:142
 #: libexif/olympus/mnote-olympus-entry.c:181
 #: libexif/olympus/mnote-olympus-entry.c:189
 #: libexif/olympus/mnote-olympus-entry.c:254
-#: libexif/olympus/mnote-olympus-entry.c:536
-#: libexif/olympus/mnote-olympus-entry.c:553
+#: libexif/olympus/mnote-olympus-entry.c:537
+#: libexif/olympus/mnote-olympus-entry.c:554
 #: libexif/pentax/mnote-pentax-entry.c:195
 #: libexif/pentax/mnote-pentax-entry.c:260
 msgid "Off"
@@ -124,8 +125,8 @@ msgstr "Аутоматски"
 #: libexif/fuji/mnote-fuji-entry.c:108 libexif/fuji/mnote-fuji-entry.c:116
 #: libexif/fuji/mnote-fuji-entry.c:143
 #: libexif/olympus/mnote-olympus-entry.c:182
-#: libexif/olympus/mnote-olympus-entry.c:539
-#: libexif/olympus/mnote-olympus-entry.c:556
+#: libexif/olympus/mnote-olympus-entry.c:540
+#: libexif/olympus/mnote-olympus-entry.c:557
 #: libexif/pentax/mnote-pentax-entry.c:198
 #: libexif/pentax/mnote-pentax-entry.c:261
 msgid "On"
@@ -145,8 +146,7 @@ msgstr "Споро усклађивање"
 msgid "Auto, red-eye reduction"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:89
-#: libexif/pentax/mnote-pentax-entry.c:200
+#: libexif/canon/mnote-canon-entry.c:89 libexif/pentax/mnote-pentax-entry.c:200
 msgid "On, red-eye reduction"
 msgstr ""
 
@@ -268,9 +268,8 @@ msgstr "Потпуна аутоматика"
 
 #: libexif/canon/mnote-canon-entry.c:121 libexif/canon/mnote-canon-entry.c:179
 #: libexif/canon/mnote-canon-entry.c:201 libexif/canon/mnote-canon-entry.c:288
-#: libexif/canon/mnote-canon-entry.c:395 libexif/exif-entry.c:764
-#: libexif/fuji/mnote-fuji-entry.c:112
-#: libexif/olympus/mnote-olympus-entry.c:93
+#: libexif/canon/mnote-canon-entry.c:395 libexif/exif-entry.c:763
+#: libexif/fuji/mnote-fuji-entry.c:112 libexif/olympus/mnote-olympus-entry.c:93
 #: libexif/olympus/mnote-olympus-entry.c:203
 #: libexif/pentax/mnote-pentax-entry.c:79
 #: libexif/pentax/mnote-pentax-entry.c:102
@@ -282,7 +281,7 @@ msgid "Manual"
 msgstr "Ручно"
 
 #: libexif/canon/mnote-canon-entry.c:122 libexif/canon/mnote-canon-entry.c:433
-#: libexif/exif-entry.c:691 libexif/exif-entry.c:775
+#: libexif/exif-entry.c:690 libexif/exif-entry.c:774
 #: libexif/fuji/mnote-fuji-entry.c:121 libexif/pentax/mnote-pentax-entry.c:167
 #: libexif/pentax/mnote-pentax-entry.c:301
 msgid "Landscape"
@@ -311,7 +310,7 @@ msgid "Sepia"
 msgstr "Сепиа"
 
 #: libexif/canon/mnote-canon-entry.c:128 libexif/canon/mnote-canon-entry.c:432
-#: libexif/exif-entry.c:691 libexif/exif-entry.c:773
+#: libexif/exif-entry.c:690 libexif/exif-entry.c:772
 #: libexif/fuji/mnote-fuji-entry.c:120 libexif/pentax/mnote-pentax-entry.c:166
 #: libexif/pentax/mnote-pentax-entry.c:291
 #: libexif/pentax/mnote-pentax-entry.c:294
@@ -338,8 +337,7 @@ msgstr "Живописно"
 msgid "Neutral"
 msgstr "Неутрлно"
 
-#: libexif/canon/mnote-canon-entry.c:135
-#: libexif/pentax/mnote-pentax-entry.c:93
+#: libexif/canon/mnote-canon-entry.c:135 libexif/pentax/mnote-pentax-entry.c:93
 msgid "Flash off"
 msgstr "Искључен блиц"
 
@@ -421,7 +419,7 @@ msgstr ""
 #: libexif/canon/mnote-canon-entry.c:368 libexif/canon/mnote-canon-entry.c:420
 #: libexif/olympus/mnote-olympus-entry.c:192
 #: libexif/olympus/mnote-olympus-entry.c:229
-#: libexif/olympus/mnote-olympus-entry.c:457
+#: libexif/olympus/mnote-olympus-entry.c:458
 #: libexif/pentax/mnote-pentax-entry.c:242
 msgid "None"
 msgstr "Ништа"
@@ -434,8 +432,8 @@ msgstr "2x"
 msgid "4x"
 msgstr "4x"
 
-#: libexif/canon/mnote-canon-entry.c:156 libexif/exif-entry.c:722
-#: libexif/exif-entry.c:752
+#: libexif/canon/mnote-canon-entry.c:156 libexif/exif-entry.c:721
+#: libexif/exif-entry.c:751
 msgid "Other"
 msgstr "Друго"
 
@@ -485,11 +483,11 @@ msgstr "800"
 msgid "Default"
 msgstr "Подразумевано"
 
-#: libexif/canon/mnote-canon-entry.c:174 libexif/exif-entry.c:718
+#: libexif/canon/mnote-canon-entry.c:174 libexif/exif-entry.c:717
 msgid "Spot"
 msgstr "Место"
 
-#: libexif/canon/mnote-canon-entry.c:175 libexif/exif-entry.c:716
+#: libexif/canon/mnote-canon-entry.c:175 libexif/exif-entry.c:715
 msgid "Average"
 msgstr "Просечно"
 
@@ -497,11 +495,11 @@ msgstr "Просечно"
 msgid "Evaluative"
 msgstr "Процена"
 
-#: libexif/canon/mnote-canon-entry.c:177 libexif/exif-entry.c:721
+#: libexif/canon/mnote-canon-entry.c:177 libexif/exif-entry.c:720
 msgid "Partial"
 msgstr "Делимично"
 
-#: libexif/canon/mnote-canon-entry.c:178 libexif/exif-entry.c:717
+#: libexif/canon/mnote-canon-entry.c:178 libexif/exif-entry.c:716
 msgid "Center-weighted average"
 msgstr "Просечна тежина центра"
 
@@ -513,7 +511,7 @@ msgstr "Непознато"
 msgid "Very close"
 msgstr "Веома близу"
 
-#: libexif/canon/mnote-canon-entry.c:184 libexif/exif-entry.c:817
+#: libexif/canon/mnote-canon-entry.c:184 libexif/exif-entry.c:816
 msgid "Close"
 msgstr "Близу"
 
@@ -1024,32 +1022,32 @@ msgid "Sunny"
 msgstr "Сунчано"
 
 #: libexif/canon/mnote-canon-entry.c:333 libexif/canon/mnote-canon-entry.c:405
-#: libexif/exif-entry.c:739 libexif/fuji/mnote-fuji-entry.c:75
+#: libexif/exif-entry.c:738 libexif/fuji/mnote-fuji-entry.c:75
 #: libexif/olympus/mnote-olympus-entry.c:139
 #: libexif/pentax/mnote-pentax-entry.c:255
 msgid "Cloudy"
 msgstr "Облачно"
 
 #: libexif/canon/mnote-canon-entry.c:334 libexif/canon/mnote-canon-entry.c:406
-#: libexif/exif-entry.c:736 libexif/pentax/mnote-pentax-entry.c:100
+#: libexif/exif-entry.c:735 libexif/pentax/mnote-pentax-entry.c:100
 #: libexif/pentax/mnote-pentax-entry.c:249
 msgid "Tungsten"
 msgstr "Волфрам"
 
 #: libexif/canon/mnote-canon-entry.c:335 libexif/canon/mnote-canon-entry.c:407
-#: libexif/exif-entry.c:735 libexif/pentax/mnote-pentax-entry.c:101
+#: libexif/exif-entry.c:734 libexif/pentax/mnote-pentax-entry.c:101
 #: libexif/pentax/mnote-pentax-entry.c:248
 msgid "Fluorescent"
 msgstr "Флурасцентно"
 
 #: libexif/canon/mnote-canon-entry.c:336 libexif/canon/mnote-canon-entry.c:408
-#: libexif/exif-entry.c:737 libexif/exif-entry.c:779 libexif/exif-tag.c:577
+#: libexif/exif-entry.c:736 libexif/exif-entry.c:778 libexif/exif-tag.c:586
 #: libexif/fuji/mnote-fuji-entry.c:80 libexif/pentax/mnote-pentax-entry.c:254
 msgid "Flash"
 msgstr "Блиц"
 
 #: libexif/canon/mnote-canon-entry.c:339 libexif/canon/mnote-canon-entry.c:411
-#: libexif/exif-entry.c:740 libexif/pentax/mnote-pentax-entry.c:99
+#: libexif/exif-entry.c:739 libexif/pentax/mnote-pentax-entry.c:99
 #: libexif/pentax/mnote-pentax-entry.c:247
 msgid "Shade"
 msgstr "Сенка"
@@ -1071,7 +1069,7 @@ msgid "PC set 3"
 msgstr "PC скуп 3"
 
 #: libexif/canon/mnote-canon-entry.c:344 libexif/canon/mnote-canon-entry.c:416
-#: libexif/exif-entry.c:741 libexif/fuji/mnote-fuji-entry.c:76
+#: libexif/exif-entry.c:740 libexif/fuji/mnote-fuji-entry.c:76
 #: libexif/pentax/mnote-pentax-entry.c:251
 msgid "Daylight fluorescent"
 msgstr "Дневно флуросцентно"
@@ -1084,7 +1082,7 @@ msgstr "Прилагођено 1"
 msgid "Custom 2"
 msgstr "Прилагођено 2"
 
-#: libexif/canon/mnote-canon-entry.c:349 libexif/exif-entry.c:692
+#: libexif/canon/mnote-canon-entry.c:349 libexif/exif-entry.c:691
 #: libexif/pentax/mnote-pentax-entry.c:78
 #: libexif/pentax/mnote-pentax-entry.c:132
 #: libexif/pentax/mnote-pentax-entry.c:169
@@ -1149,22 +1147,22 @@ msgid "Rotated by software"
 msgstr "Окренуће програм"
 
 #: libexif/canon/mnote-canon-entry.c:384
-#: libexif/olympus/mnote-olympus-entry.c:612
+#: libexif/olympus/mnote-olympus-entry.c:613
 msgid "Left to right"
 msgstr "Лево на десно"
 
 #: libexif/canon/mnote-canon-entry.c:385
-#: libexif/olympus/mnote-olympus-entry.c:615
+#: libexif/olympus/mnote-olympus-entry.c:616
 msgid "Right to left"
 msgstr "Десно на лево"
 
 #: libexif/canon/mnote-canon-entry.c:386
-#: libexif/olympus/mnote-olympus-entry.c:618
+#: libexif/olympus/mnote-olympus-entry.c:619
 msgid "Bottom to top"
 msgstr "Одоздо нагоре"
 
 #: libexif/canon/mnote-canon-entry.c:387
-#: libexif/olympus/mnote-olympus-entry.c:621
+#: libexif/olympus/mnote-olympus-entry.c:622
 msgid "Top to bottom"
 msgstr "Одозго надоле"
 
@@ -1174,7 +1172,7 @@ msgstr "2x2 матрица (у смеру кретања сата)"
 
 #: libexif/canon/mnote-canon-entry.c:394 libexif/canon/mnote-canon-entry.c:400
 #: libexif/canon/mnote-canon-entry.c:421 libexif/canon/mnote-canon-entry.c:431
-#: libexif/exif-entry.c:691 libexif/fuji/mnote-fuji-entry.c:84
+#: libexif/exif-entry.c:690 libexif/fuji/mnote-fuji-entry.c:84
 #: libexif/fuji/mnote-fuji-entry.c:93 libexif/fuji/mnote-fuji-entry.c:163
 #: libexif/olympus/mnote-olympus-entry.c:230
 msgid "Standard"
@@ -1192,9 +1190,8 @@ msgstr ""
 msgid "Highest"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:404 libexif/exif-entry.c:734
-#: libexif/fuji/mnote-fuji-entry.c:74
-#: libexif/olympus/mnote-olympus-entry.c:136
+#: libexif/canon/mnote-canon-entry.c:404 libexif/exif-entry.c:733
+#: libexif/fuji/mnote-fuji-entry.c:74 libexif/olympus/mnote-olympus-entry.c:136
 #: libexif/pentax/mnote-pentax-entry.c:98
 #: libexif/pentax/mnote-pentax-entry.c:246
 msgid "Daylight"
@@ -1249,37 +1246,44 @@ msgstr "Монохромо"
 msgid ", "
 msgstr ", "
 
-#: libexif/canon/mnote-canon-entry.c:580 libexif/canon/mnote-canon-entry.c:677
+#: libexif/canon/mnote-canon-entry.c:589 libexif/canon/mnote-canon-entry.c:689
 #, c-format
 msgid "%i (ms)"
 msgstr "%i (ms)"
 
-#: libexif/canon/mnote-canon-entry.c:624
+#: libexif/canon/mnote-canon-entry.c:634
 #, c-format
 msgid "%.2f mm"
 msgstr "%.2f mm"
 
-#: libexif/canon/mnote-canon-entry.c:648
+#: libexif/canon/mnote-canon-entry.c:660
 #, c-format
 msgid "%.2f EV"
 msgstr "%.2f EV"
 
-#: libexif/canon/mnote-canon-entry.c:658 libexif/exif-entry.c:1089
+#: libexif/canon/mnote-canon-entry.c:670 libexif/exif-entry.c:1088
 #, c-format
 msgid "1/%i"
 msgstr ""
 
-#: libexif/canon/mnote-canon-entry.c:670
+#: libexif/canon/mnote-canon-entry.c:682
 #, c-format
 msgid "%u mm"
 msgstr "%u mm"
+
+#: libexif/canon/mnote-canon-entry.c:817 libexif/fuji/mnote-fuji-entry.c:303
+#: libexif/pentax/mnote-pentax-entry.c:401
+#: libexif/pentax/mnote-pentax-entry.c:497
+#, c-format
+msgid "%i bytes unknown data"
+msgstr "%i бајтова непознатих података"
 
 #: libexif/canon/mnote-canon-tag.c:35
 msgid "Settings (First Part)"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:36 libexif/canon/mnote-canon-tag.c:92
-#: libexif/exif-tag.c:581 libexif/pentax/mnote-pentax-tag.c:88
+#: libexif/exif-tag.c:590 libexif/pentax/mnote-pentax-tag.c:88
 msgid "Focal Length"
 msgstr "Жижна даљина"
 
@@ -1287,8 +1291,7 @@ msgstr "Жижна даљина"
 msgid "Settings (Second Part)"
 msgstr ""
 
-#: libexif/canon/mnote-canon-tag.c:38
-#: libexif/olympus/mnote-olympus-entry.c:601
+#: libexif/canon/mnote-canon-tag.c:38 libexif/olympus/mnote-olympus-entry.c:602
 #: libexif/pentax/mnote-pentax-entry.c:177
 msgid "Panorama"
 msgstr "Панорама"
@@ -1343,8 +1346,8 @@ msgstr "Квалитет"
 
 #: libexif/canon/mnote-canon-tag.c:59 libexif/fuji/mnote-fuji-tag.c:43
 #: libexif/olympus/mnote-olympus-tag.c:45
-#: libexif/olympus/mnote-olympus-tag.c:127
-#: libexif/pentax/mnote-pentax-tag.c:38 libexif/pentax/mnote-pentax-tag.c:73
+#: libexif/olympus/mnote-olympus-tag.c:127 libexif/pentax/mnote-pentax-tag.c:38
+#: libexif/pentax/mnote-pentax-tag.c:73
 msgid "Flash Mode"
 msgstr "Мод блица"
 
@@ -1355,9 +1358,8 @@ msgstr ""
 #: libexif/canon/mnote-canon-tag.c:61 libexif/canon/mnote-canon-tag.c:82
 #: libexif/olympus/mnote-olympus-tag.c:43
 #: libexif/olympus/mnote-olympus-tag.c:134
-#: libexif/olympus/mnote-olympus-tag.c:173
-#: libexif/pentax/mnote-pentax-tag.c:37 libexif/pentax/mnote-pentax-tag.c:74
-#: libexif/pentax/mnote-pentax-tag.c:130
+#: libexif/olympus/mnote-olympus-tag.c:173 libexif/pentax/mnote-pentax-tag.c:37
+#: libexif/pentax/mnote-pentax-tag.c:74 libexif/pentax/mnote-pentax-tag.c:130
 msgid "Focus Mode"
 msgstr "Жижни мод"
 
@@ -1376,25 +1378,24 @@ msgstr ""
 #: libexif/canon/mnote-canon-tag.c:65 libexif/olympus/mnote-olympus-tag.c:64
 #: libexif/olympus/mnote-olympus-tag.c:101
 #: libexif/olympus/mnote-olympus-tag.c:110
-#: libexif/olympus/mnote-olympus-tag.c:180
-#: libexif/pentax/mnote-pentax-tag.c:89
+#: libexif/olympus/mnote-olympus-tag.c:180 libexif/pentax/mnote-pentax-tag.c:89
 msgid "Digital Zoom"
 msgstr "Дигитално увећање"
 
-#: libexif/canon/mnote-canon-tag.c:66 libexif/exif-tag.c:828
+#: libexif/canon/mnote-canon-tag.c:66 libexif/exif-tag.c:838
 #: libexif/fuji/mnote-fuji-tag.c:42 libexif/pentax/mnote-pentax-tag.c:46
 #: libexif/pentax/mnote-pentax-tag.c:91
 msgid "Contrast"
 msgstr "Супротност"
 
-#: libexif/canon/mnote-canon-tag.c:67 libexif/exif-tag.c:832
+#: libexif/canon/mnote-canon-tag.c:67 libexif/exif-tag.c:842
 #: libexif/olympus/mnote-olympus-tag.c:75
 #: libexif/olympus/mnote-olympus-tag.c:87 libexif/pentax/mnote-pentax-tag.c:47
 #: libexif/pentax/mnote-pentax-tag.c:90
 msgid "Saturation"
 msgstr "Засићеност"
 
-#: libexif/canon/mnote-canon-tag.c:68 libexif/exif-tag.c:836
+#: libexif/canon/mnote-canon-tag.c:68 libexif/exif-tag.c:846
 #: libexif/fuji/mnote-fuji-tag.c:39 libexif/pentax/mnote-pentax-tag.c:45
 #: libexif/pentax/mnote-pentax-tag.c:92
 msgid "Sharpness"
@@ -1404,7 +1405,7 @@ msgstr "Оштрина"
 msgid "ISO"
 msgstr "ISO"
 
-#: libexif/canon/mnote-canon-tag.c:70 libexif/exif-tag.c:571
+#: libexif/canon/mnote-canon-tag.c:70 libexif/exif-tag.c:580
 #: libexif/pentax/mnote-pentax-tag.c:82
 msgid "Metering Mode"
 msgstr "Мод мерења"
@@ -1417,7 +1418,7 @@ msgstr ""
 msgid "AF Point"
 msgstr ""
 
-#: libexif/canon/mnote-canon-tag.c:73 libexif/exif-tag.c:795
+#: libexif/canon/mnote-canon-tag.c:73 libexif/exif-tag.c:805
 msgid "Exposure Mode"
 msgstr "Мод осветљења"
 
@@ -1524,7 +1525,7 @@ msgid "Exposure Compensation"
 msgstr ""
 
 #: libexif/canon/mnote-canon-tag.c:101 libexif/canon/mnote-canon-tag.c:123
-#: libexif/exif-tag.c:800 libexif/fuji/mnote-fuji-tag.c:40
+#: libexif/exif-tag.c:810 libexif/fuji/mnote-fuji-tag.c:40
 #: libexif/olympus/mnote-olympus-tag.c:41
 #: libexif/olympus/mnote-olympus-tag.c:98 libexif/pentax/mnote-pentax-tag.c:41
 #: libexif/pentax/mnote-pentax-tag.c:84 libexif/pentax/mnote-pentax-tag.c:124
@@ -1564,12 +1565,12 @@ msgstr ""
 msgid "Focus Distance Lower"
 msgstr ""
 
-#: libexif/canon/mnote-canon-tag.c:111 libexif/exif-tag.c:469
+#: libexif/canon/mnote-canon-tag.c:111 libexif/exif-tag.c:476
 #: libexif/pentax/mnote-pentax-tag.c:79
 msgid "F-Number"
 msgstr ""
 
-#: libexif/canon/mnote-canon-tag.c:112 libexif/exif-tag.c:466
+#: libexif/canon/mnote-canon-tag.c:112 libexif/exif-tag.c:473
 #: libexif/pentax/mnote-pentax-tag.c:78
 msgid "Exposure Time"
 msgstr "Време осветљења"
@@ -1618,35 +1619,35 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-data.c:780
+#: libexif/exif-data.c:786
 msgid "Size of data too small to allow for EXIF data."
 msgstr "Подаци су премали да бих дозволио EXIF податке."
 
-#: libexif/exif-data.c:841
+#: libexif/exif-data.c:851
 msgid "EXIF marker not found."
 msgstr "Нисам пронашао EXIF ознаку."
 
-#: libexif/exif-data.c:868
+#: libexif/exif-data.c:878
 msgid "EXIF header not found."
 msgstr "EXIF заглавље није пронађено."
 
-#: libexif/exif-data.c:893
+#: libexif/exif-data.c:903
 msgid "Unknown encoding."
 msgstr "Непознато шифровање."
 
-#: libexif/exif-data.c:1178
+#: libexif/exif-data.c:1188
 msgid "Ignore unknown tags"
 msgstr "Занемари непозанте ознаке."
 
-#: libexif/exif-data.c:1179
+#: libexif/exif-data.c:1189
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Занемари непозанте ознаке док учитаваш EXIF податке."
 
-#: libexif/exif-data.c:1180
+#: libexif/exif-data.c:1190
 msgid "Follow specification"
 msgstr "Усклади са техничким подацима"
 
-#: libexif/exif-data.c:1181
+#: libexif/exif-data.c:1191
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
@@ -1654,11 +1655,11 @@ msgstr ""
 "Додај, исправи или уклони уносе не би ли добио EXIF податке у складу са "
 "техничким подацима."
 
-#: libexif/exif-data.c:1183
+#: libexif/exif-data.c:1193
 msgid "Do not change maker note"
 msgstr ""
 
-#: libexif/exif-data.c:1184
+#: libexif/exif-data.c:1194
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."
@@ -1711,196 +1712,194 @@ msgid ""
 "fixed."
 msgstr ""
 
-#: libexif/exif-entry.c:462
+#: libexif/exif-entry.c:461
 #, c-format
 msgid "%i bytes undefined data"
 msgstr ""
 
-#: libexif/exif-entry.c:585
+#: libexif/exif-entry.c:584
 #, c-format
 msgid "%i bytes unsupported data type"
 msgstr ""
 
-#: libexif/exif-entry.c:642
+#: libexif/exif-entry.c:641
 #, c-format
 msgid "The tag '%s' contains data of an invalid format ('%s', expected '%s')."
 msgstr ""
 "Етикета '%s' садржи податке у неисправном облику ( '%s', а тражи се '%s')."
 
-#: libexif/exif-entry.c:655
+#: libexif/exif-entry.c:654
 #, c-format
 msgid ""
 "The tag '%s' contains an invalid number of components (%i, expected %i)."
 msgstr "Етикета  '%s садржи неисправан број елемената (%i, уместо %i)."
 
-#: libexif/exif-entry.c:669
+#: libexif/exif-entry.c:668
 msgid "Chunky format"
 msgstr ""
 
-#: libexif/exif-entry.c:669
+#: libexif/exif-entry.c:668
 msgid "Planar format"
 msgstr ""
 
-#: libexif/exif-entry.c:671 libexif/exif-entry.c:763
-#: test/nls/test-codeset.c:54
+#: libexif/exif-entry.c:670 libexif/exif-entry.c:762 test/nls/test-codeset.c:54
 msgid "Not defined"
 msgstr "Неодређено"
 
-#: libexif/exif-entry.c:671
+#: libexif/exif-entry.c:670
 msgid "One-chip color area sensor"
 msgstr "Једночипни сензор области боје"
 
-#: libexif/exif-entry.c:672
+#: libexif/exif-entry.c:671
 msgid "Two-chip color area sensor"
 msgstr "Двочипни сензор области боје"
 
-#: libexif/exif-entry.c:672
+#: libexif/exif-entry.c:671
 msgid "Three-chip color area sensor"
 msgstr "Трочипни сензор области боје"
 
-#: libexif/exif-entry.c:673
+#: libexif/exif-entry.c:672
 msgid "Color sequential area sensor"
 msgstr "Сензор секвенцијалног простора боја"
 
-#: libexif/exif-entry.c:673
+#: libexif/exif-entry.c:672
 msgid "Trilinear sensor"
 msgstr "Пространи сензор"
 
-#: libexif/exif-entry.c:674
+#: libexif/exif-entry.c:673
 msgid "Color sequential linear sensor"
 msgstr "Сензор линеарног простора боја"
 
-#: libexif/exif-entry.c:676 libexif/pentax/mnote-pentax-entry.c:233
+#: libexif/exif-entry.c:675 libexif/pentax/mnote-pentax-entry.c:233
 msgid "Top-left"
 msgstr "Горе - лево"
 
-#: libexif/exif-entry.c:676 libexif/pentax/mnote-pentax-entry.c:235
+#: libexif/exif-entry.c:675 libexif/pentax/mnote-pentax-entry.c:235
 msgid "Top-right"
 msgstr "Горе - десно"
 
-#: libexif/exif-entry.c:676 libexif/pentax/mnote-pentax-entry.c:241
+#: libexif/exif-entry.c:675 libexif/pentax/mnote-pentax-entry.c:241
 msgid "Bottom-right"
 msgstr "Доле - десно"
 
-#: libexif/exif-entry.c:677 libexif/pentax/mnote-pentax-entry.c:239
+#: libexif/exif-entry.c:676 libexif/pentax/mnote-pentax-entry.c:239
 msgid "Bottom-left"
 msgstr "Доле - лево"
 
-#: libexif/exif-entry.c:677
+#: libexif/exif-entry.c:676
 msgid "Left-top"
 msgstr ""
 
-#: libexif/exif-entry.c:677
+#: libexif/exif-entry.c:676
 msgid "Right-top"
 msgstr ""
 
-#: libexif/exif-entry.c:678
+#: libexif/exif-entry.c:677
 msgid "Right-bottom"
 msgstr ""
 
-#: libexif/exif-entry.c:678
+#: libexif/exif-entry.c:677
 msgid "Left-bottom"
 msgstr ""
 
-#: libexif/exif-entry.c:680
+#: libexif/exif-entry.c:679
 msgid "Centered"
 msgstr ""
 
-#: libexif/exif-entry.c:680
+#: libexif/exif-entry.c:679
 msgid "Co-sited"
 msgstr ""
 
-#: libexif/exif-entry.c:682
+#: libexif/exif-entry.c:681
 msgid "Reversed mono"
 msgstr "Обрнути моно"
 
-#: libexif/exif-entry.c:682
+#: libexif/exif-entry.c:681
 msgid "Normal mono"
 msgstr "Нормални моно"
 
-#: libexif/exif-entry.c:682
+#: libexif/exif-entry.c:681
 msgid "RGB"
 msgstr "RGB"
 
-#: libexif/exif-entry.c:682
+#: libexif/exif-entry.c:681
 msgid "Palette"
 msgstr "Палета"
 
-#: libexif/exif-entry.c:683
+#: libexif/exif-entry.c:682
 msgid "CMYK"
 msgstr "CMYK"
 
-#: libexif/exif-entry.c:683
+#: libexif/exif-entry.c:682
 msgid "YCbCr"
 msgstr "YCbCr"
 
-#: libexif/exif-entry.c:683
+#: libexif/exif-entry.c:682
 msgid "CieLAB"
 msgstr "CieLAB"
 
-#: libexif/exif-entry.c:685
+#: libexif/exif-entry.c:684
 msgid "Normal process"
 msgstr "Нормални поступак"
 
-#: libexif/exif-entry.c:685
+#: libexif/exif-entry.c:684
 msgid "Custom process"
 msgstr "Прилагођени поступак"
 
-#: libexif/exif-entry.c:687
+#: libexif/exif-entry.c:686
 msgid "Auto exposure"
 msgstr "Аутоматско осветљење"
 
-#: libexif/exif-entry.c:687 libexif/fuji/mnote-fuji-entry.c:139
+#: libexif/exif-entry.c:686 libexif/fuji/mnote-fuji-entry.c:139
 msgid "Manual exposure"
 msgstr "Ручно осветљење"
 
-#: libexif/exif-entry.c:687
+#: libexif/exif-entry.c:686
 msgid "Auto bracket"
 msgstr "Аутоматска потпора"
 
-#: libexif/exif-entry.c:689
+#: libexif/exif-entry.c:688
 msgid "Auto white balance"
 msgstr "Аутоматска равнотежа беле"
 
-#: libexif/exif-entry.c:689
+#: libexif/exif-entry.c:688
 msgid "Manual white balance"
 msgstr "Ручно уравнотеживање беле"
 
-#: libexif/exif-entry.c:694
+#: libexif/exif-entry.c:693
 msgid "Low gain up"
 msgstr "Повећај ниске прагове"
 
-#: libexif/exif-entry.c:694
+#: libexif/exif-entry.c:693
 msgid "High gain up"
 msgstr "Високи скок"
 
-#: libexif/exif-entry.c:695
+#: libexif/exif-entry.c:694
 msgid "Low gain down"
 msgstr "Смањи ниске прагове"
 
-#: libexif/exif-entry.c:695
+#: libexif/exif-entry.c:694
 msgid "High gain down"
 msgstr "Смањи високе прагове"
 
-#: libexif/exif-entry.c:697
+#: libexif/exif-entry.c:696
 msgid "Low saturation"
 msgstr "Мала засићеност"
 
-#: libexif/exif-entry.c:697 test/nls/test-codeset.c:48
+#: libexif/exif-entry.c:696 test/nls/test-codeset.c:48
 #: test/nls/test-codeset.c:61
 msgid "High saturation"
 msgstr "Велика засићеност"
 
-#: libexif/exif-entry.c:698 libexif/exif-entry.c:699
-#: libexif/fuji/mnote-fuji-entry.c:63
-#: libexif/olympus/mnote-olympus-entry.c:208
+#: libexif/exif-entry.c:697 libexif/exif-entry.c:698
+#: libexif/fuji/mnote-fuji-entry.c:63 libexif/olympus/mnote-olympus-entry.c:208
 #: libexif/olympus/mnote-olympus-entry.c:217
 #: libexif/pentax/mnote-pentax-entry.c:106
 #: libexif/pentax/mnote-pentax-entry.c:170
 msgid "Soft"
 msgstr "Меко"
 
-#: libexif/exif-entry.c:698 libexif/exif-entry.c:699
+#: libexif/exif-entry.c:697 libexif/exif-entry.c:698
 #: libexif/fuji/mnote-fuji-entry.c:65 libexif/fuji/mnote-fuji-entry.c:95
 #: libexif/olympus/mnote-olympus-entry.c:207
 #: libexif/olympus/mnote-olympus-entry.c:215
@@ -1908,178 +1907,178 @@ msgstr "Меко"
 msgid "Hard"
 msgstr "Тешко"
 
-#: libexif/exif-entry.c:715 libexif/exif-entry.c:733 libexif/exif-entry.c:815
-#: libexif/olympus/mnote-olympus-entry.c:595
-#: libexif/olympus/mnote-olympus-entry.c:689
-#: libexif/olympus/mnote-olympus-entry.c:744
+#: libexif/exif-entry.c:714 libexif/exif-entry.c:732 libexif/exif-entry.c:814
+#: libexif/olympus/mnote-olympus-entry.c:596
+#: libexif/olympus/mnote-olympus-entry.c:690
+#: libexif/olympus/mnote-olympus-entry.c:745
 #: libexif/pentax/mnote-pentax-entry.c:256
 msgid "Unknown"
 msgstr "Непознато"
 
-#: libexif/exif-entry.c:716
+#: libexif/exif-entry.c:715
 msgid "Avg"
 msgstr ""
 
-#: libexif/exif-entry.c:717
+#: libexif/exif-entry.c:716
 msgid "Center-weight"
 msgstr ""
 
-#: libexif/exif-entry.c:719
+#: libexif/exif-entry.c:718
 msgid "Multi spot"
 msgstr ""
 
-#: libexif/exif-entry.c:720
+#: libexif/exif-entry.c:719
 msgid "Pattern"
 msgstr "Шаблон"
 
-#: libexif/exif-entry.c:725
+#: libexif/exif-entry.c:724
 msgid "Uncompressed"
 msgstr "Несабијено"
 
-#: libexif/exif-entry.c:726
+#: libexif/exif-entry.c:725
 msgid "LZW compression"
 msgstr "LZW сажимање"
 
-#: libexif/exif-entry.c:727 libexif/exif-entry.c:728
+#: libexif/exif-entry.c:726 libexif/exif-entry.c:727
 msgid "JPEG compression"
 msgstr "JPEG сажимање"
 
-#: libexif/exif-entry.c:729
+#: libexif/exif-entry.c:728
 msgid "Deflate/ZIP compression"
 msgstr "Испумпати/ЗИП сажимање"
 
-#: libexif/exif-entry.c:730
+#: libexif/exif-entry.c:729
 msgid "PackBits compression"
 msgstr "PackBits сажимање"
 
-#: libexif/exif-entry.c:736
+#: libexif/exif-entry.c:735
 msgid "Tungsten incandescent light"
 msgstr "Волфрамско ужарено светло"
 
-#: libexif/exif-entry.c:738
+#: libexif/exif-entry.c:737
 msgid "Fine weather"
 msgstr "Лепо време"
 
-#: libexif/exif-entry.c:739
+#: libexif/exif-entry.c:738
 msgid "Cloudy weather"
 msgstr "Облачно време"
 
-#: libexif/exif-entry.c:742 libexif/fuji/mnote-fuji-entry.c:77
+#: libexif/exif-entry.c:741 libexif/fuji/mnote-fuji-entry.c:77
 #: libexif/pentax/mnote-pentax-entry.c:252
 msgid "Day white fluorescent"
 msgstr "Дневно бело флуросцентно"
 
-#: libexif/exif-entry.c:743
+#: libexif/exif-entry.c:742
 msgid "Cool white fluorescent"
 msgstr "Хладно бело флуросцентно"
 
-#: libexif/exif-entry.c:744 libexif/fuji/mnote-fuji-entry.c:78
+#: libexif/exif-entry.c:743 libexif/fuji/mnote-fuji-entry.c:78
 #: libexif/pentax/mnote-pentax-entry.c:253
 msgid "White fluorescent"
 msgstr "Бело флуросцентно"
 
-#: libexif/exif-entry.c:745
+#: libexif/exif-entry.c:744
 msgid "Standard light A"
 msgstr "Стандардно светло А"
 
-#: libexif/exif-entry.c:746
+#: libexif/exif-entry.c:745
 msgid "Standard light B"
 msgstr "Стандардно светло В"
 
-#: libexif/exif-entry.c:747
+#: libexif/exif-entry.c:746
 msgid "Standard light C"
 msgstr "Стандардно светло С"
 
-#: libexif/exif-entry.c:748
+#: libexif/exif-entry.c:747
 msgid "D55"
 msgstr "D55"
 
-#: libexif/exif-entry.c:749
+#: libexif/exif-entry.c:748
 msgid "D65"
 msgstr "D65"
 
-#: libexif/exif-entry.c:750
+#: libexif/exif-entry.c:749
 msgid "D75"
 msgstr "D75"
 
-#: libexif/exif-entry.c:751
+#: libexif/exif-entry.c:750
 msgid "ISO studio tungsten"
 msgstr "ISO студио волфрам"
 
-#: libexif/exif-entry.c:755 libexif/exif-entry.c:759
+#: libexif/exif-entry.c:754 libexif/exif-entry.c:758
 msgid "Inch"
 msgstr "Инч"
 
-#: libexif/exif-entry.c:755 libexif/exif-entry.c:759
+#: libexif/exif-entry.c:754 libexif/exif-entry.c:758
 msgid "in"
 msgstr "in"
 
-#: libexif/exif-entry.c:756 libexif/exif-entry.c:760
+#: libexif/exif-entry.c:755 libexif/exif-entry.c:759
 msgid "Centimeter"
 msgstr "Центиметар"
 
-#: libexif/exif-entry.c:756 libexif/exif-entry.c:760
+#: libexif/exif-entry.c:755 libexif/exif-entry.c:759
 msgid "cm"
 msgstr "cm"
 
-#: libexif/exif-entry.c:765
+#: libexif/exif-entry.c:764
 msgid "Normal program"
 msgstr "Нормални програм"
 
-#: libexif/exif-entry.c:766
+#: libexif/exif-entry.c:765
 msgid "Aperture priority"
 msgstr "Предност отвора"
 
-#: libexif/exif-entry.c:766 libexif/exif-tag.c:550
+#: libexif/exif-entry.c:765 libexif/exif-tag.c:559
 msgid "Aperture"
 msgstr "Отвор"
 
-#: libexif/exif-entry.c:767
+#: libexif/exif-entry.c:766
 msgid "Shutter priority"
 msgstr "Предност затварача"
 
-#: libexif/exif-entry.c:767
+#: libexif/exif-entry.c:766
 msgid "Shutter"
 msgstr "Затварач"
 
-#: libexif/exif-entry.c:768
+#: libexif/exif-entry.c:767
 msgid "Creative program (biased toward depth of field)"
 msgstr "Стваралачки програм (склоно дубини поља)"
 
-#: libexif/exif-entry.c:769
+#: libexif/exif-entry.c:768
 msgid "Creative"
 msgstr "Стваралчко"
 
-#: libexif/exif-entry.c:770
+#: libexif/exif-entry.c:769
 msgid "Creative program (biased toward fast shutter speed)"
 msgstr "Стваралачки програм (склоно брзом затварању)"
 
-#: libexif/exif-entry.c:771
+#: libexif/exif-entry.c:770
 msgid "Action"
 msgstr "Акција"
 
-#: libexif/exif-entry.c:772
+#: libexif/exif-entry.c:771
 msgid "Portrait mode (for closeup photos with the background out of focus)"
 msgstr "Поптретни мод (за сликање изблиза код којих позадина није у жижи)"
 
-#: libexif/exif-entry.c:774
+#: libexif/exif-entry.c:773
 msgid "Landscape mode (for landscape photos with the background in focus)"
 msgstr "Пејзажни мод (за пејзажне фотографије код којих је позадина у жижи)"
 
-#: libexif/exif-entry.c:778 libexif/exif-entry.c:783
+#: libexif/exif-entry.c:777 libexif/exif-entry.c:782
 #: libexif/olympus/mnote-olympus-entry.c:100
 msgid "Flash did not fire"
 msgstr "Блиц није бљеснуо"
 
-#: libexif/exif-entry.c:778
+#: libexif/exif-entry.c:777
 msgid "No flash"
 msgstr ""
 
-#: libexif/exif-entry.c:779
+#: libexif/exif-entry.c:778
 msgid "Flash fired"
 msgstr ""
 
-#: libexif/exif-entry.c:779 libexif/olympus/mnote-olympus-entry.c:173
+#: libexif/exif-entry.c:778 libexif/olympus/mnote-olympus-entry.c:173
 #: libexif/olympus/mnote-olympus-entry.c:178
 #: libexif/olympus/mnote-olympus-entry.c:212
 #: libexif/olympus/mnote-olympus-entry.c:221
@@ -2087,308 +2086,306 @@ msgstr ""
 msgid "Yes"
 msgstr "Да"
 
-#: libexif/exif-entry.c:780
+#: libexif/exif-entry.c:779
 msgid "Strobe return light not detected"
 msgstr ""
 
-#: libexif/exif-entry.c:780
+#: libexif/exif-entry.c:779
 msgid "Without strobe"
 msgstr ""
 
-#: libexif/exif-entry.c:782
+#: libexif/exif-entry.c:781
 msgid "Strobe return light detected"
 msgstr ""
 
-#: libexif/exif-entry.c:782
+#: libexif/exif-entry.c:781
 msgid "With strobe"
 msgstr ""
 
-#: libexif/exif-entry.c:784
+#: libexif/exif-entry.c:783
 msgid "Flash fired, compulsory flash mode"
 msgstr ""
 
-#: libexif/exif-entry.c:785
+#: libexif/exif-entry.c:784
 msgid "Flash fired, compulsory flash mode, return light not detected"
 msgstr ""
 
-#: libexif/exif-entry.c:787
+#: libexif/exif-entry.c:786
 msgid "Flash fired, compulsory flash mode, return light detected"
 msgstr ""
 
-#: libexif/exif-entry.c:789
+#: libexif/exif-entry.c:788
 msgid "Flash did not fire, compulsory flash mode"
 msgstr ""
 
-#: libexif/exif-entry.c:790
+#: libexif/exif-entry.c:789
 msgid "Flash did not fire, auto mode"
 msgstr ""
 
-#: libexif/exif-entry.c:791
+#: libexif/exif-entry.c:790
 msgid "Flash fired, auto mode"
 msgstr ""
 
-#: libexif/exif-entry.c:792
+#: libexif/exif-entry.c:791
 msgid "Flash fired, auto mode, return light not detected"
 msgstr ""
 
-#: libexif/exif-entry.c:794
+#: libexif/exif-entry.c:793
 msgid "Flash fired, auto mode, return light detected"
 msgstr ""
 
-#: libexif/exif-entry.c:795
+#: libexif/exif-entry.c:794
 msgid "No flash function"
 msgstr ""
 
-#: libexif/exif-entry.c:796
+#: libexif/exif-entry.c:795
 msgid "Flash fired, red-eye reduction mode"
 msgstr ""
 
-#: libexif/exif-entry.c:797
+#: libexif/exif-entry.c:796
 msgid "Flash fired, red-eye reduction mode, return light not detected"
 msgstr ""
 
-#: libexif/exif-entry.c:799
+#: libexif/exif-entry.c:798
 msgid "Flash fired, red-eye reduction mode, return light detected"
 msgstr ""
 
-#: libexif/exif-entry.c:801
+#: libexif/exif-entry.c:800
 msgid "Flash fired, compulsory flash mode, red-eye reduction mode"
 msgstr ""
 
-#: libexif/exif-entry.c:803
+#: libexif/exif-entry.c:802
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light not "
 "detected"
 msgstr ""
 
-#: libexif/exif-entry.c:805
+#: libexif/exif-entry.c:804
 msgid ""
 "Flash fired, compulsory flash mode, red-eye reduction mode, return light "
 "detected"
 msgstr ""
 
-#: libexif/exif-entry.c:807
+#: libexif/exif-entry.c:806
 msgid "Flash did not fire, auto mode, red-eye reduction mode"
 msgstr ""
 
-#: libexif/exif-entry.c:808
+#: libexif/exif-entry.c:807
 msgid "Flash fired, auto mode, red-eye reduction mode"
 msgstr ""
 
-#: libexif/exif-entry.c:809
+#: libexif/exif-entry.c:808
 msgid ""
 "Flash fired, auto mode, return light not detected, red-eye reduction mode"
 msgstr ""
 
-#: libexif/exif-entry.c:811
+#: libexif/exif-entry.c:810
 msgid "Flash fired, auto mode, return light detected, red-eye reduction mode"
 msgstr ""
 
-#: libexif/exif-entry.c:815
+#: libexif/exif-entry.c:814
 msgid "?"
 msgstr "?"
 
-#: libexif/exif-entry.c:817
+#: libexif/exif-entry.c:816
 msgid "Close view"
 msgstr "Погледа изблиза"
 
-#: libexif/exif-entry.c:818
+#: libexif/exif-entry.c:817
 msgid "Distant view"
 msgstr "Удаљен поглед"
 
-#: libexif/exif-entry.c:818
+#: libexif/exif-entry.c:817
 msgid "Distant"
 msgstr ""
 
-#: libexif/exif-entry.c:821
+#: libexif/exif-entry.c:820
 msgid "sRGB"
 msgstr "sRGB"
 
-#: libexif/exif-entry.c:822
+#: libexif/exif-entry.c:821
 msgid "Adobe RGB"
 msgstr "Adobe RGB"
 
-#: libexif/exif-entry.c:823
+#: libexif/exif-entry.c:822
 msgid "Uncalibrated"
 msgstr "Неподешено"
 
-#: libexif/exif-entry.c:878
+#: libexif/exif-entry.c:877
 #, c-format
 msgid "Invalid size of entry (%i, expected %li x %i)."
 msgstr "Неисправна величина уноса (%i, тражи се %li x %i)."
 
-#: libexif/exif-entry.c:911
+#: libexif/exif-entry.c:910
 msgid "Unsupported UNICODE string"
 msgstr "Неподржан UNICODE стринг"
 
-#: libexif/exif-entry.c:919
+#: libexif/exif-entry.c:918
 msgid "Unsupported JIS string"
 msgstr "Неподржан JIS стринг"
 
-#: libexif/exif-entry.c:935
+#: libexif/exif-entry.c:934
 #, fuzzy
 msgid "Tag UserComment contains data but is against specification."
 msgstr ""
 "Етикета 'Коментар корисника' је проширено на најмање 8 бајтова не би "
 "испоштовали спецификацију."
 
-#: libexif/exif-entry.c:939
+#: libexif/exif-entry.c:938
 #, c-format
 msgid "Byte at position %i: 0x%02x"
 msgstr "Бајт на позицији %i: 0x%02x"
 
-#: libexif/exif-entry.c:947
+#: libexif/exif-entry.c:946
 msgid "Unknown Exif Version"
 msgstr "Непозната верзија Exif"
 
-#: libexif/exif-entry.c:951
+#: libexif/exif-entry.c:950
 #, c-format
 msgid "Exif Version %d.%d"
 msgstr "Exif верзија %d.%d"
 
-#: libexif/exif-entry.c:962
+#: libexif/exif-entry.c:961
 msgid "FlashPix Version 1.0"
 msgstr "FlashPix верзија 1.0"
 
-#: libexif/exif-entry.c:964
+#: libexif/exif-entry.c:963
 msgid "FlashPix Version 1.01"
 msgstr "FlashPix верзија 1.01"
 
-#: libexif/exif-entry.c:966
+#: libexif/exif-entry.c:965
 msgid "Unknown FlashPix Version"
 msgstr "Непозната верзија FlashPix"
 
-#: libexif/exif-entry.c:979 libexif/exif-entry.c:998 libexif/exif-entry.c:1668
-#: libexif/exif-entry.c:1673 libexif/exif-entry.c:1677
-#: libexif/exif-entry.c:1682 libexif/exif-entry.c:1683
+#: libexif/exif-entry.c:978 libexif/exif-entry.c:997 libexif/exif-entry.c:1662
+#: libexif/exif-entry.c:1667 libexif/exif-entry.c:1671
+#: libexif/exif-entry.c:1676 libexif/exif-entry.c:1677
 msgid "[None]"
 msgstr "[Ништа]"
 
-#: libexif/exif-entry.c:981
+#: libexif/exif-entry.c:980
 msgid "(Photographer)"
 msgstr "(Фотограф)"
 
-#: libexif/exif-entry.c:1000
+#: libexif/exif-entry.c:999
 msgid "(Editor)"
 msgstr "(Уредник)"
 
-#: libexif/exif-entry.c:1024 libexif/exif-entry.c:1104
-#: libexif/exif-entry.c:1121 libexif/exif-entry.c:1165
+#: libexif/exif-entry.c:1023 libexif/exif-entry.c:1102
+#: libexif/exif-entry.c:1119 libexif/exif-entry.c:1162
 #, c-format
 msgid "%.02f EV"
 msgstr "%.02f EV"
 
-#: libexif/exif-entry.c:1025
+#: libexif/exif-entry.c:1024
 #, c-format
 msgid " (f/%.01f)"
 msgstr " (f/%.01f)"
 
-#: libexif/exif-entry.c:1059
+#: libexif/exif-entry.c:1057
 #, c-format
 msgid " (35 equivalent: %d mm)"
 msgstr " (35 одговара: %d mm)"
 
-#: libexif/exif-entry.c:1092 libexif/exif-entry.c:1093
+#: libexif/exif-entry.c:1091
 msgid " sec."
 msgstr " sec."
 
-#: libexif/exif-entry.c:1107
+#: libexif/exif-entry.c:1105
 #, c-format
 msgid " (1/%d sec.)"
 msgstr ""
 
-#: libexif/exif-entry.c:1109
+#: libexif/exif-entry.c:1107
 #, c-format
 msgid " (%d sec.)"
 msgstr ""
 
-#: libexif/exif-entry.c:1122
+#: libexif/exif-entry.c:1120
 #, c-format
 msgid " (%.02f cd/m^2)"
 msgstr " (%.02f cd/m^2)"
 
-#: libexif/exif-entry.c:1132
+#: libexif/exif-entry.c:1129
 msgid "DSC"
 msgstr "DSC"
 
-#: libexif/exif-entry.c:1134 libexif/exif-entry.c:1174
-#: libexif/exif-entry.c:1261 libexif/exif-entry.c:1312
-#: libexif/exif-entry.c:1321 libexif/exif-entry.c:1357
-#: libexif/fuji/mnote-fuji-entry.c:236 libexif/fuji/mnote-fuji-entry.c:245
-#: libexif/pentax/mnote-pentax-entry.c:350
-#: libexif/pentax/mnote-pentax-entry.c:359
+#: libexif/exif-entry.c:1131 libexif/exif-entry.c:1171
+#: libexif/exif-entry.c:1255 libexif/exif-entry.c:1306
+#: libexif/exif-entry.c:1315 libexif/exif-entry.c:1351
+#: libexif/fuji/mnote-fuji-entry.c:237 libexif/fuji/mnote-fuji-entry.c:246
 #, c-format
 msgid "Internal error (unknown value %i)"
 msgstr "Унутрашња грешка (непозната вредност %i)"
 
-#: libexif/exif-entry.c:1142
+#: libexif/exif-entry.c:1139
 msgid "-"
 msgstr "-"
 
-#: libexif/exif-entry.c:1143
+#: libexif/exif-entry.c:1140
 msgid "Y"
 msgstr "Y"
 
-#: libexif/exif-entry.c:1144
+#: libexif/exif-entry.c:1141
 msgid "Cb"
 msgstr "Cb"
 
-#: libexif/exif-entry.c:1145
+#: libexif/exif-entry.c:1142
 msgid "Cr"
 msgstr "Cr"
 
-#: libexif/exif-entry.c:1146
+#: libexif/exif-entry.c:1143
 msgid "R"
 msgstr "R"
 
-#: libexif/exif-entry.c:1147
+#: libexif/exif-entry.c:1144
 msgid "G"
 msgstr "G"
 
-#: libexif/exif-entry.c:1148
+#: libexif/exif-entry.c:1145
 msgid "B"
 msgstr "B"
 
-#: libexif/exif-entry.c:1149
+#: libexif/exif-entry.c:1146
 msgid "Reserved"
 msgstr ""
 
-#: libexif/exif-entry.c:1172
+#: libexif/exif-entry.c:1169
 msgid "Directly photographed"
 msgstr ""
 
-#: libexif/exif-entry.c:1185
+#: libexif/exif-entry.c:1182
 msgid "YCbCr4:2:2"
 msgstr "YCbCr4:2:2"
 
-#: libexif/exif-entry.c:1187
+#: libexif/exif-entry.c:1184
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:1204
+#: libexif/exif-entry.c:1201
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
 msgstr "У оквиру раздаљине %i of (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:1213
+#: libexif/exif-entry.c:1210
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
 msgstr "У оквиру правоугаоника (ширина %i, висина %i) око (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:1219
+#: libexif/exif-entry.c:1216
 #, c-format
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Неочекиван број елемена (%li, тражи се 2, 3, или 4)."
 
-#: libexif/exif-entry.c:1257
+#: libexif/exif-entry.c:1251
 msgid "Sea level"
 msgstr ""
 
-#: libexif/exif-entry.c:1259
+#: libexif/exif-entry.c:1253
 msgid "Sea level reference"
 msgstr ""
 
-#: libexif/exif-entry.c:1367
+#: libexif/exif-entry.c:1361
 #, c-format
 msgid "Unknown value %i"
 msgstr ""
@@ -2474,11 +2471,11 @@ msgstr "Оштећени подаци"
 msgid "The data provided does not follow the specification."
 msgstr "Прослеђени подаци нису у складу са техничким подацима."
 
-#: libexif/exif-tag.c:62
+#: libexif/exif-tag.c:64
 msgid "GPS Tag Version"
 msgstr ""
 
-#: libexif/exif-tag.c:63
+#: libexif/exif-tag.c:65
 msgid ""
 "Indicates the version of <GPSInfoIFD>. The version is given as 2.0.0.0. This "
 "tag is mandatory when <GPSInfo> tag is present. (Note: The <GPSVersionID> "
@@ -2490,11 +2487,11 @@ msgstr ""
 "<GPSVersionID> се изражава у бајтовима, за разлику од етикете <ExifVersion>."
 "Ако је верзија 2.0.0.0, вредност етикете је 02000000.H)."
 
-#: libexif/exif-tag.c:69
+#: libexif/exif-tag.c:71
 msgid "Interoperability Index"
 msgstr ""
 
-#: libexif/exif-tag.c:70
+#: libexif/exif-tag.c:72
 msgid ""
 "Indicates the identification of the Interoperability rule. Use \"R98\" for "
 "stating ExifR98 Rules. Four bytes used including the termination code "
@@ -2506,11 +2503,11 @@ msgstr ""
 "терминациони код (NULL). Погледајте засебно поглавље за препоручена правила "
 "интероперабилности Exif стандарда (ExifR98) за остале ознаке."
 
-#: libexif/exif-tag.c:76
+#: libexif/exif-tag.c:78
 msgid "North or South Latitude"
 msgstr "Северна или јужна географска дужина"
 
-#: libexif/exif-tag.c:77
+#: libexif/exif-tag.c:79
 msgid ""
 "Indicates whether the latitude is north or south latitude. The ASCII value "
 "'N' indicates north latitude, and 'S' is south latitude."
@@ -2518,15 +2515,15 @@ msgstr ""
 "Означава северну или јужну геогр. ширину. ASCII слово 'N' означава северну, "
 "a 'S' јужну ширину.."
 
-#: libexif/exif-tag.c:81
+#: libexif/exif-tag.c:83
 msgid "Interoperability Version"
 msgstr ""
 
-#: libexif/exif-tag.c:83
+#: libexif/exif-tag.c:85
 msgid "Latitude"
 msgstr "Географска ширина"
 
-#: libexif/exif-tag.c:84
+#: libexif/exif-tag.c:86
 msgid ""
 "Indicates the latitude. The latitude is expressed as three RATIONAL values "
 "giving the degrees, minutes, and seconds, respectively. When degrees, "
@@ -2540,11 +2537,11 @@ msgstr ""
 "минутима, и минути су, рецимо, изражени у две децимале, облик је dd/1,"
 "mmmm/100,0/1."
 
-#: libexif/exif-tag.c:91
+#: libexif/exif-tag.c:93
 msgid "East or West Longitude"
 msgstr "Источна или западна геогр. дужина"
 
-#: libexif/exif-tag.c:92
+#: libexif/exif-tag.c:94
 msgid ""
 "Indicates whether the longitude is east or west longitude. ASCII 'E' "
 "indicates east longitude, and 'W' is west longitude."
@@ -2552,11 +2549,11 @@ msgstr ""
 "Означава источну или западну геогр. дужину.  ASCII слово 'E' је за источну, "
 "a 'W' за западну дужину."
 
-#: libexif/exif-tag.c:95
+#: libexif/exif-tag.c:97
 msgid "Longitude"
 msgstr "Географска дужина"
 
-#: libexif/exif-tag.c:96
+#: libexif/exif-tag.c:98
 msgid ""
 "Indicates the longitude. The longitude is expressed as three RATIONAL values "
 "giving the degrees, minutes, and seconds, respectively. When degrees, "
@@ -2570,11 +2567,11 @@ msgstr ""
 "минутима, и минути су, рецимо, изражени у две децимале, облик је dd/1,"
 "mmmm/100,0/1."
 
-#: libexif/exif-tag.c:103
+#: libexif/exif-tag.c:105
 msgid "Altitude Reference"
 msgstr ""
 
-#: libexif/exif-tag.c:104
+#: libexif/exif-tag.c:106
 msgid ""
 "Indicates the altitude used as the reference altitude. If the reference is "
 "sea level and the altitude is above sea level, 0 is given. If the altitude "
@@ -2588,11 +2585,11 @@ msgstr ""
 "GPSAltitude. Јединица су метри. Ова етикета је типа BYTE, за разлику од "
 "других етикета упућивача."
 
-#: libexif/exif-tag.c:110
+#: libexif/exif-tag.c:112
 msgid "Altitude"
 msgstr "Висина"
 
-#: libexif/exif-tag.c:111
+#: libexif/exif-tag.c:113
 msgid ""
 "Indicates the altitude based on the reference in GPSAltitudeRef. Altitude is "
 "expressed as one RATIONAL value. The reference unit is meters."
@@ -2600,21 +2597,21 @@ msgstr ""
 "Означава висину у односу на упућивач у GPSAltitudeRef. Висина се изражава "
 "као рационални број. Јединица су метри."
 
-#: libexif/exif-tag.c:114
+#: libexif/exif-tag.c:116
 msgid "GPS Time (Atomic Clock)"
 msgstr ""
 
-#: libexif/exif-tag.c:115
+#: libexif/exif-tag.c:117
 msgid ""
 "Indicates the time as UTC (Coordinated Universal Time). TimeStamp is "
 "expressed as three RATIONAL values giving the hour, minute, and second."
 msgstr ""
 
-#: libexif/exif-tag.c:118
+#: libexif/exif-tag.c:120
 msgid "GPS Satellites"
 msgstr ""
 
-#: libexif/exif-tag.c:119
+#: libexif/exif-tag.c:121
 msgid ""
 "Indicates the GPS satellites used for measurements. This tag can be used to "
 "describe the number of satellites, their ID number, angle of elevation, "
@@ -2623,101 +2620,101 @@ msgid ""
 "the tag shall be set to NULL."
 msgstr ""
 
-#: libexif/exif-tag.c:125
+#: libexif/exif-tag.c:127
 msgid "GPS Receiver Status"
 msgstr ""
 
-#: libexif/exif-tag.c:126
+#: libexif/exif-tag.c:128
 msgid ""
 "Indicates the status of the GPS receiver when the image is recorded. 'A' "
 "means measurement is in progress, and 'V' means the measurement is "
 "Interoperability."
 msgstr ""
 
-#: libexif/exif-tag.c:129
+#: libexif/exif-tag.c:131
 msgid "GPS Measurement Mode"
 msgstr ""
 
-#: libexif/exif-tag.c:130
+#: libexif/exif-tag.c:132
 msgid ""
 "Indicates the GPS measurement mode. '2' means two-dimensional measurement "
 "and '3' means three-dimensional measurement is in progress."
 msgstr ""
 
-#: libexif/exif-tag.c:133
+#: libexif/exif-tag.c:135
 msgid "Measurement Precision"
 msgstr ""
 
-#: libexif/exif-tag.c:134
+#: libexif/exif-tag.c:136
 msgid ""
 "Indicates the GPS DOP (data degree of precision). An HDOP value is written "
 "during two-dimensional measurement, and PDOP during three-dimensional "
 "measurement."
 msgstr ""
 
-#: libexif/exif-tag.c:137
+#: libexif/exif-tag.c:139
 msgid "Speed Unit"
 msgstr ""
 
-#: libexif/exif-tag.c:138
+#: libexif/exif-tag.c:140
 msgid ""
 "Indicates the unit used to express the GPS receiver speed of movement. 'K', "
 "'M' and 'N' represent kilometers per hour, miles per hour, and knots."
 msgstr ""
 
-#: libexif/exif-tag.c:141
+#: libexif/exif-tag.c:143
 msgid "Speed of GPS Receiver"
 msgstr ""
 
-#: libexif/exif-tag.c:142
+#: libexif/exif-tag.c:144
 msgid "Indicates the speed of GPS receiver movement."
 msgstr ""
 
-#: libexif/exif-tag.c:143
+#: libexif/exif-tag.c:145
 msgid "Reference for direction of movement"
 msgstr ""
 
-#: libexif/exif-tag.c:144
+#: libexif/exif-tag.c:146
 msgid ""
 "Indicates the reference for giving the direction of GPS receiver movement. "
 "'T' denotes true direction and 'M' is magnetic direction."
 msgstr ""
 
-#: libexif/exif-tag.c:147
+#: libexif/exif-tag.c:149
 msgid "Direction of Movement"
 msgstr ""
 
-#: libexif/exif-tag.c:148
+#: libexif/exif-tag.c:150
 msgid ""
 "Indicates the direction of GPS receiver movement. The range of values is "
 "from 0.00 to 359.99."
 msgstr ""
 
-#: libexif/exif-tag.c:150
+#: libexif/exif-tag.c:152
 msgid "GPS Image Direction Reference"
 msgstr ""
 
-#: libexif/exif-tag.c:151
+#: libexif/exif-tag.c:153
 msgid ""
 "Indicates the reference for giving the direction of the image when it is "
 "captured. 'T' denotes true direction and 'M' is magnetic direction."
 msgstr ""
 
-#: libexif/exif-tag.c:153
+#: libexif/exif-tag.c:155
 msgid "GPS Image Direction"
 msgstr ""
 
-#: libexif/exif-tag.c:154
+#: libexif/exif-tag.c:156
 msgid ""
 "Indicates the direction of the image when it was captured. The range of "
 "values is from 0.00 to 359.99."
 msgstr ""
 
-#: libexif/exif-tag.c:156
+#: libexif/exif-tag.c:158
 msgid "Geodetic Survey Data Used"
 msgstr ""
 
-#: libexif/exif-tag.c:157
+#: libexif/exif-tag.c:159
 msgid ""
 "Indicates the geodetic survey data used by the GPS receiver. If the survey "
 "data is restricted to Japan, the value of this tag is 'TOKYO' or 'WGS-84'. "
@@ -2725,22 +2722,22 @@ msgid ""
 "recorded."
 msgstr ""
 
-#: libexif/exif-tag.c:161
+#: libexif/exif-tag.c:163
 msgid "Reference For Latitude of Destination"
 msgstr ""
 
-#: libexif/exif-tag.c:162
+#: libexif/exif-tag.c:164
 msgid ""
 "Indicates whether the latitude of the destination point is north or south "
 "latitude. The ASCII value 'N' indicates north latitude, and 'S' is south "
 "latitude."
 msgstr ""
 
-#: libexif/exif-tag.c:165
+#: libexif/exif-tag.c:167
 msgid "Latitude of Destination"
 msgstr ""
 
-#: libexif/exif-tag.c:166
+#: libexif/exif-tag.c:168
 msgid ""
 "Indicates the latitude of the destination point. The latitude is expressed "
 "as three RATIONAL values giving the degrees, minutes, and seconds, "
@@ -2750,21 +2747,21 @@ msgid ""
 "the format would be dd/1,mmmm/100,0/1."
 msgstr ""
 
-#: libexif/exif-tag.c:173
+#: libexif/exif-tag.c:175
 msgid "Reference for Longitude of Destination"
 msgstr ""
 
-#: libexif/exif-tag.c:174
+#: libexif/exif-tag.c:176
 msgid ""
 "Indicates whether the longitude of the destination point is east or west "
 "longitude. ASCII 'E' indicates east longitude, and 'W' is west longitude."
 msgstr ""
 
-#: libexif/exif-tag.c:177
+#: libexif/exif-tag.c:179
 msgid "Longitude of Destination"
 msgstr ""
 
-#: libexif/exif-tag.c:178
+#: libexif/exif-tag.c:180
 msgid ""
 "Indicates the longitude of the destination point. The longitude is expressed "
 "as three RATIONAL values giving the degrees, minutes, and seconds, "
@@ -2774,49 +2771,49 @@ msgid ""
 "the format would be ddd/1,mmmm/100,0/1."
 msgstr ""
 
-#: libexif/exif-tag.c:186
+#: libexif/exif-tag.c:188
 msgid "Reference for Bearing of Destination"
 msgstr ""
 
-#: libexif/exif-tag.c:187
+#: libexif/exif-tag.c:189
 msgid ""
 "Indicates the reference used for giving the bearing to the destination "
 "point. 'T' denotes true direction and 'M' is magnetic direction."
 msgstr ""
 
-#: libexif/exif-tag.c:190
+#: libexif/exif-tag.c:192
 msgid "Bearing of Destination"
 msgstr ""
 
-#: libexif/exif-tag.c:191
+#: libexif/exif-tag.c:193
 msgid ""
 "Indicates the bearing to the destination point. The range of values is from "
 "0.00 to 359.99."
 msgstr ""
 
-#: libexif/exif-tag.c:193
+#: libexif/exif-tag.c:195
 msgid "Reference for Distance to Destination"
 msgstr ""
 
-#: libexif/exif-tag.c:194
+#: libexif/exif-tag.c:196
 msgid ""
 "Indicates the unit used to express the distance to the destination point. "
 "'K', 'M' and 'N' represent kilometers, miles and nautical miles."
 msgstr ""
 
-#: libexif/exif-tag.c:197
+#: libexif/exif-tag.c:199
 msgid "Distance to Destination"
 msgstr ""
 
-#: libexif/exif-tag.c:198
+#: libexif/exif-tag.c:200
 msgid "Indicates the distance to the destination point."
 msgstr ""
 
-#: libexif/exif-tag.c:199
+#: libexif/exif-tag.c:201
 msgid "Name of GPS Processing Method"
 msgstr ""
 
-#: libexif/exif-tag.c:200
+#: libexif/exif-tag.c:202
 msgid ""
 "A character string recording the name of the method used for location "
 "finding. The first byte indicates the character code used, and this is "
@@ -2824,50 +2821,50 @@ msgid ""
 "termination is not necessary."
 msgstr ""
 
-#: libexif/exif-tag.c:205
+#: libexif/exif-tag.c:207
 msgid "Name of GPS Area"
 msgstr ""
 
-#: libexif/exif-tag.c:206
+#: libexif/exif-tag.c:208
 msgid ""
 "A character string recording the name of the GPS area. The first byte "
 "indicates the character code used, and this is followed by the name of the "
 "GPS area. Since the Type is not ASCII, NULL termination is not necessary."
 msgstr ""
 
-#: libexif/exif-tag.c:210
+#: libexif/exif-tag.c:212
 msgid "GPS Date"
 msgstr ""
 
-#: libexif/exif-tag.c:211
+#: libexif/exif-tag.c:213
 msgid ""
 "A character string recording date and time information relative to UTC "
 "(Coordinated Universal Time). The format is \"YYYY:MM:DD\". The length of "
 "the string is 11 bytes including NULL."
 msgstr ""
 
-#: libexif/exif-tag.c:215
+#: libexif/exif-tag.c:217
 msgid "GPS Differential Correction"
 msgstr ""
 
-#: libexif/exif-tag.c:216
+#: libexif/exif-tag.c:218
 msgid ""
 "Indicates whether differential correction is applied to the GPS receiver."
 msgstr ""
 
-#: libexif/exif-tag.c:220
+#: libexif/exif-tag.c:222
 msgid "New Subfile Type"
 msgstr ""
 
-#: libexif/exif-tag.c:220
+#: libexif/exif-tag.c:222
 msgid "A general indication of the kind of data contained in this subfile."
 msgstr "Општа назнака врсте података која се налази у овом подфајлу."
 
-#: libexif/exif-tag.c:222
+#: libexif/exif-tag.c:225
 msgid "Image Width"
 msgstr "Ширина слике"
 
-#: libexif/exif-tag.c:223
+#: libexif/exif-tag.c:226
 msgid ""
 "The number of columns of image data, equal to the number of pixels per row. "
 "In JPEG compressed data a JPEG marker is used instead of this tag."
@@ -2875,11 +2872,11 @@ msgstr ""
 "Број колона у подацима слике, једнак броју пиксела по реду. У JPEG сажетим "
 "подацима, JPEG етикета се користи уместо ове етикете."
 
-#: libexif/exif-tag.c:227
+#: libexif/exif-tag.c:230
 msgid "Image Length"
 msgstr "Дужина слике"
 
-#: libexif/exif-tag.c:228
+#: libexif/exif-tag.c:231
 msgid ""
 "The number of rows of image data. In JPEG compressed data a JPEG marker is "
 "used instead of this tag."
@@ -2887,11 +2884,11 @@ msgstr ""
 "Број редова података слике. У JPEG сажетим подацима, JPEG етикета се користи "
 "уместо ове етикете."
 
-#: libexif/exif-tag.c:231
+#: libexif/exif-tag.c:234
 msgid "Bits per Sample"
 msgstr "Битова по узорку"
 
-#: libexif/exif-tag.c:232
+#: libexif/exif-tag.c:235
 msgid ""
 "The number of bits per image component. In this standard each component of "
 "the image is 8 bits, so the value for this tag is 8. See also "
@@ -2902,11 +2899,11 @@ msgstr ""
 "бита, тако да је вредност етикете 8. Погледајте <SamplesPerPixel>. Код JPEG "
 "сажимања, JPEG обелиживач се користи уместо ове етикете."
 
-#: libexif/exif-tag.c:237
+#: libexif/exif-tag.c:240
 msgid "Compression"
 msgstr "Сажимање"
 
-#: libexif/exif-tag.c:238
+#: libexif/exif-tag.c:241
 msgid ""
 "The compression scheme used for the image data. When a primary image is JPEG "
 "compressed, this designation is not necessary and is omitted. When "
@@ -2916,11 +2913,11 @@ msgstr ""
 "сажета, ознака није неопходна и изостављена је. Када сличице за преглед "
 "користе JPEG сажимање, вредност етикете је 6."
 
-#: libexif/exif-tag.c:244
+#: libexif/exif-tag.c:247
 msgid "Photometric Interpretation"
 msgstr "Фотометријско представљање"
 
-#: libexif/exif-tag.c:245
+#: libexif/exif-tag.c:248
 msgid ""
 "The pixel composition. In JPEG compressed data a JPEG marker is used instead "
 "of this tag."
@@ -2928,19 +2925,19 @@ msgstr ""
 "Састав пиксела. Код JPEG сажетих података, JPEG обележивач се користи уместо "
 "ове етикете."
 
-#: libexif/exif-tag.c:249
+#: libexif/exif-tag.c:252
 msgid "Fill Order"
 msgstr "Редослед фајлова"
 
-#: libexif/exif-tag.c:251
+#: libexif/exif-tag.c:254
 msgid "Document Name"
 msgstr "Име документа"
 
-#: libexif/exif-tag.c:253
+#: libexif/exif-tag.c:257
 msgid "Image Description"
 msgstr "Опис слике"
 
-#: libexif/exif-tag.c:254
+#: libexif/exif-tag.c:258
 msgid ""
 "A character string giving the title of the image. It may be a comment such "
 "as \"1988 company picnic\" or the like. Two-bytes character codes cannot be "
@@ -2952,11 +2949,11 @@ msgstr ""
 "Ако је потребно да се они користе, куца се у Exif Private етикети "
 "<UserComment>."
 
-#: libexif/exif-tag.c:260
+#: libexif/exif-tag.c:264
 msgid "Manufacturer"
 msgstr "Произвођач"
 
-#: libexif/exif-tag.c:261
+#: libexif/exif-tag.c:265
 msgid ""
 "The manufacturer of the recording equipment. This is the manufacturer of the "
 "DSC, scanner, video digitizer or other equipment that generated the image. "
@@ -2966,11 +2963,11 @@ msgstr ""
 "дигитајзер или друге опреме која се користи за стварање слика. Ако је поље "
 "празно, сматра се да је непознато."
 
-#: libexif/exif-tag.c:267
+#: libexif/exif-tag.c:271
 msgid "Model"
 msgstr "Модел"
 
-#: libexif/exif-tag.c:268
+#: libexif/exif-tag.c:272
 msgid ""
 "The model name or model number of the equipment. This is the model name or "
 "number of the DSC, scanner, video digitizer or other equipment that "
@@ -2980,11 +2977,11 @@ msgstr ""
 "видео дигитајзер или друге опреме која се користи за стварање слика. Ако је "
 "поље празно, сматра се да је непознато."
 
-#: libexif/exif-tag.c:273
+#: libexif/exif-tag.c:277
 msgid "Strip Offsets"
 msgstr "Штампане траке"
 
-#: libexif/exif-tag.c:274
+#: libexif/exif-tag.c:278
 msgid ""
 "For each strip, the byte offset of that strip. It is recommended that this "
 "be selected so the number of strip bytes does not exceed 64 Kbytes. With "
@@ -2995,19 +2992,19 @@ msgstr ""
 "вредност мања од 64 килобајта. Код JPEG сажетих података, ознака није "
 "неопходна и изостављена је. Погледајте и <RowsPerStrip> и <StripByteCounts>"
 
-#: libexif/exif-tag.c:280
+#: libexif/exif-tag.c:284
 msgid "Orientation"
 msgstr "Положај"
 
-#: libexif/exif-tag.c:281
+#: libexif/exif-tag.c:285
 msgid "The image orientation viewed in terms of rows and columns."
 msgstr "Положај слике у смислу редова и колона."
 
-#: libexif/exif-tag.c:284
+#: libexif/exif-tag.c:288
 msgid "Samples per Pixel"
 msgstr "Узорака по пикселу"
 
-#: libexif/exif-tag.c:285
+#: libexif/exif-tag.c:289
 msgid ""
 "The number of components per pixel. Since this standard applies to RGB and "
 "YCbCr images, the value set for this tag is 3. In JPEG compressed data a "
@@ -3017,11 +3014,11 @@ msgstr ""
 "слике, вредност етикете је 3. Код JPEG сажетих података, JPEG обележивач се "
 "користи уместо ове етикете."
 
-#: libexif/exif-tag.c:290
+#: libexif/exif-tag.c:294
 msgid "Rows per Strip"
 msgstr "Редова по траци"
 
-#: libexif/exif-tag.c:291
+#: libexif/exif-tag.c:295
 msgid ""
 "The number of rows per strip. This is the number of rows in the image of one "
 "strip when an image is divided into strips. With JPEG compressed data this "
@@ -3032,11 +3029,11 @@ msgstr ""
 "JPEG сажетих података, ознака није неопходна и изостављена је. Погледајте и "
 "<StripOffsets> и <StripByteCounts>"
 
-#: libexif/exif-tag.c:297
+#: libexif/exif-tag.c:301
 msgid "Strip Byte Count"
 msgstr "Број бајтова на траци"
 
-#: libexif/exif-tag.c:298
+#: libexif/exif-tag.c:302
 msgid ""
 "The total number of bytes in each strip. With JPEG compressed data this "
 "designation is not needed and is omitted."
@@ -3044,11 +3041,11 @@ msgstr ""
 "Укупан број бајтова за сваку траку. Код JPEG сажетих података, ознака није "
 "неопходна и изостављена је."
 
-#: libexif/exif-tag.c:301
+#: libexif/exif-tag.c:305
 msgid "X-Resolution"
 msgstr ""
 
-#: libexif/exif-tag.c:302
+#: libexif/exif-tag.c:306
 msgid ""
 "The number of pixels per <ResolutionUnit> in the <ImageWidth> direction. "
 "When the image resolution is unknown, 72 [dpi] is designated."
@@ -3056,11 +3053,11 @@ msgstr ""
 "Број пиксела по <ResolutionUnit> у <ImageWidth> правцу. Ако је непозната "
 "резолуција, 72 [dpi] је постављено."
 
-#: libexif/exif-tag.c:306
+#: libexif/exif-tag.c:310
 msgid "Y-Resolution"
 msgstr ""
 
-#: libexif/exif-tag.c:307
+#: libexif/exif-tag.c:311
 msgid ""
 "The number of pixels per <ResolutionUnit> in the <ImageLength> direction. "
 "The same value as <XResolution> is designated."
@@ -3068,11 +3065,11 @@ msgstr ""
 "Број пиксела по <ResolutionUnit> у <ImageWidth> правцу. Поставља се иста "
 "вредност као у <XResolution>."
 
-#: libexif/exif-tag.c:311
+#: libexif/exif-tag.c:315
 msgid "Planar Configuration"
 msgstr "Распоред Планара"
 
-#: libexif/exif-tag.c:312
+#: libexif/exif-tag.c:316
 msgid ""
 "Indicates whether pixel components are recorded in a chunky or planar "
 "format. In JPEG compressed files a JPEG marker is used instead of this tag. "
@@ -3082,11 +3079,11 @@ msgstr ""
 "облику. У JPEG компресованим фајловима биће коришћен JPEG маркер уместо ове "
 "ознаке. Ако ово поље не постоји, користи се TIFF вредности 1 (раштркано)."
 
-#: libexif/exif-tag.c:317
+#: libexif/exif-tag.c:321
 msgid "Resolution Unit"
 msgstr "Јединица резолуције"
 
-#: libexif/exif-tag.c:318
+#: libexif/exif-tag.c:322
 msgid ""
 "The unit for measuring <XResolution> and <YResolution>. The same unit is "
 "used for both <XResolution> and <YResolution>. If the image resolution is "
@@ -3096,11 +3093,11 @@ msgstr ""
 "за <XResolution> и <YResolution>. Ако је непозната резолуција слике, "
 "поставља се 2 (инча)."
 
-#: libexif/exif-tag.c:323
+#: libexif/exif-tag.c:327
 msgid "Transfer Function"
 msgstr "Функција преноса"
 
-#: libexif/exif-tag.c:324
+#: libexif/exif-tag.c:328
 msgid ""
 "A transfer function for the image, described in tabular style. Normally this "
 "tag is not necessary, since color space is specified in the color space "
@@ -3109,11 +3106,11 @@ msgstr ""
 "Функција преноса за слику, описана у табуларном стилу. Обично ова ознака "
 "ниеј неопходна, обзиром да је палета боја означена помоћу <ColorSpace>."
 
-#: libexif/exif-tag.c:328
+#: libexif/exif-tag.c:332
 msgid "Software"
 msgstr "Софтвер"
 
-#: libexif/exif-tag.c:329
+#: libexif/exif-tag.c:333
 msgid ""
 "This tag records the name and version of the software or firmware of the "
 "camera or image input device used to generate the image. The detailed format "
@@ -3125,11 +3122,11 @@ msgstr ""
 "препоручљиво да буде слично примеру који је приказан доле. Ако се поље "
 "остави празно, сматра се да је непознато."
 
-#: libexif/exif-tag.c:336
+#: libexif/exif-tag.c:340
 msgid "Date and Time"
 msgstr "Датум и време"
 
-#: libexif/exif-tag.c:337
+#: libexif/exif-tag.c:341
 msgid ""
 "The date and time of image creation. In this standard (EXIF-2.1) it is the "
 "date and time the file was changed."
@@ -3137,11 +3134,11 @@ msgstr ""
 "Време и датум сликања фотографије. У овом стандарду (EXIF-2.1) то је датум и "
 "време измене фајла."
 
-#: libexif/exif-tag.c:340
+#: libexif/exif-tag.c:344
 msgid "Artist"
 msgstr "Уметник"
 
-#: libexif/exif-tag.c:341
+#: libexif/exif-tag.c:345
 msgid ""
 "This tag records the name of the camera owner, photographer or image "
 "creator. The detailed format is not specified, but it is recommended that "
@@ -3153,43 +3150,43 @@ msgstr ""
 "унета као што је пример који је приказан доле. Ако се поље остави празно, "
 "сматра се да је непознато."
 
-#: libexif/exif-tag.c:347 libexif/pentax/mnote-pentax-tag.c:113
+#: libexif/exif-tag.c:351 libexif/pentax/mnote-pentax-tag.c:113
 msgid "White Point"
 msgstr "Бела тачка"
 
-#: libexif/exif-tag.c:348
+#: libexif/exif-tag.c:352
 msgid ""
 "The chromaticity of the white point of the image. Normally this tag is not "
 "necessary, since color space is specified in the color space information tag "
 "(<ColorSpace>)."
 msgstr ""
 
-#: libexif/exif-tag.c:353
+#: libexif/exif-tag.c:357
 msgid "Primary Chromaticities"
 msgstr "Главна нијансираност"
 
-#: libexif/exif-tag.c:354
+#: libexif/exif-tag.c:358
 msgid ""
 "The chromaticity of the three primary colors of the image. Normally this tag "
 "is not necessary, since color space is specified in the color space "
 "information tag (<ColorSpace>)."
 msgstr ""
 
-#: libexif/exif-tag.c:359
+#: libexif/exif-tag.c:363
 msgid "Defined by Adobe Corporation to enable TIFF Trees within a TIFF file."
 msgstr ""
 "Одређено од стране Adobe корпорације за омогићавање TIFF Trees у оквиру TIFF "
 "фајла."
 
-#: libexif/exif-tag.c:362
+#: libexif/exif-tag.c:366
 msgid "Transfer Range"
 msgstr "Домет преноса"
 
-#: libexif/exif-tag.c:366
+#: libexif/exif-tag.c:371
 msgid "JPEG Interchange Format"
 msgstr "JPEG формат"
 
-#: libexif/exif-tag.c:367
+#: libexif/exif-tag.c:372
 msgid ""
 "The offset to the start byte (SOI) of JPEG compressed thumbnail data. This "
 "is not used for primary image JPEG data."
@@ -3197,11 +3194,11 @@ msgstr ""
 "Распон према стартном бајту (SOI) JPEG компресованог умањеног приказа слике. "
 "Ово се не користи као примарни податак JPEG слике."
 
-#: libexif/exif-tag.c:372
+#: libexif/exif-tag.c:377
 msgid "JPEG Interchange Format Length"
 msgstr "JPEG формат дужине"
 
-#: libexif/exif-tag.c:373
+#: libexif/exif-tag.c:378
 msgid ""
 "The number of bytes of JPEG compressed thumbnail data. This is not used for "
 "primary image JPEG data. JPEG thumbnails are not divided but are recorded as "
@@ -3216,11 +3213,11 @@ msgstr ""
 "бити записани у не више од 64 килобајтова, укључујући и све постале податке "
 "који се записују у APP1."
 
-#: libexif/exif-tag.c:382
+#: libexif/exif-tag.c:387
 msgid "YCbCr Coefficients"
 msgstr "YCbCr коефицијенти"
 
-#: libexif/exif-tag.c:383
+#: libexif/exif-tag.c:388
 msgid ""
 "The matrix coefficients for transformation from RGB to YCbCr image data. No "
 "default is given in TIFF; but here the value given in \"Color Space "
@@ -3229,11 +3226,11 @@ msgid ""
 "optimal image characteristics Interoperability this condition."
 msgstr ""
 
-#: libexif/exif-tag.c:392
+#: libexif/exif-tag.c:397
 msgid "YCbCr Sub-Sampling"
 msgstr "YCbCr Sub-Sampling"
 
-#: libexif/exif-tag.c:393
+#: libexif/exif-tag.c:398
 msgid ""
 "The sampling ratio of chrominance components in relation to the luminance "
 "component. In JPEG compressed data a JPEG marker is used instead of this tag."
@@ -3241,11 +3238,11 @@ msgstr ""
 "Однос узорака делова хромирања у односу на јачину осветљења. Код JPEG "
 "сажетих података, JPEG обележивач се користи уместо ове етикете."
 
-#: libexif/exif-tag.c:398
+#: libexif/exif-tag.c:403
 msgid "YCbCr Positioning"
 msgstr "YCbCr положај"
 
-#: libexif/exif-tag.c:399
+#: libexif/exif-tag.c:404
 msgid ""
 "The position of chrominance components in relation to the luminance "
 "component. This field is designated only for JPEG compressed data or "
@@ -3271,11 +3268,11 @@ msgstr ""
 "пољу. Препоручљиво је да читачи буту способни и за центрирано и за co-sited "
 "позиционирање."
 
-#: libexif/exif-tag.c:414
+#: libexif/exif-tag.c:419
 msgid "Reference Black/White"
 msgstr "Референтни ниво црно/беле"
 
-#: libexif/exif-tag.c:415
+#: libexif/exif-tag.c:420
 msgid ""
 "The reference black point value and reference white point value. No defaults "
 "are given in TIFF, but the values below are given as defaults here. The "
@@ -3288,19 +3285,19 @@ msgstr ""
 "декларисана у информационој ознаци за палету боја, а подразумеване вредности "
 "су оне које дају оптималне карактеристике слике."
 
-#: libexif/exif-tag.c:423
+#: libexif/exif-tag.c:428
 msgid "XML Packet"
 msgstr "XML скуп"
 
-#: libexif/exif-tag.c:423
+#: libexif/exif-tag.c:428
 msgid "XMP Metadata"
 msgstr "XMP метаподаци"
 
-#: libexif/exif-tag.c:438 libexif/exif-tag.c:784
+#: libexif/exif-tag.c:444 libexif/exif-tag.c:794
 msgid "CFA Pattern"
 msgstr "CFA шаблон"
 
-#: libexif/exif-tag.c:439 libexif/exif-tag.c:785
+#: libexif/exif-tag.c:445 libexif/exif-tag.c:795
 msgid ""
 "Indicates the color filter array (CFA) geometric pattern of the image sensor "
 "when a one-chip color area sensor is used. It does not apply to all sensing "
@@ -3310,15 +3307,15 @@ msgstr ""
 "користи сензор опсега боја на једном чипу. Нема утицаја на све методе "
 "сензора."
 
-#: libexif/exif-tag.c:443
+#: libexif/exif-tag.c:449
 msgid "Battery Level"
 msgstr "Стање батерије"
 
-#: libexif/exif-tag.c:444
+#: libexif/exif-tag.c:451
 msgid "Copyright"
 msgstr "Copyright"
 
-#: libexif/exif-tag.c:445
+#: libexif/exif-tag.c:452
 msgid ""
 "Copyright information. In this standard the tag is used to indicate both the "
 "photographer and editor copyrights. It is the copyright notice of the person "
@@ -3351,19 +3348,19 @@ msgstr ""
 "правима уређивача (погледајте пример 3). Када је поље празно, сматра се да "
 "ауторска права нису позната."
 
-#: libexif/exif-tag.c:467
+#: libexif/exif-tag.c:474
 msgid "Exposure time, given in seconds (sec)."
 msgstr "Време осветљења у секундама (sec)."
 
-#: libexif/exif-tag.c:470
+#: libexif/exif-tag.c:477
 msgid "The F number."
 msgstr "F број."
 
-#: libexif/exif-tag.c:475
+#: libexif/exif-tag.c:482
 msgid "Image Resources Block"
 msgstr "Блок ресурса слике"
 
-#: libexif/exif-tag.c:477
+#: libexif/exif-tag.c:485
 msgid ""
 "A pointer to the Exif IFD. Interoperability, Exif IFD has the same structure "
 "as that of the IFD specified in TIFF. ordinarily, however, it does not "
@@ -3373,21 +3370,21 @@ msgstr ""
 "као код IFD-а наведеног у TIFF-у, али не садржи податке слике  као у случају "
 "TIFF-а."
 
-#: libexif/exif-tag.c:485
+#: libexif/exif-tag.c:493
 msgid "Exposure Program"
 msgstr ""
 
-#: libexif/exif-tag.c:486
+#: libexif/exif-tag.c:494
 msgid ""
 "The class of the program used by the camera to set exposure when the picture "
 "is taken."
 msgstr "Програмска класа коју апарат користи да подеси осветљење када слика."
 
-#: libexif/exif-tag.c:490
+#: libexif/exif-tag.c:498
 msgid "Spectral Sensitivity"
 msgstr "Спектрална осетљивост"
 
-#: libexif/exif-tag.c:491
+#: libexif/exif-tag.c:499
 msgid ""
 "Indicates the spectral sensitivity of each channel of the camera used. The "
 "tag value is an ASCII string compatible with the standard developed by the "
@@ -3397,11 +3394,11 @@ msgstr ""
 "Вредност етикете је ASCII стринг које је у складу са стандардном који је "
 "развио ASTM технчки комитет."
 
-#: libexif/exif-tag.c:496
+#: libexif/exif-tag.c:504
 msgid "GPS Info IFD Pointer"
 msgstr ""
 
-#: libexif/exif-tag.c:497
+#: libexif/exif-tag.c:505
 msgid ""
 "A pointer to the GPS Info IFD. The Interoperability structure of the GPS "
 "Info IFD, like that of Exif IFD, has no image data."
@@ -3409,11 +3406,11 @@ msgstr ""
 "Показивач на GPS Info IFD. Интероперабилна структура GPS Info IFD-а као код "
 "Exif IFD али не садржи податке слике."
 
-#: libexif/exif-tag.c:503
+#: libexif/exif-tag.c:511
 msgid "ISO Speed Ratings"
 msgstr "Стопа ISO брзине"
 
-#: libexif/exif-tag.c:504
+#: libexif/exif-tag.c:512
 msgid ""
 "Indicates the ISO Speed and ISO Latitude of the camera or input device as "
 "specified in ISO 12232."
@@ -3421,30 +3418,30 @@ msgstr ""
 "Означава ISO брзину и ISO обим апарата или улазног уређаја као што је "
 "прецизирано у ISO 12232."
 
-#: libexif/exif-tag.c:507
+#: libexif/exif-tag.c:515
 msgid "Opto-Electronic Conversion Function"
 msgstr ""
 
-#: libexif/exif-tag.c:508
+#: libexif/exif-tag.c:516
 msgid ""
 "Indicates the Opto-Electronic Conversion Function (OECF) specified in ISO "
 "14524. <OECF> is the relationship between the camera optical input and the "
 "image values."
 msgstr ""
 
-#: libexif/exif-tag.c:513
+#: libexif/exif-tag.c:521
 msgid "Time Zone Offset"
 msgstr ""
 
-#: libexif/exif-tag.c:514
+#: libexif/exif-tag.c:522
 msgid "Encodes time zone of camera clock relative to GMT."
 msgstr ""
 
-#: libexif/exif-tag.c:515
+#: libexif/exif-tag.c:524
 msgid "Exif Version"
 msgstr "Exif верзија"
 
-#: libexif/exif-tag.c:516
+#: libexif/exif-tag.c:525
 msgid ""
 "The version of this standard supported. Nonexistence of this field is taken "
 "to mean nonconformance to the standard."
@@ -3452,11 +3449,11 @@ msgstr ""
 "Верзија овог стандарда је подржана. Непостојање овог поља је одступање од "
 "прилагођености овом стандарду."
 
-#: libexif/exif-tag.c:520
+#: libexif/exif-tag.c:529
 msgid "Date and Time (Original)"
 msgstr ""
 
-#: libexif/exif-tag.c:521
+#: libexif/exif-tag.c:530
 msgid ""
 "The date and time when the original image data was generated. For a digital "
 "still camera the date and time the picture was taken are recorded."
@@ -3464,19 +3461,19 @@ msgstr ""
 "Датум и време прављења првобитне фотографије. За дигиталне фото-апарате "
 "памте се датум и време сликања."
 
-#: libexif/exif-tag.c:526
+#: libexif/exif-tag.c:535
 msgid "Date and Time (Digitized)"
 msgstr ""
 
-#: libexif/exif-tag.c:527
+#: libexif/exif-tag.c:536
 msgid "The date and time when the image was stored as digital data."
 msgstr ""
 
-#: libexif/exif-tag.c:530
+#: libexif/exif-tag.c:539
 msgid "Components Configuration"
 msgstr ""
 
-#: libexif/exif-tag.c:531
+#: libexif/exif-tag.c:540
 msgid ""
 "Information specific to compressed data. The channels of each component are "
 "arranged in order from the 1st component to the 4th. For uncompressed data "
@@ -3492,11 +3489,11 @@ msgstr ""
 "ознака је обезбеђена када компресовани подаци користе компоненте другације "
 "од Y, Cb, и Cr и да би се обезбедила подршка за друге секвенце."
 
-#: libexif/exif-tag.c:541
+#: libexif/exif-tag.c:550
 msgid "Compressed Bits per Pixel"
 msgstr "Сажети бити по пикселу"
 
-#: libexif/exif-tag.c:542
+#: libexif/exif-tag.c:551
 msgid ""
 "Information specific to compressed data. The compression mode used for a "
 "compressed image is indicated in unit bits per pixel."
@@ -3504,11 +3501,11 @@ msgstr ""
 "Информације везане за сажете податке. Мод за сажимање који се користи за "
 "сажимање слика се мери у јединици битови по пикселу."
 
-#: libexif/exif-tag.c:546 libexif/olympus/mnote-olympus-tag.c:123
+#: libexif/exif-tag.c:555 libexif/olympus/mnote-olympus-tag.c:123
 msgid "Shutter Speed"
 msgstr ""
 
-#: libexif/exif-tag.c:547
+#: libexif/exif-tag.c:556
 msgid ""
 "Shutter speed. The unit is the APEX (Additive System of Photographic "
 "Exposure) setting."
@@ -3516,15 +3513,15 @@ msgstr ""
 "Брзина затварача. Јединица је у  APEX (Additive System of Photographic "
 "Exposure) подешавању."
 
-#: libexif/exif-tag.c:551
+#: libexif/exif-tag.c:560
 msgid "The lens aperture. The unit is the APEX value."
 msgstr "Отвор сочива. Јединица је у APEX вредности."
 
-#: libexif/exif-tag.c:553
+#: libexif/exif-tag.c:562
 msgid "Brightness"
 msgstr "Светлина"
 
-#: libexif/exif-tag.c:554
+#: libexif/exif-tag.c:563
 msgid ""
 "The value of brightness. The unit is the APEX value. Ordinarily it is given "
 "in the range of -99.99 to 99.99."
@@ -3532,23 +3529,23 @@ msgstr ""
 "Вредност светлине. Јединица је вредност APEX-а. Обично је у опсегу -99.99 to "
 "99.99."
 
-#: libexif/exif-tag.c:558
+#: libexif/exif-tag.c:567
 msgid "Exposure Bias"
 msgstr "Нагиб осветљења"
 
-#: libexif/exif-tag.c:559
+#: libexif/exif-tag.c:568
 msgid ""
 "The exposure bias. The units is the APEX value. Ordinarily it is given in "
 "the range of -99.99 to 99.99."
 msgstr ""
-"Претпоставка осветљења. Јединица је вредност APEX-а. Обично је у опсегу -"
-"99.99 to 99.99."
+"Претпоставка осветљења. Јединица је вредност APEX-а. Обично је у опсегу "
+"-99.99 to 99.99."
 
-#: libexif/exif-tag.c:562
+#: libexif/exif-tag.c:571
 msgid "Maximum Aperture Value"
 msgstr ""
 
-#: libexif/exif-tag.c:563
+#: libexif/exif-tag.c:572
 msgid ""
 "The smallest F number of the lens. The unit is the APEX value. Ordinarily it "
 "is given in the range of 00.00 to 99.99, but it is not limited to this range."
@@ -3556,34 +3553,34 @@ msgstr ""
 "Најмањи број F сочива. Јединица је вредност APEX-а. Обично је у опсегу 00.00 "
 "to 99.99, али није ограничена у овом опсегу."
 
-#: libexif/exif-tag.c:568
+#: libexif/exif-tag.c:577
 msgid "Subject Distance"
 msgstr "Удаљеност субјекта"
 
-#: libexif/exif-tag.c:569
+#: libexif/exif-tag.c:578
 msgid "The distance to the subject, given in meters."
 msgstr "Удаљеност субјекта у метрима."
 
-#: libexif/exif-tag.c:572
+#: libexif/exif-tag.c:581
 msgid "The metering mode."
 msgstr "Мод за мерење."
 
-#: libexif/exif-tag.c:574
+#: libexif/exif-tag.c:583
 msgid "Light Source"
 msgstr "Извор светла"
 
-#: libexif/exif-tag.c:575
+#: libexif/exif-tag.c:584
 msgid "The kind of light source."
 msgstr "Врста извора"
 
-#: libexif/exif-tag.c:578
+#: libexif/exif-tag.c:587
 msgid ""
 "This tag is recorded when an image is taken using a strobe light (flash)."
 msgstr ""
 "Ова етикета се попуни када се фотографише уз помоћ електронског блица "
 "(строба)."
 
-#: libexif/exif-tag.c:582
+#: libexif/exif-tag.c:591
 msgid ""
 "The actual focal length of the lens, in mm. Conversion is not made to the "
 "focal length of a 35 mm film camera."
@@ -3591,26 +3588,26 @@ msgstr ""
 "Стварна жижна даљина сочива у mm. Нема претварања за жижну даљину 35 mm "
 "филмске камере."
 
-#: libexif/exif-tag.c:585
+#: libexif/exif-tag.c:594
 msgid "Subject Area"
 msgstr "Област субјекта"
 
-#: libexif/exif-tag.c:586
+#: libexif/exif-tag.c:595
 msgid ""
 "This tag indicates the location and area of the main subject in the overall "
 "scene."
 msgstr ""
 "Ова етикета означава положај и место главног субјекта на свеобухватној слици."
 
-#: libexif/exif-tag.c:590
+#: libexif/exif-tag.c:599
 msgid "TIFF/EP Standard ID"
 msgstr "TIFF/EP стандардни ID"
 
-#: libexif/exif-tag.c:591
+#: libexif/exif-tag.c:601
 msgid "Maker Note"
 msgstr "Белешка аутора"
 
-#: libexif/exif-tag.c:592
+#: libexif/exif-tag.c:602
 msgid ""
 "A tag for manufacturers of Exif writers to record any desired information. "
 "The contents are up to the manufacturer."
@@ -3618,11 +3615,11 @@ msgstr ""
 "Етикета за призвођача Exif у којој смешта жељене информације. Садржај зависи "
 "од произвођача."
 
-#: libexif/exif-tag.c:595
+#: libexif/exif-tag.c:605
 msgid "User Comment"
 msgstr "Белешка корисника"
 
-#: libexif/exif-tag.c:596
+#: libexif/exif-tag.c:606
 msgid ""
 "A tag for Exif users to write keywords or comments on the image besides "
 "those in <ImageDescription>, and without the character code limitations of "
@@ -3644,86 +3641,86 @@ msgid ""
 "H]."
 msgstr ""
 
-#: libexif/exif-tag.c:619
+#: libexif/exif-tag.c:629
 msgid "Sub-second Time"
 msgstr ""
 
-#: libexif/exif-tag.c:620
+#: libexif/exif-tag.c:630
 msgid "A tag used to record fractions of seconds for the <DateTime> tag."
 msgstr "Етикета која памти делиће секунде за етикету <DateTime>."
 
-#: libexif/exif-tag.c:624
+#: libexif/exif-tag.c:634
 msgid "Sub-second Time (Original)"
 msgstr ""
 
-#: libexif/exif-tag.c:625
+#: libexif/exif-tag.c:635
 msgid ""
 "A tag used to record fractions of seconds for the <DateTimeOriginal> tag."
 msgstr "Етикета која памти делиће секунде за етикету <DateTimeOriginal>."
 
-#: libexif/exif-tag.c:629
+#: libexif/exif-tag.c:639
 msgid "Sub-second Time (Digitized)"
 msgstr ""
 
-#: libexif/exif-tag.c:630
+#: libexif/exif-tag.c:640
 msgid ""
 "A tag used to record fractions of seconds for the <DateTimeDigitized> tag."
 msgstr "Етикета која памти делиће секунде за етикету <DateTimeDigitized>."
 
-#: libexif/exif-tag.c:634
+#: libexif/exif-tag.c:644
 msgid "XP Title"
 msgstr "XP наслов"
 
-#: libexif/exif-tag.c:635
+#: libexif/exif-tag.c:645
 msgid "A character string giving the title of the image, encoded in UTF-16LE."
 msgstr ""
 
-#: libexif/exif-tag.c:639
+#: libexif/exif-tag.c:649
 msgid "XP Comment"
 msgstr "XP примедба"
 
-#: libexif/exif-tag.c:640
+#: libexif/exif-tag.c:650
 msgid ""
 "A character string containing a comment about the image, encoded in UTF-16LE."
 msgstr ""
 
-#: libexif/exif-tag.c:644
+#: libexif/exif-tag.c:654
 msgid "XP Author"
 msgstr "XP аутор"
 
-#: libexif/exif-tag.c:645
-msgid ""
-"A character string containing the name of the image creator, encoded in UTF-"
-"16LE."
-msgstr ""
-
-#: libexif/exif-tag.c:649
-msgid "XP Keywords"
-msgstr "XP кључне речи"
-
-#: libexif/exif-tag.c:650
-msgid ""
-"A character string containing key words describing the image, encoded in UTF-"
-"16LE."
-msgstr ""
-
-#: libexif/exif-tag.c:654
-msgid "XP Subject"
-msgstr "XP субјекат"
-
 #: libexif/exif-tag.c:655
-msgid "A character string giving the image subject, encoded in UTF-16LE."
+msgid ""
+"A character string containing the name of the image creator, encoded in "
+"UTF-16LE."
 msgstr ""
 
 #: libexif/exif-tag.c:659
+msgid "XP Keywords"
+msgstr "XP кључне речи"
+
+#: libexif/exif-tag.c:660
+msgid ""
+"A character string containing key words describing the image, encoded in "
+"UTF-16LE."
+msgstr ""
+
+#: libexif/exif-tag.c:664
+msgid "XP Subject"
+msgstr "XP субјекат"
+
+#: libexif/exif-tag.c:665
+msgid "A character string giving the image subject, encoded in UTF-16LE."
+msgstr ""
+
+#: libexif/exif-tag.c:669
 msgid "The FlashPix format version supported by a FPXR file."
 msgstr "Верзија FlashPix формата подржана од FPXR фајла."
 
-#: libexif/exif-tag.c:661 libexif/pentax/mnote-pentax-tag.c:102
+#: libexif/exif-tag.c:671 libexif/pentax/mnote-pentax-tag.c:102
 msgid "Color Space"
 msgstr "Палета боја"
 
-#: libexif/exif-tag.c:662
+#: libexif/exif-tag.c:672
 msgid ""
 "The color space information tag is always recorded as the color space "
 "specifier. Normally sRGB (=1) is used to define the color space based on the "
@@ -3737,11 +3734,11 @@ msgstr ""
 "поставља се Uncalibrated (=FFFF.H) - некалибрисан. Подаци слике сачуване као "
 "Uncalibrated могу се третирати као sRGB када се конвертују у FlashPix."
 
-#: libexif/exif-tag.c:670
+#: libexif/exif-tag.c:680
 msgid "Pixel X Dimension"
 msgstr ""
 
-#: libexif/exif-tag.c:671
+#: libexif/exif-tag.c:681
 msgid ""
 "Information specific to compressed data. When a compressed file is recorded, "
 "the valid width of the meaningful image must be recorded in this tag, "
@@ -3753,11 +3750,11 @@ msgstr ""
 "ознаци, без обзира на то да ли постоје поравњавајући подаци или маркер "
 "рестарта. Ова ознака не би требало да се налази у некомпресованом фајлу."
 
-#: libexif/exif-tag.c:677
+#: libexif/exif-tag.c:687
 msgid "Pixel Y Dimension"
 msgstr ""
 
-#: libexif/exif-tag.c:678
+#: libexif/exif-tag.c:688
 msgid ""
 "Information specific to compressed data. When a compressed file is recorded, "
 "the valid height of the meaningful image must be recorded in this tag, "
@@ -3767,11 +3764,11 @@ msgid ""
 "tag will in fact be the same as that recorded in the SOF."
 msgstr ""
 
-#: libexif/exif-tag.c:688
+#: libexif/exif-tag.c:698
 msgid "Related Sound File"
 msgstr ""
 
-#: libexif/exif-tag.c:689
+#: libexif/exif-tag.c:699
 msgid ""
 "This tag is used to record the name of an audio file related to the image "
 "data. The only relational information recorded here is the Exif audio file "
@@ -3796,11 +3793,11 @@ msgid ""
 "data must also be indicated on the audio file end."
 msgstr ""
 
-#: libexif/exif-tag.c:719
+#: libexif/exif-tag.c:729
 msgid "Interoperability IFD Pointer"
 msgstr ""
 
-#: libexif/exif-tag.c:720
+#: libexif/exif-tag.c:730
 msgid ""
 "Interoperability IFD is composed of tags which stores the information to "
 "ensure the Interoperability and pointed by the following tag located in Exif "
@@ -3809,11 +3806,11 @@ msgid ""
 "characteristically compared with normal TIFF IFD."
 msgstr ""
 
-#: libexif/exif-tag.c:729
+#: libexif/exif-tag.c:739
 msgid "Flash Energy"
 msgstr "Стање енергије блица"
 
-#: libexif/exif-tag.c:730
+#: libexif/exif-tag.c:740
 msgid ""
 "Indicates the strobe energy at the time the image is captured, as measured "
 "in Beam Candle Power Seconds (BCPS)."
@@ -3821,42 +3818,42 @@ msgstr ""
 "Означава вредност строба (блица) када је слика направљена и мери се Beam "
 "Candle Power Seconds (BCPS)."
 
-#: libexif/exif-tag.c:734
+#: libexif/exif-tag.c:744
 msgid "Spatial Frequency Response"
 msgstr "Просторни одговор учестаности"
 
-#: libexif/exif-tag.c:735
+#: libexif/exif-tag.c:745
 msgid ""
 "This tag records the camera or input device spatial frequency table and SFR "
 "values in the direction of image width, image height, and diagonal "
 "direction, as specified in ISO 12233."
 msgstr ""
 
-#: libexif/exif-tag.c:741
+#: libexif/exif-tag.c:751
 msgid "Focal Plane X-Resolution"
 msgstr ""
 
-#: libexif/exif-tag.c:742
+#: libexif/exif-tag.c:752
 msgid ""
 "Indicates the number of pixels in the image width (X) direction per "
 "<FocalPlaneResolutionUnit> on the camera focal plane."
 msgstr ""
 
-#: libexif/exif-tag.c:746
+#: libexif/exif-tag.c:756
 msgid "Focal Plane Y-Resolution"
 msgstr ""
 
-#: libexif/exif-tag.c:747
+#: libexif/exif-tag.c:757
 msgid ""
 "Indicates the number of pixels in the image height (V) direction per "
 "<FocalPlaneResolutionUnit> on the camera focal plane."
 msgstr ""
 
-#: libexif/exif-tag.c:751
+#: libexif/exif-tag.c:761
 msgid "Focal Plane Resolution Unit"
 msgstr ""
 
-#: libexif/exif-tag.c:752
+#: libexif/exif-tag.c:762
 msgid ""
 "Indicates the unit for measuring <FocalPlaneXResolution> and "
 "<FocalPlaneYResolution>. This value is the same as the <ResolutionUnit>."
@@ -3864,11 +3861,11 @@ msgstr ""
 "Означава јединицу мере за <FocalPlaneXResolution> и <FocalPlaneYResolution>. "
 "Ова вредност је иста као код <ResolutionUnit>."
 
-#: libexif/exif-tag.c:757
+#: libexif/exif-tag.c:767
 msgid "Subject Location"
 msgstr "Положај субјеката"
 
-#: libexif/exif-tag.c:758
+#: libexif/exif-tag.c:768
 msgid ""
 "Indicates the location of the main subject in the scene. The value of this "
 "tag represents the pixel at the center of the main subject relative to the "
@@ -3881,30 +3878,30 @@ msgstr ""
 "окретања у етикети 'Окретање'. Прва вредност означава број X колоне, а "
 "друга   Y"
 
-#: libexif/exif-tag.c:765
+#: libexif/exif-tag.c:775
 msgid "Exposure Index"
 msgstr ""
 
-#: libexif/exif-tag.c:766
+#: libexif/exif-tag.c:776
 msgid ""
 "Indicates the exposure index selected on the camera or input device at the "
 "time the image is captured."
 msgstr ""
 "Означава вредност осветљења на апарату или улазном уређају када је усликано."
 
-#: libexif/exif-tag.c:769
+#: libexif/exif-tag.c:779
 msgid "Sensing Method"
 msgstr ""
 
-#: libexif/exif-tag.c:770
+#: libexif/exif-tag.c:780
 msgid "Indicates the image sensor type on the camera or input device."
 msgstr "Означава тип сензора на апарату или улазном уређају."
 
-#: libexif/exif-tag.c:773 libexif/fuji/mnote-fuji-tag.c:64
+#: libexif/exif-tag.c:783 libexif/fuji/mnote-fuji-tag.c:64
 msgid "File Source"
 msgstr "Извор фајла"
 
-#: libexif/exif-tag.c:774
+#: libexif/exif-tag.c:784
 msgid ""
 "Indicates the image source. If a DSC recorded the image, the tag value of "
 "this tag always be set to 3, indicating that the image was recorded on a DSC."
@@ -3912,11 +3909,11 @@ msgstr ""
 "Означава извор фотографије. Ако је DSC усликао фотографију, вредност етикете "
 "мора увек бити 3, означавајући да је фотографија усликана на DSC."
 
-#: libexif/exif-tag.c:778
+#: libexif/exif-tag.c:788
 msgid "Scene Type"
 msgstr "Врста призора"
 
-#: libexif/exif-tag.c:779
+#: libexif/exif-tag.c:789
 msgid ""
 "Indicates the type of scene. If a DSC recorded the image, this tag value "
 "must always be set to 1, indicating that the image was directly photographed."
@@ -3924,33 +3921,33 @@ msgstr ""
 "Означава врсту призора. Ако је DSC усликао фотографију, вредност етикете "
 "мора увек бити 1, означавајући да је фотографија непосредно усликана."
 
-#: libexif/exif-tag.c:789
+#: libexif/exif-tag.c:799
 msgid "Custom Rendered"
 msgstr "Прилагођено рендеровање"
 
-#: libexif/exif-tag.c:790
+#: libexif/exif-tag.c:800
 msgid ""
 "This tag indicates the use of special processing on image data, such as "
 "rendering geared to output. When special processing is performed, the reader "
 "is expected to disable or minimize any further processing."
 msgstr ""
 
-#: libexif/exif-tag.c:796
+#: libexif/exif-tag.c:806
 msgid ""
 "This tag indicates the exposure mode set when the image was shot. In auto-"
 "bracketing mode, the camera shoots a series of frames of the same scene at "
 "different exposure settings."
 msgstr ""
 
-#: libexif/exif-tag.c:801
+#: libexif/exif-tag.c:811
 msgid "This tag indicates the white balance mode set when the image was shot."
 msgstr "Ова етикета означава вредност мода равнотеже беле када је усликано."
 
-#: libexif/exif-tag.c:805
+#: libexif/exif-tag.c:815
 msgid "Digital Zoom Ratio"
 msgstr "Однос дигитално увећања"
 
-#: libexif/exif-tag.c:806
+#: libexif/exif-tag.c:816
 msgid ""
 "This tag indicates the digital zoom ratio when the image was shot. If the "
 "numerator of the recorded value is 0, this indicates that digital zoom was "
@@ -3959,22 +3956,22 @@ msgstr ""
 "Ова етикета означава вредност дигиталног увећања када је сликано. Вредност 0 "
 "означава да дигитално увећање није коришћено."
 
-#: libexif/exif-tag.c:811
+#: libexif/exif-tag.c:821
 msgid "Focal Length in 35mm Film"
 msgstr ""
 
-#: libexif/exif-tag.c:812
+#: libexif/exif-tag.c:822
 msgid ""
 "This tag indicates the equivalent focal length assuming a 35mm film camera, "
 "in mm. A value of 0 means the focal length is unknown. Note that this tag "
 "differs from the FocalLength tag."
 msgstr ""
 
-#: libexif/exif-tag.c:818
+#: libexif/exif-tag.c:828
 msgid "Scene Capture Type"
 msgstr ""
 
-#: libexif/exif-tag.c:819
+#: libexif/exif-tag.c:829
 msgid ""
 "This tag indicates the type of scene that was shot. It can also be used to "
 "record the mode in which the image was shot. Note that this differs from the "
@@ -3984,15 +3981,15 @@ msgstr ""
 "запамти мод у којем је сликано. Приметите да се разликује од етикете типа "
 "слике <SceneType>."
 
-#: libexif/exif-tag.c:824
+#: libexif/exif-tag.c:834
 msgid "Gain Control"
 msgstr "Задобиј контролу"
 
-#: libexif/exif-tag.c:825
+#: libexif/exif-tag.c:835
 msgid "This tag indicates the degree of overall image gain adjustment."
 msgstr ""
 
-#: libexif/exif-tag.c:829
+#: libexif/exif-tag.c:839
 msgid ""
 "This tag indicates the direction of contrast processing applied by the "
 "camera when the image was shot."
@@ -4000,7 +3997,7 @@ msgstr ""
 "Етикета означава смер обраде контраста који је апарат применио када је "
 "усликао."
 
-#: libexif/exif-tag.c:833
+#: libexif/exif-tag.c:843
 msgid ""
 "This tag indicates the direction of saturation processing applied by the "
 "camera when the image was shot."
@@ -4008,37 +4005,37 @@ msgstr ""
 "Етикета означава смер обраде засићења који је апарат применио када је "
 "усликао."
 
-#: libexif/exif-tag.c:837
+#: libexif/exif-tag.c:847
 msgid ""
 "This tag indicates the direction of sharpness processing applied by the "
 "camera when the image was shot."
 msgstr ""
 "Етикета означава смер обраде оштрине која је апарат применио када је усликао."
 
-#: libexif/exif-tag.c:841
+#: libexif/exif-tag.c:851
 msgid "Device Setting Description"
 msgstr ""
 
-#: libexif/exif-tag.c:842
+#: libexif/exif-tag.c:852
 msgid ""
 "This tag indicates information on the picture-taking conditions of a "
 "particular camera model. The tag is used only to indicate the picture-taking "
 "conditions in the reader."
 msgstr ""
 
-#: libexif/exif-tag.c:848
+#: libexif/exif-tag.c:858
 msgid "Subject Distance Range"
 msgstr "Опсег удаљености субјекта"
 
-#: libexif/exif-tag.c:849
+#: libexif/exif-tag.c:859
 msgid "This tag indicates the distance to the subject."
 msgstr "Ова етикета означава удаљеност субјекта."
 
-#: libexif/exif-tag.c:851
+#: libexif/exif-tag.c:861
 msgid "Image Unique ID"
 msgstr "Јединствени ID слике"
 
-#: libexif/exif-tag.c:852
+#: libexif/exif-tag.c:862
 msgid ""
 "This tag indicates an identifier assigned uniquely to each image. It is "
 "recorded as an ASCII string equivalent to hexadecimal notation and 128-bit "
@@ -4047,27 +4044,27 @@ msgstr ""
 "Етикета јединствено обележава сваку фотографију. Памти се као ASCII стринг "
 "који је једнак хексадецималној бележењу и сталне је дужине од 128 битова."
 
-#: libexif/exif-tag.c:857
+#: libexif/exif-tag.c:867
 msgid "Gamma"
 msgstr "Гама"
 
-#: libexif/exif-tag.c:858
+#: libexif/exif-tag.c:868
 msgid "Indicates the value of coefficient gamma."
 msgstr "Показује вредност коефицијента гаме."
 
-#: libexif/exif-tag.c:860
+#: libexif/exif-tag.c:871
 msgid "PRINT Image Matching"
 msgstr ""
 
-#: libexif/exif-tag.c:861
+#: libexif/exif-tag.c:872
 msgid "Related to Epson's PRINT Image Matching technology"
 msgstr ""
 
-#: libexif/exif-tag.c:863
+#: libexif/exif-tag.c:875
 msgid "Padding"
 msgstr ""
 
-#: libexif/exif-tag.c:864
+#: libexif/exif-tag.c:876
 msgid ""
 "This tag reserves space that can be reclaimed later when additional metadata "
 "are added. New metadata can be written in place by replacing this tag with a "
@@ -4245,16 +4242,10 @@ msgstr ""
 msgid "Wide2 (400%)"
 msgstr ""
 
-#: libexif/fuji/mnote-fuji-entry.c:263
+#: libexif/fuji/mnote-fuji-entry.c:264
 #, c-format
 msgid "%2.2f mm"
 msgstr ""
-
-#: libexif/fuji/mnote-fuji-entry.c:298 libexif/pentax/mnote-pentax-entry.c:399
-#: libexif/pentax/mnote-pentax-entry.c:451
-#, c-format
-msgid "%i bytes unknown data"
-msgstr "%i бајтова непознатих података"
 
 #: libexif/fuji/mnote-fuji-tag.c:36
 msgid "Maker Note Version"
@@ -4681,117 +4672,117 @@ msgstr ""
 msgid "20 frames/sec"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:381
+#: libexif/olympus/mnote-olympus-entry.c:382
 #, c-format
 msgid "Red Correction %f, blue Correction %f"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:388
+#: libexif/olympus/mnote-olympus-entry.c:389
 msgid "No manual focus selection"
 msgstr "Није изабрано ручно подешавање жиже"
 
-#: libexif/olympus/mnote-olympus-entry.c:391
+#: libexif/olympus/mnote-olympus-entry.c:392
 #, c-format
 msgid "%2.2f meters"
 msgstr "%2.2f метара"
 
-#: libexif/olympus/mnote-olympus-entry.c:417
+#: libexif/olympus/mnote-olympus-entry.c:418
 msgid "AF position: center"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:418
+#: libexif/olympus/mnote-olympus-entry.c:419
 msgid "AF position: top"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:419
+#: libexif/olympus/mnote-olympus-entry.c:420
 msgid "AF position: bottom"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:420
+#: libexif/olympus/mnote-olympus-entry.c:421
 msgid "AF position: left"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:421
+#: libexif/olympus/mnote-olympus-entry.c:422
 msgid "AF position: right"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:422
+#: libexif/olympus/mnote-olympus-entry.c:423
 msgid "AF position: upper-left"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:423
+#: libexif/olympus/mnote-olympus-entry.c:424
 msgid "AF position: upper-right"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:424
+#: libexif/olympus/mnote-olympus-entry.c:425
 msgid "AF position: lower-left"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:425
+#: libexif/olympus/mnote-olympus-entry.c:426
 msgid "AF position: lower-right"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:426
+#: libexif/olympus/mnote-olympus-entry.c:427
 msgid "AF position: far left"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:427
+#: libexif/olympus/mnote-olympus-entry.c:428
 msgid "AF position: far right"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:428
+#: libexif/olympus/mnote-olympus-entry.c:429
 msgid "Unknown AF position"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:439
-#: libexif/olympus/mnote-olympus-entry.c:509
+#: libexif/olympus/mnote-olympus-entry.c:440
+#: libexif/olympus/mnote-olympus-entry.c:510
 #, c-format
 msgid "Internal error (unknown value %hi)"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:447
-#: libexif/olympus/mnote-olympus-entry.c:517
+#: libexif/olympus/mnote-olympus-entry.c:448
+#: libexif/olympus/mnote-olympus-entry.c:518
 #, c-format
 msgid "Unknown value %hi"
 msgstr "Непозната вредност %hi"
 
-#: libexif/olympus/mnote-olympus-entry.c:542
-#: libexif/olympus/mnote-olympus-entry.c:562
+#: libexif/olympus/mnote-olympus-entry.c:543
+#: libexif/olympus/mnote-olympus-entry.c:563
 #, c-format
 msgid "Unknown %hu"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:559
+#: libexif/olympus/mnote-olympus-entry.c:560
 msgid "2 sec."
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:598
+#: libexif/olympus/mnote-olympus-entry.c:599
 msgid "Fast"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:702
+#: libexif/olympus/mnote-olympus-entry.c:703
 msgid "Automatic"
 msgstr "Аутоматско"
 
-#: libexif/olympus/mnote-olympus-entry.c:732
+#: libexif/olympus/mnote-olympus-entry.c:733
 #, c-format
 msgid "Manual: %liK"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:735
+#: libexif/olympus/mnote-olympus-entry.c:736
 msgid "Manual: unknown"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-entry.c:741
+#: libexif/olympus/mnote-olympus-entry.c:742
 msgid "One-touch"
 msgstr "Један додир"
 
-#: libexif/olympus/mnote-olympus-entry.c:797
-#: libexif/olympus/mnote-olympus-entry.c:807
+#: libexif/olympus/mnote-olympus-entry.c:808
+#: libexif/olympus/mnote-olympus-entry.c:818
 msgid "Infinite"
 msgstr "бесконачно"
 
-#: libexif/olympus/mnote-olympus-entry.c:815
+#: libexif/olympus/mnote-olympus-entry.c:826
 #, c-format
 msgid "%i bytes unknown data: "
 msgstr "%i бајтова непознатих података: "
@@ -4893,8 +4884,7 @@ msgid "Contrast Curve"
 msgstr ""
 
 #: libexif/olympus/mnote-olympus-tag.c:71
-#: libexif/olympus/mnote-olympus-tag.c:95
-#: libexif/pentax/mnote-pentax-tag.c:134
+#: libexif/olympus/mnote-olympus-tag.c:95 libexif/pentax/mnote-pentax-tag.c:134
 msgid "Color Mode"
 msgstr ""
 
@@ -5066,13 +5056,11 @@ msgstr ""
 msgid "White Balance Setting"
 msgstr "Подешавање равнотеже беле"
 
-#: libexif/olympus/mnote-olympus-tag.c:143
-#: libexif/pentax/mnote-pentax-tag.c:87
+#: libexif/olympus/mnote-olympus-tag.c:143 libexif/pentax/mnote-pentax-tag.c:87
 msgid "Red Balance"
 msgstr ""
 
-#: libexif/olympus/mnote-olympus-tag.c:144
-#: libexif/pentax/mnote-pentax-tag.c:86
+#: libexif/olympus/mnote-olympus-tag.c:144 libexif/pentax/mnote-pentax-tag.c:86
 msgid "Blue Balance"
 msgstr ""
 
@@ -5420,10 +5408,20 @@ msgstr "3008x2008 или 3040x2024"
 msgid "Digital filter?"
 msgstr ""
 
-#: libexif/pentax/mnote-pentax-entry.c:374
-#: libexif/pentax/mnote-pentax-entry.c:383
-#, c-format
-msgid "Internal error (unknown value %i %i)"
+#: libexif/pentax/mnote-pentax-entry.c:352
+#: libexif/pentax/mnote-pentax-entry.c:361
+#, fuzzy, c-format
+msgid "Internal error (unknown value %hu)"
+msgstr "Унутрашња грешка (непозната вредност %i)"
+
+#: libexif/pentax/mnote-pentax-entry.c:376
+#, fuzzy, c-format
+msgid "Internal error (unknown value %hu %hu)"
+msgstr "Унутрашња грешка (непозната вредност %i %i)"
+
+#: libexif/pentax/mnote-pentax-entry.c:385
+#, fuzzy, c-format
+msgid "Internal error (unknown value %hi %hi)"
 msgstr "Унутрашња грешка (непозната вредност %i %i)"
 
 #: libexif/pentax/mnote-pentax-tag.c:35 libexif/pentax/mnote-pentax-tag.c:63
