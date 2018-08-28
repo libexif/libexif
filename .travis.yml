@@ -4,6 +4,9 @@ sudo: false
 
 language: c
 
+git:
+  depth: 1
+
 # Install autopoint on Ubuntu (needed for gettext)
 addons:
   apt:
@@ -25,13 +28,14 @@ matrix:
     addons:
       apt:
         sources:
-          - llvm-toolchain-trusty-5.0
+          - llvm-toolchain-trusty-6.0
+          - ubuntu-toolchain-r-test
         packages:
           - autopoint
-          - clang-5.0
+          - clang-6.0
     compiler: clang
     env:
-      - CONFIG=clang5
+      - CONFIG=clang6
   - os: linux
     addons:
       apt:
@@ -39,10 +43,26 @@ matrix:
           - ubuntu-toolchain-r-test
         packages:
           - autopoint
-          - g++-7
+          - g++-8
     compiler: gcc
     env:
-      - CONFIG=gcc7
+      - CONFIG=gcc8
+  - os: linux
+    addons:
+      apt:
+        sources:
+          - llvm-toolchain-trusty-6.0
+          - ubuntu-toolchain-r-test
+        packages:
+          - autopoint
+          - clang-6.0
+          - libtool
+    compiler: clang
+    # Required for -fsanitize=undefined
+    # see https://github.com/travis-ci/travis-ci/issues/9033
+    sudo: required
+    env:
+      - CONFIG=sanitize
 
 script:
   # Ensure brew gettext is in the PATH so autopoint is found on OS X
@@ -50,8 +70,9 @@ script:
   - if [ "$CONFIG" = "normal" ] ; then CFLAGS='-Wall -Wextra -O3'; fi
   - if [ "$CONFIG" = "c90" ] ; then CFLAGS='-std=iso9899:1990 -D_XOPEN_SOURCE=500 -Wall -Wextra -O3'; fi
   - if [ "$CONFIG" = "stackprotect" ] ; then CFLAGS='-g -O0 -fstack-protector-all'; fi
-  - if [ "$CONFIG" = "clang5" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=clang-5.0; fi
-  - if [ "$CONFIG" = "gcc7" ] ; then CFLAGS='-Wall -Wextra -O3'; export export CC=gcc-7; fi
+  - if [ "$CONFIG" = "clang6" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=clang-6.0; fi
+  - if [ "$CONFIG" = "gcc8" ] ; then CFLAGS='-Wall -Wextra -O3'; export export CC=gcc-8; fi
+  - if [ "$CONFIG" = "sanitize" ] ; then CFLAGS='-Wall -Wextra -O3 -fsanitize=address -fsanitize=undefined'; export CC=clang-6.0; fi
   - ./configure --prefix="${HOME}" CFLAGS="$CFLAGS" || { tail -300 config.log; false; }
   - make
   - make check
