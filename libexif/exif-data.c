@@ -202,8 +202,8 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 		entry->size = s;
 		memcpy (entry->data, d + doff, s);
 	} else {
-		/* FIXME: What do our callers do if (entry->data == NULL)? */
 		EXIF_LOG_NO_MEMORY(data->priv->log, "ExifData", s);
+		return 0;
 	}
 
 	/* If this is the MakerNote, remember the offset */
