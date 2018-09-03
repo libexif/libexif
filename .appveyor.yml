@@ -1,0 +1,20 @@
+# AppVeyor CI configuration file https://www.appveyor.com
+environment:
+  CYGWIN_MIRROR: http://cygwin.mirror.constant.com
+  matrix:
+  - CONFIG: cygwin
+  - CONFIG: cygwin64
+
+install:
+- cmd: if [%CONFIG%]==[cygwin] (
+    C:\cygwin\setup-x86.exe -qgnNdO -l C:\cygwin\var\cache\setup -R c:\cygwin -s "%CYGWIN_MIRROR%" -P libiconv-devel )
+- cmd: if [%CONFIG%]==[cygwin64] (
+    C:\cygwin64\setup-x86_64.exe -qgnNdO -l C:\cygwin64\var\cache\setup -R c:\cygwin64 -s "%CYGWIN_MIRROR%" -P libiconv-devel )
+
+build_script:
+- cmd: SET PATH=c:/%CONFIG%/bin
+- cmd: C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && autoreconf -sif && ./configure --prefix=$HOME && make LDFLAGS='-lintl' && make install"
+
+test_script:
+- cmd: C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && make check"
+
