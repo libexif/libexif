@@ -59,4 +59,9 @@ stamp-h.in
 conftest
 conftest.c
 ABOUT-NLS
+ar-lib
+compile
+depcomp
+INSTALL
+test-driver
 ChangeLog.git
