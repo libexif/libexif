@@ -3,6 +3,7 @@ libexif-0.6.x:
   * Updated translations for most languages
   * Fixed C89 compatibility
   * Fixed warnings on recent versions of autoconf
+  * Fix for recursion DoS CVE-2018-20030
 
 libexif-0.6.21 (2012-07-12):
   * New translations: en_AU, uk
