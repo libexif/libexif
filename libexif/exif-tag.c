@@ -217,6 +217,9 @@ static const struct TagEntry {
 	{EXIF_TAG_GPS_DIFFERENTIAL, "GPSDifferential", N_("GPS Differential Correction"),
          N_("Indicates whether differential correction is applied to the "
             "GPS receiver."), ESL_GPS},
+	{EXIF_TAG_GPS_H_POSITIONING_ERROR, "GPSHPositioningError", N_("GPS Horizontal Positioning Error"),
+         N_("Indicates the horizontal positioning errors in meters. This is "
+            "expressed as one RATIONAL value."), ESL_GPS},
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_NEW_SUBFILE_TYPE, "NewSubfileType",
 	 N_("New Subfile Type"), N_("A general indication of the kind of data "
