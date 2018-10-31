@@ -155,31 +155,31 @@ File olympus_makernote_variant_2.jpg
       Size, Comps: 4, 4
       Value: 0100
   MakerNote
-    Entry 0: 1, Firmware Version
+    Entry 0: 1, Firmware
       Size: 4
-    Entry 1: 2, ISO Setting
+    Entry 1: 2, ISO
       Size: 6
-    Entry 2: 3, Color Mode (?)
+    Entry 2: 3, ColorMode1
       Size: 6
     Entry 3: 4, Quality
       Size: 6
-    Entry 4: 5, White Balance
+    Entry 4: 5, WhiteBalance
       Size: 12
-    Entry 5: 6, Image Sharpening
+    Entry 5: 6, Sharpening
       Size: 6
-    Entry 6: 7, Focus Mode
+    Entry 6: 7, FocusMode
       Size: 6
-    Entry 7: 8, Flash Setting
+    Entry 7: 8, FlashSetting
       Size: 7
     Entry 8: 10, (unknown)
       Size: 5
-    Entry 9: 11, White Balance Fine Adjustment
+    Entry 9: 11, WhiteBalanceFine
       Size: 1
-    Entry 10: 15, ISO Selection
+    Entry 10: 15, ISOSelection
       Size: 6
     Entry 11: 16, (unknown)
       Size: 24
-    Entry 12: 17, Preview Image IFD
+    Entry 12: 17, PreviewImage
       Size: 4
     Entry 13: 26, (unknown)
       Size: 40
@@ -195,13 +195,13 @@ File olympus_makernote_variant_2.jpg
       Size: 1
     Entry 19: 48, (unknown)
       Size: 1
-    Entry 20: 128, Image Adjustment
+    Entry 20: 128, ImageAdjustment
       Size: 13
-    Entry 21: 133, Manual Focus Distance
+    Entry 21: 133, ManualFocusDistance
       Size: 25
-    Entry 22: 134, Digital Zoom
+    Entry 22: 134, DigitalZoom
       Size: 5
-    Entry 23: 136, AF Focus Position
+    Entry 23: 136, AFFocusPosition
       Size: 19
     Entry 24: 143, (unknown)
       Size: 15
@@ -209,7 +209,7 @@ File olympus_makernote_variant_2.jpg
       Size: 1984
     Entry 26: 148, Saturation
       Size: 1
-    Entry 27: 149, Noise Reduction
+    Entry 27: 149, NoiseReduction,
       Size: 4
     Entry 28: 155, (unknown)
       Size: 26

@@ -66,12 +66,12 @@ static void dump_makernote(ExifData *d) {
     printf("  MakerNote\n");
     for (i=0; i < num; ++i) {
       if (exif_mnote_data_get_value(mn, i, buf, sizeof(buf))) {
-	const char *title = exif_mnote_data_get_title(mn, i);
+	const char *name = exif_mnote_data_get_name(mn, i);
 	unsigned int id = exif_mnote_data_get_id(mn, i);
-	if (!title)
-	    title = "(unknown)";
+	if (!name)
+	    name = "(unknown)";
 	printf("    Entry %u: %u, %s\n"
-	       "      Size: %u\n", i, id, title, strlen(buf));
+	       "      Size: %u\n", i, id, name, strlen(buf));
       }
     }
   }

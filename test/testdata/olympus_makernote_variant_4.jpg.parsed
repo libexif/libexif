@@ -152,9 +152,9 @@ File olympus_makernote_variant_4.jpg
       Size, Comps: 4, 4
       Value: 0100
   MakerNote
-    Entry 0: 512, Speed/Sequence/Panorama Direction
+    Entry 0: 512, Mode
       Size: 8
-    Entry 1: 521, Camera ID
+    Entry 1: 521, CameraID
       Size: 31
     Entry 2: 8208, (unknown)
       Size: 0

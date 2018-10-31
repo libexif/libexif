@@ -134,13 +134,13 @@ File pentax_makernote_variant_2.jpg
       Size, Comps: 4, 4
       Value: 0100
   MakerNote
-    Entry 0: 16386, Preview Size
+    Entry 0: 16386, PentaxPreviewSize
       Size: 8
-    Entry 1: 16387, Preview Length
+    Entry 1: 16387, PentaxPreviewLength
       Size: 2
-    Entry 2: 16388, Preview Start
+    Entry 2: 16388, PentaxPreviewStart
       Size: 5
-    Entry 3: 24576, Preview Start
+    Entry 3: 24576, CasioPreviewStart
       Size: 20
     Entry 4: 24577, (unknown)
       Size: 4
@@ -148,15 +148,15 @@ File pentax_makernote_variant_2.jpg
       Size: 0
     Entry 6: 24579, (unknown)
       Size: 20
-    Entry 7: 24593, White Balance Bias
+    Entry 7: 24593, WhiteBalanceBias
       Size: 7
-    Entry 8: 24594, White Balance
+    Entry 8: 24594, WhiteBalance
       Size: 3
     Entry 9: 24595, (unknown)
       Size: 2
     Entry 10: 24609, (unknown)
       Size: 24
-    Entry 11: 24610, Object Distance
+    Entry 11: 24610, ObjectDistance
       Size: 5
     Entry 12: 24611, (unknown)
       Size: 2
@@ -166,21 +166,21 @@ File pentax_makernote_variant_2.jpg
       Size: 20
     Entry 15: 24627, (unknown)
       Size: 2
-    Entry 16: 24628, Flash Distance
+    Entry 16: 24628, FlashDistance
       Size: 5
-    Entry 17: 28672, Record Mode
+    Entry 17: 28672, RecordMode
       Size: 3
-    Entry 18: 28673, Self-timer
+    Entry 18: 28673, SelfTimer
       Size: 2
-    Entry 19: 28674, Quality Level
+    Entry 19: 28674, CasioQuality
       Size: 2
-    Entry 20: 28675, Focus Mode
+    Entry 20: 28675, CasioFocusMode
       Size: 2
     Entry 21: 28677, (unknown)
       Size: 4
-    Entry 22: 28678, Time Zone
+    Entry 22: 28678, TimeZone
       Size: 3
-    Entry 23: 28679, Bestshot Mode
+    Entry 23: 28679, BestshotMode
       Size: 3
     Entry 24: 28689, (unknown)
       Size: 20
@@ -188,9 +188,9 @@ File pentax_makernote_variant_2.jpg
       Size: 20
     Entry 26: 28691, (unknown)
       Size: 20
-    Entry 27: 28692, CCS ISO Sensitivity
+    Entry 27: 28692, CCSISOSensitivity
       Size: 4
-    Entry 28: 28693, Color Mode
+    Entry 28: 28693, ColorMode
       Size: 2
     Entry 29: 28694, Enhancement
       Size: 2

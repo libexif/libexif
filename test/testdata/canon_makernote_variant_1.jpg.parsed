@@ -317,13 +317,13 @@ File canon_makernote_variant_1.jpg
       Size: 101
     Entry 86: 19, (unknown)
       Size: 8
-    Entry 87: 6, Image Type
+    Entry 87: 6, ImageType
       Size: 22
-    Entry 88: 7, Firmware Version
+    Entry 88: 7, FirmwareVersion
       Size: 21
-    Entry 89: 8, Image Number
+    Entry 89: 8, ImageNumber
       Size: 8
-    Entry 90: 9, Owner Name
+    Entry 90: 9, OwnerName
       Size: 0
     Entry 91: 16, (unknown)
       Size: 9

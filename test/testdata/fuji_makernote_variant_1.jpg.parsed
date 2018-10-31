@@ -167,49 +167,49 @@ File fuji_makernote_variant_1.jpg
       Size, Comps: 4, 4
       Value: 0100
   MakerNote
-    Entry 0: 0, Maker Note Version
+    Entry 0: 0, Version
       Size: 4
-    Entry 1: 16, Serial Number
+    Entry 1: 16, SerialNumber
       Size: 30
     Entry 2: 4096, Quality
       Size: 7
     Entry 3: 4097, Sharpness
       Size: 6
-    Entry 4: 4098, White Balance
+    Entry 4: 4098, WhiteBalance
       Size: 4
-    Entry 5: 4099, Chromaticity Saturation
+    Entry 5: 4099, ChromaticitySaturation
       Size: 8
-    Entry 6: 4112, Flash Mode
+    Entry 6: 4112, FlashMode
       Size: 17
-    Entry 7: 4113, Flash Firing Strength Compensation
+    Entry 7: 4113, FlashStrength
       Size: 6
-    Entry 8: 4128, Macro Mode
+    Entry 8: 4128, MacroMode
       Size: 3
-    Entry 9: 4129, Focusing Mode
+    Entry 9: 4129, FocusingMode
       Size: 4
     Entry 10: 4130, (unknown)
       Size: 1
-    Entry 11: 4131, Focus Point
+    Entry 11: 4131, FocusPoint
       Size: 8
-    Entry 12: 4144, Slow Synchro Mode
+    Entry 12: 4144, SlowSynchro
       Size: 3
-    Entry 13: 4145, Picture Mode
+    Entry 13: 4145, PictureMode
       Size: 4
     Entry 14: 4146, (unknown)
       Size: 1
-    Entry 15: 4352, Continuous Taking
+    Entry 15: 4352, ContinuousTaking
       Size: 3
-    Entry 16: 4353, Continuous Sequence Number
+    Entry 16: 4353, ContinuousSequence
       Size: 1
     Entry 17: 4608, (unknown)
       Size: 1
-    Entry 18: 4624, FinePix Color
+    Entry 18: 4624, FinePixColor
       Size: 10
-    Entry 19: 4864, Blur Check
+    Entry 19: 4864, BlurCheck
       Size: 7
-    Entry 20: 4865, Auto Focus Check
+    Entry 20: 4865, AutoFocusCheck
       Size: 12
-    Entry 21: 4866, Auto Exposure Check
+    Entry 21: 4866, AutoExposureCheck
       Size: 7
     Entry 22: 5128, (unknown)
       Size: 20

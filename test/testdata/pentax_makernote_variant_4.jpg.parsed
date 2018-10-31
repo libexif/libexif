@@ -146,15 +146,15 @@ File pentax_makernote_variant_4.jpg
       Size, Comps: 4, 4
       Value: 0100
   MakerNote
-    Entry 0: 16386, Preview Size
+    Entry 0: 16386, PentaxPreviewSize
       Size: 8
-    Entry 1: 16387, Preview Length
+    Entry 1: 16387, PentaxPreviewLength
       Size: 2
-    Entry 2: 16388, Preview Start
+    Entry 2: 16388, PentaxPreviewStart
       Size: 5
-    Entry 3: 16389, Model Identification
+    Entry 3: 16389, ModelID
       Size: 5
-    Entry 4: 24576, Preview Start
+    Entry 4: 24576, CasioPreviewStart
       Size: 20
     Entry 5: 24577, (unknown)
       Size: 4
@@ -168,9 +168,9 @@ File pentax_makernote_variant_4.jpg
       Size: 2
     Entry 10: 24582, (unknown)
       Size: 20
-    Entry 11: 24593, White Balance Bias
+    Entry 11: 24593, WhiteBalanceBias
       Size: 8
-    Entry 12: 24594, White Balance
+    Entry 12: 24594, WhiteBalance
       Size: 3
     Entry 13: 24595, (unknown)
       Size: 2
@@ -178,7 +178,7 @@ File pentax_makernote_variant_4.jpg
       Size: 21
     Entry 15: 24609, (unknown)
       Size: 24
-    Entry 16: 24610, Object Distance
+    Entry 16: 24610, ObjectDistance
       Size: 5
     Entry 17: 24611, (unknown)
       Size: 2
@@ -188,7 +188,7 @@ File pentax_makernote_variant_4.jpg
       Size: 20
     Entry 20: 24627, (unknown)
       Size: 2
-    Entry 21: 24628, Flash Distance
+    Entry 21: 24628, FlashDistance
       Size: 4
     Entry 22: 24629, (unknown)
       Size: 4
@@ -368,19 +368,19 @@ File pentax_makernote_variant_4.jpg
       Size: 21
     Entry 110: 24769, (unknown)
       Size: 21
-    Entry 111: 28672, Record Mode
+    Entry 111: 28672, RecordMode
       Size: 2
-    Entry 112: 28673, Self-timer
+    Entry 112: 28673, SelfTimer
       Size: 2
-    Entry 113: 28674, Quality Level
+    Entry 113: 28674, CasioQuality
       Size: 2
-    Entry 114: 28675, Focus Mode
+    Entry 114: 28675, CasioFocusMode
       Size: 2
     Entry 115: 28677, (unknown)
       Size: 4
-    Entry 116: 28678, Time Zone
+    Entry 116: 28678, TimeZone
       Size: 6
-    Entry 117: 28679, Bestshot Mode
+    Entry 117: 28679, BestshotMode
       Size: 2
     Entry 118: 28680, (unknown)
       Size: 2
@@ -394,9 +394,9 @@ File pentax_makernote_variant_4.jpg
       Size: 20
     Entry 123: 28691, (unknown)
       Size: 20
-    Entry 124: 28692, CCS ISO Sensitivity
+    Entry 124: 28692, CCSISOSensitivity
       Size: 4
-    Entry 125: 28693, Color Mode
+    Entry 125: 28693, ColorMode
       Size: 2
     Entry 126: 28694, Enhancement
       Size: 2

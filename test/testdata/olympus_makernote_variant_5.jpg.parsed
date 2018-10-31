@@ -161,53 +161,53 @@ File olympus_makernote_variant_5.jpg
       Size, Comps: 4, 4
       Value: 0100
   MakerNote
-    Entry 0: 256, Thumbnail Image
+    Entry 0: 256, ThumbnailImage
       Size: 1999
-    Entry 1: 512, Speed/Sequence/Panorama Direction
+    Entry 1: 512, Mode
       Size: 10
     Entry 2: 513, Quality
       Size: 16
     Entry 3: 514, Macro
       Size: 2
-    Entry 4: 515, Black & White Mode
+    Entry 4: 515, BWMode
       Size: 2
-    Entry 5: 516, Digital Zoom
+    Entry 5: 516, DigiZoom
       Size: 4
-    Entry 6: 526, Sequential Shot
+    Entry 6: 526, SequentialShot
       Size: 4
-    Entry 7: 527, Wide Range
+    Entry 7: 527, WideRange
       Size: 3
-    Entry 8: 528, Color Adjustment Mode
+    Entry 8: 528, ColorAdjustmentMode
       Size: 3
     Entry 9: 529, (unknown)
       Size: 1
-    Entry 10: 530, Focus Mode
+    Entry 10: 530, FocusMode
       Size: 10
-    Entry 11: 531, Quick Shot
+    Entry 11: 531, QuickShot
       Size: 3
-    Entry 12: 532, Self-timer
+    Entry 12: 532, SelfTimer
       Size: 3
     Entry 13: 533, (unknown)
       Size: 1
-    Entry 14: 534, Voice Memo
+    Entry 14: 534, VoiceMemo
       Size: 3
-    Entry 15: 535, Record Shutter Release
+    Entry 15: 535, RecordShutterRelease
       Size: 17
-    Entry 16: 536, Flicker Reduce
+    Entry 16: 536, FlickerReduce
       Size: 3
-    Entry 17: 537, Optical Zoom
+    Entry 17: 537, OpticalZoom
       Size: 2
-    Entry 18: 538, CCD Sensitivity
+    Entry 18: 538, CCDSensitivity
       Size: 4
-    Entry 19: 539, Digital Zoom
+    Entry 19: 539, DigitalZoom
       Size: 2
     Entry 20: 540, (unknown)
       Size: 2
-    Entry 21: 541, Light Source Special
+    Entry 21: 541, LightSourceSpecial
       Size: 3
     Entry 22: 542, Resaved
       Size: 2
-    Entry 23: 543, Scene Select
+    Entry 23: 543, SceneSelect
       Size: 3
     Entry 24: 544, (unknown)
       Size: 1
@@ -215,9 +215,9 @@ File olympus_makernote_variant_5.jpg
       Size: 3
     Entry 26: 546, (unknown)
       Size: 1
-    Entry 27: 547, Manual Focus Distance
+    Entry 27: 547, ManualFocusDistance
       Size: 45
-    Entry 28: 548, Sequence Shot Interval
+    Entry 28: 548, SequenceShotInterval
       Size: 12
     Entry 29: 549, (unknown)
       Size: 0
@@ -227,7 +227,7 @@ File olympus_makernote_variant_5.jpg
       Size: 1
     Entry 32: 553, (unknown)
       Size: 1
-    Entry 33: 3840, Data Dump
+    Entry 33: 3840, DataDump
       Size: 1999
     Entry 34: 3841, (unknown)
       Size: 1999

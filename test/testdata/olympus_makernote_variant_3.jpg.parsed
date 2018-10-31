@@ -146,23 +146,23 @@ File olympus_makernote_variant_3.jpg
       Size, Comps: 4, 4
       Value: 0100
   MakerNote
-    Entry 0: 512, Speed/Sequence/Panorama Direction
+    Entry 0: 512, Mode
       Size: 10
     Entry 1: 513, Quality
       Size: 11
     Entry 2: 514, Macro
       Size: 11
-    Entry 3: 515, Black & White Mode
+    Entry 3: 515, BWMode
       Size: 2
-    Entry 4: 516, Digital Zoom
+    Entry 4: 516, DigiZoom
       Size: 4
-    Entry 5: 517, Focal Plane Diagonal
+    Entry 5: 517, FocalPlaneDiagonal
       Size: 5
-    Entry 6: 518, Lens Distortion Parameters
+    Entry 6: 518, LensDistortionParams
       Size: 12
-    Entry 7: 519, Firmware Version
+    Entry 7: 519, FirmwareVersion
       Size: 5
-    Entry 8: 521, Camera ID
+    Entry 8: 521, CameraID
       Size: 31
     Entry 9: 8208, (unknown)
       Size: 336
