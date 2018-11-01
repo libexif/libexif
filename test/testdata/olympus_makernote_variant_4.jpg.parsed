@@ -1,4 +1,5 @@
 File olympus_makernote_variant_4.jpg
+Byte order: Intel
   Content 0: ifd=0
     Entry 0: ImageDescription (ASCII)
       Size, Comps: 32, 32
@@ -154,15 +155,22 @@ File olympus_makernote_variant_4.jpg
   MakerNote
     Entry 0: 512, Mode
       Size: 8
+      Value: Fast/1/0
     Entry 1: 521, CameraID
       Size: 31
+      Value: OLYMPUS DIGITAL CAMERA         
     Entry 2: 8208, (unknown)
       Size: 0
+      Value: 
     Entry 3: 8224, (unknown)
       Size: 0
+      Value: 
     Entry 4: 8240, (unknown)
       Size: 0
+      Value: 
     Entry 5: 8256, (unknown)
       Size: 0
+      Value: 
     Entry 6: 8272, (unknown)
       Size: 0
+      Value: 

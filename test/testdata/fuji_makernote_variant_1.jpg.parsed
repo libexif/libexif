@@ -1,4 +1,5 @@
 File fuji_makernote_variant_1.jpg
+Byte order: Intel
   Content 0: ifd=0
     Entry 0: Make (ASCII)
       Size, Comps: 9, 9
@@ -169,59 +170,88 @@ File fuji_makernote_variant_1.jpg
   MakerNote
     Entry 0: 0, Version
       Size: 4
+      Value: 0130
     Entry 1: 16, SerialNumber
       Size: 30
+      Value: 111111111120090123ABC11T111111
     Entry 2: 4096, Quality
       Size: 7
+      Value: NORMAL 
     Entry 3: 4097, Sharpness
       Size: 6
+      Value: Normal
     Entry 4: 4098, WhiteBalance
       Size: 4
+      Value: Auto
     Entry 5: 4099, ChromaticitySaturation
       Size: 8
+      Value: Standard
     Entry 6: 4112, FlashMode
       Size: 17
+      Value: Red-eye reduction
     Entry 7: 4113, FlashStrength
       Size: 6
+      Value: 0.0000
     Entry 8: 4128, MacroMode
       Size: 3
+      Value: Off
     Entry 9: 4129, FocusingMode
       Size: 4
+      Value: Auto
     Entry 10: 4130, (unknown)
       Size: 1
+      Value: 1
     Entry 11: 4131, FocusPoint
       Size: 8
+      Value: 320, 240
     Entry 12: 4144, SlowSynchro
       Size: 3
+      Value: Off
     Entry 13: 4145, PictureMode
       Size: 4
+      Value: Auto
     Entry 14: 4146, (unknown)
       Size: 1
+      Value: 1
     Entry 15: 4352, ContinuousTaking
       Size: 3
+      Value: Off
     Entry 16: 4353, ContinuousSequence
       Size: 1
+      Value: 0
     Entry 17: 4608, (unknown)
       Size: 1
+      Value: 0
     Entry 18: 4624, FinePixColor
       Size: 10
+      Value: F-Standard
     Entry 19: 4864, BlurCheck
       Size: 7
+      Value: No blur
     Entry 20: 4865, AutoFocusCheck
       Size: 12
+      Value: Out of focus
     Entry 21: 4866, AutoExposureCheck
       Size: 7
+      Value: AE good
     Entry 22: 5128, (unknown)
       Size: 20
+      Value: 4 bytes unknown data
     Entry 23: 5129, (unknown)
       Size: 20
+      Value: 4 bytes unknown data
     Entry 24: 5130, (unknown)
       Size: 1
+      Value: 5
     Entry 25: 16392, (unknown)
       Size: 1
+      Value: 0
     Entry 26: 16640, (unknown)
       Size: 1
+      Value: 0
     Entry 27: 16896, (unknown)
       Size: 1
+      Value: 0
     Entry 28: 61456, (unknown)
       Size: 23
+      Value: 2540 bytes unknown data

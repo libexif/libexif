@@ -12,11 +12,11 @@ SUBDIRS = nls
 #      here yet.
 
 TESTS = test-mem test-value test-integers test-parse test-tagtable test-sorted \
-	test-fuzzer parse-regression.sh
+	test-fuzzer parse-regression.sh swap-byte-order.sh
 
 check_PROGRAMS = test-mem test-mnote test-value test-integers test-parse \
 	test-tagtable test-sorted test-fuzzer
 
 LDADD = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
 
-EXTRA_DIST = parse-regression.sh
+EXTRA_DIST = parse-regression.sh swap-byte-order.sh

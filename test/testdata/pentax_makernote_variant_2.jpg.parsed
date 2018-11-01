@@ -1,4 +1,5 @@
 File pentax_makernote_variant_2.jpg
+Byte order: Motorola
   Content 0: ifd=0
     Entry 0: Make (ASCII)
       Size, Comps: 24, 24
@@ -136,65 +137,97 @@ File pentax_makernote_variant_2.jpg
   MakerNote
     Entry 0: 16386, PentaxPreviewSize
       Size: 8
+      Value: 320 240 
     Entry 1: 16387, PentaxPreviewLength
       Size: 2
+      Value: 4 
     Entry 2: 16388, PentaxPreviewStart
       Size: 5
+      Value: 1326 
     Entry 3: 24576, CasioPreviewStart
       Size: 20
+      Value: 4 bytes unknown data
     Entry 4: 24577, (unknown)
       Size: 4
+      Value: 0208
     Entry 5: 24578, (unknown)
       Size: 0
+      Value: 
     Entry 6: 24579, (unknown)
       Size: 20
+      Value: 8 bytes unknown data
     Entry 7: 24593, WhiteBalanceBias
       Size: 7
+      Value: 132 92 
     Entry 8: 24594, WhiteBalance
       Size: 3
+      Value: 12 
     Entry 9: 24595, (unknown)
       Size: 2
+      Value: 2 
     Entry 10: 24609, (unknown)
       Size: 24
+      Value: 65535 65535 65535 65535 
     Entry 11: 24610, ObjectDistance
       Size: 5
+      Value: 2000 
     Entry 12: 24611, (unknown)
       Size: 2
+      Value: 2 
     Entry 13: 24625, (unknown)
       Size: 20
+      Value: 2 bytes unknown data
     Entry 14: 24626, (unknown)
       Size: 20
+      Value: 2 bytes unknown data
     Entry 15: 24627, (unknown)
       Size: 2
+      Value: 1 
     Entry 16: 24628, FlashDistance
       Size: 5
+      Value: 1000 
     Entry 17: 28672, RecordMode
       Size: 3
+      Value: 10 
     Entry 18: 28673, SelfTimer
       Size: 2
+      Value: 7 
     Entry 19: 28674, CasioQuality
       Size: 2
+      Value: 1 
     Entry 20: 28675, CasioFocusMode
       Size: 2
+      Value: 6 
     Entry 21: 28677, (unknown)
       Size: 4
+      Value: 1 0 
     Entry 22: 28678, TimeZone
       Size: 3
+      Value: ABC
     Entry 23: 28679, BestshotMode
       Size: 3
+      Value: Off
     Entry 24: 28689, (unknown)
       Size: 20
+      Value: 2 bytes unknown data
     Entry 25: 28690, (unknown)
       Size: 20
+      Value: 2 bytes unknown data
     Entry 26: 28691, (unknown)
       Size: 20
+      Value: 2 bytes unknown data
     Entry 27: 28692, CCSISOSensitivity
       Size: 4
+      Value: 100 
     Entry 28: 28693, ColorMode
       Size: 2
+      Value: 0 
     Entry 29: 28694, Enhancement
       Size: 2
+      Value: 0 
     Entry 30: 28695, Finer
       Size: 2
+      Value: 0 
     Entry 31: 28696, (unknown)
       Size: 2
+      Value: 0 

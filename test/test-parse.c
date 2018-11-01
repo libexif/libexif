@@ -71,14 +71,15 @@ static void dump_makernote(ExifData *d) {
 	if (!name)
 	    name = "(unknown)";
 	printf("    Entry %u: %u, %s\n"
-	       "      Size: %u\n", i, id, name, strlen(buf));
+	       "      Size: %u\n"
+	       "      Value: %s\n", i, id, name, strlen(buf), buf);
       }
     }
   }
 }
 
 /** Run EXIF parsing test on the given file. */
-static void test_parse(const char *filename, void *callback_data)
+static void test_parse(const char *filename, void *callback_data, int swap)
 {
   ExifData *d;
 
@@ -91,6 +92,21 @@ static void test_parse(const char *filename, void *callback_data)
   printf("File %s\n", fn);
 
   d = exif_data_new_from_file(filename);
+  printf("Byte order: %s\n",
+          exif_byte_order_get_name(exif_data_get_byte_order(d)));
+
+  if (swap) {
+      ExifByteOrder order = EXIF_BYTE_ORDER_INTEL;
+      if (exif_data_get_byte_order(d) == order) {
+          order = EXIF_BYTE_ORDER_MOTOROLA;
+      }
+      /* This switches the byte order of the entire EXIF data structure,
+       * including the MakerNote */
+      exif_data_set_byte_order(d, order);
+      printf("New byte order: %s\n",
+              exif_byte_order_get_name(exif_data_get_byte_order(d)));
+  }
+
   exif_data_foreach_content(d, data_foreach_func, callback_data);
 
   dump_makernote(d);
@@ -100,7 +116,7 @@ static void test_parse(const char *filename, void *callback_data)
 
 
 /** Callback function prototype for string parsing. */
-typedef void (*test_parse_func) (const char *filename, void *callback_data);
+typedef void (*test_parse_func) (const char *filename, void *callback_data, int swap);
 
 
 /** Split string at whitespace and call callback with each substring. */
@@ -117,7 +133,7 @@ static void split_ws_string(const char *string, test_parse_func func, void *call
 	if (str) {
 	  memcpy(str, start, len);
 	  str[len] = '\0';
-	  func(str, callback_data);
+	  func(str, callback_data, 0);
 	  free(str);
 	  start = p+1;
 	}
@@ -138,10 +154,17 @@ int main(const int argc, const char *argv[])
 {
   int i;
   void *callback_data = NULL;
+  int swap = 0;
+  int first = 1;
 
-  if (argc > 1) {
-    for (i=1; i<argc; i++) {
-      test_parse(argv[i], callback_data);
+  if (argc > 1 && !strcmp(argv[1], "--swap-byte-order")) {
+      swap = 1;
+      ++first;
+  }
+
+  if (argc > first) {
+    for (i=first; i<argc; i++) {
+      test_parse(argv[i], callback_data, swap);
     }
   } else {
     /* If no command-line argument is found, get the file names from

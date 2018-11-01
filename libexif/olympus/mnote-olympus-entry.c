@@ -300,7 +300,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_NIKON_TAG_FIRMWARE:
 		CF (entry->format,  EXIF_FORMAT_UNDEFINED, v, maxlen);
 		CC (entry->components, 4, v, maxlen);
-		vl = exif_get_long (entry->data, entry->order);
+		vl = exif_get_long (entry->data, EXIF_BYTE_ORDER_INTEL);
 		if ((vl & 0xF0F0F0F0) == 0x30303030) {
 			memcpy (v, entry->data, MIN (maxlen, 4));
 		} else {
