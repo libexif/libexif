@@ -19,4 +19,22 @@ check_PROGRAMS = test-mem test-mnote test-value test-integers test-parse \
 
 LDADD = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
 
-EXTRA_DIST = parse-regression.sh swap-byte-order.sh
+EXTRA_DIST = parse-regression.sh swap-byte-order.sh \
+	testdata/canon_makernote_variant_1.jpg \
+	testdata/canon_makernote_variant_1.jpg.parsed \
+	testdata/fuji_makernote_variant_1.jpg \
+	testdata/fuji_makernote_variant_1.jpg.parsed \
+	testdata/olympus_makernote_variant_2.jpg \
+	testdata/olympus_makernote_variant_2.jpg.parsed \
+	testdata/olympus_makernote_variant_3.jpg \
+	testdata/olympus_makernote_variant_3.jpg.parsed \
+	testdata/olympus_makernote_variant_4.jpg \
+	testdata/olympus_makernote_variant_4.jpg.parsed \
+	testdata/olympus_makernote_variant_5.jpg \
+	testdata/olympus_makernote_variant_5.jpg.parsed \
+	testdata/pentax_makernote_variant_2.jpg \
+	testdata/pentax_makernote_variant_2.jpg.parsed \
+	testdata/pentax_makernote_variant_3.jpg \
+	testdata/pentax_makernote_variant_3.jpg.parsed \
+	testdata/pentax_makernote_variant_4.jpg \
+	testdata/pentax_makernote_variant_4.jpg.parsed
