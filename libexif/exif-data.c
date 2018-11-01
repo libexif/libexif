@@ -1085,7 +1085,7 @@ exif_data_dump (ExifData *data)
 	}
 
 	if (data->data) {
-		printf ("%i byte(s) thumbnail data available.", data->size);
+		printf ("%i byte(s) thumbnail data available: ", data->size);
 		if (data->size >= 4) {
 			printf ("0x%02x 0x%02x ... 0x%02x 0x%02x\n",
 				data->data[0], data->data[1],

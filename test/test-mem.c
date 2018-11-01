@@ -44,6 +44,10 @@ main ()
 	printf ("Fill EXIF data with all necessary entries to follow specs...\n");
 	exif_data_fix (ed);
 
+	/* Add a dummy thumbnail */
+	ed->size = 4;
+	ed->data = calloc(1, ed->size);
+
 	exif_data_dump (ed);
 
 	printf ("Saving EXIF data to memory...\n");
