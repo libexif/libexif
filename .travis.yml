@@ -109,7 +109,7 @@ script:
   - if [ "$CONFIG" = "coverage" ] ; then cd "$HOME"/libexif-testsuite; CFLAGS=--coverage; LDFLAGS=--coverage; export MAKEFLAGS='-j 1'; fi
   - ./configure --prefix="${HOME}"/install CFLAGS="$CFLAGS" ${LDFLAGS:+LDFLAGS=$LDFLAGS} || { tail -300 config.log; false; }
   - make
-  - make check || { tail -300 test/test-suite.log; false; }
+  - make check || { tail -300 test*/test-suite.log; false; }
   - make install
   - if [ "$CONFIG" = "coverage" ] ; then cd "$TRAVIS_BUILD_DIR"; fi
 
