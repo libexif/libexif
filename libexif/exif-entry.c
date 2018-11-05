@@ -166,6 +166,13 @@ exif_entry_free (ExifEntry *e)
 	}
 }
 
+static void
+clear_entry (ExifEntry *e)
+{
+	e->components = 0;
+	e->size = 0;
+}
+
 /*! Get a value and convert it to an ExifShort.
  * \bug Not all types are converted that could be converted and no indication
  *      is made when that occurs
@@ -367,8 +374,7 @@ exif_entry_fix (ExifEntry *e)
 		if (e->size < 8) {
 			e->data = exif_entry_realloc (e, e->data, 8 + e->size);
 			if (!e->data) {
-				e->size = 0;
-				e->components = 0;
+				clear_entry(e);
 				return;
 			}
 
@@ -410,8 +416,7 @@ exif_entry_fix (ExifEntry *e)
 		    memcmp (e->data, "\0\0\0\0\0\0\0\0", 8)) {
 			e->data = exif_entry_realloc (e, e->data, 8 + e->size);
 			if (!e->data) {
-				e->size = 0;
-				e->components = 0;
+				clear_entry(e);
 				break;
 			}
 
@@ -1419,7 +1424,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_LONG;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		break;
 
 	/* SHORT, 1 component, no default */
@@ -1450,7 +1455,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		exif_set_short (e->data, o, 0);
 		break;
 
@@ -1462,7 +1467,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		exif_set_short (e->data, o, 1);
 		break;
 
@@ -1473,7 +1478,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		exif_set_short (e->data, o, 2);
 		break;
 
@@ -1483,7 +1488,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		exif_set_short (e->data, o, 3);
 		break;
 
@@ -1493,7 +1498,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		exif_set_short (e->data, o, 0xffff);
 		break;
 
@@ -1503,7 +1508,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		exif_set_short (e->data, o, 8);
 		exif_set_short (
 			e->data + exif_format_get_size (e->format),
@@ -1519,7 +1524,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SHORT;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		exif_set_short (e->data, o, 2);
 		exif_set_short (
 			e->data + exif_format_get_size (e->format),
@@ -1534,7 +1539,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_SRATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		break;
 
 	/* RATIONAL, 1 component, no default */
@@ -1555,7 +1560,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		break;
 
 	/* RATIONAL, 1 component, default 72/1 */
@@ -1565,7 +1570,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		r.numerator = 72;
 		r.denominator = 1;
 		exif_set_rational (e->data, o, r);
@@ -1577,7 +1582,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		break;
 
 	/* RATIONAL, 6 components */
@@ -1586,7 +1591,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		r.denominator = 1;
 		r.numerator = 0;
 		exif_set_rational (e->data, o, r);
@@ -1628,7 +1633,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		snprintf ((char *) e->data, e->size,
 			  "%04i:%02i:%02i %02i:%02i:%02i",
 			  tm->tm_year + 1900, tm->tm_mon + 1, tm->tm_mday,
@@ -1656,7 +1661,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		strncpy ((char *)e->data, _("[None]"), e->size);
 		break;
 	/* ASCII, default "[None]\0[None]\0" */
@@ -1665,7 +1670,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		strcpy (((char *)e->data) + 0, _("[None]"));
 		strcpy (((char *)e->data) + strlen (_("[None]")) + 1, _("[None]"));
 		break;
@@ -1676,7 +1681,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_UNDEFINED;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		e->data[0] = 0x01;
 		break;
 
@@ -1686,7 +1691,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		e->format = EXIF_FORMAT_UNDEFINED;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+		if (!e->data) { clear_entry(e); break; }
 		e->data[0] = 0x03;
 		break;
 
@@ -1696,7 +1701,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
                 e->format = EXIF_FORMAT_UNDEFINED;
                 e->size = exif_format_get_size (e->format) * e->components;
                 e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+                if (!e->data) { clear_entry(e); break; }
                 memcpy (e->data, "0100", 4);
                 break;
 
@@ -1706,7 +1711,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
                 e->format = EXIF_FORMAT_UNDEFINED;
                 e->size = exif_format_get_size (e->format) * e->components;
                 e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+                if (!e->data) { clear_entry(e); break; }
                 memcpy (e->data, "0210", 4);
                 break;
 
@@ -1716,7 +1721,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
                 e->format = EXIF_FORMAT_UNDEFINED;
                 e->size = exif_format_get_size (e->format) * e->components;
                 e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) break;
+                if (!e->data) { clear_entry(e); break; }
 		e->data[0] = 1;
 		e->data[1] = 2;
 		e->data[2] = 3;

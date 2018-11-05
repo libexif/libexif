@@ -92,6 +92,10 @@ static void test_parse(const char *filename, void *callback_data, int swap)
   printf("File %s\n", fn);
 
   d = exif_data_new_from_file(filename);
+  if (!d) {
+      fprintf (stderr, "Could not load data from '%s'!\n", filename);
+      return;
+  }
   printf("Byte order: %s\n",
           exif_byte_order_get_name(exif_data_get_byte_order(d)));
 

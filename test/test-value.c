@@ -131,7 +131,7 @@ main ()
 
 	data = exif_data_new ();
 	if (!data) {
-		printf ("Error running exif_data_new()\n");
+		fprintf (stderr, "Error running exif_data_new()\n");
 		exit(13);
 	}
 
@@ -139,7 +139,7 @@ main ()
 	for (i=0; i < sizeof(trunc_test_tags)/sizeof(trunc_test_tags[0]); ++i) {
 		e = exif_entry_new ();
 		if (!e) {
-			printf ("Error running exif_entry_new()\n");
+			fprintf (stderr, "Error running exif_entry_new()\n");
 			exit(13);
 		}
 		exif_content_add_entry (data->ifd[EXIF_IFD_0], e);
@@ -154,7 +154,7 @@ main ()
 		 ++i) {
 		e = exif_entry_new ();
 		if (!e) {
-			printf ("Error running exif_entry_new()\n");
+			fprintf (stderr, "Error running exif_entry_new()\n");
 			exit(13);
 		}
 		exif_content_add_entry (data->ifd[EXIF_IFD_0], e);
@@ -169,7 +169,7 @@ main ()
 		 ++i) {
 		e = exif_entry_new ();
 		if (!e) {
-			printf ("Error running exif_entry_new()\n");
+			fprintf (stderr, "Error running exif_entry_new()\n");
 			exit(13);
 		}
 		exif_content_add_entry (data->ifd[EXIF_IFD_0], e);
@@ -186,14 +186,14 @@ main ()
 	/* Create a memory allocator to manage the remaining ExifEntry structs */
 	mem = exif_mem_new_default();
 	if (!mem) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 
 	/* EXIF_TAG_SUB_SEC_TIME initialization/truncation tests */
 	e = exif_entry_new_mem (mem);
 	if (!e) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	exif_content_add_entry (data->ifd[EXIF_IFD_0], e);
@@ -203,7 +203,7 @@ main ()
 	/* Allocate memory to use for holding the tag data */
 	e->data = exif_mem_alloc(mem, e->size);
 	if (!e->data) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	memcpy(e->data, subsec, e->size);
@@ -214,7 +214,7 @@ main ()
 	/* EXIF_TAG_USER_COMMENT initialization/truncation tests */
 	e = exif_entry_new_mem (mem);
 	if (!e) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	exif_content_add_entry (data->ifd[EXIF_IFD_0], e);
@@ -224,7 +224,7 @@ main ()
 	/* Allocate memory to use for holding the tag data */
 	e->data = exif_mem_alloc(mem, e->size);
 	if (!e->data) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	memcpy(e->data, user_comment, e->size);
@@ -235,7 +235,7 @@ main ()
 	/* EXIF_TAG_XP_COMMENT truncation tests */
 	e = exif_entry_new_mem (mem);
 	if (!e) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	exif_content_add_entry (data->ifd[EXIF_IFD_0], e);
@@ -246,7 +246,7 @@ main ()
 	/* Allocate memory to use for holding the tag data */
 	e->data = exif_mem_alloc(mem, e->size);
 	if (!e->data) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	memcpy(e->data, xp_comment, e->size);
@@ -257,7 +257,7 @@ main ()
 	/* EXIF_TAG_INTEROPERABILITY_VERSION truncation tests */
 	e = exif_entry_new_mem (mem);
 	if (!e) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	exif_content_add_entry (data->ifd[EXIF_IFD_INTEROPERABILITY], e);
@@ -269,7 +269,7 @@ main ()
 	/* Allocate memory to use for holding the tag data */
 	e->data = exif_mem_alloc(mem, e->size);
 	if (!e->data) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	memcpy(e->data, interop, e->size);
@@ -280,7 +280,7 @@ main ()
 	/* EXIF_TAG_GPS_VERSION_ID truncation tests */
 	e = exif_entry_new_mem (mem);
 	if (!e) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	exif_content_add_entry (data->ifd[EXIF_IFD_GPS], e);
@@ -291,7 +291,7 @@ main ()
 	/* Allocate memory to use for holding the tag data */
 	e->data = exif_mem_alloc(mem, e->size);
 	if (!e->data) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	e->data[0] = 2;
@@ -305,7 +305,7 @@ main ()
 	/* EXIF_TAG_GPS_ALTITUDE_REF truncation tests */
 	e = exif_entry_new_mem (mem);
 	if (!e) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	exif_content_add_entry (data->ifd[EXIF_IFD_GPS], e);
@@ -316,7 +316,7 @@ main ()
 	/* Allocate memory to use for holding the tag data */
 	e->data = exif_mem_alloc(mem, e->size);
 	if (!e->data) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	e->data[0] = 1;
@@ -327,7 +327,7 @@ main ()
 	/* EXIF_TAG_GPS_TIME_STAMP truncation tests */
 	e = exif_entry_new_mem (mem);
 	if (!e) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	exif_content_add_entry (data->ifd[EXIF_IFD_GPS], e);
@@ -338,7 +338,7 @@ main ()
 	/* Allocate memory to use for holding the tag data */
 	e->data = exif_mem_alloc(mem, e->size);
 	if (!e->data) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	exif_set_rational(e->data, exif_data_get_byte_order (data), gpsh);
@@ -351,7 +351,7 @@ main ()
 	/* EXIF_TAG_SUBJECT_AREA truncation tests */
 	e = exif_entry_new_mem (mem);
 	if (!e) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	exif_content_add_entry (data->ifd[EXIF_IFD_0], e);
@@ -364,7 +364,7 @@ main ()
 	/* Allocate memory to use for holding the tag data */
 	e->data = exif_mem_alloc(mem, e->size);
 	if (!e->data) {
-		printf ("Out of memory\n");
+		fprintf (stderr, "Out of memory\n");
 		exit(13);
 	}
 	exif_set_short(e->data, exif_data_get_byte_order (data), 123);
