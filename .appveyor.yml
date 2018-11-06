@@ -13,8 +13,8 @@ install:
 
 build_script:
 - cmd: SET PATH=c:/%CONFIG%/bin
-- cmd: C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && autoreconf -sif && ./configure --prefix=$HOME && make LDFLAGS='-lintl' && make install"
+- cmd: C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && autoreconf -sif && ./configure --prefix=$HOME && make V=1 LDFLAGS='-lintl' && make V=1 install"
 
 test_script:
-- cmd: C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && make check"
+- cmd: C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && make V=1 check"
 

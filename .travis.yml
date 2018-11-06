@@ -108,9 +108,9 @@ script:
   - if [ "$CONFIG" = "sanitize" ] ; then CFLAGS='-g -Wall -Wextra -fsanitize=address -fsanitize=undefined'; export CC=clang-6.0; fi
   - if [ "$CONFIG" = "coverage" ] ; then cd "$HOME"/libexif-testsuite; CFLAGS=--coverage; LDFLAGS=--coverage; fi
   - ./configure --prefix="${HOME}"/install CFLAGS="$CFLAGS" ${LDFLAGS:+LDFLAGS=$LDFLAGS} || { tail -300 config.log; false; }
-  - make
-  - make check || { tail -300 test*/test-suite.log; false; }
-  - make install
+  - make V=1
+  - make V=1 check || { tail -300 test*/test-suite.log; false; }
+  - make V=1 install
   - if [ "$CONFIG" = "coverage" ] ; then cd "$TRAVIS_BUILD_DIR"; fi
 
 after_success:
