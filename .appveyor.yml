@@ -4,17 +4,24 @@ environment:
   matrix:
   - CONFIG: cygwin
   - CONFIG: cygwin64
+  - CONFIG: msys2
 
 install:
 - cmd: if [%CONFIG%]==[cygwin] (
     C:\cygwin\setup-x86.exe -qgnNdO -l C:\cygwin\var\cache\setup -R c:\cygwin -s "%CYGWIN_MIRROR%" -P libiconv-devel )
 - cmd: if [%CONFIG%]==[cygwin64] (
     C:\cygwin64\setup-x86_64.exe -qgnNdO -l C:\cygwin64\var\cache\setup -R c:\cygwin64 -s "%CYGWIN_MIRROR%" -P libiconv-devel )
+- cmd: if [%CONFIG%]==[msys2] (
+    set "PATH=C:\msys64\mingw64\bin;C:\msys64\usr\bin;%PATH%" )
 
 build_script:
-- cmd: SET PATH=c:/%CONFIG%/bin
-- cmd: C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && autoreconf -sif && ./configure --prefix=$HOME && make V=1 LDFLAGS='-lintl' && make V=1 install"
+- cmd: if not [%CONFIG%]==[msys2] (
+    C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && autoreconf -sif && ./configure --prefix=$HOME && make V=1 LDFLAGS='-lintl' && make V=1 install" )
+- cmd: if [%CONFIG%]==[msys2] (
+    bash -lc "set -x; cd $APPVEYOR_BUILD_FOLDER && autoreconf -sivf && ./configure --prefix=$HOME/install && make V=1 && make V=1 install" )
 
 test_script:
-- cmd: C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && make V=1 check"
-
+- cmd: if not [%CONFIG%]==[msys2] (
+    C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && make V=1 check" )
+- cmd: if [%CONFIG%]==[msys2] (
+    bash -lc "cd $APPVEYOR_BUILD_FOLDER && make V=1 check" )
