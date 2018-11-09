@@ -31,8 +31,6 @@
 #include <libexif/exif-utils.h>
 #include <libexif/i18n.h>
 
-/* #define DEBUG */
-
 #define CF(format,target,v,maxlen)                              \
 {                                                               \
         if (format != target) {                                 \
