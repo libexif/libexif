@@ -79,6 +79,9 @@ matrix:
           - libpopt-dev
           - subversion
     compiler: gcc
+    cache:
+      directories:
+        - $HOME/failmalloc
     env:
       - CONFIG=coverage
 
@@ -94,6 +97,17 @@ install:
       ln -s "$TRAVIS_BUILD_DIR" src/libexif
       ./build-config.sh
       autoreconf -sivf
+      cd "$HOME"
+      # Failmalloc for improved test coverage
+      if [ ! -e "$HOME/failmalloc/lib/libfailmalloc.so.0" ] ; then
+        curl -fsSORL https://download.savannah.nongnu.org/releases/failmalloc/failmalloc-1.0.tar.gz
+        tar xaf failmalloc-1.0.tar.gz
+        cd failmalloc-1.0
+        sed -i -e 's/\(__malloc_initialize_hook\)/volatile \1/' failmalloc.c
+        ./configure --prefix="$HOME/failmalloc"
+        make
+        make install
+      fi
       cd "$TRAVIS_BUILD_DIR"
     fi
 
@@ -106,8 +120,8 @@ script:
   - if [ "$CONFIG" = "clang6" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=clang-6.0; fi
   - if [ "$CONFIG" = "gcc8" ] ; then CFLAGS='-Wall -Wextra -O3'; export export CC=gcc-8; fi
   - if [ "$CONFIG" = "sanitize" ] ; then CFLAGS='-g -Wall -Wextra -fsanitize=address -fsanitize=undefined'; export CC=clang-6.0; fi
-  - if [ "$CONFIG" = "coverage" ] ; then cd "$HOME"/libexif-testsuite; CFLAGS=--coverage; LDFLAGS=--coverage; fi
-  - ./configure --prefix="${HOME}"/install CFLAGS="$CFLAGS" ${LDFLAGS:+LDFLAGS=$LDFLAGS} || { tail -300 config.log; false; }
+  - if [ "$CONFIG" = "coverage" ] ; then cd "$HOME"/libexif-testsuite; CFLAGS=--coverage; CONFIGURE_OPTS="LDFLAGS=--coverage --with-failmalloc=$HOME/failmalloc/lib" ; fi
+  - ./configure --prefix="${HOME}"/install CFLAGS="$CFLAGS" $CONFIGURE_OPTS || { tail -300 config.log; false; }
   - make V=1
   - make V=1 check || { tail -300 test*/test-suite.log; false; }
   - make V=1 install

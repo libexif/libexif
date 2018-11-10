@@ -129,6 +129,9 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([
 	])
 ])
 
+# Check whether libfailmalloc is available for tests
+CHECK_FAILMALLOC
+
 # doc support
 GP_CHECK_DOC_DIR
 GP_CHECK_DOXYGEN
@@ -204,6 +207,7 @@ AC_CONFIG_FILES([  po/Makefile.in
   libexif.spec
   libexif/Makefile
   test/Makefile
+  test/check-vars.sh
   test/nls/Makefile
   m4m/Makefile
   doc/Makefile
