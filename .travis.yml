@@ -32,7 +32,9 @@ os:
 
 matrix:
   include:
-  - os: linux
+  - env: CONFIG=clang6
+    os: linux
+    compiler: clang
     addons:
       apt:
         sources:
@@ -41,10 +43,9 @@ matrix:
         packages:
           - autopoint
           - clang-6.0
-    compiler: clang
-    env:
-      - CONFIG=clang6
-  - os: linux
+  - env: CONFIG=gcc8
+    os: linux
+    compiler: gcc
     addons:
       apt:
         sources:
@@ -52,20 +53,17 @@ matrix:
         packages:
           - autopoint
           - g++-8
+  - env: CONFIG=arm-cross
+    os: linux
     compiler: gcc
-    env:
-      - CONFIG=gcc8
-  - os: linux
     addons:
       apt:
         packages:
           - autopoint
           - gcc-4.8-arm-linux-gnueabihf
           - libc6-dev-armhf-cross
-    compiler: gcc
-    env:
-      - CONFIG=arm-cross
-  - os: linux
+  - env: CONFIG=sanitize
+    os: linux
     addons:
       apt:
         sources:
@@ -79,21 +77,18 @@ matrix:
     # Required for -fsanitize=undefined
     # see https://github.com/travis-ci/travis-ci/issues/9033
     sudo: required
-    env:
-      - CONFIG=sanitize
-  - os: linux
+  - env: CONFIG=coverage
+    os: linux
+    compiler: gcc
     addons:
       apt:
         packages:
           - autopoint
           - libpopt-dev
           - subversion
-    compiler: gcc
     cache:
       directories:
         - $HOME/failmalloc
-    env:
-      - CONFIG=coverage
 
 install:
   - |
