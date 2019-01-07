@@ -183,6 +183,7 @@ typedef enum {
 #define EXIF_TAG_GPS_AREA_INFORMATION   0x001c
 #define EXIF_TAG_GPS_DATE_STAMP         0x001d
 #define EXIF_TAG_GPS_DIFFERENTIAL       0x001e
+#define EXIF_TAG_GPS_H_POSITIONING_ERROR 0x001f
 
 /*! What level of support a tag enjoys in the EXIF standard */
 typedef enum {
