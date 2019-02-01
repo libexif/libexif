@@ -62,8 +62,17 @@ matrix:
           - autopoint
           - gcc-4.8-arm-linux-gnueabihf
           - libc6-dev-armhf-cross
+  - env: CONFIG=musl
+    os: linux
+    compiler: gcc
+    addons:
+      apt:
+        packages:
+          - autopoint
+          - musl-tools
   - env: CONFIG=sanitize
     os: linux
+    compiler: clang
     addons:
       apt:
         sources:
@@ -73,7 +82,6 @@ matrix:
           - autopoint
           - clang-6.0
           - libtool
-    compiler: clang
     # Required for -fsanitize=undefined
     # see https://github.com/travis-ci/travis-ci/issues/9033
     sudo: required
@@ -125,6 +133,7 @@ script:
   - if [ "$CONFIG" = "clang6" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=clang-6.0; fi
   - if [ "$CONFIG" = "gcc8" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=gcc-8; fi
   - if [ "$CONFIG" = "arm-cross" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=arm-linux-gnueabihf-gcc-4.8; CONFIGURE_OPTS='--host=arm-linux-gnueabihf'; fi
+  - if [ "$CONFIG" = "musl" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=musl-gcc; CONFIGURE_OPTS='--disable-shared'; fi
   - if [ "$CONFIG" = "sanitize" ] ; then CFLAGS='-g -Wall -Wextra -fsanitize=address -fsanitize=undefined'; export CC=clang-6.0; fi
   - if [ "$CONFIG" = "coverage" ] ; then cd "$HOME"/libexif-testsuite; CFLAGS=--coverage; CONFIGURE_OPTS="LDFLAGS=--coverage --with-failmalloc=$HOME/failmalloc/lib" ; fi
   - ./configure --prefix="${HOME}"/install CFLAGS="$CFLAGS" $CONFIGURE_OPTS || { tail -300 config.log; false; }
