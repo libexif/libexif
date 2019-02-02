@@ -1,0 +1,27 @@
+# Cirrus CI configuration
+# https://cirrus-ci.com/github/libexif/libexif
+
+task:
+  name: FreeBSD
+  freebsd_instance:
+    matrix:
+      image: freebsd-12-0-release-amd64
+      image: freebsd-11-2-release-amd64
+      image: freebsd-10-4-release-amd64
+
+  env:
+    CIRRUS_CLONE_DEPTH: 1
+    CFLAGS: -Wall -Wextra -O2
+    MAKE_FLAGS: -j 2
+
+  pkginstall_script:
+    - pkg install -y autoconf automake libtool gettext-tools gettext-runtime
+  configure_script:
+    - autoreconf -sivf
+    - ./configure CFLAGS="$CFLAGS" || { tail -300 config.log; false; }
+  compile_script:
+    - make V=1
+  test_script:
+    - make V=1 check
+  install_script:
+    - make V=1 install
