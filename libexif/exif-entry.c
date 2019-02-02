@@ -927,11 +927,12 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		 * If we reach this point, the tag does not
  		 * comply with the standard but seems to contain data.
 		 * Print as much as possible.
+		 * Note: make sure we do not overwrite the final \0 at maxlen-1
 		 */
 		exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
 			_("Tag UserComment contains data but is "
 			  "against specification."));
- 		for (j = 0; (i < e->size) && (j < maxlen); i++, j++) {
+ 		for (j = 0; (i < e->size) && (j < maxlen-1); i++, j++) {
 			exif_entry_log (e, EXIF_LOG_CODE_DEBUG,
 				_("Byte at position %i: 0x%02x"), i, e->data[i]);
  			val[j] = isprint (e->data[i]) ? e->data[i] : '.';
