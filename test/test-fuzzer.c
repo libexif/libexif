@@ -34,9 +34,12 @@
 void content_foreach_func(ExifEntry *entry, void *callback_data);
 void content_foreach_func(ExifEntry *entry, void *UNUSED(callback_data))
 {
-	char buf[2000];
+	char buf[2001];
 
-	exif_entry_get_value(entry, buf, sizeof(buf));
+	/* ensure \0 */
+	buf[sizeof(buf)-1] = 0;
+	buf[sizeof(buf)-2] = 0;
+	exif_entry_get_value(entry, buf, sizeof(buf)-1);
 	printf("    Entry %p: %s (%s)\n"
 		 "      Size, Comps: %d, %d\n"
 		 "      Value: %s\n", 
@@ -45,7 +48,8 @@ void content_foreach_func(ExifEntry *entry, void *UNUSED(callback_data))
 		 exif_format_get_name(entry->format),
 		 entry->size,
 		 (int)(entry->components),
-		 exif_entry_get_value(entry, buf, sizeof(buf)));
+		 exif_entry_get_value(entry, buf, sizeof(buf)-1));
+	if (buf[sizeof(buf)-2] != 0) abort();
 }
 
 
