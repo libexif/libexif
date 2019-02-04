@@ -410,9 +410,12 @@ exif_loader_get_buf (ExifLoader *loader, const unsigned char **buf,
 	const unsigned char* b = NULL;
 	unsigned int s = 0;
 
-	if (!loader || (loader->data_format == EL_DATA_FORMAT_UNKNOWN)) {
+	if (!loader)
+		return;
+	if (loader->data_format == EL_DATA_FORMAT_UNKNOWN) {
 		exif_log (loader->log, EXIF_LOG_CODE_DEBUG, "ExifLoader",
 			  "Loader format unknown");
+		return;
 	} else {
 		b = loader->buf;
 		s = loader->bytes_read;
