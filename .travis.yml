@@ -113,7 +113,7 @@ install:
       cd "$HOME"
       # Failmalloc for improved test coverage
       if [ ! -e "$HOME/failmalloc/lib/libfailmalloc.so.0" ] ; then
-        curl -fsSORL https://download.savannah.nongnu.org/releases/failmalloc/failmalloc-1.0.tar.gz
+        curl -fsSORL --retry 8 https://download.savannah.nongnu.org/releases/failmalloc/failmalloc-1.0.tar.gz
         tar xaf failmalloc-1.0.tar.gz
         cd failmalloc-1.0
         sed -i -e 's/\(__malloc_initialize_hook\)/volatile \1/' failmalloc.c
