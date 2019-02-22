@@ -12,19 +12,19 @@ SUBDIRS = nls
 #      here yet.
 
 TESTS = test-mem test-value test-integers test-parse test-tagtable test-sorted \
-	test-fuzzer parse-regression.sh swap-byte-order.sh
+	test-fuzzer parse-regression.sh swap-byte-order.sh extract-parse.sh
 
 if USE_FAILMALLOC
 TESTS += check-failmalloc.sh
 endif
 
 check_PROGRAMS = test-mem test-mnote test-value test-integers test-parse \
-	test-tagtable test-sorted test-fuzzer
+	test-tagtable test-sorted test-fuzzer test-extract
 
 LDADD = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
 
 EXTRA_DIST = check-vars.sh.in parse-regression.sh swap-byte-order.sh \
-	check-failmalloc.sh \
+	extract-parse.sh check-failmalloc.sh \
 	testdata/canon_makernote_variant_1.jpg \
 	testdata/canon_makernote_variant_1.jpg.parsed \
 	testdata/fuji_makernote_variant_1.jpg \
