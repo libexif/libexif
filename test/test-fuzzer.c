@@ -81,7 +81,7 @@ test_exif_data (ExifData *d)
 
 	c = exif_mnote_data_count (md);
 	for (i = 0; i < c; i++) {
-		char *name = exif_mnote_data_get_name (md, i);
+		const char *name = exif_mnote_data_get_name (md, i);
 		if (!name) break;
 		fprintf (stdout, "Dumping entry number %i...\n", i);
 		fprintf (stdout, "  Name: '%s'\n",
