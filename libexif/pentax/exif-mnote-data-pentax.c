@@ -79,12 +79,13 @@ exif_mnote_data_pentax_save (ExifMnoteData *ne,
 {
 	ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) ne;
 	size_t i,
-	   base = 0,		/* internal MakerNote tag number offset */
-	   o2 = 4 + 2;  	/* offset to first tag entry, past header */
-        size_t datao = n->offset; /* this MakerNote style uses offsets
-        			  based on main IFD, not makernote IFD */
+	size_t datao;
+	base = 0,	/* internal MakerNote tag number offset */
+	o2 = 4 + 2;  	/* offset to first tag entry, past header */
 
 	if (!n || !buf || !buf_size) return;
+	datao = n->offset; /* this MakerNote style uses offsets
+			      based on main IFD, not makernote IFD */
 
 	/*
 	 * Allocate enough memory for header, the number of entries, entries,
