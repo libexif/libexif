@@ -117,7 +117,7 @@ install:
         tar xaf failmalloc-1.0.tar.gz
         cd failmalloc-1.0
         sed -i -e 's/\(__malloc_initialize_hook\)/volatile \1/' failmalloc.c
-        ./configure --prefix="$HOME/failmalloc"
+        ./configure --prefix="$HOME/failmalloc" --disable-dependency-tracking
         make
         make install
       fi
@@ -136,7 +136,7 @@ script:
   - if [ "$CONFIG" = "musl" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=musl-gcc; CONFIGURE_OPTS='--disable-shared'; fi
   - if [ "$CONFIG" = "sanitize" ] ; then CFLAGS='-g -Wall -Wextra -fsanitize=address -fsanitize=undefined'; export CC=clang-6.0; fi
   - if [ "$CONFIG" = "coverage" ] ; then cd "$HOME"/libexif-testsuite; CFLAGS=--coverage; CONFIGURE_OPTS="LDFLAGS=--coverage --with-failmalloc=$HOME/failmalloc/lib" ; fi
-  - ./configure --prefix="${HOME}"/install CFLAGS="$CFLAGS" $CONFIGURE_OPTS || { tail -300 config.log; false; }
+  - ./configure --prefix="${HOME}"/install --disable-dependency-tracking CFLAGS="$CFLAGS" $CONFIGURE_OPTS || { tail -300 config.log; false; }
 
   - make V=1
   # Skip tests when cross compiling.

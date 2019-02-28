@@ -18,7 +18,7 @@ task:
     - pkg install -y autoconf automake libtool gettext-tools gettext-runtime
   configure_script:
     - autoreconf -sivf
-    - ./configure CFLAGS="$CFLAGS" || { tail -300 config.log; false; }
+    - ./configure --disable-dependency-tracking CFLAGS="$CFLAGS" || { tail -300 config.log; false; }
   compile_script:
     - make V=1
   test_script:
