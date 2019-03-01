@@ -134,7 +134,7 @@ script:
   - if [ "$CONFIG" = "gcc8" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=gcc-8; fi
   - if [ "$CONFIG" = "arm-cross" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=arm-linux-gnueabihf-gcc-4.8; CONFIGURE_OPTS='--host=arm-linux-gnueabihf'; fi
   - if [ "$CONFIG" = "musl" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=musl-gcc; CONFIGURE_OPTS='--disable-shared'; fi
-  - if [ "$CONFIG" = "sanitize" ] ; then CFLAGS='-g -Wall -Wextra -fsanitize=address -fsanitize=undefined'; export CC=clang-6.0; fi
+  - if [ "$CONFIG" = "sanitize" ] ; then CFLAGS='-g -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope'; export CC=clang-6.0; export ASAN_OPTIONS=strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1; fi
   - if [ "$CONFIG" = "coverage" ] ; then cd "$HOME"/libexif-testsuite; CFLAGS=--coverage; CONFIGURE_OPTS="LDFLAGS=--coverage --with-failmalloc=$HOME/failmalloc/lib" ; fi
   - ./configure --prefix="${HOME}"/install --disable-dependency-tracking CFLAGS="$CFLAGS" $CONFIGURE_OPTS || { tail -300 config.log; false; }
 
