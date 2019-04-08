@@ -998,7 +998,7 @@ exif_tag_get_title_in_ifd (ExifTag tag, ExifIfd ifd)
 		} else
 			return NULL; /* Recorded tag not found in the table */
 	}
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+	(void) bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	return _(ExifTagTable[i].title);
 }
 
@@ -1032,7 +1032,7 @@ exif_tag_get_description_in_ifd (ExifTag tag, ExifIfd ifd)
 	 * 
 	 * bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	 */
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+	(void) bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	return _(ExifTagTable[i].description);
 }
 
