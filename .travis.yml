@@ -8,6 +8,7 @@ git:
   depth: 1
 
 # Install autopoint on Ubuntu (needed for gettext)
+# This is ignored on bionic for some reason (see below).
 addons:
   apt:
     packages:
@@ -33,6 +34,22 @@ os:
 
 matrix:
   include:
+  - env: CONFIG=normal DIST=bionic
+    os: linux
+    dist: bionic
+    compiler: gcc
+  - env: CONFIG=normal DIST=bionic
+    os: linux
+    dist: bionic
+    compiler: clang
+  - env: CONFIG=normal DIST=xenial
+    os: linux
+    dist: xenial
+    compiler: gcc
+  - env: CONFIG=normal DIST=xenial
+    os: linux
+    dist: xenial
+    compiler: clang
   - env: CONFIG=clang6
     os: linux
     compiler: clang
@@ -109,6 +126,10 @@ matrix:
     cache:
       directories:
         - $HOME/failmalloc
+
+before_install:
+  # The apt addons section is ignored on bionic for some reason
+  - if [ "${DIST}" = "bionic" ] ; then sudo apt-get install -y autopoint; fi
 
 install:
   - |
