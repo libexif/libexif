@@ -12,14 +12,15 @@ SUBDIRS = nls
 #      here yet.
 
 TESTS = test-mem test-value test-integers test-parse test-tagtable test-sorted \
-	test-fuzzer parse-regression.sh swap-byte-order.sh extract-parse.sh
+	test-fuzzer test-null parse-regression.sh swap-byte-order.sh \
+	extract-parse.sh
 
 if USE_FAILMALLOC
 TESTS += check-failmalloc.sh
 endif
 
 check_PROGRAMS = test-mem test-mnote test-value test-integers test-parse \
-	test-tagtable test-sorted test-fuzzer test-extract
+	test-tagtable test-sorted test-fuzzer test-extract test-null
 
 LDADD = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
 
