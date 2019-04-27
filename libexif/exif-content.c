@@ -78,12 +78,18 @@ exif_content_new_mem (ExifMem *mem)
 void
 exif_content_ref (ExifContent *content)
 {
+	if (!content)
+		return;
+
 	content->priv->ref_count++;
 }
 
 void
 exif_content_unref (ExifContent *content)
 {
+	if (!content)
+		return;
+
 	content->priv->ref_count--;
 	if (!content->priv->ref_count)
 		exif_content_free (content);
