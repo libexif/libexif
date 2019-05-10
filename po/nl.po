@@ -2690,6 +2690,16 @@ msgid "Indicates whether differential correction is applied to the GPS receiver.
 msgstr "Geeft aan of differentiaalcorrectie op de GPS-ontvanger is toegepast."
 
 #: libexif/exif-tag.c:220
+msgid "GPS Horizontal Positioning Error"
+msgstr ""
+
+#: libexif/exif-tag.c:221
+msgid ""
+"Indicates the horizontal positioning errors in meters. This is expressed as "
+"one RATIONAL value."
+msgstr ""
+
+#: libexif/exif-tag.c:225
 msgid "New Subfile Type"
 msgstr "Nieuw soort nevenbestand"
 
