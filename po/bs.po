@@ -5577,19 +5577,19 @@ msgstr "Digitalni filter?"
 
 #: libexif/pentax/mnote-pentax-entry.c:352
 #: libexif/pentax/mnote-pentax-entry.c:361
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %hu)"
-msgstr "Interna greška (nepoznata vrijednost %hi)"
+msgstr "Interna greška (nepoznata vrijednost %hu)"
 
 #: libexif/pentax/mnote-pentax-entry.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %hu %hu)"
-msgstr "Unutrašnja greška (nepoznata vrijednost %i %i)"
+msgstr "Unutrašnja greška (nepoznata vrijednost %hu %hu)"
 
 #: libexif/pentax/mnote-pentax-entry.c:385
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %hi %hi)"
-msgstr "Unutrašnja greška (nepoznata vrijednost %i %i)"
+msgstr "Unutrašnja greška (nepoznata vrijednost %hi %hi)"
 
 #: libexif/pentax/mnote-pentax-tag.c:35 libexif/pentax/mnote-pentax-tag.c:63
 msgid "Capture Mode"

@@ -5308,19 +5308,19 @@ msgstr ""
 
 #: libexif/pentax/mnote-pentax-entry.c:352
 #: libexif/pentax/mnote-pentax-entry.c:361
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %hu)"
-msgstr "Dahili hata (bilinmeyen değer %i)"
+msgstr "Dahili hata (bilinmeyen değer %hu)"
 
 #: libexif/pentax/mnote-pentax-entry.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %hu %hu)"
-msgstr "Dahili hata (bilinmeyen değer %i %i)"
+msgstr "Dahili hata (bilinmeyen değer %hu %hu)"
 
 #: libexif/pentax/mnote-pentax-entry.c:385
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %hi %hi)"
-msgstr "Dahili hata (bilinmeyen değer %i %i)"
+msgstr "Dahili hata (bilinmeyen değer %hi %hi)"
 
 #: libexif/pentax/mnote-pentax-tag.c:35 libexif/pentax/mnote-pentax-tag.c:63
 msgid "Capture Mode"

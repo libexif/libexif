@@ -5292,19 +5292,19 @@ msgstr "Filtro digital?"
 
 #: libexif/pentax/mnote-pentax-entry.c:352
 #: libexif/pentax/mnote-pentax-entry.c:361
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %hu)"
-msgstr "Erro interno (valor desconhecido %hi)"
+msgstr "Erro interno (valor desconhecido %hu)"
 
 #: libexif/pentax/mnote-pentax-entry.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %hu %hu)"
-msgstr "Erro interno (valor %i %i desconhecido)"
+msgstr "Erro interno (valor %hu %hu desconhecido)"
 
 #: libexif/pentax/mnote-pentax-entry.c:385
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error (unknown value %hi %hi)"
-msgstr "Erro interno (valor %i %i desconhecido)"
+msgstr "Erro interno (valor %hi %hi desconhechido)"
 
 #: libexif/pentax/mnote-pentax-tag.c:35 libexif/pentax/mnote-pentax-tag.c:63
 msgid "Capture Mode"
