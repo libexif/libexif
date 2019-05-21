@@ -5,7 +5,8 @@ sudo: false
 language: c
 
 git:
-  depth: 1
+  # Set to 10 instead of 1 to avoid problems when the most recent commits have [skip ci]
+  depth: 10
 
 # Install autopoint on Ubuntu (needed for gettext)
 # This is ignored on bionic for some reason (see below).
