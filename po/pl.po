@@ -3080,7 +3080,7 @@ msgstr "Data i czas (obrazu cyfrowego)"
 
 #: libexif/exif-tag.c:527
 msgid "The date and time when the image was stored as digital data."
-msgstr "Data i czas zapisania obrazu jako danych cyfrowych. "
+msgstr "Data i czas zapisania obrazu jako danych cyfrowych."
 
 #: libexif/exif-tag.c:530
 msgid "Components Configuration"

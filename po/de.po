@@ -5190,7 +5190,7 @@ msgstr "Schwarzweiß-Modus"
 
 #: libexif/olympus/mnote-olympus-tag.c:111
 msgid "Focal Plane Diagonal"
-msgstr "Diagonale der Schärfeebene "
+msgstr "Diagonale der Schärfeebene"
 
 #: libexif/olympus/mnote-olympus-tag.c:112
 msgid "Lens Distortion Parameters"
@@ -5712,7 +5712,7 @@ msgstr "AF-Punktauswahl"
 
 #: libexif/pentax/mnote-pentax-tag.c:76
 msgid "Auto AF Point"
-msgstr "Automatischer AF-Punkt "
+msgstr "Automatischer AF-Punkt"
 
 #: libexif/pentax/mnote-pentax-tag.c:77
 msgid "Focus Position"
@@ -5776,7 +5776,7 @@ msgstr "Rohbildgröße"
 
 #: libexif/pentax/mnote-pentax-tag.c:105
 msgid "Autofocus Points Used"
-msgstr "Verwendete Fokuspunkte "
+msgstr "Verwendete Fokuspunkte"
 
 #: libexif/pentax/mnote-pentax-tag.c:107
 msgid "Camera Temperature"

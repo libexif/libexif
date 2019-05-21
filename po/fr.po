@@ -1475,7 +1475,7 @@ msgstr "Largeur source du zoom"
 
 #: libexif/canon/mnote-canon-tag.c:87
 msgid "Zoom Target Width"
-msgstr "Largeur cible du zoom "
+msgstr "Largeur cible du zoom"
 
 #: libexif/canon/mnote-canon-tag.c:88
 msgid "Photo Effect"

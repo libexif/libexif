@@ -252,7 +252,7 @@ msgstr "Middel 1"
 
 #: libexif/canon/mnote-canon-entry.c:116
 msgid "Medium 2"
-msgstr "Middel 2 "
+msgstr "Middel 2"
 
 #: libexif/canon/mnote-canon-entry.c:117
 msgid "Medium 3"
@@ -2663,7 +2663,7 @@ msgstr "Naam van GPS-verwerkingsmethode"
 
 #: libexif/exif-tag.c:200
 msgid "A character string recording the name of the method used for location finding. The first byte indicates the character code used, and this is followed by the name of the method. Since the Type is not ASCII, NULL termination is not necessary."
-msgstr "Een tekenreeks waarin de naam van de methode staat waarmee de locatie wordt bepaald. De eerste byte geeft de gebruikte tekencode, en dit wordt gevolgd door de naam van de methode. Omdat het geen ASCII betreft, is afsluiten met een NUL niet noodzakelijk. "
+msgstr "Een tekenreeks waarin de naam van de methode staat waarmee de locatie wordt bepaald. De eerste byte geeft de gebruikte tekencode, en dit wordt gevolgd door de naam van de methode. Omdat het geen ASCII betreft, is afsluiten met een NUL niet noodzakelijk."
 
 #: libexif/exif-tag.c:205
 msgid "Name of GPS Area"
@@ -2671,7 +2671,7 @@ msgstr "Naam van GPS-gebied"
 
 #: libexif/exif-tag.c:206
 msgid "A character string recording the name of the GPS area. The first byte indicates the character code used, and this is followed by the name of the GPS area. Since the Type is not ASCII, NULL termination is not necessary."
-msgstr "Een tekenreeks waarin de naam van het GPS-gebied is opgeslagen. De eerste byte geeft de gebruikte tekencode, en dit wordt gevolgd door de naam van het GPS-gebied. Omdat het geen ASCII betreft, is afsluiten met een NUL niet noodzakelijk. "
+msgstr "Een tekenreeks waarin de naam van het GPS-gebied is opgeslagen. De eerste byte geeft de gebruikte tekencode, en dit wordt gevolgd door de naam van het GPS-gebied. Omdat het geen ASCII betreft, is afsluiten met een NUL niet noodzakelijk."
 
 #: libexif/exif-tag.c:210
 msgid "GPS Date"
@@ -3073,7 +3073,7 @@ msgstr "Datum en tijdstip (van digitalisatie)"
 
 #: libexif/exif-tag.c:527
 msgid "The date and time when the image was stored as digital data."
-msgstr "De datum en het tijdstip waarop de opname als digitale gegevens is opgeslagen. "
+msgstr "De datum en het tijdstip waarop de opname als digitale gegevens is opgeslagen."
 
 #: libexif/exif-tag.c:530
 msgid "Components Configuration"
@@ -3289,7 +3289,7 @@ msgstr "Interoperabiliteit IFD Pointer"
 
 #: libexif/exif-tag.c:720
 msgid "Interoperability IFD is composed of tags which stores the information to ensure the Interoperability and pointed by the following tag located in Exif IFD. The Interoperability structure of Interoperability IFD is the same as TIFF defined IFD structure but does not contain the image data characteristically compared with normal TIFF IFD."
-msgstr "Interoperabiliteit IFD is samengesteld door labels die informatie bevatten om deze interoperabiliteit te waarborgen en verwijst naar de volgende label opgeslagen in Exif IFD. De structuur van interoperabiliteit van Interoperabiliteit IFD is gelijk aan TIFF-gedefinieerde IFD-structuur, maar bevat geen afbeeldingsgegevens karakteristiek vergeleken met normale TIFF IFD. "
+msgstr "Interoperabiliteit IFD is samengesteld door labels die informatie bevatten om deze interoperabiliteit te waarborgen en verwijst naar de volgende label opgeslagen in Exif IFD. De structuur van interoperabiliteit van Interoperabiliteit IFD is gelijk aan TIFF-gedefinieerde IFD-structuur, maar bevat geen afbeeldingsgegevens karakteristiek vergeleken met normale TIFF IFD."
 
 #: libexif/exif-tag.c:729
 msgid "Flash Energy"
@@ -3397,7 +3397,7 @@ msgstr "Dit label toont de digitale zoom op het moment van opname. Als de noemer
 
 #: libexif/exif-tag.c:811
 msgid "Focal Length in 35mm Film"
-msgstr "Brandpuntsafstand bij 35mm-film "
+msgstr "Brandpuntsafstand bij 35mm-film"
 
 #: libexif/exif-tag.c:812
 msgid "This tag indicates the equivalent focal length assuming a 35mm film camera, in mm. A value of 0 means the focal length is unknown. Note that this tag differs from the FocalLength tag."
@@ -4869,7 +4869,7 @@ msgstr "Lengte voorvertoning"
 
 #: libexif/pentax/mnote-pentax-tag.c:66 libexif/pentax/mnote-pentax-tag.c:122
 msgid "Preview Start"
-msgstr "Begin voorvertoning "
+msgstr "Begin voorvertoning"
 
 #: libexif/pentax/mnote-pentax-tag.c:67
 msgid "Model Identification"

@@ -2122,7 +2122,7 @@ msgstr "režim portrét (pre detailné zábery s nezaostreným pozadím)"
 # exif-exposureprogram-8
 #: libexif/exif-entry.c:755
 msgid "Landscape mode (for landscape photos with the background in focus)"
-msgstr "režim krajinka (pre fotografie krajiny so zaostreným pozadím) "
+msgstr "režim krajinka (pre fotografie krajiny so zaostreným pozadím)"
 
 #: libexif/exif-entry.c:759 libexif/exif-entry.c:764
 #: libexif/olympus/mnote-olympus-entry.c:97

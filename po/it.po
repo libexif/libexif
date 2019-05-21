@@ -1691,7 +1691,7 @@ msgstr ""
 #: libexif/exif-entry.c:590
 #, c-format
 msgid "%i bytes unsupported data type"
-msgstr "%i byte di dati di tipo non supportato "
+msgstr "%i byte di dati di tipo non supportato"
 
 #: libexif/exif-entry.c:623
 #, c-format
@@ -3113,7 +3113,7 @@ msgstr "Data e ora (dati digitalizzati)"
 
 #: libexif/exif-tag.c:527
 msgid "The date and time when the image was stored as digital data."
-msgstr "La data e l'ora di memorizzazione dell'immagine come dati digitali. "
+msgstr "La data e l'ora di memorizzazione dell'immagine come dati digitali."
 
 #: libexif/exif-tag.c:530
 msgid "Components Configuration"
