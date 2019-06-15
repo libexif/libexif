@@ -344,7 +344,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 
 	case nikonV2:
 		o2 += 6;
-		if (o2 >= buf_size) return;
+		if (o2 + 8 >= buf_size) return;
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
 			"Parsing Nikon maker note v2 (0x%02x, %02x, %02x, "
 			"%02x, %02x, %02x, %02x, %02x)...",
