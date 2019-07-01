@@ -866,6 +866,34 @@ static const struct TagEntry {
 	    "each image. It is recorded as an ASCII string equivalent "
 	    "to hexadecimal notation and 128-bit fixed length."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.3 */
+	{EXIF_TAG_CAMERA_OWNER_NAME, "CameraOwnerName", N_("Camera Owner Name"),
+	 N_("This tag indicates the name of the camera owner, "
+            "photographer or image creator."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.3 */
+	{EXIF_TAG_BODY_SERIAL_NUMBER, "BodySerialNumber", N_("Body Serial Number"),
+	 N_("This tag indicates the serial number of the body of the camera"),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.3 */
+	{EXIF_TAG_LENS_SPECIFICATION, "LensSpecification", N_("Lens Specification"),
+	 N_("This tag indicates minimum focal length, "
+            "maximum focal length, minimum F number in the "
+            "minimum focal length, and minimum F number in "
+            "the maximum focal length."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.3 */
+	{EXIF_TAG_LENS_MAKE, "LensMake", N_("Lens Make"),
+	 N_("This tag indicates the lens manufacturer."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.3 */
+	{EXIF_TAG_LENS_MODEL, "LensModel", N_("Lens Model"),
+	 N_("This tag indicates the lens' model name and model number."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.3 */
+	{EXIF_TAG_LENS_SERIAL_NUMBER, "LensSerialNumber", N_("Lens Serial Number"),
+	 N_("This tag indicates the serial number of the interchangeable lens."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_GAMMA, "Gamma", N_("Gamma"),
 	 N_("Indicates the value of coefficient gamma."),
