@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif 0.6.22-pre1\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2018-08-26 12:22+0200\n"
-"PO-Revision-Date: 2018-08-26 01:04+0200\n"
+"POT-Creation-Date: 2019-07-01 15:57+0200\n"
+"PO-Revision-Date: 2019-07-01 16:04+0200\n"
 "Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
@@ -4268,7 +4268,65 @@ msgstr ""
 "Dieser Tag gibt eine eindeutige Bildkennung an. Er wird als ASCII-"
 "Zeichenkette in hexadezimaler Notation aufgezeichnet und ist 128 Bit lang."
 
-#: libexif/exif-tag.c:867
+#: libexif/exif-tag.c:869
+msgid "Camera Owner Name"
+msgstr "Besitzer der Kamera"
+
+#: libexif/exif-tag.c:870
+msgid ""
+"This tag indicates the name of the camera owner, photographer or image "
+"creator."
+msgstr ""
+"Dieser Tag enthält den Namen des Besitzers der Kamera, des Fotografen oder "
+"sonstigen Bildschöpfers."
+
+#: libexif/exif-tag.c:873
+msgid "Body Serial Number"
+msgstr "Seriennummer der Kamera"
+
+#: libexif/exif-tag.c:874
+msgid "This tag indicates the serial number of the body of the camera"
+msgstr "Dieser Tag gibt die Seriennummer der Kamera an."
+
+#: libexif/exif-tag.c:876
+msgid "Lens Specification"
+msgstr "Spezifikation des Objektivs"
+
+#: libexif/exif-tag.c:877
+msgid ""
+"This tag indicates minimum focal length, maximum focal length, minimum F "
+"number in the minimum focal length, and minimum F number in the maximum "
+"focal length."
+msgstr ""
+"Dieser Tag gibt die minimale Brennweite, die maximale Brennweite, sowie den "
+"minimalen Blendenwert bei minimaler Brennweite und den minimalen Blendenwert "
+"bei maximaler Brennweite an."
+
+#: libexif/exif-tag.c:882
+msgid "Lens Make"
+msgstr "Objektivhersteller"
+
+#: libexif/exif-tag.c:883
+msgid "This tag indicates the lens manufacturer."
+msgstr "Dieser Tag gibt den Hersteller des Objektivs an."
+
+#: libexif/exif-tag.c:885
+msgid "Lens Model"
+msgstr "Objektivmodell"
+
+#: libexif/exif-tag.c:886
+msgid "This tag indicates the lens' model name and model number."
+msgstr "Dieser Tag gibt den Modellnamen und die Modellnummer des Objektivs an."
+
+#: libexif/exif-tag.c:888
+msgid "Lens Serial Number"
+msgstr "Seriennummer des Objektivs"
+
+#: libexif/exif-tag.c:889
+msgid "This tag indicates the serial number of the interchangeable lens."
+msgstr "Dieser Tag gibt die Seriennummer des wechselbaren Objektivs an."
+
+#: libexif/exif-tag.c:892
 msgid "Gamma"
 msgstr "Gamma"
 
