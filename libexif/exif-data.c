@@ -1044,6 +1044,30 @@ exif_data_new_from_file (const char *path)
 
 	return (edata);
 }
+ExifData *
+exif_data_new_from_fd (int fd, const char* path, unsigned int *bytes_read) {
+	ExifData *edata;
+	ExifLoader *loader;
+	loader = NULL;
+
+	if (bytes_read != NULL)
+		*bytes_read = 0;
+
+	loader = exif_loader_new ();
+	if (!loader)
+		return NULL;
+	
+	if (bytes_read != NULL)
+		*bytes_read = exif_loader_write_fd (loader, fd);
+	else
+		exif_loader_write_fd (loader, fd);
+
+	edata = exif_loader_get_data (loader);
+	exif_loader_unref (loader);
+
+	return (edata);
+}
+
 
 void
 exif_data_ref (ExifData *data)

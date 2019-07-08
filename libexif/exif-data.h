@@ -27,6 +27,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
+#include <sys/types.h>
 
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-data-type.h>
@@ -56,6 +57,13 @@ struct _ExifData
 
 	ExifDataPrivate *priv;
 };
+
+/*! Lots of cool stuff to use existing file descriptors.
+ *
+ *
+ */
+ExifData *
+exif_data_new_from_fd (int fd, const char* path, unsigned int *bytes_read);
 
 /*! Allocate a new #ExifData. The #ExifData contains an empty
  * #ExifContent for each IFD and the default set of options,

@@ -103,6 +103,24 @@ exif_loader_alloc (ExifLoader *l, unsigned int i)
 	return NULL;
 }
 
+unsigned int
+exif_loader_write_fd (ExifLoader *l, int fd)
+{
+	ssize_t size;
+	unsigned char data[1024];
+	if (!l)
+		return -1;
+
+	while (1) {
+		size = read (fd, data, sizeof (data));
+		if (size <= 0)
+			break;
+		if (!exif_loader_write (l, data, size))
+			break;
+	}
+	return l->bytes_read;
+}
+
 void
 exif_loader_write_file (ExifLoader *l, const char *path)
 {

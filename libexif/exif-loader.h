@@ -22,7 +22,7 @@
 
 #ifndef __EXIF_LOADER_H__
 #define __EXIF_LOADER_H__
-
+#include <unistd.h>
 #include <libexif/exif-data.h>
 #include <libexif/exif-log.h>
 #include <libexif/exif-mem.h>
@@ -59,6 +59,13 @@ void        exif_loader_ref     (ExifLoader *loader);
  * \param[in] loader ExifLoader for which to decrease the refcount
  */
 void        exif_loader_unref   (ExifLoader *loader);
+
+/*
+ * Awesome function that returns the exif size in the file and
+ * sets up a loader
+ */
+unsigned int
+exif_loader_write_fd (ExifLoader *l, int fd);
 
 /*! Load a file into the given #ExifLoader from the filesystem.
  * The relevant data is copied in raw form into the #ExifLoader.
