@@ -49,6 +49,18 @@
 
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 
+/*! Magic number for TIFF files */
+static const unsigned char TIFFHeaderMotorola[] = {'M', 'M', 0, 42};
+static const unsigned char TIFFHeaderIntel[]	= {'I', 'I', 42, 0};
+
+typedef enum {
+	E_DATA_FORMAT_UNKNOWN = 0,
+	E_DATA_FORMAT_EXIF,
+	E_DATA_FORMAT_JPEG,
+	E_DATA_FORMAT_FUJI_RAW,
+	E_DATA_FORMAT_TIFF
+} ExifDataFormat;
+
 struct _ExifDataPrivate
 {
 	ExifByteOrder order;
@@ -132,14 +144,12 @@ exif_data_new_mem (ExifMem *mem)
 	}
 
 	/* Default options */
-#ifndef NO_VERBOSE_TAG_STRINGS
 	/*
 	 * When the tag list is compiled away, setting this option prevents
 	 * any tags from being loaded
 	 */
 	exif_data_set_option (data, EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS);
-#endif
-	exif_data_set_option (data, EXIF_DATA_OPTION_FOLLOW_SPECIFICATION);
+	//exif_data_set_option (data, EXIF_DATA_OPTION_FOLLOW_SPECIFICATION);
 
 	/* Default data type: none */
 	exif_data_set_data_type (data, EXIF_DATA_TYPE_COUNT);
@@ -365,7 +375,150 @@ level_cost(unsigned int n)
 	return ceil(log(n + 0.1)/log_1_1);
 }
 
-/*! Load data for an IFD.
+/*! Load data for an IFD - TIFF files.
+ *
+ * \param[in,out] data #ExifData
+ * \param[in] ifd IFD to load
+ * \param[in] d pointer to buffer containing raw IFD data
+ * \param[in] ds size of raw data in buffer at \c d
+ * \param[in] offset offset into buffer at \c d at which IFD starts
+ * \param[in] recursion_depth number of times this function has been
+ * recursively called without returning
+ */
+static void
+exif_data_load_data_content_tiff (ExifData *data, ExifIfd ifd,
+			     const unsigned char *d,
+			     unsigned int ds, unsigned int offset, unsigned int recursion_depth)
+{
+
+	ExifLong o, thumbnail_offset = 0, thumbnail_length = 0;
+	ExifShort n;
+	ExifEntry *entry;
+	unsigned int i;
+	ExifTag tag;
+
+	if (!data || !data->priv)
+		return;
+
+	/* check for valid ExifIfd enum range */
+	if ((((int)ifd) < 0) || ( ((int)ifd) >= EXIF_IFD_COUNT))
+	  return;
+
+	if (recursion_depth > 30) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
+			  "Deep recursion detected!");
+		return;
+	}
+
+	/* Read the number of entries */
+	if ((offset + 2 < offset) || (offset + 2 < 2) || (offset + 2 > ds)) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
+			  "Tag data past end of buffer (%u > %u)", offset+2, ds);
+		return;
+	}
+
+	n = exif_get_short (d + offset, data->priv->order);
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+	          "Loading %hu entries...", n);
+	offset += 2;
+
+	/* Check if we have enough data. */
+	if (offset + 12 * n > ds) {
+		n = (ds - offset) / 12;
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+				  "Short data; only loading %hu entries...", n);
+	}
+
+	for (i = 0; i < n; i++) {
+		tag = exif_get_short (d + offset + 12 * i, data->priv->order);
+
+		switch (tag) {
+		case EXIF_TAG_EXIF_IFD_POINTER:
+		case EXIF_TAG_GPS_INFO_IFD_POINTER:
+		case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
+
+			o = exif_get_long (d + offset + 12 * i + 8,
+					   data->priv->order);
+			/* FIXME: IFD_POINTER tags aren't marked as being in a
+			 * specific IFD, so exif_tag_get_name_in_ifd won't work
+			 */
+			exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+				  "Sub-IFD entry 0x%x ('%s') at %u.", tag,
+				  exif_tag_get_name(tag), o);
+
+			switch (tag) {
+			case EXIF_TAG_EXIF_IFD_POINTER:
+				CHECK_REC (EXIF_IFD_EXIF);
+				exif_data_load_data_content_tiff (data, EXIF_IFD_EXIF, d, ds, o, recursion_depth + 1);
+				break;
+			case EXIF_TAG_GPS_INFO_IFD_POINTER:
+				CHECK_REC (EXIF_IFD_GPS);
+				exif_data_load_data_content_tiff (data, EXIF_IFD_GPS, d, ds, o, recursion_depth + 1);
+				break;
+			case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
+				CHECK_REC (EXIF_IFD_INTEROPERABILITY);
+				exif_data_load_data_content_tiff (data, EXIF_IFD_INTEROPERABILITY, d, ds, o, recursion_depth + 1);
+				break;
+			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
+				thumbnail_offset = o;
+				if (thumbnail_offset && thumbnail_length)
+					exif_data_load_data_thumbnail (data, d,
+								       ds, thumbnail_offset,
+								       thumbnail_length);
+				break;
+			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH:
+				thumbnail_length = o;
+				if (thumbnail_offset && thumbnail_length)
+					exif_data_load_data_thumbnail (data, d,
+								       ds, thumbnail_offset,
+								       thumbnail_length);
+				break;
+			default:
+				return;
+			}
+			break;
+		default:
+
+			/*
+			 * If we don't know the tag, don't fail. It could be that new
+			 * versions of the standard have defined additional tags. Note that
+			 * 0 is a valid tag in the GPS IFD.
+			 */
+			if (!exif_tag_get_name_in_ifd (tag, ifd)) {
+
+				/*
+				 * Special case: Tag and format 0. That's against specification
+				 * (at least up to 2.2). But Photoshop writes it anyways.
+				 */
+				if (!memcmp (d + offset + 12 * i, "\0\0\0\0", 4)) {
+					exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+						  "Skipping empty entry at position %u in '%s'.", i,
+						  exif_ifd_get_name (ifd));
+					break;
+				}
+				exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+					  "Unknown tag 0x%04x (entry %u in '%s'). Please report this tag "
+					  "to <libexif-devel@lists.sourceforge.net>.", tag, i,
+					  exif_ifd_get_name (ifd));
+
+				if (data->priv->options & EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS)
+				{
+					break;
+				}
+			}
+			entry = exif_entry_new_mem (data->priv->mem);
+			if (exif_data_load_data_entry (data, entry, d, ds,
+						   offset + 12 * i))
+			{
+				exif_content_add_entry (data->ifd[ifd], entry);
+			}
+			exif_entry_unref (entry);
+			break;
+		}
+	}
+}
+
+/*! Load data for an IFD - no TIFF files.
  *
  * \param[in,out] data #ExifData
  * \param[in] ifd IFD to load
@@ -376,7 +529,7 @@ level_cost(unsigned int n)
  * call could be
  */
 static void
-exif_data_load_data_content (ExifData *data, ExifIfd ifd,
+exif_data_load_data_content_jpeg (ExifData *data, ExifIfd ifd,
 			     const unsigned char *d,
 			     unsigned int ds, unsigned int offset, unsigned int recursion_cost)
 {
@@ -448,17 +601,17 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			switch (tag) {
 			case EXIF_TAG_EXIF_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_EXIF);
-				exif_data_load_data_content (data, EXIF_IFD_EXIF, d, ds, o,
+				exif_data_load_data_content_jpeg (data, EXIF_IFD_EXIF, d, ds, o,
 					recursion_cost + level_cost(n));
 				break;
 			case EXIF_TAG_GPS_INFO_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_GPS);
-				exif_data_load_data_content (data, EXIF_IFD_GPS, d, ds, o,
+				exif_data_load_data_content_jpeg(data, EXIF_IFD_GPS, d, ds, o,
 					recursion_cost + level_cost(n));
 				break;
 			case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_INTEROPERABILITY);
-				exif_data_load_data_content (data, EXIF_IFD_INTEROPERABILITY, d, ds, o,
+				exif_data_load_data_content_jpeg (data, EXIF_IFD_INTEROPERABILITY, d, ds, o,
 					recursion_cost + level_cost(n));
 				break;
 			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
@@ -518,6 +671,31 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			break;
 		}
 	}
+}
+
+/*! Load data for an IFD.
+ *
+ * \param[in,out] data #ExifData
+ * \param[in] ifd IFD to load
+ * \param[in] d pointer to buffer containing raw IFD data
+ * \param[in] ds size of raw data in buffer at \c d
+ * \param[in] offset offset into buffer at \c d at which IFD starts
+ * \param[in] recursion_depth number of times this function has been
+ * recursively called without returning
+ */
+static void
+exif_data_load_data_content (ExifData *data, ExifIfd ifd,
+			     const unsigned char *d,
+			     unsigned int ds, unsigned int offset, unsigned int recursion_depth)
+{
+	if(data->exifDataFormat==E_DATA_FORMAT_TIFF) {
+		exif_data_load_data_content_tiff (data, ifd, d, ds, offset, recursion_depth);
+	}
+	else {
+		exif_data_load_data_content_jpeg (data, ifd, d, ds, offset, recursion_depth);
+	}
+	
+		
 }
 
 static int
@@ -751,8 +929,9 @@ exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 		exif_set_long (*d + 6 + offset, data->priv->order, *ds - 6);
 		exif_data_save_data_content (data, data->ifd[EXIF_IFD_1], d, ds,
 					     *ds - 6);
-	} else
+	} else {
 		exif_set_long (*d + 6 + offset, data->priv->order, 0);
+	}
 }
 
 typedef enum {
@@ -828,6 +1007,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	ExifShort n;
 	const unsigned char *d = d_orig;
 	unsigned int len, fullds;
+	int offsetFileFormat=0;
 
 	if (!data || !data->priv || !d || !ds)
 		return;
@@ -846,7 +1026,13 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	if (!memcmp (d, ExifHeader, 6)) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 			  "Found EXIF header at start.");
-	} else {
+	}
+	else if( !memcmp(d, TIFFHeaderIntel, sizeof(TIFFHeaderIntel) )
+			||!memcmp(d,TIFFHeaderMotorola, sizeof(TIFFHeaderMotorola))) {
+		data->exifDataFormat = E_DATA_FORMAT_TIFF;
+		offsetFileFormat = -6;
+	}
+	else {
 		while (ds >= 3) {
 			while (ds && (d[0] == 0xff)) {
 				d++;
@@ -907,14 +1093,20 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		LOG_TOO_SMALL;
 		return;
 	}
-	if (memcmp (d, ExifHeader, 6)) {
-		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
-			  "ExifData", _("EXIF header not found."));
-		return;
+
+	if(offsetFileFormat==0)
+	{
+		if (memcmp (d, ExifHeader, 6)) {
+			exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				  "ExifData", _("EXIF header not found."));
+			return;
+		}
+
+
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
+			  "Found EXIF header.");
 	}
 
-	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
-		  "Found EXIF header.");
 
 	/* Sanity check the data length */
 	if (ds < 14)
@@ -928,15 +1120,18 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		ds = 0xfffe;
 
 	/* Byte order (offset 6, length 2) */
-	if (!memcmp (d + 6, "II", 2))
+	if (!memcmp (d + offsetFileFormat + 6, "II", 2)) {
 		data->priv->order = EXIF_BYTE_ORDER_INTEL;
-	else if (!memcmp (d + 6, "MM", 2))
+	} else if (!memcmp (d + offsetFileFormat + 6, "MM", 2)) {
 		data->priv->order = EXIF_BYTE_ORDER_MOTOROLA;
+	}
 	else {
 		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifData", _("Unknown encoding."));
 		return;
 	}
+
+	d = d + offsetFileFormat;
 
 	/* Fixed value */
 	if (exif_get_short (d + 8, data->priv->order) != 0x002a)
@@ -1056,7 +1251,8 @@ exif_data_new_from_fd (int fd, const char* path, unsigned int *bytes_read) {
 	loader = exif_loader_new ();
 	if (!loader)
 		return NULL;
-	
+
+	exif_loader_get_tiff_container_size (loader, path);
 	if (bytes_read != NULL)
 		*bytes_read = exif_loader_write_fd (loader, fd);
 	else
@@ -1171,8 +1367,12 @@ exif_data_foreach_content (ExifData *data, ExifDataForeachContentFunc func,
 	if (!data || !func)
 		return;
 
-	for (i = 0; i < EXIF_IFD_COUNT; i++)
+	for (i = 0; i < EXIF_IFD_COUNT; i++) {
+		if(data->exifDataFormat == E_DATA_FORMAT_TIFF && i==EXIF_IFD_1)
+			continue;
+		
 		func (data->ifd[i], user_data);
+	}
 }
 
 typedef struct _ByteOrderChangeData ByteOrderChangeData;
@@ -1305,6 +1505,7 @@ fix_func (ExifContent *c, void *UNUSED(data))
 			exif_log (c->parent->priv->log, EXIF_LOG_CODE_DEBUG, "exif-data",
 				  "No thumbnail but entries on thumbnail. These entries have been "
 				  "removed.");
+			
 			while (c->count) {
 				unsigned int cnt = c->count;
 				exif_content_remove_entry (c, c->entries[c->count - 1]);

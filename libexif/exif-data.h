@@ -55,6 +55,9 @@ struct _ExifData
 	/*! Number of bytes in thumbnail image at \c data */
 	unsigned int size;
 
+	/*! Format of file read to ExifData */
+	unsigned int exifDataFormat;	
+
 	ExifDataPrivate *priv;
 };
 
