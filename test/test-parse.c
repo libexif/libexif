@@ -22,11 +22,12 @@
 
 #include "libexif/exif-data.h"
 #include "libexif/exif-system.h"
+#include "libexif/exif-actions.h"
 
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <errno.h>
 static unsigned entry_count;
 
 /** Callback function handling an ExifEntry. */
@@ -114,6 +115,17 @@ static void test_parse(const char *filename, void *callback_data, int swap)
   exif_data_foreach_content(d, data_foreach_func, callback_data);
 
   dump_makernote(d);
+  ExifParams p;
+  FILE *fp_xml;
+  fp_xml = fopen("dump.xml", "w+");
+  if (!fp_xml) {
+    fprintf(stderr, "Could not open file for xml dump. Err %d. Exiting\n", errno);
+    exit(1);
+  }
+  p.fp = fp_xml;
+  exif_action_dump_xml(d, p);
+  fclose(fp_xml);
+
 
   exif_data_unref(d);
 }
