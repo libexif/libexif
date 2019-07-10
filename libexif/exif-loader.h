@@ -121,6 +121,15 @@ void exif_loader_get_buf (ExifLoader *loader, const unsigned char **buf,
  */
 void exif_loader_log (ExifLoader *loader, ExifLog *log);
 
+
+/*! Check file header, if tiff file found, calculates #ExifLoader size
+ * \param[in] loader the loader
+  * \param[in] fname path to the file to read
+ */
+void exif_loader_get_tiff_container_size (ExifLoader *loader, const char *fname);
+
+
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

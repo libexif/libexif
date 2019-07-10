@@ -28,6 +28,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+
 
 #undef JPEG_MARKER_DHT
 #define JPEG_MARKER_DHT  0xc4
@@ -60,7 +63,8 @@ typedef enum {
 	EL_DATA_FORMAT_UNKNOWN,
 	EL_DATA_FORMAT_EXIF,
 	EL_DATA_FORMAT_JPEG,
-	EL_DATA_FORMAT_FUJI_RAW
+	EL_DATA_FORMAT_FUJI_RAW,
+	EL_DATA_FORMAT_TIFF
 } ExifLoaderDataFormat;
 
 /*! \internal */
@@ -87,6 +91,10 @@ struct _ExifLoader {
 /*! Magic number for EXIF header */
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 
+/*! Magic number for TIFF files */
+static const unsigned char TIFFHeaderMotorola[] = {'M', 'M', 0, 42};
+static const unsigned char TIFFHeaderIntel[]	= {'I', 'I', 42, 0};
+
 static void *
 exif_loader_alloc (ExifLoader *l, unsigned int i)
 {
@@ -101,6 +109,84 @@ exif_loader_alloc (ExifLoader *l, unsigned int i)
 
 	EXIF_LOG_NO_MEMORY (l->log, "ExifLog", i);
 	return NULL;
+}
+
+void
+exif_loader_get_tiff_container_size (ExifLoader *loader, const char *fname)
+{
+
+	FILE *f;
+	int size;
+	unsigned char data[1024];
+	ExifByteOrder order;
+	ExifLong offsetAddress;
+	ExifShort tagCount;
+	unsigned char lastIFD;
+
+	if (!loader)
+		return;
+
+	f = fopen (fname, "rb");
+	if (!f) {
+		exif_log (loader->log, EXIF_LOG_CODE_NONE, "ExifLoader",
+			  _("The file '%s' could not be opened."), fname);
+		return;
+	}
+
+	size = fread (data, 1, sizeof(data), f);
+	if (size < 6 ) {
+		exif_log (loader->log, EXIF_LOG_CODE_NONE, "ExifLoader",
+			  _("The header of '%s' could not be read."), fname);
+    goto closefile;
+	}
+
+
+	//Check TIFF header
+	if( !memcmp(data, TIFFHeaderIntel, sizeof(TIFFHeaderIntel) )) {
+		order = EXIF_BYTE_ORDER_INTEL;
+	}
+	else if (!memcmp(data,TIFFHeaderMotorola, sizeof(TIFFHeaderMotorola))) {
+		order = EXIF_BYTE_ORDER_MOTOROLA;
+	}
+	else {
+		goto closefile;
+	}
+
+	//If a TIFF header found, the size should be calculated using IFD offsets
+	lastIFD = 0;
+	offsetAddress=4;
+
+	while(!lastIFD)
+	{
+		if(fseek (f, offsetAddress, SEEK_SET)) {
+			exif_log (loader->log, EXIF_LOG_CODE_NONE, "ExifLoader",
+			  _("Can't read file at addres '%u'"), offsetAddress);
+		}
+		loader->size=offsetAddress + 1024;
+
+		fread(data, 1, sizeof(data), f);
+
+		offsetAddress= exif_get_long(data, order);
+
+		if(fseek (f, offsetAddress, SEEK_SET)) {
+			exif_log (loader->log, EXIF_LOG_CODE_NONE, "ExifLoader",
+			  _("Can't read file at addres '%u'"), offsetAddress);
+		}
+
+		fread(data, 1, sizeof(data), f);
+
+		if(offsetAddress==0) {
+			lastIFD=1;
+		}
+		else {
+			tagCount = exif_get_short(data, order);
+			offsetAddress = tagCount*0xC + offsetAddress + 2;
+		}
+
+	}
+
+closefile:
+	fclose (f);
 }
 
 void
@@ -119,6 +205,10 @@ exif_loader_write_file (ExifLoader *l, const char *path)
 			  _("The file '%s' could not be opened."), path);
 		return;
 	}
+
+	//Check file format, if tiff file found, the funcion calculate its container size (l->size)
+	exif_loader_get_tiff_container_size (l, path);
+
 	while (1) {
 		size = fread (data, 1, sizeof (data), f);
 		if (size <= 0) 
@@ -214,7 +304,12 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 			eld->size = 84;
 			eld->state = EL_SKIP_BYTES;
 			eld->size = 84;
-
+		} else if ((memcmp(eld->b, "II*\000", 4) == 0)
+			|| (memcmp(eld->b, "MM\000*", 4) == 0)) {
+			eld->data_format = EL_DATA_FORMAT_TIFF;
+			eld->state = EL_EXIF_FOUND;
+			//There is not APP1 Data size, for TIFF,
+			//then the size was calculated following the IFD structure see exif_loader_get_tiff_container_size()
 		} else if (!memcmp (eld->b + 2, ExifHeader, sizeof (ExifHeader))) {
 
 			/* Read the size (2 bytes). */
@@ -225,7 +320,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 		break;
 	}
 
-	for (i = 0; i < sizeof (eld->b); i++)
+	for (i = 0; i < sizeof (eld->b); i++) {
 		switch (eld->state) {
 		case EL_EXIF_FOUND:
 			if (!exif_loader_copy (eld, eld->b + i,
@@ -304,6 +399,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 				return 0;
 			}
 		}
+	}
 
 	/*
 	 * If we reach this point, the buffer has not been big enough
