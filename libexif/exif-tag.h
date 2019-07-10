@@ -154,7 +154,8 @@ typedef enum {
 	EXIF_TAG_GAMMA				= 0xa500,
 	EXIF_TAG_PRINT_IMAGE_MATCHING		= 0xc4a5,
 	EXIF_TAG_DNG_PRIVATE_DATA   		= 0xc634,
-	EXIF_TAG_PADDING			= 0xea1c
+	EXIF_TAG_PADDING			= 0xea1c,
+	EXIF_INVALID_TAG = 0xffff
 } ExifTag;
 
 /* GPS tags overlap with above ones. */

@@ -1,3 +1,4 @@
+exif_action_dump_xml
 exif_array_set_byte_order
 exif_byte_order_get_name
 exif_content_add_entry

@@ -16,6 +16,7 @@ libexif_la_LDFLAGS = \
 	-export-symbols $(srcdir)/libexif.sym \
 	-no-undefined -version-info @LIBEXIF_VERSION_INFO@
 libexif_la_SOURCES =		\
+	exif-actions.c \
 	exif-byte-order.c	\
 	exif-content.c		\
 	exif-data.c		\
@@ -45,6 +46,7 @@ libexif_la_LIBADD =			\
 
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = 	\
+	exif-actions.h \
 	exif-byte-order.h	\
 	exif-content.h		\
 	exif-data.h		\
