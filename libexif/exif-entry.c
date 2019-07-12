@@ -1053,9 +1053,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			}
 		}
 		if (d)
-			snprintf (b, sizeof (b), _(" (35 equivalent: %d mm)"),
-				  (int) (d * (double) v_rat.numerator /
-				  	     (double) v_rat.denominator));
+			snprintf (b, sizeof (b), _(" (35 equivalent: %.0f mm)"),
+				  (d * (double) v_rat.numerator /
+				       (double) v_rat.denominator));
 		else
 			b[0] = 0;
 
@@ -1084,9 +1084,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
 		if (d < 1)
-			snprintf (val, maxlen, _("1/%i"), (int) (0.5 + 1. / d));
+			snprintf (val, maxlen, _("1/%.0f"), 1. / d);
 		else
-			snprintf (val, maxlen, "%i", (int) d);
+			snprintf (val, maxlen, "%.0f", d);
 		strncat (val, _(" sec."), maxlen-1 - strlen (val));
 		break;
 	case EXIF_TAG_SHUTTER_SPEED_VALUE:
@@ -1101,9 +1101,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		snprintf (val, maxlen, _("%.02f EV"), d);
 		d = 1. / pow (2, d);
 		if (d < 1)
-		  snprintf (b, sizeof (b), _(" (1/%d sec.)"), (int) (1. / d));
+		  snprintf (b, sizeof (b), _(" (1/%.0f sec.)"), 1. / d);
 		else
-		  snprintf (b, sizeof (b), _(" (%d sec.)"), (int) d);
+		  snprintf (b, sizeof (b), _(" (%.0f sec.)"), d);
 		strncat (val, b, maxlen-1 - strlen (val));
 		break;
 	case EXIF_TAG_BRIGHTNESS_VALUE:
