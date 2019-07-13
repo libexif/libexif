@@ -169,7 +169,7 @@ ALL_LINGUAS="be bs cs da de en_AU en_CA en_GB es fr it ja ms nl pl pt pt_BR ru s
 AM_PO_SUBDIRS
 GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT_MIN}],
                 [Lutz Mueller and others])
-AM_GNU_GETTEXT_VERSION([0.14.1])
+AM_GNU_GETTEXT_VERSION([0.19])
 AM_GNU_GETTEXT([external])
 AM_ICONV()
 GP_GETTEXT_FLAGS()
