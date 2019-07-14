@@ -10,7 +10,7 @@ LC_ALL=C
 export LANG LANGUAGE LC_ALL
 for fn in "${srcdir}"/testdata/*.jpg ; do
     ./test-parse "${fn}" > "${TMPLOG}"
-    if ! diff "${fn}".parsed "${TMPLOG}"; then
+    if ! diff -b "${fn}".parsed "${TMPLOG}"; then
         echo Error parsing "$fn"
         exit 1
     fi
