@@ -36,6 +36,7 @@ typedef struct {
 	const char *fin;
 } ExifParams;
 
+void exif_action_dump_json (ExifData *ed, ExifParams p);
 void exif_action_dump_xml     (ExifData *ed, ExifParams p);
 
 #endif /* __ACTIONS_H__ */
