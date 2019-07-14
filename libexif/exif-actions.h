@@ -24,6 +24,8 @@
 #include <stdio.h>
 #include "exif-data.h"
 
+void exif_action_dump_json (ExifData *ed, FILE* fp);
 void exif_action_dump_xml     (ExifData *ed, FILE* fp);
+void exif_action_dump_json (ExifData *ed, FILE* p);
 
 #endif /* __ACTIONS_H__ */

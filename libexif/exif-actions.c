@@ -33,6 +33,8 @@
 #define TAG_VALUE_BUF 1024
 
 #define SEP " "
+typedef void (* ExifContentForeachEntryFuncExt) (ExifEntry *, void *user_data, int is_last);
+typedef void (* ExifDataForeachContentFuncExt) (ExifContent *, void *user_data, int is_last);
 
 /*!
  * Replace characters which are invalid in an XML tag with safe characters
@@ -46,6 +48,78 @@ static inline void remove_bad_chars(char *s)
 		++s;
 	}
 }
+
+// TODO move to libexif
+static void
+exif_content_foreach_entry_ext (ExifContent *content,
+                            ExifContentForeachEntryFuncExt func, void *data, int is_last)
+{
+    unsigned int i;
+
+    if (!content || !func)
+        return;
+
+    for (i = 0; i < content->count; i++) {
+        func (content->entries[i], data, i == content->count - 1 && is_last);
+    }
+}
+
+// TODO refactor: while this works it really could be better
+// TODO move to libexif
+static void
+exif_data_foreach_content_ext (ExifData *data, ExifDataForeachContentFuncExt func,
+                           void *user_data)
+{
+    unsigned int i, j, total;
+
+    if (!data || !func)
+        return;
+
+    total = 0;
+    for (i = 0; i < EXIF_IFD_COUNT; i++) {
+        total += data->ifd[i]->count;
+    }
+
+    j = 0;
+    for (i = 0; i < EXIF_IFD_COUNT; i++) {
+        j +=  data->ifd[i]->count;
+        func (data->ifd[i], user_data, j >= total);
+    }
+}
+
+static void
+show_entry_json (ExifEntry *e, void *data, int is_last)
+{
+	FILE* fp = (FILE*) data;
+	if (!fp)
+		return;
+
+    char v[TAG_VALUE_BUF];
+
+	fprintf (fp, "\t\"%s\": \"", exif_tag_get_name_in_ifd(e->tag, exif_entry_get_ifd(e)));
+	fprintf (fp, "%s", exif_entry_get_value (e, v, sizeof (v)));
+	fprintf (fp, "\"");
+	if (!is_last)
+		fprintf (fp, ",");
+	fprintf (fp, "\n");
+}
+
+static void
+show_json (ExifContent *content, void *data, int is_last)
+{
+    exif_content_foreach_entry_ext (content, show_entry_json, data, is_last);
+}
+
+void exif_action_dump_json (ExifData *ed, FILE* fp)
+{
+    if (!ed || ! fp) return;
+
+    fprintf(fp, "{\n");
+    /* Show contents of all IFDs */
+	exif_data_foreach_content_ext (ed, show_json, fp);
+    fprintf(fp, "}\n");
+}
+
 
 /*!
  * Escape any special XML characters in the text and return a new static string
