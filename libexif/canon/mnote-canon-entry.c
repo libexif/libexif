@@ -665,9 +665,9 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 		case 21:
 			d = apex_value_to_shutter_speed (vss / 32.0);
 			if (d < 1)
-				snprintf (val, maxlen, _("1/%i"),(int)(1.0 / d));
+				snprintf (val, maxlen, _("1/%.0f"), 1.0 / d);
 			else
-				snprintf (val, maxlen, "%i", (int) d);
+				snprintf (val, maxlen, "%.0f", d);
 			break;
 		case 8:
 			snprintf (val, maxlen, "%u", vss);
