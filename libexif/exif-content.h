@@ -49,10 +49,46 @@ struct _ExifContent
 };
 
 /* Lifecycle */
+
+/*! Reserve memory for and initialize a new #ExifContent.
+ *
+ * \return new allocated #ExifContent, or NULL on error
+ *
+ * \see exif_content_new_mem, exif_content_unref
+ */
 ExifContent *exif_content_new     (void);
+
+/*! Reserve memory for and initialize new #ExifContent using the specified
+ * memory allocator.
+ *
+ * \return new allocated #ExifContent, or NULL on error
+ *
+ * \see exif_content_new, exif_content_unref
+ */
 ExifContent *exif_content_new_mem (ExifMem *);
+
+/*! Increase reference counter for #ExifContent.
+ *
+ * \param[in] content #ExifContent
+ *
+ * \see exif_content_unref
+ */
 void         exif_content_ref     (ExifContent *content);
+
+/*! Decrease reference counter for #ExifContent.
+ * When the reference count drops to zero, free the content.
+ *
+ * \param[in] content #ExifContent
+ */
 void         exif_content_unref   (ExifContent *content);
+
+/*! Actually free the #ExifContent.
+ *
+ * \deprecated Should not be called directly. Use #exif_content_ref and
+ *             #exif_content_unref instead.
+ *
+ * \param[in] content #ExifContent
+ */
 void         exif_content_free    (ExifContent *content);
 
 /*! Add an EXIF tag to an IFD.

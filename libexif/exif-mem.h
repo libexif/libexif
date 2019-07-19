@@ -61,6 +61,7 @@ typedef struct _ExifMem ExifMem;
  * \param[in] a the allocator function
  * \param[in] r the reallocator function
  * \param[in] f the free function
+ * \return allocated #ExifMem, or NULL on error
  */
 ExifMem *exif_mem_new   (ExifMemAllocFunc a, ExifMemReallocFunc r,
 			 ExifMemFreeFunc f);

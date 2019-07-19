@@ -156,7 +156,8 @@ void        exif_entry_fix        (ExifEntry *entry);
  *          supported.
  *
  * \param[in] entry EXIF entry
- * \param[out] val buffer in which to store value
+ * \param[out] val buffer in which to store value; if entry is valid and
+ *   maxlen > 0 then this string will be NUL-terminated
  * \param[in] maxlen length of the buffer val
  * \return val pointer
  */

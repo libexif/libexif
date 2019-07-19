@@ -37,7 +37,7 @@ typedef enum {
 
 /*! Return a short, localized, textual name for the given byte order.
  * \param[in] order byte order
- * \return localized textual name of the byte order
+ * \return localized textual name of the byte order, or NULL if unknown
  */
 const char *exif_byte_order_get_name (ExifByteOrder order);
 

@@ -47,7 +47,7 @@ typedef enum {
 /*! Return a textual representation of the given EXIF data type.
  *
  * \param[in] format EXIF data format
- * \return localized textual name
+ * \return localized textual name, or NULL if unknown
  */
 const char   *exif_format_get_name (ExifFormat format);
 

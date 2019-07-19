@@ -36,7 +36,7 @@ typedef enum {
  * characters.
  *
  * \param[in] ifd IFD
- * \return textual name of the IFD
+ * \return textual name of the IFD, or NULL if unknown
  */
 const char *exif_ifd_get_name (ExifIfd ifd);
 

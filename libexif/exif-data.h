@@ -185,14 +185,16 @@ typedef enum {
 /*! Return a short textual description of the given #ExifDataOption.
  *
  * \param[in] o option
- * \return localized textual description of the option
+ * \return localized textual description of the option,
+ *   or NULL if unknown
  */
 const char *exif_data_option_get_name        (ExifDataOption o);
 
 /*! Return a verbose textual description of the given #ExifDataOption.
  *
  * \param[in] o option
- * \return verbose localized textual description of the option
+ * \return verbose localized textual description of the option,
+ *   or NULL if unknown
  */
 const char *exif_data_option_get_description (ExifDataOption o);
 

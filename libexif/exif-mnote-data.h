@@ -78,7 +78,7 @@ unsigned int exif_mnote_data_get_id          (ExifMnoteData *d, unsigned int n);
  *
  * \param[in] d MakerNote data
  * \param[in] n index of the entry within the MakerNote data
- * \return textual name of the tag
+ * \return textual name of the tag or NULL on error
  */
 const char  *exif_mnote_data_get_name        (ExifMnoteData *d, unsigned int n);
 
@@ -87,7 +87,7 @@ const char  *exif_mnote_data_get_name        (ExifMnoteData *d, unsigned int n);
  *
  * \param[in] d MakerNote data
  * \param[in] n index of the entry within the MakerNote data
- * \return textual name of the tag
+ * \return textual name of the tag or NULL on error
  */
 const char  *exif_mnote_data_get_title       (ExifMnoteData *d, unsigned int n);
 
@@ -95,7 +95,7 @@ const char  *exif_mnote_data_get_title       (ExifMnoteData *d, unsigned int n);
  *
  * \param[in] d MakerNote data
  * \param[in] n index of the entry within the MakerNote data
- * \return textual description of the tag
+ * \return textual description of the tag or NULL on error
  */
 const char  *exif_mnote_data_get_description (ExifMnoteData *d, unsigned int n);
 

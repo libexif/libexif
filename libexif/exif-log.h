@@ -61,14 +61,14 @@ typedef enum {
 /*! Return a textual description of the given class of error log.
  *
  * \param[in] code logging message class
- * \return textual description of the log class
+ * \return textual description of the log class, or NULL if unknown
  */
 const char *exif_log_code_get_title   (ExifLogCode code);
 
 /*! Return a verbose description of the given class of error log.
  *
  * \param[in] code logging message class
- * \return verbose description of the log class
+ * \return verbose description of the log class, or NULL if unknown
  */
 const char *exif_log_code_get_message (ExifLogCode code);
 
