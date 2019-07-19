@@ -894,10 +894,10 @@ static const struct TagEntry {
 	{EXIF_TAG_LENS_SERIAL_NUMBER, "LensSerialNumber", N_("Lens Serial Number"),
 	 N_("This tag indicates the serial number of the interchangeable lens."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
-	/* Not in EXIF 2.2 */
+	/* EXIF 2.3 */
 	{EXIF_TAG_GAMMA, "Gamma", N_("Gamma"),
 	 N_("Indicates the value of coefficient gamma."),
-	 ESL_UNKNOWN},
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_PRINT_IMAGE_MATCHING, "PrintImageMatching", N_("PRINT Image Matching"),
 	 N_("Related to Epson's PRINT Image Matching technology"),
