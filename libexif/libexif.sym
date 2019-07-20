@@ -1,3 +1,5 @@
+exif_action_dump_json
+exif_action_dump_xml
 exif_array_set_byte_order
 exif_byte_order_get_name
 exif_content_add_entry
@@ -26,6 +28,7 @@ exif_data_log
 exif_data_new
 exif_data_new_from_data
 exif_data_new_from_file
+exif_data_new_from_fd
 exif_data_new_mem
 exif_data_option_get_description
 exif_data_option_get_name
