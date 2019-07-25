@@ -110,7 +110,7 @@ exif_loader_write_file (ExifLoader *l, const char *path)
 	int size;
 	unsigned char data[1024];
 
-	if (!l) 
+	if (!l || !path)
 		return;
 
 	f = fopen (path, "rb");

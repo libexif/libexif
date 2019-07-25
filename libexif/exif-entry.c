@@ -859,7 +859,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 
 	(void) bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 
-	if (!e || !e->parent || !e->parent->parent || !maxlen)
+	if (!e || !e->parent || !e->parent->parent || !maxlen || !val)
 		return val;
 
 	/* make sure the returned string is zero terminated */

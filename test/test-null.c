@@ -33,6 +33,8 @@ static void loader_null_test(void)
 	ExifLoader *l;
 	ExifData *d;
 	unsigned char ret;
+	const unsigned char *ccp;
+	unsigned int i;
 
 	l = exif_loader_new_mem(NULL);
 	if (l) {
@@ -67,6 +69,25 @@ static void loader_null_test(void)
 	exif_loader_get_buf(NULL, NULL, NULL);
 
 	exif_loader_log(NULL, NULL);
+
+	l = exif_loader_new();
+	if (!l) {
+		fprintf(stderr, "Out of memory\n");
+		exit(13);
+	}
+
+	exif_loader_write_file(l, NULL);
+
+	exif_loader_write(l, NULL, 0);
+	exif_loader_write(l, NULL, 1);
+
+	exif_loader_get_buf(l, NULL, NULL);
+	exif_loader_get_buf(l, &ccp, NULL);
+	exif_loader_get_buf(l, NULL, &i);
+
+	exif_loader_log(l, NULL);
+
+	exif_loader_unref(l);
 }
 
 static void data_null_test(void)
@@ -115,6 +136,12 @@ static void data_null_test(void)
 	dt = exif_data_get_data_type(NULL);
 	(void) dt;
 
+	exif_data_load_data(NULL, NULL, 123);
+
+	exif_data_save_data(NULL, NULL, NULL);
+
+	exif_data_log(NULL, NULL);
+
 	exif_data_dump(NULL);
 
 	exif_data_ref(NULL);
@@ -127,15 +154,14 @@ static void data_null_test(void)
 		exit(13);
 	}
 
-	exif_data_load_data(NULL, NULL, 123);
 	exif_data_load_data(d, NULL, 123);
 
-	exif_data_save_data(NULL, NULL, NULL);
 	exif_data_save_data(d, NULL, &len);
 	exif_data_save_data(d, &buf, NULL);
 	exif_data_save_data(d, NULL, NULL);
 
-	exif_data_log(NULL, NULL);
+	exif_data_foreach_content(d, NULL, NULL);
+
 	exif_data_log(d, NULL);
 
 	exif_data_unref(d);
@@ -169,6 +195,12 @@ static void content_null_test(void)
 
 	exif_content_dump(NULL, 0);
 
+	exif_content_add_entry(NULL, NULL);
+
+	exif_content_remove_entry(NULL, NULL);
+
+	exif_content_log(NULL, NULL);
+
 	c = exif_content_new();
 	if (!c) {
 		fprintf(stderr, "Out of memory\n");
@@ -177,14 +209,11 @@ static void content_null_test(void)
 
 	exif_content_add_entry(c, NULL);
 
-	exif_content_add_entry(NULL, NULL);
-
 	exif_content_remove_entry(c, NULL);
-	exif_content_remove_entry(NULL, NULL);
 
 	exif_content_log(c, NULL);
 
-	exif_content_log(NULL, NULL);
+	exif_content_foreach_entry(c, NULL, NULL);
 
 	exif_content_unref(c);
 }
@@ -194,6 +223,7 @@ static void entry_null_test(void)
 	ExifEntry *e;
 	const char *v = NULL;
 	char buf[] = {0};
+	ExifData *d;
 
 	e = exif_entry_new_mem(NULL);
 	if (e) {
@@ -224,6 +254,23 @@ static void entry_null_test(void)
 	}
 
 	exif_entry_dump(NULL, 0);
+
+	/* Creating a plain ExifEntry isn't enough, since some functions require
+	 * that it exists in an IFD.
+	 */
+	d = exif_data_new();
+	if (!d) {
+		fprintf(stderr, "Out of memory\n");
+		exit(13);
+	}
+	/* Create the mandatory EXIF fields so we have something to work with */
+	exif_data_fix(d);
+	e = exif_content_get_entry (d->ifd[EXIF_IFD_0], EXIF_TAG_X_RESOLUTION);
+
+	(void) exif_entry_get_value(e, NULL, 0);
+	(void) exif_entry_get_value(e, NULL, 123);
+
+	exif_data_unref(d);
 }
 
 static void mnote_null_test(void)
@@ -278,6 +325,16 @@ static void log_null_test(void)
 	exif_log(NULL, EXIF_LOG_CODE_CORRUPT_DATA, "XXX", "YYY");
 
 	exif_logv(NULL, EXIF_LOG_CODE_CORRUPT_DATA, "XXX", "YYY", va);
+
+	l = exif_log_new();
+	if (!l) {
+		fprintf(stderr, "Out of memory\n");
+		exit(13);
+	}
+
+	exif_log_set_func(l, NULL, NULL);
+
+	exif_log_unref(l);
 }
 
 int main(void)
