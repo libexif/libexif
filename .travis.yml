@@ -51,14 +51,12 @@ matrix:
     os: linux
     dist: xenial
     compiler: clang
-  - env: CONFIG=clang6
+  - env: CONFIG=clang6 DIST=xenial
     os: linux
+    dist: xenial
     compiler: clang
     addons:
       apt:
-        sources:
-          - llvm-toolchain-trusty-6.0
-          - ubuntu-toolchain-r-test
         packages:
           - autopoint
           - clang-6.0
@@ -92,8 +90,9 @@ matrix:
           - autopoint
           - gcc-4.8-arm-linux-gnueabihf
           - libc6-dev-armhf-cross
-  - env: CONFIG=musl
+  - env: CONFIG=musl DIST=xenial
     os: linux
+    dist: xenial
     compiler: gcc
     addons:
       apt:
@@ -115,8 +114,9 @@ matrix:
     # Required for -fsanitize=undefined
     # see https://github.com/travis-ci/travis-ci/issues/9033
     sudo: required
-  - env: CONFIG=coverage
+  - env: CONFIG=coverage DIST=xenial
     os: linux
+    dist: xenial
     compiler: gcc
     addons:
       apt:
