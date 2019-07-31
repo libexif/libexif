@@ -150,7 +150,11 @@ install:
         curl -fsSORL --retry 8 https://download.savannah.nongnu.org/releases/failmalloc/failmalloc-1.0.tar.gz
         tar xaf failmalloc-1.0.tar.gz
         cd failmalloc-1.0
+        # Fix compiling with modern glibc
         sed -i -e 's/\(__malloc_initialize_hook\)/volatile \1/' failmalloc.c
+        # Disable failmalloc on program exit so system code can run unimpeded
+        sed -i -e '/failmalloc_init/,${/failmalloc_install/aatexit(failmalloc_uninstall);
+        }' failmalloc.c
         ./configure --prefix="$HOME/failmalloc" --disable-dependency-tracking
         make
         make install
@@ -172,11 +176,11 @@ script:
   - if [ "$CONFIG" = "musl" ] ; then CFLAGS='-Wall -Wextra -O3'; export CC=musl-gcc; CONFIGURE_OPTS='--disable-shared'; fi
   - if [ "$CONFIG" = "sanitize" ] ; then CFLAGS='-g -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope'; export CC=clang-8; export ASAN_OPTIONS=strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1:detect_leaks=1; fi
   - if [ "$CONFIG" = "coverage" ] ; then cd "$HOME"/libexif-testsuite; CFLAGS=--coverage; CONFIGURE_OPTS="LDFLAGS=--coverage --with-failmalloc=$HOME/failmalloc/lib" ; fi
-  - ./configure --prefix="$HOME"/install --disable-dependency-tracking CFLAGS="$CFLAGS" $CONFIGURE_OPTS || { tail -300 config.log; false; }
+  - ./configure --prefix="$HOME"/install --disable-dependency-tracking CFLAGS="$CFLAGS" $CONFIGURE_OPTS || { tail -n 300 config.log; false; }
 
   - make V=1
   # Skip tests when cross compiling.
-  - if [ "$CONFIG" != "arm-cross" ] ; then make V=1 check || { tail -300 test*/test-suite.log; false; }; fi
+  - if [ "$CONFIG" != "arm-cross" ] ; then make V=1 check || { tail -n 300 test*/test-suite.log src/libexif/test*/test-suite.log; false; }; fi
   - make V=1 install
 
   - if [ "$CONFIG" = "coverage" ] ; then cd "$TRAVIS_BUILD_DIR"; fi
