@@ -72,7 +72,7 @@ static void dump_makernote(ExifData *d) {
 	    name = "(unknown)";
 	printf("    Entry %u: %u, %s\n"
 	       "      Size: %u\n"
-	       "      Value: %s\n", i, id, name, strlen(buf), buf);
+	       "      Value: %s\n", i, id, name, (unsigned)strlen(buf), buf);
       }
     }
   }
