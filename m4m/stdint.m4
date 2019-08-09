@@ -1,15 +1,7 @@
 dnl AC_NEED_STDINT_H ( HEADER-TO-GENERATE )
-dnl Copyright 2001-2002 by Dan Fandrich <dan@coneharvesters.com>
-dnl This file may be copied and used freely without restrictions.  No warranty
-dnl is expressed or implied.
 dnl
 dnl Look for a header file that defines size-specific integer types like the
 dnl ones recommended to be in stdint.h in the C99 standard (e.g. uint32_t).
-dnl This is a dumbed-down version of the macro of the same name in the file
-dnl ac_need_stdint_h.m4 which is part of the ac-archive, available at
-dnl <URL:http://ac-archive.sourceforge.net/> (also, another macro
-dnl AC_CREATE_STDINT_H by the same author).  This version is not as smart,
-dnl but works on older autoconf versions and has a different license.
 
 dnl AX_CHECK_DEFINED_TYPE ( TYPE, FILE, ACTION-IF-FOUND, ACTION-IF-NOT-FOUND )
 dnl This is similar to _AC_CHECK_TYPE_NEW (a.k.a. new syntax version of
