@@ -120,14 +120,14 @@ void
 exif_content_dump (ExifContent *content, unsigned int indent)
 {
 	char buf[1024];
-	unsigned int i;
-
-	for (i = 0; i < 2 * indent; i++)
-		buf[i] = ' ';
-	buf[i] = '\0';
+	unsigned int i, l;
 
 	if (!content)
 		return;
+
+	l = MIN(sizeof(buf)-1, 2*indent);
+	memset(buf, ' ', l);
+	buf[l] = '\0';
 
 	printf ("%sDumping exif content (%u entries)...\n", buf,
 		content->count);
