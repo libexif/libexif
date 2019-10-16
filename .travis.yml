@@ -127,10 +127,15 @@ matrix:
     cache:
       directories:
         - $HOME/failmalloc
+  - env: CONFIG=normal DIST=bionic
+    arch: arm64
+    os: linux
+    dist: bionic
+    compiler: gcc
 
 before_install:
   # The apt addons section is ignored on bionic for some reason
-  - if [ "$DIST" = "bionic" ] ; then sudo apt-get install -y autopoint; fi
+  - if [ "$DIST" = "bionic" ] ; then sudo apt-get install -y autopoint gettext libtool; fi
 
 install:
   - |
