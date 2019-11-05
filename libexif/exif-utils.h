@@ -168,7 +168,7 @@ void exif_set_srational (unsigned char *b, ExifByteOrder order,
 			 ExifSRational value);
 
 /*! \internal */
-void exif_convert_utf16_to_utf8 (char *out, const unsigned short *in, int maxlen);
+void exif_convert_utf16_to_utf8 (char *out, const unsigned char *in, int maxlen);
 
 /* Please do not use this function outside of the library. */
 

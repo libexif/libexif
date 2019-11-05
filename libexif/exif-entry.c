@@ -1368,21 +1368,24 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_XP_KEYWORDS:
 	case EXIF_TAG_XP_SUBJECT:
 	{
-		unsigned short *utf16;
+		unsigned char *utf16;
 
 		/* Sanity check the size to prevent overflow */
-		if (e->size+sizeof(unsigned short) < e->size) break;
+		if (e->size+sizeof(uint16_t)+1 < e->size) break;
 
 		/* The tag may not be U+0000-terminated , so make a local
 		   U+0000-terminated copy before converting it */
-		utf16 = exif_mem_alloc (e->priv->mem, e->size+sizeof(unsigned short));
+		utf16 = exif_mem_alloc (e->priv->mem, e->size+sizeof(uint16_t)+1);
 		if (!utf16) break;
 		memcpy(utf16, e->data, e->size);
 
 		/* NUL terminate the string. If the size is odd (which isn't possible
-		 * for a UTF16 string), then this will overwrite the final garbage byte.
+		 * for a valid UTF16 string), then this will overwrite the high byte of
+		 * the final half word, plus add a full zero NUL word at the end.
 		 */
-		utf16[e->size/sizeof(unsigned short)] = 0;
+		utf16[e->size] = 0;
+		utf16[e->size+1] = 0;
+		utf16[e->size+2] = 0;
 
 		/* Warning! The texts are converted from UTF16 to UTF8 */
 		/* FIXME: use iconv to convert into the locale encoding */

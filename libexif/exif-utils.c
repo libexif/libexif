@@ -217,37 +217,41 @@ exif_set_srational (unsigned char *buf, ExifByteOrder order,
  * It should really be replaced by iconv().
  */
 void
-exif_convert_utf16_to_utf8 (char *out, const unsigned short *in, int maxlen)
+exif_convert_utf16_to_utf8 (char *out, const unsigned char *in, int maxlen)
 {
 	if (maxlen <= 0) {
 		return;
 	}
-	while (*in) {
-		if (*in < 0x80) {
+	for (;;) {
+		ExifShort v = exif_get_short(in, EXIF_BYTE_ORDER_INTEL);
+		if (!v)
+			break;
+		if (v < 0x80) {
 			if (maxlen > 1) {
-				*out++ = (char)*in++;
+				*out++ = (char)v;
 				maxlen--;
 			} else {
 				break;
 			}
-		} else if (*in < 0x800) {
+		} else if (v < 0x800) {
 			if (maxlen > 2) {
-				*out++ = ((*in >> 6) & 0x1F) | 0xC0;
-				*out++ = (*in++ & 0x3F) | 0x80;
+				*out++ = ((v >> 6) & 0x1F) | 0xC0;
+				*out++ = (v & 0x3F) | 0x80;
 				maxlen -= 2;
 			} else {
 				break;
 			}
 		} else {
 			if (maxlen > 3) {
-				*out++ = ((*in >> 12) & 0x0F) | 0xE0;
-				*out++ = ((*in >> 6) & 0x3F) | 0x80;
-				*out++ = (*in++ & 0x3F) | 0x80;
+				*out++ = ((v >> 12) & 0x0F) | 0xE0;
+				*out++ = ((v >> 6) & 0x3F) | 0x80;
+				*out++ = (v & 0x3F) | 0x80;
 				maxlen -= 3;
 			} else {
 				break;
 			}
 		}
+		in += 2;
 	}
 	*out = 0;
 }
