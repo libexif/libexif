@@ -668,7 +668,7 @@ static const struct TagEntry {
 	 N_("A character string giving the image subject, encoded in "
 	    "UTF-16LE."),
 	 { ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
-	{EXIF_TAG_FLASH_PIX_VERSION, "FlashPixVersion", "FlashPixVersion",
+	{EXIF_TAG_FLASH_PIX_VERSION, "FlashpixVersion", "FlashPixVersion",
 	 N_("The FlashPix format version supported by a FPXR file."),
 	 { ESL_NNNN, ESL_NNNN, ESL_MMMM, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_COLOR_SPACE, "ColorSpace", N_("Color Space"),

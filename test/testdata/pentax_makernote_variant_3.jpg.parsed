@@ -87,7 +87,7 @@ Byte order: Intel
     Entry 13: MakerNote (Undefined)
       Size, Comps: 986, 986
       Value: 986 bytes undefined data
-    Entry 14: FlashPixVersion (Undefined)
+    Entry 14: FlashpixVersion (Undefined)
       Size, Comps: 4, 4
       Value: FlashPix Version 1.0
     Entry 15: ColorSpace (Short)

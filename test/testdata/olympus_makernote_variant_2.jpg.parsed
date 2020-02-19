@@ -96,7 +96,7 @@ Byte order: Intel
     Entry 16: UserComment (Undefined)
       Size, Comps: 16, 16
       Value:        
-    Entry 17: FlashPixVersion (Undefined)
+    Entry 17: FlashpixVersion (Undefined)
       Size, Comps: 4, 4
       Value: FlashPix Version 1.0
     Entry 18: ColorSpace (Short)
