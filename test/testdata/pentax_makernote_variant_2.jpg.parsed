@@ -87,7 +87,7 @@ Byte order: Motorola
     Entry 13: MakerNote (Undefined)
       Size, Comps: 474, 474
       Value: 474 bytes undefined data
-    Entry 14: FlashPixVersion (Undefined)
+    Entry 14: FlashpixVersion (Undefined)
       Size, Comps: 4, 4
       Value: FlashPix Version 1.0
     Entry 15: ColorSpace (Short)
