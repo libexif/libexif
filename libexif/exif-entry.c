@@ -1083,7 +1083,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 			break;
 		}
 		d = (double) v_rat.numerator / (double) v_rat.denominator;
-		if (d < 1)
+		if (d < 1 && d)
 			snprintf (val, maxlen, _("1/%.0f"), 1. / d);
 		else
 			snprintf (val, maxlen, "%.0f", d);
@@ -1099,8 +1099,9 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		}
 		d = (double) v_srat.numerator / (double) v_srat.denominator;
 		snprintf (val, maxlen, _("%.02f EV"), d);
-		d = 1. / pow (2, d);
-		if (d < 1)
+		if (pow (2, d))
+			d = 1. / pow (2, d);
+		if (d < 1 && d)
 		  snprintf (b, sizeof (b), _(" (1/%.0f sec.)"), 1. / d);
 		else
 		  snprintf (b, sizeof (b), _(" (%.0f sec.)"), d);
