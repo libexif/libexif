@@ -12,7 +12,7 @@ EXTRA_DIST += libexif-uninstalled.pc.in
 
 ACLOCAL_AMFLAGS = -I auto-m4 -I m4m
 
-doc_DATA = README AUTHORS NEWS ChangeLog ABOUT-NLS COPYING
+doc_DATA = README AUTHORS NEWS ChangeLog ABOUT-NLS COPYING SECURITY.md
 
 #######################################################################
 # Help for the maintainer
