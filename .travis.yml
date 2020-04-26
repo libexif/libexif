@@ -60,7 +60,6 @@ matrix:
       apt:
         sources:
           - llvm-toolchain-trusty-8
-          - ubuntu-toolchain-r-test
         packages:
           - autopoint
           - clang-8
@@ -99,7 +98,8 @@ matrix:
     addons:
       apt:
         sources:
-          - ubuntu-toolchain-r-test
+          sourceline:
+            - ppa:ubuntu-toolchain-r/test
         packages:
           - autopoint
           - g++-8
@@ -110,7 +110,8 @@ matrix:
     addons:
       apt:
         sources:
-          - ubuntu-toolchain-r-test
+          sourceline:
+            - ppa:ubuntu-toolchain-r/test
         packages:
           - autopoint
           - g++-9
