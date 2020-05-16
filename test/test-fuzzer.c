@@ -57,7 +57,7 @@ static int
 test_exif_data (ExifData *d)
 {
 	unsigned int i, c;
-	char v[1024], *p;
+	char v[1024];
 	ExifMnoteData *md;
 
 	fprintf (stdout, "Byte order: %s\n",
