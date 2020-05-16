@@ -21,6 +21,10 @@
 #ifndef __EXIF_IFD_H__
 #define __EXIF_IFD_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 /*! Possible EXIF Image File Directories */
 typedef enum {
 	EXIF_IFD_0 = 0,                /*!< */
@@ -39,5 +43,9 @@ typedef enum {
  * \return textual name of the IFD, or NULL if unknown
  */
 const char *exif_ifd_get_name (ExifIfd ifd);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __EXIF_IFD_H__ */
