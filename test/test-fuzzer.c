@@ -39,16 +39,9 @@ void content_foreach_func(ExifEntry *entry, void *UNUSED(callback_data))
 	/* ensure \0 */
 	buf[sizeof(buf)-1] = 0;
 	buf[sizeof(buf)-2] = 0;
+	exif_tag_get_name(entry->tag);
+	exif_format_get_name(entry->format);
 	exif_entry_get_value(entry, buf, sizeof(buf)-1);
-	printf("    Entry %p: %s (%s)\n"
-		 "      Size, Comps: %d, %d\n"
-		 "      Value: %s\n", 
-		 entry,
-		 exif_tag_get_name(entry->tag),
-		 exif_format_get_name(entry->format),
-		 entry->size,
-		 (int)(entry->components),
-		 exif_entry_get_value(entry, buf, sizeof(buf)-1));
 	if (buf[sizeof(buf)-2] != 0) abort();
 }
 
@@ -83,15 +76,10 @@ test_exif_data (ExifData *d)
 	for (i = 0; i < c; i++) {
 		const char *name = exif_mnote_data_get_name (md, i);
 		if (!name) break;
-		fprintf (stdout, "Dumping entry number %i...\n", i);
-		fprintf (stdout, "  Name: '%s'\n",
-				exif_mnote_data_get_name (md, i));
-		fprintf (stdout, "  Title: '%s'\n",
-				exif_mnote_data_get_title (md, i));
-		fprintf (stdout, "  Description: '%s'\n",
-				exif_mnote_data_get_description (md, i));
-		p = exif_mnote_data_get_value (md, i, v, sizeof (v));
-		if (p) fprintf (stdout, "  Value: '%s'\n", v);
+		exif_mnote_data_get_name (md, i);
+		exif_mnote_data_get_title (md, i);
+		exif_mnote_data_get_description (md, i);
+		exif_mnote_data_get_value (md, i, v, sizeof (v));
 	}
 
 	return 0;
