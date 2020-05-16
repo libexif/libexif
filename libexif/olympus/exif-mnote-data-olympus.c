@@ -35,6 +35,8 @@
  */
 /*#define EXIF_OVERCOME_SANYO_OFFSET_BUG */
 
+#define CHECKOVERFLOW(offset,datasize,structsize) (( offset >= datasize) || (structsize > datasize) || (offset > datasize - structsize ))
+
 static enum OlympusVersion
 exif_mnote_data_olympus_identify_variant (const unsigned char *buf,
 		unsigned int buf_size);
@@ -245,7 +247,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		return;
 	}
 	o2 = 6 + n->offset; /* Start of interesting data */
-	if ((o2 + 10 < o2) || (o2 + 10 < 10) || (o2 + 10 > buf_size)) {
+	if (CHECKOVERFLOW(o2,buf_size,10)) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataOlympus", "Short MakerNote");
 		return;
@@ -300,7 +302,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		/* Olympus S760, S770 */
 		datao = o2;
 		o2 += 8;
-		if ((o2 + 4 < o2) || (o2 + 4 < 4) || (o2 + 4 > buf_size)) return;
+		if (CHECKOVERFLOW(o2,buf_size,4)) return;
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
 			"Parsing Olympus maker note v2 (0x%02x, %02x, %02x, %02x)...",
 			buf[o2 + 0], buf[o2 + 1], buf[o2 + 2], buf[o2 + 3]);
@@ -341,7 +343,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 
 	case nikonV2:
 		o2 += 6;
-		if ((o2 + 12 < o2) || (o2 + 12 < 12) || (o2 + 12 > buf_size)) return;
+		if (CHECKOVERFLOW(o2,buf_size,12)) return;
 		exif_log (en->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
 			"Parsing Nikon maker note v2 (0x%02x, %02x, %02x, "
 			"%02x, %02x, %02x, %02x, %02x)...",
@@ -399,7 +401,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	}
 
 	/* Sanity check the offset */
-	if ((o2 + 2 < o2) || (o2 + 2 < 2) || (o2 + 2 > buf_size)) {
+	if (CHECKOVERFLOW(o2,buf_size,2)) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteOlympus", "Short MakerNote");
 		return;
@@ -423,7 +425,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	tcount = 0;
 	for (i = c, o = o2; i; --i, o += 12) {
 		size_t s;
-		if ((o + 12 < o) || (o + 12 < 12) || (o + 12 > buf_size)) {
+		if (CHECKOVERFLOW(o, buf_size, 12)) {
 			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifMnoteOlympus", "Short MakerNote");
 			break;
@@ -444,6 +446,14 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		    n->entries[tcount].components,
 		    (int)exif_format_get_size(n->entries[tcount].format)); */
 
+	    /* Check if we overflow the multiplication. Use buf_size as the max size for integer overflow detection,
+	     * we will check the buffer sizes closer later. */
+	    if (exif_format_get_size (n->entries[tcount].format) &&
+		buf_size / exif_format_get_size (n->entries[tcount].format) < n->entries[tcount].components
+	    ) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteOlympus", "Tag size overflow detected (%u * %lu)", exif_format_get_size (n->entries[tcount].format), n->entries[tcount].components);
+		continue;
+	    }
 	    /*
 	     * Size? If bigger than 4 bytes, the actual data is not
 	     * in the entry but somewhere else (offset).
@@ -462,7 +472,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 				 * tag in its MakerNote. The offset is actually the absolute
 				 * position in the file instead of the position within the IFD.
 				 */
-			    if (dataofs + s > buf_size && n->version == sanyoV1) {
+			    if (dataofs > (buf_size - s) && n->version == sanyoV1) {
 					/* fix pointer */
 					dataofs -= datao + 6;
 					exif_log (en->log, EXIF_LOG_CODE_DEBUG,
@@ -471,8 +481,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 			    }
 #endif
 			}
-			if ((dataofs + s < dataofs) || (dataofs + s < s) || 
-			    (dataofs + s > buf_size)) {
+			if (CHECKOVERFLOW(dataofs, buf_size, s)) {
 				exif_log (en->log, EXIF_LOG_CODE_DEBUG,
 					  "ExifMnoteOlympus",
 					  "Tag data past end of buffer (%u > %u)",

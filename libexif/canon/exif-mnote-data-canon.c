@@ -30,6 +30,8 @@
 #include <libexif/exif-utils.h>
 #include <libexif/exif-data.h>
 
+#define CHECKOVERFLOW(offset,datasize,structsize) (( offset >= datasize) || (structsize > datasize) || (offset > datasize - structsize ))
+
 static void
 exif_mnote_data_canon_clear (ExifMnoteDataCanon *n)
 {
@@ -209,7 +211,7 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 		return;
 	}
 	datao = 6 + n->offset;
-	if ((datao + 2 < datao) || (datao + 2 < 2) || (datao + 2 > buf_size)) {
+	if (CHECKOVERFLOW(datao, buf_size, 2)) {
 		exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteCanon", "Short MakerNote");
 		return;
@@ -233,11 +235,12 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 	tcount = 0;
 	for (i = c, o = datao; i; --i, o += 12) {
 		size_t s;
-		if ((o + 12 < o) || (o + 12 < 12) || (o + 12 > buf_size)) {
+
+		if (CHECKOVERFLOW(o,buf_size,12)) {
 			exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				"ExifMnoteCanon", "Short MakerNote");
 			break;
-	        }
+		}
 
 		n->entries[tcount].tag        = exif_get_short (buf + o, n->order);
 		n->entries[tcount].format     = exif_get_short (buf + o + 2, n->order);
@@ -247,6 +250,16 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 		exif_log (ne->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteCanon",
 			"Loading entry 0x%x ('%s')...", n->entries[tcount].tag,
 			 mnote_canon_tag_get_name (n->entries[tcount].tag));
+
+		/* Check if we overflow the multiplication. Use buf_size as the max size for integer overflow detection,
+		 * we will check the buffer sizes closer later. */
+		if (	exif_format_get_size (n->entries[tcount].format) &&
+			buf_size / exif_format_get_size (n->entries[tcount].format) < n->entries[tcount].components
+		) {
+			exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				  "ExifMnoteCanon", "Tag size overflow detected (%u * %lu)", exif_format_get_size (n->entries[tcount].format), n->entries[tcount].components);
+			continue;
+		}
 
 		/*
 		 * Size? If bigger than 4 bytes, the actual data is not
@@ -264,7 +277,8 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 		} else {
 			size_t dataofs = o + 8;
 			if (s > 4) dataofs = exif_get_long (buf + dataofs, n->order) + 6;
-			if ((dataofs + s < s) || (dataofs + s < dataofs) || (dataofs + s > buf_size)) {
+
+			if (CHECKOVERFLOW(dataofs, buf_size, s)) {
 				exif_log (ne->log, EXIF_LOG_CODE_DEBUG,
 					"ExifMnoteCanon",
 					"Tag data past end of buffer (%u > %u)",

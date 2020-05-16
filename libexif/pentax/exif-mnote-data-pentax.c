@@ -28,6 +28,8 @@
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-utils.h>
 
+#define CHECKOVERFLOW(offset,datasize,structsize) (( offset >= datasize) || (structsize > datasize) || (offset > datasize - structsize ))
+
 static void
 exif_mnote_data_pentax_clear (ExifMnoteDataPentax *n)
 {
@@ -224,7 +226,7 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 		return;
 	}
 	datao = 6 + n->offset;
-	if ((datao + 8 < datao) || (datao + 8 < 8) || (datao + 8 > buf_size)) {
+	if (CHECKOVERFLOW(datao, buf_size, 8)) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataPentax", "Short MakerNote");
 		return;
@@ -277,7 +279,8 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 	tcount = 0;
 	for (i = c, o = datao; i; --i, o += 12) {
 		size_t s;
-		if ((o + 12 < o) || (o + 12 < 12) || (o + 12 > buf_size)) {
+
+		if (CHECKOVERFLOW(o,buf_size,12)) {
 			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifMnoteDataPentax", "Short MakerNote");
 			break;
@@ -292,6 +295,15 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 			  "Loading entry 0x%x ('%s')...", n->entries[tcount].tag,
 			  mnote_pentax_tag_get_name (n->entries[tcount].tag));
 
+		/* Check if we overflow the multiplication. Use buf_size as the max size for integer overflow detection,
+		 * we will check the buffer sizes closer later. */
+		if (	exif_format_get_size (n->entries[tcount].format) &&
+			buf_size / exif_format_get_size (n->entries[tcount].format) < n->entries[tcount].components
+		) {
+			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				  "ExifMnoteDataPentax", "Tag size overflow detected (%u * %lu)", exif_format_get_size (n->entries[tcount].format), n->entries[tcount].components);
+			break;
+		}
 		/*
 		 * Size? If bigger than 4 bytes, the actual data is not
 		 * in the entry but somewhere else (offset).
@@ -304,8 +316,8 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 			if (s > 4)
 				/* The data in this case is merely a pointer */
 			   	dataofs = exif_get_long (buf + dataofs, n->order) + 6;
-			if ((dataofs + s < dataofs) || (dataofs + s < s) ||
-				(dataofs + s > buf_size)) {
+
+			if (CHECKOVERFLOW(dataofs, buf_size, s)) {
 				exif_log (en->log, EXIF_LOG_CODE_DEBUG,
 						  "ExifMnoteDataPentax", "Tag data past end "
 					  "of buffer (%u > %u)", (unsigned)(dataofs + s), buf_size);
