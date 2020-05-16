@@ -308,7 +308,9 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	/* Write the data. Fill unneeded bytes with 0. Do not crash with
 	 * e->data is NULL */
 	if (e->data) {
-		memcpy (*d + 6 + doff, e->data, s);
+		unsigned int len = s;
+		if (e->size < s) len = e->size;
+		memcpy (*d + 6 + doff, e->data, len);
 	} else {
 		memset (*d + 6 + doff, 0, s);
 	}
