@@ -425,6 +425,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	tcount = 0;
 	for (i = c, o = o2; i; --i, o += 12) {
 		size_t s;
+		memset(&n->entries[tcount], 0, sizeof(MnoteOlympusEntry));
 		if (CHECKOVERFLOW(o, buf_size, 12)) {
 			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifMnoteOlympus", "Short MakerNote");
