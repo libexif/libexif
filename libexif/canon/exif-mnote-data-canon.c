@@ -32,6 +32,9 @@
 
 #define CHECKOVERFLOW(offset,datasize,structsize) (( offset >= datasize) || (structsize > datasize) || (offset > datasize - structsize ))
 
+/* Total size limit to prevent abuse by DoS */
+#define FAILSAFE_SIZE_MAX 1000000L
+
 static void
 exif_mnote_data_canon_clear (ExifMnoteDataCanon *n)
 {
@@ -204,6 +207,7 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) ne;
 	ExifShort c;
 	size_t i, tcount, o, datao;
+	long failsafe_size = 0;
 
 	if (!n || !buf || !buf_size) {
 		exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
@@ -293,6 +297,23 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 				continue;
 			}
 			memcpy (n->entries[tcount].data, buf + dataofs, s);
+		}
+
+		/* Track the size of decoded tag data. A malicious file could
+		 * be crafted to cause extremely large values here without
+		 * tripping any buffer range checks.  This is especially bad
+		 * with the libexif representation of Canon MakerNotes because
+		 * some arrays are turned into individual tags that the
+		 * application must loop around. */
+		failsafe_size += mnote_canon_entry_count_values(&n->entries[tcount]);
+
+		if (failsafe_size > FAILSAFE_SIZE_MAX) {
+			/* Abort if the total size of the data in the tags extraordinarily large, */
+			exif_mem_free (ne->mem, n->entries[tcount].data);
+			exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
+					  "ExifMnoteCanon", "Failsafe tag size overflow (%lu > %ld)",
+					  failsafe_size, FAILSAFE_SIZE_MAX);
+			break;
 		}
 
 		/* Tag was successfully parsed */
