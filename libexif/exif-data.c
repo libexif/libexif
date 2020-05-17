@@ -448,6 +448,11 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 		case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
 			o = exif_get_long (d + offset + 12 * i + 8,
 					   data->priv->order);
+			if (o >= ds) {
+				exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
+					  "Tag data past end of buffer (%u > %u)", offset+2, ds);
+				return;
+			}
 			/* FIXME: IFD_POINTER tags aren't marked as being in a
 			 * specific IFD, so exif_tag_get_name_in_ifd won't work
 			 */
