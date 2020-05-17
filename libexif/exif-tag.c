@@ -894,6 +894,18 @@ static const struct TagEntry {
 	{EXIF_TAG_LENS_SERIAL_NUMBER, "LensSerialNumber", N_("Lens Serial Number"),
 	 N_("This tag indicates the serial number of the interchangeable lens."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_COMPOSITE_IMAGE, "CompositeImage", N_("Composite Image"),
+	 N_("This tag indicates whether this image was composed from multiple images"),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_SOURCE_IMAGE_NUMBER_OF_COMPOSITE_IMAGE, "SourceImageNumberOfCompositeImage", N_("Source Image Number Of Composite Image"),
+	 N_("This tag indicates how many images are included and used in the composition of this image"),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE, "SourceExposureTimesOfCompositeImage", N_("Source Exposure Times of Composite Image"),
+	 N_("This tag indicates the exposure times of the source images of this image"),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	/* EXIF 2.3 */
 	{EXIF_TAG_GAMMA, "Gamma", N_("Gamma"),
 	 N_("Indicates the value of coefficient gamma."),
