@@ -215,7 +215,7 @@ AC_CONFIG_FILES([  po/Makefile.in
   doc/Doxyfile-internals
   libexif.pc
   libexif-uninstalled.pc
-  binary/Makefile
+  binary-dist/Makefile
   contrib/Makefile
   contrib/examples/Makefile
 ])

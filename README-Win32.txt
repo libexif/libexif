@@ -1,7 +1,7 @@
 If this is a combined source/binary distribution tree, then you can find
 
-   * the binary DLL     in the subdirectory  binary/bin/
-   * the include files  in the subdirectory  binary/include/
+   * the binary DLL     in the subdirectory  binary-dist/bin/
+   * the include files  in the subdirectory  binary-dist/include/
 
 As for building libexif yourself on or for Win32, you can
 
