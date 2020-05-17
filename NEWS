@@ -3,7 +3,28 @@ libexif-0.6.x:
   * Updated translations for most languages
   * Fixed C89 compatibility
   * Fixed warnings on recent versions of autoconf
-  * Fix for recursion DoS CVE-2018-20030
+  * Some useful EXIF 2.3 tag added:
+    * EXIF_TAG_GAMMA
+    * EXIF_TAG_COMPOSITE_IMAGE
+    * EXIF_TAG_SOURCE_IMAGE_NUMBER_OF_COMPOSITE_IMAGE
+    * EXIF_TAG_SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE
+    * EXIF_TAG_GPS_H_POSITIONING_ERROR
+    * EXIF_TAG_CAMERA_OWNER_NAME
+    * EXIF_TAG_BODY_SERIAL_NUMBER
+    * EXIF_TAG_LENS_SPECIFICATION
+    * EXIF_TAG_LENS_MAKE
+    * EXIF_TAG_LENS_MODEL
+    * EXIF_TAG_LENS_SERIAL_NUMBER
+  * Lots of fixes exposed by fuzzers like AFL, ClusterFuzz, OSSFuzz and others.
+    * CVE-2018-20030: Fix for recursion DoS
+    * CVE-2020-13114: Time consumption DoS when parsing canon array markers
+    * CVE-2020-13113: Potential use of uninitialized memory 
+    * CVE-2020-13112: Various buffer overread fixes due to integer overflows in maker notes
+    * CVE-2020-0093: read overflow
+    * CVE-2019-9278: replaced integer overflow checks the compiler could optimize away by safer constructs
+    * CVE-2020-12767: fixed division by zero 
+    * CVE-2016-6328: fixed integer overflow when parsing maker notes
+    * CVE-2017-7544: fixed buffer overread
 
 libexif-0.6.21 (2012-07-12):
   * New translations: en_AU, uk
