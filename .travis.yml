@@ -43,6 +43,14 @@ matrix:
     os: linux
     dist: bionic
     compiler: clang
+  - env: CONFIG=normal DIST=focal
+    os: linux
+    dist: focal
+    compiler: gcc
+  - env: CONFIG=normal DIST=focal
+    os: linux
+    dist: focal
+    compiler: clang
   - env: CONFIG=clang6 DIST=xenial
     os: linux
     dist: xenial
