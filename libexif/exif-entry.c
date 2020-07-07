@@ -708,7 +708,7 @@ static const struct {
 static const struct {
   ExifTag tag;
   struct {
-    int index;
+    ExifShort index;
     const char *values[4]; /*!< list of progressively shorter string
 			    descriptions; the longest one that fits will be
 			    selected */
