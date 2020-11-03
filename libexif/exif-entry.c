@@ -1414,6 +1414,7 @@ void exif_entry_initialize_gps(ExifEntry *e, ExifTag tag) {
     e->format = EXIF_FORMAT_UNDEFINED;
     e->size = 0;
     e->data = NULL;
+    return;
   }
 
   e->format = info->format;
