@@ -854,6 +854,8 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 		{"0220", 2,  2},
 		{"0221", 2, 21},
 		{"0230", 2,  3},
+		{"0231", 2, 31},
+		{"0232", 2, 32},
 		{""    , 0,  0}
 	};
 
