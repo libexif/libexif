@@ -411,6 +411,13 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	c = exif_get_short (buf + o2, n->order);
 	o2 += 2;
 
+	/* Just use an arbitrary max tag limit here to avoid needing to much memory or time. There are 150 named tags currently.
+	 * The format allows specifying the same range of memory as often as it can, so this multiplies quickly. */
+	if (c > 300) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteOlympus", "Too much tags (%d) in Olympus MakerNote", c);
+		return;
+	}
+
 	/* Remove any old entries */
 	exif_mnote_data_olympus_clear (n);
 
