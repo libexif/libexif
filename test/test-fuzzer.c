@@ -89,7 +89,7 @@ test_exif_data (ExifData *d)
 	c = exif_mnote_data_count (md);
 	for (i = 0; i < c; i++) {
 		const char *name = exif_mnote_data_get_name (md, i);
-		if (!name) break;
+		if (!name) continue;
 		exif_mnote_data_get_name (md, i);
 		exif_mnote_data_get_title (md, i);
 		exif_mnote_data_get_description (md, i);
