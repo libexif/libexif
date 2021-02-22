@@ -40,4 +40,4 @@ Crashes caused by debugging functionality are not in scope.
 
 Bugreports can be filed as github issues.
 
-If you want to report an embargoed security bug report, reach out to dan@coneharvesters.com.
+If you want to report an embargoed security bug report, reach out to dan@coneharvesters.com and marcus@jet.franken.de.
