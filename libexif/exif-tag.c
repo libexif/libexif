@@ -524,6 +524,13 @@ static const struct TagEntry {
 	{EXIF_TAG_TIME_ZONE_OFFSET, "TimeZoneOffset", N_("Time Zone Offset"),
 	 N_("Encodes time zone of camera clock relative to GMT."),
 	 ESL_UNKNOWN},
+	{EXIF_TAG_SENSITIVITY_TYPE, "SensitivityType", N_("Sensitivity Type"),
+	 N_("The SensitivityType tag indicates which one of the parameters of "
+	 	"ISO12232 is the PhotographicSensitivity tag. Although it is an optional "
+		"tag, it should be recorded when a PhotographicSensitivity tag is recorded. "
+		"Value = 4, 5, 6, or 7 may be used in case that the values of plural parameters "
+		"are the same."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_EXIF_VERSION, "ExifVersion", N_("Exif Version"),
 	 N_("The version of this standard supported. Nonexistence of this "
 	    "field is taken to mean nonconformance to the standard."),
