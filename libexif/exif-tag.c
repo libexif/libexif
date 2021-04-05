@@ -913,6 +913,18 @@ static const struct TagEntry {
 	{EXIF_TAG_SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE, "SourceExposureTimesOfCompositeImage", N_("Source Exposure Times of Composite Image"),
 	 N_("This tag indicates the exposure times of the source images of this image"),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_OFFSET_TIME, "OffsetTime", N_("Time Zone For ModifyDate (DateTime)"),
+	 N_("A tag used to record the offset from UTC (the time difference from Universal Time Coordinated including daylight saving time) of the time of DateTime tag. The format when recording the offset is \"±HH:MM\". The part of \"±\" shall be recorded as \"+\" or \"-\". When the offset are unknown, all the character spaces except colons (\":\")should be filled with blank characters, or else the Interoperability field should be filled with blank characters. The character string length is 7 Bytes including NULL for termination. When the field is left blank, it is treated as unknown."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_OFFSET_TIME_ORIGINAL, "OffsetTimeOriginal", N_("Time Zone For DateTimeOriginal"),
+	 N_("A tag used to record the offset from UTC (the time difference from Universal Time Coordinated including daylight saving  time)  of  the time  of  DateTimeOriginal  tag.  The  format  when  recording  the  offset  is \"±HH:MM\". The part of \"±\" shall be recorded as \"+\" or \"-\". When the offset are unknown, all the character spaces except colons (\":\")should be filled with blank characters, or else the Interoperability field should be filled with blank characters. The character string length is 7 Bytes including NULL for termination. When the field is left blank, it is treated as unknown."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_OFFSET_TIME_DIGITIZED, "OffsetTimeDigitized", N_("Time Zone For DateTimeDigitized"),
+	 N_("A tag used to record the offset from UTC (the time difference from Universal Time Coordinated including daylight  saving  time)  of  the time  of  DateTimeDigitized  tag.  The  format  when  recording  the  offset  is \"±HH:MM\". The part of \"±\" shall be recorded as \"+\" or \"-\". When the offset are unknown, all the character spaces except colons (\":\")should be filled with blank characters, or else the Interoperability field should be filled with blank characters. The character string length is 7 Bytes including NULL for termination. When the field is left blank, it is treated as unknown."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	/* EXIF 2.3 */
 	{EXIF_TAG_GAMMA, "Gamma", N_("Gamma"),
 	 N_("Indicates the value of coefficient gamma."),
