@@ -509,7 +509,6 @@ static const struct TagEntry {
 	    "Interoperability structure of the GPS Info IFD, like that of "
 	    "Exif IFD, has no image data."),
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
-
 	{EXIF_TAG_ISO_SPEED_RATINGS, "ISOSpeedRatings",
 	 N_("ISO Speed Ratings"),
 	 N_("Indicates the ISO Speed and ISO Latitude of the camera or "
@@ -530,6 +529,22 @@ static const struct TagEntry {
 		"tag, it should be recorded when a PhotographicSensitivity tag is recorded. "
 		"Value = 4, 5, 6, or 7 may be used in case that the values of plural parameters "
 		"are the same."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	{EXIF_TAG_RECOMMENDED_EXPOSURE_INDEX, "RecommendedExposureIndex",
+	 N_("Recommended Exposure Index"),
+	 N_(""),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	{EXIF_TAG_ISO_SPEED, "ISO Speed",
+	 N_("ISO Speed"),
+	 N_(""),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	{EXIF_TAG_ISO_SPEEDLatitudeYYY, "ISO Speed Latitude yyy",
+	 N_("ISO Speed Latitude yyy"),
+	 N_(""),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	{EXIF_TAG_ISO_SPEEDLatitudeZZZ, "ISO Speed Latitude zzz",
+	 N_("ISO Speed Latitude zzz"),
+	 N_(""),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_EXIF_VERSION, "ExifVersion", N_("Exif Version"),
 	 N_("The version of this standard supported. Nonexistence of this "
