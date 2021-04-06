@@ -545,6 +545,18 @@ static const struct TagEntry {
 	 N_("Date and Time (Digitized)"),
 	 N_("The date and time when the image was stored as digital data."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_OFFSET_TIME, "OffsetTime", N_("Offset Time For DateTime"),
+	 N_("A tag used to record the offset from UTC (the time difference from Universal Time Coordinated including daylight saving time) of the time of DateTime tag. The format when recording the offset is \"±HH:MM\". The part of \"±\" shall be recorded as \"+\" or \"-\". When the offset are unknown, all the character spaces except colons (\":\")should be filled with blank characters, or else the Interoperability field should be filled with blank characters. The character string length is 7 Bytes including NULL for termination. When the field is left blank, it is treated as unknown."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_OFFSET_TIME_ORIGINAL, "OffsetTimeOriginal", N_("Offset Time For DateTimeOriginal"),
+	 N_("A tag used to record the offset from UTC (the time difference from Universal Time Coordinated including daylight saving  time)  of  the time  of  DateTimeOriginal  tag.  The  format  when  recording  the  offset  is \"±HH:MM\". The part of \"±\" shall be recorded as \"+\" or \"-\". When the offset are unknown, all the character spaces except colons (\":\")should be filled with blank characters, or else the Interoperability field should be filled with blank characters. The character string length is 7 Bytes including NULL for termination. When the field is left blank, it is treated as unknown."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_OFFSET_TIME_DIGITIZED, "OffsetTimeDigitized", N_("Offset Time For DateTimeDigitized"),
+	 N_("A tag used to record the offset from UTC (the time difference from Universal Time Coordinated including daylight  saving  time)  of  the time  of  DateTimeDigitized  tag.  The  format  when  recording  the  offset  is \"±HH:MM\". The part of \"±\" shall be recorded as \"+\" or \"-\". When the offset are unknown, all the character spaces except colons (\":\")should be filled with blank characters, or else the Interoperability field should be filled with blank characters. The character string length is 7 Bytes including NULL for termination. When the field is left blank, it is treated as unknown."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_COMPONENTS_CONFIGURATION, "ComponentsConfiguration",
 	 N_("Components Configuration"),
 	 N_("Information specific to compressed data. The channels of "
