@@ -530,6 +530,9 @@ static const struct TagEntry {
 		"Value = 4, 5, 6, or 7 may be used in case that the values of plural parameters "
 		"are the same."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	{EXIF_TAG_STANDARD_OUTPUT_SENSITIVITY, "StandardOutputSensitivity", N_("Standard Output Sensitivity"),
+	 N_(""),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_RECOMMENDED_EXPOSURE_INDEX, "RecommendedExposureIndex",
 	 N_("Recommended Exposure Index"),
 	 N_(""),
