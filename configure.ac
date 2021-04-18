@@ -12,7 +12,7 @@ AM_SILENT_RULES([yes])
 
 GP_CHECK_SHELL_ENVIRONMENT
 GP_CONFIG_MSG([Build])
-GP_CONFIG_MSG([Source code location],[${srcdir}])
+GP_CONFIG_MSG([Source code location], [${srcdir}])
 
 dnl ---------------------------------------------------------------------------
 dnl Advanced information about versioning:
@@ -60,7 +60,7 @@ AC_C_INLINE
 AM_PROG_AR
 LT_INIT([win32-dll])
 AM_CPPFLAGS="$CPPFLAGS"
-GP_CONFIG_MSG([Compiler],[${CC}])
+GP_CONFIG_MSG([Compiler], [${CC}])
 
 AC_SYS_LARGEFILE
 
@@ -76,13 +76,13 @@ dnl ------------------------------------------------------------------------
 ship_binaries=false
 AC_ARG_ENABLE([ship-binaries],
 [AS_HELP_STRING([--enable-ship-binaries],
-[Whether to ship binaries in the tarball [default=no]])],[
+                [Whether to ship binaries in the tarball [default=no]])], [
 	if test x$enableval = xyes; then
 		ship_binaries=true
 	fi
 ])
-AM_CONDITIONAL([SHIP_BINARIES],[$ship_binaries])
-GP_CONFIG_MSG([Ship binaries in tarball],[$ship_binaries])
+AM_CONDITIONAL([SHIP_BINARIES], [$ship_binaries])
+GP_CONFIG_MSG([Ship binaries in tarball], [$ship_binaries])
 
 
 dnl ---------------------------------------------------------------------------
@@ -109,8 +109,8 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([
 	    double s = sqrt(0);
 	    double p = pow(s,s);
 	  ])],
-	[AC_MSG_RESULT(yes)], [
-	AC_MSG_RESULT(no)
+	[AC_MSG_RESULT([yes])], [
+	AC_MSG_RESULT([no])
 	LIBS="$LIBS_orig"
 	AC_MSG_CHECKING([for math functions without libm])
 	AC_LINK_IFELSE([AC_LANG_PROGRAM([
@@ -120,9 +120,9 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([
 		  double p = pow(s,s);
 		])],
 	[
-		AC_MSG_RESULT(yes)
+		AC_MSG_RESULT([yes])
 	],[
-		AC_MSG_RESULT(no)
+		AC_MSG_RESULT([no])
 		AC_MSG_ERROR([*** Could not find sqrt() & pow() functions])
 	])
 ])
@@ -140,8 +140,8 @@ GP_CHECK_DOXYGEN
 # graphs, so it is disabled by default.
 set_enable_internal_docs=no
 AC_ARG_ENABLE([internal-docs], [dnl
-AS_HELP_STRING([--enable-internal-docs], 
-[Build internal code docs if doxygen available])], [dnl
+AS_HELP_STRING([--enable-internal-docs],
+               [Build internal code docs if doxygen available])], [
 dnl If either --enable-foo nor --disable-foo were given, execute this.
   if   test "x$enableval" = xno \
     || test "x$enableval" = xoff \
@@ -157,7 +157,8 @@ dnl If either --enable-foo nor --disable-foo were given, execute this.
 ])
 AC_MSG_CHECKING([whether to create internal code docs])
 AC_MSG_RESULT([${set_enable_internal_docs}])
-AM_CONDITIONAL([ENABLE_INTERNAL_DOCS], [test "x${set_enable_internal_docs}" = "xyes"])
+AM_CONDITIONAL([ENABLE_INTERNAL_DOCS],
+               [test "x${set_enable_internal_docs}" = "xyes"])
 
 
 # ---------------------------------------------------------------------------
@@ -176,7 +177,7 @@ GP_GETTEXT_FLAGS()
 dnl ---------------------------------------------------------------------------
 dnl Thread-safe functions
 dnl ---------------------------------------------------------------------------
-AC_CHECK_FUNCS(localtime_r)
+AC_CHECK_FUNCS([localtime_r])
 
 dnl ---------------------------------------------------------------------------
 dnl Compiler/Linker Options and Warnings
@@ -193,8 +194,8 @@ fi
 
 
 
-AC_SUBST(AM_CPPFLAGS)
-AC_SUBST(AM_LDFLAGS)
+AC_SUBST([AM_CPPFLAGS])
+AC_SUBST([AM_LDFLAGS])
 
 
 dnl ---------------------------------------------------------------------------
