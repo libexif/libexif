@@ -77,9 +77,7 @@ ship_binaries=false
 AC_ARG_ENABLE([ship-binaries],
 [AS_HELP_STRING([--enable-ship-binaries],
                 [Whether to ship binaries in the tarball [default=no]])], [
-	if test x$enableval = xyes; then
-		ship_binaries=true
-	fi
+AS_VAR_IF([enableval], [yes], [ship_binaries=true])
 ])
 AM_CONDITIONAL([SHIP_BINARIES], [$ship_binaries])
 GP_CONFIG_MSG([Ship binaries in tarball], [$ship_binaries])
@@ -143,17 +141,9 @@ AC_ARG_ENABLE([internal-docs], [dnl
 AS_HELP_STRING([--enable-internal-docs],
                [Build internal code docs if doxygen available])], [
 dnl If either --enable-foo nor --disable-foo were given, execute this.
-  if   test "x$enableval" = xno \
-    || test "x$enableval" = xoff \
-    || test "x$enableval" = xfalse; 
-  then
-    set_enable_internal_docs=no
-  elif test "x$enableval" = xyes \
-    || test "x$enableval" = xon \
-    || test "x$enableval" = xtrue
-  then
-    set_enable_internal_docs=yes
-  fi
+AS_CASE(["$enableval"],
+        [no|off|false], [set_enable_internal_docs=no],
+        [yes|on|true],  [set_enable_internal_docs=yes])
 ])
 AC_MSG_CHECKING([whether to create internal code docs])
 AC_MSG_RESULT([${set_enable_internal_docs}])
@@ -185,14 +175,12 @@ dnl ---------------------------------------------------------------------------
 AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_srcdir)"
 AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_builddir)"
 AM_LDFLAGS="$LDFLAGS"
-if test "x$GCC" = "xyes"; then
+AS_VAR_IF([GCC], [yes], [dnl
     AM_CFLAGS="$AM_CFLAGS -ansi -pedantic-error"
     AM_CXXFLAGS="$AM_CXXFLAGS -ansi -pedantic-error"
     AM_CPPFLAGS="$AM_CPPFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
     AM_LDFLAGS="$AM_LDFLAGS -g -Wall"
-fi
-
-
+])
 
 AC_SUBST([AM_CPPFLAGS])
 AC_SUBST([AM_LDFLAGS])
