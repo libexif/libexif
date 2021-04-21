@@ -29,10 +29,7 @@ libexif_la_SOURCES =		\
 	exif-mnote-data-priv.h	\
 	exif-tag.c		\
 	exif-utils.c		\
-	i18n.h          \
-	exif-gps-ifd.c  \
-	exif-gps-ifd.h
-
+	i18n.h
 libexif_la_DEPENDENCIES = \
 	$(srcdir)/libexif.sym \
 	libmnote-canon.la		\
