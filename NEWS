@@ -1,7 +1,8 @@
-libexif-0.6.23 (20xx-xx-xx):
+libexif-0.6.22.1 (20xx-xx-xx):
   * Translation updates: es, pl, uk, fr
   * Security fixes:
     * CVE-2020-0198: unsigned integer overflow in exif_data_load_data_content
+    * CVE-2020-0452: compiler optimization could remove an a bufferoverflow check, making a buffer overflow possible with some EXIF tags
 
 libexif-0.6.22 (2020-05-18):
   * New translations: ms
