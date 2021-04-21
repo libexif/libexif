@@ -64,7 +64,8 @@ const uint16_t test_tags [] = {
  EXIF_TAG_GPS_AREA_INFORMATION,   
  EXIF_TAG_GPS_DATE_STAMP,         
  EXIF_TAG_GPS_DIFFERENTIAL,
- EXIF_TAG_GPS_H_POSITIONING_ERROR       
+ EXIF_TAG_GPS_H_POSITIONING_ERROR,
+ 0xFFFFu
 };
 
 
@@ -73,6 +74,14 @@ const uint16_t test_tags [] = {
  */
 static void check_entry_format(ExifEntry *e)
 {
+    if(e->tag > EXIF_TAG_GPS_H_POSITIONING_ERROR) {
+        /* unknown tags should get EXIF_FORMAT_UNDEFINED, no size and no data */
+        if(e->format != EXIF_FORMAT_UNDEFINED || e->size || e->components || e->data) {
+            fprintf(stderr, "check_entry_format: Unknown tag not handled correctly (tag=%x)\n", e->tag);
+            exit(7);
+        }
+        return;
+    }
 	switch(e->format) {
 	case EXIF_FORMAT_UNDEFINED:
 	case EXIF_FORMAT_ASCII:
