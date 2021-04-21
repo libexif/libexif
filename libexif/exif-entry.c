@@ -1418,38 +1418,38 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	return val;
 }
 
-static void
-exif_entry_initialize_gps(ExifEntry *e, ExifTag tag) {
-	const ExifGPSIfdTagInfo* info = exif_get_gps_tag_info(tag);
 
-	if (!info) {
-		e->components = 0;
-		e->format = EXIF_FORMAT_UNDEFINED;
-		e->size = 0;
-		e->data = NULL;
-		return;
-	}
+void exif_entry_initialize_gps(ExifEntry *e, ExifTag tag) {
+  const ExifGPSIfdTagInfo* info = exif_get_gps_tag_info(tag);
 
-	e->format = info->format;
-	e->components = info->components;
+  if(!info) {
+    e->components = 0;
+    e->format = EXIF_FORMAT_UNDEFINED;
+    e->size = 0;
+    e->data = NULL;
+    return;
+  }
 
-	if (info->components == 0) {
-		/* No pre-allocation */
-		e->size = 0;
-		e->data = NULL;
-	} else {
-		int hasDefault = info->default_size && info->default_value;
-		int allocSize = hasDefault ? info->default_size : (exif_format_get_size (e->format) * e->components);
-		e->size = allocSize;
-		e->data = exif_entry_alloc (e, e->size);
-		if (!e->data) {
-			clear_entry(e);
-			return;
-		}
-		if (hasDefault) {
-			memcpy(e->data, info->default_value, info->default_size);
-		}
-	}
+  e->format = info->format;
+  e->components = info->components;
+
+  if(info->components == 0) {
+    /* No pre-allocation */
+    e->size = 0;
+    e->data = NULL;
+  } else {
+    int hasDefault = (info->default_size && info->default_value);
+    int allocSize = hasDefault ? info->default_size : (exif_format_get_size (e->format) * e->components);
+    e->size = allocSize;
+    e->data = exif_entry_alloc (e, e->size);
+    if(!e->data) {
+      clear_entry(e);
+      return;
+    }
+    if(hasDefault) {
+      memcpy(e->data, info->default_value, info->default_size);
+    }
+  }
 }
 
 /*!
@@ -1468,9 +1468,9 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 
 	e->tag = tag;
 
-	if (exif_entry_get_ifd(e) == EXIF_IFD_GPS) {
-		exif_entry_initialize_gps(e, tag);
-		return;
+	if(exif_entry_get_ifd(e) == EXIF_IFD_GPS) {
+	  exif_entry_initialize_gps(e, tag);
+      return;
 	}
 
 	switch (tag) {
