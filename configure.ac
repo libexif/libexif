@@ -1,9 +1,9 @@
-AC_PREREQ(2.59)
+AC_PREREQ(2.69)
 AC_INIT([EXIF library], [0.6.22.1], [libexif-devel@lists.sourceforge.net], [libexif])
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
-AM_INIT_AUTOMAKE([-Wall gnu 1.9 dist-bzip2 dist-zip check-news subdir-objects])
+AM_INIT_AUTOMAKE([-Wall gnu 1.14.1 dist-xz dist-bzip2 dist-zip check-news subdir-objects])
 AM_MAINTAINER_MODE
 
 # Use the silent-rules feature when possible.
@@ -56,12 +56,9 @@ AC_SUBST([LIBEXIF_CURRENT_MIN],[`expr $LIBEXIF_CURRENT - $LIBEXIF_AGE`])
 LIBEXIF_VERSION_INFO="$LIBEXIF_CURRENT:$LIBEXIF_REVISION:$LIBEXIF_AGE"
 AC_SUBST([LIBEXIF_VERSION_INFO])
 
-AM_PROG_CC_C_O
-AC_C_CONST
 AC_C_INLINE
-dnl FIXME: AC_LIBTOOL_WIN32_DLL
 AM_PROG_AR
-AM_PROG_LIBTOOL
+LT_INIT([win32-dll])
 AM_CPPFLAGS="$CPPFLAGS"
 GP_CONFIG_MSG([Compiler],[${CC}])
 
