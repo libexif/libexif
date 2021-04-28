@@ -1,7 +1,7 @@
 dnl Search for libfailmalloc to use for testing
 AC_DEFUN([CHECK_FAILMALLOC],[dnl
   dnl Libtool sets the default library paths
-  AM_PROG_LIBTOOL
+  LT_INIT([win32-dll])
   path_provided=
   failmalloc_requested=  dnl Either implicitly or explicitly
   AC_ARG_WITH(failmalloc, [  --with-failmalloc=PATH  use Failmalloc for tests], [
