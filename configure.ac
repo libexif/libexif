@@ -3,7 +3,7 @@ AC_INIT([EXIF library], [0.6.22.1], [libexif-devel@lists.sourceforge.net], [libe
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
-AM_INIT_AUTOMAKE([-Wall gnu 1.12 dist-xz dist-bzip2 dist-zip check-news subdir-objects])
+AM_INIT_AUTOMAKE([-Wall gnu 1.14.1 dist-xz dist-bzip2 dist-zip check-news subdir-objects])
 AM_MAINTAINER_MODE
 
 # Use the silent-rules feature when possible.
