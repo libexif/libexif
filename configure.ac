@@ -4,6 +4,7 @@ AC_INIT([EXIF library],
         [libexif-devel@lists.sourceforge.net],
         [libexif],
         [https://libexif.github.io/])
+AC_CANONICAL_HOST
 AC_CONFIG_SRCDIR([libexif/exif-data.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
@@ -180,7 +181,18 @@ GP_GETTEXT_FLAGS()
 dnl ---------------------------------------------------------------------------
 dnl Thread-safe functions
 dnl ---------------------------------------------------------------------------
-AC_CHECK_FUNCS([localtime_r])
+AS_CASE([$host_os],
+    [*mingw32*],
+    [AC_MSG_CHECKING([for localtime_s])
+     AC_LINK_IFELSE([AC_LANG_PROGRAM([#include <time.h>],
+                                     [localtime_s(NULL, NULL);])],
+                    [
+                     have_localtime_s="yes"
+                     AC_DEFINE([HAVE_LOCALTIME_S], [1], [Define to 1 if you have localtime_s()])
+                    ],
+                    [have_localtime_s="no"])
+     AC_MSG_RESULT([$have_localtime_s])],
+    [AC_CHECK_FUNCS(localtime_r)])
 
 dnl ---------------------------------------------------------------------------
 dnl Compiler/Linker Options and Warnings

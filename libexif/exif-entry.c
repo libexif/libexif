@@ -1641,7 +1641,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_DATE_TIME_DIGITIZED:
 	{
 		time_t t;
-#ifdef HAVE_LOCALTIME_R
+#if defined(HAVE_LOCALTIME_R) || defined(HAVE_LOCALTIME_S)
 		struct tm tms;
 #endif
 		struct tm *tm;
@@ -1649,6 +1649,9 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		t = time (NULL);
 #ifdef HAVE_LOCALTIME_R
 		tm = localtime_r (&t, &tms);
+#elif HAVE_LOCALTIME_S
+		localtime_s (&tms, &t);
+		tm = &tms;
 #else
 		tm = localtime (&t);
 #endif
