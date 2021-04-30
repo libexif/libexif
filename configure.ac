@@ -208,7 +208,21 @@ GP_GETTEXT_FLAGS()
 dnl ---------------------------------------------------------------------------
 dnl Thread-safe functions
 dnl ---------------------------------------------------------------------------
+AC_MSG_CHECKING([for localtime_s])
+AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+  #include <time.h>
+]], [[
+  localtime_s(NULL, NULL);
+]])], [dnl
+  have_localtime_s="yes"
+  AC_DEFINE([HAVE_LOCALTIME_S], [1], [Define to 1 if you have localtime_s()])
+], [dnl
+  have_localtime_s="no"
+])
+AC_MSG_RESULT([$have_localtime_s])
+
 AC_CHECK_FUNCS([localtime_r])
+
 
 dnl ---------------------------------------------------------------------------
 dnl Compiler/Linker Options and Warnings
