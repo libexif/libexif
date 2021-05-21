@@ -251,11 +251,11 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 			eld->state = EL_READ_SIZE_BYTE_16;
 			break;
 		case EL_READ_SIZE_BYTE_16:
-			eld->size |= eld->b[i] << 16;
+			eld->size |= (unsigned int)eld->b[i] << 16;
 			eld->state = EL_READ_SIZE_BYTE_08;
 			break;
 		case EL_READ_SIZE_BYTE_08:
-			eld->size |= eld->b[i] << 8;
+			eld->size |= (unsigned int)eld->b[i] << 8;
 			eld->state = EL_READ_SIZE_BYTE_00;
 			break;
 		case EL_READ_SIZE_BYTE_00:

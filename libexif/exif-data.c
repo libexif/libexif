@@ -888,7 +888,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			if (ds >= 3 && d[0] >= 0xe0 && d[0] <= 0xef) {  /* JPEG_MARKER_APPn */
 				d++;
 				ds--;
-				l = (d[0] << 8) | d[1];
+				l = (((unsigned int)d[0]) << 8) | d[1];
 				if (l > ds)
 					return;
 				d += l;
@@ -907,7 +907,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		}
 		d++;
 		ds--;
-		len = (d[0] << 8) | d[1];
+		len = (((unsigned int)d[0]) << 8) | d[1];
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 			  "We have to deal with %i byte(s) of EXIF data.",
 			  len);
