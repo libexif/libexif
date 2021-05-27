@@ -9,6 +9,7 @@ AM_TESTS_ENVIRONMENT += LC_ALL='C'; export LC_ALL;
 # Some AC_SUBST variables needed in test case scripts
 AM_TESTS_ENVIRONMENT += DIFF='$(DIFF)'; export DIFF;
 AM_TESTS_ENVIRONMENT += DIFF_U='$(DIFF_U)'; export DIFF_U;
+AM_TESTS_ENVIRONMENT += EXEEXT='$(EXEEXT)'; export EXEEXT;
 AM_TESTS_ENVIRONMENT += FAILMALLOC_PATH='$(FAILMALLOC_PATH)'; export FAILMALLOC_PATH;
 
 # Notes about tests:

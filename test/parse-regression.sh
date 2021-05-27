@@ -12,7 +12,7 @@ LANGUAGE=
 LC_ALL=C
 export LANG LANGUAGE LC_ALL
 for fn in "${srcdir}"/testdata/*.jpg ; do
-    ./test-parse "${fn}" > "${TMPLOG}"
+    ./test-parse$EXEEXT "${fn}" > "${TMPLOG}"
     if ${comparetool} "${fn}.parsed" "${TMPLOG}"; then
 	: "no differences detected"
     else

@@ -62,8 +62,8 @@ failmalloc_binary_test 500 test-value
 failmalloc_binary_test 300 test-mem
 for f in ${srcdir}/testdata/*jpg; do
     echo "Testing `basename "$f"`"
-    failmalloc_binary_test 500 test-parse "$f"
-    # N.B., test-parse --swap-byte-order doesn't test any new paths
+    failmalloc_binary_test 500 test-parse$EXEEXT "$f"
+    # N.B., test-parse$EXEEXT --swap-byte-order doesn't test any new paths
 done
 
 echo PASSED
