@@ -75,6 +75,34 @@ LT_INIT([win32-dll])
 AM_CPPFLAGS="$CPPFLAGS"
 GP_CONFIG_MSG([Compiler], [${CC}])
 
+
+dnl --------------------------------------------------------------------
+dnl check for "diff" and "diff -u"
+dnl --------------------------------------------------------------------
+
+AC_ARG_VAR([DIFF], [path to diff utility (default: no)])
+AC_PATH_PROG([DIFF], [diff], [no])
+AM_CONDITIONAL([HAVE_DIFF], [test "x$DIFF" != xno])
+
+DIFF_U="no"
+AS_IF([test "x$DIFF" != xno], [dnl
+AC_MSG_CHECKING([whether diff supports -u])
+echo moo > conftest-a.c
+echo moo > conftest-b.c
+AS_IF([${DIFF} -u conftest-a.c conftest-b.c], [dnl
+  AC_MSG_RESULT([yes])
+  DIFF_U="$DIFF -u"
+], [dnl
+  AC_MSG_RESULT([no])
+])
+rm -f conftest-a.c conftest-b.c
+])
+AC_SUBST([DIFF_U])
+AM_CONDITIONAL([HAVE_DIFF_U], [test "x$DIFF_U" != xno])
+
+
+dnl --------------------------------------------------------------------
+
 AC_SYS_LARGEFILE
 
 dnl Create a stdint.h-like file containing size-specific integer definitions

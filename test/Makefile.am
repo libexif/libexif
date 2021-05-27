@@ -58,3 +58,5 @@ EXTRA_DIST = \
 	testdata/pentax_makernote_variant_3.jpg.parsed \
 	testdata/pentax_makernote_variant_4.jpg \
 	testdata/pentax_makernote_variant_4.jpg.parsed
+
+EXTRA_DIST += inc-comparetool.sh

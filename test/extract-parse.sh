@@ -23,6 +23,8 @@ parse_canonicalize () {
         -e '/MakerNote (Undefined)$/{N;N;d}'
 }
 
+. ${srcdir}/inc-comparetool.sh
+
 # Ensure that names are untranslated
 LANG=
 LANGUAGE=
@@ -32,7 +34,9 @@ for fn in "${srcdir}"/testdata/*.jpg ; do
     ./test-parse "${fn}" | parse_canonicalize > "${TMPORIGINAL}"
     ./test-extract -o "${TMPDATA}" "${fn}"
     ./test-parse "${TMPDATA}" | parse_canonicalize > "${TMPEXTRACTED}"
-    if ! diff "${TMPORIGINAL}" "${TMPEXTRACTED}"; then
+    if ${comparetool} "${TMPORIGINAL}" "${TMPEXTRACTED}"; then
+	: "no differences detected"
+    else
         echo Error parsing "$fn"
         exit 1
     fi
