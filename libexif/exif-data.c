@@ -877,9 +877,15 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			}
 
 			/* JPEG_MARKER_APP1 */
-			if (ds && d[0] == JPEG_MARKER_APP1)
-				break;
-
+			if (ds && d[0] == JPEG_MARKER_APP1) {
+				/*
+				 * Verify the exif header
+				 * (offset 2, length 6).
+				 */
+				if ((ds >= 10) && !memcmp (d+4, ExifHeader, 6))
+					break;
+				/* fallthrough */
+			}
 			/* Skip irrelevant APP markers. The branch for APP1 must come before this,
 			   otherwise this code block will cause APP1 to be skipped. This code path
 			   is only relevant for files that are nonconformant to the EXIF
@@ -912,7 +918,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			  "We have to deal with %i byte(s) of EXIF data.",
 			  len);
 		d += 2;
-		ds -= 2;
+		ds = len - 2;	/* we do not want the full rest size, but only the size of the tag */
 	}
 
 	/*
