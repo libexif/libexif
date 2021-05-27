@@ -17,9 +17,8 @@ if [ "$1" = "-v" ] ; then
 fi
 
 if [ x"$FAILMALLOC_PATH" = x ]; then
-    echo libfailmalloc is not available
-    echo SKIPPING
-    exit
+    echo "libfailmalloc is not available"
+    exit 77
 fi
 
 BINARY_PREFIX=./
