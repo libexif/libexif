@@ -1,5 +1,16 @@
 SUBDIRS = nls
 
+# By default, a few definitions like bindir, srcdir are already set.
+AM_TESTS_ENVIRONMENT =
+
+# Run all tests without i18n and l10n for proper comparisons
+AM_TESTS_ENVIRONMENT += LC_ALL='C'; export LC_ALL;
+
+# Some AC_SUBST variables needed in test case scripts
+AM_TESTS_ENVIRONMENT += DIFF='$(DIFF)'; export DIFF;
+AM_TESTS_ENVIRONMENT += DIFF_U='$(DIFF_U)'; export DIFF_U;
+AM_TESTS_ENVIRONMENT += FAILMALLOC_PATH='$(FAILMALLOC_PATH)'; export FAILMALLOC_PATH;
+
 # Notes about tests:
 #  - Add "small" tests and stuff here.
 #  - Add "big"   tests and stuff to explicitly test for (fixed) bugs
@@ -24,8 +35,11 @@ check_PROGRAMS = test-mem test-mnote test-value test-integers test-parse \
 
 LDADD = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
 
-EXTRA_DIST = check-vars.sh.in parse-regression.sh swap-byte-order.sh \
-	extract-parse.sh check-failmalloc.sh \
+EXTRA_DIST = \
+	parse-regression.sh \
+	swap-byte-order.sh \
+	extract-parse.sh \
+	check-failmalloc.sh \
 	testdata/canon_makernote_variant_1.jpg \
 	testdata/canon_makernote_variant_1.jpg.parsed \
 	testdata/fuji_makernote_variant_1.jpg \

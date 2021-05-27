@@ -208,7 +208,6 @@ AC_CONFIG_FILES([
   libexif.spec
   libexif/Makefile
   test/Makefile
-  test/check-vars.sh
   test/nls/Makefile
   m4m/Makefile
   doc/Makefile
