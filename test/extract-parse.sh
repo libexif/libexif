@@ -31,9 +31,9 @@ LANGUAGE=
 LC_ALL=C
 export LANG LANGUAGE LC_ALL
 for fn in "${srcdir}"/testdata/*.jpg ; do
-    ./test-parse$EXEEXT "${fn}" | parse_canonicalize > "${TMPORIGINAL}"
+    ./test-parse$EXEEXT "${fn}" | tr -d '\015' | parse_canonicalize > "${TMPORIGINAL}"
     ./test-extract$EXEEXT -o "${TMPDATA}" "${fn}"
-    ./test-parse$EXEEXT "${TMPDATA}" | parse_canonicalize > "${TMPEXTRACTED}"
+    ./test-parse$EXEEXT "${TMPDATA}" | tr -d '\015' | parse_canonicalize > "${TMPEXTRACTED}"
     if ${comparetool} "${TMPORIGINAL}" "${TMPEXTRACTED}"; then
 	: "no differences detected"
     else
