@@ -367,7 +367,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
 			CC2 (entry->components, 1, 2, val, maxlen);
 			vs = exif_get_short (entry->data, entry->order);
-			vs2 = exif_get_short (entry->data+2, entry->order) << 16;
+			vs2 = ((unsigned int)exif_get_short (entry->data+2, entry->order)) << 16;
 
 			/* search the tag */
 			for (i = 0; (items2[i].tag && items2[i].tag != entry->tag); i++);

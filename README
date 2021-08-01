@@ -95,18 +95,6 @@ to build. Building from the source tar ball usually involves the commands:
 When building from source out of git, something like the following will be
 necessary:
 
-  gettextize
-  mv po/Makevars.template po/Makevars
-  aclocal -I auto-m4 -I m4m
-  autoheader
-  libtoolize --force
-  automake --add-missing
-  autoconf
-  ./configure
-  make
-
-Or, probably just:
-
   autoreconf -i
   ./configure
   make

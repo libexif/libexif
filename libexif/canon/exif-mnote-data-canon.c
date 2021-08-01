@@ -224,6 +224,12 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 	/* Read the number of tags */
 	c = exif_get_short (buf + datao, n->order);
 	datao += 2;
+	/* Just use an arbitrary max tag limit here to avoid needing to much memory or time. There are 24 named tags currently.
+	 * The format allows specifying the same range of memory as often as it can, so this multiplies quickly. */
+	if (c > 100) {
+		exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteCanon", "Too much tags (%d) in Canon MakerNote", c);
+		return;
+	}
 
 	/* Remove any old entries */
 	exif_mnote_data_canon_clear (n);

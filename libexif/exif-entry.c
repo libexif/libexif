@@ -780,6 +780,16 @@ static const struct {
       {8, {N_("Landscape mode (for landscape photos with the background "
 	      "in focus)"), N_("Landscape"), NULL}},
       {0, {NULL}}}},
+  { EXIF_TAG_SENSITIVITY_TYPE,
+    { {0, {N_("Unknown"), NULL}},
+      {1, {N_("Standard output sensitivity (SOS)"), NULL}},
+      {2, {N_("Recommended exposure index (REI)"), NULL}},
+      {3, {N_("ISO speed"), NULL}},
+      {4, {N_("Standard output sensitivity (SOS) and recommended exposure index (REI)"), NULL}},
+      {5, {N_("Standard output sensitivity (SOS) and ISO speed"), NULL}},
+      {6, {N_("Recommended exposure index (REI) and ISO speed"), NULL}},
+      {7, {N_("Standard output sensitivity (SOS) and recommended exposure index (REI) and ISO speed"), NULL}},
+      {0, {NULL}}}},
   { EXIF_TAG_FLASH,
     { {0x0000, {N_("Flash did not fire"), N_("No flash"), NULL}},
       {0x0001, {N_("Flash fired"), N_("Flash"), N_("Yes"), NULL}},
@@ -1297,6 +1307,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_FOCAL_PLANE_RESOLUTION_UNIT:
 	case EXIF_TAG_RESOLUTION_UNIT:
 	case EXIF_TAG_EXPOSURE_PROGRAM:
+	case EXIF_TAG_SENSITIVITY_TYPE:
 	case EXIF_TAG_FLASH:
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
 	case EXIF_TAG_COLOR_SPACE:
@@ -1491,6 +1502,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
 	case EXIF_TAG_FLASH:
 	case EXIF_TAG_ISO_SPEED_RATINGS:
+	case EXIF_TAG_SENSITIVITY_TYPE:
 
 	/* SHORT, 1 component, default 0 */
 	case EXIF_TAG_IMAGE_WIDTH:
@@ -1670,7 +1682,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_DATE_TIME_DIGITIZED:
 	{
 		time_t t;
-#ifdef HAVE_LOCALTIME_R
+#if defined(HAVE_LOCALTIME_R) || defined(HAVE_LOCALTIME_S)
 		struct tm tms;
 #endif
 		struct tm *tm;
@@ -1678,6 +1690,9 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		t = time (NULL);
 #ifdef HAVE_LOCALTIME_R
 		tm = localtime_r (&t, &tms);
+#elif HAVE_LOCALTIME_S
+		localtime_s (&tms, &t);
+		tm = &tms;
 #else
 		tm = localtime (&t);
 #endif

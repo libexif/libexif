@@ -89,9 +89,9 @@ exif_get_sshort (const unsigned char *buf, ExifByteOrder order)
 	if (!buf) return 0;
         switch (order) {
         case EXIF_BYTE_ORDER_MOTOROLA:
-                return ((buf[0] << 8) | buf[1]);
+                return (((unsigned int)buf[0] << 8) | buf[1]);
         case EXIF_BYTE_ORDER_INTEL:
-                return ((buf[1] << 8) | buf[0]);
+                return (((unsigned int)buf[1] << 8) | buf[0]);
         }
 
 	/* Won't be reached */

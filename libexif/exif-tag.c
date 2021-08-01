@@ -509,7 +509,6 @@ static const struct TagEntry {
 	    "Interoperability structure of the GPS Info IFD, like that of "
 	    "Exif IFD, has no image data."),
 	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
-
 	{EXIF_TAG_ISO_SPEED_RATINGS, "ISOSpeedRatings",
 	 N_("ISO Speed Ratings"),
 	 N_("Indicates the ISO Speed and ISO Latitude of the camera or "
@@ -524,6 +523,32 @@ static const struct TagEntry {
 	{EXIF_TAG_TIME_ZONE_OFFSET, "TimeZoneOffset", N_("Time Zone Offset"),
 	 N_("Encodes time zone of camera clock relative to GMT."),
 	 ESL_UNKNOWN},
+	{EXIF_TAG_SENSITIVITY_TYPE, "SensitivityType", N_("Sensitivity Type"),
+	 N_("The SensitivityType tag indicates which one of the parameters of "
+	 	"ISO12232 is the PhotographicSensitivity tag. Although it is an optional "
+		"tag, it should be recorded when a PhotographicSensitivity tag is recorded. "
+		"Value = 4, 5, 6, or 7 may be used in case that the values of plural parameters "
+		"are the same."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	{EXIF_TAG_STANDARD_OUTPUT_SENSITIVITY, "StandardOutputSensitivity", N_("Standard Output Sensitivity"),
+	 N_(""),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	{EXIF_TAG_RECOMMENDED_EXPOSURE_INDEX, "RecommendedExposureIndex",
+	 N_("Recommended Exposure Index"),
+	 N_(""),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	{EXIF_TAG_ISO_SPEED, "ISO Speed",
+	 N_("ISO Speed"),
+	 N_(""),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	{EXIF_TAG_ISO_SPEEDLatitudeYYY, "ISO Speed Latitude yyy",
+	 N_("ISO Speed Latitude yyy"),
+	 N_(""),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	{EXIF_TAG_ISO_SPEEDLatitudeZZZ, "ISO Speed Latitude zzz",
+	 N_("ISO Speed Latitude zzz"),
+	 N_(""),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_EXIF_VERSION, "ExifVersion", N_("Exif Version"),
 	 N_("The version of this standard supported. Nonexistence of this "
 	    "field is taken to mean nonconformance to the standard."),
@@ -537,6 +562,18 @@ static const struct TagEntry {
 	{EXIF_TAG_DATE_TIME_DIGITIZED, "DateTimeDigitized",
 	 N_("Date and Time (Digitized)"),
 	 N_("The date and time when the image was stored as digital data."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_OFFSET_TIME, "OffsetTime", N_("Offset Time For DateTime"),
+	 N_("A tag used to record the offset from UTC (the time difference from Universal Time Coordinated including daylight saving time) of the time of DateTime tag. The format when recording the offset is \"+|-HH:MM\". The part of \"+|-\" shall be recorded as \"+\" or \"-\". When the offset are unknown, all the character spaces except colons (\":\")should be filled with blank characters, or else the Interoperability field should be filled with blank characters. The character string length is 7 Bytes including NULL for termination. When the field is left blank, it is treated as unknown."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_OFFSET_TIME_ORIGINAL, "OffsetTimeOriginal", N_("Offset Time For DateTimeOriginal"),
+	 N_("A tag used to record the offset from UTC (the time difference from Universal Time Coordinated including daylight saving  time)  of  the time  of  DateTimeOriginal  tag.  The  format  when  recording  the  offset  is \"+|-HH:MM\". The part of \"+|-\" shall be recorded as \"+\" or \"-\". When the offset are unknown, all the character spaces except colons (\":\")should be filled with blank characters, or else the Interoperability field should be filled with blank characters. The character string length is 7 Bytes including NULL for termination. When the field is left blank, it is treated as unknown."),
+	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
+	/* EXIF 2.32 */
+	{EXIF_TAG_OFFSET_TIME_DIGITIZED, "OffsetTimeDigitized", N_("Offset Time For DateTimeDigitized"),
+	 N_("A tag used to record the offset from UTC (the time difference from Universal Time Coordinated including daylight  saving  time)  of  the time  of  DateTimeDigitized  tag.  The  format  when  recording  the  offset  is \"+|-HH:MM\". The part of \"+|-\" shall be recorded as \"+\" or \"-\". When the offset are unknown, all the character spaces except colons (\":\")should be filled with blank characters, or else the Interoperability field should be filled with blank characters. The character string length is 7 Bytes including NULL for termination. When the field is left blank, it is treated as unknown."),
 	 { ESL_NNNN, ESL_NNNN, ESL_OOOO, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_COMPONENTS_CONFIGURATION, "ComponentsConfiguration",
 	 N_("Components Configuration"),

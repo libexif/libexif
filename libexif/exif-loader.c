@@ -29,6 +29,8 @@
 #include <string.h>
 #include <stdio.h>
 
+#undef JPEG_MARKER_DCT
+#define JPEG_MARKER_DCT  0xc0
 #undef JPEG_MARKER_DHT
 #define JPEG_MARKER_DHT  0xc4
 #undef JPEG_MARKER_SOI
@@ -41,8 +43,16 @@
 #define JPEG_MARKER_APP1 0xe1
 #undef JPEG_MARKER_APP2
 #define JPEG_MARKER_APP2 0xe2
+#undef JPEG_MARKER_APP4
+#define JPEG_MARKER_APP4 0xe4
+#undef JPEG_MARKER_APP5
+#define JPEG_MARKER_APP5 0xe5
+#undef JPEG_MARKER_APP11
+#define JPEG_MARKER_APP11 0xeb
 #undef JPEG_MARKER_APP13
 #define JPEG_MARKER_APP13 0xed
+#undef JPEG_MARKER_APP14
+#define JPEG_MARKER_APP14 0xee
 #undef JPEG_MARKER_COM
 #define JPEG_MARKER_COM 0xfe
 
@@ -243,11 +253,11 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 			eld->state = EL_READ_SIZE_BYTE_16;
 			break;
 		case EL_READ_SIZE_BYTE_16:
-			eld->size |= eld->b[i] << 16;
+			eld->size |= (unsigned int)eld->b[i] << 16;
 			eld->state = EL_READ_SIZE_BYTE_08;
 			break;
 		case EL_READ_SIZE_BYTE_08:
-			eld->size |= eld->b[i] << 8;
+			eld->size |= (unsigned int)eld->b[i] << 8;
 			eld->state = EL_READ_SIZE_BYTE_00;
 			break;
 		case EL_READ_SIZE_BYTE_00:
@@ -281,11 +291,16 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 				eld->size = 0;
 				eld->state = EL_READ_SIZE_BYTE_08;
 				break;
+			case JPEG_MARKER_DCT:
 			case JPEG_MARKER_DHT:
 			case JPEG_MARKER_DQT:
 			case JPEG_MARKER_APP0:
 			case JPEG_MARKER_APP2:
+			case JPEG_MARKER_APP4:
+			case JPEG_MARKER_APP5:
+			case JPEG_MARKER_APP11:
 			case JPEG_MARKER_APP13:
+			case JPEG_MARKER_APP14:
 			case JPEG_MARKER_COM:
 				eld->data_format = EL_DATA_FORMAT_JPEG;
 				eld->size = 0;

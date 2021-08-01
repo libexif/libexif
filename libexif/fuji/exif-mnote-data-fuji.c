@@ -183,6 +183,13 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 	c = exif_get_short (buf + datao, EXIF_BYTE_ORDER_INTEL);
 	datao += 2;
 
+	/* Just use an arbitrary max tag limit here to avoid needing to much memory or time. There are 50 named tags currently.
+	 * The format allows specifying the same range of memory as often as it can, so this multiplies quickly. */
+	if (c > 100) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteDataFuji", "Too much tags (%d) in Fuji MakerNote", c);
+		return;
+	}
+
 	/* Remove any old entries */
 	exif_mnote_data_fuji_clear (n);
 

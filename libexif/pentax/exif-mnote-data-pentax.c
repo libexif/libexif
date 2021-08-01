@@ -265,6 +265,14 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 	c = exif_get_short (buf + datao, n->order);
 	datao += 2;
 
+	/* Just use an arbitrary max tag limit here to avoid needing to much memory or time. There are 102 named tags currently.
+	 * The format allows specifying the same range of memory as often as it can, so this multiplies quickly. */
+	if (c > 200) {
+		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteDataPentax", "Too much tags (%d) in Pentax MakerNote", c);
+		return;
+	}
+
+
 	/* Remove any old entries */
 	exif_mnote_data_pentax_clear (n);
 

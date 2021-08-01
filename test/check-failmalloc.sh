@@ -7,10 +7,9 @@
 # Ideally, it would ensure that the test binary returns an error code on each
 # failure, but this often doesn't happen. This is a problem that should be
 # rectified, but the API doesn't allow returning an error code in many
-# functions that could encounter a problem. The issue could be solve in more
+# functions that could encounter a problem. The issue could be solved in more
 # cases with more judicious use of log calls with EXIF_LOG_CODE_NO_MEMORY
 # codes.
-. ./check-vars.sh
 
 VERBOSE=
 if [ "$1" = "-v" ] ; then
@@ -18,9 +17,8 @@ if [ "$1" = "-v" ] ; then
 fi
 
 if [ x"$FAILMALLOC_PATH" = x ]; then
-    echo libfailmalloc is not available
-    echo SKIPPING
-    exit
+    echo "libfailmalloc is not available"
+    exit 77
 fi
 
 BINARY_PREFIX=./
@@ -62,10 +60,10 @@ failmalloc_binary_test () {
 
 failmalloc_binary_test 500 test-value
 failmalloc_binary_test 300 test-mem
-for f in $SRCDIR/testdata/*jpg; do
+for f in ${srcdir}/testdata/*jpg; do
     echo "Testing `basename "$f"`"
-    failmalloc_binary_test 500 test-parse "$f"
-    # N.B., test-parse --swap-byte-order doesn't test any new paths
+    failmalloc_binary_test 500 test-parse$EXEEXT "$f"
+    # N.B., test-parse$EXEEXT --swap-byte-order doesn't test any new paths
 done
 
 echo PASSED
