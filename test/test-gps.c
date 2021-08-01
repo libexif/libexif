@@ -72,16 +72,16 @@ const uint16_t test_tags [] = {
 /*
  * Verify that the entry is properly initialized.
  */
-static void check_entry_format(ExifEntry *e)
+static int check_entry_format(ExifEntry *e)
 {
-    if(e->tag > EXIF_TAG_GPS_H_POSITIONING_ERROR) {
-        /* unknown tags should get EXIF_FORMAT_UNDEFINED, no size and no data */
-        if(e->format != EXIF_FORMAT_UNDEFINED || e->size || e->components || e->data) {
-            fprintf(stderr, "check_entry_format: Unknown tag not handled correctly (tag=%x)\n", e->tag);
-            exit(7);
-        }
-        return;
-    }
+	if(e->tag > EXIF_TAG_GPS_H_POSITIONING_ERROR) {
+		/* unknown tags should get EXIF_FORMAT_UNDEFINED, no size and no data */
+		if(e->format != EXIF_FORMAT_UNDEFINED || e->size || e->components || e->data) {
+		    fprintf(stderr, "check_entry_format: Unknown tag not handled correctly (tag=%x)\n", e->tag);
+		    return 1;
+		}
+		return 0;
+	}
 	switch(e->format) {
 	case EXIF_FORMAT_UNDEFINED:
 	case EXIF_FORMAT_ASCII:
@@ -89,7 +89,7 @@ static void check_entry_format(ExifEntry *e)
 		   only check here is, if component count is set, the size should match the count */
 		if(e->size != e->components) {
 			fprintf (stderr, "check_entry_format: Entry has bad component count or size (tag=%x)\n", e->tag);
-			exit(1);
+			return 1;
 		}
 		break;
 		
@@ -97,29 +97,30 @@ static void check_entry_format(ExifEntry *e)
 		/* All other formats should have a nonzero component count. */
 		if(!e->components) {
 			fprintf (stderr, "check_entry_format: Entry should have component count set (tag=%x)\n", e->tag);
-			exit(2);	
+			return 1;
 		}
-		return;	
+		return 0;	
 	}
 
 	/* If a value is present the size should be set to the right value */	
 	if(e->data && e->size != e->components * exif_format_get_size(e->format)) {
 		fprintf (stderr, "check_entry_format: Entry has bad size (tag=%x)\n", e->tag);
-		exit(6);	
+		return 1;	
 	}
+	return 0;
 }
 
 int
 main ()
 {
 	int i;
-	ExifData *data;
-	ExifEntry *e;
+	ExifData *data = NULL;
+	ExifEntry *e = NULL;
 
 	data = exif_data_new ();
 	if (!data) {
 		fprintf (stderr, "Error running exif_data_new()\n");
-		exit(13);
+		goto ERROR_EXIT;
 	}
 
 	/* Run tests */
@@ -127,12 +128,19 @@ main ()
 		e = exif_entry_new ();
 		if (!e) {
 			fprintf (stderr, "Error running exif_entry_new()\n");
-			exit(13);
+			goto ERROR_EXIT;
 		}		
 		exif_content_add_entry(data->ifd[EXIF_IFD_GPS], e);
 		exif_entry_initialize (e, (ExifTag)test_tags[i]);
-		check_entry_format(e);
+		if(check_entry_format(e)) goto ERROR_EXIT;
 		exif_content_remove_entry (data->ifd[EXIF_IFD_GPS], e);
 		exif_entry_unref (e);
 	}
+	exif_data_unref(data);
+	return 0;
+ERROR_EXIT:
+	exif_entry_unref (e);
+	exif_data_unref (data);
+	exit(EXIT_FAILURE);
 }
+
