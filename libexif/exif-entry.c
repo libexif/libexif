@@ -1418,7 +1418,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	return val;
 }
 
-
+static
 void exif_entry_initialize_gps(ExifEntry *e, ExifTag tag) {
   const ExifGPSIfdTagInfo* info = exif_get_gps_tag_info(tag);
 
