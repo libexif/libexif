@@ -33,7 +33,7 @@ exif_mnote_data_apple_free(ExifMnoteData *md) {
     ExifMnoteDataApple *d = (ExifMnoteDataApple *) md;
     unsigned int i;
 
-    printf("%s\n", __FUNCTION__);
+    /*printf("%s\n", __FUNCTION__);*/
 
     if (!d) {
         return;
@@ -60,7 +60,7 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
     unsigned int dsize;
     unsigned int ofs, dofs;
 
-    printf("%s\n", __FUNCTION__);
+    /*printf("%s\n", __FUNCTION__);*/
 
     if (!d || !buf || (buf_size < 6 + 16)) {
         exif_log(md->log, EXIF_LOG_CODE_CORRUPT_DATA,
@@ -78,7 +78,7 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
     } else {
         exif_log(md->log, EXIF_LOG_CODE_CORRUPT_DATA,
                 "ExifMnoteDataApple", "Unrecognized byte order");
-        printf("%s(%d)\n", __FUNCTION__, __LINE__);
+        /*printf("%s(%d)\n", __FUNCTION__, __LINE__);*/
         return;
     }
 
@@ -88,11 +88,11 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
     if (buf_size < 6 + 16 + tcount * 6 + 4) {
         exif_log(md->log, EXIF_LOG_CODE_CORRUPT_DATA,
                  "ExifMnoteDataApple", "Short MakerNote");
-        printf("%s(%d)\n", __FUNCTION__, __LINE__);
+        /*printf("%s(%d)\n", __FUNCTION__, __LINE__);*/
         return;
     }
 
-    printf("%s(%d): total %d tags\n", __FUNCTION__, __LINE__, tcount);
+    /* printf("%s(%d): total %d tags\n", __FUNCTION__, __LINE__, tcount); */
 
     ofs += 16;
 
@@ -102,7 +102,7 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
     d->entries = exif_mem_alloc(md->mem, sizeof(MnoteAppleEntry) * tcount);
     if (!d->entries) {
         EXIF_LOG_NO_MEMORY(md->log, "ExifMnoteApple", sizeof(MnoteAppleEntry) * tcount);
-        printf("%s(%d)\n", __FUNCTION__, __LINE__);
+        /*printf("%s(%d)\n", __FUNCTION__, __LINE__);*/
         return;
     }
 
@@ -133,7 +133,7 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
 
 static void
 exif_mnote_data_apple_set_offset(ExifMnoteData *md, unsigned int o) {
-    printf("%s\n", __FUNCTION__);
+    /*printf("%s\n", __FUNCTION__);*/
 
     if (md) {
         ((ExifMnoteDataApple *) md)->offset = o;
@@ -147,7 +147,7 @@ exif_mnote_data_apple_set_byte_order(ExifMnoteData *md , ExifByteOrder o) {
     ExifMnoteDataApple *d = (ExifMnoteDataApple *) md;
     unsigned int i;
 
-    printf("%s\n", __FUNCTION__);
+    /*printf("%s\n", __FUNCTION__);*/
 
     if (!d || d->order == o) {
         return;
@@ -168,7 +168,7 @@ exif_mnote_data_apple_set_byte_order(ExifMnoteData *md , ExifByteOrder o) {
 
 static unsigned int
 exif_mnote_data_apple_count(ExifMnoteData *md){
-    printf("%s\n", __FUNCTION__);
+    /*printf("%s\n", __FUNCTION__);*/
 
     return md ? ((ExifMnoteDataApple *) md)->count : 0;
 }
@@ -245,7 +245,7 @@ ExifMnoteData *
 exif_mnote_data_apple_new(ExifMem *mem) {
     ExifMnoteData *md;
 
-    printf("%s\n", __FUNCTION__);
+    /*printf("%s\n", __FUNCTION__);*/
 
     if (!mem) {
         return NULL;
