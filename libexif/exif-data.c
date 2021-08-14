@@ -30,6 +30,7 @@
 #include <libexif/i18n.h>
 #include <libexif/exif-system.h>
 
+#include <libexif/apple/exif-mnote-data-apple.h>
 #include <libexif/canon/exif-mnote-data-canon.h>
 #include <libexif/fuji/exif-mnote-data-fuji.h>
 #include <libexif/olympus/exif-mnote-data-olympus.h>
@@ -816,6 +817,10 @@ interpret_maker_note(ExifData *data, const unsigned char *d, unsigned int ds)
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
 			"ExifData", "Pentax MakerNote variant type %d", mnoteid);
 		data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
+	} else if ((mnoteid = exif_mnote_data_apple_identify (data, e)) != 0) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
+			"ExifData", "Apple MakerNote variant type %d", mnoteid);
+		data->priv->md = exif_mnote_data_apple_new (data->priv->mem);
 	}
 
 	/* 
