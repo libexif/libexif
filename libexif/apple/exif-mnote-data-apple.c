@@ -230,15 +230,10 @@ exif_mnote_data_apple_get_value(ExifMnoteData *md, unsigned int i, char *val, un
 
 int
 exif_mnote_data_apple_identify(const ExifData *ed, const ExifEntry *e) {
-    int variant;
+    if (e->size < strlen("Apple iOS")+1)
+	return 0;
 
-    if (!strcmp((const char *) e->data, "Apple iOS")) {
-        variant = 1;
-    } else {
-        variant = 0;
-    }
-
-    return variant;
+    return !memcmp((const char *) e->data, "Apple iOS", strlen("Apple iOS"));
 }
 
 ExifMnoteData *
