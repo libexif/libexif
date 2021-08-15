@@ -70,6 +70,11 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
 
     /* Start of interesting data */
     ofs = d->offset + 6;
+    if (ofs > buf_size - 16) {
+        exif_log(md->log, EXIF_LOG_CODE_CORRUPT_DATA,
+                 "ExifMnoteDataApple", "Short MakerNote");
+        return;
+    }
 
     if ((buf[ofs + 12] == 'M') && (buf[ofs + 13] == 'M')) {
         d->order = EXIF_BYTE_ORDER_MOTOROLA;
