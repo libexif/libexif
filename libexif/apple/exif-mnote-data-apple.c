@@ -134,6 +134,11 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
             EXIF_LOG_NO_MEMORY(md->log, "ExifMnoteApple", dsize);
             continue;
         }
+	if (dofs + dsize > buf_size) {
+		exif_log (md->log, EXIF_LOG_CODE_CORRUPT_DATA,
+                                  "ExifMnoteApplet", "Tag size overflow detected (%u vs size %u)", dofs + dsize, buf_size);
+		continue;
+	}
         memcpy(d->entries[i].data, buf + dofs, dsize);
         d->entries[i].size = dsize;
     }
