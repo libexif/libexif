@@ -41,6 +41,10 @@ mnote_apple_entry_get_value(MnoteAppleEntry *entry, char *v, unsigned int maxlen
 
     switch (entry->tag) {
     case MNOTE_APPLE_TAG_HDR:
+	if (entry->size < 4) return NULL;
+	if (entry->format != EXIF_FORMAT_SLONG) return NULL;
+	if (entry->components != 1) return NULL;
+
         vsl = exif_get_slong(entry->data, entry->order);
         snprintf(v, maxlen, "%d", vsl);
         break;
