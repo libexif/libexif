@@ -117,6 +117,12 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
         d->entries[i].components = exif_get_long(buf + ofs + 4, d->order);
         d->entries[i].order = d->order;
         dsize = exif_format_get_size(d->entries[i].format) * d->entries[i].components;
+	if (dsize > 65536) {
+		/* Corrupt data: EXIF data size is limited to the
+		 * maximum size of a JPEG segment (64 kb).
+		 */
+		continue;
+	}
         if (dsize > 4) {
             dofs = d->offset + exif_get_long(buf + ofs + 8, d->order);
         } else {
