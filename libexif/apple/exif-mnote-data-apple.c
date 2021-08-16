@@ -90,7 +90,7 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
     tcount = (unsigned int) exif_get_short(buf + ofs + 14, d->order);
 
     /* Sanity check the offset */
-    if (buf_size < 6 + 16 + tcount * 6 + 4) {
+    if (buf_size < d->offset + 6 + 16 + tcount * 12 + 4) {
         exif_log(md->log, EXIF_LOG_CODE_CORRUPT_DATA,
                  "ExifMnoteDataApple", "Short MakerNote");
         /*printf("%s(%d)\n", __FUNCTION__, __LINE__);*/
@@ -110,8 +110,14 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
         /*printf("%s(%d)\n", __FUNCTION__, __LINE__);*/
         return;
     }
+    memset(d->entries, 0, sizeof(MnoteAppleEntry) * tcount);
 
     for (i = 0; i < tcount; i++) {
+	if (ofs + 12 > buf_size) {
+		exif_log (md->log, EXIF_LOG_CODE_CORRUPT_DATA,
+                                  "ExifMnoteApplet", "Tag size overflow detected (%u vs size %u)", ofs + 12, buf_size);
+		break;
+	}
         d->entries[i].tag = exif_get_short(buf + ofs, d->order);
         d->entries[i].format = exif_get_short(buf + ofs + 2, d->order);
         d->entries[i].components = exif_get_long(buf + ofs + 4, d->order);
@@ -170,9 +176,8 @@ exif_mnote_data_apple_set_byte_order(ExifMnoteData *md , ExifByteOrder o) {
     }
 
     for (i = 0; i < d->count; i++) {
-        if (d->entries[i].size != (exif_format_get_size(d->entries[i].format) * d->entries[i].components)) {
-            continue;
-        }
+	if (d->entries[i].components && (d->entries[i].size/d->entries[i].components < exif_format_get_size (d->entries[i].format)))
+		continue;
         exif_array_set_byte_order(d->entries[i].format, d->entries[i].data,
                                   d->entries[i].components, d->entries[i].order, o);
         d->entries[i].order = o;
