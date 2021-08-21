@@ -122,7 +122,7 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
         d->entries[i].format = exif_get_short(buf + ofs + 2, d->order);
         d->entries[i].components = exif_get_long(buf + ofs + 4, d->order);
         d->entries[i].order = d->order;
-	if (buf_size / d->entries[i].components < exif_format_get_size(d->entries[i].format)) {
+	if ((d->entries[i].components) && (buf_size / d->entries[i].components < exif_format_get_size(d->entries[i].format))) {
 		exif_log (md->log, EXIF_LOG_CODE_CORRUPT_DATA,
                                   "ExifMnoteApplet", "Tag size overflow detected (components %lu vs size %u)", d->entries[i].components, buf_size);
 		break;
