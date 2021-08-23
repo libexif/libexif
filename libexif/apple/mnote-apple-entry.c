@@ -48,6 +48,13 @@ mnote_apple_entry_get_value(MnoteAppleEntry *entry, char *v, unsigned int maxlen
         vsl = exif_get_slong(entry->data, entry->order);
         snprintf(v, maxlen, "%d", vsl);
         break;
+    case MNOTE_APPLE_TAG_IMAGE_UNIQUE_ID:
+    case MNOTE_APPLE_TAG_BURST_UUID:
+    case MNOTE_APPLE_TAG_MEDIA_GROUP_UUID:
+	if (entry->format != EXIF_FORMAT_ASCII) return NULL;
+	strncpy (v, (char *) entry->data, MIN (maxlen-1, entry->size));
+	v[MIN (maxlen-1, entry->size)] = 0;
+        break;
     default:
         snprintf(v, maxlen, "total %u unsupported data", entry->size);
         break;
