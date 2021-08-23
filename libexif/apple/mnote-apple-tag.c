@@ -34,6 +34,12 @@ static const struct {
 } table[] = {
 #ifndef NO_VERBOSE_TAG_STRINGS
     {MNOTE_APPLE_TAG_HDR, "HDR", N_("HDR Mode"), ""},
+    {MNOTE_APPLE_TAG_RUNTIME, "RUNTIME", N_("Runtime"), ""},
+    {MNOTE_APPLE_TAG_ACCELERATION_VECTOR, "ACCELERATION_VECTOR", N_("Acceleration Vector"), ""},
+    {MNOTE_APPLE_TAG_HDR, "HDR", N_("HDR"), ""},
+    {MNOTE_APPLE_TAG_BURST_UUID, "BURST_UUID", N_("Burst UUID"), ""},
+    {MNOTE_APPLE_TAG_MEDIA_GROUP_UUID, "MEDIA_GROUP_UUID", N_("Media Group UUID"), ""},
+    {MNOTE_APPLE_TAG_IMAGE_UNIQUE_ID, "IMAGE_UNIQUE_ID", N_("Image Unique ID"), ""},
 #endif
     {0, NULL, NULL, NULL}
 };
