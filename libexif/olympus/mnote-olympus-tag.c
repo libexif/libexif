@@ -114,6 +114,7 @@ static const struct {
 	{MNOTE_NIKON_TAG_SERIALNUMBER2,  "SerialNumber2", N_("Serial Number 2"), ""},
 	{MNOTE_NIKON_TAG_SATURATION2,    "Saturation2", N_("Saturation 2"), ""},
 	{MNOTE_NIKON_TAG_MULTIEXPOSURE,  "MultiExposure", N_("Multi Exposure"), ""},
+	{MNOTE_NIKON_TAG_HIGHISONR,      "HighISONr", N_("High ISO Noise Reduction"), ""},
 	{MNOTE_NIKON_TAG_TONINGEFFECT,   "ToningEffect", N_("Toning Effect"), ""},
 	{MNOTE_NIKON_TAG_POWERUPTIME,    "PowerupTime", N_("Powerup Time"), ""},
 	{MNOTE_NIKON_TAG_AFINFO2,        "AFInfo2", N_("AF Info 2"), ""},
