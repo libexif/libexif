@@ -164,6 +164,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 {
 	unsigned int i;
 
+begin:
 	if (!eld || (len && !buf)) 
 		return 0;
 
@@ -344,7 +345,7 @@ exif_loader_write (ExifLoader *eld, unsigned char *buf, unsigned int len)
 	 * to read all data we need. Fill it with new data.
 	 */
 	eld->b_len = 0;
-	return exif_loader_write (eld, buf, len);
+	goto begin;
 }
 
 ExifLoader *
