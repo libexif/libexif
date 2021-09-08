@@ -18,9 +18,9 @@ libexif-0.6.22.1 (20xx-xx-xx):
     * CVE-2020-0452: compiler optimization could remove an a
       bufferoverflow check, making a buffer overflow possible with some
       EXIF tags
-    * some more denial of service (compute time) counter-measures added
-      that avoid minutes of decoding time with malformed files found
-      by oss-fuzz
+    * some more denial of service (compute time or stack exhaustion) counter-measures
+      added that avoid minutes of decoding time with malformed files found
+      by OSS-Fuzz
 
 libexif-0.6.22 (2020-05-18):
   * New translations: ms
