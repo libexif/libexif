@@ -1,6 +1,7 @@
 libexif-0.6.23 (2021-09-12):
+
   * Translation updates: es, pl, uk, fr
-  * EXIF_TAG_SENSITIVITY_TYPE decoder added, added some more exif 2.3 tags:
+  * EXIF_TAG_SENSITIVITY_TYPE decoder added, added some more Exif 2.3 tags:
     - EXIF_TAG_STANDARD_OUTPUT_SENSITIVITY
     - EXIF_TAG_RECOMMENDED_EXPOSURE_INDEX
     - EXIF_TAG_ISO_SPEED
