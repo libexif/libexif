@@ -184,8 +184,9 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 	datao += 2;
 
 	/* Just use an arbitrary max tag limit here to avoid needing to much memory or time. There are 50 named tags currently.
+	 * Fuji XT2 had 56 entries or so, GFX500 has 68. 150 seems a safe upper bound currently.
 	 * The format allows specifying the same range of memory as often as it can, so this multiplies quickly. */
-	if (c > 100) {
+	if (c > 150) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifMnoteDataFuji", "Too much tags (%d) in Fuji MakerNote", c);
 		return;
 	}
