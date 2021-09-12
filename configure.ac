@@ -1,6 +1,6 @@
 AC_PREREQ(2.69)
 AC_INIT([EXIF library],
-        [0.6.22.1],
+        [0.6.23],
         [libexif-devel@lists.sourceforge.net],
         [libexif],
         [https://libexif.github.io/])
