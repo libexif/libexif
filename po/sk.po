@@ -2122,7 +2122,7 @@ msgstr "režim portrét (pre detailné zábery s nezaostreným pozadím)"
 # exif-exposureprogram-8
 #: libexif/exif-entry.c:755
 msgid "Landscape mode (for landscape photos with the background in focus)"
-msgstr "režim krajinka (pre fotografie krajiny so zaostreným pozadím)"
+msgstr "režim krajinka (pre fotografie krajiny so zaostreným pozadím) "
 
 #: libexif/exif-entry.c:759 libexif/exif-entry.c:764
 #: libexif/olympus/mnote-olympus-entry.c:97
@@ -2797,16 +2797,6 @@ msgid "Indicates whether differential correction is applied to the GPS receiver.
 msgstr "Indikuje, či sa na prijímač GPS používa diferenciálna korekcia."
 
 #: libexif/exif-tag.c:220
-msgid "GPS Horizontal Positioning Error"
-msgstr ""
-
-#: libexif/exif-tag.c:221
-msgid ""
-"Indicates the horizontal positioning errors in meters. This is expressed as "
-"one RATIONAL value."
-msgstr ""
-
-#: libexif/exif-tag.c:225
 msgid "New Subfile Type"
 msgstr "Nový typ podsúboru"
 
