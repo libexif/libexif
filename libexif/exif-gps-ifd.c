@@ -59,7 +59,8 @@ const static struct ExifGPSIfdTagInfo exif_gps_ifd_tags[] = {
 };
 
 const ExifGPSIfdTagInfo *exif_get_gps_tag_info(ExifTag tag) {
-  for (int i = 0; i < sizeof(exif_gps_ifd_tags) / sizeof(ExifGPSIfdTagInfo); ++i) {
+  int i;
+  for (i = 0; i < sizeof(exif_gps_ifd_tags) / sizeof(ExifGPSIfdTagInfo); ++i) {
     if (tag==exif_gps_ifd_tags[i].tag)
       return &exif_gps_ifd_tags[i];
   }
