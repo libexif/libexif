@@ -258,7 +258,7 @@ Byte order: Intel
     Entry 37: 1, (unknown)
       Size: 6
       Value: 0x0000
-    Entry 38: 1, (unknown)
+    Entry 38: 1, Spot Metering Mode
       Size: 6
       Value: 0x0000
     Entry 39: 1, Photo Effect
@@ -321,13 +321,13 @@ Byte order: Intel
     Entry 58: 4, Sequence Number
       Size: 1
       Value: 0
-    Entry 59: 4, (unknown)
+    Entry 59: 4, Optical Zoom Code
       Size: 6
       Value: 0x0000
     Entry 60: 4, (unknown)
       Size: 6
       Value: 0x0000
-    Entry 61: 4, (unknown)
+    Entry 61: 4, Camera Temperature
       Size: 6
       Value: 0x0000
     Entry 62: 4, Flash Guide Number
@@ -345,7 +345,7 @@ Byte order: Intel
     Entry 66: 4, AE Bracket Value
       Size: 7
       Value: 0.00 EV
-    Entry 67: 4, (unknown)
+    Entry 67: 4, Control Mode
       Size: 6
       Value: 0x0001
     Entry 68: 4, Focus Distance Upper
@@ -360,7 +360,7 @@ Byte order: Intel
     Entry 71: 4, Exposure Time
       Size: 1
       Value: 1
-    Entry 72: 4, (unknown)
+    Entry 72: 4, Measured EV 2
       Size: 6
       Value: 0x0000
     Entry 73: 4, Bulb Duration
@@ -399,10 +399,10 @@ Byte order: Intel
     Entry 84: 0, (unknown)
       Size: 8
       Value: 0 0 0 0 
-    Entry 85: 18, (unknown)
+    Entry 85: 18, AFInfo
       Size: 101
       Value: 9 9 640 480 3072 230 553 41 64982 0 554 64982 0 554 64982 0 554 65492 65492 65492 0 0 0 44 44 44 0 0 
-    Entry 86: 19, (unknown)
+    Entry 86: 19, ThumbnailValidArea
       Size: 8
       Value: 0 0 0 0 
     Entry 87: 6, ImageType
@@ -417,7 +417,7 @@ Byte order: Intel
     Entry 90: 9, OwnerName
       Size: 0
       Value: 
-    Entry 91: 16, (unknown)
+    Entry 91: 16, ModelID
       Size: 9
       Value: 20447232 
     Entry 92: 0, (unknown)
@@ -429,6 +429,6 @@ Byte order: Intel
     Entry 94: 25, (unknown)
       Size: 2
       Value: 1 
-    Entry 95: 13, (unknown)
+    Entry 95: 13, CameraInfo
       Size: 118
       Value: 72 9 512 512 512 512 512 512 512 512 512 65 0 0 65125 2 0 10 65504 65488 0 43 161 0 48 992 1024 0 0 0 0 0 0 0 192 351 
