@@ -59,4 +59,4 @@ const ExifGPSIfdTagInfo* exif_get_gps_tag_info(ExifTag tag);
 
 
 
-#endif //LIBEXIF_GPS_IFD_GPS_IFD_H
+#endif /* LIBEXIF_GPS_IFD_GPS_IFD_H */

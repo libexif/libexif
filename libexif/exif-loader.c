@@ -247,7 +247,7 @@ begin:
 			switch (eld->size) {
                             case 0:
 			        eld->state = EL_READ;
-				i--;   // reprocess this byte
+				i--;   /* reprocess this byte */
 				break;
                             case 1:
                                 eld->size = 0;
@@ -277,7 +277,7 @@ begin:
 			case EL_DATA_FORMAT_JPEG:
 				eld->state = EL_SKIP_BYTES;
 				if (eld->size < 2) {
-				    // Actually it's malformed...
+				    /* Actually it's malformed... */
 				    eld->size = 0;
 				} else
 				    eld->size -= 2;
@@ -286,10 +286,10 @@ begin:
 				eld->data_format = EL_DATA_FORMAT_EXIF;
 				eld->state = EL_SKIP_BYTES;
 				if (eld->size < 86) {
-				    // Actually it's malformed...
+				    /* Actually it's malformed... */
 				    eld->size = 0;
 				} else
-				    eld->size -= 86;	// and put this in an else
+				    eld->size -= 86;	/* and put this in an else */
 				break;
 			case EL_DATA_FORMAT_EXIF:
 				eld->state = EL_EXIF_FOUND;
