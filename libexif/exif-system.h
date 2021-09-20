@@ -29,4 +29,10 @@
 # define UNUSED(param) param
 #endif
 
+#if (defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L))
+# define LIBEXIF_INLINE inline
+#else
+# define LIBEXIF_INLINE
+#endif
+
 #endif /* !defined(EXIF_SYSTEM_H) */
