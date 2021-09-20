@@ -188,9 +188,18 @@ static const struct {
 	{MNOTE_CANON_TAG_PANORAMA, 2, N_("Panorama Frame")},
 	{MNOTE_CANON_TAG_PANORAMA, 5, N_("Panorama Direction")},
 	{MNOTE_CANON_TAG_COLOR_INFORMATION, 0, N_("Tone Curve")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 1, N_("Sharpness")},
 	{MNOTE_CANON_TAG_COLOR_INFORMATION, 2, N_("Sharpness Frequency")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 3, N_("Sensor Red Level")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 4, N_("Sensor Blue Level")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 5, N_("White Balance Red")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 6, N_("White Balance Blue")},
 	{MNOTE_CANON_TAG_COLOR_INFORMATION, 7, N_("White Balance")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 8, N_("Color Temperature")},
 	{MNOTE_CANON_TAG_COLOR_INFORMATION, 9, N_("Picture Style")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 10, N_("Digital Gain")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 11, N_("White Balance Shift AB")},
+	{MNOTE_CANON_TAG_COLOR_INFORMATION, 12, N_("White Balance Shift GM")},
 #endif
 	{0, 0, NULL}
 };
