@@ -231,8 +231,8 @@ AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_srcdir)"
 AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_builddir)"
 AM_LDFLAGS="$LDFLAGS"
 AS_VAR_IF([GCC], [yes], [dnl
-    AM_CFLAGS="$AM_CFLAGS -ansi -pedantic-error"
-    AM_CXXFLAGS="$AM_CXXFLAGS -ansi -pedantic-error"
+    AM_CFLAGS="$AM_CFLAGS -ansi -pedantic-errors"
+    AM_CXXFLAGS="$AM_CXXFLAGS -ansi -pedantic-errors"
     AM_CPPFLAGS="$AM_CPPFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
     AM_LDFLAGS="$AM_LDFLAGS -g -Wall"
 ])
