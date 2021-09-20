@@ -394,10 +394,11 @@ exif_mnote_data_canon_identify (const ExifData *ed, const ExifEntry *e)
 {
 	char value[8];
 
-	(void) e;  /* unused */
 	ExifEntry *em = exif_data_get_entry (ed, EXIF_TAG_MAKE);
 	if (!em) 
 		return 0;
+
+	(void) e;  /* unused */
 	return !strcmp (exif_entry_get_value (em, value, sizeof (value)), "Canon");
 }
 
