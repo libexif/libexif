@@ -105,7 +105,7 @@ enum _MnoteCanonTag {
 	MNOTE_CANON_TAG_FILTER_INFO		= 0x4024, /* subtree */
 	MNOTE_CANON_TAG_HDR_INFO		= 0x4025, /* subtree */
 	MNOTE_CANON_TAG_AF_CONFIG		= 0x4028, /* subtree */
-	MNOTE_CANON_TAG_RAW_BURST_INFO		= 0x403f, /* subtree */
+	MNOTE_CANON_TAG_RAW_BURST_INFO		= 0x403f  /* subtree */
 };
 typedef enum _MnoteCanonTag MnoteCanonTag;
 

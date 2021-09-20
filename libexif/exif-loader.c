@@ -63,7 +63,7 @@ typedef enum {
 	EL_READ_SIZE_BYTE_08,
 	EL_READ_SIZE_BYTE_00,
 	EL_SKIP_BYTES,
-	EL_EXIF_FOUND,
+	EL_EXIF_FOUND
 } ExifLoaderState;
 
 typedef enum {

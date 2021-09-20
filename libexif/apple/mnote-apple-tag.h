@@ -31,7 +31,7 @@ enum _MnoteAppleTag {
     MNOTE_APPLE_TAG_HDR			= 0xA,
     MNOTE_APPLE_TAG_BURST_UUID 		= 0xB,
     MNOTE_APPLE_TAG_MEDIA_GROUP_UUID	= 0x11,
-    MNOTE_APPLE_TAG_IMAGE_UNIQUE_ID	= 0x15,
+    MNOTE_APPLE_TAG_IMAGE_UNIQUE_ID	= 0x15
 };
 typedef enum _MnoteAppleTag MnoteAppleTag;
 
