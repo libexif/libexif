@@ -33,7 +33,7 @@ jobs:
       if: runner.os == 'macOS'
       run: |
         brew update
-        brew install automake doxygen graphviz tree
+        brew install automake doxygen graphviz
 
     - name: 'autoreconf'
       run: autoreconf -vis .
@@ -51,11 +51,7 @@ jobs:
       run: make distcheck
 
     - name: 'dist tarball content'
-      run: |
-          mkdir tmp
-          cd tmp
-          for tarball in ../*.tar.*; do tar xf "$tarball"; break; done
-          tree .
+      run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
 
   windows-build:
     runs-on: windows-latest
@@ -103,7 +99,6 @@ jobs:
           update: true
           install: >-
             git
-            tree
             autoconf
             automake
             diffutils
@@ -134,8 +129,4 @@ jobs:
         run: make distcheck
 
       - name: '${{ matrix.sys }} dist tarball content'
-        run: |
-          mkdir tmp
-          cd tmp
-          for tarball in ../*.tar.*; do tar xf "$tarball"; break; done
-          tree .
+        run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
