@@ -18,7 +18,7 @@ jobs:
     name: 'ix ${{ matrix.os }} ${{ matrix.compiler }} ${{ matrix.c-standard }}'
 
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         os: [ ubuntu-latest, macos-latest ]
         c-standard: [ c90, c99 ]
@@ -114,6 +114,9 @@ jobs:
         run: for tarball in *.tar.*; do tar tf "$tarball" | sort; break; done
 
   build-msys2:
+    # Only use Windows cycles if the other builds actually work
+    needs: build-ix
+
     runs-on: windows-latest
 
     # See https://github.com/msys2/setup-msys2
