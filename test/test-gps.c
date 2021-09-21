@@ -113,7 +113,7 @@ static int check_entry_format(ExifEntry *e)
 int
 main ()
 {
-	int i;
+	size_t i;
 	ExifData *data = NULL;
 	ExifEntry *e = NULL;
 
