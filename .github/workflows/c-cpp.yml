@@ -8,6 +8,15 @@ on:
 
 env:
   V: 1
+  CFLAGS_IGNORE_WARNINGS_GCC: >-
+    -Wno-overlength-strings
+  CFLAGS_IGNORE_WARNINGS_CLANG: >-
+    -Wno-overlength-strings
+    -Wno-documentation
+    -Wno-documentation-deprecated
+    -Wno-documentation-unknown-command
+    -Wno-reserved-id-macro
+    -Wno-padded
 
 jobs:
   buildx:
@@ -27,13 +36,18 @@ jobs:
             compiler: gcc
         include:
           - compiler: gcc
-            all-warnings: "-Wall -Wextra"
+            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNIGNS_GCC }}"
           - compiler: clang
-            all-warnings: "-Wall -Wextra -Weverything"
+            all-warnings: "-Wall -Wextra -Weverything ${{ env.CFLAGS_IGNORE_WARNIGNS_CLANG }}"
+        include:
+          - os: ubuntu-latest
+            c-standard: c90
+            cpp-defines: "-D_XOPEN_SOURCE=500 -D_POSIX_C_SOURCE=1"
 
     env:
-      CFLAGS_ERROR:   '-std=${{ matrix.c-standard }} ${{ matrix.all-warnings }} -Werror'
-      CFLAGS_NOERROR: '-std=${{ matrix.c-standard }} ${{ matrix.all-warnings }}'
+      CFLAGS_ERROR:   '-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} -Werror'
+      CFLAGS_NOERROR: '-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }}'
+      CPPFLAGS: ${{ matrix.cpp-defines }}
 
     steps:
       - name: 'Show CFLAGS'
@@ -96,20 +110,27 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        c-standard: [ c90, c99 ]
         include:
           - sys: mingw32
             env: i686
+            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNIGNS_GCC }}"
           - sys: mingw64
             env: x86_64
+            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNIGNS_GCC }}"
           - sys: ucrt64         # Experimental!
             env: ucrt-x86_64
+            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNIGNS_GCC }}"
           - sys: clang64        # Experimental!
             env: clang-x86_64
+            all-warnings: "-Wall -Wextra -Weverything ${{ env.CFLAGS_IGNORE_WARNIGNS_CLANG }}"
 
-    name: 'MSYS2 ${{ matrix.sys }} build'
+    name: 'MSYS2 ${{ matrix.sys }} ${{ matrix.c-standard }} build'
 
     env:
       MINGW_ARCH: ${{ matrix.sys }}
+      CFLAGS_ERROR:    "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} -Werror"
+      CFLAGS_NOxERROR: "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }}"
 
     defaults:
       run:
@@ -168,15 +189,23 @@ jobs:
 
       - name: 'configure'
         run: ./configure
+        env:
+          CFLAGS: ${{ env.CFLAGS_NOERROR }}
 
       - name: 'make'
         run: make
+        env:
+          CFLAGS: ${{ env.CFLAGS_ERROR }}
 
       - name: 'make check'
         run: make check
+        env:
+          CFLAGS: ${{ env.CFLAGS_ERROR }}
 
       - name: 'make distcheck'
         run: make distcheck
+        env:
+          CFLAGS: ${{ env.CFLAGS_NOERROR }}
 
       - name: 'dist tarball content'
         run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
