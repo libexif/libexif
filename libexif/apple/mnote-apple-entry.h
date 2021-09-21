@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA.
  */
 
-#ifndef __MNOTE_APPLE_ENTRY_H__
-#define __MNOTE_APPLE_ENTRY_H__
+#ifndef LIBEXIF_MNOTE_APPLE_ENTRY_H
+#define LIBEXIF_MNOTE_APPLE_ENTRY_H
 
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-format.h>
@@ -38,4 +38,4 @@ struct _MnoteAppleEntry {
 
 char *mnote_apple_entry_get_value(MnoteAppleEntry *, char *, unsigned int);
 
-#endif /* __MNOTE_APPLE_ENTRY_H__ */
+#endif /* LIBEXIF_MNOTE_APPLE_ENTRY_H */

@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA.
  */
 
-#ifndef __EXIF_LOG_H__
-#define __EXIF_LOG_H__
+#ifndef LIBEXIF_EXIF_LOG_H
+#define LIBEXIF_EXIF_LOG_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -113,4 +113,4 @@ void     exif_logv (ExifLog *log, ExifLogCode, const char *domain,
 }
 #endif /* __cplusplus */
 
-#endif /* __EXIF_LOG_H__ */
+#endif /* LIBEXIF_EXIF_LOG_H */
