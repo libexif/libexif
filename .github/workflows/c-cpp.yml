@@ -8,6 +8,12 @@ on:
 
 env:
   V: 1
+  CFLAGS_GCC: >-
+    -DCFLAGS_GCC1
+    -DCFLAGS_GCC2
+  CFLAGS_CLANG: >
+    -DCFLAGS_CLANG1
+    -DCFLAGS_CLANG2
 
 jobs:
   buildx:
@@ -123,7 +129,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        c-standard: [ c90, c99 ]
+        c-standard: [ c90 ]
         include:
           - sys: mingw32
             env: i686
@@ -163,8 +169,9 @@ jobs:
 
     env:
       MINGW_ARCH: ${{ matrix.sys }}
-      CFLAGS_ERROR:    "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} ${{ matrix.no-warnings }} -Werror"
-      CFLAGS_NOxERROR: "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} ${{ matrix.no-warnings }}"
+      CFLAGS_ERROR:   "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} ${{ matrix.no-warnings }} -Werror"
+      CFLAGS_NOERROR: "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} ${{ matrix.no-warnings }}"
+      CFLAGS_MOO: ${{ (matrix.compiler-type == "clang") ? env.CFLAGS_CLANG : env.CFLAGS_GCC }}
 
     defaults:
       run:
