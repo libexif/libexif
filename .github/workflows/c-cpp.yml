@@ -171,7 +171,7 @@ jobs:
       MINGW_ARCH: ${{ matrix.sys }}
       CFLAGS_ERROR:   "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} ${{ matrix.no-warnings }} -Werror"
       CFLAGS_NOERROR: "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} ${{ matrix.no-warnings }}"
-      CFLAGS_MOO: ${{ (matrix.compiler-type == "clang") ? env.CFLAGS_CLANG : env.CFLAGS_GCC }}
+      CFLAGS_MOO: ${{ (matrix.compiler-type == "clang") && env.CFLAGS_CLANG || env.CFLAGS_GCC }}
 
     defaults:
       run:
