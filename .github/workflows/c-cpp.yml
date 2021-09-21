@@ -54,7 +54,12 @@ jobs:
         -pedantic
         ${{ matrix.all-warnings }}
         ${{ matrix.no-warnings }}
-      CFLAGS_ERROR: ${{ env.CFLAGS_NOERROR }} -Werror
+      CFLAGS_ERROR: >
+        -std=${{ matrix.c-standard }}
+        -pedantic
+        ${{ matrix.all-warnings }}
+        ${{ matrix.no-warnings }}
+        -Werror
       CPPFLAGS: ${{ matrix.cpp-defines }}
 
     steps:
