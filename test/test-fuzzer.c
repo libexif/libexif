@@ -64,7 +64,7 @@ void content_foreach_func(ExifEntry *entry, void *UNUSED(callback_data))
 void data_foreach_func(ExifContent *content, void *callback_data);
 void data_foreach_func(ExifContent *content, void *callback_data)
 {
-	printf("  Content %p: ifd=%d\n", content, exif_content_get_ifd(content));
+	printf("  Content %p: ifd=%d\n", (void *)content, exif_content_get_ifd(content));
 	exif_content_foreach_entry(content, content_foreach_func, callback_data);
 }
 static int
