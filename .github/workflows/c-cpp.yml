@@ -127,16 +127,36 @@ jobs:
         include:
           - sys: mingw32
             env: i686
-            all-warnings: "-Wall -Wextra"
+            compiler-type: gcc
+            all-warnings: >
+              -Wall
+              -Wextra
           - sys: mingw64
             env: x86_64
-            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNINGS_GCC }}"
+            compiler-type: gcc
+            all-warnings: >
+              -Wall
+              -Wextra
           - sys: ucrt64         # Experimental!
             env: ucrt-x86_64
-            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNINGS_GCC }}"
+            compiler-type: gcc
+            all-warnings: >-
+              -Wall
+              -Wextra
           - sys: clang64        # Experimental!
             env: clang-x86_64
-            all-warnings: "-Wall -Wextra -Weverything ${{ env.CFLAGS_IGNORE_WARNINGS_CLANG }}"
+            compiler-type: clang
+            all-warnings: >-
+              -Wall
+              -Wextra
+              -Weverything
+        include:
+          - compiler-type: clang
+            no-warnings: >
+              -Wno-clang
+          - compiler-type: gcc
+            no-warnings: >
+              -Wno-gcc
 
     name: 'MSYS2 ${{ matrix.sys }} ${{ matrix.c-standard }} build'
 
