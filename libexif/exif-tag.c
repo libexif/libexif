@@ -20,7 +20,6 @@
 
 #include <config.h>
 
-#include <libexif/exif-system.h>
 #include <libexif/exif-tag.h>
 #include <libexif/i18n.h>
 
@@ -1189,7 +1188,7 @@ exif_tag_from_name (const char *name)
  * \param[in] t a valid data type (not EXIF_DATA_TYPE_UNKNOWN)
  * \return the level of support for this tag
  */
-static LIBEXIF_INLINE ExifSupportLevel
+static inline ExifSupportLevel
 get_support_level_in_ifd (ExifTag tag, ExifIfd ifd, ExifDataType t)
 {
 	unsigned int i;
@@ -1219,7 +1218,7 @@ get_support_level_in_ifd (ExifTag tag, ExifIfd ifd, ExifDataType t)
  * \param[in] ifd a valid IFD (not EXIF_IFD_COUNT)
  * \return the level of support for this tag
  */
-static LIBEXIF_INLINE ExifSupportLevel
+static inline ExifSupportLevel
 get_support_level_any_type (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;

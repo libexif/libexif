@@ -20,7 +20,6 @@
 
 #include <config.h>
 
-#include <libexif/exif-system.h>
 #include <libexif/exif-entry.h>
 #include <libexif/exif-ifd.h>
 #include <libexif/exif-utils.h>
@@ -180,7 +179,7 @@ clear_entry (ExifEntry *e)
  * \bug Not all types are converted that could be converted and no indication
  *      is made when that occurs
  */
-static LIBEXIF_INLINE ExifShort
+static inline ExifShort
 exif_get_short_convert (const unsigned char *buf, ExifFormat format,
 			ExifByteOrder order)
 {
