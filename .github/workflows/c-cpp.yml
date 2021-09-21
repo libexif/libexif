@@ -129,21 +129,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        clang-cflags: '-std=c90 -pedantic -Wall -Wextra -Weverything -Wno-overlength-strings -Wno-documentation -Wno-documentation-deprecated -Wno-documentation-unknown-command -Wno-reserved-id-macro -Wno-padded'
-        gcc-cflags: '-std=c90 -pedantic -Wall -Wextra -Wno-overlength-strings'
-        # c-standard: [ c90 ]
         include:
-          - { sys: mingw32, env: i686,         is-gcc: true }
-          - { sys: mingw64, env: x86_64,       is-gcc: true }
-          - { sys: ucrt64,  env: ucrt-x86_64,  is-gcc: true }   # Experimental!
+          - { sys: mingw32, env: i686,         is-gcc:   true }
+          - { sys: mingw64, env: x86_64,       is-gcc:   true }
+          - { sys: ucrt64,  env: ucrt-x86_64,  is-gcc:   true } # Experimental!
           - { sys: clang64, env: clang-x86_64, is-clang: true } # Experimental!
 
     name: 'MSYS2 ${{ matrix.sys }} ${{ matrix.c-standard }} build'
 
     env:
       MINGW_ARCH: ${{ matrix.sys }}
-      CFLAGS_ERROR:   "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.is-gcc && matrix.gcc-cflags || '' }} ${{ matrix.is-clang && matrix.clang-cflags || '' }} -Werror"
-      CFLAGS_NOERROR: "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.is-gcc && matrix.gcc-cflags || '' }} ${{ matrix.is-clang && matrix.clang-cflags || '' }}"
+
+      CFLAGS_CLANG: '-std=c90 -pedantic -Wall -Wextra -Weverything -Wno-overlength-strings -Wno-documentation -Wno-documentation-deprecated -Wno-documentation-unknown-command -Wno-reserved-id-macro -Wno-padded'
+
+      CFLAGS_GCC: '-std=c90 -pedantic -Wall -Wextra -Wno-overlength-strings'
 
     defaults:
       run:
@@ -163,8 +162,6 @@ jobs:
           echo "runner.os=${{ runner.os }}"
           echo "matrix.env=${{ matrix.env }}"
           echo "matrix.sys=${{ matrix.sys }}"
-          echo "matrix.all-warnings=${{ matrix.all-warnings }}"
-          echo "matrix.no-warnings=${{ matrix.no-warnings }}"
           echo "MINGW_ARCH=${MINGW_ARCH}"
           echo "0={0}"
           printenv | grep ^CFLAGS
@@ -205,22 +202,22 @@ jobs:
       - name: 'configure'
         run: ./configure
         env:
-          CFLAGS: ${{ env.CFLAGS_NOERROR }}
+          CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }}
 
       - name: 'make'
         run: make
         env:
-          CFLAGS: ${{ env.CFLAGS_ERROR }}
+          CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }} -Werror
 
       - name: 'make check'
         run: make check
         env:
-          CFLAGS: ${{ env.CFLAGS_ERROR }}
+          CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }} -Werror
 
       - name: 'make distcheck'
         run: make distcheck
         env:
-          CFLAGS: ${{ env.CFLAGS_NOERROR }}
+          CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }}
 
       - name: 'dist tarball content'
         run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
