@@ -10,11 +10,11 @@ env:
   V: 1
 
 jobs:
-  build:
+  buildx:
 
     runs-on: ${{ matrix.os }}
 
-    name: '${{ matrix.os }} build'
+    name: '${{ matrix.os }} buildx'
 
     strategy:
       matrix:
