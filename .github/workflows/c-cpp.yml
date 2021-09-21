@@ -126,7 +126,7 @@ jobs:
       - name: 'Abort quickly'
         shell: bash
         run: |
-          echo "matrix.os=${{ matrix.os }}"
+          echo "runner.os=${{ runner.os }}"
           echo "matrix.env=${{ matrix.env }}"
           echo "matrix.sys=${{ matrix.sys }}"
           echo "MINGW_ARCH=${MINGW_ARCH}"
