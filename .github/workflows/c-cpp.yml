@@ -8,6 +8,7 @@ on:
 
 env:
   V: 1
+  LC_ALL: C
 
 jobs:
   build-ix:
