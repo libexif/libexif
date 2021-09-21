@@ -8,12 +8,6 @@ on:
 
 env:
   V: 1
-  CFLAGS_GCC: >-
-    -DCFLAGS_GCC1
-    -DCFLAGS_GCC2
-  CFLAGS_CLANG: >
-    -DCFLAGS_CLANG1
-    -DCFLAGS_CLANG2
 
 jobs:
   build-ix:
