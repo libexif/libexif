@@ -96,14 +96,10 @@ jobs:
           ./configure
 
       - name: 'make'
-        run: make
-        env:
-          CFLAGS: ${{ env.CFLAGS }} -Werror
+        run: make CFLAGS="$CFLAGS -Werror"
 
       - name: 'make check'
-        run: make check
-        env:
-          CFLAGS: ${{ env.CFLAGS }} -Werror
+        run: make check CFLAGS="$CFLAGS -Werror"
 
       - name: 'make distcheck'
         run: make distcheck
