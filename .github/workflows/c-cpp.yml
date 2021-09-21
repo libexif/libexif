@@ -21,16 +21,15 @@ jobs:
       matrix:
         os: [ ubuntu-latest, macos-latest ]
         c-standard: [ c90, c99 ]
-        include:
-          - os: ubuntu-latest
-            compiler: gcc
-            all-warnings: '-Wall -Wextra'
-          - os: ubuntu-latest
-            compiler: clang
-            all-warnings: '-Wall -Wextra -Weverything'
+        compiler: [ clang, gcc ]
+        exclude:
           - os: macos-latest
-            compiler: clang
-            all-warnings: '-Wall -Wextra -Weverything'
+            compiler: gcc
+        include:
+          - compiler: gcc
+            all-warnings: "-Wall -Wextra"
+          - compiler: clang
+            all-warnings: "-Wall -Wextra -Weverything"
 
     env:
       CFLAGS_ERROR:   '-std=${{ matrix.c-standard }} ${{ matrix.all-warnings }} -Werror'
