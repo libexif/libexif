@@ -462,7 +462,8 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 			}
 			break;
 		}
-		/* fall through to handle SHORT version of this tag */
+		/* to handle SHORT version of this tag, */
+		/* fall through */
 	case MNOTE_NIKON_TAG_LENSTYPE:
 	case MNOTE_NIKON_TAG_FLASHUSED:
 	case MNOTE_NIKON1_TAG_QUALITY:
@@ -760,6 +761,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_NIKON_TAG_IMAGEBOUNDARY:
 		CC (entry->components, 4, v, maxlen);
 		/* Fall through to COLORMATRIX */
+		/* fall through */
 	case MNOTE_OLYMPUS_TAG_COLORMATRIX:
 		CF (entry->format, EXIF_FORMAT_SHORT, v, maxlen);
 		if (entry->tag == MNOTE_OLYMPUS_TAG_COLORMATRIX)
@@ -776,6 +778,7 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 	case MNOTE_OLYMPUS_TAG_FOCALPLANEDIAGONAL:
 		CF (entry->format, EXIF_FORMAT_RATIONAL, v, maxlen);
 		/* Fall through to default handler for display */
+		/* fall through */
 	default:
 		switch (entry->format) {
 		case EXIF_FORMAT_ASCII:

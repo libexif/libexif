@@ -23,7 +23,7 @@
 #include <stddef.h>
 #include "exif-gps-ifd.h"
 
-const static struct ExifGPSIfdTagInfo exif_gps_ifd_tags[] = {
+static const struct ExifGPSIfdTagInfo exif_gps_ifd_tags[] = {
 
     {EXIF_TAG_GPS_VERSION_ID, EXIF_FORMAT_BYTE, 4, 4, "\x02\x02\x00\x00"},
     {EXIF_TAG_GPS_LATITUDE_REF, EXIF_FORMAT_ASCII, 0, 0, 0},
@@ -59,7 +59,7 @@ const static struct ExifGPSIfdTagInfo exif_gps_ifd_tags[] = {
 };
 
 const ExifGPSIfdTagInfo *exif_get_gps_tag_info(ExifTag tag) {
-  int i;
+  size_t i;
   for (i = 0; i < sizeof(exif_gps_ifd_tags) / sizeof(ExifGPSIfdTagInfo); ++i) {
     if (tag==exif_gps_ifd_tags[i].tag)
       return &exif_gps_ifd_tags[i];

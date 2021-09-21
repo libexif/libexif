@@ -147,6 +147,7 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([
 	  ],[
 	    double s = sqrt(0);
 	    double p = pow(s,s);
+	    (void) p;
 	  ])],
 	[AC_MSG_RESULT([yes])], [
 	AC_MSG_RESULT([no])
@@ -157,6 +158,7 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([
 		],[
 		  double s = sqrt(0);
 		  double p = pow(s,s);
+		  (void) p;
 		])],
 	[
 		AC_MSG_RESULT([yes])

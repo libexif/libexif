@@ -43,4 +43,4 @@ typedef enum {
 }
 #endif /* __cplusplus */
 
-#endif /* __EXIF_TAG_H__ */
+#endif /* __EXIF_DATA_TYPE_H__ */

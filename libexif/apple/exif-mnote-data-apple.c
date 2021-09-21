@@ -261,6 +261,8 @@ exif_mnote_data_apple_get_value(ExifMnoteData *md, unsigned int i, char *val, un
 
 int
 exif_mnote_data_apple_identify(const ExifData *ed, const ExifEntry *e) {
+    (void) ed;
+
     if (e->size < strlen("Apple iOS")+1)
 	return 0;
 

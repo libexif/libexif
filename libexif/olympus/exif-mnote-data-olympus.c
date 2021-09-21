@@ -153,6 +153,7 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 		datao += n->offset + 10;
 		/* subtract the size here, so the increment in the next case will not harm us */
 		*buf_size -= 8 + 2;
+		/* fall through */
 	/* Fall through to nikonV2 handler */
 	case nikonV2: 
 	/* Write out V0 files in V2 format */
