@@ -55,7 +55,7 @@ jobs:
         -pedantic
         ${{ matrix.all-warnings }}
         ${{ matrix.no-warnings }}
-      CPPFLAGS: ${{ matrix.cpp-defines }}
+        ${{ matrix.cpp-defines }}
 
     steps:
       - name: 'Show CFLAGS'
