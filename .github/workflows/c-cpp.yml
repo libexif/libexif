@@ -65,7 +65,6 @@ jobs:
           echo "matrix.all-warnings=${{ matrix.all-warnings }}"
           echo "matrix.compiler=${{ matrix.compiler }}"
           printenv | grep ^CFLAGS
-          exit 1
 
       - uses: actions/checkout@v2
         with:
@@ -153,7 +152,6 @@ jobs:
           echo "MINGW_ARCH=${MINGW_ARCH}"
           echo "0={0}"
           printenv | grep ^CFLAGS
-          exit 1
 
       - name: 'git config'
         run:  git config --global core.autocrlf input
