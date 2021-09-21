@@ -8,15 +8,6 @@ on:
 
 env:
   V: 1
-  CFLAGS_IGNORE_WARNINGS_GCC: >
-    -Wno-overlength-strings
-  CFLAGS_IGNORE_WARNINGS_CLANG: >
-    -Wno-overlength-strings
-    -Wno-documentation
-    -Wno-documentation-deprecated
-    -Wno-documentation-unknown-command
-    -Wno-reserved-id-macro
-    -Wno-padded
 
 jobs:
   buildx:
@@ -28,8 +19,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cflags-ignore-warnings-clang: -Wmoo-clang
-        cflags-ignore-warnings-gcc: -Wmoo-gcc
         os: [ ubuntu-latest, macos-latest ]
         c-standard: [ c90, c99 ]
         compiler: [ clang, gcc ]
@@ -38,13 +27,21 @@ jobs:
             compiler: gcc
         include:
           - compiler: gcc
-            all-warnings: -Wall -Wextra ${{ matrix.cflags-ignore-warnings-gcc }}
+            all-warnings: -Wall -Wextra
+            no-warnings: >
+              -Wno-overlength-strings
           - compiler: clang
             all-warnings: >
               -Wall
               -Wextra
               -Weverything
-              ${{ env.CFLAGS_IGNORE_WARNINGS_CLANG }}
+            no-warnings: >-
+              -Wno-overlength-strings
+              -Wno-documentation
+              -Wno-documentation-deprecated
+              -Wno-documentation-unknown-command
+              -Wno-reserved-id-macro
+              -Wno-padded
         include:
           - os: ubuntu-latest
             c-standard: c90
@@ -53,10 +50,11 @@ jobs:
               -D_POSIX_C_SOURCE=1
 
     env:
-      CFLAGS_NOERROR:
+      CFLAGS_NOERROR: >
         -std=${{ matrix.c-standard }}
         -pedantic
         ${{ matrix.all-warnings }}
+        ${{ matrix.no-warnings }}
       CFLAGS_ERROR: ${{ env.CFLAGS_NOERROR }} -Werror
       CPPFLAGS: ${{ matrix.cpp-defines }}
 
@@ -125,7 +123,7 @@ jobs:
         include:
           - sys: mingw32
             env: i686
-            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNINGS_GCC }}"
+            all-warnings: "-Wall -Wextra"
           - sys: mingw64
             env: x86_64
             all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNINGS_GCC }}"
