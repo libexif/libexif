@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA.
  */
 
-#ifndef __I18N_H__
-#define __I18N_H__
+#ifndef LIBEXIF_I18N_H
+#define LIBEXIF_I18N_H
 
 #include "config.h"
 
@@ -49,4 +49,4 @@
 #  define N_(String) (String)
 #endif
 
-#endif /* __I18N_H__ */
+#endif /* LIBEXIF_I18N_H */

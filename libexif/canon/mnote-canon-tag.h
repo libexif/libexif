@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA.
  */
 
-#ifndef __MNOTE_CANON_TAG_H__
-#define __MNOTE_CANON_TAG_H__
+#ifndef LIBEXIF_MNOTE_CANON_TAG_H
+#define LIBEXIF_MNOTE_CANON_TAG_H
 
 #include <libexif/exif-data.h>
 
@@ -120,4 +120,4 @@ const char *mnote_canon_tag_get_description (MnoteCanonTag);
 }
 #endif /* __cplusplus */
 
-#endif /* __MNOTE_CANON_TAG_H__ */
+#endif /* LIBEXIF_MNOTE_CANON_TAG_H */

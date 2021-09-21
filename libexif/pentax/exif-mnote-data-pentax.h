@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA.
  */
 
-#ifndef __EXIF_MNOTE_DATA_PENTAX_H__
-#define __EXIF_MNOTE_DATA_PENTAX_H__
+#ifndef LIBEXIF_EXIF_MNOTE_DATA_PENTAX_H
+#define LIBEXIF_EXIF_MNOTE_DATA_PENTAX_H
 
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-mnote-data.h>
@@ -56,4 +56,4 @@ int exif_mnote_data_pentax_identify (const ExifData *ed, const ExifEntry *e);
 
 ExifMnoteData *exif_mnote_data_pentax_new (ExifMem *);
 
-#endif /* __EXIF_MNOTE_DATA_PENTAX_H__ */
+#endif /* LIBEXIF_EXIF_MNOTE_DATA_PENTAX_H */
