@@ -129,44 +129,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        clang-cflags: [ '-Wall -Wextra -Weverything -Wno-overlength-strings -Wno-documentation -Wno-documentation-deprecated -Wno-documentation-unknown-command -Wno-reserved-id-macro -Wno-padded' ]
+        gcc-cflags: [ '-Wall -Wextra -Wno-overlength-strings' ]
         c-standard: [ c90 ]
         include:
-          - sys: mingw32
-            env: i686
-            all-warnings: >
-              -Wall
-              -Wextra
-            no-warnings: >
-              -Wno-gcc
-          - sys: mingw64
-            env: x86_64
-            all-warnings: >
-              -Wall
-              -Wextra
-            no-warnings: >
-              -Wno-gcc
-          - sys: ucrt64         # Experimental!
-            env: ucrt-x86_64
-            all-warnings: >-
-              -Wall
-              -Wextra
-            no-warnings: >
-              -Wno-gcc
-          - sys: clang64        # Experimental!
-            env: clang-x86_64
-            all-warnings: >-
-              -Wall
-              -Wextra
-              -Weverything
-            no-warnings: >
-              -Wno-clang
+          - { sys: mingw32, env: i686,         is-gcc: true }
+          - { sys: mingw64, env: x86_64,       is-gcc: true }
+          - { sys: ucrt64,  env: ucrt-x86_64,  is-gcc: true }   # Experimental!
+          - { sys: clang64, env: clang-x86_64, is-clang: true } # Experimental!
 
     name: 'MSYS2 ${{ matrix.sys }} ${{ matrix.c-standard }} build'
 
     env:
       MINGW_ARCH: ${{ matrix.sys }}
-      CFLAGS_ERROR:   "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} ${{ matrix.no-warnings }} -Werror"
-      CFLAGS_NOERROR: "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} ${{ matrix.no-warnings }}"
+      CFLAGS_ERROR:   "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.is-gcc && matrix.gcc-cflags || '' }} ${{ matrix.is-clang && matrix.clang-cflags || '' }} -Werror"
+      CFLAGS_NOERROR: "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.is-gcc && matrix.gcc-cflags || '' }} ${{ matrix.is-clang && matrix.clang-cflags || '' }}"
 
     defaults:
       run:
