@@ -8,9 +8,9 @@ on:
 
 env:
   V: 1
-  CFLAGS_IGNORE_WARNINGS_GCC: >-
+  CFLAGS_IGNORE_WARNINGS_GCC: >
     -Wno-overlength-strings
-  CFLAGS_IGNORE_WARNINGS_CLANG: >-
+  CFLAGS_IGNORE_WARNINGS_CLANG: >
     -Wno-overlength-strings
     -Wno-documentation
     -Wno-documentation-deprecated
@@ -28,6 +28,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        cflags-ignore-warnings-clang: -Wmoo-clang
+        cflags-ignore-warnings-gcc: -Wmoo-gcc
         os: [ ubuntu-latest, macos-latest ]
         c-standard: [ c90, c99 ]
         compiler: [ clang, gcc ]
@@ -36,17 +38,26 @@ jobs:
             compiler: gcc
         include:
           - compiler: gcc
-            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNIGNS_GCC }}"
+            all-warnings: -Wall -Wextra ${{ matrix.cflags-ignore-warnings-gcc }}
           - compiler: clang
-            all-warnings: "-Wall -Wextra -Weverything ${{ env.CFLAGS_IGNORE_WARNIGNS_CLANG }}"
+            all-warnings: >
+              -Wall
+              -Wextra
+              -Weverything
+              ${{ env.CFLAGS_IGNORE_WARNINGS_CLANG }}
         include:
           - os: ubuntu-latest
             c-standard: c90
-            cpp-defines: "-D_XOPEN_SOURCE=500 -D_POSIX_C_SOURCE=1"
+            cpp-defines: >
+              -D_XOPEN_SOURCE=500
+              -D_POSIX_C_SOURCE=1
 
     env:
-      CFLAGS_ERROR:   '-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} -Werror'
-      CFLAGS_NOERROR: '-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }}'
+      CFLAGS_NOERROR:
+        -std=${{ matrix.c-standard }}
+        -pedantic
+        ${{ matrix.all-warnings }}
+      CFLAGS_ERROR: ${{ env.CFLAGS_NOERROR }} -Werror
       CPPFLAGS: ${{ matrix.cpp-defines }}
 
     steps:
@@ -114,16 +125,16 @@ jobs:
         include:
           - sys: mingw32
             env: i686
-            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNIGNS_GCC }}"
+            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNINGS_GCC }}"
           - sys: mingw64
             env: x86_64
-            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNIGNS_GCC }}"
+            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNINGS_GCC }}"
           - sys: ucrt64         # Experimental!
             env: ucrt-x86_64
-            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNIGNS_GCC }}"
+            all-warnings: "-Wall -Wextra ${{ env.CFLAGS_IGNORE_WARNINGS_GCC }}"
           - sys: clang64        # Experimental!
             env: clang-x86_64
-            all-warnings: "-Wall -Wextra -Weverything ${{ env.CFLAGS_IGNORE_WARNIGNS_CLANG }}"
+            all-warnings: "-Wall -Wextra -Weverything ${{ env.CFLAGS_IGNORE_WARNINGS_CLANG }}"
 
     name: 'MSYS2 ${{ matrix.sys }} ${{ matrix.c-standard }} build'
 
