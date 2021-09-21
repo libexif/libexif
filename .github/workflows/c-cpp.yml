@@ -39,7 +39,7 @@ jobs:
             no-warnings: >-
               -Wno-overlength-strings
               -Wno-documentation
-              -Wno-documentation-deprecated
+              -Wno-documentation-deprecated-sync
               -Wno-documentation-unknown-command
               -Wno-reserved-id-macro
               -Wno-padded
@@ -132,7 +132,7 @@ jobs:
     env:
       MINGW_ARCH: ${{ matrix.sys }}
 
-      CFLAGS_CLANG: '-std=c90 -pedantic -Wall -Wextra -Weverything -Wno-overlength-strings -Wno-documentation -Wno-documentation-deprecated -Wno-documentation-unknown-command -Wno-reserved-id-macro -Wno-padded'
+      CFLAGS_CLANG: '-std=c90 -pedantic -Wall -Wextra -Weverything -Wno-overlength-strings -Wno-documentation -Wno-documentation-deprecated-sync -Wno-documentation-unknown-command -Wno-reserved-id-macro -Wno-padded'
 
       CFLAGS_GCC: '-std=c90 -pedantic -Wall -Wextra -Wno-overlength-strings'
 
