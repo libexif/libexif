@@ -104,7 +104,7 @@ jobs:
         with:
           fetch-depth: 10
 
-      - name: '${{ matrix.sys }} Setup MSYS2'
+      - name: 'Setup MSYS2 and Install Software'
         uses: msys2/setup-msys2@v2
         with:
           msystem: ${{ matrix.sys }}
@@ -125,20 +125,20 @@ jobs:
             mingw-w64-${{ matrix.env }}-graphviz
             mingw-w64-${{ matrix.env }}-gcc
 
-      - name: '${{ matrix.sys }} autoreconf'
+      - name: 'autoreconf'
         run: autoreconf -vis .
 
-      - name: '${{ matrix.sys }} configure'
+      - name: 'configure'
         run: ./configure
 
-      - name: '${{ matrix.sys }} make'
+      - name: 'make'
         run: make
 
-      - name: '${{ matrix.sys }} make check'
+      - name: 'make check'
         run: make check
 
-      - name: '${{ matrix.sys }} make distcheck'
+      - name: 'make distcheck'
         run: make distcheck
 
-      - name: '${{ matrix.sys }} dist tarball content'
+      - name: 'dist tarball content'
         run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
