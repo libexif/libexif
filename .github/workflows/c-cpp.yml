@@ -55,12 +55,12 @@ jobs:
               -D_POSIX_C_SOURCE=1
 
     env:
-      CFLAGS_NOERROR: >
+      CFLAGS_NOERROR: >-
         -std=${{ matrix.c-standard }}
         -pedantic
         ${{ matrix.all-warnings }}
         ${{ matrix.no-warnings }}
-      CFLAGS_ERROR: >
+      CFLAGS_ERROR: >-
         -std=${{ matrix.c-standard }}
         -pedantic
         ${{ matrix.all-warnings }}
