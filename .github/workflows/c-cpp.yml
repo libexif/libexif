@@ -111,7 +111,7 @@ jobs:
           CFLAGS: ${{ env.CFLAGS }}
 
       - name: 'dist tarball content'
-        run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
+        run: for tarball in *.tar.*; do tar tf "$tarball" | sort; break; done
 
   build-msys2:
     runs-on: windows-latest
@@ -211,4 +211,4 @@ jobs:
           CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }}
 
       - name: 'dist tarball content'
-        run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
+        run: for tarball in *.tar.*; do tar tf "$tarball" | sort; break; done
