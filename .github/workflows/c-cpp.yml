@@ -21,37 +21,38 @@ jobs:
         os: [ ubuntu-latest, macos-latest ]
 
     steps:
-    - uses: actions/checkout@v2
 
-    - name: 'Install Software (Linux)'
-      if: runner.os == 'Linux'
-      run: |
-        sudo apt-get update
-        sudo apt-get install autopoint gettext doxygen graphviz
+      - uses: actions/checkout@v2
 
-    - name: 'Install Software (MacOS)'
-      if: runner.os == 'macOS'
-      run: |
-        brew update
-        brew install automake doxygen graphviz
+      - name: 'Install Software (Linux)'
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install autopoint gettext doxygen graphviz ${{ matrix.compiler }}
 
-    - name: 'autoreconf'
-      run: autoreconf -vis .
+      - name: 'Install Software (MacOS)'
+        if: runner.os == 'macOS'
+        run: |
+          brew update
+          brew install automake doxygen graphviz
 
-    - name: 'configure'
-      run: ./configure
+      - name: 'autoreconf'
+        run: autoreconf -vis .
 
-    - name: 'make'
-      run: make
+      - name: 'configure'
+        run: ./configure
 
-    - name: 'make check'
-      run: make check
+      - name: 'make'
+        run: make
 
-    - name: 'make distcheck'
-      run: make distcheck
+      - name: 'make check'
+        run: make check
 
-    - name: 'dist tarball content'
-      run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
+      - name: 'make distcheck'
+        run: make distcheck
+
+      - name: 'dist tarball content'
+        run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
 
   windows-build:
     runs-on: windows-latest
