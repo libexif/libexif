@@ -14,17 +14,37 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    name: '${{ matrix.os }} buildx'
+    name: '${{ matrix.os }} ${{ matrix.compiler }} ${{ matrix.c-standard }} buildx'
 
     strategy:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, macos-latest ]
+        c-standard: [ c90, c99 ]
+        include:
+          - os: ubuntu-latest
+            compiler: gcc
+            all-warnings: '-Wall -Wextra'
+          - os: ubuntu-latest
+            compiler: clang
+            all-warnings: '-Wall -Wextra -Weverything'
+          - os: macos-latest
+            compiler: clang
+            all-warnings: '-Wall -Wextra -Weverything'
+
+    env:
+      CFLAGS_ERROR:   '-std=${{ matrix.c-standard }} ${{ matrix.all-warnings }} -Werror'
+      CFLAGS_NOERROR: '-std=${{ matrix.c-standard }} ${{ matrix.all-warnings }}'
 
     steps:
       - name: 'Show CFLAGS'
         run: |
-          printenv | grep ^CFLAGS_
+          echo "runner.os=${{ runner.os }}"
+          echo "matrix.os=${{ matrix.os }}"
+          echo "matrix.c-standard=${{ matrix.c-standard }}"
+          echo "matrix.all-warnings=${{ matrix.all-warnings }}"
+          echo "matrix.compiler=${{ matrix.compiler }}"
+          printenv | grep ^CFLAGS
           exit 1
 
       - uses: actions/checkout@v2
@@ -48,15 +68,23 @@ jobs:
 
       - name: 'configure'
         run: ./configure
+        env:
+          CFLAGS: ${{ env.CFLAGS_NOERROR }}
 
       - name: 'make'
         run: make
+        env:
+          CFLAGS: ${{ env.CFLAGS_ERROR }}
 
       - name: 'make check'
         run: make check
+        env:
+          CFLAGS: ${{ env.CFLAGS_ERROR }}
 
       - name: 'make distcheck'
         run: make distcheck
+        env:
+          CFLAGS: ${{ env.CFLAGS_NOERROR }}
 
       - name: 'dist tarball content'
         run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
@@ -70,10 +98,14 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { sys: mingw32, env: i686 }
-          - { sys: mingw64, env: x86_64 }
-          - { sys: ucrt64,  env: ucrt-x86_64 }  # Experimental!
-          - { sys: clang64, env: clang-x86_64 } # Experimental!
+          - sys: mingw32
+            env: i686
+          - sys: mingw64
+            env: x86_64
+          - sys: ucrt64         # Experimental!
+            env: ucrt-x86_64
+          - sys: clang64        # Experimental!
+            env: clang-x86_64
 
     name: 'MSYS2 ${{ matrix.sys }} build'
 
@@ -94,7 +126,14 @@ jobs:
 
       - name: 'Abort quickly'
         shell: bash
-        run: exit 1
+        run: |
+          echo "matrix.os=${{ matrix.os }}"
+          echo "matrix.env=${{ matrix.env }}"
+          echo "matrix.sys=${{ matrix.sys }}"
+          echo "MINGW_ARCH=${MINGW_ARCH}"
+          echo "0={0}"
+          printenv | grep ^CFLAGS
+          exit 1
 
       - name: 'git config'
         run:  git config --global core.autocrlf input
