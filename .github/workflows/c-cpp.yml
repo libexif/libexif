@@ -16,7 +16,7 @@ env:
     -DCFLAGS_CLANG2
 
 jobs:
-  buildx:
+  build-ix:
 
     runs-on: ${{ matrix.os }}
 
@@ -121,7 +121,7 @@ jobs:
       - name: 'dist tarball content'
         run: for tarball in *.tar.*; do tar tvf "$tarball"; break; done
 
-  windows-build:
+  build-msys2:
     runs-on: windows-latest
 
     # See https://github.com/msys2/setup-msys2
