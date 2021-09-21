@@ -17,6 +17,7 @@ jobs:
     name: '${{ matrix.os }} buildx'
 
     strategy:
+      fail-fast: false
       matrix:
         os: [ ubuntu-latest, macos-latest ]
 
@@ -66,7 +67,7 @@ jobs:
     # See https://github.com/msys2/setup-msys2
 
     strategy:
-      # fail-fast: false
+      fail-fast: false
       matrix:
         include:
           - { sys: mingw32, env: i686 }
