@@ -15,7 +15,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    name: '${{ matrix.os }} ${{ matrix.compiler }} ${{ matrix.c-standard }} buildx'
+    name: 'ix ${{ matrix.os }} ${{ matrix.compiler }} ${{ matrix.c-standard }}'
 
     strategy:
       fail-fast: false
