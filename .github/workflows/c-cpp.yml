@@ -43,6 +43,7 @@ jobs:
               -Wno-documentation-unknown-command
               -Wno-reserved-id-macro
               -Wno-padded
+              -Wno-switch-enum
           - os: ubuntu-latest
             c-standard: c90
             cpp-defines: >
