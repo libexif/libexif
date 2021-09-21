@@ -37,7 +37,7 @@ jobs:
             no-warnings: >
               -Wno-overlength-strings
           - compiler: clang
-            all-warnings: >
+            all-warnings: >-
               -Wall
               -Wextra
               -Weverything
