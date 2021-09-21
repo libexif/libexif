@@ -21,6 +21,10 @@ jobs:
         os: [ ubuntu-latest, macos-latest ]
 
     steps:
+      - name: 'Show CFLAGS'
+        run: |
+          printenv | grep ^CFLAGS_
+          exit 1
 
       - uses: actions/checkout@v2
         with:
@@ -86,6 +90,10 @@ jobs:
           path
           echo %PATH%
           set
+
+      - name: 'Abort quickly'
+        shell: bash
+        run: exit 1
 
       - name: 'git config'
         run:  git config --global core.autocrlf input
