@@ -150,7 +150,6 @@ jobs:
               -Wall
               -Wextra
               -Weverything
-        include:
           - compiler-type: clang
             no-warnings: >
               -Wno-clang
@@ -183,6 +182,9 @@ jobs:
           echo "runner.os=${{ runner.os }}"
           echo "matrix.env=${{ matrix.env }}"
           echo "matrix.sys=${{ matrix.sys }}"
+          echo "matrix.compiler-type=${{ matrix.compiler-type }}"
+          echo "matrix.all-warnings=${{ matrix.all-warnings }}"
+          echo "matrix.no-warnings=${{ matrix.no-warnings }}"
           echo "MINGW_ARCH=${MINGW_ARCH}"
           echo "0={0}"
           printenv | grep ^CFLAGS
