@@ -129,9 +129,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        clang-cflags: [ '-Wall -Wextra -Weverything -Wno-overlength-strings -Wno-documentation -Wno-documentation-deprecated -Wno-documentation-unknown-command -Wno-reserved-id-macro -Wno-padded' ]
-        gcc-cflags: [ '-Wall -Wextra -Wno-overlength-strings' ]
-        c-standard: [ c90 ]
+        # clang-cflags: [ '-Wall -Wextra -Weverything -Wno-overlength-strings -Wno-documentation -Wno-documentation-deprecated -Wno-documentation-unknown-command -Wno-reserved-id-macro -Wno-padded' ]
+        # gcc-cflags: [ '-Wall -Wextra -Wno-overlength-strings' ]
+        # c-standard: [ c90 ]
         include:
           - { sys: mingw32, env: i686,         is-gcc: true }
           - { sys: mingw64, env: x86_64,       is-gcc: true }
