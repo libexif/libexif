@@ -86,9 +86,13 @@ jobs:
         run: autoreconf -vis .
 
       - name: 'configure'
-        run: ./configure
         env:
           CFLAGS: ${{ env.CFLAGS }}
+          CC: ${{ matrix.compiler }}
+        run: |
+          echo "CC=$CC"
+          echo "CFLAGS=$CFLAGS"
+          ./configure
 
       - name: 'make'
         run: make
