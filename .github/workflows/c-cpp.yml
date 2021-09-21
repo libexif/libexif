@@ -131,18 +131,24 @@ jobs:
             all-warnings: >
               -Wall
               -Wextra
+            no-warnings: >
+              -Wno-gcc
           - sys: mingw64
             env: x86_64
             compiler-type: gcc
             all-warnings: >
               -Wall
               -Wextra
+            no-warnings: >
+              -Wno-gcc
           - sys: ucrt64         # Experimental!
             env: ucrt-x86_64
             compiler-type: gcc
             all-warnings: >-
               -Wall
               -Wextra
+            no-warnings: >
+              -Wno-gcc
           - sys: clang64        # Experimental!
             env: clang-x86_64
             compiler-type: clang
@@ -150,19 +156,15 @@ jobs:
               -Wall
               -Wextra
               -Weverything
-          - compiler-type: clang
             no-warnings: >
               -Wno-clang
-          - compiler-type: gcc
-            no-warnings: >
-              -Wno-gcc
 
     name: 'MSYS2 ${{ matrix.sys }} ${{ matrix.c-standard }} build'
 
     env:
       MINGW_ARCH: ${{ matrix.sys }}
-      CFLAGS_ERROR:    "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} -Werror"
-      CFLAGS_NOxERROR: "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }}"
+      CFLAGS_ERROR:    "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} ${{ matrix.no-warnings }} -Werror"
+      CFLAGS_NOxERROR: "-std=${{ matrix.c-standard }} -pedantic ${{ matrix.all-warnings }} ${{ matrix.no-warnings }}"
 
     defaults:
       run:
