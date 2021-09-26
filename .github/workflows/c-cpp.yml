@@ -95,7 +95,7 @@ jobs:
         run: |
           echo "CC=$CC"
           echo "CFLAGS=$CFLAGS"
-          ./configure
+          ./configure --disable-docs --disable-dependency-tracking
 
       - name: 'make'
         run: make CFLAGS="$CFLAGS -Werror"
@@ -196,7 +196,7 @@ jobs:
         run: autoreconf -vis .
 
       - name: 'configure'
-        run: ./configure
+        run: ./configure --disable-docs --disable-dependency-tracking
         env:
           CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }}
 
