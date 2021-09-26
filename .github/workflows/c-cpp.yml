@@ -31,6 +31,7 @@ jobs:
             all-warnings: -Wall -Wextra
             no-warnings: >-
               -Wno-overlength-strings
+              -Wno-switch
           - compiler: clang
             all-warnings: >-
               -Wall
