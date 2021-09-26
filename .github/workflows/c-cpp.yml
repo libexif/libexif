@@ -107,10 +107,9 @@ jobs:
 
       - name: 'make installcheck'
         run: make installcheck CFLAGS="$CFLAGS -Werror"
+
       - name: 'make distcheck'
         run: make distcheck
-        env:
-          CFLAGS: ${{ env.CFLAGS }}
 
       - name: 'dist tarball content'
         run: for tarball in *.tar.*; do tar tf "$tarball" | sort; break; done
