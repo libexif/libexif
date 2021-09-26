@@ -102,6 +102,11 @@ jobs:
       - name: 'make check'
         run: make check CFLAGS="$CFLAGS -Werror"
 
+      - name: 'make install'
+        run: make install CFLAGS="$CFLAGS -Werror"
+
+      - name: 'make installcheck'
+        run: make installcheck CFLAGS="$CFLAGS -Werror"
       - name: 'make distcheck'
         run: make distcheck
         env:
