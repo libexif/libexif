@@ -23,6 +23,7 @@
 #include <libexif/exif-byte-order.h>
 #include <libexif/i18n.h>
 
+#include <stdio.h>
 #include <stdlib.h>
 
 const char *
@@ -33,7 +34,7 @@ exif_byte_order_get_name (ExifByteOrder order)
 		return (_("Motorola"));
 	case EXIF_BYTE_ORDER_INTEL:
 		return (_("Intel"));
-	default:
-		return NULL;
 	}
+	fprintf(stderr, "Internal error: unhandled enum value %d\n", (int)order);
+	abort();
 }

@@ -704,7 +704,7 @@ static const struct {
   { EXIF_TAG_CONTRAST , {N_("Normal"), N_("Soft"), N_("Hard"), NULL}},
   { EXIF_TAG_SHARPNESS, {N_("Normal"), N_("Soft"), N_("Hard"), NULL}},
 #endif
-  { 0, {NULL}}
+  { (ExifTag)0, {NULL}}
 };
 
 static const struct {
@@ -839,7 +839,7 @@ static const struct {
       {0xffff, {N_("Uncalibrated"), NULL}},
       {0x0000, {NULL}}}},
 #endif
-  {0, { { 0, {NULL}}} }
+  {(ExifTag)0, { { 0, {NULL}}} }
 };
 
 const char *

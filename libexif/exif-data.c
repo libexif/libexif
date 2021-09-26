@@ -1255,7 +1255,7 @@ static const struct {
 	{EXIF_DATA_OPTION_DONT_CHANGE_MAKER_NOTE, N_("Do not change maker note"),
 	 N_("When loading and resaving Exif data, save the maker note unmodified."
 	    " Be aware that the maker note can get corrupted.")},
-	{0, NULL, NULL}
+	{(ExifDataOption)0, NULL, NULL}
 };
 
 const char *

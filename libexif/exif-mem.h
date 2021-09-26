@@ -22,8 +22,8 @@
  * Boston, MA  02110-1301  USA.
  */
 
-#ifndef __EXIF_MEM_H__
-#define __EXIF_MEM_H__
+#ifndef LIBEXIF_EXIF_MEM_H
+#define LIBEXIF_EXIF_MEM_H
 
 #include <libexif/exif-utils.h>
 
@@ -88,4 +88,4 @@ ExifMem *exif_mem_new_default (void);
 }
 #endif /* __cplusplus */
 
-#endif /* __EXIF_MEM_H__ */
+#endif /* LIBEXIF_EXIF_MEM_H */

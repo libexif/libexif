@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA.
  */
 
-#ifndef __EXIF_BYTE_ORDER_H__
-#define __EXIF_BYTE_ORDER_H__
+#ifndef LIBEXIF_EXIF_BYTE_ORDER_H
+#define LIBEXIF_EXIF_BYTE_ORDER_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -45,4 +45,4 @@ const char *exif_byte_order_get_name (ExifByteOrder order);
 }
 #endif /* __cplusplus */
 
-#endif /* __EXIF_BYTE_ORDER_H__ */
+#endif /* LIBEXIF_EXIF_BYTE_ORDER_H */

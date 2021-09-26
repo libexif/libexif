@@ -1,0 +1,222 @@
+name: CI Build
+
+on:
+  push:
+    branches: [ main, master, add-github-action-for-CI ]
+  pull_request:
+    branches: [ main, master, add-github-action-for-CI ]
+
+env:
+  LC_ALL: C
+  COMMON_CONFIGURE_FLAGS: >-
+    --disable-docs
+    --disable-dependency-tracking
+    --disable-silent-rules
+
+jobs:
+  build-ix:
+
+    runs-on: ${{ matrix.os }}
+
+    name: 'ix ${{ matrix.os }} ${{ matrix.compiler }} ${{ matrix.c-standard }}'
+
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ ubuntu-latest, macos-latest ]
+        c-standard: [ c90, c99 ]
+        compiler: [ clang, gcc ]
+        exclude:
+          - os: macos-latest
+            compiler: gcc
+        include:
+          - compiler: gcc
+            all-warnings: -Wall -Wextra
+            no-warnings: >-
+              -Wno-overlength-strings
+              -Wno-switch
+          - compiler: clang
+            all-warnings: >-
+              -Wall
+              -Wextra
+              -Weverything
+            no-warnings: >-
+              -Wno-overlength-strings
+              -Wno-documentation
+              -Wno-documentation-deprecated-sync
+              -Wno-documentation-unknown-command
+              -Wno-reserved-id-macro
+              -Wno-padded
+              -Wno-switch-enum
+          - os: ubuntu-latest
+            c-standard: c90
+            cpp-defines: >-
+              -D_XOPEN_SOURCE=500
+              -D_POSIX_C_SOURCE=1
+
+    env:
+      CFLAGS: >-
+        -std=${{ matrix.c-standard }}
+        -pedantic
+        ${{ matrix.all-warnings }}
+        ${{ matrix.no-warnings }}
+        ${{ matrix.cpp-defines }}
+
+    steps:
+      - name: 'Show CFLAGS'
+        run: |
+          echo "runner.os=${{ runner.os }}"
+          echo "matrix.os=${{ matrix.os }}"
+          echo "matrix.c-standard=${{ matrix.c-standard }}"
+          echo "matrix.all-warnings=${{ matrix.all-warnings }}"
+          echo "matrix.compiler=${{ matrix.compiler }}"
+          printenv | grep ^CFLAGS
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+
+      - name: 'Install Software (Linux)'
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install autopoint gettext doxygen graphviz ${{ matrix.compiler }}
+
+      - name: 'Install Software (MacOS)'
+        if: runner.os == 'macOS'
+        run: |
+          brew update
+          brew install automake doxygen graphviz
+
+      - name: 'autoreconf'
+        run: autoreconf -vis .
+
+      - name: 'configure'
+        env:
+          CFLAGS: ${{ env.CFLAGS }}
+          CC: ${{ matrix.compiler }}
+        run: |
+          echo "CC=$CC"
+          echo "CFLAGS=$CFLAGS"
+          ./configure ${COMMON_CONFIGURE_FLAGS}
+
+      - name: 'make'
+        run: make CFLAGS="$CFLAGS -Werror"
+
+      - name: 'make check'
+        run: make check CFLAGS="$CFLAGS -Werror"
+
+      - name: 'make install'
+        run: make install CFLAGS="$CFLAGS -Werror"
+
+      - name: 'make installcheck'
+        run: make installcheck CFLAGS="$CFLAGS -Werror"
+
+      - name: 'make distcheck'
+        run: make distcheck
+
+      - name: 'dist tarball content'
+        run: for tarball in *.tar.*; do tar tf "$tarball" | sort; break; done
+
+  build-msys2:
+    # Only use Windows cycles if the other builds actually work
+    needs: build-ix
+
+    runs-on: windows-latest
+
+    # See https://github.com/msys2/setup-msys2
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { sys: mingw32, env: i686,         is-gcc:   true }
+          - { sys: mingw64, env: x86_64,       is-gcc:   true }
+          - { sys: ucrt64,  env: ucrt-x86_64,  is-gcc:   true } # Experimental!
+          - { sys: clang64, env: clang-x86_64, is-clang: true } # Experimental!
+
+    name: 'MSYS2 ${{ matrix.sys }} ${{ matrix.c-standard }} build'
+
+    env:
+      MINGW_ARCH: ${{ matrix.sys }}
+
+      CFLAGS_CLANG: '-std=c90 -pedantic -Wall -Wextra -Weverything -Wno-overlength-strings -Wno-documentation -Wno-documentation-deprecated-sync -Wno-documentation-unknown-command -Wno-reserved-id-macro -Wno-padded'
+
+      CFLAGS_GCC: '-std=c90 -pedantic -Wall -Wextra -Wno-overlength-strings'
+
+    defaults:
+      run:
+        shell: msys2 {0}
+
+    steps:
+      - name: 'cmd shell environment info'
+        shell: cmd
+        run: |
+          path
+          echo %PATH%
+          set
+
+      - name: 'Abort quickly'
+        shell: bash
+        run: |
+          echo "runner.os=${{ runner.os }}"
+          echo "matrix.env=${{ matrix.env }}"
+          echo "matrix.sys=${{ matrix.sys }}"
+          echo "MINGW_ARCH=${MINGW_ARCH}"
+          echo "0={0}"
+          printenv | grep ^CFLAGS
+
+      - name: 'git config'
+        run:  git config --global core.autocrlf input
+        shell: bash
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+
+      - name: 'Setup MSYS2 and Install Software'
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: ${{ matrix.sys }}
+          update: true
+          install: >-
+            git
+            autoconf
+            automake
+            diffutils
+            gettext-devel
+            intltool
+            libtool
+            make
+            patchutils
+            pkgconf
+            doxygen
+            zip
+            mingw-w64-${{ matrix.env }}-graphviz
+            mingw-w64-${{ matrix.env }}-gcc
+
+      - name: 'autoreconf'
+        run: autoreconf -vis .
+
+      - name: 'configure'
+        run: ./configure ${COMMON_CONFIGURE_FLAGS}
+        env:
+          CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }}
+
+      - name: 'make'
+        run: make
+        env:
+          CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }} -Werror
+
+      - name: 'make check'
+        run: make check
+        env:
+          CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }} -Werror
+
+      - name: 'make distcheck'
+        run: make distcheck
+        env:
+          CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }}
+
+      - name: 'dist tarball content'
+        run: for tarball in *.tar.*; do tar tf "$tarball" | sort; break; done

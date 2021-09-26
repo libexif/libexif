@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA.
  */
 
-#ifndef __EXIF_TAG_H__
-#define __EXIF_TAG_H__
+#ifndef LIBEXIF_EXIF_TAG_H
+#define LIBEXIF_EXIF_TAG_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -304,4 +304,4 @@ unsigned int exif_tag_table_count    (void);
 }
 #endif /* __cplusplus */
 
-#endif /* __EXIF_TAG_H__ */
+#endif /* LIBEXIF_EXIF_TAG_H */
