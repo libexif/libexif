@@ -46,7 +46,7 @@ jobs:
               -Wno-switch-enum
           - os: ubuntu-latest
             c-standard: c90
-            cpp-defines: >
+            cpp-defines: >-
               -D_XOPEN_SOURCE=500
               -D_POSIX_C_SOURCE=1
 
