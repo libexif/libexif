@@ -7,8 +7,11 @@ on:
     branches: [ main, master, add-github-action-for-CI ]
 
 env:
-  V: 1
   LC_ALL: C
+  COMMON_CONFIGURE_FLAGS: >-
+    --disable-docs
+    --disable-dependency-tracking
+    --disable-silent-rules
 
 jobs:
   build-ix:
@@ -95,7 +98,7 @@ jobs:
         run: |
           echo "CC=$CC"
           echo "CFLAGS=$CFLAGS"
-          ./configure --disable-docs --disable-dependency-tracking
+          ./configure ${COMMON_CONFIGURE_FLAGS}
 
       - name: 'make'
         run: make CFLAGS="$CFLAGS -Werror"
@@ -196,7 +199,7 @@ jobs:
         run: autoreconf -vis .
 
       - name: 'configure'
-        run: ./configure --disable-docs --disable-dependency-tracking
+        run: ./configure ${COMMON_CONFIGURE_FLAGS}
         env:
           CFLAGS: ${{ matrix.is-clang && env.CFLAGS_CLANG || '' }} ${{ matrix.is-gcc && env.CFLAGS_GCC || '' }}
 
