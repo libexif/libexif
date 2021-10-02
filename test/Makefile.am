@@ -35,6 +35,7 @@ check_PROGRAMS = test-mem test-mnote test-value test-integers test-parse \
 LDADD = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
 
 EXTRA_DIST = \
+	test-fuzzer-persistent.c \
 	parse-regression.sh \
 	swap-byte-order.sh \
 	extract-parse.sh \
