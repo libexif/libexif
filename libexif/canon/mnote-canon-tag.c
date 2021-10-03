@@ -71,6 +71,7 @@ static const struct {
 	{MNOTE_CANON_TAG_PERSONAL_FUNCTIONS_VALUES,"PersonalFunctionsValues", N_("Personal Functions Values"), ""},
 	{MNOTE_CANON_TAG_FILE_INFO,"FileInfo", N_("File Info"), ""},
 	{MNOTE_CANON_TAG_LENS_MODEL,"LensModel", N_("Lens Model"), ""},
+	{MNOTE_CANON_TAG_CMOS_SERIAL,"CMOSSerialNumber", N_("CMOS Serial Number"), ""},
 	{MNOTE_CANON_TAG_DUST_REMOVAL_DATA,"DustRemovalData", N_("Dust Removal Data"), ""},
 	{MNOTE_CANON_TAG_CROP_INFO,"CropInfo", N_("Crop Info"), ""},
 	{MNOTE_CANON_TAG_CUSTOM_FUNCTIONS2,"CustomFunctions2", N_("Custom Functions 2"), ""},
