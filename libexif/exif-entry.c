@@ -1690,7 +1690,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		t = time (NULL);
 #ifdef HAVE_LOCALTIME_R
 		tm = localtime_r (&t, &tms);
-#elif HAVE_LOCALTIME_S
+#elif defined(HAVE_LOCALTIME_S)
 		localtime_s (&tms, &t);
 		tm = &tms;
 #else
