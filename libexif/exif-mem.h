@@ -88,4 +88,4 @@ ExifMem *exif_mem_new_default (void);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_MEM_H */
+#endif /* !defined(LIBEXIF_EXIF_MEM_H) */

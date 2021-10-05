@@ -83,4 +83,4 @@ void exif_mnote_data_set_offset     (ExifMnoteData *, unsigned int);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_MNOTE_DATA_PRIV_H */
+#endif /* !defined(LIBEXIF_EXIF_MNOTE_DATA_PRIV_H) */

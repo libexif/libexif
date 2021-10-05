@@ -264,4 +264,4 @@ void exif_data_log  (ExifData *data, ExifLog *log);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_DATA_H */
+#endif /* !defined(LIBEXIF_EXIF_DATA_H) */

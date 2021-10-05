@@ -38,4 +38,4 @@ struct _MnoteAppleEntry {
 
 char *mnote_apple_entry_get_value(MnoteAppleEntry *, char *, unsigned int);
 
-#endif /* LIBEXIF_MNOTE_APPLE_ENTRY_H */
+#endif /* !defined(LIBEXIF_MNOTE_APPLE_ENTRY_H) */

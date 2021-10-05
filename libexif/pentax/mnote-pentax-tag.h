@@ -150,4 +150,4 @@ const char *mnote_pentax_tag_get_description (MnotePentaxTag tag);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_MNOTE_PENTAX_TAG_H */
+#endif /* !defined(LIBEXIF_MNOTE_PENTAX_TAG_H) */

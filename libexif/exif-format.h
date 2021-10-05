@@ -62,4 +62,4 @@ unsigned char exif_format_get_size (ExifFormat format);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_FORMAT_H */
+#endif /* !defined(LIBEXIF_EXIF_FORMAT_H) */

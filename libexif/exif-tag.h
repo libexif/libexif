@@ -304,4 +304,4 @@ unsigned int exif_tag_table_count    (void);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_TAG_H */
+#endif /* !defined(LIBEXIF_EXIF_TAG_H) */

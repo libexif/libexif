@@ -48,4 +48,4 @@ const char *exif_ifd_get_name (ExifIfd ifd);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_IFD_H */
+#endif /* !defined(LIBEXIF_EXIF_IFD_H) */

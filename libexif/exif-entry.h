@@ -183,4 +183,4 @@ void        exif_entry_dump      (ExifEntry *entry, unsigned int indent);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_ENTRY_H */
+#endif /* !defined(LIBEXIF_EXIF_ENTRY_H) */

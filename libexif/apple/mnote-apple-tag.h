@@ -43,4 +43,4 @@ const char *mnote_apple_tag_get_description(MnoteAppleTag);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_MNOTE_APPLE_TAG_H */
+#endif /* !defined(LIBEXIF_MNOTE_APPLE_TAG_H) */

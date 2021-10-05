@@ -256,4 +256,4 @@ const char *mnote_olympus_tag_get_description (MnoteOlympusTag tag);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_MNOTE_OLYMPUS_TAG_H */
+#endif /* !defined(LIBEXIF_MNOTE_OLYMPUS_TAG_H) */

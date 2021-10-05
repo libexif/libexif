@@ -19,6 +19,7 @@
  * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA.
  */
+
 #ifndef LIBEXIF_EXIF_GPS_IFD_H
 #define LIBEXIF_EXIF_GPS_IFD_H
 
@@ -59,4 +60,4 @@ const ExifGPSIfdTagInfo* exif_get_gps_tag_info(ExifTag tag);
 
 
 
-#endif /* LIBEXIF_EXIF_GPS_IFD_H */
+#endif /* !defined(LIBEXIF_EXIF_GPS_IFD_H) */

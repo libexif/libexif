@@ -41,4 +41,4 @@ struct _MnoteCanonEntry {
 unsigned int mnote_canon_entry_count_values (const MnoteCanonEntry *);
 char        *mnote_canon_entry_get_value    (const MnoteCanonEntry *, unsigned int t, char *val, unsigned int maxlen);
 
-#endif /* LIBEXIF_MNOTE_CANON_ENTRY_H */
+#endif /* !defined(LIBEXIF_MNOTE_CANON_ENTRY_H) */

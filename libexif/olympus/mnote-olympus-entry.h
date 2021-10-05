@@ -40,4 +40,4 @@ struct _MnoteOlympusEntry {
 
 char *mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *val, unsigned int maxlen);
 
-#endif /* LIBEXIF_MNOTE_OLYMPUS_ENTRY_H */
+#endif /* !defined(LIBEXIF_MNOTE_OLYMPUS_ENTRY_H) */

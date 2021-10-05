@@ -89,4 +89,4 @@ const char *mnote_fuji_tag_get_description (MnoteFujiTag tag);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_MNOTE_FUJI_TAG_H */
+#endif /* !defined(LIBEXIF_MNOTE_FUJI_TAG_H) */

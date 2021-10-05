@@ -191,4 +191,4 @@ void exif_array_set_byte_order (ExifFormat, unsigned char *, unsigned int,
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_UTILS_H */
+#endif /* !defined(LIBEXIF_EXIF_UTILS_H) */

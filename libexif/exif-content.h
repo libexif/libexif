@@ -178,4 +178,4 @@ void exif_content_log   (ExifContent *content, ExifLog *log);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_CONTENT_H */
+#endif /* !defined(LIBEXIF_EXIF_CONTENT_H) */

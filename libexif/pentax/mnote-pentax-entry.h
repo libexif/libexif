@@ -40,4 +40,4 @@ struct _MnotePentaxEntry {
 
 char *mnote_pentax_entry_get_value (MnotePentaxEntry *entry, char *val, unsigned int maxlen);
 
-#endif /* LIBEXIF_MNOTE_PENTAX_ENTRY_H */
+#endif /* !defined(LIBEXIF_MNOTE_PENTAX_ENTRY_H) */

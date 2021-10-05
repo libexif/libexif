@@ -119,4 +119,4 @@ void exif_mnote_data_log (ExifMnoteData *, ExifLog *);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_MNOTE_DATA_H */
+#endif /* !defined(LIBEXIF_EXIF_MNOTE_DATA_H) */

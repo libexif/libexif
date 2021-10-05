@@ -41,4 +41,4 @@ int exif_mnote_data_apple_identify(const ExifData *, const ExifEntry *);
 
 ExifMnoteData *exif_mnote_data_apple_new(ExifMem *);
 
-#endif /* LIBEXIF_EXIF_MNOTE_DATA_APPLE_H */
+#endif /* !defined(LIBEXIF_EXIF_MNOTE_DATA_APPLE_H) */

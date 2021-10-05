@@ -125,4 +125,4 @@ void exif_loader_log (ExifLoader *loader, ExifLog *log);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_LOADER_H */
+#endif /* !defined(LIBEXIF_EXIF_LOADER_H) */

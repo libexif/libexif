@@ -120,4 +120,4 @@ const char *mnote_canon_tag_get_description (MnoteCanonTag);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_MNOTE_CANON_TAG_H */
+#endif /* !defined(LIBEXIF_MNOTE_CANON_TAG_H) */

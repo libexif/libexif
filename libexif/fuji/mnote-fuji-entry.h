@@ -42,4 +42,4 @@ struct _MnoteFujiEntry {
 
 char *mnote_fuji_entry_get_value (MnoteFujiEntry *entry, char *val, unsigned int maxlen);
 
-#endif /* LIBEXIF_MNOTE_FUJI_ENTRY_H */
+#endif /* !defined(LIBEXIF_MNOTE_FUJI_ENTRY_H) */

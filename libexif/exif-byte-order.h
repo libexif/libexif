@@ -45,4 +45,4 @@ const char *exif_byte_order_get_name (ExifByteOrder order);
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_BYTE_ORDER_H */
+#endif /* !defined(LIBEXIF_EXIF_BYTE_ORDER_H) */

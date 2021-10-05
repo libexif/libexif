@@ -50,4 +50,4 @@ int exif_mnote_data_fuji_identify (const ExifData *ed, const ExifEntry *e);
 
 ExifMnoteData *exif_mnote_data_fuji_new (ExifMem *);
 
-#endif /* LIBEXIF_EXIF_MNOTE_DATA_FUJI_H */
+#endif /* !defined(LIBEXIF_EXIF_MNOTE_DATA_FUJI_H) */

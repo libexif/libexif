@@ -55,4 +55,4 @@ int exif_mnote_data_canon_identify (const ExifData *ed, const ExifEntry *e);
 
 ExifMnoteData *exif_mnote_data_canon_new (ExifMem *mem, ExifDataOption o);
 
-#endif /* LIBEXIF_EXIF_MNOTE_DATA_CANON_H */
+#endif /* !defined(LIBEXIF_EXIF_MNOTE_DATA_CANON_H) */

@@ -43,4 +43,4 @@ typedef enum {
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_DATA_TYPE_H */
+#endif /* !defined(LIBEXIF_EXIF_DATA_TYPE_H) */

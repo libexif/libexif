@@ -56,4 +56,4 @@ int exif_mnote_data_pentax_identify (const ExifData *ed, const ExifEntry *e);
 
 ExifMnoteData *exif_mnote_data_pentax_new (ExifMem *);
 
-#endif /* LIBEXIF_EXIF_MNOTE_DATA_PENTAX_H */
+#endif /* !defined(LIBEXIF_EXIF_MNOTE_DATA_PENTAX_H) */

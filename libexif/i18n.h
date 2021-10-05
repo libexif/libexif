@@ -49,4 +49,4 @@
 #  define N_(String) (String)
 #endif
 
-#endif /* LIBEXIF_I18N_H */
+#endif /* !defined(LIBEXIF_I18N_H) */

@@ -113,4 +113,4 @@ void     exif_logv (ExifLog *log, ExifLogCode, const char *domain,
 }
 #endif /* __cplusplus */
 
-#endif /* LIBEXIF_EXIF_LOG_H */
+#endif /* !defined(LIBEXIF_EXIF_LOG_H) */
