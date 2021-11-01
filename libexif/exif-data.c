@@ -885,9 +885,11 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			if (ds && d[0] == JPEG_MARKER_APP1) {
 				/*
 				 * Verify the exif header
-				 * (offset 2, length 6).
+				 * (offset 3, length 6).
+				 * FF E1 NN NN EXIFHEADER
+				 *    ^^ d points here currently
 				 */
-				if ((ds >= 10) && !memcmp (d+4, ExifHeader, 6))
+				if ((ds >= 9) && !memcmp (d+3, ExifHeader, 6))
 					break;
 				/* fallthrough */
 			}
