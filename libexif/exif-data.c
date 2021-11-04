@@ -921,6 +921,11 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		d++;
 		ds--;
 		len = (((unsigned int)d[0]) << 8) | d[1];
+		if (len > ds) {
+			exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
+				  "ExifData", _("Read length %d is longer than data length %d."), len, ds);
+			return;
+		}
 		if (len < 2) {
 			exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifData", _("APP Tag too short."));
