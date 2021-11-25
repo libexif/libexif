@@ -1,8 +1,9 @@
-libexif-0.6.23.1 (2021-xx-xx):
+libexif-0.6.24 (2021-11-25):
+
    * Translation updates: sr, vi, pl, uk, french
    * fixed regression in exif_data_load_data which could not load EXIF in JPEG data anymore
    * Decode lots of Canon tag names
-   * removed empty strings from translation (empty string is the po info header)
+   * removed empty strings from translation (empty string would translate to the PO info header)
    * various warning removals and code improvements
    * added sample "persistent" afl fuzzer (100x faster than normal afl fuzzer)
 
