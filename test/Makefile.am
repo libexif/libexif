@@ -23,13 +23,13 @@ AM_TESTS_ENVIRONMENT += FAILMALLOC_PATH='$(FAILMALLOC_PATH)'; export FAILMALLOC_
 #      And this is just the lib - we don't have the program available
 #      here yet.
 
-TESTS = test-mem test-value test-integers test-parse test-tagtable test-sorted \
+TESTS = test-mem test-value test-integers test-parse test-parse-from-data test-tagtable test-sorted \
 	test-fuzzer test-null parse-regression.sh swap-byte-order.sh \
 	extract-parse.sh test-gps
 
 TESTS += check-failmalloc.sh
 
-check_PROGRAMS = test-mem test-mnote test-value test-integers test-parse \
+check_PROGRAMS = test-mem test-mnote test-value test-integers test-parse test-parse-from-data \
 	test-tagtable test-sorted test-fuzzer test-extract test-null test-gps
 
 LDADD = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)

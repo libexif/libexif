@@ -41,3 +41,14 @@ for fn in "${srcdir}"/testdata/*.jpg ; do
         exit 1
     fi
 done
+
+for fn in "${srcdir}"/testdata/*.jpg ; do
+    ./test-parse$EXEEXT           "${fn}" | tr -d '\015' | parse_canonicalize > "${TMPORIGINAL}"
+    ./test-parse-from-data$EXEEXT "${fn}" | tr -d '\015' | parse_canonicalize > "${TMPEXTRACTED}"
+    if ${comparetool} "${TMPORIGINAL}" "${TMPEXTRACTED}"; then
+	echo "no differences detected"
+    else
+        echo "ERROR: Difference between test-parse and test-parse-from-data for $fn !"
+        exit 1
+    fi
+done
