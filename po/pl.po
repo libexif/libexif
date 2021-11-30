@@ -3,14 +3,12 @@
 # This file is distributed under the same license as the libexif package.
 # Jakub Bogusz <qboosh@pld-linux.org>, 2005-2021.
 #
-#: libexif/exif-tag.c:534 libexif/exif-tag.c:538 libexif/exif-tag.c:542
-#: libexif/exif-tag.c:546 libexif/exif-tag.c:550
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif 0.6.23\n"
+"Project-Id-Version: libexif 0.6.24\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2021-09-12 15:28+0200\n"
-"PO-Revision-Date: 2021-09-14 19:15+0200\n"
+"POT-Creation-Date: 2021-11-25 11:31+0100\n"
+"PO-Revision-Date: 2021-11-27 13:45+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -59,7 +57,7 @@ msgstr "Makro"
 #: libexif/olympus/mnote-olympus-entry.c:198
 #: libexif/olympus/mnote-olympus-entry.c:206
 #: libexif/olympus/mnote-olympus-entry.c:216
-#: libexif/olympus/mnote-olympus-entry.c:593
+#: libexif/olympus/mnote-olympus-entry.c:594
 #: libexif/pentax/mnote-pentax-entry.c:105
 #: libexif/pentax/mnote-pentax-entry.c:110
 #: libexif/pentax/mnote-pentax-entry.c:115
@@ -95,8 +93,8 @@ msgstr "Bardzo dobra"
 #: libexif/olympus/mnote-olympus-entry.c:181
 #: libexif/olympus/mnote-olympus-entry.c:189
 #: libexif/olympus/mnote-olympus-entry.c:254
-#: libexif/olympus/mnote-olympus-entry.c:537
-#: libexif/olympus/mnote-olympus-entry.c:554
+#: libexif/olympus/mnote-olympus-entry.c:538
+#: libexif/olympus/mnote-olympus-entry.c:555
 #: libexif/pentax/mnote-pentax-entry.c:195
 #: libexif/pentax/mnote-pentax-entry.c:260
 msgid "Off"
@@ -128,8 +126,8 @@ msgstr "Auto"
 #: libexif/fuji/mnote-fuji-entry.c:108 libexif/fuji/mnote-fuji-entry.c:116
 #: libexif/fuji/mnote-fuji-entry.c:143
 #: libexif/olympus/mnote-olympus-entry.c:182
-#: libexif/olympus/mnote-olympus-entry.c:540
-#: libexif/olympus/mnote-olympus-entry.c:557
+#: libexif/olympus/mnote-olympus-entry.c:541
+#: libexif/olympus/mnote-olympus-entry.c:558
 #: libexif/pentax/mnote-pentax-entry.c:198
 #: libexif/pentax/mnote-pentax-entry.c:261
 msgid "On"
@@ -1153,22 +1151,22 @@ msgid "Rotated by software"
 msgstr "Obrót programowy"
 
 #: libexif/canon/mnote-canon-entry.c:382
-#: libexif/olympus/mnote-olympus-entry.c:613
+#: libexif/olympus/mnote-olympus-entry.c:614
 msgid "Left to right"
 msgstr "Od lewej do prawej"
 
 #: libexif/canon/mnote-canon-entry.c:383
-#: libexif/olympus/mnote-olympus-entry.c:616
+#: libexif/olympus/mnote-olympus-entry.c:617
 msgid "Right to left"
 msgstr "Od prawej do lewej"
 
 #: libexif/canon/mnote-canon-entry.c:384
-#: libexif/olympus/mnote-olympus-entry.c:619
+#: libexif/olympus/mnote-olympus-entry.c:620
 msgid "Bottom to top"
 msgstr "Od dołu do góry"
 
 #: libexif/canon/mnote-canon-entry.c:385
-#: libexif/olympus/mnote-olympus-entry.c:622
+#: libexif/olympus/mnote-olympus-entry.c:623
 msgid "Top to bottom"
 msgstr "Od góry do dołu"
 
@@ -1278,7 +1276,7 @@ msgstr "1/%.0f"
 msgid "%u mm"
 msgstr "%u mm"
 
-#: libexif/canon/mnote-canon-entry.c:815 libexif/fuji/mnote-fuji-entry.c:303
+#: libexif/canon/mnote-canon-entry.c:816 libexif/fuji/mnote-fuji-entry.c:303
 #: libexif/pentax/mnote-pentax-entry.c:401
 #: libexif/pentax/mnote-pentax-entry.c:497
 #, c-format
@@ -1289,7 +1287,7 @@ msgstr "%i bajtów nieznanych danych"
 msgid "Settings (First Part)"
 msgstr "Ustawienia (część pierwsza)"
 
-#: libexif/canon/mnote-canon-tag.c:36 libexif/canon/mnote-canon-tag.c:92
+#: libexif/canon/mnote-canon-tag.c:36 libexif/canon/mnote-canon-tag.c:158
 #: libexif/exif-tag.c:630 libexif/pentax/mnote-pentax-tag.c:88
 msgid "Focal Length"
 msgstr "Ogniskowa"
@@ -1299,7 +1297,7 @@ msgid "Settings (Second Part)"
 msgstr "Ustawienia (część druga)"
 
 #: libexif/canon/mnote-canon-tag.c:38
-#: libexif/olympus/mnote-olympus-entry.c:602
+#: libexif/olympus/mnote-olympus-entry.c:603
 #: libexif/pentax/mnote-pentax-entry.c:177
 msgid "Panorama"
 msgstr "Panorama"
@@ -1331,39 +1329,297 @@ msgstr "Informacja o kolorach"
 msgid "Serial Number"
 msgstr "Numer seryjny"
 
-#: libexif/canon/mnote-canon-tag.c:45
+#: libexif/canon/mnote-canon-tag.c:45 libexif/pentax/mnote-pentax-tag.c:117
+msgid "Camera Info"
+msgstr "Informacje o aparacie"
+
+#: libexif/canon/mnote-canon-tag.c:46
+msgid "File Length"
+msgstr "Długość pliku"
+
+#: libexif/canon/mnote-canon-tag.c:47
 msgid "Custom Functions"
 msgstr "Funkcje własne"
 
-#: libexif/canon/mnote-canon-tag.c:56 libexif/fuji/mnote-fuji-tag.c:45
+#: libexif/canon/mnote-canon-tag.c:48
+msgid "Model ID"
+msgstr "ID modelu"
+
+#: libexif/canon/mnote-canon-tag.c:49
+msgid "Movie Info"
+msgstr "Informacje o filmie"
+
+#: libexif/canon/mnote-canon-tag.c:50
+msgid "AF Info"
+msgstr "Informacje o AF"
+
+#: libexif/canon/mnote-canon-tag.c:51
+msgid "Thumbnail Valid Area"
+msgstr "Obszar miniaturki"
+
+#: libexif/canon/mnote-canon-tag.c:52
+msgid "Serial Number Format"
+msgstr "Format numeru seryjnego"
+
+#: libexif/canon/mnote-canon-tag.c:53
+msgid "Super Macro"
+msgstr "Super makro"
+
+#: libexif/canon/mnote-canon-tag.c:54
+msgid "Date Stamp Mode"
+msgstr "Tryb znacznika daty"
+
+#: libexif/canon/mnote-canon-tag.c:55
+msgid "My Colors"
+msgstr "Moje kolory"
+
+#: libexif/canon/mnote-canon-tag.c:56
+msgid "Firmware Revision"
+msgstr "Wersja firmware"
+
+#: libexif/canon/mnote-canon-tag.c:57
+msgid "Categories"
+msgstr "Kategorie"
+
+#: libexif/canon/mnote-canon-tag.c:58
+msgid "Face Detect 1"
+msgstr "Wykrywanie twarzy 1"
+
+#: libexif/canon/mnote-canon-tag.c:59
+msgid "Face Detect 2"
+msgstr "Wykrywanie twarzy 2"
+
+#: libexif/canon/mnote-canon-tag.c:60 libexif/olympus/mnote-olympus-tag.c:121
+msgid "AF Info 2"
+msgstr "Informacje o AF 2"
+
+#: libexif/canon/mnote-canon-tag.c:61
+msgid "Contrast Info"
+msgstr "Informacje o kontraście"
+
+#: libexif/canon/mnote-canon-tag.c:62 libexif/exif-tag.c:901
+msgid "Image Unique ID"
+msgstr "Unikalny identyfikator obrazu"
+
+#: libexif/canon/mnote-canon-tag.c:63
+msgid "WB Info"
+msgstr "Informacje o WB"
+
+#: libexif/canon/mnote-canon-tag.c:64
+msgid "Face Detect 3"
+msgstr "Wykrywanie twarzy 3"
+
+#: libexif/canon/mnote-canon-tag.c:65
+msgid "Time Info"
+msgstr "Informacje o czasie"
+
+#: libexif/canon/mnote-canon-tag.c:66
+msgid "Battery Type"
+msgstr "Rodzaj baterii"
+
+#: libexif/canon/mnote-canon-tag.c:67
+msgid "AF Info 3"
+msgstr "Informacje o AF 3"
+
+#: libexif/canon/mnote-canon-tag.c:68
+msgid "Raw Data Offset"
+msgstr "Przesunięcie danych surowych"
+
+#: libexif/canon/mnote-canon-tag.c:69
+msgid "Original Decision Data Offset"
+msgstr "Przesunięcie oryginalnych danych decyzyjnych"
+
+#: libexif/canon/mnote-canon-tag.c:70
+msgid "Personal Functions"
+msgstr "Funkcje osobiste"
+
+#: libexif/canon/mnote-canon-tag.c:71
+msgid "Personal Functions Values"
+msgstr "Wartości funkcji osobistych"
+
+#: libexif/canon/mnote-canon-tag.c:72 libexif/olympus/mnote-olympus-tag.c:122
+msgid "File Info"
+msgstr "Informacje o pliku"
+
+#: libexif/canon/mnote-canon-tag.c:73 libexif/exif-tag.c:927
+msgid "Lens Model"
+msgstr "Model obiektywu"
+
+#: libexif/canon/mnote-canon-tag.c:74
+msgid "CMOS Serial Number"
+msgstr "Numer seryjny CMOS"
+
+#: libexif/canon/mnote-canon-tag.c:75
+msgid "Dust Removal Data"
+msgstr "Dane o usuwaniu zanieczyszczeń"
+
+#: libexif/canon/mnote-canon-tag.c:76
+msgid "Crop Info"
+msgstr "Informacje o przycięciu"
+
+#: libexif/canon/mnote-canon-tag.c:77
+msgid "Custom Functions 2"
+msgstr "Funkcje własne 2"
+
+#: libexif/canon/mnote-canon-tag.c:78
+msgid "Aspect Info"
+msgstr "Informacje o proporcjach"
+
+#: libexif/canon/mnote-canon-tag.c:79
+msgid "Tone Curve Table"
+msgstr "Tabela krzywej tonalnej"
+
+#: libexif/canon/mnote-canon-tag.c:80
+msgid "Sharpness Table"
+msgstr "Tabela ostrości"
+
+#: libexif/canon/mnote-canon-tag.c:81
+msgid "Sharpness Frequency Table"
+msgstr "Tabela częstotliwości ostrości"
+
+#: libexif/canon/mnote-canon-tag.c:82
+msgid "Whitebalance Table"
+msgstr "Tabela balansu bieli"
+
+#: libexif/canon/mnote-canon-tag.c:83 libexif/olympus/mnote-olympus-tag.c:77
+msgid "Color Balance"
+msgstr "Balans kolorów"
+
+#: libexif/canon/mnote-canon-tag.c:84
+msgid "Measured Color"
+msgstr "Zmierzony kolor"
+
+#: libexif/canon/mnote-canon-tag.c:85 libexif/canon/mnote-canon-tag.c:199
+msgid "Color Temperature"
+msgstr "Temperatura koloru"
+
+#: libexif/canon/mnote-canon-tag.c:86
+msgid "Canon Flags"
+msgstr "Flagi Canon"
+
+#: libexif/canon/mnote-canon-tag.c:87
+msgid "Modified Info"
+msgstr "Informacje o modyfikacji"
+
+#: libexif/canon/mnote-canon-tag.c:88
+msgid "Tonecurve Matching"
+msgstr "Dopasowanie krzywej tonalnej"
+
+#: libexif/canon/mnote-canon-tag.c:89
+msgid "Whitebalance Matching"
+msgstr "Dopasowanie balansu bieli"
+
+#: libexif/canon/mnote-canon-tag.c:90 libexif/exif-tag.c:711
+#: libexif/olympus/mnote-olympus-tag.c:96
+#: libexif/pentax/mnote-pentax-tag.c:102
+msgid "Color Space"
+msgstr "Przestrzeń kolorów"
+
+#: libexif/canon/mnote-canon-tag.c:91
+msgid "Preview Image Info"
+msgstr "Informacje o podglądzie zdjęcia"
+
+#: libexif/canon/mnote-canon-tag.c:92
+msgid "VRD Offset"
+msgstr "Przesunięcie VRD"
+
+#: libexif/canon/mnote-canon-tag.c:93
+msgid "Sensor Info"
+msgstr "Informacje o matrycy"
+
+#: libexif/canon/mnote-canon-tag.c:94
+msgid "WB Packet"
+msgstr "Pakiet WB"
+
+#: libexif/canon/mnote-canon-tag.c:95
+msgid "Flavor"
+msgstr "Odmiana"
+
+#: libexif/canon/mnote-canon-tag.c:96
+msgid "Picture Style Userdefined"
+msgstr "Styl zdjęcia zdefiniowany przez użytkownika"
+
+#: libexif/canon/mnote-canon-tag.c:97
+msgid "Picture Style PC"
+msgstr "Styl zdjęcia PC"
+
+#: libexif/canon/mnote-canon-tag.c:98
+msgid "Custom Picture Style Filename"
+msgstr "Nazwa pliku własnego stylu zdjęcia"
+
+#: libexif/canon/mnote-canon-tag.c:99
+msgid "AF Micro Adjust"
+msgstr "Mikrostrojenie AF"
+
+#: libexif/canon/mnote-canon-tag.c:100
+msgid "Vignetting Correct"
+msgstr "Korekta winietowania"
+
+#: libexif/canon/mnote-canon-tag.c:101
+msgid "Vignetting Correct 2"
+msgstr "Korekta winietowania 2"
+
+#: libexif/canon/mnote-canon-tag.c:102
+msgid "LightingOpt"
+msgstr "Opcja oświetlenia"
+
+#: libexif/canon/mnote-canon-tag.c:103 libexif/pentax/mnote-pentax-tag.c:115
+msgid "Lens Info"
+msgstr "Informacje o obiektywie"
+
+#: libexif/canon/mnote-canon-tag.c:104
+msgid "Ambience_Info"
+msgstr "Informacja o otoczeniu"
+
+#: libexif/canon/mnote-canon-tag.c:105 libexif/olympus/mnote-olympus-tag.c:117
+msgid "Multi Exposure"
+msgstr "Ekspozycja wielokrotna"
+
+#: libexif/canon/mnote-canon-tag.c:106
+msgid "Filter Info"
+msgstr "Informacje o filtrach"
+
+#: libexif/canon/mnote-canon-tag.c:107 libexif/olympus/mnote-olympus-tag.c:107
+msgid "HDR Info"
+msgstr "Informacje o HDR"
+
+#: libexif/canon/mnote-canon-tag.c:108
+msgid "AF Config"
+msgstr "Konfiguracja AF"
+
+#: libexif/canon/mnote-canon-tag.c:109
+msgid "Raw Burst Info"
+msgstr "Informacje o surowym strumieniu"
+
+#: libexif/canon/mnote-canon-tag.c:120 libexif/fuji/mnote-fuji-tag.c:45
 msgid "Macro Mode"
 msgstr "Tryb makro"
 
-#: libexif/canon/mnote-canon-tag.c:57 libexif/canon/mnote-canon-tag.c:117
+#: libexif/canon/mnote-canon-tag.c:121 libexif/canon/mnote-canon-tag.c:187
 #: libexif/olympus/mnote-olympus-tag.c:207
 #: libexif/pentax/mnote-pentax-tag.c:128
 msgid "Self-timer"
 msgstr "Samowyzwalacz"
 
-#: libexif/canon/mnote-canon-tag.c:58 libexif/fuji/mnote-fuji-tag.c:38
+#: libexif/canon/mnote-canon-tag.c:122 libexif/fuji/mnote-fuji-tag.c:38
 #: libexif/olympus/mnote-olympus-tag.c:40
 #: libexif/olympus/mnote-olympus-tag.c:126
 #: libexif/olympus/mnote-olympus-tag.c:139
 msgid "Quality"
 msgstr "Jakość"
 
-#: libexif/canon/mnote-canon-tag.c:59 libexif/fuji/mnote-fuji-tag.c:43
+#: libexif/canon/mnote-canon-tag.c:123 libexif/fuji/mnote-fuji-tag.c:43
 #: libexif/olympus/mnote-olympus-tag.c:45
 #: libexif/olympus/mnote-olympus-tag.c:159
 #: libexif/pentax/mnote-pentax-tag.c:38 libexif/pentax/mnote-pentax-tag.c:73
 msgid "Flash Mode"
 msgstr "Tryb flesza"
 
-#: libexif/canon/mnote-canon-tag.c:60 libexif/pentax/mnote-pentax-tag.c:101
+#: libexif/canon/mnote-canon-tag.c:124 libexif/pentax/mnote-pentax-tag.c:101
 msgid "Drive Mode"
 msgstr "Tryb działania"
 
-#: libexif/canon/mnote-canon-tag.c:61 libexif/canon/mnote-canon-tag.c:82
+#: libexif/canon/mnote-canon-tag.c:125 libexif/canon/mnote-canon-tag.c:146
 #: libexif/olympus/mnote-olympus-tag.c:43
 #: libexif/olympus/mnote-olympus-tag.c:166
 #: libexif/olympus/mnote-olympus-tag.c:205
@@ -1372,19 +1628,19 @@ msgstr "Tryb działania"
 msgid "Focus Mode"
 msgstr "Tryb ogniskowania"
 
-#: libexif/canon/mnote-canon-tag.c:62 libexif/pentax/mnote-pentax-tag.c:127
+#: libexif/canon/mnote-canon-tag.c:126 libexif/pentax/mnote-pentax-tag.c:127
 msgid "Record Mode"
 msgstr "Tryb nagrywania"
 
-#: libexif/canon/mnote-canon-tag.c:63 libexif/pentax/mnote-pentax-tag.c:71
+#: libexif/canon/mnote-canon-tag.c:127 libexif/pentax/mnote-pentax-tag.c:71
 msgid "Image Size"
 msgstr "Rozmiar obrazu"
 
-#: libexif/canon/mnote-canon-tag.c:64
+#: libexif/canon/mnote-canon-tag.c:128
 msgid "Easy Shooting Mode"
 msgstr "Tryb łatwego robienia zdjęć"
 
-#: libexif/canon/mnote-canon-tag.c:65 libexif/olympus/mnote-olympus-tag.c:64
+#: libexif/canon/mnote-canon-tag.c:129 libexif/olympus/mnote-olympus-tag.c:64
 #: libexif/olympus/mnote-olympus-tag.c:133
 #: libexif/olympus/mnote-olympus-tag.c:142
 #: libexif/olympus/mnote-olympus-tag.c:212
@@ -1392,149 +1648,157 @@ msgstr "Tryb łatwego robienia zdjęć"
 msgid "Digital Zoom"
 msgstr "Powiększenie cyfrowe"
 
-#: libexif/canon/mnote-canon-tag.c:66 libexif/exif-tag.c:878
+#: libexif/canon/mnote-canon-tag.c:130 libexif/exif-tag.c:878
 #: libexif/fuji/mnote-fuji-tag.c:42 libexif/pentax/mnote-pentax-tag.c:46
 #: libexif/pentax/mnote-pentax-tag.c:91
 msgid "Contrast"
 msgstr "Kontrastowość"
 
-#: libexif/canon/mnote-canon-tag.c:67 libexif/exif-tag.c:882
+#: libexif/canon/mnote-canon-tag.c:131 libexif/exif-tag.c:882
 #: libexif/olympus/mnote-olympus-tag.c:75
 #: libexif/olympus/mnote-olympus-tag.c:88 libexif/pentax/mnote-pentax-tag.c:47
 #: libexif/pentax/mnote-pentax-tag.c:90
 msgid "Saturation"
 msgstr "Nasycenie"
 
-#: libexif/canon/mnote-canon-tag.c:68 libexif/exif-tag.c:886
-#: libexif/fuji/mnote-fuji-tag.c:39 libexif/pentax/mnote-pentax-tag.c:45
-#: libexif/pentax/mnote-pentax-tag.c:92
+#: libexif/canon/mnote-canon-tag.c:132 libexif/canon/mnote-canon-tag.c:192
+#: libexif/exif-tag.c:886 libexif/fuji/mnote-fuji-tag.c:39
+#: libexif/pentax/mnote-pentax-tag.c:45 libexif/pentax/mnote-pentax-tag.c:92
 msgid "Sharpness"
 msgstr "Ostrość"
 
-#: libexif/canon/mnote-canon-tag.c:69
+#: libexif/canon/mnote-canon-tag.c:133
 msgid "ISO"
 msgstr "ISO"
 
-#: libexif/canon/mnote-canon-tag.c:70 libexif/exif-tag.c:620
+#: libexif/canon/mnote-canon-tag.c:134 libexif/exif-tag.c:620
 #: libexif/pentax/mnote-pentax-tag.c:82
 msgid "Metering Mode"
 msgstr "Tryb pomiaru"
 
-#: libexif/canon/mnote-canon-tag.c:71 libexif/olympus/mnote-olympus-tag.c:165
+#: libexif/canon/mnote-canon-tag.c:135 libexif/olympus/mnote-olympus-tag.c:165
 msgid "Focus Range"
 msgstr "Zakres ogniskowej"
 
-#: libexif/canon/mnote-canon-tag.c:72 libexif/canon/mnote-canon-tag.c:105
+#: libexif/canon/mnote-canon-tag.c:136 libexif/canon/mnote-canon-tag.c:173
 msgid "AF Point"
 msgstr "Punkt AF"
 
-#: libexif/canon/mnote-canon-tag.c:73 libexif/exif-tag.c:845
+#: libexif/canon/mnote-canon-tag.c:137 libexif/exif-tag.c:845
 msgid "Exposure Mode"
 msgstr "Tryb ekspozycji"
 
-#: libexif/canon/mnote-canon-tag.c:74 libexif/olympus/mnote-olympus-tag.c:61
+#: libexif/canon/mnote-canon-tag.c:138 libexif/olympus/mnote-olympus-tag.c:61
 #: libexif/pentax/mnote-pentax-tag.c:106
 msgid "Lens Type"
 msgstr "Rodzaj obiektywu"
 
-#: libexif/canon/mnote-canon-tag.c:75
+#: libexif/canon/mnote-canon-tag.c:139
 msgid "Long Focal Length of Lens"
 msgstr "Długa ogniskowa obiektywu"
 
-#: libexif/canon/mnote-canon-tag.c:76
+#: libexif/canon/mnote-canon-tag.c:140
 msgid "Short Focal Length of Lens"
 msgstr "Krótka ogniskowa obiektywu"
 
-#: libexif/canon/mnote-canon-tag.c:77
+#: libexif/canon/mnote-canon-tag.c:141
 msgid "Focal Units per mm"
 msgstr "Jednostki ogniskowe na mm"
 
-#: libexif/canon/mnote-canon-tag.c:78
+#: libexif/canon/mnote-canon-tag.c:142
 msgid "Maximal Aperture"
 msgstr "Maksymalna jasność"
 
-#: libexif/canon/mnote-canon-tag.c:79
+#: libexif/canon/mnote-canon-tag.c:143
 msgid "Minimal Aperture"
 msgstr "Minimalna jasność"
 
-#: libexif/canon/mnote-canon-tag.c:80
+#: libexif/canon/mnote-canon-tag.c:144
 msgid "Flash Activity"
 msgstr "Działanie flesza"
 
-#: libexif/canon/mnote-canon-tag.c:81
+#: libexif/canon/mnote-canon-tag.c:145
 msgid "Flash Details"
 msgstr "Opis flesza"
 
-#: libexif/canon/mnote-canon-tag.c:83
+#: libexif/canon/mnote-canon-tag.c:147
 msgid "AE Setting"
 msgstr "Ustawienie AE"
 
-#: libexif/canon/mnote-canon-tag.c:84
+#: libexif/canon/mnote-canon-tag.c:148
 msgid "Image Stabilization"
 msgstr "Stabilizacja obrazu"
 
-#: libexif/canon/mnote-canon-tag.c:85
+#: libexif/canon/mnote-canon-tag.c:149
 msgid "Display Aperture"
 msgstr "Jasność wyświetlacza"
 
-#: libexif/canon/mnote-canon-tag.c:86
+#: libexif/canon/mnote-canon-tag.c:150
 msgid "Zoom Source Width"
 msgstr "Szerokość źródłowa powiększenia"
 
-#: libexif/canon/mnote-canon-tag.c:87
+#: libexif/canon/mnote-canon-tag.c:151
 msgid "Zoom Target Width"
 msgstr "Szerokość docelowa powiększenia"
 
-#: libexif/canon/mnote-canon-tag.c:88
+#: libexif/canon/mnote-canon-tag.c:152
+msgid "Spot Metering Mode"
+msgstr "Tryb pomiaru punktu"
+
+#: libexif/canon/mnote-canon-tag.c:153
 msgid "Photo Effect"
 msgstr "Efekt fotograficzny"
 
-#: libexif/canon/mnote-canon-tag.c:89 libexif/canon/mnote-canon-tag.c:118
+#: libexif/canon/mnote-canon-tag.c:154 libexif/canon/mnote-canon-tag.c:188
 msgid "Manual Flash Output"
 msgstr "Ręczne wyjście flesza"
 
-#: libexif/canon/mnote-canon-tag.c:90
+#: libexif/canon/mnote-canon-tag.c:155
 msgid "Color Tone"
 msgstr "Tonacja kolorów"
 
-#: libexif/canon/mnote-canon-tag.c:91
+#: libexif/canon/mnote-canon-tag.c:156
+msgid "SRAW Quality"
+msgstr "Jakość SRAW"
+
+#: libexif/canon/mnote-canon-tag.c:157
 msgid "Focal Type"
 msgstr "Rodzaj ogniskowania"
 
-#: libexif/canon/mnote-canon-tag.c:93
+#: libexif/canon/mnote-canon-tag.c:159
 msgid "Focal Plane X Size"
 msgstr "Rozmiar płaszczyzny ogniskowej X"
 
-#: libexif/canon/mnote-canon-tag.c:94
+#: libexif/canon/mnote-canon-tag.c:160
 msgid "Focal Plane Y Size"
 msgstr "Rozmiar płaszczyzny ogniskowej Y"
 
-#: libexif/canon/mnote-canon-tag.c:95
+#: libexif/canon/mnote-canon-tag.c:161
 msgid "Auto ISO"
 msgstr "ISO auto"
 
-#: libexif/canon/mnote-canon-tag.c:96
+#: libexif/canon/mnote-canon-tag.c:162
 msgid "Shot ISO"
 msgstr "ISO zdjęcia"
 
-#: libexif/canon/mnote-canon-tag.c:97
+#: libexif/canon/mnote-canon-tag.c:163
 msgid "Measured EV"
 msgstr "Zmierzone EV"
 
-#: libexif/canon/mnote-canon-tag.c:98
+#: libexif/canon/mnote-canon-tag.c:164
 msgid "Target Aperture"
 msgstr "Przysłona docelowa"
 
-#: libexif/canon/mnote-canon-tag.c:99
+#: libexif/canon/mnote-canon-tag.c:165
 msgid "Target Exposure Time"
 msgstr "Docelowy czas ekspozycji"
 
-#: libexif/canon/mnote-canon-tag.c:100 libexif/olympus/mnote-olympus-tag.c:161
+#: libexif/canon/mnote-canon-tag.c:166 libexif/olympus/mnote-olympus-tag.c:161
 #: libexif/pentax/mnote-pentax-tag.c:81
 msgid "Exposure Compensation"
 msgstr "Kompensacja ekspozycji"
 
-#: libexif/canon/mnote-canon-tag.c:101 libexif/canon/mnote-canon-tag.c:123
+#: libexif/canon/mnote-canon-tag.c:167 libexif/canon/mnote-canon-tag.c:198
 #: libexif/exif-tag.c:850 libexif/fuji/mnote-fuji-tag.c:40
 #: libexif/olympus/mnote-olympus-tag.c:41
 #: libexif/olympus/mnote-olympus-tag.c:130
@@ -1543,84 +1807,128 @@ msgstr "Kompensacja ekspozycji"
 msgid "White Balance"
 msgstr "Balans bieli"
 
-#: libexif/canon/mnote-canon-tag.c:102
+#: libexif/canon/mnote-canon-tag.c:168
 msgid "Slow Shutter"
 msgstr "Wolna migawka"
 
-#: libexif/canon/mnote-canon-tag.c:103
+#: libexif/canon/mnote-canon-tag.c:169
 msgid "Sequence Number"
 msgstr "Numer sekwencyjny"
 
-#: libexif/canon/mnote-canon-tag.c:104
+#: libexif/canon/mnote-canon-tag.c:170
+msgid "Optical Zoom Code"
+msgstr "Kod powiększenia optycznego"
+
+#: libexif/canon/mnote-canon-tag.c:171 libexif/pentax/mnote-pentax-tag.c:107
+msgid "Camera Temperature"
+msgstr "Temperatura aparatu"
+
+#: libexif/canon/mnote-canon-tag.c:172
 msgid "Flash Guide Number"
 msgstr "Liczba poprzedzających fleszy"
 
-#: libexif/canon/mnote-canon-tag.c:106 libexif/olympus/mnote-olympus-tag.c:52
+#: libexif/canon/mnote-canon-tag.c:174 libexif/olympus/mnote-olympus-tag.c:52
 #: libexif/pentax/mnote-pentax-tag.c:109
 msgid "Flash Exposure Compensation"
 msgstr "Kompensacja ekspozycji flesza"
 
-#: libexif/canon/mnote-canon-tag.c:107
+#: libexif/canon/mnote-canon-tag.c:175
 msgid "AE Bracketing"
 msgstr "Bracketing AE"
 
-#: libexif/canon/mnote-canon-tag.c:108
+#: libexif/canon/mnote-canon-tag.c:176
 msgid "AE Bracket Value"
 msgstr "Wartość bracketingu AE"
 
-#: libexif/canon/mnote-canon-tag.c:109
+#: libexif/canon/mnote-canon-tag.c:177
+msgid "Control Mode"
+msgstr "Tryb sterowania"
+
+#: libexif/canon/mnote-canon-tag.c:178
 msgid "Focus Distance Upper"
 msgstr "Górna odległość ogniska"
 
-#: libexif/canon/mnote-canon-tag.c:110
+#: libexif/canon/mnote-canon-tag.c:179
 msgid "Focus Distance Lower"
 msgstr "Dolna odległość ogniska"
 
-#: libexif/canon/mnote-canon-tag.c:111 libexif/exif-tag.c:479
+#: libexif/canon/mnote-canon-tag.c:180 libexif/exif-tag.c:479
 #: libexif/pentax/mnote-pentax-tag.c:79
 msgid "F-Number"
 msgstr "Liczba F"
 
-#: libexif/canon/mnote-canon-tag.c:112 libexif/exif-tag.c:476
+#: libexif/canon/mnote-canon-tag.c:181 libexif/exif-tag.c:476
 #: libexif/pentax/mnote-pentax-tag.c:78
 msgid "Exposure Time"
 msgstr "Czas ekspozycji"
 
-#: libexif/canon/mnote-canon-tag.c:113
+#: libexif/canon/mnote-canon-tag.c:182
+msgid "Measured EV 2"
+msgstr "Zmierzone EV 2"
+
+#: libexif/canon/mnote-canon-tag.c:183
 msgid "Bulb Duration"
 msgstr "Okres żarówki"
 
-#: libexif/canon/mnote-canon-tag.c:114
+#: libexif/canon/mnote-canon-tag.c:184
 msgid "Camera Type"
 msgstr "Rodzaj aparatu"
 
-#: libexif/canon/mnote-canon-tag.c:115
+#: libexif/canon/mnote-canon-tag.c:185
 msgid "Auto Rotate"
 msgstr "Obrót automatyczny"
 
-#: libexif/canon/mnote-canon-tag.c:116
+#: libexif/canon/mnote-canon-tag.c:186
 msgid "ND Filter"
 msgstr "Filtr ND"
 
-#: libexif/canon/mnote-canon-tag.c:119
+#: libexif/canon/mnote-canon-tag.c:189
 msgid "Panorama Frame"
 msgstr "Ramka panoramy"
 
-#: libexif/canon/mnote-canon-tag.c:120
+#: libexif/canon/mnote-canon-tag.c:190
 msgid "Panorama Direction"
 msgstr "Kierunek panoramy"
 
-#: libexif/canon/mnote-canon-tag.c:121
+#: libexif/canon/mnote-canon-tag.c:191
 msgid "Tone Curve"
 msgstr "Krzywa tonalna"
 
-#: libexif/canon/mnote-canon-tag.c:122
+#: libexif/canon/mnote-canon-tag.c:193
 msgid "Sharpness Frequency"
 msgstr "Częstotliwość ostrości"
 
-#: libexif/canon/mnote-canon-tag.c:124
+#: libexif/canon/mnote-canon-tag.c:194
+msgid "Sensor Red Level"
+msgstr "Poziom czerwieni sensora"
+
+#: libexif/canon/mnote-canon-tag.c:195
+msgid "Sensor Blue Level"
+msgstr "Poziom błękitu sensora"
+
+#: libexif/canon/mnote-canon-tag.c:196
+msgid "White Balance Red"
+msgstr "Czerwień balansu bieli"
+
+#: libexif/canon/mnote-canon-tag.c:197
+msgid "White Balance Blue"
+msgstr "Błękit balansu bieli"
+
+#: libexif/canon/mnote-canon-tag.c:200
 msgid "Picture Style"
 msgstr "Styl zdjęcia"
+
+#: libexif/canon/mnote-canon-tag.c:201
+msgid "Digital Gain"
+msgstr "Wzmocnienie cyfrowe"
+
+#: libexif/canon/mnote-canon-tag.c:202
+msgid "White Balance Shift AB"
+msgstr "Przesunięcie AB balansu bieli"
+
+#: libexif/canon/mnote-canon-tag.c:203
+msgid "White Balance Shift GM"
+msgstr "Przesunięcie GM balansu bieli"
 
 #: libexif/exif-byte-order.c:33
 msgid "Motorola"
@@ -1634,39 +1942,48 @@ msgstr "Intel"
 msgid "Size of data too small to allow for EXIF data."
 msgstr "Rozmiar danych zbyt mały aby pozwalał na dane EXIF."
 
-#: libexif/exif-data.c:912
+#: libexif/exif-data.c:914
 msgid "EXIF marker not found."
 msgstr "Nie znaleziono znacznika EXIF."
 
-#: libexif/exif-data.c:939
+#: libexif/exif-data.c:926
+#, c-format
+msgid "Read length %d is longer than data length %d."
+msgstr "Odczytana długość %d jest większa niż długość danych %d."
+
+#: libexif/exif-data.c:931
+msgid "APP Tag too short."
+msgstr "Znacznik APP zbyt krótki."
+
+#: libexif/exif-data.c:951
 msgid "EXIF header not found."
 msgstr "Nie znaleziono nagłówka EXIF."
 
-#: libexif/exif-data.c:964
+#: libexif/exif-data.c:976
 msgid "Unknown encoding."
 msgstr "Nieznane kodowanie."
 
-#: libexif/exif-data.c:1250
+#: libexif/exif-data.c:1262
 msgid "Ignore unknown tags"
 msgstr "Ignorowanie nieznanych znaczników"
 
-#: libexif/exif-data.c:1251
+#: libexif/exif-data.c:1263
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Ignorowanie nieznanych znaczników przy wczytywaniu danych EXIF."
 
-#: libexif/exif-data.c:1252
+#: libexif/exif-data.c:1264
 msgid "Follow specification"
 msgstr "Zgodność ze specyfikacją"
 
-#: libexif/exif-data.c:1253
+#: libexif/exif-data.c:1265
 msgid "Add, correct and remove entries to get EXIF data that follows the specification."
 msgstr "Dodawanie, poprawianie i usuwanie wpisów aby uzyskać dane EXIF zgodne ze specyfikacją."
 
-#: libexif/exif-data.c:1255
+#: libexif/exif-data.c:1267
 msgid "Do not change maker note"
 msgstr "Nie zmieniaj oznaczenia twórcy"
 
-#: libexif/exif-data.c:1256
+#: libexif/exif-data.c:1268
 msgid "When loading and resaving Exif data, save the maker note unmodified. Be aware that the maker note can get corrupted."
 msgstr "Przy wczytywaniu i zapisywaniu danych Exif pozostaw oznaczenie twórcy niezmienione. Należy mieć świadomość, że oznaczenie twórcy może zostać uszkodzone."
 
@@ -1893,9 +2210,9 @@ msgid "Hard"
 msgstr "Duża"
 
 #: libexif/exif-entry.c:721 libexif/exif-entry.c:739 libexif/exif-entry.c:784
-#: libexif/exif-entry.c:831 libexif/olympus/mnote-olympus-entry.c:596
-#: libexif/olympus/mnote-olympus-entry.c:690
-#: libexif/olympus/mnote-olympus-entry.c:745
+#: libexif/exif-entry.c:831 libexif/olympus/mnote-olympus-entry.c:597
+#: libexif/olympus/mnote-olympus-entry.c:691
+#: libexif/olympus/mnote-olympus-entry.c:746
 #: libexif/pentax/mnote-pentax-entry.c:256
 msgid "Unknown"
 msgstr "Brak informacji"
@@ -3345,11 +3662,6 @@ msgstr "Łańcuch znaków zawierający temat obrazu, zakodowany w UTF-16LE."
 msgid "The FlashPix format version supported by a FPXR file."
 msgstr "Wersja formatu FlashPix obsługiwana przez plik FPXR."
 
-#: libexif/exif-tag.c:711 libexif/olympus/mnote-olympus-tag.c:96
-#: libexif/pentax/mnote-pentax-tag.c:102
-msgid "Color Space"
-msgstr "Przestrzeń kolorów"
-
 #: libexif/exif-tag.c:712
 msgid "The color space information tag is always recorded as the color space specifier. Normally sRGB (=1) is used to define the color space based on the PC monitor conditions and environment. If a color space other than sRGB is used, Uncalibrated (=FFFF.H) is set. Image data recorded as Uncalibrated can be treated as sRGB when it is converted to FlashPix."
 msgstr "Znacznik informacji o przestrzeni kolorów jest zawsze zapisywany w celu określenia przestrzeni kolorów. Zwykle używane jest sRGB (=1) do określenia przestrzeni kolorów w oparciu o warunki i środowisko monitora PC. Jeśli użyta jest inna przestrzeń kolorów niż sRGB, ustawiona jest wartość \"nieskalibrowana\" (Uncalibrated, =FFFF.H). Dane obrazu zapisane jako nieskalibrowane mogą być traktowane jako sRGB przy konwersji do FlashPix."
@@ -3542,10 +3854,6 @@ msgstr "Zakres odległości obiektu"
 msgid "This tag indicates the distance to the subject."
 msgstr "Ten znacznik określa odległość od obiektu."
 
-#: libexif/exif-tag.c:901
-msgid "Image Unique ID"
-msgstr "Unikalny identyfikator obrazu"
-
 #: libexif/exif-tag.c:902
 msgid "This tag indicates an identifier assigned uniquely to each image. It is recorded as an ASCII string equivalent to hexadecimal notation and 128-bit fixed length."
 msgstr "Ten znacznik określa unikalny identyfikator przypisany każdemu zdjęciu. Jest on zapisany jako łańcuch ASCII odpowiadający notacji szesnastkowej o stałej długości 128 bitów."
@@ -3581,10 +3889,6 @@ msgstr "Producent obiektywu"
 #: libexif/exif-tag.c:924
 msgid "This tag indicates the lens manufacturer."
 msgstr "Ten znacznik określa producenta obiektywu."
-
-#: libexif/exif-tag.c:927
-msgid "Lens Model"
-msgstr "Model obiektywu"
 
 #: libexif/exif-tag.c:928
 msgid "This tag indicates the lens' model name and model number."
@@ -4309,54 +4613,54 @@ msgid "Unknown AF position"
 msgstr "Nieznane położenie AF"
 
 #: libexif/olympus/mnote-olympus-entry.c:440
-#: libexif/olympus/mnote-olympus-entry.c:510
+#: libexif/olympus/mnote-olympus-entry.c:511
 #, c-format
 msgid "Internal error (unknown value %hi)"
 msgstr "Błąd wewnętrzny (nieznana wartość %hi)"
 
 #: libexif/olympus/mnote-olympus-entry.c:448
-#: libexif/olympus/mnote-olympus-entry.c:518
+#: libexif/olympus/mnote-olympus-entry.c:519
 #, c-format
 msgid "Unknown value %hi"
 msgstr "Nieznana wartość %hi"
 
-#: libexif/olympus/mnote-olympus-entry.c:543
-#: libexif/olympus/mnote-olympus-entry.c:563
+#: libexif/olympus/mnote-olympus-entry.c:544
+#: libexif/olympus/mnote-olympus-entry.c:564
 #, c-format
 msgid "Unknown %hu"
 msgstr "Nieznany %hu"
 
-#: libexif/olympus/mnote-olympus-entry.c:560
+#: libexif/olympus/mnote-olympus-entry.c:561
 msgid "2 sec."
 msgstr "2 sek."
 
-#: libexif/olympus/mnote-olympus-entry.c:599
+#: libexif/olympus/mnote-olympus-entry.c:600
 msgid "Fast"
 msgstr "Szybki"
 
-#: libexif/olympus/mnote-olympus-entry.c:703
+#: libexif/olympus/mnote-olympus-entry.c:704
 msgid "Automatic"
 msgstr "Automatyczny"
 
-#: libexif/olympus/mnote-olympus-entry.c:733
+#: libexif/olympus/mnote-olympus-entry.c:734
 #, c-format
 msgid "Manual: %liK"
 msgstr "Ręczny: %liK"
 
-#: libexif/olympus/mnote-olympus-entry.c:736
+#: libexif/olympus/mnote-olympus-entry.c:737
 msgid "Manual: unknown"
 msgstr "Ręczny: nieznany"
 
-#: libexif/olympus/mnote-olympus-entry.c:742
+#: libexif/olympus/mnote-olympus-entry.c:743
 msgid "One-touch"
 msgstr "One-touch"
 
-#: libexif/olympus/mnote-olympus-entry.c:808
-#: libexif/olympus/mnote-olympus-entry.c:818
+#: libexif/olympus/mnote-olympus-entry.c:811
+#: libexif/olympus/mnote-olympus-entry.c:821
 msgid "Infinite"
 msgstr "Nieskończoność"
 
-#: libexif/olympus/mnote-olympus-entry.c:826
+#: libexif/olympus/mnote-olympus-entry.c:829
 #, c-format
 msgid "%i bytes unknown data: "
 msgstr "%i bajtów nieznanych danych: "
@@ -4489,10 +4793,6 @@ msgstr "Regulacja barwy"
 msgid "Noise Reduction"
 msgstr "Redukcja szumów"
 
-#: libexif/olympus/mnote-olympus-tag.c:77
-msgid "Color Balance"
-msgstr "Balans kolorów"
-
 #: libexif/olympus/mnote-olympus-tag.c:78
 msgid "Lens Data"
 msgstr "Dane obiektywu"
@@ -4586,10 +4886,6 @@ msgstr "Informacje o zniekształceniach"
 msgid "Shutter Mode"
 msgstr "Tryb migawki"
 
-#: libexif/olympus/mnote-olympus-tag.c:107
-msgid "HDR Info"
-msgstr "Informacje o HDR"
-
 #: libexif/olympus/mnote-olympus-tag.c:108
 msgid "Mechanical Shutter Count"
 msgstr "Licznik migawki mechanicznej"
@@ -4627,10 +4923,6 @@ msgstr "Numer seryjny 2"
 msgid "Saturation 2"
 msgstr "Nasycenie 2"
 
-#: libexif/olympus/mnote-olympus-tag.c:117
-msgid "Multi Exposure"
-msgstr "Ekspozycja wielokrotna"
-
 #: libexif/olympus/mnote-olympus-tag.c:118
 msgid "High ISO Noise Reduction"
 msgstr "Redukcja szumów wysokiego ISO"
@@ -4642,14 +4934,6 @@ msgstr "Efekt tonowania"
 #: libexif/olympus/mnote-olympus-tag.c:120
 msgid "Powerup Time"
 msgstr "Czas włączenia"
-
-#: libexif/olympus/mnote-olympus-tag.c:121
-msgid "AF Info 2"
-msgstr "Informacje o AF 2"
-
-#: libexif/olympus/mnote-olympus-tag.c:122
-msgid "File Info"
-msgstr "Informacje o pliku"
 
 #: libexif/olympus/mnote-olympus-tag.c:123
 msgid "Retouch Info"
@@ -5268,10 +5552,6 @@ msgstr "Rozmiar surowego zdjęcia"
 msgid "Autofocus Points Used"
 msgstr "Liczba punktów AF"
 
-#: libexif/pentax/mnote-pentax-tag.c:107
-msgid "Camera Temperature"
-msgstr "Temperatura aparatu"
-
 #: libexif/pentax/mnote-pentax-tag.c:110
 msgid "Image Tone"
 msgstr "Tonacja zdjęcia"
@@ -5287,14 +5567,6 @@ msgstr "Czarny punkt"
 #: libexif/pentax/mnote-pentax-tag.c:114
 msgid "AE Info"
 msgstr "Informacje o AE"
-
-#: libexif/pentax/mnote-pentax-tag.c:115
-msgid "Lens Info"
-msgstr "Informacje o obiektywie"
-
-#: libexif/pentax/mnote-pentax-tag.c:117
-msgid "Camera Info"
-msgstr "Informacje o aparacie"
 
 #: libexif/pentax/mnote-pentax-tag.c:118
 msgid "Battery Info"
