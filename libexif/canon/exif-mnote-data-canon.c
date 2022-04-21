@@ -214,12 +214,12 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 			  "ExifMnoteCanon", "Short MakerNote");
 		return;
 	}
-	datao = 6 + n->offset;
-	if (CHECKOVERFLOW(datao, buf_size, 2)) {
+	if (CHECKOVERFLOW(n->offset, buf_size, 8)) {
 		exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteCanon", "Short MakerNote");
 		return;
 	}
+	datao = 6 + n->offset;
 
 	/* Read the number of tags */
 	c = exif_get_short (buf + datao, n->order);

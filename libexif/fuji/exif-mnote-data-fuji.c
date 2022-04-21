@@ -163,12 +163,12 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 			  "ExifMnoteDataFuji", "Short MakerNote");
 		return;
 	}
-	datao = 6 + n->offset;
-	if (CHECKOVERFLOW(datao, buf_size, 12)) {
+	if (CHECKOVERFLOW(n->offset, buf_size, 6+8+4)) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataFuji", "Short MakerNote");
 		return;
 	}
+	datao = 6 + n->offset;
 
 	n->order = EXIF_BYTE_ORDER_INTEL;
 
