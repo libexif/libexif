@@ -35,7 +35,7 @@
  */
 /*#define EXIF_OVERCOME_SANYO_OFFSET_BUG */
 
-#define CHECKOVERFLOW(offset,datasize,structsize) (( offset >= datasize) || (structsize > datasize) || (offset > datasize - structsize ))
+#define CHECKOVERFLOW(offset,datasize,structsize) (( (offset) >= (datasize)) || ((structsize) > (datasize)) || ((offset) > (datasize) - (structsize) ))
 
 static enum OlympusVersion
 exif_mnote_data_olympus_identify_variant (const unsigned char *buf,

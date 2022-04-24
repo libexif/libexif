@@ -28,7 +28,7 @@
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-utils.h>
 
-#define CHECKOVERFLOW(offset,datasize,structsize) (( offset >= datasize) || (structsize > datasize) || (offset > datasize - structsize ))
+#define CHECKOVERFLOW(offset,datasize,structsize) (( (offset) >= (datasize)) || ((structsize) > (datasize)) || ((offset) > (datasize) - (structsize) ))
 
 static void
 exif_mnote_data_pentax_clear (ExifMnoteDataPentax *n)

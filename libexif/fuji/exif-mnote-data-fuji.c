@@ -28,7 +28,7 @@
 
 #include "exif-mnote-data-fuji.h"
 
-#define CHECKOVERFLOW(offset,datasize,structsize) (( offset >= datasize) || ((structsize) > datasize) || (offset > datasize - (structsize) ))
+#define CHECKOVERFLOW(offset,datasize,structsize) (( (offset) >= (datasize)) || ((structsize) > (datasize)) || ((offset) > (datasize) - (structsize) ))
 
 struct _MNoteFujiDataPrivate {
 	ExifByteOrder order;

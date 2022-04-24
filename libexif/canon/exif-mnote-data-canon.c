@@ -30,7 +30,7 @@
 #include <libexif/exif-utils.h>
 #include <libexif/exif-data.h>
 
-#define CHECKOVERFLOW(offset,datasize,structsize) (( offset >= datasize) || (structsize > datasize) || (offset > datasize - structsize ))
+#define CHECKOVERFLOW(offset,datasize,structsize) (( (offset) >= (datasize)) || ((structsize) > (datasize)) || ((offset) > (datasize) - (structsize) ))
 
 /* Total size limit to prevent abuse by DoS */
 #define FAILSAFE_SIZE_MAX 1000000L
