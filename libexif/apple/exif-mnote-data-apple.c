@@ -83,7 +83,6 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
     } else {
         exif_log(md->log, EXIF_LOG_CODE_CORRUPT_DATA,
                 "ExifMnoteDataApple", "Unrecognized byte order");
-        /*printf("%s(%d)\n", __FUNCTION__, __LINE__);*/
         return;
     }
 
@@ -93,11 +92,8 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
     if (buf_size < d->offset + 6 + 16 + tcount * 12 + 4) {
         exif_log(md->log, EXIF_LOG_CODE_CORRUPT_DATA,
                  "ExifMnoteDataApple", "Short MakerNote");
-        /*printf("%s(%d)\n", __FUNCTION__, __LINE__);*/
         return;
     }
-
-    /* printf("%s(%d): total %d tags\n", __FUNCTION__, __LINE__, tcount); */
 
     ofs += 16;
 
@@ -107,7 +103,6 @@ exif_mnote_data_apple_load(ExifMnoteData *md, const unsigned char *buf, unsigned
     d->entries = exif_mem_alloc(md->mem, sizeof(MnoteAppleEntry) * tcount);
     if (!d->entries) {
         EXIF_LOG_NO_MEMORY(md->log, "ExifMnoteApple", sizeof(MnoteAppleEntry) * tcount);
-        /*printf("%s(%d)\n", __FUNCTION__, __LINE__);*/
         return;
     }
     memset(d->entries, 0, sizeof(MnoteAppleEntry) * tcount);
