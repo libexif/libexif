@@ -838,6 +838,12 @@ static const struct {
       {2, {N_("Adobe RGB"), NULL}},
       {0xffff, {N_("Uncalibrated"), NULL}},
       {0x0000, {NULL}}}},
+  { EXIF_TAG_COMPOSITE_IMAGE,
+    { {0, {N_("Unknown"), NULL}},
+      {1, {N_("Not a composite image"), NULL}},
+      {2, {N_("General composite image"), NULL}},
+      {3, {N_("Composite image captured while shooting"), NULL}},
+      {0, {NULL}}}},
 #endif
   {0, { { 0, {NULL}}} }
 };
@@ -1311,6 +1317,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	case EXIF_TAG_FLASH:
 	case EXIF_TAG_SUBJECT_DISTANCE_RANGE:
 	case EXIF_TAG_COLOR_SPACE:
+	case EXIF_TAG_COMPOSITE_IMAGE:
 		CF (e,EXIF_FORMAT_SHORT, val, maxlen);
 		CC (e, 1, val, maxlen);
 		v_short = exif_get_short (e->data, o);
@@ -1483,6 +1490,11 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
 	case EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH:
 	case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
+	case EXIF_TAG_STANDARD_OUTPUT_SENSITIVITY:
+	case EXIF_TAG_RECOMMENDED_EXPOSURE_INDEX:
+	case EXIF_TAG_ISO_SPEED:
+	case EXIF_TAG_ISO_SPEEDLatitudeYYY:
+	case EXIF_TAG_ISO_SPEEDLatitudeZZZ:
 		e->components = 1;
 		e->format = EXIF_FORMAT_LONG;
 		e->size = exif_format_get_size (e->format) * e->components;
@@ -1503,6 +1515,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_FLASH:
 	case EXIF_TAG_ISO_SPEED_RATINGS:
 	case EXIF_TAG_SENSITIVITY_TYPE:
+	case EXIF_TAG_COMPOSITE_IMAGE:
 
 	/* SHORT, 1 component, default 0 */
 	case EXIF_TAG_IMAGE_WIDTH:
@@ -1582,6 +1595,19 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 			o, 8);
 		break;
 
+	/* SHORT, 2 components, default 0 0 */
+	case EXIF_TAG_SOURCE_IMAGE_NUMBER_OF_COMPOSITE_IMAGE:
+		e->components = 2;
+		e->format = EXIF_FORMAT_SHORT;
+		e->size = exif_format_get_size (e->format) * e->components;
+		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) { clear_entry(e); break; }
+		exif_set_short (e->data, o, 0);
+		exif_set_short (
+			e->data + exif_format_get_size (e->format),
+			o, 0);
+		break;
+
 	/* SHORT, 2 components, default 2 1 */
 	case EXIF_TAG_YCBCR_SUB_SAMPLING:
 		e->components = 2;
@@ -1620,6 +1646,7 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_COMPRESSED_BITS_PER_PIXEL:
 	case EXIF_TAG_PRIMARY_CHROMATICITIES:
 	case EXIF_TAG_DIGITAL_ZOOM_RATIO:
+	case EXIF_TAG_GAMMA:
 		e->components = 1;
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
@@ -1643,6 +1670,15 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	/* RATIONAL, 2 components, no default */
 	case EXIF_TAG_WHITE_POINT:
 		e->components = 2;
+		e->format = EXIF_FORMAT_RATIONAL;
+		e->size = exif_format_get_size (e->format) * e->components;
+		e->data = exif_entry_alloc (e, e->size);
+		if (!e->data) { clear_entry(e); break; }
+		break;
+
+	/* RATIONAL, 4 components, no default */
+	case EXIF_TAG_LENS_SPECIFICATION:
+		e->components = 4;
 		e->format = EXIF_FORMAT_RATIONAL;
 		e->size = exif_format_get_size (e->format) * e->components;
 		e->data = exif_entry_alloc (e, e->size);
@@ -1712,6 +1748,9 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_SUB_SEC_TIME:
 	case EXIF_TAG_SUB_SEC_TIME_ORIGINAL:
 	case EXIF_TAG_SUB_SEC_TIME_DIGITIZED:
+	case EXIF_TAG_OFFSET_TIME:
+	case EXIF_TAG_OFFSET_TIME_ORIGINAL:
+	case EXIF_TAG_OFFSET_TIME_DIGITIZED:
 		e->components = 0;
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = 0;
@@ -1724,6 +1763,11 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	case EXIF_TAG_MODEL:
 	case EXIF_TAG_SOFTWARE:
 	case EXIF_TAG_ARTIST:
+	case EXIF_TAG_CAMERA_OWNER_NAME:
+	case EXIF_TAG_BODY_SERIAL_NUMBER:
+	case EXIF_TAG_LENS_MAKE:
+	case EXIF_TAG_LENS_MODEL:
+	case EXIF_TAG_LENS_SERIAL_NUMBER:
 		e->components = strlen (_("[None]")) + 1;
 		e->format = EXIF_FORMAT_ASCII;
 		e->size = exif_format_get_size (e->format) * e->components;
