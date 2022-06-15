@@ -5,9 +5,8 @@ task:
   name: FreeBSD
   freebsd_instance:
     matrix:
-      image_family: freebsd-13-0
-      image_family: freebsd-12-2
-      image_family: freebsd-11-4
+      image_family: freebsd-13-1
+      image_family: freebsd-12-3
 
   env:
     # Set to 10 instead of 1 to avoid problems when new commits are submitted
