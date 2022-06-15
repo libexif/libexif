@@ -1,16 +1,19 @@
-# AppVeyor CI configuration file https://www.appveyor.com
+# AppVeyor CI configuration file https://www.appveyor.com/
 environment:
-  CYGWIN_MIRROR: http://cygwin.mirror.constant.com
+  CYGWIN_MIRROR: https://cygwin.mirror.constant.com
   matrix:
   - CONFIG: cygwin
   - CONFIG: cygwin64
   - CONFIG: msys2
 
 install:
+# The Cygwin images are too old to install packages as of June 2022, so download the latest
 - cmd: if [%CONFIG%]==[cygwin] (
-    C:\cygwin\setup-x86.exe -qgnNdO -l C:\cygwin\var\cache\setup -R c:\cygwin -s "%CYGWIN_MIRROR%" -P libiconv-devel )
+    curl -qsS --fail --retry 5 --max-time 1999 --compressed -O https://cygwin.com/setup-x86.exe &&
+    setup-x86.exe -qgnNdO -l C:\cygwin\var\cache\setup -R c:\cygwin -s "%CYGWIN_MIRROR%" -P libiconv-devel )
 - cmd: if [%CONFIG%]==[cygwin64] (
-    C:\cygwin64\setup-x86_64.exe -qgnNdO -l C:\cygwin64\var\cache\setup -R c:\cygwin64 -s "%CYGWIN_MIRROR%" -P libiconv-devel )
+    curl -qsS --fail --retry 5 --max-time 1999 --compressed -O https://cygwin.com/setup-x86_64.exe &&
+    setup-x86_64.exe -qgnNdO -l C:\cygwin64\var\cache\setup -R c:\cygwin64 -s "%CYGWIN_MIRROR%" -P libiconv-devel )
 - cmd: if [%CONFIG%]==[msys2] (
     set "PATH=C:\msys64\mingw64\bin;C:\msys64\usr\bin;%PATH%" )
 
