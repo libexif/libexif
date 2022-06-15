@@ -153,7 +153,7 @@ struct PythonEntry : public Exif::Entry
 					exif_format_get_size(format()) * entry_->components;
 				entry_->data= (unsigned char *)malloc(entry_->size);
 				memcpy(entry_->data, s.data(), entry_->size);
-				entry_->data[entry_->size]= 0;
+				entry_->data[entry_->size-1]= 0;
 			}
 			else
 			{
