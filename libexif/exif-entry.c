@@ -1816,14 +1816,14 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
                 memcpy (e->data, "0100", 4);
                 break;
 
-        /* UNDEFINED, 4 components, default 48 50 49 48 */
+        /* UNDEFINED, 4 components, default 48 50 51 50 */
         case EXIF_TAG_EXIF_VERSION:
                 e->components = 4;
                 e->format = EXIF_FORMAT_UNDEFINED;
                 e->size = exif_format_get_size (e->format) * e->components;
                 e->data = exif_entry_alloc (e, e->size);
                 if (!e->data) { clear_entry(e); break; }
-                memcpy (e->data, "0210", 4);
+                memcpy (e->data, "0232", 4);
                 break;
 
         /* UNDEFINED, 4 components, default 1 2 3 0 */
