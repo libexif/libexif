@@ -99,7 +99,7 @@ int createEXIF(dc1394featureset_t *xFeatures, ExifData ** pParentEd)
     ExifData * pEd;
     int i = !xFeatures->feature[DC1394_FEATURE_WHITE_BALANCE - DC1394_FEATURE_MIN].auto_active;
 
-    ExifSRational xR = {xFeatures->feature[DC1394_FEATURE_BRIGHTNESS - DC1394_FEATURE_MIN].value, xFeatures->feature[DC1394_FEATURE_BRIGHTNESS - DC1394_FEATURE_MIN].max};;
+    ExifSRational xR = {xFeatures->feature[DC1394_FEATURE_BRIGHTNESS - DC1394_FEATURE_MIN].value, xFeatures->feature[DC1394_FEATURE_BRIGHTNESS - DC1394_FEATURE_MIN].max};
 
     printf ("Creating EXIF data...\n");
     pEd = exif_data_new ();
