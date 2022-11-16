@@ -53,12 +53,7 @@ jobs:
         # queries: security-extended,security-and-quality
 
 
-    - run: |
-      echo "Run, Build Application using script"
-      autoreconf -i -f
-      ./configure 
-      make 
-      make check
+    - run: autoreconf -i -f ; ./configure ; make ; make check
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
