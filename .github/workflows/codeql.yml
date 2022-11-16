@@ -53,6 +53,10 @@ jobs:
         # queries: security-extended,security-and-quality
 
 
+    # install automake and friends
+    - run: sudo apt-get update && sudo apt-get install -y automake autoconf libtool
+
+    # build and check
     - run: autoreconf -i -f ; ./configure ; make ; make check
 
     - name: Perform CodeQL Analysis
