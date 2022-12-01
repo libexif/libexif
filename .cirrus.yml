@@ -1,7 +1,7 @@
 # Cirrus CI configuration
 # https://cirrus-ci.com/github/libexif/libexif
 
-task:
+freebsd_task:
   name: FreeBSD
   freebsd_instance:
     matrix:
@@ -17,6 +17,31 @@ task:
 
   pkginstall_script:
     - pkg install -y autoconf automake libtool gettext-tools gettext-runtime
+  configure_script:
+    - autoreconf -sivf
+    - ./configure --disable-dependency-tracking CFLAGS="$CFLAGS" || { tail -300 config.log; false; }
+  compile_script:
+    - make V=1
+  test_script:
+    - make V=1 check
+  install_script:
+    - make V=1 install
+
+linux_arm_task:
+  name: ARM Linux
+  arm_container:
+    image: ubuntu:22.04
+    memory: 400M
+
+  env:
+    # Set to 10 instead of 1 to avoid problems when new commits are submitted
+    # during a run.
+    CIRRUS_CLONE_DEPTH: 10
+    CFLAGS: -Wall -Wextra -O2
+    MAKE_FLAGS: -j 2
+
+  pkginstall_script:
+    - apt-get update -y && DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential autoconf automake autopoint libtool gettext
   configure_script:
     - autoreconf -sivf
     - ./configure --disable-dependency-tracking CFLAGS="$CFLAGS" || { tail -300 config.log; false; }
