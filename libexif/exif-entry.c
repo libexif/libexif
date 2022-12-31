@@ -1724,11 +1724,11 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 		struct tm *tm;
 
 		t = time (NULL);
-#ifdef HAVE_LOCALTIME_R
-		tm = localtime_r (&t, &tms);
-#elif defined(HAVE_LOCALTIME_S)
+#if defined(HAVE_LOCALTIME_S)
 		localtime_s (&tms, &t);
 		tm = &tms;
+#elif defined(HAVE_LOCALTIME_R)
+		tm = localtime_r (&t, &tms);
 #else
 		tm = localtime (&t);
 #endif
