@@ -19,6 +19,9 @@ on:
     branches: [ "master" ]
   schedule:
     - cron: '35 14 * * 1'
+    
+permissions:
+  contents: read
 
 jobs:
   analyze:
@@ -26,7 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       actions: read
-      contents: read
       security-events: write
 
     strategy:
