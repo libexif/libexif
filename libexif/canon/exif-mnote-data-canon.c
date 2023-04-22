@@ -209,6 +209,8 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 	size_t i, tcount, o, datao;
 	long failsafe_size = 0;
 
+	if (n == NULL) return;
+
 	if (!n || !buf || !buf_size) {
 		exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteCanon", "Short MakerNote");
