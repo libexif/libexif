@@ -220,9 +220,9 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 	size_t i, tcount, o, datao, base = 0;
 	ExifShort c;
 
-	if (n == NULL) return;
+	if (!n) return;
 
-	if (!n || !buf || !buf_size) {
+	if (!buf || !buf_size) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataPentax", "Short MakerNote");
 		return;

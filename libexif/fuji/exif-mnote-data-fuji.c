@@ -158,9 +158,9 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 	ExifLong c;
 	size_t i, tcount, o, datao;
 
-	if (n == NULL) return;
+	if (!n) return;
 
-	if (!n || !buf || !buf_size) {
+	if (!buf || !buf_size) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataFuji", "Short MakerNote");
 		return;

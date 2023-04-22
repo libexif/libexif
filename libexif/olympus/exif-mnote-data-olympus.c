@@ -242,9 +242,9 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 	ExifShort c;
 	size_t i, tcount, o, o2, datao = 6, base = 0;
 
-	if (n == NULL) return;
+	if (!n) return;
 
-	if (!n || !buf || !buf_size) {
+	if (!buf || !buf_size) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataOlympus", "Short MakerNote");
 		return;
