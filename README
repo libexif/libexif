@@ -58,7 +58,7 @@ FRONTENDS
 
 Here are a few frontends to libexif:
  - exif:     A small command-line utility to show EXIF information in JPEG
-             files (https://github.com/libexif/libexif).
+             files (https://github.com/libexif/exif).
  - gexif:    A GTK+ frontend for editing EXIF data
              (https://github.com/libexif/gexif).
  - gphoto2:  A command-line frontend to libgphoto2, a library to access a
