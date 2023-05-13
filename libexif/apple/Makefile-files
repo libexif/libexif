@@ -1,4 +1,6 @@
 # -*- Makefile -*-
+# Copyright (c) 2018 zhanwang-sky <zhanwang_sky@163.com>
+# SPDX-License-Identifier: LGPL-2.0-or-later
 noinst_LTLIBRARIES += libmnote-apple.la
 libmnote_apple_la_SOURCES = \
     apple/mnote-apple-entry.c apple/mnote-apple-entry.h \
