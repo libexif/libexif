@@ -1,6 +1,7 @@
 # translation of ru.po to Russian
 # translation of libexif-12.po to Russian
 # This file is distributed under the same license as the PACKAGE package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # Copyright (C) YEAR Lutz Müller and others.
 # Alexandre Prokoudine <alexandre.prokoudine@gmail.com>, 2006.
 #

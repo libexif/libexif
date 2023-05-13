@@ -1,6 +1,7 @@
 # Albanian translation for libexif
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
 msgid ""

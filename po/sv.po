@@ -1,6 +1,7 @@
 # Swedish translation for libexif
 # Copyright © 2007, 2009, 2016 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # Daniel Nylander <po@danielnylander.se>, 2007, 2009.
 # Sebastian Rasmussen <sebras@gmail.com>, 2016.
 #

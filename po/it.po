@@ -1,6 +1,7 @@
 # Italian translation for libexif.
 # Copyright (C) 2010 Lutz Mueller and others
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # Sergio Zanchetta <primes2h@ubuntu.com>, 2010.
 #
 msgid ""

@@ -1,6 +1,7 @@
 # Japanese translation for exif.
 # Copyright (C) 2009 Lutz Mueller and others
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # Tadashi Jokagi <elf2000@users.sourceforge.net>, 2009-2010.
 #
 msgid ""

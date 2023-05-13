@@ -1,6 +1,7 @@
 # Chinese (China) translation for libexif
 # Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
 #
 msgid ""

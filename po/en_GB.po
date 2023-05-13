@@ -1,6 +1,7 @@
 # English (United Kingdom) translation for libexif
 # Copyright (c) (c) 2006 Canonical Ltd, and Rosetta Contributors 2006
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2006.
 #
 msgid ""
