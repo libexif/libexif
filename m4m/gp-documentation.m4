@@ -4,6 +4,9 @@ dnl
 dnl determines documentation "root directory", i.e. the directory
 dnl where all documentation will be placed in
 dnl
+dnl Copyright (C) 2005-2021 Hans Ulrich Niedermann <gp@n-dimensional.de>
+dnl SPDX-License-Identifier: LGPL-2.0-or-later
+dnl
 
 AC_DEFUN([GP_DOC_GENERAL],[dnl
 AC_MSG_CHECKING([whether to build any docs])

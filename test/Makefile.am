@@ -1,3 +1,6 @@
+# Copyright (C) 2001-2021 Lutz Mueller <lutz@users.sourceforge.net>, et. al.
+# SPDX-License-Identifier: LGPL-2.0-or-later
+
 SUBDIRS = nls
 
 # By default, a few definitions like bindir, srcdir are already set.

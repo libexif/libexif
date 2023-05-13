@@ -2,8 +2,7 @@
  * \brief Defines the ExifData type and the associated functions.
  */
 /*
- * \author Lutz Mueller <lutz@users.sourceforge.net>
- * \date 2001-2005
+ * Copyright (c) 2001-2008 Lutz Mueller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

@@ -1,4 +1,3 @@
-dnl
 dnl GP_CONFIG_INIT
 dnl      use default LHS width (called implicitly if not called explicitly)
 dnl GP_CONFIG_INIT([WIDTH-OF-LHS])
@@ -26,6 +25,8 @@ dnl    [...]
 dnl    AC_OUTPUT
 dnl    GP_CONFIG_OUTPUT
 dnl
+dnl Copyright (C) 2005 Hans Ulrich Niedermann <gp@n-dimensional.de>
+dnl SPDX-License-Identifier: LGPL-2.0-or-later
 dnl
 AC_DEFUN([GP_CONFIG_INIT],
 [dnl
