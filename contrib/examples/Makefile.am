@@ -1,4 +1,8 @@
 # Simple example programs
+#
+# Copyright (C) 2008-2009 Dan Fandrich <dan@coneharvesters.com>
+# SPDX-License-Identifier: LGPL-2.0-or-later
+
 check_PROGRAMS = photographer thumbnail write-exif
 
 # Example programs with dependencies other than plain libexif

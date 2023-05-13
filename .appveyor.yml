@@ -1,4 +1,8 @@
 # AppVeyor CI configuration file https://www.appveyor.com/
+#
+# SPDX-FileCopyrightText: Placed into the public domain by Dan Fandrich
+# SPDX-License-Identifier: CC0-1.0
+
 image: Visual Studio 2022
 environment:
   CYGWIN_MIRROR: https://cygwin.mirror.constant.com
