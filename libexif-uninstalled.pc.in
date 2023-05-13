@@ -1,3 +1,5 @@
+# Copyright (C) 2007 Hans Ulrich Niedermann <hun@n-dimensional.de>
+# SPDX-License-Identifier: LGPL-2.0-or-later
 Name: libexif
 Description: Library for easy access to EXIF data
 Version: @VERSION@

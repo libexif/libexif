@@ -1,5 +1,7 @@
 ########################################################################
 # Conditional rules, depending on tool availability
+# Copyright (C) 2005-2007 Hans Ulrich Niedermann <gp@n-dimensional.de>, et. al.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 ########################################################################
 
 DOXYGEN_FILES =

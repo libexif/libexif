@@ -5,6 +5,8 @@ dnl
 dnl If SHOW-LOCALE-VARS is set to [true], print all LC_* and LANG*
 dnl variables at configure time. (WARNING: This is not portable!)
 dnl
+dnl Copyright (C) 2005-2021 Hans Ulrich Niedermann <gp@n-dimensional.de>
+dnl SPDX-License-Identifier: LGPL-2.0-or-later
 dnl
 AC_DEFUN([GP_CHECK_SHELL_ENVIRONMENT],
 [

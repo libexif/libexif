@@ -1,3 +1,7 @@
+/* Copyright (C) 2005 Hans Ulrich Niedermann <gp@n-dimensional.de>
+ * SPDX-License-Identifier: LGPL-2.0-or-later
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

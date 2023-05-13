@@ -1,4 +1,6 @@
 #!/bin/sh
+# Copyright (C) 2007 Hans Ulrich Niedermann <gp@n-dimensional.de>
+# SPDX-License-Identifier: LGPL-2.0-or-later
 
 # NLS nuisances. (stolen and adapted from configure)
 for as_var in \

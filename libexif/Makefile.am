@@ -1,3 +1,6 @@
+# Copyright (c) 2001-2022 Lutz Mueller <lutz@users.sourceforge.net>, et. al.
+# SPDX-License-Identifier: LGPL-2.0-or-later
+
 EXTRA_DIST =
 lib_LTLIBRARIES =
 noinst_LTLIBRARIES =
