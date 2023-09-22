@@ -1,3 +1,6 @@
+# Copyright 2022 David Korczynski, et. al.
+# SPDX-License-Identifier: LGPL-2.0-or-later
+#
 name: CIFuzz
 on: [pull_request]
 permissions:
