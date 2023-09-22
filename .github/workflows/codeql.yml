@@ -9,6 +9,9 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 #
+# SPDX-FileCopyrightText: 2020 GitHub
+# SPDX-License-Identifier: MIT
+#
 name: "CodeQL"
 
 on:
