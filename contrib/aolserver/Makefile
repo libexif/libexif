@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2000 Curtis Galloway
+# SPDX-License-Identifier: MIT
+
 NSHOME   =  /home/aol31
 
 EXIFDIR  = ..

@@ -1,3 +1,7 @@
+/* LICENSE: no restrictions at all, but USE ON YOUR OWN RISK ONLY.
+ * SPDX-License-Identifier: LicenseRef-Wrobel
+ * Copyright 2004-2008 Angela Wrobel <http://www.wrobelnet.de/>, et. al.
+ */
 #ifndef __STDINT_H
 #define __STDINT_H
 #include <sys/types.h>

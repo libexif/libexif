@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText:  2002,2003 Hans Meine <hans_meine@gmx.net>
+# SPDX-License-Identifier: LGPL-2.0-or-later
+
 BOOST_PYTHON_LIB = -L/usr/local/boost_1_29_0/lib -lboost_python
 BOOST_INCLUDES = -I/usr/local/boost_1_29_0/src
 dynmoddir = `pwd`/local
