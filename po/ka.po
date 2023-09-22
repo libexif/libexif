@@ -1,6 +1,7 @@
 # Georgian translation for libexif.
 # Copyright (C) 2023 libexif authors.
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # Ekaterine Papava <papava.e@gtu.ge>, 2023.
 #
 msgid ""
