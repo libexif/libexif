@@ -16,7 +16,7 @@ install:
 - cmd: if [%CONFIG%]==[msys2] (
     set "PATH=C:\msys64\mingw64\bin;C:\msys64\usr\bin;%PATH%" )
 - cmd: if [%CONFIG%]==[msys2] (
-    bash -lc "pacman -S --noconfirm --noprogressbar --needed mingw-w64-x86_64-{autotools,gettext,libiconv}" )
+    bash -lc "pacman -S --noconfirm --noprogressbar --needed libtool mingw-w64-x86_64-{autotools,libtool,gettext,libiconv}" )
 
 build_script:
 - cmd: if [%CONFIG%]==[cygwin64] (
