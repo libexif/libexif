@@ -1,5 +1,9 @@
 #!/bin/sh
 # Swaps the byte order of test EXIF files and ensures the data don't change.
+#
+# Copyright (C) 2018-2021 Dan Fandrich <dan@coneharvesters.com>, et. al.
+# SPDX-License-Identifier: LGPL-2.0-or-later
+
 srcdir="${srcdir:-.}"
 TMPLOG="$(mktemp)"
 trap 'rm -f "${TMPLOG}"' 0

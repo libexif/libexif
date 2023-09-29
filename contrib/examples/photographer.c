@@ -3,7 +3,8 @@
  * EXIF and MakerNote tags. The tags selected are those that may aid in
  * identification of the photographer who took the image.
  *
- * Placed into the public domain by Dan Fandrich
+ * SPDX-FileCopyrightText: Placed into the public domain by Dan Fandrich
+ * SPDX-License-Identifier: CC0-1.0
  */
 
 #include <stdio.h>

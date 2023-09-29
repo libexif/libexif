@@ -1,6 +1,7 @@
 # Serbian translation for libexif.
 # Copyright © 2020 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # Мирослав Николић <miroslavnikolic@rocketmail.com>, 2020, 2021.
 #: libexif/exif-tag.c:534 libexif/exif-tag.c:538 libexif/exif-tag.c:542
 #: libexif/exif-tag.c:546 libexif/exif-tag.c:550

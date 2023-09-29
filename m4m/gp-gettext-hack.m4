@@ -19,6 +19,8 @@ dnl
 dnl You can leave out the GP_GETTEXT_HACK parameters if you want to,
 dnl GP_GETTEXT_HACK will try fall back to sensible values in that case:
 dnl
+dnl SPDX-License-Identifier: LGPL-2.0-or-later
+dnl
 
 AC_DEFUN([GP_GETTEXT_HACK],
 [

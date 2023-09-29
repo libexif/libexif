@@ -11,12 +11,13 @@
 # waste time to make it look "nice".
 #
 # LICENSE: no restrictions at all, but USE ON YOUR OWN RISK ONLY.
+# SPDX-License-Identifier: LicenseRef-Wrobel
 #
 # USAGE: Simply type "wmake" or "wmake -f <makefilename>" when
 #        being in the libexif main directory. This makefile should
 #        be in that directory, too, of course.
 #
-#   Angela Wrobel <http://www.wrobelnet.de/>
+# Copyright 2004-2008 Angela Wrobel <http://www.wrobelnet.de/>, et. al.
 
 
 # Uncomment line for desired system

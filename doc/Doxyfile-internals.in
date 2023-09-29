@@ -1,4 +1,6 @@
 # Doxyfile 1.8.13
+# Copyright (C) 1997-2015 by Dimitri van Heesch.
+# SPDX-License-Identifier: GPL-2.0-only
 
 # This file describes the settings to be used by the documentation system
 # doxygen (www.doxygen.org) for a project.

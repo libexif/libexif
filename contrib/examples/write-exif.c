@@ -1,8 +1,6 @@
 /*
  * write-exif.c
  *
- * Placed into the public domain by Daniel Fandrich
- *
  * Create a new EXIF data block and write it into a JPEG image file.
  *
  * The JPEG image data used in this example is fixed and is guaranteed not
@@ -10,6 +8,9 @@
  * in the file the EXIF data should be. In real life, a library like
  * libjpeg (included with the exif command-line tool source code) would
  * be used to write to an existing JPEG file.
+ *
+ * SPDX-FileCopyrightText: Placed into the public domain by Dan Fandrich
+ * SPDX-License-Identifier: CC0-1.0
  */
 
 #include <stdio.h>

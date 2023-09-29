@@ -2,6 +2,7 @@
 # Bản dịch tiếng Việt dành cho LibEXIF.
 # Copyright © 2016 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # Tham khảo các khái niệm tại:
 # * <http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf>
 # * <http://www.media.mit.edu/pia/Research/deepview/exif.html>

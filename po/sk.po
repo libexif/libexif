@@ -1,6 +1,7 @@
 # translation of libexif to Slovak
 # Copyright (C) 2007 Lutz Müller and others
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # Ivan Masár <helix84@centrum.sk>, 2007, 2008, 2009, 2011, 2012.
 #
 msgid ""

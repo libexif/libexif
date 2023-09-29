@@ -1,4 +1,8 @@
 dnl Search for libfailmalloc to use for testing
+dnl
+dnl Copyright (C) 2018-2021 Dan Fandrich <dan@coneharvesters.com>, et. al.
+dnl SPDX-License-Identifier: LGPL-2.0-or-later
+
 AC_DEFUN([CHECK_FAILMALLOC],[dnl
   dnl Libtool sets the default library paths
   LT_INIT([win32-dll])

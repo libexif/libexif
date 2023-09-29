@@ -1,6 +1,7 @@
 # Polish translation for libexif.
 # Copyright (C) 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # Jakub Bogusz <qboosh@pld-linux.org>, 2005-2021.
 #
 msgid ""

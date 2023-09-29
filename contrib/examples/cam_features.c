@@ -4,6 +4,7 @@
  *  Wed Jul 27 11:25:09 2005
  *  Copyright  2005  User: Naysawn Naderi
  *  Email: ndn at xiphos dot ca
+ *  SPDX-License-Identifier: BSD-3-Clause
  *
  * Uses libdc1394 and libraw1394
  ****************************************************************************/

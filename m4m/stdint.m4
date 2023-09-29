@@ -2,6 +2,9 @@ dnl AC_NEED_STDINT_H ( HEADER-TO-GENERATE )
 dnl
 dnl Look for a header file that defines size-specific integer types like the
 dnl ones recommended to be in stdint.h in the C99 standard (e.g. uint32_t).
+dnl
+dnl Copyright (C) 2001-2021 Dan Fandrich <dan@coneharvesters.com>, et. al.
+dnl SPDX-License-Identifier: LGPL-2.0-or-later
 
 dnl AX_CHECK_DEFINED_TYPE ( TYPE, FILE, ACTION-IF-FOUND, ACTION-IF-NOT-FOUND )
 dnl This is similar to _AC_CHECK_TYPE_NEW (a.k.a. new syntax version of

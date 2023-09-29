@@ -1,3 +1,8 @@
+dnl autoconf configuration for libexif
+dnl
+dnl Copyright (c) 2001-2022 Lutz Mueller <lutz@users.sourceforge.net>, et. al.
+dnl SPDX-License-Identifier: LGPL-2.0-or-later
+
 AC_PREREQ(2.69)
 AC_INIT([EXIF library],
         [0.6.24.1],

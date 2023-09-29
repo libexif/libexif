@@ -1,3 +1,6 @@
+# Copyright (C) 2005-2007 Hans Ulrich Niedermann <gp@n-dimensional.de>
+# SPDX-License-Identifier: LGPL-2.0-or-later
+
 nlstestscripts = check-localedir.sh # check-codeset.sh
 
 codeset_tests = test-codeset-default test-codeset-latin1 test-codeset-utf-8

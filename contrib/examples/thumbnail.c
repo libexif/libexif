@@ -2,7 +2,8 @@
  * libexif example program to extract an EXIF thumbnail from an image
  * and save it into a new file.
  *
- * Placed into the public domain by Dan Fandrich
+ * SPDX-FileCopyrightText: Placed into the public domain by Dan Fandrich
+ * SPDX-License-Identifier: CC0-1.0
  */
 
 #include <stdio.h>

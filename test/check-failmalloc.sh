@@ -10,6 +10,9 @@
 # functions that could encounter a problem. The issue could be solved in more
 # cases with more judicious use of log calls with EXIF_LOG_CODE_NO_MEMORY
 # codes.
+#
+# Copyright (C) 2018-2021 Dan Fandrich <dan@coneharvesters.com>, et. al.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 
 VERBOSE=
 if [ "$1" = "-v" ] ; then

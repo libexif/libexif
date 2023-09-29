@@ -2,6 +2,10 @@
 # Compares the parsed EXIF data extracted from test images with the parsed EXIF
 # data in the original images. This tests that the tag parsing and writing
 # round-trip produces an EXIF structure with the same meaning as the original.
+#
+# Copyright (C) 2019-2021 Dan Fandrich <dan@coneharvesters.com>, et. al.
+# SPDX-License-Identifier: LGPL-2.0-or-later
+
 srcdir="${srcdir:-.}"
 TMPORIGINAL="$(mktemp)"
 TMPEXTRACTED="$(mktemp)"

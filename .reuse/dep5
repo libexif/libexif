@@ -1,0 +1,40 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libexif
+Upstream-Contact: libexif Developers <libexif-devel@lists.sourceforge.net>
+Source: https://github.com/libexif/libexif
+
+Files: .gitignore **/.gitignore
+Copyright: 2000-2021 libexif Contributors
+License: LGPL-2.0-or-later
+
+Files: AUTHORS ChangeLog NEWS
+Copyright: 2001-2023 libexif Contributors
+License: LGPL-2.0-or-later
+
+Files: README
+Copyright: 2001-2023 Lutz Mueller <lutz.s.mueller@gmail.com>, et. al.
+License: LGPL-2.0-or-later
+
+Files: README-Win32.txt doc/README.apidocs
+Copyright: 2005 Hans Ulrich Niedermann <hun@n-dimensional.de>
+License: LGPL-2.0-or-later
+
+Files: libexif/libexif.sym
+Copyright: 2005-2009 Hans Ulrich Niedermann <hun@n-dimensional.de>, et. al.
+License: LGPL-2.0-or-later
+
+Files: po/POTFILES.in
+Copyright: 2002-2007 Lutz Mueller <lutz.s.mueller@gmail.com>, et. al.
+License: LGPL-2.0-or-later
+
+Files: SECURITY.md
+Copyright: 2020-2021 Marcus Meissner <marcus@jet.franken.de>
+License: LGPL-2.0-or-later
+
+Files: TODO
+Copyright: 2021 Marcus Meissner <marcus@jet.franken.de>
+License: LGPL-2.0-or-later
+
+Files: test/testdata/*_makernote_variant_*.jpg*
+Copyright: 2018 Google, Inc.
+License: LGPL-2.0-or-later

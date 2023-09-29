@@ -1,3 +1,5 @@
+# This file is Copyright (C) 2002 Mark Pulford
+# SPDX-License-Identifier: LGPL-2.0-or-later
 Name: @PACKAGE@
 Summary: EXIF tag library
 Version: @VERSION@

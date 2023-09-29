@@ -1,3 +1,8 @@
+# Root automake makefile for libexif
+#
+# Copyright (c) 2001-2020 Lutz Mueller <lutz@users.sourceforge.net>, et. al.
+# SPDX-License-Identifier: LGPL-2.0-or-later
+
 SUBDIRS = m4m po libexif test doc binary-dist contrib
 
 EXTRA_DIST = @PACKAGE_TARNAME@.spec README-Win32.txt

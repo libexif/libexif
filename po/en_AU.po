@@ -1,6 +1,7 @@
 # English (Australia) translation for libexif
 # Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the libexif package.
+# SPDX-License-Identifier: LGPL-2.0-or-later
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""

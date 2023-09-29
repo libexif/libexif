@@ -4,6 +4,8 @@
 # These translations are licensed under a BSD-style license
 # They were extracted from the BigLinux distribution for import into the
 # libexif repository.
+# SPDX-License-Identifier: BSD-3-Clause
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libexif\n"
