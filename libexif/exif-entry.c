@@ -573,7 +573,7 @@ exif_entry_format_value(ExifEntry *e, char *val, size_t maxlen)
 			}
 			v_srat = exif_get_srational (
 				e->data + 8 * i, o);
-			if (v_srat.denominator) {
+			if (v_srat.denominator && v_srat.denominator > INT32_MIN) {
 				int decimals = (int)(log10(abs(v_srat.denominator))-0.08+1.0);
 				snprintf (val+len, maxlen-len, "%2.*f",
 					  decimals,
