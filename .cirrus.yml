@@ -5,6 +5,13 @@
 # SPDX-License-Identifier: CC0-1.0
 
 freebsd_task:
+  skip: "changesIncludeOnly(
+    '.appveyor.yml',
+    '.github/**',
+    '.reuse/*',
+    'LICENSES/*'
+    )"
+
   name: FreeBSD
   freebsd_instance:
     memory: 1400M

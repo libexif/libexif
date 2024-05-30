@@ -29,3 +29,15 @@ test_script:
     C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && make V=1 check" )
 - cmd: if [%CONFIG%]==[msys2] (
     bash -lc "cd $APPVEYOR_BUILD_FOLDER && make V=1 check" )
+
+branches:
+  only:
+    - master
+    - /\/ci$/
+
+skip_commits:
+  files:
+    - '.cirrus.yml'
+    - '.github/**/*'
+    - '.reuse/*'
+    - 'LICENSES/*'

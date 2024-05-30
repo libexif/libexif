@@ -16,10 +16,20 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "ci" ]
+    paths-ignore:
+      - '.appveyor.yml'
+      - '.cirrus.yml'
+      - '.reuse/*'
+      - 'LICENSES/*'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "master" ]
+    paths-ignore:
+      - '.appveyor.yml'
+      - '.cirrus.yml'
+      - '.reuse/*'
+      - 'LICENSES/*'
   schedule:
     - cron: '35 14 * * 1'
     
