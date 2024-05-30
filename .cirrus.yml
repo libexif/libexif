@@ -17,7 +17,7 @@ freebsd_task:
     memory: 1400M
     matrix:
       image_family: freebsd-14-0
-      image_family: freebsd-13-2
+      image_family: freebsd-13-3
 
   env:
     # Set to 10 instead of 1 to avoid problems when new commits are submitted
@@ -41,8 +41,10 @@ freebsd_task:
 linux_arm_task:
   name: ARM Linux
   arm_container:
-    image: ubuntu:22.04
-    memory: 350M
+    memory: 300M
+    matrix:
+      image: ubuntu:22.04
+      image: ubuntu:24.04
 
   env:
     # Set to 10 instead of 1 to avoid problems when new commits are submitted
