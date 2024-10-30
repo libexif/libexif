@@ -1,0 +1,119 @@
+# SPDX-FileCopyrightText: 2024 Dan Fandrich
+#
+# SPDX-License-Identifier: CC0-1.0
+
+name: Linux
+
+'on':
+  push:
+    branches:
+      - master
+      - '*/ci'
+    paths-ignore:
+      - '**/*.md'
+      - '.cirrus.yml'
+      - '.appveyor.yml'
+      - 'LICENSES/*'
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**/*.md'
+      - '.cirrus.yml'
+      - '.appveyor.yml'
+      - 'LICENSES/*'
+
+permissions: {}
+
+jobs:
+  linux:
+    name: ${{ matrix.os }} ${{ matrix.cc }} ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    env:
+      MAKEFLAGS: -j 5
+      DEBIAN_FRONTEND: noninteractive
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, ubuntu-22.04, ubuntu-20.04]
+        cc: [gcc, clang]
+        packages: [build-essential clang autoconf automake autopoint libtool gettext]
+        cflags: [-Wall -Wextra -O2]
+        include:
+          # This uses ASAN and UBSAN, enables more warnings, plus errors out on any warnings
+          - name: sanitize
+            os: ubuntu-24.04
+            packages: clang build-essential autoconf automake autopoint libtool gettext
+            cc: clang
+            # TODO: fix the code to eliminate the -Wno-... disables
+            cflags: -fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope -g -Wall -Wextra -Wno-assign-enum -Wno-switch -Wno-implicit-fallthrough -Wno-shorten-64-to-32 -Wno-conversion -Wno-sign-conversion -Wlong-long -Wmultichar -Wformat-nonliteral -Wimplicit-function-declaration -Wpointer-arith -Wwrite-strings -Wshadow -Winline -Wnested-externs -Wmissing-declarations -Wmissing-prototypes -Wfloat-equal -Wsign-compare -Wundef -Wendif-labels -Wstrict-prototypes -Wdeclaration-after-statement -Wcast-align -Wunused -Waddress -Wattributes -Wbad-function-cast -Wdiv-by-zero -Wformat-security -Wempty-body -Wmissing-field-initializers -Wmissing-noreturn -Wold-style-definition -Wredundant-decls -Wtype-limits -Wunreachable-code -Wunused-parameter -Wignored-qualifiers -Wvla -Wshift-sign-overflow -Wlanguage-extension-token -Wenum-conversion -Wsometimes-uninitialized -Wmissing-variable-declarations -Wheader-guard -Wunused-const-variable -Wpragmas -Wunreachable-code-break -Wdouble-promotion -Wcomma -Wextra-semi-stmt
+            mflags: AM_CFLAGS=-Werror
+          - name: powerpc cross-compile
+            os: ubuntu-24.04
+            packages: gcc-14-powerpc-linux-gnu libc6-dev-powerpc-cross build-essential autoconf automake autopoint libtool gettext
+            cc: powerpc-linux-gnu-gcc-14
+            cflags: -g -Wall -Wextra
+            ldflags: -static
+            configure: --host=powerpc-linux-gnu
+            skiptests: true
+          - name: C90
+            os: ubuntu-24.04
+            packages: build-essential autoconf automake autopoint libtool gettext
+            cc: gcc
+            cflags: -Wall -Wextra -O2 -std=iso9899:1990 -D_XOPEN_SOURCE=500
+          - name: disable-nls
+            os: ubuntu-24.04
+            packages: build-essential autoconf automake autopoint libtool gettext
+            cc: gcc
+            cflags: -Wall -Wextra -O2
+            configure: --disable-nls
+          - name: failmalloc
+            os: ubuntu-20.04
+            packages: build-essential autoconf automake autopoint libtool gettext
+            cc: gcc
+            cflags: -Wall -Wextra -O2
+            configure: --with-failmalloc="$HOME/failmalloc/lib"
+            failmalloc: true
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/cache@v4
+        if: matrix.failmalloc == true
+        id: cache
+        with:
+          path: ~/failmalloc/lib
+          key: ${{ runner.os }}-${{ matrix.os }}-failmalloc-1.0
+
+      - name: 'install prereqs'
+        run: sudo apt-get install -y --no-install-suggests --no-install-recommends ${{ matrix.packages }}
+
+      - name: 'build failmalloc'
+        if: matrix.failmalloc == true && steps.cache.outputs.cache-hit != 'true'
+        run: |
+          curl -fsSORL --retry 8 https://download.savannah.nongnu.org/releases/failmalloc/failmalloc-1.0.tar.gz
+          tar xaf failmalloc-1.0.tar.gz
+          cd failmalloc-1.0
+          # Fix compiling with modern glibc, but not too modern because it has since been removed
+          sed -i -e 's/\(__malloc_initialize_hook\)/volatile \1/' failmalloc.c
+          # Disable failmalloc on program exit so system code can run unimpeded
+          sed -i -e '/failmalloc_init/,${/failmalloc_install/aatexit(failmalloc_uninstall);
+          }' failmalloc.c
+          ./configure --prefix="$HOME/failmalloc" --disable-dependency-tracking
+          make
+          make install
+
+      - name: 'configure'
+        run: autoreconf -sfiv && ./configure --disable-dependency-tracking --prefix="$PWD"/install ${{ matrix.configure }} CFLAGS="${{ matrix.cflags }}" LDFLAGS="${{ matrix.ldflags }}" CC="${{ matrix.cc }}" || { tail -300 config.log; false; }
+
+      - name: 'make'
+        run: make V=1 ${{ matrix.mflags }}
+
+      - name: 'test'
+        if: matrix.skiptests != true
+        env:
+          ASAN_OPTIONS: strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1:detect_leaks=1
+        run: make V=1 check
+
+      - name: 'install'
+        run: make V=1 install
