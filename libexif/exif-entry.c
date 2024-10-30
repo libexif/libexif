@@ -1470,9 +1470,9 @@ exif_entry_initialize (ExifEntry *e, ExifTag tag)
 	ExifRational r;
 	ExifByteOrder o;
 
-	/* We need the byte order */
 	if (!e || !e->parent || e->data || !e->parent->parent)
 		return;
+	/* We need the byte order */
 	o = exif_data_get_byte_order (e->parent->parent);
 
 	e->tag = tag;
