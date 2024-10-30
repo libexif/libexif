@@ -466,17 +466,17 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 				  exif_tag_get_name(tag), o);
 			switch (tag) {
 			case EXIF_TAG_EXIF_IFD_POINTER:
-				CHECK_REC (EXIF_IFD_EXIF);
+				CHECK_REC (EXIF_IFD_EXIF)
 				exif_data_load_data_content (data, EXIF_IFD_EXIF, d, ds, o,
 					recursion_cost + level_cost(n));
 				break;
 			case EXIF_TAG_GPS_INFO_IFD_POINTER:
-				CHECK_REC (EXIF_IFD_GPS);
+				CHECK_REC (EXIF_IFD_GPS)
 				exif_data_load_data_content (data, EXIF_IFD_GPS, d, ds, o,
 					recursion_cost + level_cost(n));
 				break;
 			case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
-				CHECK_REC (EXIF_IFD_INTEROPERABILITY);
+				CHECK_REC (EXIF_IFD_INTEROPERABILITY)
 				exif_data_load_data_content (data, EXIF_IFD_INTEROPERABILITY, d, ds, o,
 					recursion_cost + level_cost(n));
 				break;
@@ -843,7 +843,7 @@ interpret_maker_note(ExifData *data, const unsigned char *d, unsigned int ds)
 
 #define LOG_TOO_SMALL \
 exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData", \
-		_("Size of data too small to allow for EXIF data."));
+		_("Size of data too small to allow for EXIF data."))
 
 void
 exif_data_load_data (ExifData *data, const unsigned char *d_orig,

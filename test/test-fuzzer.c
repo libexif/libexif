@@ -141,10 +141,16 @@ static void test_parse(const char *filename, void *callback_data)
 	if (-1 == stat(filename,&stbuf))
 		perror("stat");
 	f = fopen(filename,"r");
-	if (!f) return;
+	if (!f) {
+        fprintf(stderr, "Error opening %s\n", filename);
+        return;
+    }
 
 	buf = malloc(stbuf.st_size);
-	fread (buf, stbuf.st_size, 1, f);
+	if (fread (buf, stbuf.st_size, 1, f) != 1) {
+        fprintf(stderr, "Error reading %s\n", filename);
+        return;
+    }
 	fclose(f);
 
 	exif_loader_write(loader, buf, stbuf.st_size);

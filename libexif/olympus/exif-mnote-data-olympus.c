@@ -170,7 +170,7 @@ exif_mnote_data_olympus_save (ExifMnoteData *ne,
 
 		/* Write the header and the number of entries. */
 		strcpy ((char *)*buf, "Nikon");
-		(*buf)[6] = n->version;
+		(*buf)[6] = (unsigned char)n->version;
 
 		if (n->version != nikonV1) {
 			exif_set_short (*buf + 10, n->order, (ExifShort) (

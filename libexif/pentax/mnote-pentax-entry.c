@@ -342,8 +342,8 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 	  case MNOTE_PENTAX2_TAG_PICTURE_MODE:
 	  case MNOTE_PENTAX2_TAG_IMAGE_SIZE:
 	  case MNOTE_CASIO2_TAG_BESTSHOT_MODE:
-		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-		CC2 (entry->components, 1, 2, val, maxlen);
+		CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen)
+		CC2 (entry->components, 1, 2, val, maxlen)
 		if (entry->components == 1) {
 			vs = exif_get_short (entry->data, entry->order);
 
@@ -366,8 +366,8 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 			strncpy (val, _(items[i].elem[j].string), maxlen);
 		} else {
 			/* Two-component values */
-			CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen);
-			CC2 (entry->components, 1, 2, val, maxlen);
+			CF (entry->format, EXIF_FORMAT_SHORT, val, maxlen)
+			CC2 (entry->components, 1, 2, val, maxlen)
 			vs = exif_get_short (entry->data, entry->order);
 			vs2 = ((unsigned int)exif_get_short (entry->data+2, entry->order)) << 16;
 
@@ -392,33 +392,33 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 		break;
 
 	case MNOTE_PENTAX_TAG_ZOOM:
-		CF (entry->format, EXIF_FORMAT_LONG, val, maxlen);
-		CC (entry->components, 1, val, maxlen);
+		CF (entry->format, EXIF_FORMAT_LONG, val, maxlen)
+		CC (entry->components, 1, val, maxlen)
 		vl = exif_get_long (entry->data, entry->order);
 		snprintf (val, maxlen, "%lu", (long unsigned) vl);
 		break;
 	case MNOTE_PENTAX_TAG_PRINTIM:
-		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		CC (entry->components, 124, val, maxlen);
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen)
+		CC (entry->components, 124, val, maxlen)
 		snprintf (val, maxlen, _("%i bytes unknown data"),
 			entry->size);
 		break;
 	case MNOTE_PENTAX_TAG_TZ_CITY:
 	case MNOTE_PENTAX_TAG_TZ_DST:
-		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		CC (entry->components, 4, val, maxlen);
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen)
+		CC (entry->components, 4, val, maxlen)
 		strncpy (val, (char*)entry->data, MIN(maxlen, entry->size));
 		break;
 	case MNOTE_PENTAX2_TAG_DATE:
-		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		CC (entry->components, 4, val, maxlen);
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen)
+		CC (entry->components, 4, val, maxlen)
 		/* Note: format is UNDEFINED, not SHORT -> order is fixed: MOTOROLA */
 		vs = exif_get_short (entry->data, EXIF_BYTE_ORDER_MOTOROLA);
 		snprintf (val, maxlen, "%hi:%02i:%02i", vs, entry->data[2], entry->data[3]);
 		break;
 	case MNOTE_PENTAX2_TAG_TIME:
-		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen);
-		CC2 (entry->components, 3, 4, val, maxlen);
+		CF (entry->format, EXIF_FORMAT_UNDEFINED, val, maxlen)
+		CC2 (entry->components, 3, 4, val, maxlen)
 		snprintf (val, maxlen, "%02i:%02i:%02i", entry->data[0], entry->data[1], entry->data[2]);
 		break;
 	default:
