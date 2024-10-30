@@ -16,8 +16,8 @@ freebsd_task:
   freebsd_instance:
     memory: 1400M
     matrix:
-      image_family: freebsd-14-0
-      image_family: freebsd-13-3
+      image_family: freebsd-14-1
+      image_family: freebsd-13-4
 
   env:
     # Set to 10 instead of 1 to avoid problems when new commits are submitted
