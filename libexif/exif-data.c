@@ -456,7 +456,9 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			if (o >= ds) {
 				exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
 					  "Tag data past end of buffer (%u > %u)", offset+2, ds);
-				return;
+				if (recursion_cost > 0)
+					return;
+				break;
 			}
 			/* FIXME: IFD_POINTER tags aren't marked as being in a
 			 * specific IFD, so exif_tag_get_name_in_ifd won't work
