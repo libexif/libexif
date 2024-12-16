@@ -138,3 +138,65 @@ jobs:
           make -j 5 V=1 &&
           make -j 5 V=1 check
           '
+
+  coverage:
+    name: Linux code coverage
+    runs-on: ubuntu-22.04
+    env:
+      MAKEFLAGS: -j 5
+      DEBIAN_FRONTEND: noninteractive
+      PACKAGES: build-essential autoconf automake autopoint libtool gettext subversion libpopt-dev lcov
+      CFLAGS: -g -O0 --coverage
+      LDFLAGS: -g -O0 --coverage
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        id: cache
+        with:
+          path: ~/failmalloc/lib
+          key: ${{ runner.os }}-failmalloc-1.0
+      - name: 'install prereqs'
+        run: sudo apt-get install -y --no-install-suggests --no-install-recommends ${PACKAGES}
+      - name: 'install libexif-testsuite'
+        run: |
+          git clone --depth=1 https://github.com/libexif/libexif-testsuite.git
+          cd libexif-testsuite
+          mkdir src
+          # point to the libexif code checked out in actions/checkout above
+          ln -s "${GITHUB_WORKSPACE}" src/libexif
+          ./build-config.sh
+          autoreconf -sivf
+      - name: 'build failmalloc'
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          curl -fsSORL --retry 8 https://download.savannah.nongnu.org/releases/failmalloc/failmalloc-1.0.tar.gz
+          tar xaf failmalloc-1.0.tar.gz
+          cd failmalloc-1.0
+          # Fix compiling with modern glibc, but not too modern because that
+          # hook has since been removed
+          sed -i -e 's/\(__malloc_initialize_hook\)/volatile \1/' failmalloc.c
+          # Disable failmalloc on program exit so system code can run unimpeded
+          sed -i -e '/failmalloc_init/,${/failmalloc_install/aatexit(failmalloc_uninstall);
+          }' failmalloc.c
+          ./configure --prefix="${HOME}/failmalloc" --disable-dependency-tracking
+          make
+          make install
+      - name: 'configure'
+        run: cd libexif-testsuite && ./configure --prefix="$PWD"/install --with-failmalloc="${HOME}/failmalloc/lib" --disable-dependency-tracking CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" || { tail -n 500 config.log; false; }
+      - name: 'build'
+        run: |
+          # Build libexif via its checkout path, not through the symlink at
+          # libexif-testsuite/src/libexif, so that Coveralls can find the
+          # source code
+          make V=1
+          make -C libexif-testsuite V=1
+      - name: 'coverage tests'
+        run: make -C libexif-testsuite V=1 check || { tail -n 500 test*/test-suite.log src/libexif/test*/test-suite.log; false; }
+      - name: 'coverage analysis'
+        run: cd libexif-testsuite && lcov -c -d src/libexif/libexif/ -o lcov.info
+      - name: push to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.github_token }}
+          file: libexif-testsuite/lcov.info
