@@ -43,12 +43,13 @@ failmalloc_binary_test () {
   echo Checking "$binary" for "$iterations" iterations
   for n in $(seq "$iterations"); do
       test "$VERBOSE" = 1 && { echo "$n"; set -x; }
-      FAILMALLOC_INTERVAL="$n" LD_PRELOAD="$FAILMALLOC_PATH" "$binary" "$@" >/dev/null
+      FAILMALLOC_INTERVAL="$n" LD_PRELOAD="${LD_PRELOAD:+$LD_PRELOAD:}$FAILMALLOC_PATH" "$binary" "$@" >/dev/null
       s=$?
       test "$VERBOSE" = 1 && set +x;
-      if test "$s" -ge 128; then
+      if test "$s" -ge 125; then
           # Such status codes only happen due to termination due to a signal
-          # like SIGSEGV.
+          # like SIGSEGV or ASAN errors (ignoring a couple that the shell
+          # itself produces).
           echo "Abnormal binary exit status $s at malloc #$n on $binary"
           echo FAILURE
           exit 1
@@ -56,17 +57,27 @@ failmalloc_binary_test () {
   done
 }
 
+# Make ASAN errors return a high number to differentiate them from regular test
+# errors (which are ignored). This only does something if ASAN was configured
+# in the build.
+export ASAN_OPTIONS="exitcode=125${ASAN_OPTIONS:+:$ASAN_OPTIONS}"
+
 # The number of iterations is determined empirically to be about twice as
 # high as the maximum number of mallocs performed by the test program in order
 # to avoid lowering code coverage in the case of future code changes that cause
 # more allocations.
 
+failmalloc_binary_test 700 test-mem
 failmalloc_binary_test 500 test-value
-failmalloc_binary_test 300 test-mem
+
 for f in ${srcdir}/testdata/*jpg; do
     echo "Testing `basename "$f"`"
-    failmalloc_binary_test 500 test-parse$EXEEXT "$f"
-    # N.B., test-parse$EXEEXT --swap-byte-order doesn't test any new paths
+    failmalloc_binary_test 600 test-parse$EXEEXT "$f"
 done
+# N.B. adding the following binaries doesn't actually increase code coverage:
+#  test-extract -o /dev/null
+#  test-gps
+#  test-mnote
+#  test-parse --swap-byte-order
 
 echo PASSED
