@@ -66,6 +66,8 @@ mnote_apple_tag_get_title(MnoteAppleTag t) {
     (void) bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR);
     for (i = 0; i < sizeof (table) / sizeof (table[0]); i++) {
         if (table[i].tag == t) {
+            if (!table[i].title)
+                NULL;
             return _(table[i].title);
         }
     }
