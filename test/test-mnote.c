@@ -27,6 +27,12 @@
 
 #include <libexif/exif-data.h>
 
+static const char *strornull(const char *ptr) {
+	if (!ptr)
+		return "(none)";
+	return ptr;
+}
+
 static int
 test_exif_data (ExifData *d)
 {
@@ -57,11 +63,11 @@ test_exif_data (ExifData *d)
 	for (i = 0; i < c; i++) {
 		printf("Dumping entry number %i...\n", i);
 		printf("  Name: '%s'\n",
-				exif_mnote_data_get_name (md, i));
+				strornull(exif_mnote_data_get_name (md, i)));
 		printf("  Title: '%s'\n",
-				exif_mnote_data_get_title (md, i));
+				strornull(exif_mnote_data_get_title (md, i)));
 		printf("  Description: '%s'\n",
-				exif_mnote_data_get_description (md, i));
+				strornull(exif_mnote_data_get_description (md, i)));
 		p = exif_mnote_data_get_value (md, i, v, sizeof (v));
 		if (p) { printf("  Value: '%s'\n", v); }
 	}
@@ -97,17 +103,18 @@ main (int argc, char **argv)
 	exif_data_save_data (d, &buf, &buf_size);
 	exif_data_unref (d);
 	d = exif_data_new_from_data (buf, buf_size);
+	free (buf);
 	if (!d) {
 		fprintf (stderr, "Could not load data from buf!\n");
 		return 1;
 	}
-	free (buf);
 
 	printf ("######### Test 2 #########\n");
 	r = test_exif_data (d);
+	exif_data_unref (d);
 	if (r) return r;
 
 	printf ("Test successful!\n");
 
-	return 1;
+	return 0;
 }

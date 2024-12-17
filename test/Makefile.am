@@ -27,8 +27,8 @@ AM_TESTS_ENVIRONMENT += FAILMALLOC_PATH='$(FAILMALLOC_PATH)'; export FAILMALLOC_
 #      here yet.
 
 TESTS = test-mem test-value test-integers test-parse test-parse-from-data test-tagtable test-sorted \
-	test-fuzzer test-null parse-regression.sh swap-byte-order.sh \
-	extract-parse.sh test-gps
+	test-fuzzer test-null test-gps parse-regression.sh swap-byte-order.sh \
+	extract-parse.sh check-mnote.sh
 
 TESTS += check-failmalloc.sh
 
@@ -42,6 +42,7 @@ EXTRA_DIST = \
 	parse-regression.sh \
 	swap-byte-order.sh \
 	extract-parse.sh \
+	check-mnote.sh \
 	check-failmalloc.sh \
 	testdata/canon_makernote_variant_1.jpg \
 	testdata/canon_makernote_variant_1.jpg.parsed \
