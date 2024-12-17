@@ -71,7 +71,8 @@ jobs:
             os: ubuntu-20.04
             packages: build-essential autoconf automake autopoint libtool gettext
             cc: gcc
-            cflags: -Wall -Wextra -O2
+            cflags: -Wall -Wextra -O2 -fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope -fsanitize-undefined-trap-on-error
+            ldflags: -Wall -Wextra -O2 -fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope -fsanitize-undefined-trap-on-error
             configure: --with-failmalloc="$HOME/failmalloc/lib"
             failmalloc: true
 
