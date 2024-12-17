@@ -14,6 +14,8 @@
 # Copyright (C) 2018-2021 Dan Fandrich <dan@coneharvesters.com>, et. al.
 # SPDX-License-Identifier: LGPL-2.0-or-later
 
+srcdir="${srcdir:-.}"
+
 VERBOSE=
 if [ "$1" = "-v" ] ; then
     VERBOSE=1
