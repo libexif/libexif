@@ -141,13 +141,17 @@ jobs:
 
   coverage:
     name: Linux code coverage
-    runs-on: ubuntu-22.04
+    runs-on: ${{ matrix.os }}
     env:
       MAKEFLAGS: -j 5
       DEBIAN_FRONTEND: noninteractive
-      PACKAGES: build-essential autoconf automake autopoint libtool gettext subversion libpopt-dev lcov
-      CFLAGS: -g -O0 --coverage
-      LDFLAGS: -g -O0 --coverage
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-20.04
+            packages: build-essential autoconf automake autopoint libtool gettext subversion libpopt-dev lcov
+            cflags: -g -O0 --coverage
+            ldflags: -g -O0 --coverage
 
     steps:
       - uses: actions/checkout@v4
@@ -155,9 +159,9 @@ jobs:
         id: cache
         with:
           path: ~/failmalloc/lib
-          key: ${{ runner.os }}-failmalloc-1.0
+          key: ${{ runner.os }}-${{ matrix.os }}-failmalloc-1.0
       - name: 'install prereqs'
-        run: sudo apt-get install -y --no-install-suggests --no-install-recommends ${PACKAGES}
+        run: sudo apt-get install -y --no-install-suggests --no-install-recommends ${{ matrix.packages }}
       - name: 'install libexif-testsuite'
         run: |
           git clone --depth=1 https://github.com/libexif/libexif-testsuite.git
@@ -183,7 +187,7 @@ jobs:
           make
           make install
       - name: 'configure'
-        run: cd libexif-testsuite && ./configure --prefix="$PWD"/install --with-failmalloc="${HOME}/failmalloc/lib" --disable-dependency-tracking CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" || { tail -n 500 config.log; false; }
+        run: cd libexif-testsuite && ./configure --prefix="$PWD"/install --with-failmalloc="${HOME}/failmalloc/lib" --disable-dependency-tracking CFLAGS="${{ matrix.cflags }}" LDFLAGS="${{ matrix.ldflags }}" || { tail -n 500 config.log; false; }
       - name: 'build'
         run: |
           # Build libexif via its checkout path, not through the symlink at
