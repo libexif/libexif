@@ -37,7 +37,7 @@
  * There should be one for every block in exif_entry_initialize() and
  * exif_entry_get_value().
  */
-ExifTag trunc_test_tags[] = {
+static const ExifTag trunc_test_tags[] = {
 	EXIF_TAG_PIXEL_X_DIMENSION,
 	EXIF_TAG_SUBJECT_LOCATION,
 	EXIF_TAG_IMAGE_WIDTH,
@@ -63,7 +63,7 @@ ExifTag trunc_test_tags[] = {
  * These tags produce different outputs depending on the amount of buffer space
  * available.
  */
-ExifTag nonuniform_test_tags[] = {
+static const ExifTag nonuniform_test_tags[] = {
 	EXIF_TAG_RESOLUTION_UNIT,
 	EXIF_TAG_COLOR_SPACE,
 	EXIF_TAG_METERING_MODE,
@@ -74,7 +74,7 @@ ExifTag nonuniform_test_tags[] = {
  * They must have space for a rational or srational created automatically by
  * exif_entry_initialize().
  */
-ExifTag rational_test_tags[] = {
+static const ExifTag rational_test_tags[] = {
 	EXIF_TAG_FNUMBER,
 	EXIF_TAG_APERTURE_VALUE,
 	EXIF_TAG_MAX_APERTURE_VALUE,
