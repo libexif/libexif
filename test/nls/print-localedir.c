@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 
-int main()
+int main(void)
 {
   puts(LOCALEDIR);
   puts("\n");

@@ -34,7 +34,7 @@ typedef enum {
    EN_F
 } enum_t;
 
-int main()
+int main(void)
 {
   /* libexif assumes unsigned ints are not smaller than 32bit in many places */
   assert(sizeof(unsigned int) >= sizeof(uint32_t));

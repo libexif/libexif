@@ -211,7 +211,7 @@ static int name(void)
 }
 
 int
-main ()
+main (void)
 {
     int fail = 0;
 

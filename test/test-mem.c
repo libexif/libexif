@@ -30,7 +30,7 @@
 #include <stdlib.h>
 
 int
-main ()
+main (void)
 {
 	ExifData *ed;
 	/* ExifEntry *e; */

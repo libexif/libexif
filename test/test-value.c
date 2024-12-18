@@ -117,7 +117,7 @@ static void check_entry_trunc(ExifEntry *e, int uniform)
 }
 
 int
-main ()
+main (void)
 {
 	ExifData *data;
 	ExifEntry *e;
