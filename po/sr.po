@@ -2,15 +2,13 @@
 # Copyright © 2020 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libexif package.
 # SPDX-License-Identifier: LGPL-2.0-or-later
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2020, 2021.
-#: libexif/exif-tag.c:534 libexif/exif-tag.c:538 libexif/exif-tag.c:542
-#: libexif/exif-tag.c:546 libexif/exif-tag.c:550
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2020—2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: libexif 0.6.23\n"
+"Project-Id-Version: libexif 0.6.24\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2021-09-12 15:28+0200\n"
-"PO-Revision-Date: 2021-10-10 14:48+0200\n"
+"POT-Creation-Date: 2021-11-25 11:31+0100\n"
+"PO-Revision-Date: 2021-12-12 08:29+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
@@ -60,7 +58,7 @@ msgstr "Макро"
 #: libexif/olympus/mnote-olympus-entry.c:198
 #: libexif/olympus/mnote-olympus-entry.c:206
 #: libexif/olympus/mnote-olympus-entry.c:216
-#: libexif/olympus/mnote-olympus-entry.c:593
+#: libexif/olympus/mnote-olympus-entry.c:594
 #: libexif/pentax/mnote-pentax-entry.c:105
 #: libexif/pentax/mnote-pentax-entry.c:110
 #: libexif/pentax/mnote-pentax-entry.c:115
@@ -96,8 +94,8 @@ msgstr "Финије"
 #: libexif/olympus/mnote-olympus-entry.c:181
 #: libexif/olympus/mnote-olympus-entry.c:189
 #: libexif/olympus/mnote-olympus-entry.c:254
-#: libexif/olympus/mnote-olympus-entry.c:537
-#: libexif/olympus/mnote-olympus-entry.c:554
+#: libexif/olympus/mnote-olympus-entry.c:538
+#: libexif/olympus/mnote-olympus-entry.c:555
 #: libexif/pentax/mnote-pentax-entry.c:195
 #: libexif/pentax/mnote-pentax-entry.c:260
 msgid "Off"
@@ -129,8 +127,8 @@ msgstr "Ауто"
 #: libexif/fuji/mnote-fuji-entry.c:108 libexif/fuji/mnote-fuji-entry.c:116
 #: libexif/fuji/mnote-fuji-entry.c:143
 #: libexif/olympus/mnote-olympus-entry.c:182
-#: libexif/olympus/mnote-olympus-entry.c:540
-#: libexif/olympus/mnote-olympus-entry.c:557
+#: libexif/olympus/mnote-olympus-entry.c:541
+#: libexif/olympus/mnote-olympus-entry.c:558
 #: libexif/pentax/mnote-pentax-entry.c:198
 #: libexif/pentax/mnote-pentax-entry.c:261
 msgid "On"
@@ -1154,22 +1152,22 @@ msgid "Rotated by software"
 msgstr "Заокренуто софтвером"
 
 #: libexif/canon/mnote-canon-entry.c:382
-#: libexif/olympus/mnote-olympus-entry.c:613
+#: libexif/olympus/mnote-olympus-entry.c:614
 msgid "Left to right"
 msgstr "Са лева на десно"
 
 #: libexif/canon/mnote-canon-entry.c:383
-#: libexif/olympus/mnote-olympus-entry.c:616
+#: libexif/olympus/mnote-olympus-entry.c:617
 msgid "Right to left"
 msgstr "Са десна на лево"
 
 #: libexif/canon/mnote-canon-entry.c:384
-#: libexif/olympus/mnote-olympus-entry.c:619
+#: libexif/olympus/mnote-olympus-entry.c:620
 msgid "Bottom to top"
 msgstr "Одоздо на горе"
 
 #: libexif/canon/mnote-canon-entry.c:385
-#: libexif/olympus/mnote-olympus-entry.c:622
+#: libexif/olympus/mnote-olympus-entry.c:623
 msgid "Top to bottom"
 msgstr "Одозго на доле"
 
@@ -1279,7 +1277,7 @@ msgstr "1/%.0f"
 msgid "%u mm"
 msgstr "%u mm"
 
-#: libexif/canon/mnote-canon-entry.c:815 libexif/fuji/mnote-fuji-entry.c:303
+#: libexif/canon/mnote-canon-entry.c:816 libexif/fuji/mnote-fuji-entry.c:303
 #: libexif/pentax/mnote-pentax-entry.c:401
 #: libexif/pentax/mnote-pentax-entry.c:497
 #, c-format
@@ -1290,7 +1288,7 @@ msgstr "%i бајта непознатих података"
 msgid "Settings (First Part)"
 msgstr "Поставке (Први део)"
 
-#: libexif/canon/mnote-canon-tag.c:36 libexif/canon/mnote-canon-tag.c:92
+#: libexif/canon/mnote-canon-tag.c:36 libexif/canon/mnote-canon-tag.c:158
 #: libexif/exif-tag.c:630 libexif/pentax/mnote-pentax-tag.c:88
 msgid "Focal Length"
 msgstr "Жижна даљина"
@@ -1300,7 +1298,7 @@ msgid "Settings (Second Part)"
 msgstr "Поставке (Други део)"
 
 #: libexif/canon/mnote-canon-tag.c:38
-#: libexif/olympus/mnote-olympus-entry.c:602
+#: libexif/olympus/mnote-olympus-entry.c:603
 #: libexif/pentax/mnote-pentax-entry.c:177
 msgid "Panorama"
 msgstr "Панорама"
@@ -1332,39 +1330,297 @@ msgstr "Подаци о боји"
 msgid "Serial Number"
 msgstr "Серијски број"
 
-#: libexif/canon/mnote-canon-tag.c:45
+#: libexif/canon/mnote-canon-tag.c:45 libexif/pentax/mnote-pentax-tag.c:117
+msgid "Camera Info"
+msgstr "Подаци о фото-апарату"
+
+#: libexif/canon/mnote-canon-tag.c:46
+msgid "File Length"
+msgstr "Величина датотеке"
+
+#: libexif/canon/mnote-canon-tag.c:47
 msgid "Custom Functions"
 msgstr "Произвољне функције"
 
-#: libexif/canon/mnote-canon-tag.c:56 libexif/fuji/mnote-fuji-tag.c:45
+#: libexif/canon/mnote-canon-tag.c:48
+msgid "Model ID"
+msgstr "ИД модела"
+
+#: libexif/canon/mnote-canon-tag.c:49
+msgid "Movie Info"
+msgstr "Подаци о филму"
+
+#: libexif/canon/mnote-canon-tag.c:50
+msgid "AF Info"
+msgstr "АФ подаци"
+
+#: libexif/canon/mnote-canon-tag.c:51
+msgid "Thumbnail Valid Area"
+msgstr "Исправна област сличице"
+
+#: libexif/canon/mnote-canon-tag.c:52
+msgid "Serial Number Format"
+msgstr "Формат серијског броја"
+
+#: libexif/canon/mnote-canon-tag.c:53
+msgid "Super Macro"
+msgstr "Супер макро"
+
+#: libexif/canon/mnote-canon-tag.c:54
+msgid "Date Stamp Mode"
+msgstr "Режим печата датума"
+
+#: libexif/canon/mnote-canon-tag.c:55
+msgid "My Colors"
+msgstr "Моје боје"
+
+#: libexif/canon/mnote-canon-tag.c:56
+msgid "Firmware Revision"
+msgstr "Ревизија уграђеног програма"
+
+#: libexif/canon/mnote-canon-tag.c:57
+msgid "Categories"
+msgstr "Категорије"
+
+#: libexif/canon/mnote-canon-tag.c:58
+msgid "Face Detect 1"
+msgstr "Откривање лица 1"
+
+#: libexif/canon/mnote-canon-tag.c:59
+msgid "Face Detect 2"
+msgstr "Откривање лица 2"
+
+#: libexif/canon/mnote-canon-tag.c:60 libexif/olympus/mnote-olympus-tag.c:121
+msgid "AF Info 2"
+msgstr "AE подаци 2"
+
+#: libexif/canon/mnote-canon-tag.c:61
+msgid "Contrast Info"
+msgstr "Подаци контраста"
+
+#: libexif/canon/mnote-canon-tag.c:62 libexif/exif-tag.c:901
+msgid "Image Unique ID"
+msgstr "Јединствени ИБ слике"
+
+#: libexif/canon/mnote-canon-tag.c:63
+msgid "WB Info"
+msgstr "„WB“ подаци"
+
+#: libexif/canon/mnote-canon-tag.c:64
+msgid "Face Detect 3"
+msgstr "Откривање лица 3"
+
+#: libexif/canon/mnote-canon-tag.c:65
+msgid "Time Info"
+msgstr "Подаци о времену"
+
+#: libexif/canon/mnote-canon-tag.c:66
+msgid "Battery Type"
+msgstr "Врста батерије"
+
+#: libexif/canon/mnote-canon-tag.c:67
+msgid "AF Info 3"
+msgstr "AE подаци 3"
+
+#: libexif/canon/mnote-canon-tag.c:68
+msgid "Raw Data Offset"
+msgstr "Померај сирових података"
+
+#: libexif/canon/mnote-canon-tag.c:69
+msgid "Original Decision Data Offset"
+msgstr "Изворни померај података одлуке"
+
+#: libexif/canon/mnote-canon-tag.c:70
+msgid "Personal Functions"
+msgstr "Личне функције"
+
+#: libexif/canon/mnote-canon-tag.c:71
+msgid "Personal Functions Values"
+msgstr "Вредности личних функција"
+
+#: libexif/canon/mnote-canon-tag.c:72 libexif/olympus/mnote-olympus-tag.c:122
+msgid "File Info"
+msgstr "Подаци датотеке"
+
+#: libexif/canon/mnote-canon-tag.c:73 libexif/exif-tag.c:927
+msgid "Lens Model"
+msgstr "Модел сочива"
+
+#: libexif/canon/mnote-canon-tag.c:74
+msgid "CMOS Serial Number"
+msgstr "Серијски број „CMOS“-а"
+
+#: libexif/canon/mnote-canon-tag.c:75
+msgid "Dust Removal Data"
+msgstr "Подаци уклањања прашине"
+
+#: libexif/canon/mnote-canon-tag.c:76
+msgid "Crop Info"
+msgstr "Подаци опсецања"
+
+#: libexif/canon/mnote-canon-tag.c:77
+msgid "Custom Functions 2"
+msgstr "Произвољне функције 2"
+
+#: libexif/canon/mnote-canon-tag.c:78
+msgid "Aspect Info"
+msgstr "Подаци изгледа"
+
+#: libexif/canon/mnote-canon-tag.c:79
+msgid "Tone Curve Table"
+msgstr "Табела криве тоналитета"
+
+#: libexif/canon/mnote-canon-tag.c:80
+msgid "Sharpness Table"
+msgstr "Табела оштрине"
+
+#: libexif/canon/mnote-canon-tag.c:81
+msgid "Sharpness Frequency Table"
+msgstr "Табела учесталости оштрине"
+
+#: libexif/canon/mnote-canon-tag.c:82
+msgid "Whitebalance Table"
+msgstr "Табела равнотеже белог"
+
+#: libexif/canon/mnote-canon-tag.c:83 libexif/olympus/mnote-olympus-tag.c:77
+msgid "Color Balance"
+msgstr "Равнотежа боја"
+
+#: libexif/canon/mnote-canon-tag.c:84
+msgid "Measured Color"
+msgstr "Измерена боја"
+
+#: libexif/canon/mnote-canon-tag.c:85 libexif/canon/mnote-canon-tag.c:199
+msgid "Color Temperature"
+msgstr "Температура боје"
+
+#: libexif/canon/mnote-canon-tag.c:86
+msgid "Canon Flags"
+msgstr "Canon заставице"
+
+#: libexif/canon/mnote-canon-tag.c:87
+msgid "Modified Info"
+msgstr "Измењени подаци"
+
+#: libexif/canon/mnote-canon-tag.c:88
+msgid "Tonecurve Matching"
+msgstr "Поклапање криве тоналитета"
+
+#: libexif/canon/mnote-canon-tag.c:89
+msgid "Whitebalance Matching"
+msgstr "Поклапање равнотеже беле"
+
+#: libexif/canon/mnote-canon-tag.c:90 libexif/exif-tag.c:711
+#: libexif/olympus/mnote-olympus-tag.c:96
+#: libexif/pentax/mnote-pentax-tag.c:102
+msgid "Color Space"
+msgstr "Простор боја"
+
+#: libexif/canon/mnote-canon-tag.c:91
+msgid "Preview Image Info"
+msgstr "Подаци претпрегледа слике"
+
+#: libexif/canon/mnote-canon-tag.c:92
+msgid "VRD Offset"
+msgstr "„VRD“ померај"
+
+#: libexif/canon/mnote-canon-tag.c:93
+msgid "Sensor Info"
+msgstr "Подаци о сензору"
+
+#: libexif/canon/mnote-canon-tag.c:94
+msgid "WB Packet"
+msgstr "„WB“ пакет"
+
+#: libexif/canon/mnote-canon-tag.c:95
+msgid "Flavor"
+msgstr "Укус"
+
+#: libexif/canon/mnote-canon-tag.c:96
+msgid "Picture Style Userdefined"
+msgstr "Корисникова дефиниција стила слике"
+
+#: libexif/canon/mnote-canon-tag.c:97
+msgid "Picture Style PC"
+msgstr "„PC“ стила слике"
+
+#: libexif/canon/mnote-canon-tag.c:98
+msgid "Custom Picture Style Filename"
+msgstr "Произвољни назив датотеке стила слике"
+
+#: libexif/canon/mnote-canon-tag.c:99
+msgid "AF Micro Adjust"
+msgstr "AF микро подешавање"
+
+#: libexif/canon/mnote-canon-tag.c:100
+msgid "Vignetting Correct"
+msgstr "Поправка орнаментом"
+
+#: libexif/canon/mnote-canon-tag.c:101
+msgid "Vignetting Correct 2"
+msgstr "Поправка орнаментом 2"
+
+#: libexif/canon/mnote-canon-tag.c:102
+msgid "LightingOpt"
+msgstr "Опција осветљења"
+
+#: libexif/canon/mnote-canon-tag.c:103 libexif/pentax/mnote-pentax-tag.c:115
+msgid "Lens Info"
+msgstr "Подаци о сочиву"
+
+#: libexif/canon/mnote-canon-tag.c:104
+msgid "Ambience_Info"
+msgstr "Подаци амбијента"
+
+#: libexif/canon/mnote-canon-tag.c:105 libexif/olympus/mnote-olympus-tag.c:117
+msgid "Multi Exposure"
+msgstr "Вишеструка изложеност"
+
+#: libexif/canon/mnote-canon-tag.c:106
+msgid "Filter Info"
+msgstr "Подаци о филтеру"
+
+#: libexif/canon/mnote-canon-tag.c:107 libexif/olympus/mnote-olympus-tag.c:107
+msgid "HDR Info"
+msgstr "HDR подаци"
+
+#: libexif/canon/mnote-canon-tag.c:108
+msgid "AF Config"
+msgstr "„AF“ подешавање"
+
+#: libexif/canon/mnote-canon-tag.c:109
+msgid "Raw Burst Info"
+msgstr "Сирови подаци рафала"
+
+#: libexif/canon/mnote-canon-tag.c:120 libexif/fuji/mnote-fuji-tag.c:45
 msgid "Macro Mode"
 msgstr "Макро режим"
 
-#: libexif/canon/mnote-canon-tag.c:57 libexif/canon/mnote-canon-tag.c:117
+#: libexif/canon/mnote-canon-tag.c:121 libexif/canon/mnote-canon-tag.c:187
 #: libexif/olympus/mnote-olympus-tag.c:207
 #: libexif/pentax/mnote-pentax-tag.c:128
 msgid "Self-timer"
 msgstr "Само-одбројавач"
 
-#: libexif/canon/mnote-canon-tag.c:58 libexif/fuji/mnote-fuji-tag.c:38
+#: libexif/canon/mnote-canon-tag.c:122 libexif/fuji/mnote-fuji-tag.c:38
 #: libexif/olympus/mnote-olympus-tag.c:40
 #: libexif/olympus/mnote-olympus-tag.c:126
 #: libexif/olympus/mnote-olympus-tag.c:139
 msgid "Quality"
 msgstr "Квалитет"
 
-#: libexif/canon/mnote-canon-tag.c:59 libexif/fuji/mnote-fuji-tag.c:43
+#: libexif/canon/mnote-canon-tag.c:123 libexif/fuji/mnote-fuji-tag.c:43
 #: libexif/olympus/mnote-olympus-tag.c:45
 #: libexif/olympus/mnote-olympus-tag.c:159
 #: libexif/pentax/mnote-pentax-tag.c:38 libexif/pentax/mnote-pentax-tag.c:73
 msgid "Flash Mode"
 msgstr "Режим блица"
 
-#: libexif/canon/mnote-canon-tag.c:60 libexif/pentax/mnote-pentax-tag.c:101
+#: libexif/canon/mnote-canon-tag.c:124 libexif/pentax/mnote-pentax-tag.c:101
 msgid "Drive Mode"
 msgstr "Режим уређаја"
 
-#: libexif/canon/mnote-canon-tag.c:61 libexif/canon/mnote-canon-tag.c:82
+#: libexif/canon/mnote-canon-tag.c:125 libexif/canon/mnote-canon-tag.c:146
 #: libexif/olympus/mnote-olympus-tag.c:43
 #: libexif/olympus/mnote-olympus-tag.c:166
 #: libexif/olympus/mnote-olympus-tag.c:205
@@ -1373,19 +1629,19 @@ msgstr "Режим уређаја"
 msgid "Focus Mode"
 msgstr "Режим фокуса"
 
-#: libexif/canon/mnote-canon-tag.c:62 libexif/pentax/mnote-pentax-tag.c:127
+#: libexif/canon/mnote-canon-tag.c:126 libexif/pentax/mnote-pentax-tag.c:127
 msgid "Record Mode"
 msgstr "Режим снимања"
 
-#: libexif/canon/mnote-canon-tag.c:63 libexif/pentax/mnote-pentax-tag.c:71
+#: libexif/canon/mnote-canon-tag.c:127 libexif/pentax/mnote-pentax-tag.c:71
 msgid "Image Size"
 msgstr "Величина слике"
 
-#: libexif/canon/mnote-canon-tag.c:64
+#: libexif/canon/mnote-canon-tag.c:128
 msgid "Easy Shooting Mode"
 msgstr "Режим лаког окидања"
 
-#: libexif/canon/mnote-canon-tag.c:65 libexif/olympus/mnote-olympus-tag.c:64
+#: libexif/canon/mnote-canon-tag.c:129 libexif/olympus/mnote-olympus-tag.c:64
 #: libexif/olympus/mnote-olympus-tag.c:133
 #: libexif/olympus/mnote-olympus-tag.c:142
 #: libexif/olympus/mnote-olympus-tag.c:212
@@ -1393,149 +1649,157 @@ msgstr "Режим лаког окидања"
 msgid "Digital Zoom"
 msgstr "Дигитално увеличање"
 
-#: libexif/canon/mnote-canon-tag.c:66 libexif/exif-tag.c:878
+#: libexif/canon/mnote-canon-tag.c:130 libexif/exif-tag.c:878
 #: libexif/fuji/mnote-fuji-tag.c:42 libexif/pentax/mnote-pentax-tag.c:46
 #: libexif/pentax/mnote-pentax-tag.c:91
 msgid "Contrast"
 msgstr "Контраст"
 
-#: libexif/canon/mnote-canon-tag.c:67 libexif/exif-tag.c:882
+#: libexif/canon/mnote-canon-tag.c:131 libexif/exif-tag.c:882
 #: libexif/olympus/mnote-olympus-tag.c:75
 #: libexif/olympus/mnote-olympus-tag.c:88 libexif/pentax/mnote-pentax-tag.c:47
 #: libexif/pentax/mnote-pentax-tag.c:90
 msgid "Saturation"
 msgstr "Засићење"
 
-#: libexif/canon/mnote-canon-tag.c:68 libexif/exif-tag.c:886
-#: libexif/fuji/mnote-fuji-tag.c:39 libexif/pentax/mnote-pentax-tag.c:45
-#: libexif/pentax/mnote-pentax-tag.c:92
+#: libexif/canon/mnote-canon-tag.c:132 libexif/canon/mnote-canon-tag.c:192
+#: libexif/exif-tag.c:886 libexif/fuji/mnote-fuji-tag.c:39
+#: libexif/pentax/mnote-pentax-tag.c:45 libexif/pentax/mnote-pentax-tag.c:92
 msgid "Sharpness"
 msgstr "Оштрина"
 
-#: libexif/canon/mnote-canon-tag.c:69
+#: libexif/canon/mnote-canon-tag.c:133
 msgid "ISO"
 msgstr "ISO"
 
-#: libexif/canon/mnote-canon-tag.c:70 libexif/exif-tag.c:620
+#: libexif/canon/mnote-canon-tag.c:134 libexif/exif-tag.c:620
 #: libexif/pentax/mnote-pentax-tag.c:82
 msgid "Metering Mode"
 msgstr "Мерење осветљења"
 
-#: libexif/canon/mnote-canon-tag.c:71 libexif/olympus/mnote-olympus-tag.c:165
+#: libexif/canon/mnote-canon-tag.c:135 libexif/olympus/mnote-olympus-tag.c:165
 msgid "Focus Range"
 msgstr "Опсег фокуса"
 
-#: libexif/canon/mnote-canon-tag.c:72 libexif/canon/mnote-canon-tag.c:105
+#: libexif/canon/mnote-canon-tag.c:136 libexif/canon/mnote-canon-tag.c:173
 msgid "AF Point"
 msgstr "AF тачка"
 
-#: libexif/canon/mnote-canon-tag.c:73 libexif/exif-tag.c:845
+#: libexif/canon/mnote-canon-tag.c:137 libexif/exif-tag.c:845
 msgid "Exposure Mode"
 msgstr "Режим изложености"
 
-#: libexif/canon/mnote-canon-tag.c:74 libexif/olympus/mnote-olympus-tag.c:61
+#: libexif/canon/mnote-canon-tag.c:138 libexif/olympus/mnote-olympus-tag.c:61
 #: libexif/pentax/mnote-pentax-tag.c:106
 msgid "Lens Type"
 msgstr "Врста сочива"
 
-#: libexif/canon/mnote-canon-tag.c:75
+#: libexif/canon/mnote-canon-tag.c:139
 msgid "Long Focal Length of Lens"
 msgstr "Дуга жижна даљина сочива"
 
-#: libexif/canon/mnote-canon-tag.c:76
+#: libexif/canon/mnote-canon-tag.c:140
 msgid "Short Focal Length of Lens"
 msgstr "Кратка жижна даљина сочива"
 
-#: libexif/canon/mnote-canon-tag.c:77
+#: libexif/canon/mnote-canon-tag.c:141
 msgid "Focal Units per mm"
 msgstr "Фокусна јединица по mm"
 
-#: libexif/canon/mnote-canon-tag.c:78
+#: libexif/canon/mnote-canon-tag.c:142
 msgid "Maximal Aperture"
 msgstr "Највећи отвор бленде"
 
-#: libexif/canon/mnote-canon-tag.c:79
+#: libexif/canon/mnote-canon-tag.c:143
 msgid "Minimal Aperture"
 msgstr "Најмањи отвор бленде"
 
-#: libexif/canon/mnote-canon-tag.c:80
+#: libexif/canon/mnote-canon-tag.c:144
 msgid "Flash Activity"
 msgstr "Активност блица"
 
-#: libexif/canon/mnote-canon-tag.c:81
+#: libexif/canon/mnote-canon-tag.c:145
 msgid "Flash Details"
 msgstr "Појединости блица"
 
-#: libexif/canon/mnote-canon-tag.c:83
+#: libexif/canon/mnote-canon-tag.c:147
 msgid "AE Setting"
 msgstr "АЕ поставке"
 
-#: libexif/canon/mnote-canon-tag.c:84
+#: libexif/canon/mnote-canon-tag.c:148
 msgid "Image Stabilization"
 msgstr "Стабилизација слике"
 
-#: libexif/canon/mnote-canon-tag.c:85
+#: libexif/canon/mnote-canon-tag.c:149
 msgid "Display Aperture"
 msgstr "Прикажи отвор бленде"
 
-#: libexif/canon/mnote-canon-tag.c:86
+#: libexif/canon/mnote-canon-tag.c:150
 msgid "Zoom Source Width"
 msgstr "Шрина извора увеличавања"
 
-#: libexif/canon/mnote-canon-tag.c:87
+#: libexif/canon/mnote-canon-tag.c:151
 msgid "Zoom Target Width"
 msgstr "Шрина мете увеличавања"
 
-#: libexif/canon/mnote-canon-tag.c:88
+#: libexif/canon/mnote-canon-tag.c:152
+msgid "Spot Metering Mode"
+msgstr "Мерење осветљења тачке"
+
+#: libexif/canon/mnote-canon-tag.c:153
 msgid "Photo Effect"
 msgstr "Фото ефекат"
 
-#: libexif/canon/mnote-canon-tag.c:89 libexif/canon/mnote-canon-tag.c:118
+#: libexif/canon/mnote-canon-tag.c:154 libexif/canon/mnote-canon-tag.c:188
 msgid "Manual Flash Output"
 msgstr "Ручни излаз блица"
 
-#: libexif/canon/mnote-canon-tag.c:90
+#: libexif/canon/mnote-canon-tag.c:155
 msgid "Color Tone"
 msgstr "Тон боје"
 
-#: libexif/canon/mnote-canon-tag.c:91
+#: libexif/canon/mnote-canon-tag.c:156
+msgid "SRAW Quality"
+msgstr "„SRAW“ квалитет"
+
+#: libexif/canon/mnote-canon-tag.c:157
 msgid "Focal Type"
 msgstr "Врста фокуса"
 
-#: libexif/canon/mnote-canon-tag.c:93
+#: libexif/canon/mnote-canon-tag.c:159
 msgid "Focal Plane X Size"
 msgstr "X величина фокусне равни"
 
-#: libexif/canon/mnote-canon-tag.c:94
+#: libexif/canon/mnote-canon-tag.c:160
 msgid "Focal Plane Y Size"
 msgstr "Y величина фокусне равни"
 
-#: libexif/canon/mnote-canon-tag.c:95
+#: libexif/canon/mnote-canon-tag.c:161
 msgid "Auto ISO"
 msgstr "Ауто ИСО"
 
-#: libexif/canon/mnote-canon-tag.c:96
+#: libexif/canon/mnote-canon-tag.c:162
 msgid "Shot ISO"
 msgstr "ИСО окидања"
 
-#: libexif/canon/mnote-canon-tag.c:97
+#: libexif/canon/mnote-canon-tag.c:163
 msgid "Measured EV"
 msgstr "Измерени EV"
 
-#: libexif/canon/mnote-canon-tag.c:98
+#: libexif/canon/mnote-canon-tag.c:164
 msgid "Target Aperture"
 msgstr "Отвор бленде циља"
 
-#: libexif/canon/mnote-canon-tag.c:99
+#: libexif/canon/mnote-canon-tag.c:165
 msgid "Target Exposure Time"
 msgstr "Време изложености циља"
 
-#: libexif/canon/mnote-canon-tag.c:100 libexif/olympus/mnote-olympus-tag.c:161
+#: libexif/canon/mnote-canon-tag.c:166 libexif/olympus/mnote-olympus-tag.c:161
 #: libexif/pentax/mnote-pentax-tag.c:81
 msgid "Exposure Compensation"
 msgstr "Поправка изложености"
 
-#: libexif/canon/mnote-canon-tag.c:101 libexif/canon/mnote-canon-tag.c:123
+#: libexif/canon/mnote-canon-tag.c:167 libexif/canon/mnote-canon-tag.c:198
 #: libexif/exif-tag.c:850 libexif/fuji/mnote-fuji-tag.c:40
 #: libexif/olympus/mnote-olympus-tag.c:41
 #: libexif/olympus/mnote-olympus-tag.c:130
@@ -1544,84 +1808,128 @@ msgstr "Поправка изложености"
 msgid "White Balance"
 msgstr "Равнотежа белог"
 
-#: libexif/canon/mnote-canon-tag.c:102
+#: libexif/canon/mnote-canon-tag.c:168
 msgid "Slow Shutter"
 msgstr "Спори застор"
 
-#: libexif/canon/mnote-canon-tag.c:103
+#: libexif/canon/mnote-canon-tag.c:169
 msgid "Sequence Number"
 msgstr "Број низа"
 
-#: libexif/canon/mnote-canon-tag.c:104
+#: libexif/canon/mnote-canon-tag.c:170
+msgid "Optical Zoom Code"
+msgstr "Код оптичког увеличања"
+
+#: libexif/canon/mnote-canon-tag.c:171 libexif/pentax/mnote-pentax-tag.c:107
+msgid "Camera Temperature"
+msgstr "Температура фото-апарата"
+
+#: libexif/canon/mnote-canon-tag.c:172
 msgid "Flash Guide Number"
 msgstr "Број вођице блица"
 
-#: libexif/canon/mnote-canon-tag.c:106 libexif/olympus/mnote-olympus-tag.c:52
+#: libexif/canon/mnote-canon-tag.c:174 libexif/olympus/mnote-olympus-tag.c:52
 #: libexif/pentax/mnote-pentax-tag.c:109
 msgid "Flash Exposure Compensation"
 msgstr "Поправка изложености блица"
 
-#: libexif/canon/mnote-canon-tag.c:107
+#: libexif/canon/mnote-canon-tag.c:175
 msgid "AE Bracketing"
 msgstr "АЕ вишеснимачја"
 
-#: libexif/canon/mnote-canon-tag.c:108
+#: libexif/canon/mnote-canon-tag.c:176
 msgid "AE Bracket Value"
 msgstr "Вредност АЕ вишеснима"
 
-#: libexif/canon/mnote-canon-tag.c:109
+#: libexif/canon/mnote-canon-tag.c:177
+msgid "Control Mode"
+msgstr "Режим управљања"
+
+#: libexif/canon/mnote-canon-tag.c:178
 msgid "Focus Distance Upper"
 msgstr "Горње растојање фокуса"
 
-#: libexif/canon/mnote-canon-tag.c:110
+#: libexif/canon/mnote-canon-tag.c:179
 msgid "Focus Distance Lower"
 msgstr "Доње растојање фокуса"
 
-#: libexif/canon/mnote-canon-tag.c:111 libexif/exif-tag.c:479
+#: libexif/canon/mnote-canon-tag.c:180 libexif/exif-tag.c:479
 #: libexif/pentax/mnote-pentax-tag.c:79
 msgid "F-Number"
 msgstr "Отвор бленде"
 
-#: libexif/canon/mnote-canon-tag.c:112 libexif/exif-tag.c:476
+#: libexif/canon/mnote-canon-tag.c:181 libexif/exif-tag.c:476
 #: libexif/pentax/mnote-pentax-tag.c:78
 msgid "Exposure Time"
 msgstr "Време изложености"
 
-#: libexif/canon/mnote-canon-tag.c:113
+#: libexif/canon/mnote-canon-tag.c:182
+msgid "Measured EV 2"
+msgstr "Измерени EV 2"
+
+#: libexif/canon/mnote-canon-tag.c:183
 msgid "Bulb Duration"
 msgstr "Трајање лампе"
 
-#: libexif/canon/mnote-canon-tag.c:114
+#: libexif/canon/mnote-canon-tag.c:184
 msgid "Camera Type"
 msgstr "Врста фото-апарата"
 
-#: libexif/canon/mnote-canon-tag.c:115
+#: libexif/canon/mnote-canon-tag.c:185
 msgid "Auto Rotate"
 msgstr "Самозаокретање"
 
-#: libexif/canon/mnote-canon-tag.c:116
+#: libexif/canon/mnote-canon-tag.c:186
 msgid "ND Filter"
 msgstr "НД филтер"
 
-#: libexif/canon/mnote-canon-tag.c:119
+#: libexif/canon/mnote-canon-tag.c:189
 msgid "Panorama Frame"
 msgstr "Кадар панораме"
 
-#: libexif/canon/mnote-canon-tag.c:120
+#: libexif/canon/mnote-canon-tag.c:190
 msgid "Panorama Direction"
 msgstr "Смер панораме"
 
-#: libexif/canon/mnote-canon-tag.c:121
+#: libexif/canon/mnote-canon-tag.c:191
 msgid "Tone Curve"
 msgstr "Крива тоналитета"
 
-#: libexif/canon/mnote-canon-tag.c:122
+#: libexif/canon/mnote-canon-tag.c:193
 msgid "Sharpness Frequency"
 msgstr "Учесталост оштрине"
 
-#: libexif/canon/mnote-canon-tag.c:124
+#: libexif/canon/mnote-canon-tag.c:194
+msgid "Sensor Red Level"
+msgstr "Ниво црвене сензора"
+
+#: libexif/canon/mnote-canon-tag.c:195
+msgid "Sensor Blue Level"
+msgstr "Ниво плаве сензора"
+
+#: libexif/canon/mnote-canon-tag.c:196
+msgid "White Balance Red"
+msgstr "Црвена равнотеже беле"
+
+#: libexif/canon/mnote-canon-tag.c:197
+msgid "White Balance Blue"
+msgstr "Плава равнотеже беле"
+
+#: libexif/canon/mnote-canon-tag.c:200
 msgid "Picture Style"
 msgstr "Стил слике"
+
+#: libexif/canon/mnote-canon-tag.c:201
+msgid "Digital Gain"
+msgstr "Дигитално појачање"
+
+#: libexif/canon/mnote-canon-tag.c:202
+msgid "White Balance Shift AB"
+msgstr "„AB“ померај равнотеже беле"
+
+#: libexif/canon/mnote-canon-tag.c:203
+msgid "White Balance Shift GM"
+msgstr "„GM“ померај равнотеже беле"
 
 #: libexif/exif-byte-order.c:33
 msgid "Motorola"
@@ -1635,39 +1943,48 @@ msgstr "Интел"
 msgid "Size of data too small to allow for EXIF data."
 msgstr "Величина података је премала за дозвољавање за „EXIF“ податке."
 
-#: libexif/exif-data.c:912
+#: libexif/exif-data.c:914
 msgid "EXIF marker not found."
 msgstr "Нисам нашао „EXIF“ маркера."
 
-#: libexif/exif-data.c:939
+#: libexif/exif-data.c:926
+#, c-format
+msgid "Read length %d is longer than data length %d."
+msgstr "Величина читања „%d“ је већа од величине података %d."
+
+#: libexif/exif-data.c:931
+msgid "APP Tag too short."
+msgstr "„APP“ ознака је прекратка."
+
+#: libexif/exif-data.c:951
 msgid "EXIF header not found."
 msgstr "Нисам нашао „EXIF“ заглавље."
 
-#: libexif/exif-data.c:964
+#: libexif/exif-data.c:976
 msgid "Unknown encoding."
 msgstr "Непознато кодирање."
 
-#: libexif/exif-data.c:1250
+#: libexif/exif-data.c:1262
 msgid "Ignore unknown tags"
 msgstr "Занемари непознате заставице"
 
-#: libexif/exif-data.c:1251
+#: libexif/exif-data.c:1263
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Занемарите непознате заставице приликом учитавања „EXIF“ података."
 
-#: libexif/exif-data.c:1252
+#: libexif/exif-data.c:1264
 msgid "Follow specification"
 msgstr "Прати одредбу"
 
-#: libexif/exif-data.c:1253
+#: libexif/exif-data.c:1265
 msgid "Add, correct and remove entries to get EXIF data that follows the specification."
 msgstr "Додајте, поправите и уклоните уносе да добијете „EXIF“ податке који прате одредбу."
 
-#: libexif/exif-data.c:1255
+#: libexif/exif-data.c:1267
 msgid "Do not change maker note"
 msgstr "Не мењај напомену творца"
 
-#: libexif/exif-data.c:1256
+#: libexif/exif-data.c:1268
 msgid "When loading and resaving Exif data, save the maker note unmodified. Be aware that the maker note can get corrupted."
 msgstr "Приликом учитавања и поновног чувања „Exif“ података, сачувајте напомену творца неизмењеном. Знајте да напомена творца може постати оштећена."
 
@@ -1894,9 +2211,9 @@ msgid "Hard"
 msgstr "Тешко"
 
 #: libexif/exif-entry.c:721 libexif/exif-entry.c:739 libexif/exif-entry.c:784
-#: libexif/exif-entry.c:831 libexif/olympus/mnote-olympus-entry.c:596
-#: libexif/olympus/mnote-olympus-entry.c:690
-#: libexif/olympus/mnote-olympus-entry.c:745
+#: libexif/exif-entry.c:831 libexif/olympus/mnote-olympus-entry.c:597
+#: libexif/olympus/mnote-olympus-entry.c:691
+#: libexif/olympus/mnote-olympus-entry.c:746
 #: libexif/pentax/mnote-pentax-entry.c:256
 msgid "Unknown"
 msgstr "Непознато"
@@ -3346,11 +3663,6 @@ msgstr "Ниска знакова која даје субјекат слике,
 msgid "The FlashPix format version supported by a FPXR file."
 msgstr "Издање „FlashPix“ формата је подржано „FPXR“ датотеком."
 
-#: libexif/exif-tag.c:711 libexif/olympus/mnote-olympus-tag.c:96
-#: libexif/pentax/mnote-pentax-tag.c:102
-msgid "Color Space"
-msgstr "Простор боја"
-
 #: libexif/exif-tag.c:712
 msgid "The color space information tag is always recorded as the color space specifier. Normally sRGB (=1) is used to define the color space based on the PC monitor conditions and environment. If a color space other than sRGB is used, Uncalibrated (=FFFF.H) is set. Image data recorded as Uncalibrated can be treated as sRGB when it is converted to FlashPix."
 msgstr "Ознака информација о простору боја увек се бележи као одредник простора боја. Обично се „sRGB (=1)“ користи за дефинисање простора боја на основу услова и окружења монитора рачунара. Ако се користи простор боје који није „sRGB“, поставља се некалибрисано (=FFFF.H). Подаци о слици забележени као Некалибрисани се могу третирати као „sRGB“ када се претворе у „FlashPix“."
@@ -3543,10 +3855,6 @@ msgstr "Опсег растојање субјекта"
 msgid "This tag indicates the distance to the subject."
 msgstr "Ова ознака означава удаљеност до субјекта."
 
-#: libexif/exif-tag.c:901
-msgid "Image Unique ID"
-msgstr "Јединствени ИБ слике"
-
 #: libexif/exif-tag.c:902
 msgid "This tag indicates an identifier assigned uniquely to each image. It is recorded as an ASCII string equivalent to hexadecimal notation and 128-bit fixed length."
 msgstr "Ова ознака означава одредник који је јединствено додељен свакој слици. Бележи се као АСКРИ низ еквивалентан хексадецималном запису и 128-битној фиксној дужини."
@@ -3582,10 +3890,6 @@ msgstr "Творац сочива"
 #: libexif/exif-tag.c:924
 msgid "This tag indicates the lens manufacturer."
 msgstr "Ова ознака показује произвођача сочива."
-
-#: libexif/exif-tag.c:927
-msgid "Lens Model"
-msgstr "Модел сочива"
 
 #: libexif/exif-tag.c:928
 msgid "This tag indicates the lens' model name and model number."
@@ -4184,7 +4488,7 @@ msgstr "Дотерај изложеност"
 
 #: libexif/olympus/mnote-olympus-entry.c:235
 msgid "Spot focus"
-msgstr "Мрљасти фокус"
+msgstr "Фокус тачке"
 
 #: libexif/olympus/mnote-olympus-entry.c:236
 msgid "Normal focus"
@@ -4310,54 +4614,54 @@ msgid "Unknown AF position"
 msgstr "Непознат AF положај"
 
 #: libexif/olympus/mnote-olympus-entry.c:440
-#: libexif/olympus/mnote-olympus-entry.c:510
+#: libexif/olympus/mnote-olympus-entry.c:511
 #, c-format
 msgid "Internal error (unknown value %hi)"
 msgstr "Унутрашња грешка (непозната вредност %hi)"
 
 #: libexif/olympus/mnote-olympus-entry.c:448
-#: libexif/olympus/mnote-olympus-entry.c:518
+#: libexif/olympus/mnote-olympus-entry.c:519
 #, c-format
 msgid "Unknown value %hi"
 msgstr "Непозната вредност %hi"
 
-#: libexif/olympus/mnote-olympus-entry.c:543
-#: libexif/olympus/mnote-olympus-entry.c:563
+#: libexif/olympus/mnote-olympus-entry.c:544
+#: libexif/olympus/mnote-olympus-entry.c:564
 #, c-format
 msgid "Unknown %hu"
 msgstr "Непознато %hu"
 
-#: libexif/olympus/mnote-olympus-entry.c:560
+#: libexif/olympus/mnote-olympus-entry.c:561
 msgid "2 sec."
 msgstr "2 сек."
 
-#: libexif/olympus/mnote-olympus-entry.c:599
+#: libexif/olympus/mnote-olympus-entry.c:600
 msgid "Fast"
 msgstr "Брзо"
 
-#: libexif/olympus/mnote-olympus-entry.c:703
+#: libexif/olympus/mnote-olympus-entry.c:704
 msgid "Automatic"
 msgstr "Аутоматски"
 
-#: libexif/olympus/mnote-olympus-entry.c:733
+#: libexif/olympus/mnote-olympus-entry.c:734
 #, c-format
 msgid "Manual: %liK"
 msgstr "Ручно: %liK"
 
-#: libexif/olympus/mnote-olympus-entry.c:736
+#: libexif/olympus/mnote-olympus-entry.c:737
 msgid "Manual: unknown"
 msgstr "Ручно: непознато"
 
-#: libexif/olympus/mnote-olympus-entry.c:742
+#: libexif/olympus/mnote-olympus-entry.c:743
 msgid "One-touch"
 msgstr "Један додир"
 
-#: libexif/olympus/mnote-olympus-entry.c:808
-#: libexif/olympus/mnote-olympus-entry.c:818
+#: libexif/olympus/mnote-olympus-entry.c:811
+#: libexif/olympus/mnote-olympus-entry.c:821
 msgid "Infinite"
 msgstr "Бесконачно"
 
-#: libexif/olympus/mnote-olympus-entry.c:826
+#: libexif/olympus/mnote-olympus-entry.c:829
 #, c-format
 msgid "%i bytes unknown data: "
 msgstr "%i бајта непознатих података: "
@@ -4490,10 +4794,6 @@ msgstr "Подешавање нијансе"
 msgid "Noise Reduction"
 msgstr "Смањење сметњи"
 
-#: libexif/olympus/mnote-olympus-tag.c:77
-msgid "Color Balance"
-msgstr "Равнотежа боја"
-
 #: libexif/olympus/mnote-olympus-tag.c:78
 msgid "Lens Data"
 msgstr "Подаци сочива"
@@ -4587,10 +4887,6 @@ msgstr "Подаци дисторзије"
 msgid "Shutter Mode"
 msgstr "Режим застора"
 
-#: libexif/olympus/mnote-olympus-tag.c:107
-msgid "HDR Info"
-msgstr "HDR подаци"
-
 #: libexif/olympus/mnote-olympus-tag.c:108
 msgid "Mechanical Shutter Count"
 msgstr "Број механичког застора"
@@ -4628,10 +4924,6 @@ msgstr "Серијски број 2"
 msgid "Saturation 2"
 msgstr "Засићење 2"
 
-#: libexif/olympus/mnote-olympus-tag.c:117
-msgid "Multi Exposure"
-msgstr "Вишеструка изложеност"
-
 #: libexif/olympus/mnote-olympus-tag.c:118
 msgid "High ISO Noise Reduction"
 msgstr "Високо смањење ИСО шума"
@@ -4643,14 +4935,6 @@ msgstr "Ефекат тонирања"
 #: libexif/olympus/mnote-olympus-tag.c:120
 msgid "Powerup Time"
 msgstr "Време паљења"
-
-#: libexif/olympus/mnote-olympus-tag.c:121
-msgid "AF Info 2"
-msgstr "AE подаци 2"
-
-#: libexif/olympus/mnote-olympus-tag.c:122
-msgid "File Info"
-msgstr "Подаци датотеке"
 
 #: libexif/olympus/mnote-olympus-tag.c:123
 msgid "Retouch Info"
@@ -5269,10 +5553,6 @@ msgstr "Величина сирове слике"
 msgid "Autofocus Points Used"
 msgstr "Коришћене тачке аутофокуса"
 
-#: libexif/pentax/mnote-pentax-tag.c:107
-msgid "Camera Temperature"
-msgstr "Температура фото-апарата"
-
 #: libexif/pentax/mnote-pentax-tag.c:110
 msgid "Image Tone"
 msgstr "Тон слике"
@@ -5288,14 +5568,6 @@ msgstr "Црна тачка"
 #: libexif/pentax/mnote-pentax-tag.c:114
 msgid "AE Info"
 msgstr "AE подаци"
-
-#: libexif/pentax/mnote-pentax-tag.c:115
-msgid "Lens Info"
-msgstr "Подаци о сочиву"
-
-#: libexif/pentax/mnote-pentax-tag.c:117
-msgid "Camera Info"
-msgstr "Подаци о фото-апарату"
 
 #: libexif/pentax/mnote-pentax-tag.c:118
 msgid "Battery Info"
