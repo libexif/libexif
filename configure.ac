@@ -5,7 +5,7 @@ dnl SPDX-License-Identifier: LGPL-2.0-or-later
 
 AC_PREREQ(2.69)
 AC_INIT([EXIF library],
-        [0.6.24.1],
+        [0.6.25],
         [libexif-devel@lists.sourceforge.net],
         [libexif],
         [https://libexif.github.io/])
@@ -201,7 +201,7 @@ AM_CONDITIONAL([ENABLE_INTERNAL_DOCS],
 # ---------------------------------------------------------------------------
 # i18n support
 # ---------------------------------------------------------------------------
-ALL_LINGUAS="be bs cs da de en_AU en_CA en_GB es fr it ja ms nl pl pt pt_BR ro ru sk sq sr sv tr uk vi zh_CN"
+ALL_LINGUAS="be bs cs da de en_AU en_CA en_GB es fr it ja ka ms nl pl pt pt_BR ro ru sk sq sr sv tr uk vi zh_CN"
 AM_PO_SUBDIRS
 GP_GETTEXT_HACK([${PACKAGE}-${LIBEXIF_CURRENT_MIN}],
                 [Lutz Mueller and others])

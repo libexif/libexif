@@ -1,4 +1,19 @@
-libexif-0.6.24.1 (202x-xx-xx):
+libexif-0.6.25 (2025-01-08):
+
+   * REUSE compatibility (all files declare their license)
+   * Translation updates: ro, de, es, ka, pl, sr, sv, uk, vi, zh_CN,
+   * Disabled Apple Makernote support, as its not complete
+   * various bugfixes
+   * handle JPEG APP10
+   * EXIF_TAG_COMPOSITE_IMAGE, EXIF_TAG_STANDARD_OUTPUT_SENSITIVITY,
+     EXIF_TAG_RECOMMENDED_EXPOSURE_INDEX, EXIF_TAG_ISO_SPEED,
+     EXIF_TAG_ISO_SPEEDLatitudeYYY, EXIF_TAG_ISO_SPEEDLatitudeZZZ,
+     EXIF_TAG_SOURCE_IMAGE_NUMBER_OF_COMPOSITE_IMAGE,
+     EXIF_TAG_LENS_SPECIFICATION, EXIF_TAG_GAMMA, EXIF_TAG_OFFSET_TIME,
+     EXIF_TAG_OFFSET_TIME_ORIGINAL, EXIF_TAG_OFFSET_TIME_DIGITIZED,
+     EXIF_TAG_CAMERA_OWNER_NAME, EXIF_TAG_BODY_SERIAL_NUMBER,
+     EXIF_TAG_LENS_MAKE, EXIF_TAG_LENS_MODEL, EXIF_TAG_LENS_SERIAL_NUMBER:
+     better decoding
 
 libexif-0.6.24 (2021-11-25):
 
