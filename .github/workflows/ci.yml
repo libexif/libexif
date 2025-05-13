@@ -160,6 +160,8 @@ jobs:
           apk add --no-cache gcc make musl-dev autoconf automake libtool gettext-tiny-dev &&
           autoreconf -sif &&
           ./configure --prefix="$PWD/install" --disable-dependency-tracking &&
+          ls -l /usr/lib/gcc/x86_64-linux-gnu/ /usr/lib/gcc/x86_64-linux-gnu/*
+          export LD_PRELOAD=/usr/lib/gcc/x86_64-linux-gnu/13/libasan.so
           make -j 5 V=1 &&
           make -j 5 V=1 check || { tail -n 500 test*/test-suite.log; false; }
           '
