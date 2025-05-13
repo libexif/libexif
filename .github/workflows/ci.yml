@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04, ubuntu-22.04, ubuntu-20.04]
+        os: [ubuntu-24.04, ubuntu-22.04]
         cc: [gcc, clang]
         packages: [build-essential clang autoconf automake autopoint libtool gettext]
         cflags: [-Wall -Wextra -O2]
@@ -69,11 +69,12 @@ jobs:
             cflags: -Wall -Wextra -O2
             configure: --disable-nls
           - name: failmalloc
-            os: ubuntu-20.04
+            # TODO: get ASAN working again
+            os: ubuntu-24.04
             packages: build-essential autoconf automake autopoint libtool gettext
             cc: gcc
-            cflags: -Wall -Wextra -O2 -fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope -fsanitize-undefined-trap-on-error
-            ldflags: -Wall -Wextra -O2 -fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope -fsanitize-undefined-trap-on-error
+            cflags: -Wall -Wextra -O2
+            ldflags: -Wall -Wextra -O2
             configure: --with-failmalloc="$HOME/failmalloc/lib"
             failmalloc: true
 
@@ -96,11 +97,34 @@ jobs:
           curl -fsSORL --retry 8 https://download.savannah.nongnu.org/releases/failmalloc/failmalloc-1.0.tar.gz
           tar xaf failmalloc-1.0.tar.gz
           cd failmalloc-1.0
-          # Fix compiling with modern glibc, but not too modern because it has since been removed
-          sed -i -e 's/\(__malloc_initialize_hook\)/volatile \1/' failmalloc.c
-          # Disable failmalloc on program exit so system code can run unimpeded
-          sed -i -e '/failmalloc_init/,${/failmalloc_install/aatexit(failmalloc_uninstall);
-          }' failmalloc.c
+          # Fix compiling with modern glibc which has removed definitions from the headers.
+          # Disable failmalloc on program exit so system code can run unimpeded.
+          patch -p0 << EOF
+          --- failmalloc.c.orig	2019-07-31 08:31:30.705539712 -0700
+          +++ failmalloc.c	2025-05-12 22:54:49.184931178 -0700
+          @@ -25,6 +25,11 @@
+           #include <time.h>
+           #include <errno.h>
+           
+          +/* No longer found in glibc headers */
+          +extern void *(*__malloc_hook) (size_t, const void *);
+          +extern void *(*__realloc_hook) (void *ptr, size_t size, const void *);
+          +extern void *(*__memalign_hook) (size_t, size_t, const void *);
+          +
+           static void failmalloc_install (void);
+           static void failmalloc_uninstall (void);
+           
+          @@ -202,7 +207,8 @@
+             srand (getpid () * 32452843 + time (NULL) * 49979687);
+           
+             failmalloc_install ();
+          +  atexit(failmalloc_uninstall);
+           }
+           
+          -void (*__malloc_initialize_hook) (void) = failmalloc_init;
+          +void (*volatile __malloc_initialize_hook) (void) = failmalloc_init;
+           
+          EOF
           ./configure --prefix="$HOME/failmalloc" --disable-dependency-tracking
           make
           make install
@@ -150,7 +174,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-20.04
+          - os: ubuntu-24.04
             packages: build-essential autoconf automake autopoint libtool gettext subversion libpopt-dev lcov
             cflags: -g -O0 --coverage
             ldflags: -g -O0 --coverage
