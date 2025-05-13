@@ -127,6 +127,7 @@ jobs:
           ./configure --prefix="$HOME/failmalloc" --disable-dependency-tracking
           make
           make install
+          ls -l /usr/lib/gcc/x86_64-linux-gnu/ /usr/lib/gcc/x86_64-linux-gnu/*
 
       - name: 'configure'
         run: autoreconf -sfiv && ./configure --disable-dependency-tracking --prefix="$PWD"/install ${{ matrix.configure }} CFLAGS="${{ matrix.cflags }}" LDFLAGS="${{ matrix.ldflags }}" CC="${{ matrix.cc }}" || { tail -300 config.log; false; }
@@ -138,7 +139,7 @@ jobs:
         if: matrix.skiptests != true
         env:
           ASAN_OPTIONS: strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1:detect_leaks=1
-        run: make V=1 check || { tail -n 500 test*/test-suite.log; false; }
+        run: LD_PRELOAD=/usr/lib/gcc/x86_64-linux-gnu/??/libasan.so make V=1 check || { tail -n 500 test*/test-suite.log; false; }
 
       - name: 'install'
         run: make V=1 install
@@ -160,8 +161,6 @@ jobs:
           apk add --no-cache gcc make musl-dev autoconf automake libtool gettext-tiny-dev &&
           autoreconf -sif &&
           ./configure --prefix="$PWD/install" --disable-dependency-tracking &&
-          ls -l /usr/lib/gcc/x86_64-linux-gnu/ /usr/lib/gcc/x86_64-linux-gnu/*
-          export LD_PRELOAD=/usr/lib/gcc/x86_64-linux-gnu/13/libasan.so
           make -j 5 V=1 &&
           make -j 5 V=1 check || { tail -n 500 test*/test-suite.log; false; }
           '
