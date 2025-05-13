@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04, ubuntu-22.04, ubuntu-20.04]
+        os: [ubuntu-24.04, ubuntu-22.04]
         cc: [gcc, clang]
         packages: [build-essential clang autoconf automake autopoint libtool gettext]
         cflags: [-Wall -Wextra -O2]
@@ -69,7 +69,7 @@ jobs:
             cflags: -Wall -Wextra -O2
             configure: --disable-nls
           - name: failmalloc
-            os: ubuntu-20.04
+            os: ubuntu-22.04
             packages: build-essential autoconf automake autopoint libtool gettext
             cc: gcc
             cflags: -Wall -Wextra -O2 -fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope -fsanitize-undefined-trap-on-error
@@ -150,7 +150,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-20.04
+          - os: ubuntu-24.04
             packages: build-essential autoconf automake autopoint libtool gettext subversion libpopt-dev lcov
             cflags: -g -O0 --coverage
             ldflags: -g -O0 --coverage
