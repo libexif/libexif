@@ -69,7 +69,7 @@ jobs:
             cflags: -Wall -Wextra -O2
             configure: --disable-nls
           - name: failmalloc
-            os: ubuntu-22.04
+            os: ubuntu-24.04
             packages: build-essential autoconf automake autopoint libtool gettext
             cc: gcc
             cflags: -Wall -Wextra -O2 -fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope -fsanitize-undefined-trap-on-error
@@ -128,6 +128,7 @@ jobs:
           make
           make install
           ls -l /usr/lib/gcc/x86_64-linux-gnu/ /usr/lib/gcc/x86_64-linux-gnu/*
+          echo $LD_PRELOAD
 
       - name: 'configure'
         run: autoreconf -sfiv && ./configure --disable-dependency-tracking --prefix="$PWD"/install ${{ matrix.configure }} CFLAGS="${{ matrix.cflags }}" LDFLAGS="${{ matrix.ldflags }}" CC="${{ matrix.cc }}" || { tail -300 config.log; false; }
@@ -139,7 +140,8 @@ jobs:
         if: matrix.skiptests != true
         env:
           ASAN_OPTIONS: strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1:detect_leaks=1
-        run: LD_PRELOAD=/usr/lib/gcc/x86_64-linux-gnu/??/libasan.so make V=1 check || { tail -n 500 test*/test-suite.log; false; }
+        # Need LD_PRELOAD since libfailmalloc seems to interfere with ASAN
+        run: LD_PRELOAD=/usr/lib/gcc/x86_64-linux-gnu/13/libasan.so make V=1 check || { tail -n 500 test*/test-suite.log; false; }
 
       - name: 'install'
         run: make V=1 install
