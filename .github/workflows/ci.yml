@@ -120,8 +120,8 @@ jobs:
           +  atexit(failmalloc_uninstall);
            }
            
-          -void (*volatile __malloc_initialize_hook) (void) = failmalloc_init;
-          +void (*volatile volatile __malloc_initialize_hook) (void) = failmalloc_init;
+          -void (*__malloc_initialize_hook) (void) = failmalloc_init;
+          +void (*volatile __malloc_initialize_hook) (void) = failmalloc_init;
            
           EOF
           ./configure --prefix="$HOME/failmalloc" --disable-dependency-tracking
