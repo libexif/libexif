@@ -283,6 +283,11 @@ exif_data_save_data_entry (ExifData *data, ExifEntry *e,
 	 * Size? If bigger than 4 bytes, the actual data is not in
 	 * the entry but somewhere else.
 	 */
+	/* we usually have only 64kb datablock, so add a safety bound to avoid overflows */
+	if (e->components > 65536) {
+		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData", _("Overflow in components detected."));
+		return;
+	}
 	s = exif_format_get_size (e->format) * e->components;
 	if (s > 4) {
 		unsigned char *t;
