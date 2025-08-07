@@ -1,0 +1,22 @@
+@PACKAGE_INIT@
+
+if(NOT TARGET libexif::exif)
+    include("${CMAKE_CURRENT_LIST_DIR}/libexifTargets.cmake")
+    
+    add_library(libexif::exif ALIAS exif)
+    
+    set_target_properties(exif PROPERTIES
+        INTERFACE_INCLUDE_DIRECTORIES "${PACKAGE_PREFIX_DIR}/include"
+    )
+    
+    # Find dependencies
+    if(@ENABLE_NLS@)
+        find_package(Intl REQUIRED)
+        target_link_libraries(exif INTERFACE ${Intl_LIBRARIES})
+    endif()
+endif()
+
+# For compatibility with older versions
+set(LIBEXIF_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
+set(LIBEXIF_LIBRARIES libexif::exif)
+set(LIBEXIF_FOUND TRUE)
