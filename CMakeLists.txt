@@ -43,6 +43,12 @@ option(ENABLE_NLS "Enable native language support" OFF)
 option(ENABLE_INTERNAL_DOCS "Enable internal documentation" OFF)
 option(ENABLE_SHIP_BINARIES "Enable shipping binaries" OFF)
 
+# Example options
+option(BUILD_EXAMPLES "Build example programs" OFF)
+if(BUILD_EXAMPLES AND UNIX AND NOT APPLE)
+    option(BUILD_CAM_FEATURES "Build cam_features example (requires Linux-specific libraries)" OFF)
+endif()
+
 # Find required packages
 if(ENABLE_NLS)
     find_package(Intl REQUIRED)
