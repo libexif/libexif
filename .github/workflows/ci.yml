@@ -79,7 +79,7 @@ jobs:
             failmalloc: true
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/cache@v4
         if: matrix.failmalloc == true
@@ -150,7 +150,7 @@ jobs:
     env:
       DEBIAN_FRONTEND: noninteractive
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up dependencies
         run: sudo apt-get install -y --no-install-suggests --no-install-recommends qemu-user-static
       - name: 'Perform configure, build, test'
@@ -180,7 +180,7 @@ jobs:
             ldflags: -g -O0 --coverage
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: 'install prereqs'
         run: sudo apt-get install -y --no-install-suggests --no-install-recommends ${{ matrix.packages }}
       - name: 'install libexif-testsuite'
