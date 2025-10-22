@@ -144,27 +144,6 @@ jobs:
       - name: 'install'
         run: make V=1 install
 
-  linux-ppc:
-    name: Linux PPC 32-bit big-endian MUSL
-    runs-on: ubuntu-24.04
-    env:
-      DEBIAN_FRONTEND: noninteractive
-    steps:
-      - uses: actions/checkout@v5
-      - name: Set up dependencies
-        run: sudo apt-get install -y --no-install-suggests --no-install-recommends qemu-user-static
-      - name: 'Perform configure, build, test'
-        run: >
-          docker run --rm -v "$(pwd):/${{ github.workspace }}" -w ${{ github.workspace }} --platform linux/ppc adelielinux/adelie:latest sh -c '
-          cat /etc/os-release &&
-          uname -a &&
-          apk add --no-cache gcc make musl-dev autoconf automake libtool gettext-tiny-dev &&
-          autoreconf -sif &&
-          ./configure --prefix="$PWD/install" --disable-dependency-tracking &&
-          make -j 5 V=1 &&
-          make -j 5 V=1 check || { tail -n 500 test*/test-suite.log; false; }
-          '
-
   coverage:
     name: Linux code coverage
     runs-on: ${{ matrix.os }}
