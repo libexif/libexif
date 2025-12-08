@@ -79,7 +79,7 @@ jobs:
             failmalloc: true
 
     steps:
-      - uses: actions/checkout@v6.0.0
+      - uses: actions/checkout@v6.0.1
 
       - uses: actions/cache@v4
         if: matrix.failmalloc == true
@@ -159,7 +159,7 @@ jobs:
             ldflags: -g -O0 --coverage
 
     steps:
-      - uses: actions/checkout@v6.0.0
+      - uses: actions/checkout@v6.0.1
       - name: 'install prereqs'
         run: sudo apt-get install -y --no-install-suggests --no-install-recommends ${{ matrix.packages }}
       - name: 'install libexif-testsuite'
