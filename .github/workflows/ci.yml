@@ -89,7 +89,7 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.os }}-failmalloc-1.0
 
       - name: 'install prereqs'
-        run: sudo apt-get install -y --no-install-suggests --no-install-recommends ${{ matrix.packages }}
+        run: sudo apt-get update && sudo apt-get install -y --no-install-suggests --no-install-recommends ${{ matrix.packages }}
 
       - name: 'build failmalloc'
         if: matrix.failmalloc == true && steps.cache.outputs.cache-hit != 'true'
@@ -161,7 +161,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.0
       - name: 'install prereqs'
-        run: sudo apt-get install -y --no-install-suggests --no-install-recommends ${{ matrix.packages }}
+        run: sudo apt-get update && sudo apt-get install -y --no-install-suggests --no-install-recommends ${{ matrix.packages }}
       - name: 'install libexif-testsuite'
         run: |
           git clone --depth=1 https://github.com/libexif/libexif-testsuite.git
