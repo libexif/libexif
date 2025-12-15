@@ -372,7 +372,7 @@ echo "" >>$ac_stdint
   cat >>$ac_stdint <<STDINT_EOF
 /* .................... detections part ............................ */
 
-/* whether we need to define bitspecific types from compiler base types */
+/* whether we need to define bit-specific types from compiler base types */
 #ifndef _STDINT_HEADER_INTPTR
 #ifndef _STDINT_HEADER_UINT32
 #ifndef _STDINT_HEADER_U_INT32
@@ -469,7 +469,7 @@ typedef u_int32_t uint32_t;
 #endif
 
 #ifdef _STDINT_NEED_INT_MODEL_T
-/* we must guess all the basic types. Apart from byte-adressable system, */
+/* we must guess all the basic types. Apart from byte-addressable system, */
 /* there a few 32-bit-only dsp-systems that we guard with BYTE_MODEL 8-} */
 /* (btw, those nibble-addressable systems are way off, or so we assume) */
 
@@ -653,11 +653,11 @@ typedef           long   intptr_t;
 #  define UINTMAX_C(c)  c ## ULL
 # endif
 
-  /* literalnumbers */
+  /* literal numbers */
 #endif
 #endif
 
-/* These limits are merily those of a two complement byte-oriented system */
+/* These limits are merely those of a twos-complement byte-oriented system */
 
 /* Minimum of signed integral types.  */
 # define INT8_MIN               (-128)

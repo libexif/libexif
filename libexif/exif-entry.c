@@ -397,7 +397,7 @@ exif_entry_fix (ExifEntry *e)
 		/*
 		 * If the first 8 bytes are empty and real data starts
 		 * afterwards, let's assume ASCII and claim the 8 first
-		 * bytes for the format specifyer.
+		 * bytes for the format specifier.
 		 */
 		for (i = 0; (i < e->size) && !e->data[i]; i++);
 		if (!i) for ( ; (i < e->size) && (e->data[i] == ' '); i++);
