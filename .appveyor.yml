@@ -20,7 +20,7 @@ install:
 
 build_script:
 - cmd: if [%CONFIG%]==[cygwin64] (
-    C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && autoreconf -sif && ./configure --prefix=$HOME --disable-dependency-tracking && make V=1 LDFLAGS='-lintl' && make V=1 install" )
+    C:\%CONFIG%\bin\bash -e -l -c "cd $APPVEYOR_BUILD_FOLDER && autoreconf -sif && ./configure --prefix=$HOME --disable-dependency-tracking && make V=1 LDFLAGS='-lintl' VERSION_CONTROL=off && make V=1 install" )
 - cmd: if [%CONFIG%]==[msys2] (
     bash -lc "set -x; cd $APPVEYOR_BUILD_FOLDER && gettext_datadir=/mingw64/share/gettext autoreconf -sivf && ./configure --prefix=$HOME/install --disable-dependency-tracking && make V=1 && make V=1 install" )
 
