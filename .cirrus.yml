@@ -1,5 +1,5 @@
-# Cirrus CI configuration: #   https://cirrus-ci.com/github/libexif/libexif
-# Documentation on this file: # https://cirrus-ci.org/guide/writing-tasks/
+# Cirrus CI configuration:    https://cirrus-ci.com/github/libexif/libexif
+# Documentation on this file: https://cirrus-ci.org/guide/writing-tasks/
 #
 # SPDX-FileCopyrightText: Placed into the public domain by Dan Fandrich
 # SPDX-License-Identifier: CC0-1.0
@@ -16,8 +16,8 @@ freebsd_task:
   freebsd_instance:
     memory: 1400M
     matrix:
-      image_family: freebsd-14-2
-      image_family: freebsd-13-4
+      image_family: freebsd-14-3
+      image_family: freebsd-13-5
 
   env:
     # Set to 10 instead of 1 to avoid problems when new commits are submitted
