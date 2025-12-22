@@ -25,13 +25,18 @@
 #ifndef LIBEXIF_EXIF_UTILS_H
 #define LIBEXIF_EXIF_UTILS_H
 
+#ifdef HAVE_STDINT_H
+# include <stdint.h>
+#else
+# include "_stdint.h"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
 
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-format.h>
-#include <libexif/_stdint.h>
 
 
 /* If these definitions don't work for you, please let us fix the 
