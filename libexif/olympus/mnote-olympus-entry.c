@@ -286,6 +286,8 @@ mnote_olympus_entry_get_value (MnoteOlympusEntry *entry, char *v, unsigned int m
 
 	if (!entry)
 		return (NULL);
+	if (maxlen < 1)
+		return NULL;
 
 	memset (v, 0, maxlen);
 	maxlen--;

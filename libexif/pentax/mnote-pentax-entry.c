@@ -317,6 +317,7 @@ mnote_pentax_entry_get_value (MnotePentaxEntry *entry,
 	int i = 0, j = 0;
 
 	if (!entry) return (NULL);
+	if (maxlen < 1) return (NULL);
 
 	memset (val, 0, maxlen);
 	maxlen--;

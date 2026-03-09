@@ -561,6 +561,8 @@ mnote_canon_entry_get_value (const MnoteCanonEntry *entry, unsigned int t, char 
 
 	if (!entry) 
 		return NULL;
+	if (maxlen < 1)
+		return NULL;
 
 	data = entry->data;
 	size = entry->size;

@@ -201,6 +201,7 @@ mnote_fuji_entry_get_value (MnoteFujiEntry *entry,
 	int i, j;
 
 	if (!entry) return (NULL);
+	if (maxlen < 1) return NULL;
 
 	memset (val, 0, maxlen);
 	maxlen--;

@@ -45,6 +45,8 @@ mnote_apple_entry_get_value(MnoteAppleEntry *entry, char *v, unsigned int maxlen
 
     if (!entry)
         return NULL;
+    if (maxlen < 1)
+        return NULL;
 
     memset(v, 0, maxlen);
     maxlen--;
