@@ -78,7 +78,7 @@ exif_mnote_data_olympus_get_value (ExifMnoteData *d, unsigned int i, char *val, 
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) d;
 
 	if (!d || !val) return NULL;
-	if (i > n->count -1) return NULL;
+	if (i >= n->count) return NULL;
 /*
 	exif_log (d->log, EXIF_LOG_CODE_DEBUG, "ExifMnoteDataOlympus",
 		  "Querying value for tag '%s'...",
