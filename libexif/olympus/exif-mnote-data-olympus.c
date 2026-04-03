@@ -386,6 +386,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 		o2 += 2;
 
 		/* Go to where the number of entries is. */
+		if (CHECKOVERFLOW(o2,buf_size,exif_get_long (buf + o2, n->order))) return;
 		o2 = datao + exif_get_long (buf + o2, n->order);
 		break;
 
