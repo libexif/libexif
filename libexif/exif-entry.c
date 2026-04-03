@@ -1414,7 +1414,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 
 		/* Warning! The texts are converted from UTF16 to UTF8 */
 		/* FIXME: use iconv to convert into the locale encoding */
-		exif_convert_utf16_to_utf8(val, utf16, maxlen);
+		exif_convert_utf16_to_utf8(val, maxlen, utf16, e->size+3);
 		exif_mem_free(e->priv->mem, utf16);
 		break;
 	}

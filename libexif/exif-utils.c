@@ -219,41 +219,44 @@ exif_set_srational (unsigned char *buf, ExifByteOrder order,
  * It should really be replaced by iconv().
  */
 void
-exif_convert_utf16_to_utf8 (char *out, const unsigned char *in, int maxlen)
+exif_convert_utf16_to_utf8 (char *out, unsigned int outlen, const unsigned char *in, unsigned int inlen)
 {
-	if (maxlen <= 0) {
+	if (!outlen) {
 		return;
 	}
 	for (;;) {
+		if (inlen < 2)
+			return;
 		ExifShort v = exif_get_short(in, EXIF_BYTE_ORDER_INTEL);
 		if (!v)
 			break;
 		if (v < 0x80) {
-			if (maxlen > 1) {
+			if (outlen > 1) {
 				*out++ = (char)v;
-				maxlen--;
+				outlen--;
 			} else {
 				break;
 			}
 		} else if (v < 0x800) {
-			if (maxlen > 2) {
+			if (outlen > 2) {
 				*out++ = ((v >> 6) & 0x1F) | 0xC0;
 				*out++ = (v & 0x3F) | 0x80;
-				maxlen -= 2;
+				outlen -= 2;
 			} else {
 				break;
 			}
 		} else {
-			if (maxlen > 3) {
+			if (outlen > 3) {
 				*out++ = ((v >> 12) & 0x0F) | 0xE0;
 				*out++ = ((v >> 6) & 0x3F) | 0x80;
 				*out++ = (v & 0x3F) | 0x80;
-				maxlen -= 3;
+				outlen -= 3;
 			} else {
 				break;
 			}
 		}
 		in += 2;
+		inlen -= 2;
 	}
 	*out = 0;
 }
