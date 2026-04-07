@@ -435,14 +435,14 @@ static const struct TagEntry {
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_RELATED_IMAGE_FILE_FORMAT, "RelatedImageFileFormat",
 	 "RelatedImageFileFormat", "", ESL_UNKNOWN},
-	{EXIF_TAG_IMAGE_DEPTH, "ImageDepth",
-	 "ImageDepth", "", ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_RELATED_IMAGE_WIDTH, "RelatedImageWidth",
 	 "RelatedImageWidth", "", ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_RELATED_IMAGE_LENGTH, "RelatedImageLength",
 	 "RelatedImageLength", "", ESL_UNKNOWN},
+	{EXIF_TAG_IMAGE_DEPTH, "ImageDepth",
+	 "ImageDepth", "", ESL_UNKNOWN},
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_CFA_REPEAT_PATTERN_DIM, "CFARepeatPatternDim",
 	 "CFARepeatPatternDim", "", ESL_UNKNOWN},
