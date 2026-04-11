@@ -14,8 +14,9 @@ freebsd_task:
 
   name: FreeBSD
   freebsd_instance:
-    memory: 1400M
+    memory: 2100M
     matrix:
+      image_family: freebsd-15-0-amd64-zfs
       image_family: freebsd-14-3
       image_family: freebsd-13-5
 
