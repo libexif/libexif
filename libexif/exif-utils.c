@@ -225,9 +225,10 @@ exif_convert_utf16_to_utf8 (char *out, unsigned int outlen, const unsigned char 
 		return;
 	}
 	for (;;) {
+		ExifShort v;
 		if (inlen < 2)
 			return;
-		ExifShort v = exif_get_short(in, EXIF_BYTE_ORDER_INTEL);
+		v = exif_get_short(in, EXIF_BYTE_ORDER_INTEL);
 		if (!v)
 			break;
 		if (v < 0x80) {
