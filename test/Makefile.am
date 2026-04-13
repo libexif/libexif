@@ -15,6 +15,13 @@ AM_TESTS_ENVIRONMENT += DIFF_U='$(DIFF_U)'; export DIFF_U;
 AM_TESTS_ENVIRONMENT += EXEEXT='$(EXEEXT)'; export EXEEXT;
 AM_TESTS_ENVIRONMENT += FAILMALLOC_PATH='$(FAILMALLOC_PATH)'; export FAILMALLOC_PATH;
 
+# Create the check-valgrind target & skip shell scripts when using it
+@VALGRIND_CHECK_RULES@
+TEST_EXTENSIONS = .sh
+if VALGRIND_ENABLED
+LOG_COMPILER = $(LOG_VALGRIND)
+endif
+
 # Notes about tests:
 #  - Add "small" tests and stuff here.
 #  - Add "big"   tests and stuff to explicitly test for (fixed) bugs

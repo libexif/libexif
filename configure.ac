@@ -175,6 +175,33 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([
 # Check whether libfailmalloc is available for tests
 CHECK_FAILMALLOC
 
+# Add valgrind test rules
+# Unfortunately, the valgrind macros extend the makefile with GNU-specific
+# features, so they can only be executed when GNU make is available.
+# This conditional isn't quite a test for GNU make, but should be sufficient.
+AS_IF([test "$am__include" = include], [GNU_MAKE=yes], [GNU_MAKE=no])
+AC_ARG_ENABLE([possible-valgrind],
+[AS_HELP_STRING([--disable-possible-valgrind],
+                [Whether to allow for the possibility of valgrind tests in the makefile])],
+[POSSIBLE_VALGRIND="${enableval#no}"],
+[POSSIBLE_VALGRIND="${GNU_MAKE#no}"])
+
+AS_IF([test -n "$POSSIBLE_VALGRIND"], [
+	# Add support for running tests with valgrind
+	AX_VALGRIND_DFLT([helgrind], [off])
+	AX_VALGRIND_DFLT([drd], [off])
+	AX_VALGRIND_DFLT([sgcheck], [off])
+	AX_VALGRIND_CHECK
+], [
+	# Don't even provide for the option to enable valgrind. Instead,
+	# clear out the content that would wreck the makefile's portability.
+	# This is needed on e.g. BSD make since it doesn't support ifeq/endif
+	# that AX_VALGRIND_CHECK adds to the makefile.
+	VALGRIND_CHECK_RULES=
+	AC_SUBST([VALGRIND_CHECK_RULES])
+	AM_CONDITIONAL([VALGRIND_ENABLED], [false])
+])
+
 # doc support
 GP_CHECK_DOC_DIR
 GP_CHECK_DOXYGEN
