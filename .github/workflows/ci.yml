@@ -77,6 +77,11 @@ jobs:
             ldflags: -Wall -Wextra -O2
             configure: --with-failmalloc="$HOME/failmalloc/lib"
             failmalloc: true
+          - name: valgrind
+            os: ubuntu-24.04
+            packages: build-essential autoconf automake autopoint libtool gettext valgrind
+            cc: gcc
+            cflags: -Wall -Wextra -O1 -g
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.0
@@ -140,6 +145,10 @@ jobs:
         env:
           ASAN_OPTIONS: strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1:detect_leaks=1
         run: make V=1 check || { tail -n 500 test*/test-suite.log; false; }
+
+      - name: 'valgrind test'
+        if: contains(matrix.packages, 'valgrind')
+        run: make V=1 -C test check-valgrind || { tail -n 500 test*/test-suite.log; false; }
 
       - name: 'install'
         run: make V=1 install
