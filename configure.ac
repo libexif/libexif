@@ -187,7 +187,7 @@ else
 	@true
 endif
 EOF
-if ${MAKE-make} -f conftest-makefile-$$.tmp 2>/dev/null; then
+if ${MAKE-make} -f conftest-makefile-$$.tmp >/dev/null 2>&1 ; then
 	GNU_MAKE=yes
 	AC_MSG_RESULT([yes])
 else
@@ -209,17 +209,17 @@ AX_VALGRIND_DFLT([sgcheck], [off])
 AX_VALGRIND_CHECK
 
 AC_MSG_CHECKING([if valgrind tests are possible])
-AS_IF([test -z "$POSSIBLE_VALGRIND" || test "$enable_valgrind" != "yes"],
+AS_IF([test -n "$POSSIBLE_VALGRIND" && test "$enable_valgrind" = "yes"],
+[AC_MSG_RESULT([yes])],
 [
 	# Don't even provide for the option to enable valgrind. Instead,
 	# clear out the content that would wreck the makefile's portability.
 	# This is needed on e.g. BSD make since it doesn't support ifeq/endif
 	# that AX_VALGRIND_CHECK adds to the makefile.
 	VALGRIND_CHECK_RULES=
-	AC_SUBST([VALGRIND_CHECK_RULES])
 	AM_CONDITIONAL([VALGRIND_ENABLED], [false])
 	AC_MSG_RESULT([no])
-],  [AC_MSG_RESULT([yes])])
+])
 
 # doc support
 GP_CHECK_DOC_DIR
