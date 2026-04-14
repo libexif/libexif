@@ -177,9 +177,25 @@ CHECK_FAILMALLOC
 
 # Add valgrind test rules
 # Unfortunately, the valgrind macros extend the makefile with GNU-specific
-# features, so they can only be executed when GNU make is available.
-# This conditional isn't quite a test for GNU make, but should be sufficient.
-AS_IF([test "$am__include" = include], [GNU_MAKE=yes], [GNU_MAKE=no])
+# features, so they can only be included when GNU make is available.
+AC_MSG_CHECKING([for GNU make conditionals])
+cat >conftest-makefile-$$.tmp <<EOF
+all:
+ifeq (1,0)
+	false
+else
+	@true
+endif
+EOF
+if ${MAKE-make} -f conftest-makefile-$$.tmp 2>/dev/null; then
+	GNU_MAKE=yes
+	AC_MSG_RESULT([yes])
+else
+	GNU_MAKE=no
+	AC_MSG_RESULT([no])
+fi
+rm -f conftest-makefile-$$.tmp
+
 AC_ARG_ENABLE([possible-valgrind],
 [AS_HELP_STRING([--disable-possible-valgrind],
                 [Whether to allow for the possibility of valgrind tests in the makefile])],
