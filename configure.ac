@@ -186,13 +186,15 @@ AC_ARG_ENABLE([possible-valgrind],
 [POSSIBLE_VALGRIND="${enableval#no}"],
 [POSSIBLE_VALGRIND="${GNU_MAKE#no}"])
 
-AS_IF([test -n "$POSSIBLE_VALGRIND"], [
-	# Add support for running tests with valgrind
-	AX_VALGRIND_DFLT([helgrind], [off])
-	AX_VALGRIND_DFLT([drd], [off])
-	AX_VALGRIND_DFLT([sgcheck], [off])
-	AX_VALGRIND_CHECK
-], [
+# Add support for running tests with valgrind
+AX_VALGRIND_DFLT([helgrind], [off])
+AX_VALGRIND_DFLT([drd], [off])
+AX_VALGRIND_DFLT([sgcheck], [off])
+AX_VALGRIND_CHECK
+
+AC_MSG_CHECKING([if valgrind tests are possible])
+AS_IF([test -z "$POSSIBLE_VALGRIND" || test "$enable_valgrind" != "yes"],
+[
 	# Don't even provide for the option to enable valgrind. Instead,
 	# clear out the content that would wreck the makefile's portability.
 	# This is needed on e.g. BSD make since it doesn't support ifeq/endif
@@ -200,7 +202,8 @@ AS_IF([test -n "$POSSIBLE_VALGRIND"], [
 	VALGRIND_CHECK_RULES=
 	AC_SUBST([VALGRIND_CHECK_RULES])
 	AM_CONDITIONAL([VALGRIND_ENABLED], [false])
-])
+	AC_MSG_RESULT([no])
+],  [AC_MSG_RESULT([yes])])
 
 # doc support
 GP_CHECK_DOC_DIR
