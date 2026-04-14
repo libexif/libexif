@@ -5,7 +5,7 @@ dnl SPDX-License-Identifier: LGPL-2.0-or-later
 
 AC_PREREQ(2.69)
 AC_INIT([EXIF library],
-        [0.6.26],
+        [0.6.26.1],
         [libexif-devel@lists.sourceforge.net],
         [libexif],
         [https://libexif.github.io/])
