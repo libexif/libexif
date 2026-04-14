@@ -1,4 +1,4 @@
-libexif-0.6.25.1 (2026-04-14):
+libexif-0.6.26 (2026-04-14):
 
 * Security issues fixed:
   * CVE-2026-40386: An unsigned integer underflow in Fuji and Olympus makernote handling
