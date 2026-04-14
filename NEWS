@@ -1,9 +1,14 @@
-libexif-0.6.25.1 (202x-xx-xx):
+libexif-0.6.25.1 (2026-04-14):
 
 * Security issues fixed:
   * CVE-2026-40386: An unsigned integer underflow in Fuji and Olympus makernote handling
   * CVE-2026-40385: An unsigned integer overflow on 32bit systems in Nikon makernote handling
   * CVE-2026-32775: A buffer overwrite via integer underflow in makernote handling
+* handle JPEG APP3 marker
+* added EXIF_TAG_IMAGE_DEPTH tag
+
+* translations updated: Arabic, German, Spanish, Polish, Romanian,
+  Serbian, Swedish, Ukrainian, Chinese
 
 libexif-0.6.25 (2025-01-08):
 
