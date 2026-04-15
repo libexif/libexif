@@ -1015,7 +1015,7 @@ static int
 exif_tag_table_first(ExifTag tag)
 {
 	int i;
-	struct TagEntry *entry = bsearch(&tag, ExifTagTable,
+	const struct TagEntry *entry = bsearch(&tag, ExifTagTable,
 		exif_tag_table_count()-1, sizeof(struct TagEntry), match_tag);
 	if (!entry)
 		return -1;	/* Not found */
