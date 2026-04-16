@@ -34,8 +34,11 @@ extern "C" {
 
 /*! EXIF tags */
 typedef enum {
+	EXIF_TAG_GPS_VERSION_ID			= 0x0000, /* only valid in GPS dir */
 	EXIF_TAG_INTEROPERABILITY_INDEX		= 0x0001,
 	EXIF_TAG_INTEROPERABILITY_VERSION	= 0x0002,
+	EXIF_TAG_GPS_ALTITUDE_REF		= 0x0005, /* only valid in GPS dir */
+	EXIF_TAG_GPS_TIME_STAMP			= 0x0007, /* only valid in GPS dir */
 	EXIF_TAG_NEW_SUBFILE_TYPE		= 0x00fe,
 	EXIF_TAG_IMAGE_WIDTH 			= 0x0100,
 	EXIF_TAG_IMAGE_LENGTH 			= 0x0101,
@@ -173,14 +176,14 @@ typedef enum {
 } ExifTag;
 
 /* GPS tags overlap with above ones. */
-#define EXIF_TAG_GPS_VERSION_ID        0x0000
+/*#define EXIF_TAG_GPS_VERSION_ID        0x0000*/
 #define EXIF_TAG_GPS_LATITUDE_REF      0x0001 /* INTEROPERABILITY_INDEX   */
 #define EXIF_TAG_GPS_LATITUDE          0x0002 /* INTEROPERABILITY_VERSION */
 #define EXIF_TAG_GPS_LONGITUDE_REF     0x0003
 #define EXIF_TAG_GPS_LONGITUDE         0x0004
-#define EXIF_TAG_GPS_ALTITUDE_REF      0x0005
+/*#define EXIF_TAG_GPS_ALTITUDE_REF      0x0005*/
 #define EXIF_TAG_GPS_ALTITUDE          0x0006
-#define EXIF_TAG_GPS_TIME_STAMP        0x0007
+/*#define EXIF_TAG_GPS_TIME_STAMP        0x0007*/
 #define EXIF_TAG_GPS_SATELLITES        0x0008
 #define EXIF_TAG_GPS_STATUS            0x0009
 #define EXIF_TAG_GPS_MEASURE_MODE      0x000a
