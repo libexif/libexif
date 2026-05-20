@@ -89,12 +89,12 @@ ExifSShort
 exif_get_sshort (const unsigned char *buf, ExifByteOrder order)
 {
 	if (!buf) return 0;
-        switch (order) {
-        case EXIF_BYTE_ORDER_MOTOROLA:
-                return (((unsigned int)buf[0] << 8) | buf[1]);
-        case EXIF_BYTE_ORDER_INTEL:
-                return (((unsigned int)buf[1] << 8) | buf[0]);
-        }
+	switch (order) {
+	case EXIF_BYTE_ORDER_MOTOROLA:
+		return (((unsigned int)buf[0] << 8) | buf[1]);
+	case EXIF_BYTE_ORDER_INTEL:
+		return (((unsigned int)buf[1] << 8) | buf[0]);
+	}
 
 	/* Won't be reached */
 	return (0);
