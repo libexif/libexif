@@ -259,5 +259,6 @@ exif_convert_utf16_to_utf8 (char *out, unsigned int outlen, const unsigned char 
 		in += 2;
 		inlen -= 2;
 	}
-	*out = 0;
+	if (outlen > 0)
+		*out = 0;
 }
