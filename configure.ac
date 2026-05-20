@@ -42,7 +42,7 @@ dnl Versioning:
 dnl  - CURRENT (Major):  Increment if the interface has changes. AGE is always
 dnl                      *changed* at the same time.
 dnl  - AGE (Micro):      Increment if any interfaces have been added; set to 0
-dnl		         if any interfaces have been removed. Removal has 
+dnl                      if any interfaces have been removed. Removal has 
 dnl                      precedence over adding, so set to 0 if both happened.
 dnl                      It denotes upward compatibility.
 dnl  - REVISION (Minor): Increment any time the source changes; set to 
