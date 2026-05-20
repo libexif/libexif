@@ -224,6 +224,9 @@ exif_convert_utf16_to_utf8 (char *out, unsigned int outlen, const unsigned char 
 	if (!outlen) {
 		return;
 	}
+	if (!out || !in) {
+		return;
+	}
 	for (;;) {
 		ExifShort v;
 		if (inlen < 2)
