@@ -132,12 +132,12 @@ ExifSLong
 exif_get_slong (const unsigned char *b, ExifByteOrder order)
 {
 	if (!b) return 0;
-        switch (order) {
-        case EXIF_BYTE_ORDER_MOTOROLA:
-                return (((uint32_t)b[0] << 24) | ((uint32_t)b[1] << 16) | ((uint32_t)b[2] << 8) | (uint32_t)b[3]);
-        case EXIF_BYTE_ORDER_INTEL:
-                return (((uint32_t)b[3] << 24) | ((uint32_t)b[2] << 16) | ((uint32_t)b[1] << 8) | (uint32_t)b[0]);
-        }
+	switch (order) {
+	case EXIF_BYTE_ORDER_MOTOROLA:
+		return (((uint32_t)b[0] << 24) | ((uint32_t)b[1] << 16) | ((uint32_t)b[2] << 8) | (uint32_t)b[3]);
+	case EXIF_BYTE_ORDER_INTEL:
+		return (((uint32_t)b[3] << 24) | ((uint32_t)b[2] << 16) | ((uint32_t)b[1] << 8) | (uint32_t)b[0]);
+	}
 
 	/* Won't be reached */
 	return (0);
