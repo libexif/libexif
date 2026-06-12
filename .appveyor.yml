@@ -37,7 +37,6 @@ branches:
 
 skip_commits:
   files:
-    - '.cirrus.yml'
     - '.github/**/*'
     - '.reuse/*'
     - 'LICENSES/*'

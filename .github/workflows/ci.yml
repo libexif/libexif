@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
-name: Linux
+name: CI
 
 'on':
   push:
@@ -11,7 +11,6 @@ name: Linux
       - '*/ci'
     paths-ignore:
       - '**/*.md'
-      - '.cirrus.yml'
       - '.appveyor.yml'
       - 'LICENSES/*'
   pull_request:
@@ -19,7 +18,6 @@ name: Linux
       - master
     paths-ignore:
       - '**/*.md'
-      - '.cirrus.yml'
       - '.appveyor.yml'
       - 'LICENSES/*'
 
@@ -198,3 +196,39 @@ jobs:
         with:
           github-token: ${{ secrets.github_token }}
           file: libexif-testsuite/lcov.info
+
+  freebsd:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: cpa.sh {0}
+    strategy:
+      fail-fast: false
+      matrix:
+        osver: ['13.5', '14.3', '15.0']
+        arch: ['x86_64', 'aarch64']
+        cflags: [-Wall -Wextra -O2]
+    steps:
+      - uses: actions/checkout@v6
+      - name: start VM
+        uses: cross-platform-actions/action@v1
+        with:
+          operating_system: 'freebsd'
+          version: ${{ matrix.osver }}
+          architecture: ${{ matrix.arch }}
+      - name: install deps
+        run: sudo pkg install -y autoconf automake libtool gettext-tools gettext-runtime
+      - name: autoconf
+        run: autoreconf -sivf
+      - name: configure
+        if: matrix.osver == '13.5'
+        run: ./configure --disable-dependency-tracking --prefix="$PWD"/install CFLAGS="${{ matrix.cflags }}"
+      - name: configure
+        if: matrix.osver != '13.5'
+        run: ./configure --disable-dependency-tracking --prefix="$PWD"/install CFLAGS="${{ matrix.cflags }}" || { tail -300 config.log; false; }
+      - name: build
+        run: make -j 3 V=1
+      - name: test
+        run: make -j 3 V=1 check
+      - name: install test
+        run: make -j 3 V=1 install
