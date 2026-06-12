@@ -19,7 +19,6 @@ on:
     branches: [ "master", "ci" ]
     paths-ignore:
       - '.appveyor.yml'
-      - '.cirrus.yml'
       - '.reuse/*'
       - 'LICENSES/*'
   pull_request:
@@ -27,7 +26,6 @@ on:
     branches: [ "master" ]
     paths-ignore:
       - '.appveyor.yml'
-      - '.cirrus.yml'
       - '.reuse/*'
       - 'LICENSES/*'
   schedule:
