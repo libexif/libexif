@@ -30,6 +30,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <stddef.h>
 
 #undef JPEG_MARKER_DCT
 #define JPEG_MARKER_DCT  0xc0
@@ -308,7 +309,7 @@ begin:
 		default:
 			switch (eld->b[i]) {
 			case JPEG_MARKER_APP1:
-			  if (!memcmp (eld->b + i + 3, ExifHeader, MIN((ssize_t)(sizeof(ExifHeader)), MAX(0, ((ssize_t)(sizeof(eld->b))) - ((ssize_t)i) - 3)))) {
+			  if (!memcmp (eld->b + i + 3, ExifHeader, MIN((ptrdiff_t)(sizeof(ExifHeader)), MAX(0, ((ptrdiff_t)(sizeof(eld->b))) - ((ptrdiff_t)i) - 3)))) {
 					eld->data_format = EL_DATA_FORMAT_EXIF;
 				} else {
 					eld->data_format = EL_DATA_FORMAT_JPEG; /* Probably JFIF - keep searching for APP1 EXIF*/
