@@ -1339,7 +1339,7 @@ fix_func (ExifContent *c, void *UNUSED(data))
 				if (cnt == c->count) {
 					/* safety net */
 					exif_log (c->parent->priv->log, EXIF_LOG_CODE_DEBUG, "exif-data",
-					"failed to remove last entry from entries.");
+						  "failed to remove entry from entries.");
 					break;
 				}
 			}
