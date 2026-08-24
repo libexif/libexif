@@ -361,7 +361,7 @@ if ((i) == ifd) {				\
 		exif_ifd_get_name (i));			\
 	break;						\
 }							\
-if (data->ifd[(i)]->count) {				\
+if ((*visited_ifds & (1U << (i))) || data->ifd[(i)]->count) {				\
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,	\
 		"ExifData", "Attempt to load IFD "	\
 		"'%s' multiple times detected. "	\
@@ -397,7 +397,8 @@ level_cost(unsigned int n)
 static void
 exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			     const unsigned char *d,
-			     unsigned int ds, unsigned int offset, unsigned int recursion_cost)
+			     unsigned int ds, unsigned int offset, unsigned int recursion_cost,
+			     unsigned int *visited_ifds)
 {
 	ExifLong o, thumbnail_offset = 0, thumbnail_length = 0;
 	ExifShort n;
@@ -447,6 +448,11 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 				  "Short data; only loading %hu entries...", n);
 	}
 
+	/* Mark this IFD before following any of its pointers. Pointer-only IFDs
+	 * do not add entries to ExifContent, so count cannot act as a reliable
+	 * visited marker while recursive loading is in progress. */
+	*visited_ifds |= 1U << ifd;
+
 	for (i = 0; i < n; i++) {
 
 		tag = exif_get_short (d + offset + 12 * i, data->priv->order);
@@ -475,17 +481,17 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 			case EXIF_TAG_EXIF_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_EXIF)
 				exif_data_load_data_content (data, EXIF_IFD_EXIF, d, ds, o,
-					recursion_cost + level_cost(n));
+					recursion_cost + level_cost(n), visited_ifds);
 				break;
 			case EXIF_TAG_GPS_INFO_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_GPS)
 				exif_data_load_data_content (data, EXIF_IFD_GPS, d, ds, o,
-					recursion_cost + level_cost(n));
+					recursion_cost + level_cost(n), visited_ifds);
 				break;
 			case EXIF_TAG_INTEROPERABILITY_IFD_POINTER:
 				CHECK_REC (EXIF_IFD_INTEROPERABILITY)
 				exif_data_load_data_content (data, EXIF_IFD_INTEROPERABILITY, d, ds, o,
-					recursion_cost + level_cost(n));
+					recursion_cost + level_cost(n), visited_ifds);
 				break;
 			case EXIF_TAG_JPEG_INTERCHANGE_FORMAT:
 				thumbnail_offset = o;
@@ -857,6 +863,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		     unsigned int ds)
 {
 	unsigned int l;
+	unsigned int visited_ifds = 0;
 	ExifLong offset;
 	ExifShort n;
 	const unsigned char *d = d_orig;
@@ -1003,7 +1010,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 		return;
 
 	/* Parse the actual exif data (usually offset 14 from start) */
-	exif_data_load_data_content (data, EXIF_IFD_0, d + 6, ds - 6, offset, 0);
+	exif_data_load_data_content (data, EXIF_IFD_0, d + 6, ds - 6, offset, 0, &visited_ifds);
 
 	/* IFD 1 offset */
 	n = exif_get_short (d + 6 + offset, data->priv->order);
@@ -1021,7 +1028,7 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 			exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifData", "Bogus offset of IFD1.");
 		} else {
-		   exif_data_load_data_content (data, EXIF_IFD_1, d + 6, ds - 6, offset, 0);
+		   exif_data_load_data_content (data, EXIF_IFD_1, d + 6, ds - 6, offset, 0, &visited_ifds);
 		}
 	}
 
