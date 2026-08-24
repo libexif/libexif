@@ -219,7 +219,7 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 		const unsigned char *buf, unsigned int buf_size)
 {
 	ExifMnoteDataPentax *n = (ExifMnoteDataPentax *) en;
-	size_t i, tcount, o, datao, base = 0;
+	size_t i, tcount, o, datao, base = 0, copied_size = 0;
 	ExifShort c;
 
 	if (!n) return;
@@ -336,6 +336,12 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 					  "of buffer (%u > %u)", (unsigned)(dataofs + s), buf_size);
 				continue;
 			}
+			if (s > buf_size - copied_size) {
+				exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+						  "ExifMnoteDataPentax",
+						  "MakerNote data exceeds input size");
+				break;
+			}
 
 			n->entries[tcount].data = exif_mem_alloc (en->mem, s);
 			if (!n->entries[tcount].data) {
@@ -343,6 +349,7 @@ exif_mnote_data_pentax_load (ExifMnoteData *en,
 				continue;
 			}
 			memcpy (n->entries[tcount].data, buf + dataofs, s);
+			copied_size += s;
 		}
 
 		/* Tag was successfully parsed */
