@@ -168,6 +168,7 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 			   unsigned int size, unsigned int offset)
 {
 	unsigned int s, doff;
+	unsigned char formatsize;
 
 	entry->tag        = exif_get_short (d + offset + 0, data->priv->order);
 	entry->format     = exif_get_short (d + offset + 2, data->priv->order);
@@ -183,12 +184,11 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 	/* {0,1,2,4,8} x { 0x00000000 .. 0xffffffff } 
 	 *   -> { 0x000000000 .. 0x7fffffff8 } */
 
-	if (	!exif_format_get_size(entry->format)	||
-		(entry->components >= (0xffffffff / exif_format_get_size(entry->format)))
-	)
+	formatsize = exif_format_get_size(entry->format);
+	if (!formatsize || (entry->components >= (0xffffffff / formatsize)))
 		return 0;
 
-	s = exif_format_get_size(entry->format) * entry->components;
+	s = formatsize * entry->components;
 	if ((s < entry->components) || (s == 0)) {
 		return 0;
 	}
