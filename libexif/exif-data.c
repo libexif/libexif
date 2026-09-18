@@ -182,8 +182,12 @@ exif_data_load_data_entry (ExifData *data, ExifEntry *entry,
 
 	/* {0,1,2,4,8} x { 0x00000000 .. 0xffffffff } 
 	 *   -> { 0x000000000 .. 0x7fffffff8 } */
+
+	if (entry->components >= (0xffffffff / exif_format_get_size(entry->format)))
+		return 0;
+
 	s = exif_format_get_size(entry->format) * entry->components;
-	if ((s < entry->components) || (s == 0)){
+	if ((s < entry->components) || (s == 0)) {
 		return 0;
 	}
 
