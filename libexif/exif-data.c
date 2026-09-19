@@ -70,6 +70,8 @@ struct _ExifDataPrivate
 
 	ExifDataOption options;
 	ExifDataType data_type;
+
+	unsigned int ifd_used[EXIF_IFD_COUNT];
 };
 
 static void *
@@ -374,6 +376,16 @@ if (data->ifd[(i)]->count) {				\
 		"Skipping...",				\
 		exif_ifd_get_name (i));			\
 	break;						\
+}							\
+if (data->priv->ifd_used[i]) {				\
+	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,	\
+		"ExifData", "Attempt to load IFD "	\
+		"'%s' multiple times detected. "	\
+		"Skipping...",				\
+		exif_ifd_get_name (i));			\
+	break;						\
+} else {						\
+	data->priv->ifd_used[i] = 1;			\
 }
 
 /*! Calculate the recursion cost added by one level of IFD loading.
