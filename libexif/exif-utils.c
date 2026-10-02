@@ -89,12 +89,12 @@ ExifSShort
 exif_get_sshort (const unsigned char *buf, ExifByteOrder order)
 {
 	if (!buf) return 0;
-        switch (order) {
-        case EXIF_BYTE_ORDER_MOTOROLA:
-                return (((unsigned int)buf[0] << 8) | buf[1]);
-        case EXIF_BYTE_ORDER_INTEL:
-                return (((unsigned int)buf[1] << 8) | buf[0]);
-        }
+	switch (order) {
+	case EXIF_BYTE_ORDER_MOTOROLA:
+		return (((unsigned int)buf[0] << 8) | buf[1]);
+	case EXIF_BYTE_ORDER_INTEL:
+		return (((unsigned int)buf[1] << 8) | buf[0]);
+	}
 
 	/* Won't be reached */
 	return (0);
@@ -132,12 +132,12 @@ ExifSLong
 exif_get_slong (const unsigned char *b, ExifByteOrder order)
 {
 	if (!b) return 0;
-        switch (order) {
-        case EXIF_BYTE_ORDER_MOTOROLA:
-                return (((uint32_t)b[0] << 24) | ((uint32_t)b[1] << 16) | ((uint32_t)b[2] << 8) | (uint32_t)b[3]);
-        case EXIF_BYTE_ORDER_INTEL:
-                return (((uint32_t)b[3] << 24) | ((uint32_t)b[2] << 16) | ((uint32_t)b[1] << 8) | (uint32_t)b[0]);
-        }
+	switch (order) {
+	case EXIF_BYTE_ORDER_MOTOROLA:
+		return (((uint32_t)b[0] << 24) | ((uint32_t)b[1] << 16) | ((uint32_t)b[2] << 8) | (uint32_t)b[3]);
+	case EXIF_BYTE_ORDER_INTEL:
+		return (((uint32_t)b[3] << 24) | ((uint32_t)b[2] << 16) | ((uint32_t)b[1] << 8) | (uint32_t)b[0]);
+	}
 
 	/* Won't be reached */
 	return (0);
@@ -224,6 +224,9 @@ exif_convert_utf16_to_utf8 (char *out, unsigned int outlen, const unsigned char 
 	if (!outlen) {
 		return;
 	}
+	if (!out || !in) {
+		return;
+	}
 	for (;;) {
 		ExifShort v;
 		if (inlen < 2)
@@ -259,5 +262,6 @@ exif_convert_utf16_to_utf8 (char *out, unsigned int outlen, const unsigned char 
 		in += 2;
 		inlen -= 2;
 	}
-	*out = 0;
+	if (outlen > 0)
+		*out = 0;
 }
