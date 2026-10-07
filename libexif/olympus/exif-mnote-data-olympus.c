@@ -242,7 +242,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 {
 	ExifMnoteDataOlympus *n = (ExifMnoteDataOlympus *) en;
 	ExifShort c;
-	size_t i, tcount, o, o2, datao = 6, base = 0;
+	size_t i, tcount, o, o2, datao = 6, base = 0, copied_size = 0;
 
 	if (!n) return;
 
@@ -502,6 +502,12 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 					  (unsigned)(dataofs + s), buf_size);
 				continue;
 			}
+			if (s > buf_size - copied_size) {
+				exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+						  "ExifMnoteOlympus",
+						  "MakerNote data exceeds input size");
+				break;
+			}
 
 			n->entries[tcount].data = exif_mem_alloc (en->mem, s);
 			if (!n->entries[tcount].data) {
@@ -509,6 +515,7 @@ exif_mnote_data_olympus_load (ExifMnoteData *en,
 				continue;
 			}
 			memcpy (n->entries[tcount].data, buf + dataofs, s);
+			copied_size += s;
 		}
 
 		/* Tag was successfully parsed */

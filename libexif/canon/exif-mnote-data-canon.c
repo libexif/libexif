@@ -210,7 +210,7 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 {
 	ExifMnoteDataCanon *n = (ExifMnoteDataCanon *) ne;
 	ExifShort c;
-	size_t i, tcount, o, datao;
+	size_t i, tcount, o, datao, copied_size = 0;
 	long failsafe_size = 0;
 
 	if (!n) return;
@@ -303,6 +303,12 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 					(unsigned)(dataofs + s), buf_size);
 				continue;
 			}
+			if (s > buf_size - copied_size) {
+				exif_log (ne->log, EXIF_LOG_CODE_CORRUPT_DATA,
+					"ExifMnoteCanon",
+					"MakerNote data exceeds input size");
+				break;
+			}
 
 			n->entries[tcount].data = exif_mem_alloc (ne->mem, s);
 			if (!n->entries[tcount].data) {
@@ -310,6 +316,7 @@ exif_mnote_data_canon_load (ExifMnoteData *ne,
 				continue;
 			}
 			memcpy (n->entries[tcount].data, buf + dataofs, s);
+			copied_size += s;
 		}
 
 		/* Track the size of decoded tag data. A malicious file could
