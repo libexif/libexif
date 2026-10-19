@@ -50,8 +50,6 @@
 #undef JPEG_MARKER_APP1
 #define JPEG_MARKER_APP1 0xe1
 
-#define CHECKOVERFLOW(offset,datasize,structsize) (( (offset) >= (datasize)) || ((structsize) > (datasize)) || ((offset) > (datasize) - (structsize) ))
-
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
 
 struct _ExifDataPrivate
@@ -345,7 +343,7 @@ exif_data_load_data_thumbnail (ExifData *data, const unsigned char *d,
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData", "Bogus thumbnail offset (%u).", o);
 		return;
 	}
-	if (CHECKOVERFLOW(o,ds,s)) {
+	if (exif_check_overflow (o,ds,s)) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData", "Bogus thumbnail size (%u), max would be %u.", s, ds-o);
 		return;
 	}
@@ -448,7 +446,7 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 	}
 
 	/* Read the number of entries */
-	if (CHECKOVERFLOW(offset, ds, 2)) {
+	if (exif_check_overflow (offset, ds, 2)) {
 		exif_log (data->priv->log, EXIF_LOG_CODE_CORRUPT_DATA, "ExifData",
 			  "Tag data past end of buffer (%u+2 > %u)", offset, ds);
 		return;
@@ -459,7 +457,7 @@ exif_data_load_data_content (ExifData *data, ExifIfd ifd,
 	offset += 2;
 
 	/* Check if we have enough data. */
-	if (CHECKOVERFLOW(offset, ds, 12*n)) {
+	if (exif_check_overflow (offset, ds, 12*n)) {
 		n = (ds - offset) / 12;
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData",
 				  "Short data; only loading %hu entries...", n);

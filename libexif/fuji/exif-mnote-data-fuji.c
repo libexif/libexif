@@ -27,10 +27,9 @@
 #include <config.h>
 #include <libexif/exif-byte-order.h>
 #include <libexif/exif-utils.h>
+#include <libexif/exif-system.h>
 
 #include "exif-mnote-data-fuji.h"
-
-#define CHECKOVERFLOW(offset,datasize,structsize) (( (offset) >= (datasize)) || ((structsize) > (datasize)) || ((offset) > (datasize) - (structsize) ))
 
 struct _MNoteFujiDataPrivate {
 	ExifByteOrder order;
@@ -169,7 +168,7 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 			  "ExifMnoteDataFuji", "Short MakerNote");
 		return;
 	}
-	if (CHECKOVERFLOW(n->offset, buf_size, 6+8+4)) {
+	if (exif_check_overflow (n->offset, buf_size, 6+8+4)) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataFuji", "Short MakerNote");
 		return;
@@ -179,7 +178,7 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 	n->order = EXIF_BYTE_ORDER_INTEL;
 
 	datao += exif_get_long (buf + datao + 8, EXIF_BYTE_ORDER_INTEL);
-	if (CHECKOVERFLOW(datao, buf_size, 2)) {
+	if (exif_check_overflow (datao, buf_size, 2)) {
 		exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 			  "ExifMnoteDataFuji", "Short MakerNote");
 		return;
@@ -213,7 +212,7 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 		size_t s;
 
 		memset(&n->entries[tcount], 0, sizeof(MnoteFujiEntry));
-		if (CHECKOVERFLOW(o, buf_size, 12)) {
+		if (exif_check_overflow (o, buf_size, 12)) {
 			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 				  "ExifMnoteDataFuji", "Short MakerNote");
 			break;
@@ -230,9 +229,8 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 
 		/* Check if we overflow the multiplication. Use buf_size as the max size for integer overflow detection,
 		 * we will check the buffer sizes closer later. */
-		if (	exif_format_get_size (n->entries[tcount].format) &&
-			buf_size / exif_format_get_size (n->entries[tcount].format) < n->entries[tcount].components
-		) {
+		if (exif_check_mul_overflow (exif_format_get_size (n->entries[tcount].format),
+				n->entries[tcount].components, buf_size, &s)) {
 			exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 					  "ExifMnoteDataFuji", "Tag size overflow detected (%u * %lu)", exif_format_get_size (n->entries[tcount].format), n->entries[tcount].components);
 			continue;
@@ -241,7 +239,6 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 		 * Size? If bigger than 4 bytes, the actual data is not
 		 * in the entry but somewhere else (offset).
 		 */
-		s = exif_format_get_size (n->entries[tcount].format) * n->entries[tcount].components;
 		n->entries[tcount].size = s;
 		if (s) {
 			size_t dataofs = o + 8;
@@ -249,7 +246,7 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 				/* The data in this case is merely a pointer */
 				dataofs = exif_get_long (buf + dataofs, n->order) + 6 + n->offset;
 
-			if (CHECKOVERFLOW(dataofs, buf_size, s)) {
+			if (exif_check_overflow (dataofs, buf_size, s)) {
 				exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
 						  "ExifMnoteDataFuji", "Tag data past end of "
 					  "buffer (%u >= %u)", (unsigned)(dataofs + s), buf_size);
