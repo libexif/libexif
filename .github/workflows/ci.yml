@@ -27,6 +27,7 @@ jobs:
   linux:
     name: ${{ matrix.os }} ${{ matrix.cc }} ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
     env:
       MAKEFLAGS: -j 5
       DEBIAN_FRONTEND: noninteractive
@@ -82,7 +83,7 @@ jobs:
             cflags: -Wall -Wextra -O1 -g
 
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v6.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -156,6 +157,7 @@ jobs:
   coverage:
     name: Linux code coverage
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
     env:
       MAKEFLAGS: -j 5
       DEBIAN_FRONTEND: noninteractive
@@ -168,7 +170,7 @@ jobs:
             ldflags: -g -O0 --coverage
 
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v6.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: 'install prereqs'
@@ -203,17 +205,18 @@ jobs:
 
   freebsd:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     defaults:
       run:
         shell: cpa.sh {0}
     strategy:
       fail-fast: false
       matrix:
-        osver: ['13.5', '14.3', '15.0']
+        osver: ['14.5', '15.1']
         arch: ['x86_64', 'aarch64']
         cflags: [-Wall -Wextra -O2]
     steps:
-      - uses: actions/checkout@v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: start VM
@@ -227,10 +230,6 @@ jobs:
       - name: autoconf
         run: autoreconf -sivf
       - name: configure
-        if: matrix.osver == '13.5'
-        run: ./configure --disable-dependency-tracking --prefix="$PWD"/install CFLAGS="${{ matrix.cflags }}"
-      - name: configure
-        if: matrix.osver != '13.5'
         run: ./configure --disable-dependency-tracking --prefix="$PWD"/install CFLAGS="${{ matrix.cflags }}" || { tail -300 config.log; false; }
       - name: build
         run: make -j 3 V=1
