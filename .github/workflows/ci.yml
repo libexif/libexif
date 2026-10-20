@@ -237,3 +237,41 @@ jobs:
         run: make -j 3 V=1 check
       - name: install test
         run: make -j 3 V=1 install
+
+  build-macos:
+    name: ${{ matrix.os }} ${{ matrix.build.cc }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    env:
+      MAKEFLAGS: -j 3
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-26, macos-15]
+        build:
+          - cc: gcc
+            cflags: -Wall -Wextra -O3
+          - cc: clang
+            cflags: -Wall -Wextra -O3
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 'install deps'
+        run: |
+          brew update --quiet
+          brew install automake libtool
+
+      - name: 'configure'
+        run: autoreconf -sfiv && ./configure --disable-dependency-tracking --prefix="$PWD"/install-root CFLAGS="${{ matrix.build.cflags }}" CC="${{ matrix.build.cc }}" || { tail -300 config.log; false; }
+
+      - name: 'make'
+        run: make V=1
+
+      - name: 'test'
+        run: make V=1 check || { tail -n 500 test*/test-suite.log; false; }
+
+      - name: 'install'
+        run: make V=1 install
