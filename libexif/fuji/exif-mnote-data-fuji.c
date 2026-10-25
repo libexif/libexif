@@ -159,7 +159,7 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 {
 	ExifMnoteDataFuji *n = (ExifMnoteDataFuji*) en;
 	ExifLong c;
-	size_t i, tcount, o, datao;
+	size_t i, tcount, o, datao, copied_size = 0;
 
 	if (!n) return;
 
@@ -252,6 +252,12 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 					  "buffer (%u >= %u)", (unsigned)(dataofs + s), buf_size);
 				continue;
 			}
+			if (s > buf_size - copied_size) {
+				exif_log (en->log, EXIF_LOG_CODE_CORRUPT_DATA,
+					  "ExifMnoteDataFuji",
+					  "MakerNote data exceeds input size");
+				break;
+			}
 
 			n->entries[tcount].data = exif_mem_alloc (en->mem, s);
 			if (!n->entries[tcount].data) {
@@ -259,6 +265,7 @@ exif_mnote_data_fuji_load (ExifMnoteData *en,
 				continue;
 			}
 			memcpy (n->entries[tcount].data, buf + dataofs, s);
+			copied_size += s;
 		}
 
 		/* Tag was successfully parsed */
