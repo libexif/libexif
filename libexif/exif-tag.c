@@ -377,7 +377,7 @@ static const struct TagEntry {
 	 N_("The offset to the start byte (SOI) of JPEG compressed "
 	    "thumbnail data. This is not used for primary image "
 	    "JPEG data."),
-	 { ESL_NNNN, ESL_NNNM, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_JPEG_INTERCHANGE_FORMAT_LENGTH,
 	 "JPEGInterchangeFormatLength", N_("JPEG Interchange Format Length"),
 	 N_("The number of bytes of JPEG compressed thumbnail data. This "
@@ -387,7 +387,7 @@ static const struct TagEntry {
 	    "not be recorded. Compressed thumbnails must be recorded in no "
 	    "more than 64 Kbytes, including all other data to be "
 	    "recorded in APP1."),
-	 { ESL_NNNN, ESL_NNNM, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	{EXIF_TAG_YCBCR_COEFFICIENTS, "YCbCrCoefficients",
 	 N_("YCbCr Coefficients"),
 	 N_("The matrix coefficients for transformation from RGB to YCbCr "
@@ -493,7 +493,7 @@ static const struct TagEntry {
 	    "same structure as that of the IFD specified in TIFF. "
 	    "ordinarily, however, it does not contain image data as in "
 	    "the case of TIFF."),
-	 { ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
+	 { ESL_OOOO, ESL_OOOO, ESL_NNNN, ESL_NNNN, ESL_NNNN } },
 	/* Not in EXIF 2.2 */
 	{EXIF_TAG_INTER_COLOR_PROFILE, "InterColorProfile",
 	 "InterColorProfile", "", ESL_UNKNOWN},
@@ -955,6 +955,10 @@ static const struct TagEntry {
 	{EXIF_TAG_PRINT_IMAGE_MATCHING, "PrintImageMatching", N_("PRINT Image Matching"),
 	 N_("Related to Epson's PRINT Image Matching technology"),
 	 ESL_UNKNOWN},
+	 //{ ESL_OOOO, ESL_OOOO, ESL_OOOO, ESL_OOOO, ESL_OOOO } },  //Se adiciona todo opcional
+	{EXIF_TAG_DNG_PRIVATE_DATA, "DNGPrivateData", N_("DNG Private Data"),
+	  N_("DNG Private Data"),
+	 { ESL_OOOO, ESL_OOOO, ESL_OOOO, ESL_OOOO, ESL_OOOO } },  //Se adiciona todo opcional
 	/* Not in EXIF 2.2 (from the Microsoft HD Photo specification) */
 	{EXIF_TAG_PADDING, "Padding", N_("Padding"),
 	 N_("This tag reserves space that can be reclaimed later when "
