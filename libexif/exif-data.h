@@ -261,6 +261,69 @@ void exif_data_log  (ExifData *data, ExifLog *log);
 	 exif_content_get_entry(d->ifd[EXIF_IFD_INTEROPERABILITY],t) ?	\
 	 exif_content_get_entry(d->ifd[EXIF_IFD_INTEROPERABILITY],t) : NULL)
 
+/*! Result of exif_data_save_tiff_append(). */
+typedef enum {
+	/*! The GPS data was appended and the file now refers to it. */
+	EXIF_TIFF_APPEND_OK = 0,
+	/*! A NULL argument, a descriptor that is not a regular file opened
+	 * for reading and writing without O_APPEND, or bad GPS entries. */
+	EXIF_TIFF_APPEND_ERR_INVALID_ARGUMENT,
+	/*! There is no entry in the GPS IFD of the #ExifData. */
+	EXIF_TIFF_APPEND_ERR_NO_GPS_DATA,
+	/*! The file does not start with a classic TIFF header ("II*\0" or
+	 * "MM\0*"). BigTIFF is not supported. */
+	EXIF_TIFF_APPEND_ERR_NOT_TIFF,
+	/*! The file is truncated or IFD0 lies outside of it. */
+	EXIF_TIFF_APPEND_ERR_CORRUPT,
+	/*! The file would grow beyond what 32-bit TIFF offsets can address. */
+	EXIF_TIFF_APPEND_ERR_TOO_LARGE,
+	/*! Out of memory. */
+	EXIF_TIFF_APPEND_ERR_NO_MEMORY,
+	/*! Reading, writing or syncing the file failed. */
+	EXIF_TIFF_APPEND_ERR_IO
+} ExifTiffAppendResult;
+
+/*! Write the GPS IFD of an #ExifData into a TIFF based file (TIFF, DNG,
+ * and TIFF based RAW formats such as Sony ARW) by appending to the file,
+ * instead of rewriting the Exif block in place.
+ *
+ * In a TIFF file all offsets are absolute, so the GPS IFD can be anywhere
+ * as long as IFD0 has a GPSInfo entry (tag 0x8825) pointing at it. The
+ * function appends to the end of the file
+ *  - the GPS IFD built from <code>data->ifd[EXIF_IFD_GPS]</code> and its
+ *    out-of-line values, and
+ *  - a copy of IFD0 with the GPSInfo entry added (or, if IFD0 already has
+ *    one, repointed). The other IFD0 entries, their next-IFD pointer and
+ *    everything they refer to are not touched, so their offsets stay valid.
+ * Last, the first-IFD offset in the 8 byte TIFF header is changed to point
+ * to the new copy of IFD0. This 4 byte write is the only change to existing
+ * bytes of the file; the previous IFD0 and GPS IFD become unused space.
+ * Calling the function again appends again, the file grows a few hundred
+ * bytes each time, and readers see exactly one GPS IFD: the last one.
+ *
+ * Everything is built in memory before the file is touched. If the process
+ * dies or an error occurs while appending, the file still has a valid
+ * header pointing to the old IFD0, plus unreferenced bytes at its end (on
+ * errors the function tries to truncate them again). If it dies in the
+ * middle of the 4 byte header write, which is not guaranteed to be atomic
+ * by every file system, the offset could be torn. The appended data is
+ * flushed (fsync) before the header is changed.
+ *
+ * The entries of the GPS IFD are written with the byte order of the file;
+ * if it differs from the byte order of \c data, \c data is converted with
+ * exif_data_set_byte_order(). Nothing else in \c data is used or modified,
+ * so this works for an #ExifData loaded from the file, or one created with
+ * exif_data_new() and exif_data_set_byte_order(). The GPS IFD that was in
+ * the file is replaced by the one in \c data, not merged with it.
+ *
+ * \param[in,out] data #ExifData with at least one entry in its GPS IFD
+ * \param[in] fd descriptor of a regular file, opened for reading and
+ *   writing (not O_APPEND). The file offset is changed. The caller must
+ *   make sure nobody else modifies the file meanwhile.
+ * \return #EXIF_TIFF_APPEND_OK, or the reason why the file was not changed
+ */
+ExifTiffAppendResult exif_data_save_tiff_append (ExifData *data, int fd);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

@@ -33,6 +33,7 @@ libexif_la_SOURCES =		\
 	exif-mnote-data.c	\
 	exif-mnote-data-priv.h	\
 	exif-tag.c		\
+	exif-tiff-append.c	\
 	exif-utils.c		\
 	i18n.h          \
 	exif-gps-ifd.c  \

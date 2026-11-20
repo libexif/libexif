@@ -1195,7 +1195,9 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	   16-bit length), so cap the data length to protect against overflow
 	   in future offset calculations */
 	fullds = ds;
-	if (ds > 0xfffe)
+	/* A TIFF file is not limited to 64 KiB, and its IFDs can be anywhere
+	 * in it, for instance appended by exif_data_save_tiff_append(). */
+	if (ds > 0xfffe && !offsetFileFormat)
 		ds = 0xfffe;
 
 	/* Byte order (offset 6, length 2) */
@@ -1211,6 +1213,14 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	}
 
 	d = d + offsetFileFormat;
+	/* The code below expects 6 bytes of "Exif\0\0" in front of the TIFF
+	 * header, which a TIFF file does not have: pretend that they are there. */
+	if (offsetFileFormat) {
+		if (ds > 0xfffffff0u)
+			return;
+		ds -= offsetFileFormat;
+		fullds -= offsetFileFormat;
+	}
 
 	/* Fixed value */
 	if (exif_get_short (d + 8, data->priv->order) != 0x002a)
@@ -1221,8 +1231,9 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 	exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG, "ExifData", 
 		  "IFD 0 at %i.", (int) offset);
 
-	/* ds is restricted to 16 bit above, so offset is restricted too, and offset+8 should not overflow. */
-	if (offset > ds || offset + 6 + 2 > ds)
+	/* ds is restricted to 16 bit above (except for TIFF), so use 64 bit
+	 * arithmetic to make sure that offset+8 does not overflow. */
+	if (offset > ds || (unsigned long long) offset + 6 + 2 > ds)
 		return;
 
 	/* Parse the actual exif data (usually offset 14 from start) */
@@ -1230,8 +1241,8 @@ exif_data_load_data (ExifData *data, const unsigned char *d_orig,
 
 	/* IFD 1 offset */
 	n = exif_get_short (d + 6 + offset, data->priv->order);
-	/* offset < 2<<16, n is 16 bit at most, so this op will not overflow */
-	if (offset + 6 + 2 + 12 * n + 4 > ds)
+	/* n is 16 bit at most, so this op will not overflow in 64 bit */
+	if ((unsigned long long) offset + 6 + 2 + 12ULL * n + 4 > ds)
 		return;
 
 	offset = exif_get_long (d + 6 + offset + 2 + 12 * n, data->priv->order);
