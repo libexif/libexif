@@ -31,6 +31,7 @@ exif_data_option_get_description
 exif_data_option_get_name
 exif_data_ref
 exif_data_save_data
+exif_data_save_tiff_append
 exif_data_set_byte_order
 exif_data_set_data_type
 exif_data_set_option

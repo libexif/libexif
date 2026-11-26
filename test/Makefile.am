@@ -34,13 +34,14 @@ endif
 #      here yet.
 
 TESTS = test-mem test-value test-integers test-parse test-parse-from-data test-tagtable test-sorted \
-	test-fuzzer test-null test-gps parse-regression.sh swap-byte-order.sh \
+	test-fuzzer test-null test-gps test-tiff-append parse-regression.sh swap-byte-order.sh \
 	extract-parse.sh check-mnote.sh
 
 TESTS += check-failmalloc.sh
 
 check_PROGRAMS = test-mem test-mnote test-value test-integers test-parse test-parse-from-data \
-	test-tagtable test-sorted test-fuzzer test-extract test-null test-gps
+	test-tagtable test-sorted test-fuzzer test-extract test-null test-gps \
+	test-tiff-append
 
 LDADD = $(top_builddir)/libexif/libexif.la $(LTLIBINTL)
 
