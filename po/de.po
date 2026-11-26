@@ -2815,7 +2815,7 @@ msgstr "GPS-Tag-Version"
 
 #: libexif/exif-tag.c:67
 msgid "Indicates the version of <GPSInfoIFD>. The version is given as 2.0.0.0. This tag is mandatory when <GPSInfo> tag is present. (Note: The <GPSVersionID> tag is given in bytes, unlike the <ExifVersion> tag. When the version is 2.0.0.0, the tag value is 02000000.H)."
-msgstr "Gibt die Version des <GPSInfoID>-Tags an. Die Version ist spezifiziert als 2.0.0.0. Dieser Tag ist zwingend erforderlich, wenn ein <GPSInfo>-Tag vorhanden ist. (Beachten Sie: Der <GPSVersionID>-Tag ist in Byte spezifiziert, im Unterschied zum <ExifVersion>-Tag. Wenn die Version 2.0.0.0 ist, so hat der Tag den Wert 02000000.H)."
+msgstr "Gibt die Version des <GPSInfoIFD>-Tags an. Die Version ist spezifiziert als 2.0.0.0. Dieser Tag ist zwingend erforderlich, wenn ein <GPSInfo>-Tag vorhanden ist. (Beachten Sie: Der <GPSVersionID>-Tag ist in Byte spezifiziert, im Unterschied zum <ExifVersion>-Tag. Wenn die Version 2.0.0.0 ist, so hat der Tag den Wert 02000000.H)."
 
 #: libexif/exif-tag.c:73
 msgid "Interoperability Index"
@@ -3107,7 +3107,7 @@ msgstr "Bit je Abtastung"
 
 #: libexif/exif-tag.c:240
 msgid "The number of bits per image component. In this standard each component of the image is 8 bits, so the value for this tag is 8. See also <SamplesPerPixel>. In JPEG compressed data a JPEG marker is used instead of this tag."
-msgstr "Die Anzahl Bits pro Bildkomponente. In diesem Standard ist jede Komponente 8 Bit, weshalb der Wert dieses Tags 8 ist. Siehe auch <SamplesPerlPixel>. Im JPEG-Datenstrom wird ein JPEG-Marker statt diesem Tag benutzt."
+msgstr "Die Anzahl Bits pro Bildkomponente. In diesem Standard ist jede Komponente 8 Bit, weshalb der Wert dieses Tags 8 ist. Siehe auch <SamplesPerPixel>. Im JPEG-Datenstrom wird ein JPEG-Marker statt diesem Tag benutzt."
 
 #: libexif/exif-tag.c:245
 msgid "Compression"
@@ -3323,7 +3323,7 @@ msgstr "YCbCr-Positionierung"
 
 #: libexif/exif-tag.c:409
 msgid "The position of chrominance components in relation to the luminance component. This field is designated only for JPEG compressed data or uncompressed YCbCr data. The TIFF default is 1 (centered); but when Y:Cb:Cr = 4:2:2 it is recommended in this standard that 2 (co-sited) be used to record data, in order to improve the image quality when viewed on TV systems. When this field does not exist, the reader shall assume the TIFF default. In the case of Y:Cb:Cr = 4:2:0, the TIFF default (centered) is recommended. If the reader does not have the capability of supporting both kinds of <YCbCrPositioning>, it shall follow the TIFF default regardless of the value in this field. It is preferable that readers be able to support both centered and co-sited positioning."
-msgstr "Die Position der Chrominance-Komponenten in Relation zur Luminanzkomponente. Dieses Feld ist nur für JPEG-komprimierte Daten oder für YCbCr-Daten zulässig. Die Vorgabe für TIFF ist 1 (zentriert), aber wenn Y:Cb:Cr = 4:2:2 verwendet wird, schlägt dieser Standard vor, dass 2 (co-sited) zur Aufzeichnung von Daten verwendet wird, um die Bildqualität auf TV-Systemen zu verbessern. Wenn dieses Feld nicht existiert, sollte das Leseprogramm die Voreinstellung von TIFF annehmen. Im Fall von Y:Cb:Cr = 4:2:0 wird die TIFF-Voreinstellung (zentriert) empfohlen. Wenn das Leseprogramm keine der beiden Varianten von <YCBCrPositioning> unterstützt, soll es die Voreinstellung von TIFF unabhängig vom Wert in diesem Feld verwenden. Vorzugsweise sollen Leseprogramme sowohl zentrierte und co-sited-Positionierung unterstützen."
+msgstr "Die Position der Chrominance-Komponenten in Relation zur Luminanzkomponente. Dieses Feld ist nur für JPEG-komprimierte Daten oder für YCbCr-Daten zulässig. Die Vorgabe für TIFF ist 1 (zentriert), aber wenn Y:Cb:Cr = 4:2:2 verwendet wird, schlägt dieser Standard vor, dass 2 (co-sited) zur Aufzeichnung von Daten verwendet wird, um die Bildqualität auf TV-Systemen zu verbessern. Wenn dieses Feld nicht existiert, sollte das Leseprogramm die Voreinstellung von TIFF annehmen. Im Fall von Y:Cb:Cr = 4:2:0 wird die TIFF-Voreinstellung (zentriert) empfohlen. Wenn das Leseprogramm keine der beiden Varianten von <YCbCrPositioning> unterstützt, soll es die Voreinstellung von TIFF unabhängig vom Wert in diesem Feld verwenden. Vorzugsweise sollen Leseprogramme sowohl zentrierte und co-sited-Positionierung unterstützen."
 
 #: libexif/exif-tag.c:424
 msgid "Reference Black/White"

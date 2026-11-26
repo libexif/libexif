@@ -3150,7 +3150,7 @@ msgstr "Przesunięcia pasów"
 
 #: libexif/exif-tag.c:283
 msgid "For each strip, the byte offset of that strip. It is recommended that this be selected so the number of strip bytes does not exceed 64 Kbytes. With JPEG compressed data this designation is not needed and is omitted. See also <RowsPerStrip> and <StripByteCounts>."
-msgstr "Bajtowe przesunięcie pasa dla każdego pasa. Zaleca się takie dobranie tej wartości, by liczba bajtów pasa nie przekraczała 64kB. W danych skompresowanych algorytmem JPEG to oznaczenie nie jest potrzebne i jest pomijane. Patrz także <RowsPerStrip> i <StripByteCount>."
+msgstr "Bajtowe przesunięcie pasa dla każdego pasa. Zaleca się takie dobranie tej wartości, by liczba bajtów pasa nie przekraczała 64kB. W danych skompresowanych algorytmem JPEG to oznaczenie nie jest potrzebne i jest pomijane. Patrz także <RowsPerStrip> i <StripByteCounts>."
 
 #: libexif/exif-tag.c:289
 msgid "Orientation"
