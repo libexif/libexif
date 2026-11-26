@@ -3494,7 +3494,7 @@ msgstr "Configuración de componentes"
 
 #: libexif/exif-tag.c:582
 msgid "Information specific to compressed data. The channels of each component are arranged in order from the 1st component to the 4th. For uncompressed data the data arrangement is given in the <PhotometricInterpretation> tag. However, since <PhotometricInterpretation> can only express the order of Y, Cb and Cr, this tag is provided for cases when compressed data uses components other than Y, Cb, and Cr and to enable support of other sequences."
-msgstr "Información específica de los datos comprimidos. Los canales de cada componente se arreglan en orden desde el 1er componente al 4to. Para datos no comprimidos el arreglo de los datos se da en la etiqueta <PhometricInterpretation>. Sin embargo, debido a que dicha etiqueta sólo puede expresar el orden de Y, Cb y Cr, esta etiqueta se da para los casos en los que los datos comprimidos usan componentes que no son Y, Cb y Cr y para permitir el soporte de otras secuencias."
+msgstr "Información específica de los datos comprimidos. Los canales de cada componente se arreglan en orden desde el 1er componente al 4to. Para datos no comprimidos el arreglo de los datos se da en la etiqueta <PhotometricInterpretation>. Sin embargo, debido a que dicha etiqueta sólo puede expresar el orden de Y, Cb y Cr, esta etiqueta se da para los casos en los que los datos comprimidos usan componentes que no son Y, Cb y Cr y para permitir el soporte de otras secuencias."
 
 #: libexif/exif-tag.c:592
 msgid "Compressed Bits per Pixel"

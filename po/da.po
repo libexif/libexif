@@ -2909,7 +2909,7 @@ msgstr "Rækker per strimmel"
 
 #: libexif/exif-tag.c:291
 msgid "The number of rows per strip. This is the number of rows in the image of one strip when an image is divided into strips. With JPEG compressed data this designation is not needed and is omitted. See also <StripOffsets> and <StripByteCounts>."
-msgstr "Antallet af rækker per strimmel. Dette er antallet af rækker i billedet af en strimmel når et billede opdeles i strimler. Med JPEG-komprimeret data behøves denne udpegning ikke og udelades. Se også <StripOffsets> og <StripBytecounts>."
+msgstr "Antallet af rækker per strimmel. Dette er antallet af rækker i billedet af en strimmel når et billede opdeles i strimler. Med JPEG-komprimeret data behøves denne udpegning ikke og udelades. Se også <StripOffsets> og <StripByteCounts>."
 
 #: libexif/exif-tag.c:297
 msgid "Strip Byte Count"
@@ -3436,7 +3436,7 @@ msgstr "Brændpunktsopløsningsenhed"
 
 #: libexif/exif-tag.c:752
 msgid "Indicates the unit for measuring <FocalPlaneXResolution> and <FocalPlaneYResolution>. This value is the same as the <ResolutionUnit>."
-msgstr "Indikerer enheden til målning af <FocalPlaneXResolutionUnit> og <FocalPlaneYResolutionUnit>. Denne værdi er den samme som <ResolutionUnit>."
+msgstr "Indikerer enheden til målning af <FocalPlaneXResolution> og <FocalPlaneYResolution>. Denne værdi er den samme som <ResolutionUnit>."
 
 #: libexif/exif-tag.c:757
 msgid "Subject Location"
